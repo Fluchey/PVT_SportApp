@@ -4,17 +4,22 @@
 2. git checkout develop
 	Se till att du står i developbranchen innan du branchar vidare
 
-3. git flow feature start "Namnet på den feature du jobbar med"
+3. git branch "Namnet på den branch du jobbar med"
 	Startar en ny branch som du kan jobba med
 
 4. INNAN steg 5, git pull origin develop
 	Se till att du har en uppdaterad develop branch innan du mergar dina ändringar.
 
-5. git flow feature finish "Namnet på den feature du jobbar med"
-	Mergar tillbaka featuren du har jobbat på in i den branchen som den originellt branchat ifrån.
+5. git checkout develop
+	När du jobbat klart med dina ändringar
 
-6. git push origin develop
-	Pushar upp dina  nya ändringar till github
+6. git merge ”Namnet på den branch du jobbat med”
+
+7. Hantera eventuell konflikter
+
+
+8. git push origin develop
+	Pushar upp dina  nya ändringar till github! =)
 
 
 GIT cmd
