@@ -1,0 +1,49 @@
+GIT cmd
+
+	git status
+		Se status för vilka filer som är modifierade sen senaste commit, för den branschen du står i.
+
+	git branch
+		Se alla lokala brancher
+
+	git branch develop
+		Skapar en ny branch med namnet "Develop"
+
+	git checkout develop
+		Byter till branchen "Develop"
+
+	git add *
+		Adderar alla nya filer till gitindex för att bli commitade senare
+
+	git commit -m "Commit message"
+		Commitar ändringarna till branchen
+
+	git commit -am "CommitMessage"
+		Addar och commitar på en gång
+
+	git merge feature/new-feature
+		Mergar in den nya featuren in i den branchen man står i
+
+	git flow init -d
+		Initierar git flow. -d står för default
+
+	git flow feature start a-new feature
+		Initierar en ny branch med namner "a-new-feature".
+
+	git flow feature finish new-feature
+		Avslutar featuren och mergar. Tar också bort feature-branchen.
+
+	git flow feature publish new-feature
+		Pushar featuren till github
+
+	git push origin master
+		Pushar masterbranch
+
+	git push origin develop
+		Pushar developbranch
+
+	git push origin --delete <branch_name>
+		Tar bort en branch remote
+
+	git branch -d branch_name
+		Tar bort en branch lokalt
