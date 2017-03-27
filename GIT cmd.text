@@ -7,19 +7,31 @@
 3. git branch "Namnet på den branch du jobbar med"
 	Startar en ny branch som du kan jobba med
 
-4. INNAN steg 5, git pull origin develop
+4. git checkout "Namnet på den branch du jobbar med"
+	Byt till den branch du vill commita dina ändringar med
+
+5. git add *
+	Adda alld ina ändringar till branchen
+
+6. git commit -m "Commit message"
+	Commita dina ändringar till branchen
+
+7. INNAN steg 8, git pull origin develop
 	Se till att du har en uppdaterad develop branch innan du mergar dina ändringar.
 
-5. git checkout develop
-	När du jobbat klart med dina ändringar
+8. git checkout develop
+	Byt till develop branchen för att merga med dina nya ändringar
 
-6. git merge ”Namnet på den branch du jobbat med”
+9. git merge ”Namnet på den branch du jobbat med”
+	Merga dina nya ändringar med developbranchen
 
-7. Hantera eventuell konflikter
+10. Hantera eventuell konflikter
 
+11. git push origin develop
+	Pushar upp dina nya ändringar till github! =)
 
-8. git push origin develop
-	Pushar upp dina  nya ändringar till github! =)
+12. git branch -d "namnet på branchen du jobbat med"
+		Ta bort den lokala branchen
 
 
 GIT cmd
