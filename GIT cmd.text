@@ -85,3 +85,6 @@ GIT cmd
 
 	git branch -d branch_name
 		Tar bort en branch lokalt
+
+	git checkout -- .
+		Discardar modifierade filer
