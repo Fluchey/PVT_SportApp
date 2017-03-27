@@ -1,5 +1,4 @@
 GIT cmd
-
 	git status
 		Se status för vilka filer som är modifierade sen senaste commit, för den branschen du står i.
 
@@ -35,6 +34,9 @@ GIT cmd
 
 	git flow feature publish new-feature
 		Pushar featuren till github
+
+	git pull origin develop
+		Hämtar senaste versionen av branschen develop från github.
 
 	git push origin master
 		Pushar masterbranch
