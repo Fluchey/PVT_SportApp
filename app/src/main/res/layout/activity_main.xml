@@ -39,6 +39,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Button" />
+
+            <TextView
+                android:id="@+id/tvLoginRegisterHere"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Register here" />
+
         </LinearLayout>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
