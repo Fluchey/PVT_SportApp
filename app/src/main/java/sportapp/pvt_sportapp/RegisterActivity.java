@@ -42,15 +42,16 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-    // Triggers when LOGIN Button clicked
+    // Kopplad via xml-filen att köras vid klick på registerButton
     public void checkLogin(View arg0) {
 
-        // Get text from email and passord field
+        // Get text from input fields
+        final String userName = etUsername.getText().toString();
         final String email = etEmail.getText().toString();
         final String password = etPassword.getText().toString();
 
         // Initialize  AsyncLogin() class with email and password
-        new AsyncLogin().execute(email,password);
+        new AsyncLogin().execute(userName, email, password);
 
     }
 
@@ -74,8 +75,8 @@ public class RegisterActivity extends AppCompatActivity {
         protected String doInBackground(String... params) {
             try {
 
-                // Enter URL address where your php file resides
-                url = new URL("http://localhost/test/login.inc.php");
+                // Tillfällig URL till Antons webplats
+                url = new URL("http://pvt15.000webhostapp.com/GET_FROM_DSV");
 
             } catch (MalformedURLException e) {
                 // TODO Auto-generated catch block
