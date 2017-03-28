@@ -26,7 +26,7 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/etLoginUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -34,7 +34,7 @@
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/editText3"
+            android:id="@+id/etLoginPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -42,10 +42,10 @@
             android:inputType="textPassword" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/loginButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/log_in"/>
+            android:text="@string/log_in" />
 
         <TextView
             android:id="@+id/tvLoginRegisterHere"
@@ -56,13 +56,13 @@
             android:textSize="@dimen/standardTextSize"
             android:textColor="@android:color/black" />
 
-            <com.facebook.login.widget.LoginButton
-                android:id="@+id/login_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="30dp"
-                android:layout_marginBottom="30dp" />
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/loginFacebookButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="30dp" />
 
     </LinearLayout>
 

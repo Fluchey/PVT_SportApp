@@ -57,6 +57,12 @@
             android:onClick="checkLogin"
             android:text="@string/signUp"/>
 
+        <TextView
+            android:id="@+id/tvSignUpMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="" />
+
     </LinearLayout>
 
 </RelativeLayout>
