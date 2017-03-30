@@ -78,8 +78,8 @@
             android:id="@+id/registerButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="checkLogin"
-            android:text="@string/signUp"/>
+            android:text="@string/signUp"
+            android:onClick="signUpButtonClick"/>
 
         <TextView
             android:id="@+id/tvSignUpMessage"
