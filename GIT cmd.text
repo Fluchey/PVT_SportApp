@@ -88,3 +88,9 @@ GIT cmd
 
 	git checkout -- .
 		Discardar modifierade filer
+
+	git log
+		Visar senaste commits för den branch du står i
+
+	git reset —-hard ”commit nummer ifrån logen”
+		Tar bort all modifierad kod du skrivit och resettar tillbaks till den commit du angivit
