@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">PVT_Sportapp</string>
     <string name="username">username</string>
+    <string name="first_name">first name</string>
+    <string name="last_name">last name</string>
+    <string name="phone_number">phone number</string>
     <string name="password">password</string>
     <string name="log_in">Log In</string>
     <string name="register_here">Register Here</string>
