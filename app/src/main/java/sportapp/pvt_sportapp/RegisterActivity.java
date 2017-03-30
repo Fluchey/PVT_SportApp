@@ -24,47 +24,9 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
-//        Button signUpButton = (Button) findViewById(R.id.registerButton);
-
-//        signUpButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                EditText username = (EditText) findViewById(R.id.etRegisterUsername);
-//                EditText password = (EditText) findViewById(R.id.etRegisterPassword);
-//                EditText firstName = (EditText) findViewById(R.id.etRegisterFirstName);
-//                EditText lastName = (EditText) findViewById(R.id.etRegisterLastName);
-//                EditText phoneNumber = (EditText) findViewById(R.id.etRegisterPhoneNumber);
-//                EditText email = (EditText) findViewById(R.id.etRegisterMail);
-//                TextView message = (TextView) findViewById(R.id.tvSignUpMessage);
-//
-//                if (TextUtils.isEmpty(username.getText().toString())) {
-//                    message.setText("Invalid Username, try again");
-//                } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email.getText().toString()).matches()) {
-//                    message.setText("Invalid Email, try again");
-//                } else if (TextUtils.isEmpty(password.getText().toString())) {
-//                    message.setText("Invalid Password, try again");
-//                } else {
-//                    JSONObject jsonObject = new JSONObject();
-//                    try {
-//                        jsonObject.put("user_id",username.getText().toString());
-//                        jsonObject.put("firstname", firstName.getText().toString());
-//                        jsonObject.put("lastname", lastName.getText().toString());
-//                        jsonObject.put("mobilnummer", phoneNumber.getText().toString());
-//                        jsonObject.put("user_mail", email.getText().toString());
-//                        jsonObject.put("password_user", password.getText().toString());
-//                        Log.d("JsonObject", jsonObject.toString());
-//                    } catch (JSONException e) {
-//                        e.printStackTrace();
-//                    }
-//                    RegisterRequest rr = new RegisterRequest(getApplicationContext(), this).execute("users", jsonObject.toString());
-//                }
-//            }
-//        });
-
     }
 
-    public void signUpButtonClick(View v){
+    public void signUpButtonClick(View v) {
         EditText username = (EditText) findViewById(R.id.etRegisterUsername);
         EditText password = (EditText) findViewById(R.id.etRegisterPassword);
         EditText firstName = (EditText) findViewById(R.id.etRegisterFirstName);
@@ -92,6 +54,7 @@ public class RegisterActivity extends AppCompatActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+            /* Here the asynctask is triggered */
             new RegisterRequest().execute(jsonObject.toString());
         }
     }
@@ -99,7 +62,7 @@ public class RegisterActivity extends AppCompatActivity {
     private class RegisterRequest extends AsyncTask<String, Void, Void> {
         @Override
         protected Void doInBackground(String... params) {
-            try{
+            try {
                 URL url = new URL("https://pvt15app.herokuapp.com/api/testsignup");
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 connection.setRequestMethod("PUT");
@@ -111,7 +74,7 @@ public class RegisterActivity extends AppCompatActivity {
                 osw.flush();
                 osw.close();
                 Log.d("Responsecode", connection.getResponseCode() + "");
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
             return null;
