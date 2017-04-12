@@ -2,10 +2,10 @@
 <resources>
 
     <dimen name="paddingLeft">15dp</dimen>
-    <dimen name="paddingRight">5dp</dimen>
+    <dimen name="paddingRight">15dp</dimen>
     <dimen name="paddingTop">5dp</dimen>
     <dimen name="paddingBottom">5dp</dimen>
-    <dimen name="standardTextSize">15dp</dimen>"
-    <dimen name="header">25dp</dimen>
+    <dimen name="standardTextSize">15sp</dimen>"
+    <dimen name="header">25sp</dimen>
 
 </resources>

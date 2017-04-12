@@ -39,8 +39,8 @@ public class MainActivity extends AppCompatActivity { // Extends --> FragmentAct
 
     private void initializeControls(){ //Facebook controls
         callbackManager = CallbackManager.Factory.create();
-        textStatus = (TextView) findViewById(R.id.textStatus);
-        loginButton = (LoginButton) findViewById(R.id.login_button);
+       // textStatus = (TextView) findViewById(R.id.textStatus);
+       // loginButton = (LoginButton) findViewById(R.id.login_button);
     }
 
     private void loginWithFacebook() {
