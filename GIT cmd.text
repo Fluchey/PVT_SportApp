@@ -94,3 +94,12 @@ GIT cmd
 
 	git reset —-hard ”commit nummer ifrån logen”
 		Tar bort all modifierad kod du skrivit och resettar tillbaks till den commit du angivit
+
+
+Heroku
+	git pull heroku master
+	git push heroku master
+	sbt run
+
+i och message
+esc : wq

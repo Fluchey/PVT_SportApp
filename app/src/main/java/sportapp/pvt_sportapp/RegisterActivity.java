@@ -92,7 +92,7 @@ public class RegisterActivity extends AppCompatActivity {
                 osw.write(String.format(params[0]));
                 osw.flush();
                 osw.close();
-                Log.d("Responsecode", connection.getResponseCode() + "");
+
                 BufferedReader br;
                 if (200 <= connection.getResponseCode() && connection.getResponseCode() <= 299) {
                     br = new BufferedReader(new InputStreamReader((connection.getInputStream())));
