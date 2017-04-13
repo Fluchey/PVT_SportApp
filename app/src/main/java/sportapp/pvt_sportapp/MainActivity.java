@@ -5,7 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -15,9 +17,9 @@ import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
 public class MainActivity extends AppCompatActivity { // Extends --> FragmentActivity --> Activity
-    TextView textStatus;
     LoginButton loginButton;
     CallbackManager callbackManager;
+    private AccessToken accessToken;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,7 @@ public class MainActivity extends AppCompatActivity { // Extends --> FragmentAct
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_main);
         initializeControls();
+        loginWithFacebook();
 
 
         TextView tvLoginRegisterHere = (TextView) findViewById(R.id.tvLoginRegisterHere);
@@ -47,17 +50,18 @@ public class MainActivity extends AppCompatActivity { // Extends --> FragmentAct
         LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                textStatus.setText("Login successful\n" + loginResult.getAccessToken());
+                Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_LONG).show();
+                accessToken = loginResult.getAccessToken(); //Needs to be used for FB API calls
             }
 
             @Override
             public void onCancel() {
-                textStatus.setText("Login cancelled.");
+                Toast.makeText(getApplicationContext(), "Login Cancelled", Toast.LENGTH_LONG).show();
             }
 
             @Override
             public void onError(FacebookException error) {
-                textStatus.setText("Login error."+error.getMessage());
+                Toast.makeText(getApplicationContext(), "Login error: "+error.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }
