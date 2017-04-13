@@ -1,15 +1,12 @@
 package sportapp.pvt_sportapp;
 
 import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -83,9 +80,10 @@ public class RegisterActivity extends AppCompatActivity {
 
         @Override
         protected Void doInBackground(String... params) {
+            HttpURLConnection connection = null;
             try {
                 URL url = new URL("https://pvt15app.herokuapp.com/api/testsignup");
-                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection = (HttpURLConnection) url.openConnection();
                 connection.setRequestMethod("PUT");
                 connection.setDoOutput(true);
                 connection.setRequestProperty("Content-Type", "application/json");
@@ -113,6 +111,10 @@ public class RegisterActivity extends AppCompatActivity {
                 responseCode = connection.getResponseCode();
             } catch (Exception e) {
                 e.printStackTrace();
+            }finally {
+                if(connection != null){
+                    connection.disconnect();
+                }
             }
             return null;
         }
