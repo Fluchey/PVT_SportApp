@@ -1,4 +1,4 @@
-package Activitys.LoginRegister;
+package activitys.loginRegister;
 
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
@@ -13,8 +13,6 @@ import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.net.HttpURLConnection;
 
 import util.Connector;
 import sportapp.pvt_sportapp.R;

@@ -1,4 +1,4 @@
-package Activitys.LoginRegister;
+package activitys.loginRegister;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -16,7 +16,7 @@ import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
-import Activitys.Event.CreateEventActivity;
+import activitys.event.CreateEventActivity;
 import sportapp.pvt_sportapp.R;
 
 public class LoginActivity extends AppCompatActivity { // Extends --> FragmentActivity --> Activity

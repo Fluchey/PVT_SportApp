@@ -20,14 +20,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name="Activitys.LoginRegister.LoginActivity">
+        <activity android:name="activitys.loginRegister.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="Activitys.LoginRegister.RegisterActivity" />
+        <activity android:name="activitys.loginRegister.RegisterActivity" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -45,10 +45,10 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name="Activitys.Maps.MapsActivity"
+            android:name="activitys.maps.MapsActivity"
             android:label="@string/title_activity_maps" />
-        <activity android:name="Activitys.User.UserAreaActivity" />
-        <activity android:name="Activitys.Event.CreateEventActivity"></activity>
+        <activity android:name="activitys.user.UserAreaActivity" />
+        <activity android:name="activitys.event.CreateEventActivity"></activity>
     </application>
 
 </manifest>

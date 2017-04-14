@@ -9,7 +9,7 @@
     android:paddingBottom="@dimen/paddingBottom"
     android:paddingLeft="@dimen/paddingLeft"
     android:paddingRight="@dimen/paddingRight"
-    tools:context="Activitys.LoginRegister.LoginActivity">
+    tools:context="activitys.loginRegister.LoginActivity">
 
 
     <ImageView
