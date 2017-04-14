@@ -14,11 +14,7 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
-import java.net.URL;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -81,41 +77,12 @@ public class RegisterActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(String... params) {
             HttpURLConnection connection = null;
-            try {
-                URL url = new URL("https://pvt15app.herokuapp.com/api/testsignup");
-                connection = (HttpURLConnection) url.openConnection();
-                connection.setRequestMethod("PUT");
-                connection.setDoOutput(true);
-                connection.setRequestProperty("Content-Type", "application/json");
-                connection.setRequestProperty("Accept", "application/json");
-                OutputStreamWriter osw = new OutputStreamWriter(connection.getOutputStream());
-                osw.write(String.format(params[0]));
-                osw.flush();
-                osw.close();
 
-                BufferedReader br;
-                if (200 <= connection.getResponseCode() && connection.getResponseCode() <= 299) {
-                    br = new BufferedReader(new InputStreamReader((connection.getInputStream())));
-                } else {
-                    br = new BufferedReader(new InputStreamReader((connection.getErrorStream())));
-                }
+            String[] test = Connector.connect("https://pvt15app.herokuapp.com/api/testsignup",
+                    "PUT", String.format(params[0]));
+            responseBody = test[0];
+            responseCode = Integer.parseInt(test[1]);
 
-                StringBuilder out = new StringBuilder();
-                String line;
-                while ((line = br.readLine()) != null) {
-                    out.append(line);
-                }
-                Log.d("JSON?", out.toString());
-                JSONObject jsonObject = new JSONObject(out.toString());
-                responseBody = jsonObject.getString("body");
-                responseCode = connection.getResponseCode();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }finally {
-                if(connection != null){
-                    connection.disconnect();
-                }
-            }
             return null;
         }
 

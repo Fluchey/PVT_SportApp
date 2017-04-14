@@ -14,4 +14,5 @@
     <string name="event_name">event name</string>
     <string name="event_price">price</string>
     <string name="create_event">create event</string>
-</resources>
+    <string name="createEvent_here">Create event here</string>
+    </resources>

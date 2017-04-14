@@ -14,11 +14,7 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.Random;
 
 public class CreateEventActivity extends AppCompatActivity {
@@ -39,36 +35,39 @@ public class CreateEventActivity extends AppCompatActivity {
     }
 
     public void createEventButtonClick() {
+        int eventPrice = 0;
         EditText eventName = (EditText) findViewById(R.id.etEventName);
-        EditText eventPrice = (EditText) findViewById(R.id.etEventPrice);
+        EditText eventPriceEt= (EditText) findViewById(R.id.etEventPrice);
         EditText eventDescription = (EditText) findViewById(R.id.etEventDescription);
         TextView message = (TextView) findViewById(R.id.tvCreateEventMessage);
         message.setText("");
 
         if (TextUtils.isEmpty(eventName.getText().toString())) {
             message.setText("Event name is missing, try again");
-        } else if (TextUtils.isEmpty(eventPrice.getText().toString())) {
-            message.setText("Event price is missing");
         }
-        //Check how long the description is. Which is the shortest accepted description?
+        //TODO Check how long the description is. Which is the shortest accepted description?
         else {
+            if(!TextUtils.isEmpty(eventPriceEt.getText().toString())) {
 
-            try {
-                int price = Integer.parseInt(eventPrice.getText().toString());
-            } catch (NumberFormatException e) {
-                message.setText("Event price is in wrong format, try again");
-                return;
+                try {
+                    eventPrice = Integer.parseInt(eventPriceEt.getText().toString());
+                } catch (NumberFormatException e) {
+                    message.setText("Event price is in wrong format, try again");
+                    return;
+                }
             }
+
 
             JSONObject jsonObject = new JSONObject();
             try {
-                //behöver event_id också, osäker på hur vi vill skapa det. Tillfällig lösning:
+                //TODO behöver event_id också, osäker på hur vi vill skapa det. Tillfällig lösning:
                 Random rn = new Random();
-                String id = "" + rn.nextInt();
+                String id = "" + rn.nextInt(1)+1000;
+
                 jsonObject.put("event_id", "" + id);
                 jsonObject.put("event_namn", eventName.getText().toString());
                 jsonObject.put("event_beskrivning", eventDescription.getText().toString());
-                jsonObject.put("event_pris", "" + Integer.parseInt(eventPrice.getText().toString()));
+                jsonObject.put("event_pris", "" + eventPrice);
                 Log.d("JsonObject", jsonObject.toString());
 
             } catch (JSONException e) {
@@ -93,45 +92,10 @@ public class CreateEventActivity extends AppCompatActivity {
         protected Void doInBackground(String... params) {
             HttpURLConnection connection = null;
 
-            try {
-                URL url = new URL("https://pvt15app.herokuapp.com/api/testCreateEvent");
-                connection = (HttpURLConnection) url.openConnection();
-                connection.setRequestMethod("PUT");
-                connection.setDoOutput(true);
-                connection.setRequestProperty("Content-Type", "application/json");
-                connection.setRequestProperty("Accept", "application/json");
-                OutputStreamWriter osw = new OutputStreamWriter(connection.getOutputStream());
-                osw.write(String.format(params[0]));
-                osw.flush();
-                osw.close();
-                Log.d("Responscode", connection.getResponseCode() + "");
-                BufferedReader br;
-
-                System.out.println("" + connection.getResponseCode());
-
-                if (200 <= connection.getResponseCode() && connection.getResponseCode() <= 299) {
-                    br = new BufferedReader(new InputStreamReader((connection.getInputStream())));
-                } else {
-                    br = new BufferedReader(new InputStreamReader((connection.getErrorStream())));
-                }
-
-                StringBuilder out = new StringBuilder();
-                String line;
-                while ((line = br.readLine()) != null) {
-                    out.append(line);
-                }
-                Log.d("JSON?", out.toString());
-                JSONObject jsonObject = new JSONObject(out.toString());
-                responseBody = jsonObject.getString("body");
-                responseCode = connection.getResponseCode();
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
-                if (connection != null) {
-                    connection.disconnect();
-                }
-            }
+            String[] test = Connector.connect("https://pvt15app.herokuapp.com/api/testCreateEvent",
+                    "POST", String.format(params[0]));
+            responseBody = test[0];
+            responseCode = Integer.parseInt(test[1]);
             return null;
         }
 
@@ -141,7 +105,8 @@ public class CreateEventActivity extends AppCompatActivity {
 
             if (responseCode == 201) {
                 Toast.makeText(createEventActivity, "Event created!", Toast.LENGTH_LONG).show();
-            } else {
+            }
+            else {
                 Toast.makeText(createEventActivity, responseBody, Toast.LENGTH_LONG).show();
             }
 

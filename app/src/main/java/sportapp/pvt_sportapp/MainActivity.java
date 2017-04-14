@@ -38,6 +38,16 @@ public class MainActivity extends AppCompatActivity { // Extends --> FragmentAct
                 MainActivity.this.startActivity(registerIntent);
             }
         });
+
+        //Tillfälligt för att kunna testa createEvent
+        TextView tvCreateEventHere = (TextView) findViewById(R.id.tvCreateEventHere);
+        tvCreateEventHere.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent createEventIntent = new Intent(MainActivity.this, CreateEventActivity.class);
+                MainActivity.this.startActivity(createEventIntent);
+            }
+        });
     }
 
     private void initializeControls(){ //Facebook controls
