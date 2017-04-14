@@ -1,4 +1,4 @@
-package Activitys;
+package Activitys.LoginRegister;
 
 import android.app.ProgressDialog;
 import android.os.AsyncTask;

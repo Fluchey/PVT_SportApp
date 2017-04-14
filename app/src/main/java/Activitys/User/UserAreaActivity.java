@@ -1,4 +1,4 @@
-package Activitys;
+package Activitys.User;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

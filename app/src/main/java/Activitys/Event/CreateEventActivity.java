@@ -1,4 +1,4 @@
-package Activitys;
+package Activitys.Event;
 
 import android.os.AsyncTask;
 import android.os.Bundle;

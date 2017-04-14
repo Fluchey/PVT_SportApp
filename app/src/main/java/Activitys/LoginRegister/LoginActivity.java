@@ -1,4 +1,4 @@
-package Activitys;
+package Activitys.LoginRegister;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -16,9 +16,10 @@ import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
+import Activitys.Event.CreateEventActivity;
 import sportapp.pvt_sportapp.R;
 
-public class MainActivity extends AppCompatActivity { // Extends --> FragmentActivity --> Activity
+public class LoginActivity extends AppCompatActivity { // Extends --> FragmentActivity --> Activity
     LoginButton loginButton;
     CallbackManager callbackManager;
     private AccessToken accessToken;
@@ -36,8 +37,8 @@ public class MainActivity extends AppCompatActivity { // Extends --> FragmentAct
         tvLoginRegisterHere.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent registerIntent = new Intent(MainActivity.this, RegisterActivity.class);
-                MainActivity.this.startActivity(registerIntent);
+                Intent registerIntent = new Intent(LoginActivity.this, RegisterActivity.class);
+                LoginActivity.this.startActivity(registerIntent);
             }
         });
 
@@ -46,8 +47,8 @@ public class MainActivity extends AppCompatActivity { // Extends --> FragmentAct
         tvCreateEventHere.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent createEventIntent = new Intent(MainActivity.this, CreateEventActivity.class);
-                MainActivity.this.startActivity(createEventIntent);
+                Intent createEventIntent = new Intent(LoginActivity.this, CreateEventActivity.class);
+                LoginActivity.this.startActivity(createEventIntent);
             }
         });
     }

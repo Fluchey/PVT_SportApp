@@ -1,4 +1,4 @@
-package Activitys;
+package Activitys.Maps;
 
 import android.content.Context;
 import android.location.Location;
