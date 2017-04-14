@@ -1,4 +1,4 @@
-package util;
+package com.sportify.util;
 
 import org.json.JSONObject;
 

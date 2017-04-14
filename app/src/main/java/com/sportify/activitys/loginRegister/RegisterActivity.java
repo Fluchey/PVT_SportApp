@@ -1,4 +1,4 @@
-package activitys.loginRegister;
+package com.sportify.activitys.loginRegister;
 
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
@@ -14,7 +14,7 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import util.Connector;
+import com.sportify.util.Connector;
 import sportapp.pvt_sportapp.R;
 
 public class RegisterActivity extends AppCompatActivity {

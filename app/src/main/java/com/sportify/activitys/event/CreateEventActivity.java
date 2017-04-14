@@ -1,4 +1,4 @@
-package activitys.event;
+package com.sportify.activitys.event;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -17,7 +17,7 @@ import org.json.JSONObject;
 import java.net.HttpURLConnection;
 import java.util.Random;
 
-import util.Connector;
+import com.sportify.util.Connector;
 import sportapp.pvt_sportapp.R;
 
 public class CreateEventActivity extends AppCompatActivity {
