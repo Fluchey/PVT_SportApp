@@ -20,14 +20,16 @@ import util.Connector;
 import sportapp.pvt_sportapp.R;
 
 public class RegisterActivity extends AppCompatActivity {
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
     }
 
+    /**
+     * Triggered when user clicks on sign up button
+     * @param v
+     */
     public void signUpButtonClick(View v) {
         EditText username = (EditText) findViewById(R.id.etRegisterUsername);
         EditText password = (EditText) findViewById(R.id.etRegisterPassword);
@@ -45,6 +47,9 @@ public class RegisterActivity extends AppCompatActivity {
             message.setText("Invalid Password, try again");
         } else {
             message.setText("");
+            /**
+             *  Convert to JSON object
+             */
             JSONObject jsonObject = new JSONObject();
             try {
                 jsonObject.put("user_id", username.getText().toString());
@@ -57,7 +62,9 @@ public class RegisterActivity extends AppCompatActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            /* Here the asynctask is triggered */
+            /**
+             * Creates new asynctask which runs in background and tries to create new user
+             */
             new RegisterRequest(this).execute(jsonObject.toString());
         }
     }
@@ -67,39 +74,61 @@ public class RegisterActivity extends AppCompatActivity {
         private RegisterActivity ra;
         protected int responseCode;
         protected String responseBody;
-        public RegisterRequest(RegisterActivity registerActivity) {
-            ra =registerActivity;
-            dialog = new ProgressDialog(registerActivity);
-        }
+
+        /**
+         * Constructor
+         * @param registerActivity The activity the request is called from
+         */
+            public RegisterRequest(RegisterActivity registerActivity) {
+                ra = registerActivity;
+                dialog = new ProgressDialog(registerActivity);
+            }
+
+        /**
+         * This happens first when the asynctask is created
+         * Shows a dialog popup to the user
+         */
         @Override
-        protected void onPreExecute(){
+        protected void onPreExecute() {
             dialog.setMessage("Creating account, please wait");
             dialog.show();
         }
 
+        /**
+         * This happens in the background.
+         * Connects to API and saves responseBody and responseCode.
+         * @param params The JSON object to be sent to the REST API
+         * @return
+         */
         @Override
         protected Void doInBackground(String... params) {
-            HttpURLConnection connection = null;
-
-            String[] test = Connector.connect("https://pvt15app.herokuapp.com/api/testsignup",
+            String[] resultFromApi = Connector.connect("https://pvt15app.herokuapp.com/api/testsignup",
                     "PUT", String.format(params[0]));
-            responseBody = test[0];
-            responseCode = Integer.parseInt(test[1]);
-
+            responseBody = resultFromApi[0];
+            responseCode = Integer.parseInt(resultFromApi[1]);
             return null;
         }
 
+        /**
+         * Happens after doInBackground.
+         * Dismisses the dialog popup.
+         * Tells the user if account was created or if it failed.
+         * This is decided by the responsecode.
+         *
+         * @param aVoid
+         */
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            if(dialog.isShowing()){
+            if (dialog.isShowing()) {
                 dialog.dismiss();
             }
 
-            /* Responsecode 201 maps to successfull account creation */
-            if(responseCode == 201){
+            /** Responsecode 201 maps to successfull account creation
+             * */
+            if (responseCode == 201) {
                 Toast.makeText(ra, "Account created!", Toast.LENGTH_LONG).show();
-            }else {
+            } else {
                 Toast.makeText(ra, responseBody, Toast.LENGTH_LONG).show();
             }
         }

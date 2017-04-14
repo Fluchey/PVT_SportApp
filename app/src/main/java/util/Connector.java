@@ -13,7 +13,6 @@ import java.net.URL;
  */
 
 public class Connector {
-
     public static String[] connect(String URL, String method, String params) {
         HttpURLConnection connection = null;
         String[] test = new String[2];
