@@ -1,7 +1,9 @@
-package sportapp.pvt_sportapp;
+package Activitys;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import sportapp.pvt_sportapp.R;
 
 public class UserAreaActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package sportapp.pvt_sportapp;
+package Activitys;
 
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
@@ -15,6 +15,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.net.HttpURLConnection;
+
+import util.Connector;
+import sportapp.pvt_sportapp.R;
 
 public class RegisterActivity extends AppCompatActivity {
 

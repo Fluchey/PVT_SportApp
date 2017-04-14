@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="sportapp.pvt_sportapp.RegisterActivity">
+    tools:context="sportapp.pvt_sportapp.Activitys.RegisterActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

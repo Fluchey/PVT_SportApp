@@ -1,4 +1,4 @@
-package sportapp.pvt_sportapp;
+package util;
 
 import org.json.JSONObject;
 
@@ -14,7 +14,7 @@ import java.net.URL;
 
 public class Connector {
 
-    protected static String[] connect(String URL, String method, String params) {
+    public static String[] connect(String URL, String method, String params) {
         HttpURLConnection connection = null;
         String[] test = new String[2];
 

@@ -9,7 +9,7 @@
     android:paddingBottom="@dimen/paddingBottom"
     android:paddingLeft="@dimen/paddingLeft"
     android:paddingRight="@dimen/paddingRight"
-    tools:context="sportapp.pvt_sportapp.MainActivity">
+    tools:context="sportapp.pvt_sportapp.Activitys.MainActivity">
 
 
     <ImageView

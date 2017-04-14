@@ -1,4 +1,4 @@
-package sportapp.pvt_sportapp;
+package Activitys;
 
 import android.content.Context;
 import android.location.Location;
@@ -14,6 +14,8 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import sportapp.pvt_sportapp.R;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
