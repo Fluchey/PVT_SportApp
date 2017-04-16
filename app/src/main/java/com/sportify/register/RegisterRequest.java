@@ -11,5 +11,5 @@ public interface RegisterRequest {
         void closeProgressDialog();
     }
 
-    public void makeApiRequest(String jsonMessage);
+    void makeApiRequest(String jsonMessage);
 }

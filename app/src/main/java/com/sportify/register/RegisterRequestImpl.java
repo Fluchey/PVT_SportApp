@@ -1,7 +1,6 @@
 package com.sportify.register;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
 import com.sportify.util.Connector;
 
@@ -9,24 +8,24 @@ import com.sportify.util.Connector;
  * Created by fluchey on 2017-04-16.
  */
 
-public class RegisterRequestImpl implements RegisterRequest{
+public class RegisterRequestImpl implements RegisterRequest {
     OnCreateAccountFinishedListener onCreateAccountFinishedListener;
 
     public RegisterRequestImpl(final OnCreateAccountFinishedListener onCreateAccountFinishedListener) {
         this.onCreateAccountFinishedListener = onCreateAccountFinishedListener;
     }
 
-    public void makeApiRequest(String jsonMessage){
+    public void makeApiRequest(String jsonMessage) {
         ApiRequest apiRequest = (ApiRequest) new ApiRequest(this).execute(jsonMessage);
     }
 
 
-    private class ApiRequest extends AsyncTask<String, RegisterRequestImpl, Void>{
+    private class ApiRequest extends AsyncTask<String, RegisterRequestImpl, Void> {
         private RegisterRequestImpl registerRequestImpl;
 
         private String responseBody;
 
-        public ApiRequest(RegisterRequestImpl registerRequestImpl){
+        public ApiRequest(RegisterRequestImpl registerRequestImpl) {
             this.registerRequestImpl = registerRequestImpl;
         }
 

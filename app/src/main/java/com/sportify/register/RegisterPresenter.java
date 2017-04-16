@@ -5,5 +5,5 @@ package com.sportify.register;
  */
 
 public interface RegisterPresenter {
-    public void createAccount(String username, String password, String firstName, String lastName, String phoneNumber, String email);
+    void createAccount(String username, String password, String firstName, String lastName, String phoneNumber, String email);
 }
