@@ -7,5 +7,9 @@ package com.sportify.register;
 public interface RegisterRequest {
     interface OnCreateAccountFinishedListener {
         void showApiResponse(String apiResponse);
+
+        void closeProgressDialog();
     }
+
+    public void makeApiRequest(String jsonMessage);
 }

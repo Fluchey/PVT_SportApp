@@ -15,7 +15,7 @@ public interface RegisterView {
 
     void showProgressDialog();
 
-    void endProgressDialog();
+    void closeProgressDialog();
 
     void emptyErrorMessage();
 }

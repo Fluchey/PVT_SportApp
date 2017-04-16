@@ -37,8 +37,8 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         registerPresenter = new RegisterPresenterImpl(this);
+        dialog = new ProgressDialog();
     }
-
 
     /**
      * Triggered when user clicks on sign up button
@@ -123,7 +123,7 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView 
     }
 
     @Override
-    public void endProgressDialog() {
+    public void closeProgressDialog() {
         if (dialog.isShowing()) {
             dialog.dismiss();
         }

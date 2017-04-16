@@ -16,10 +16,13 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterRequest
 
     public RegisterPresenterImpl(RegisterView registerView) {
         this.registerView = registerView;
+        registerRequest = new RegisterRequestImpl(this);
     }
 
     @Override
     public void createAccount(String username, String password, String firstName, String lastName, String phoneNumber, String email) {
+        registerView.showProgressDialog();
+
         if (username.isEmpty()) {
             registerView.showUserNameEmptyError();
         } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
@@ -44,11 +47,17 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterRequest
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+
             /**
              * Creates new asynctask which runs in background and tries to create new user
              */
-            registerRequest = new RegisterRequestImpl(jsonObject.toString(), this);
+            registerRequest.makeApiRequest(jsonObject.toString());
         }
+    }
+
+    @Override
+    public void closeProgressDialog() {
+        registerView.closeProgressDialog();
     }
 
     @Override
