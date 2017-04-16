@@ -9,7 +9,7 @@
     android:paddingBottom="@dimen/paddingBottom"
     android:paddingLeft="@dimen/paddingLeft"
     android:paddingRight="@dimen/paddingRight"
-    tools:context="com.sportify.activitys.loginRegister.LoginActivity">
+    tools:context="com.sportify.login.LoginActivity">
 
 
     <ImageView

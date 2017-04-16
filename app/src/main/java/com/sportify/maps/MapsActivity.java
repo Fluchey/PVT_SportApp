@@ -1,4 +1,4 @@
-package com.sportify.activitys.maps;
+package com.sportify.maps;
 
 import android.content.Context;
 import android.location.Location;

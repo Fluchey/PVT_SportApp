@@ -1,5 +1,3 @@
-import com.sportify.activitys.loginRegister.LoginActivity;
-
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -10,5 +8,6 @@ import static org.junit.Assert.*;
 public class LoginTest {
     @Test
     public void loginReturnsTrue(){
+        assertEquals(2+2 == 4, 2+2==4);
     }
 }

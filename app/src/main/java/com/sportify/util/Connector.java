@@ -15,7 +15,7 @@ import java.net.URL;
 public class Connector {
     public static String[] connect(String URL, String method, String params) {
         HttpURLConnection connection = null;
-        String[] test = new String[2];
+        String[] responseFromRest = new String[2];
 
         try {
             URL url = new URL(URL);
@@ -43,8 +43,8 @@ public class Connector {
             }
 
             JSONObject jsonObject = new JSONObject(out.toString());
-            test[0] = jsonObject.getString("body");
-            test[1] = "" + connection.getResponseCode();
+            responseFromRest[0] = jsonObject.getString("body");
+            responseFromRest[1] = "" + connection.getResponseCode();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -53,6 +53,6 @@ public class Connector {
                 connection.disconnect();
             }
         }
-        return test;
+        return responseFromRest;
     }
 }

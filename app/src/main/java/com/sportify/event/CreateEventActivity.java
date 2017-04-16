@@ -1,4 +1,4 @@
-package com.sportify.activitys.event;
+package com.sportify.event;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
