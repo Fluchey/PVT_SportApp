@@ -10,6 +10,8 @@ import com.sportify.register.activity.RegisterView;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import sportapp.pvt_sportapp.R;
+
 /**
  * Created by fluchey on 2017-04-16.
  */
@@ -32,15 +34,21 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterRequest
         String phoneNumber = registerView.getPhoneNumber();
         String email = registerView.getMail();
 
-
-        if (username.isEmpty() || password.isEmpty() || firstName.isEmpty() || lastName.isEmpty() || phoneNumber.isEmpty() || email.isEmpty()) {
-            registerView.showEnterAllFieldsError();
-        } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            registerView.showEmailWrongFormatError();
+        if (username.isEmpty()) {
+            registerView.showUsernameEmptyError(R.string.username_empty_error);
         } else if (password.isEmpty()) {
-            registerView.showPasswordEmptyError();
+            registerView.showPasswordEmptyError(R.string.password_empty_error);
+        } else if (firstName.isEmpty()) {
+            registerView.showFirstNameEmptyError(R.string.firstName_Empty_error);
+        } else if (lastName.isEmpty()) {
+            registerView.showLastNameEmptyError(R.string.lastName_Empty_error);
+        } else if (phoneNumber.isEmpty()) {
+            registerView.showPhoneNumberEmptyError(R.string.phoneNumber_Empty_error);
+        } else if (email.isEmpty()) {
+            registerView.showEmailEmptyError(R.string.email_Empty_error);
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            registerView.showEmailWrongFormatError(R.string.email_wrongFormat_error);
         } else {
-            registerView.emptyErrorMessage();
             registerView.showProgressDialog();
 
             /**

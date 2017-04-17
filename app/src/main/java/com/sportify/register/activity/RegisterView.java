@@ -17,17 +17,23 @@ public interface RegisterView {
 
     String getPassword();
 
-    void showEnterAllFieldsError();
+    void showUsernameEmptyError(int username_empty_error);
 
-    void showPasswordEmptyError();
+    void showFirstNameEmptyError(int resId);
 
-    void showEmailWrongFormatError();
+    void showLastNameEmptyError(int resId);
+
+    void showPhoneNumberEmptyError(int resId);
+
+    void showPasswordEmptyError(int resId);
+
+    void showEmailEmptyError(int resId);
+
+    void showEmailWrongFormatError(int resId);
 
     void showApiRequestMessage(String message);
 
     void showProgressDialog();
 
     void closeProgressDialog();
-
-    void emptyErrorMessage();
 }
