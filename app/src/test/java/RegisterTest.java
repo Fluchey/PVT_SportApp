@@ -6,7 +6,11 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import sportapp.pvt_sportapp.R;
 
@@ -35,7 +39,7 @@ public class RegisterTest {
     }
 
     @Test
-    public void shouldShowErrorMessageWhenUsernameISEmpty() throws Exception {
+    public void shouldShowErrorMessageWhenUsernameIsEmpty() throws Exception {
         when(registerView.getUserName()).thenReturn("");
         presenter.createAccount();
 
@@ -97,6 +101,7 @@ public class RegisterTest {
         verify(registerView).showEmailEmptyError(R.string.email_Empty_error);
     }
 
+    // TODO Får inte till det här testet. Den klagar på att Pattern är NullPointer. Förmodligen för att det inte ingår i Mock-objektet
     @Test
     public void shouldShowErrorMessageWhenEmailIsWrongFormat() throws Exception {
         when(registerView.getUserName()).thenReturn("MockTest");
@@ -104,7 +109,7 @@ public class RegisterTest {
         when(registerView.getFirstName()).thenReturn("MockFirstName");
         when(registerView.getLastName()).thenReturn("MockLastName");
         when(registerView.getPhoneNumber()).thenReturn("989238");
-        when(registerView.getMail()).thenReturn("asdj");
+        when(registerView.getMail()).thenReturn("sddd");
         presenter.createAccount();
 
         verify(registerView).showEmailWrongFormatError(R.string.email_wrongFormat_error);
