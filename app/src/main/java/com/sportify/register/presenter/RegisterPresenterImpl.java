@@ -1,7 +1,11 @@
-package com.sportify.register;
+package com.sportify.register.presenter;
 
 import android.util.Log;
 import android.util.Patterns;
+
+import com.sportify.register.request.RegisterRequest;
+import com.sportify.register.request.RegisterRequestImpl;
+import com.sportify.register.activity.RegisterView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -20,7 +24,13 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterRequest
     }
 
     @Override
-    public void createAccount(String username, String password, String firstName, String lastName, String phoneNumber, String email) {
+    public void createAccount() {
+        String username = registerView.getUserName();
+        String password = registerView.getPassword();
+        String firstName = registerView.getFirstName();
+        String lastName = registerView.getLastName();
+        String phoneNumber = registerView.getPhoneNumber();
+        String email = registerView.getMail();
 
 
         if (username.isEmpty() || password.isEmpty() || firstName.isEmpty() || lastName.isEmpty() || phoneNumber.isEmpty() || email.isEmpty()) {

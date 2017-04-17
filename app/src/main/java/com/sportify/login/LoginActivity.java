@@ -17,7 +17,7 @@ import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
 import com.sportify.event.CreateEventActivity;
-import com.sportify.register.RegisterActivity;
+import com.sportify.register.activity.RegisterActivity;
 
 import sportapp.pvt_sportapp.R;
 

@@ -1,4 +1,4 @@
-package com.sportify.register;
+package com.sportify.register.activity;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.sportify.register.presenter.RegisterPresenter;
+import com.sportify.register.presenter.RegisterPresenterImpl;
 
 import sportapp.pvt_sportapp.R;
 
@@ -29,6 +32,14 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView 
         setContentView(R.layout.activity_register);
         registerPresenter = new RegisterPresenterImpl(this);
         dialog = new ProgressDialog(this);
+
+        username = (EditText) findViewById(R.id.etRegisterUsername);
+        password = (EditText) findViewById(R.id.etRegisterPassword);
+        firstName = (EditText) findViewById(R.id.etRegisterFirstName);
+        lastName = (EditText) findViewById(R.id.etRegisterLastName);
+        phoneNumber = (EditText) findViewById(R.id.etRegisterPhoneNumber);
+        email = (EditText) findViewById(R.id.etRegisterMail);
+        wrongFormatMessage = (TextView) findViewById(R.id.tvSignUpMessage);
     }
 
     /**
@@ -37,20 +48,37 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView 
      * @param v
      */
     public void signUpButtonClick(View v) {
-        username = (EditText) findViewById(R.id.etRegisterUsername);
-        password = (EditText) findViewById(R.id.etRegisterPassword);
-        firstName = (EditText) findViewById(R.id.etRegisterFirstName);
-        lastName = (EditText) findViewById(R.id.etRegisterLastName);
-        phoneNumber = (EditText) findViewById(R.id.etRegisterPhoneNumber);
-        email = (EditText) findViewById(R.id.etRegisterMail);
-        wrongFormatMessage = (TextView) findViewById(R.id.tvSignUpMessage);
+        registerPresenter.createAccount();
+    }
 
-        registerPresenter.createAccount(username.getText().toString(),
-                password.getText().toString(),
-                firstName.getText().toString(),
-                lastName.getText().toString(),
-                phoneNumber.getText().toString(),
-                email.getText().toString());
+    @Override
+    public String getUserName() {
+        return username.getText().toString();
+    }
+
+    @Override
+    public String getFirstName() {
+        return firstName.getText().toString();
+    }
+
+    @Override
+    public String getLastName() {
+        return lastName.getText().toString();
+    }
+
+    @Override
+    public String getMail() {
+        return email.getText().toString();
+    }
+
+    @Override
+    public String getPhoneNumber() {
+        return phoneNumber.getText().toString();
+    }
+
+    @Override
+    public String getPassword() {
+        return password.getText().toString();
     }
 
     @Override

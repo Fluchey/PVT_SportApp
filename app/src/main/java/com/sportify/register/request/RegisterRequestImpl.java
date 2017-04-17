@@ -1,4 +1,4 @@
-package com.sportify.register;
+package com.sportify.register.request;
 
 import android.os.AsyncTask;
 

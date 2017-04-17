@@ -1,4 +1,4 @@
-package com.sportify.register;
+package com.sportify.register.request;
 
 /**
  * Created by fluchey on 2017-04-16.
