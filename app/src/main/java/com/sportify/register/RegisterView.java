@@ -5,7 +5,7 @@ package com.sportify.register;
  */
 
 public interface RegisterView {
-    void showUserNameEmptyError();
+    void showEnterAllFieldsError();
 
     void showPasswordEmptyError();
 

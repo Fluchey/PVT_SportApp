@@ -54,8 +54,8 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView 
     }
 
     @Override
-    public void showUserNameEmptyError() {
-        wrongFormatMessage.setText("Invalid Username, try again");
+    public void showEnterAllFieldsError() {
+        wrongFormatMessage.setText("Please enter data in all fields");
     }
 
     @Override

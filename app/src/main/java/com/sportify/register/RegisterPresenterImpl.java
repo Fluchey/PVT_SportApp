@@ -21,16 +21,17 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterRequest
 
     @Override
     public void createAccount(String username, String password, String firstName, String lastName, String phoneNumber, String email) {
-        registerView.showProgressDialog();
 
-        if (username.isEmpty()) {
-            registerView.showUserNameEmptyError();
+
+        if (username.isEmpty() || password.isEmpty() || firstName.isEmpty() || lastName.isEmpty() || phoneNumber.isEmpty() || email.isEmpty()) {
+            registerView.showEnterAllFieldsError();
         } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             registerView.showEmailWrongFormatError();
         } else if (password.isEmpty()) {
             registerView.showPasswordEmptyError();
         } else {
             registerView.emptyErrorMessage();
+            registerView.showProgressDialog();
 
             /**
              *  Convert to JSON object
