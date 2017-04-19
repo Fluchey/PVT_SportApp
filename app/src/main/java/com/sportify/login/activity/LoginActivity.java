@@ -1,8 +1,8 @@
 package com.sportify.login.activity;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -16,8 +16,8 @@ import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
-import com.sportify.event.CreateEventActivity;
 import com.sportify.login.presenter.LoginPresenterImpl;
+import com.sportify.event.activity.CreateEventActivity;
 import com.sportify.register.activity.RegisterActivity;
 import com.sportify.userArea.UserAreaActivity;
 
@@ -127,6 +127,4 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     public void launchUserActivity() {
         startActivity(new Intent(LoginActivity.this, UserAreaActivity.class));
     }
-
-
 }
