@@ -21,7 +21,7 @@ public class CreateEventActivity extends AppCompatActivity implements CreateEven
     private EditText eventName;
     private EditText eventPrice;
     private EditText eventDescription;
-    private TextView message = (TextView) findViewById(R.id.tvCreateEventMessage);
+    private TextView message;
 
     private CreateEventPresenter createEventPresenter;
 
@@ -34,6 +34,7 @@ public class CreateEventActivity extends AppCompatActivity implements CreateEven
         eventName = (EditText) findViewById(R.id.etEventName);
         eventPrice = (EditText) findViewById(R.id.etEventPrice);
         eventDescription = (EditText) findViewById(R.id.etEventDescription);
+        message = (TextView) findViewById(R.id.tvCreateEventMessage);
     }
 
     public void createEventClick(View v){
