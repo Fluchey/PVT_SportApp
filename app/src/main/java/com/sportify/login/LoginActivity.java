@@ -1,8 +1,8 @@
 package com.sportify.login;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,8 +15,7 @@ import com.facebook.FacebookSdk;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
-
-import com.sportify.event.CreateEventActivity;
+import com.sportify.event.activity.CreateEventActivity;
 import com.sportify.register.activity.RegisterActivity;
 
 import sportapp.pvt_sportapp.R;
