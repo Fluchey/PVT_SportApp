@@ -27,24 +27,16 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterRequest
 
     @Override
     public void createAccount() {
-        String username = registerView.getUserName();
+//        String username = registerView.getUserName();
         String password = registerView.getPassword();
         String firstName = registerView.getFirstName();
         String lastName = registerView.getLastName();
-        String phoneNumber = registerView.getPhoneNumber();
+//        String phoneNumber = registerView.getPhoneNumber();
         String email = registerView.getMail();
 
 
-        if (username.isEmpty()) {
-            registerView.showUsernameEmptyError(R.string.username_empty_error);
-        } else if (password.isEmpty()) {
+        if (password.isEmpty()) {
             registerView.showPasswordEmptyError(R.string.password_empty_error);
-        } else if (firstName.isEmpty()) {
-            registerView.showFirstNameEmptyError(R.string.firstName_Empty_error);
-        } else if (lastName.isEmpty()) {
-            registerView.showLastNameEmptyError(R.string.lastName_Empty_error);
-        } else if (phoneNumber.isEmpty()) {
-            registerView.showPhoneNumberEmptyError(R.string.phoneNumber_Empty_error);
         } else if (email.isEmpty()) {
             registerView.showEmailEmptyError(R.string.email_Empty_error);
         } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
@@ -52,18 +44,22 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterRequest
         } else {
             registerView.showProgressDialog();
 
+            if (firstName.isEmpty()) {
+                firstName = "Anonymous";
+            }
+            if (lastName.isEmpty()) {
+                lastName = "User";
+            }
+
             /**
              *  Convert to JSON object
              */
             JSONObject jsonObject = new JSONObject();
             try {
-                jsonObject.put("user_id", username);
-                jsonObject.put("firstname", firstName);
-                jsonObject.put("lastname", lastName);
-                jsonObject.put("mobilnummer", phoneNumber);
-                jsonObject.put("user_mail", email);
-                jsonObject.put("password_user", password);
-                Log.d("JsonObject", jsonObject.toString());
+                jsonObject.put("mailadress", email);
+                jsonObject.put("förnamn", firstName);
+                jsonObject.put("efternamn", lastName);
+                jsonObject.put("lösenord", password);
             } catch (JSONException e) {
                 e.printStackTrace();
             }

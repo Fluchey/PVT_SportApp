@@ -39,63 +39,21 @@ public class RegisterTest {
     }
 
     @Test
-    public void shouldShowErrorMessageWhenUsernameIsEmpty() throws Exception {
-        when(registerView.getUserName()).thenReturn("");
-        presenter.createAccount();
-
-        verify(registerView).showUsernameEmptyError(R.string.username_empty_error);
-    }
-
-    @Test
     public void shouldShowErrorMessageWhenPasswordIsEmpty() throws Exception {
-        when(registerView.getUserName()).thenReturn("MockTest");
         when(registerView.getPassword()).thenReturn("");
         presenter.createAccount();
 
         verify(registerView).showPasswordEmptyError(R.string.password_empty_error);
     }
 
-    @Test
-    public void shouldShowErrorMessageWhenFirstNameIsEmpty() throws Exception {
-        when(registerView.getUserName()).thenReturn("MockTest");
-        when(registerView.getPassword()).thenReturn("MockPassword");
-        when(registerView.getFirstName()).thenReturn("");
-        presenter.createAccount();
-
-        verify(registerView).showFirstNameEmptyError(R.string.firstName_Empty_error);
-    }
-
-    @Test
-    public void shouldShowErrorMessageWhenLastNameIsEmpty() throws Exception {
-        when(registerView.getUserName()).thenReturn("MockTest");
-        when(registerView.getPassword()).thenReturn("MockPassword");
-        when(registerView.getFirstName()).thenReturn("MockFirstName");
-        when(registerView.getLastName()).thenReturn("");
-        presenter.createAccount();
-
-        verify(registerView).showLastNameEmptyError(R.string.lastName_Empty_error);
-    }
-
-    @Test
-    public void shouldShowErrorMessageWhenPhoneNumberIsEmpty() throws Exception {
-        when(registerView.getUserName()).thenReturn("MockTest");
-        when(registerView.getPassword()).thenReturn("MockPassword");
-        when(registerView.getFirstName()).thenReturn("MockFirstName");
-        when(registerView.getLastName()).thenReturn("MockLastName");
-        when(registerView.getPhoneNumber()).thenReturn("");
-        presenter.createAccount();
-
-        verify(registerView).showPhoneNumberEmptyError(R.string.phoneNumber_Empty_error);
-    }
 
     @Test
     public void shouldShowErrorMessageWhenEmailIsEmpty() throws Exception {
-        when(registerView.getUserName()).thenReturn("MockTest");
+        when(registerView.getMail()).thenReturn("");
         when(registerView.getPassword()).thenReturn("MockPassword");
         when(registerView.getFirstName()).thenReturn("MockFirstName");
         when(registerView.getLastName()).thenReturn("MockLastName");
-        when(registerView.getPhoneNumber()).thenReturn("989238");
-        when(registerView.getMail()).thenReturn("");
+
         presenter.createAccount();
 
         verify(registerView).showEmailEmptyError(R.string.email_Empty_error);
@@ -104,12 +62,11 @@ public class RegisterTest {
     // TODO Får inte till det här testet. Den klagar på att Pattern är NullPointer. Förmodligen för att det inte ingår i Mock-objektet
     @Test
     public void shouldShowErrorMessageWhenEmailIsWrongFormat() throws Exception {
-        when(registerView.getUserName()).thenReturn("MockTest");
+        when(registerView.getMail()).thenReturn("sddd");
         when(registerView.getPassword()).thenReturn("MockPassword");
         when(registerView.getFirstName()).thenReturn("MockFirstName");
         when(registerView.getLastName()).thenReturn("MockLastName");
-        when(registerView.getPhoneNumber()).thenReturn("989238");
-        when(registerView.getMail()).thenReturn("sddd");
+
         presenter.createAccount();
 
         verify(registerView).showEmailWrongFormatError(R.string.email_wrongFormat_error);

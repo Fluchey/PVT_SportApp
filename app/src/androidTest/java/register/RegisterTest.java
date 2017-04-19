@@ -34,26 +34,16 @@ public class RegisterTest {
     public ActivityTestRule<RegisterActivity> loginActivityActivityTestRule = new ActivityTestRule<>(RegisterActivity.class);
 
     @Test
-    public void emptyFieldsError(){
-        onView(withId(R.id.etRegisterUsername)).perform(typeText("EspressoTest"));
-        onView(withId(R.id.etRegisterUsername)).perform(typeText(""), closeSoftKeyboard());
-        onView(withId(R.id.registerButton)).perform(click());
-        onView(withId(R.id.tvSignUpMessage)).check(matches(withText("Please enter data in all fields")));
-    }
-
-    @Test
     public void createAccountShouldPass(){
         SecureRandom random = new SecureRandom();
 
         /* Generates a string which should be kind of unique =)=) */
-        String username = new BigInteger(130, random).toString(32);
+        String randomMail = new BigInteger(130, random).toString(32);
 
-        onView(withId(R.id.etRegisterUsername)).perform(typeText(username));
-        onView(withId(R.id.etRegisterPassword)).perform(typeText("EspressoPassword"));
+        onView(withId(R.id.etRegisterMail)).perform(typeText(randomMail + "@espresso.com"), closeSoftKeyboard());
         onView(withId(R.id.etRegisterFirstName)).perform(typeText("EspressoTestFirstName"));
         onView(withId(R.id.etRegisterLastName)).perform(typeText("EspressoTestLastName"));
-        onView(withId(R.id.etRegisterPhoneNumber)).perform(typeText("123456789"));
-        onView(withId(R.id.etRegisterMail)).perform(typeText("EspressoTest@espresso.com"), closeSoftKeyboard());
+        onView(withId(R.id.etRegisterPassword)).perform(typeText("EspressoPassword"), closeSoftKeyboard());
         onView(withId(R.id.registerButton)).perform(click());
     }
 }

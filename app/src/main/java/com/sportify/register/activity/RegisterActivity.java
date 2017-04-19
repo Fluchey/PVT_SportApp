@@ -13,11 +13,11 @@ import com.sportify.register.presenter.RegisterPresenterImpl;
 import sportapp.pvt_sportapp.R;
 
 public class RegisterActivity extends AppCompatActivity implements RegisterView {
-    private EditText username;
+//    private EditText username;
     private EditText password;
     private EditText firstName;
     private EditText lastName;
-    private EditText phoneNumber;
+//    private EditText phoneNumber;
     private EditText email;
 
     private ProgressDialog dialog;
@@ -31,11 +31,11 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView 
         registerPresenter = new RegisterPresenterImpl(this);
         dialog = new ProgressDialog(this);
 
-        username = (EditText) findViewById(R.id.etRegisterUsername);
+//        username = (EditText) findViewById(R.id.etRegisterUsername);
         password = (EditText) findViewById(R.id.etRegisterPassword);
         firstName = (EditText) findViewById(R.id.etRegisterFirstName);
         lastName = (EditText) findViewById(R.id.etRegisterLastName);
-        phoneNumber = (EditText) findViewById(R.id.etRegisterPhoneNumber);
+//        phoneNumber = (EditText) findViewById(R.id.etRegisterPhoneNumber);
         email = (EditText) findViewById(R.id.etRegisterMail);
     }
 
@@ -43,10 +43,10 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView 
         registerPresenter.createAccount();
     }
 
-    @Override
-    public String getUserName() {
-        return username.getText().toString();
-    }
+//    @Override
+//    public String getUserName() {
+//        return username.getText().toString();
+//    }
 
     @Override
     public String getFirstName() {
@@ -63,35 +63,35 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView 
         return email.getText().toString();
     }
 
-    @Override
-    public String getPhoneNumber() {
-        return phoneNumber.getText().toString();
-    }
+//    @Override
+//    public String getPhoneNumber() {
+//        return phoneNumber.getText().toString();
+//    }
 
     @Override
     public String getPassword() {
         return password.getText().toString();
     }
 
-    @Override
-    public void showUsernameEmptyError(int resId) {
-        username.setError(getString(resId));
-    }
-
-    @Override
-    public void showFirstNameEmptyError(int resId) {
-        firstName.setError(getString(resId));
-    }
-
-    @Override
-    public void showLastNameEmptyError(int resId) {
-        lastName.setError(getString(resId));
-    }
-
-    @Override
-    public void showPhoneNumberEmptyError(int resId) {
-        phoneNumber.setError(getString(resId));
-    }
+//    @Override
+//    public void showUsernameEmptyError(int resId) {
+//        username.setError(getString(resId));
+//    }
+//
+//    @Override
+//    public void showFirstNameEmptyError(int resId) {
+//        firstName.setError(getString(resId));
+//    }
+//
+//    @Override
+//    public void showLastNameEmptyError(int resId) {
+//        lastName.setError(getString(resId));
+//    }
+//
+//    @Override
+//    public void showPhoneNumberEmptyError(int resId) {
+//        phoneNumber.setError(getString(resId));
+//    }
 
     @Override
     public void showPasswordEmptyError(int resId) {
