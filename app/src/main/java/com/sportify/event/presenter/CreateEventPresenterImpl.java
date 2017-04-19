@@ -24,10 +24,8 @@ public class CreateEventPresenterImpl implements CreateEventPresenter, CreateEve
         createEventRequest = new CreateEventRequestImpl(this);
     }
 
-
     @Override
     public void createEvent() {
-        //TODO glöm inte att generera event-id
 
         String eventName = createEventView.getEventName();
         String eventPriceEt = createEventView.getEventPrice();
@@ -38,7 +36,6 @@ public class CreateEventPresenterImpl implements CreateEventPresenter, CreateEve
             createEventView.showEventNameEmptyError();
         }
 
-        //TODO: Se vidare på denna. Bör man ENBART hämta strängen från viewn? Eller ska man redan där kolla parseInt-try?
         if(!eventPriceEt.isEmpty()){
             try{
                eventPrice = Integer.parseInt(eventPriceEt);
