@@ -34,19 +34,19 @@ public class RegisterTest {
     @Rule
     public ActivityTestRule<RegisterActivity> loginActivityActivityTestRule = new ActivityTestRule<>(RegisterActivity.class);
 
-//    @Test
-//    public void createAccountShouldPass(){
-//        SecureRandom random = new SecureRandom();
-//
-//        /* Generates a string which should be kind of unique =)=) */
-//        String randomUsername = new BigInteger(130, random).toString(32);
-//        String randomMail = new BigInteger(130, random).toString(32);
-//
-//        onView(withId(R.id.etRegisterUserName)).perform(typeText(randomUsername), closeSoftKeyboard());
-//        onView(withId(R.id.etRegisterMail)).perform(typeText(randomMail + "@espresso.com"), closeSoftKeyboard());
-//        onView(withId(R.id.etRegisterPassword)).perform(typeText("EspressoPassword"), closeSoftKeyboard());
-//        onView(withId(R.id.registerButton)).perform(click());
-//    }
+    @Test
+    public void createAccountShouldPass(){
+        SecureRandom random = new SecureRandom();
+
+        /* Generates a string which should be kind of unique =)=) */
+        String randomUsername = new BigInteger(130, random).toString(32);
+        String randomMail = new BigInteger(130, random).toString(32);
+
+        onView(withId(R.id.etRegisterUserName)).perform(typeText(randomUsername), closeSoftKeyboard());
+        onView(withId(R.id.etRegisterMail)).perform(typeText(randomMail + "@espresso.com"), closeSoftKeyboard());
+        onView(withId(R.id.etRegisterPassword)).perform(typeText("EspressoPassword"), closeSoftKeyboard());
+        onView(withId(R.id.registerButton)).perform(click());
+    }
 
     @Test
     public void createAccountShouldFailOnPassword(){
