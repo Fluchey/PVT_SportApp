@@ -31,7 +31,6 @@ public class RegisterRequestImpl implements RegisterRequest {
 
         @Override
         protected Void doInBackground(String... params) {
-            //TODO: Call correct backend - also backend needs to be updated to go by email on login
             String[] resultFromApi = Connector.connect("https://pvt15app.herokuapp.com/api/testsignup",
                     "PUT", String.format(params[0]));
             responseBody = resultFromApi[0];
