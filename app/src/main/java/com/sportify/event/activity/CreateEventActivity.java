@@ -46,15 +46,8 @@ public class CreateEventActivity extends AppCompatActivity implements CreateEven
         return eventName.getText().toString();
     }
 
-    //TODO sätt pris till 0 som default, dold kod bör funka men bör det kanske göras i presenter?
-
     @Override
     public String getEventPrice() {
-
-//        if(TextUtils.isEmpty(eventPrice.getText().toString(){
-//            return 0;
-//        }else{
-
         return eventPrice.getText().toString();
     }
 
