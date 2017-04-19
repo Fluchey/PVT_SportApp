@@ -24,7 +24,7 @@ public class LoginRequestImpl implements LoginRequest {
         private LoginRequestImpl loginRequestImpl;
         private String responseBody;
 
-        public ApiRequest(LoginRequestImpl registerRequestImpl) {
+        public ApiRequest(LoginRequestImpl loginRequestImpl) {
             this.loginRequestImpl = loginRequestImpl;
         }
 
