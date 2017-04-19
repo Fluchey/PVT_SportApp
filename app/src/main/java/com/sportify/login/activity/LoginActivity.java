@@ -1,5 +1,6 @@
 package com.sportify.login.activity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -24,10 +25,11 @@ import com.sportify.userArea.UserAreaActivity;
 import sportapp.pvt_sportapp.R;
 
 public class LoginActivity extends AppCompatActivity implements LoginView {
-    private EditText username;
+    private EditText email;
     private EditText password;
     private LoginButton loginButton;
     private CallbackManager callbackManager; //Added Private
+    private ProgressDialog dialog;
     private LoginPresenterImpl loginPresenter;
 
     @Override
@@ -39,7 +41,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         initializeControls();
         loginWithFacebook();
 
-        username = (EditText) findViewById(R.id.etLoginUsername);
+        email = (EditText) findViewById(R.id.etLoginEmail);
         password = (EditText) findViewById(R.id.etLoginPassword);
 
         //TODO: Move Register new User to UserAreaActivity
@@ -98,9 +100,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         loginPresenter.loginUser();
     }
 
-    @Override
-    public String getUsername() {
-        return username.getText().toString();
+    public String getEmail() {
+        return email.getText().toString();
     }
 
     @Override
@@ -109,8 +110,13 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     }
 
     @Override
-    public void showUsernameEmptyError(int resId) {
-        username.setError(getString(resId));
+    public void showEmailEmptyError(int resId) {
+        email.setError(getString(resId));
+    }
+
+    @Override
+    public void showEmailWrongFormatError(int resId) {
+        email.setError(getString(resId));
     }
 
     @Override
@@ -120,7 +126,20 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @Override
     public void showApiRequestMessage(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+    }
 
+    @Override
+    public void showProgressDialog() {
+        dialog.setMessage("Signing in, please wait");
+        dialog.show();
+    }
+
+    @Override
+    public void closeProgressDialog() {
+            if (dialog.isShowing()) {
+                dialog.dismiss();
+            }
     }
 
     @Override

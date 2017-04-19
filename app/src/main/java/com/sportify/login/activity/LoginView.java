@@ -6,11 +6,14 @@ package com.sportify.login.activity;
  */
 
 public interface LoginView {
-    String getUsername();
+    String getEmail();
     String getPassword();
 
-    void showUsernameEmptyError(int username_empty_error);
-    void showPasswordEmptyError(int username_empty_error);
+    void showEmailEmptyError(int resId);
+    void showEmailWrongFormatError(int resId);
+    void showPasswordEmptyError(int resId);
     void showApiRequestMessage(String message);
+    void showProgressDialog();
+    void closeProgressDialog();
     void launchUserActivity();
 }
