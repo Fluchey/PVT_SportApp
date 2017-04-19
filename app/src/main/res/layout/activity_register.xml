@@ -27,27 +27,19 @@
         android:id="@+id/linearLayout">
 
         <EditText
+            android:id="@+id/etRegisterUserName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/username"
+            android:inputType="textEmailAddress" />
+
+        <EditText
             android:id="@+id/etRegisterMail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/email"
-            android:inputType="textEmailAddress" />
-
-        <EditText
-            android:id="@+id/etRegisterFirstName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/first_name_optional"
-            android:inputType="textEmailAddress" />
-
-        <EditText
-            android:id="@+id/etRegisterLastName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/last_name_optional"
             android:inputType="textEmailAddress" />
 
         <EditText

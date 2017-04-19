@@ -1,6 +1,5 @@
 package com.sportify.register.presenter;
 
-import android.util.Log;
 import android.util.Patterns;
 
 import com.sportify.register.request.RegisterRequest;
@@ -27,13 +26,14 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterRequest
 
     @Override
     public void createAccount() {
-        String password = registerView.getPassword();
-        String firstName = registerView.getFirstName();
-        String lastName = registerView.getLastName();
+        String username = registerView.getUsername();
         String email = registerView.getMail();
+        String password = registerView.getPassword();
 
 
-        if (password.isEmpty()) {
+        if (username.isEmpty()) {
+            registerView.showUsernameEmptyError(R.string.username_empty_error);
+        } else if (password.isEmpty()) {
             registerView.showPasswordEmptyError(R.string.password_empty_error);
         } else if (email.isEmpty()) {
             registerView.showEmailEmptyError(R.string.email_Empty_error);
@@ -42,22 +42,15 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterRequest
         } else {
             registerView.showProgressDialog();
 
-            if (firstName.isEmpty()) {
-                firstName = "Anonymous";
-            }
-            if (lastName.isEmpty()) {
-                lastName = "User";
-            }
 
             /**
              *  Convert to JSON object
              */
             JSONObject jsonObject = new JSONObject();
             try {
-                jsonObject.put("mailadress", email);
-                jsonObject.put("förnamn", firstName);
-                jsonObject.put("efternamn", lastName);
-                jsonObject.put("lösenord", password);
+                jsonObject.put("mail", email);
+                jsonObject.put("username", username);
+                jsonObject.put("password", password);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
