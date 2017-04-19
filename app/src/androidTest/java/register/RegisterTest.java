@@ -34,26 +34,56 @@ public class RegisterTest {
     @Rule
     public ActivityTestRule<RegisterActivity> loginActivityActivityTestRule = new ActivityTestRule<>(RegisterActivity.class);
 
+//    @Test
+//    public void createAccountShouldPass(){
+//        SecureRandom random = new SecureRandom();
+//
+//        /* Generates a string which should be kind of unique =)=) */
+//        String randomUsername = new BigInteger(130, random).toString(32);
+//        String randomMail = new BigInteger(130, random).toString(32);
+//
+//        onView(withId(R.id.etRegisterUserName)).perform(typeText(randomUsername), closeSoftKeyboard());
+//        onView(withId(R.id.etRegisterMail)).perform(typeText(randomMail + "@espresso.com"), closeSoftKeyboard());
+//        onView(withId(R.id.etRegisterPassword)).perform(typeText("EspressoPassword"), closeSoftKeyboard());
+//        onView(withId(R.id.registerButton)).perform(click());
+//    }
+
     @Test
-    public void createAccountShouldPass(){
-        SecureRandom random = new SecureRandom();
-
-        /* Generates a string which should be kind of unique =)=) */
-        String randomUsername = new BigInteger(130, random).toString(32);
-        String randomMail = new BigInteger(130, random).toString(32);
-
-        onView(withId(R.id.etRegisterUserName)).perform(typeText(randomUsername), closeSoftKeyboard());
-        onView(withId(R.id.etRegisterMail)).perform(typeText(randomMail + "@espresso.com"), closeSoftKeyboard());
-        onView(withId(R.id.etRegisterPassword)).perform(typeText("EspressoPassword"), closeSoftKeyboard());
+    public void createAccountShouldFailOnPassword(){
+        onView(withId(R.id.etRegisterUserName)).perform(typeText("Espresso"));
+        onView(withId(R.id.etRegisterMail)).perform(typeText("RandomMail@espresso.com"), closeSoftKeyboard());
         onView(withId(R.id.registerButton)).perform(click());
+
+        onView(withId(R.id.etRegisterPassword)).check(matches(hasErrorText(loginActivityActivityTestRule.getActivity().getString(R.string.password_empty_error))));
     }
 
-//    @Test
-//    public void createAccountShouldFailOnPassword(){
-//        onView(withId(R.id.etRegisterUserName)).perform(typeText("Espresso"));
-//        onView(withId(R.id.etRegisterMail)).perform(typeText("RandomMail@espresso.com"), closeSoftKeyboard());
-//        onView(withId(R.id.registerButton)).perform(click());
-//
-//        onView(withId(R.id.etRegisterPassword)).check(matches(hasErrorText(loginActivityActivityTestRule.getActivity().getPassword(R.string.password_empty_error).toString())));
-//    }
+    @Test
+    public void createAccountShouldFailOnusername(){
+        onView(withId(R.id.etRegisterUserName)).perform(typeText(""));
+        onView(withId(R.id.etRegisterMail)).perform(typeText("RandomMail@espresso.com"), closeSoftKeyboard());
+        onView(withId(R.id.etRegisterPassword)).perform(typeText("Password"), closeSoftKeyboard());
+        onView(withId(R.id.registerButton)).perform(click());
+
+        onView(withId(R.id.etRegisterUserName)).check(matches(hasErrorText(loginActivityActivityTestRule.getActivity().getString(R.string.username_empty_error))));
+    }
+
+    @Test
+    public void createAccountShouldFailOnMailEmpty(){
+        onView(withId(R.id.etRegisterUserName)).perform(typeText("EspressoName"));
+        onView(withId(R.id.etRegisterMail)).perform(typeText(""), closeSoftKeyboard());
+        onView(withId(R.id.etRegisterPassword)).perform(typeText("Password"), closeSoftKeyboard());
+        onView(withId(R.id.registerButton)).perform(click());
+
+        onView(withId(R.id.etRegisterMail)).check(matches(hasErrorText(loginActivityActivityTestRule.getActivity().getString(R.string.email_Empty_error))));
+    }
+
+    @Test
+    public void createAccountShouldFailOnMailWrongFormat(){
+        onView(withId(R.id.etRegisterUserName)).perform(typeText("EspressoName"));
+        onView(withId(R.id.etRegisterMail)).perform(typeText("wrongFormat@forgetDotCom"), closeSoftKeyboard());
+        onView(withId(R.id.etRegisterPassword)).perform(typeText("Password"), closeSoftKeyboard());
+        onView(withId(R.id.registerButton)).perform(click());
+
+        onView(withId(R.id.etRegisterMail)).check(matches(hasErrorText(loginActivityActivityTestRule.getActivity().getString(R.string.email_wrongFormat_error))));
+    }
 }
