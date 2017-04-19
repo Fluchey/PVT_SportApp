@@ -27,11 +27,9 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterRequest
 
     @Override
     public void createAccount() {
-//        String username = registerView.getUserName();
         String password = registerView.getPassword();
         String firstName = registerView.getFirstName();
         String lastName = registerView.getLastName();
-//        String phoneNumber = registerView.getPhoneNumber();
         String email = registerView.getMail();
 
 

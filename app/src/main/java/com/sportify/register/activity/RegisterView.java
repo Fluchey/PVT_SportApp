@@ -5,7 +5,6 @@ package com.sportify.register.activity;
  */
 
 public interface RegisterView {
-//    String getUserName();
 
     String getFirstName();
 
@@ -13,17 +12,7 @@ public interface RegisterView {
 
     String getMail();
 
-//    String getPhoneNumber();
-
     String getPassword();
-
-//    void showUsernameEmptyError(int username_empty_error);
-
-//    void showFirstNameEmptyError(int resId);
-
-//    void showLastNameEmptyError(int resId);
-
-//    void showPhoneNumberEmptyError(int resId);
 
     void showPasswordEmptyError(int resId);
 
