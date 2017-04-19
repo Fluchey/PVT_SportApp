@@ -32,35 +32,34 @@ public class CreateEventPresenterImpl implements CreateEventPresenter, CreateEve
         int eventPrice = 0;
         String eventDescription = createEventView.getEventDescription();
 
-        if(eventName.isEmpty()){
+        if (eventName.isEmpty()) {
             createEventView.showEventNameEmptyError();
-        }
-
-        if(!eventPriceEt.isEmpty()){
-            try{
-               eventPrice = Integer.parseInt(eventPriceEt);
-            }catch (NumberFormatException e){
+        } else if (!eventPriceEt.isEmpty()) {
+            try {
+                eventPrice = Integer.parseInt(eventPriceEt);
+            } catch (NumberFormatException e) {
                 createEventView.showEventPriceWrongFormatError();
                 return;
             }
+        } else {
+            createEventView.clearMessageTv();
+            JSONObject jsonObject = new JSONObject();
+            try {
+                Random rn = new Random();
+                String id = "" + rn.nextInt(1) + 1000;
+
+                jsonObject.put("event_id", "" + id);
+                jsonObject.put("event_namn", eventName);
+                jsonObject.put("event_beskrivning", eventDescription);
+                jsonObject.put("event_pris", "" + eventPrice);
+                Log.d("JsonObject", jsonObject.toString());
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            createEventRequest.makeApiRequest(jsonObject.toString());
         }
-
-        JSONObject jsonObject = new JSONObject();
-        try{
-            Random rn = new Random();
-            String id = "" + rn.nextInt(1) + 1000;
-
-            jsonObject.put("event_id", "" + id);
-            jsonObject.put("event_namn", eventName);
-            jsonObject.put("event_beskrivning", eventDescription);
-            jsonObject.put("event_pris", "" + eventPrice);
-            Log.d("JsonObject", jsonObject.toString());
-
-        }catch (JSONException e){
-            e.printStackTrace();
-        }
-
-        createEventRequest.makeApiRequest(jsonObject.toString());
     }
 
     @Override
