@@ -67,6 +67,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     private void initializeControls(){ //Facebook controls
         callbackManager = CallbackManager.Factory.create();
     }
+
     private void loginWithFacebook() {
         LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override

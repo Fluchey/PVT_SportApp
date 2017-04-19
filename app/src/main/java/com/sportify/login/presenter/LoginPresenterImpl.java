@@ -39,7 +39,7 @@ public class LoginPresenterImpl implements LoginPresenter {
             loginView.showPasswordEmptyError(R.string.password_empty_error);
         } else {
             //TODO: call LoginRequest.login which will call Rest API
-            // LoginView.launchUserActivity();
+            loginView.launchUserActivity();
         }
     }
 
