@@ -66,6 +66,10 @@ public class CreateEventActivity extends AppCompatActivity implements CreateEven
         message.setText("Event price is in wrong format, try again");
     }
 
+    public void clearMessageTv(){
+        message.setText("");
+    }
+
     @Override
     public void showApiRequestMessage(String apiResponse){
         Toast.makeText(this, apiResponse, Toast.LENGTH_LONG).show();

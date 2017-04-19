@@ -16,6 +16,8 @@ public interface CreateEventView {
 
     void showEventPriceWrongFormatError();
 
+    void clearMessageTv();
+
     void showApiRequestMessage(String apiResponse);
 
 }
