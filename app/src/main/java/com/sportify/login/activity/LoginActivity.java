@@ -108,13 +108,13 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     }
 
     @Override
-    public void showUsernameEmptyError(int username_empty_error) {
-
+    public void showUsernameEmptyError(int resId) {
+        username.setError(getString(resId));
     }
 
     @Override
-    public void showPasswordEmptyError(int username_empty_error) {
-
+    public void showPasswordEmptyError(int resId) {
+        password.setError(getString(resId));
     }
 
     @Override
