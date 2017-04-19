@@ -38,6 +38,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_main);
         loginPresenter = new LoginPresenterImpl(this);
+        dialog = new ProgressDialog(this);
         initializeControls();
         loginWithFacebook();
 
