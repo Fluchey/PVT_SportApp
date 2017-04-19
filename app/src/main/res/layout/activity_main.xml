@@ -9,7 +9,7 @@
     android:paddingBottom="@dimen/paddingBottom"
     android:paddingLeft="@dimen/paddingLeft"
     android:paddingRight="@dimen/paddingRight"
-    tools:context="com.sportify.login.LoginActivity">
+    tools:context="com.sportify.login.activity.LoginActivity">
 
 
     <ImageView
@@ -45,7 +45,8 @@
             android:id="@+id/loginButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/log_in" />
+            android:text="@string/log_in"
+            android:onClick="loginButtonClick" />
 
         <TextView
             android:id="@+id/tvLoginRegisterHere"

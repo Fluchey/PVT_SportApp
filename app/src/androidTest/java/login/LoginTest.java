@@ -4,16 +4,11 @@ import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.sportify.login.LoginActivity;
+import com.sportify.login.activity.LoginActivity;
 
 import org.junit.Rule;
-import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import java.math.BigInteger;
-import java.security.SecureRandom;
-
-import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 
 
