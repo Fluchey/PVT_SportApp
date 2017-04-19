@@ -39,8 +39,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         initializeControls();
         loginWithFacebook();
 
-        username = (EditText) findViewById(R.id.etRegisterUsername);
-        password = (EditText) findViewById(R.id.etRegisterPassword);
+        username = (EditText) findViewById(R.id.etLoginUsername);
+        password = (EditText) findViewById(R.id.etLoginPassword);
 
         //TODO: Move Register new User to UserAreaActivity
         TextView tvLoginRegisterHere = (TextView) findViewById(R.id.tvLoginRegisterHere);
