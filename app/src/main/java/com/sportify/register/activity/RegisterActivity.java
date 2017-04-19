@@ -13,10 +13,9 @@ import com.sportify.register.presenter.RegisterPresenterImpl;
 import sportapp.pvt_sportapp.R;
 
 public class RegisterActivity extends AppCompatActivity implements RegisterView {
-    private EditText password;
-    private EditText firstName;
-    private EditText lastName;
+    private EditText username;
     private EditText email;
+    private EditText password;
 
     private ProgressDialog dialog;
 
@@ -29,9 +28,8 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView 
         registerPresenter = new RegisterPresenterImpl(this);
         dialog = new ProgressDialog(this);
 
+        username = (EditText) findViewById(R.id.etRegisterUserName);
         password = (EditText) findViewById(R.id.etRegisterPassword);
-        firstName = (EditText) findViewById(R.id.etRegisterFirstName);
-        lastName = (EditText) findViewById(R.id.etRegisterLastName);
         email = (EditText) findViewById(R.id.etRegisterMail);
     }
 
@@ -40,18 +38,12 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView 
     }
 
     @Override
-    public String getFirstName() {
-        return firstName.getText().toString();
-    }
-
-    @Override
-    public String getLastName() {
-        return lastName.getText().toString();
-    }
-
-    @Override
     public String getMail() {
         return email.getText().toString();
+    }
+
+    public String getUsername() {
+        return username.getText().toString();
     }
 
     @Override
@@ -90,6 +82,11 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView 
         if (dialog.isShowing()) {
             dialog.dismiss();
         }
+    }
+
+    @Override
+    public void showUsernameEmptyError(int resId) {
+        username.setError(getString(resId));
     }
 }
 

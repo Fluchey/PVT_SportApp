@@ -20,6 +20,7 @@ import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.ViewMatchers.hasErrorText;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
@@ -38,12 +39,21 @@ public class RegisterTest {
         SecureRandom random = new SecureRandom();
 
         /* Generates a string which should be kind of unique =)=) */
+        String randomUsername = new BigInteger(130, random).toString(32);
         String randomMail = new BigInteger(130, random).toString(32);
 
+        onView(withId(R.id.etRegisterUserName)).perform(typeText(randomUsername), closeSoftKeyboard());
         onView(withId(R.id.etRegisterMail)).perform(typeText(randomMail + "@espresso.com"), closeSoftKeyboard());
-        onView(withId(R.id.etRegisterFirstName)).perform(typeText("EspressoTestFirstName"));
-        onView(withId(R.id.etRegisterLastName)).perform(typeText("EspressoTestLastName"));
         onView(withId(R.id.etRegisterPassword)).perform(typeText("EspressoPassword"), closeSoftKeyboard());
         onView(withId(R.id.registerButton)).perform(click());
     }
+
+//    @Test
+//    public void createAccountShouldFailOnPassword(){
+//        onView(withId(R.id.etRegisterUserName)).perform(typeText("Espresso"));
+//        onView(withId(R.id.etRegisterMail)).perform(typeText("RandomMail@espresso.com"), closeSoftKeyboard());
+//        onView(withId(R.id.registerButton)).perform(click());
+//
+//        onView(withId(R.id.etRegisterPassword)).check(matches(hasErrorText(loginActivityActivityTestRule.getActivity().getPassword(R.string.password_empty_error).toString())));
+//    }
 }
