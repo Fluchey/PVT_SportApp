@@ -37,7 +37,6 @@ public class LoginRequestImpl implements LoginRequest {
                     "PUT", String.format(params[0]));
             responseBody = resultFromApi[0];
             responseCode = resultFromApi[1];
-            Log.d("ResponseOK1:", responseCode);
             return null;
         }
 

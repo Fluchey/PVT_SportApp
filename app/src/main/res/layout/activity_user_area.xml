@@ -6,36 +6,66 @@
     android:layout_height="match_parent"
     tools:context="sportapp.pvt_sportapp.Activitys.UserAreaActivity">
 
-    <Button
-        android:id="@+id/findEventButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/find_event"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="503dp" />
+    <RelativeLayout
+        android:layout_width="368dp"
+        android:layout_height="551dp"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/create_event"
-        tools:layout_editor_absoluteX="245dp"
-        tools:layout_editor_absoluteY="503dp" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteX="80dp"
+            tools:layout_editor_absoluteY="465dp">
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="148dp"
-        android:layout_height="118dp"
-        app:srcCompat="@drawable/profile_picture"
-        tools:layout_editor_absoluteX="118dp"
-        tools:layout_editor_absoluteY="16dp" />
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="118dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/profile_picture"
+                tools:layout_editor_absoluteX="111dp"
+                tools:layout_editor_absoluteY="3dp" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Obama"
-        tools:layout_editor_absoluteX="170dp"
-        tools:layout_editor_absoluteY="142dp" />
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Obama"
+                tools:layout_editor_absoluteX="170dp"
+                tools:layout_editor_absoluteY="142dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="515dp">
+
+                <Button
+                    android:id="@+id/button3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/create_event"
+                    tools:layout_editor_absoluteX="245dp"
+                    tools:layout_editor_absoluteY="503dp" />
+
+                <Button
+                    android:id="@+id/findEventButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/find_event"
+                    tools:layout_editor_absoluteX="16dp"
+                    tools:layout_editor_absoluteY="503dp" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

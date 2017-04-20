@@ -71,7 +71,6 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
 
     @Override
     public void showApiResponse(String apiResponse, String responseOk) {
-        Log.d("ResponseOK2:", responseOk);
         /* responsecode 200 maps to sucessfull login */
         if(responseOk.equals("200")){
             loginView.launchUserActivity();
