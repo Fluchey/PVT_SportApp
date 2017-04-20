@@ -20,7 +20,7 @@ import com.facebook.login.widget.LoginButton;
 import com.sportify.login.presenter.LoginPresenterImpl;
 import com.sportify.event.activity.CreateEventActivity;
 import com.sportify.register.activity.RegisterActivity;
-import com.sportify.userArea.UserAreaActivity;
+import com.sportify.userArea.activity.UserAreaActivity;
 
 import sportapp.pvt_sportapp.R;
 

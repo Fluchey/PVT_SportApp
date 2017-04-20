@@ -45,8 +45,8 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
              */
             JSONObject jsonObject = new JSONObject();
             try {
-                jsonObject.put("mailadress", email);
-                jsonObject.put("lösenord", password);
+                jsonObject.put("mail", email);
+                jsonObject.put("password", password);
             } catch (JSONException e) {
                 e.printStackTrace();
             }

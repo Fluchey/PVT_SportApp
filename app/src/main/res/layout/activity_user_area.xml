@@ -6,11 +6,36 @@
     android:layout_height="match_parent"
     tools:context="sportapp.pvt_sportapp.Activitys.UserAreaActivity">
 
+    <Button
+        android:id="@+id/findEventButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/find_event"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="503dp" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/create_event"
+        tools:layout_editor_absoluteX="245dp"
+        tools:layout_editor_absoluteY="503dp" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="148dp"
+        android:layout_height="118dp"
+        app:srcCompat="@drawable/profile_picture"
+        tools:layout_editor_absoluteX="118dp"
+        tools:layout_editor_absoluteY="16dp" />
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="UserArea"
-        tools:layout_editor_absoluteX="161dp"
-        tools:layout_editor_absoluteY="273dp" />
+        android:text="Obama"
+        tools:layout_editor_absoluteX="170dp"
+        tools:layout_editor_absoluteY="142dp" />
+
 </android.support.constraint.ConstraintLayout>

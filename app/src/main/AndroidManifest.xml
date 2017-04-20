@@ -47,7 +47,7 @@
         <activity
             android:name="com.sportify.maps.MapsActivity"
             android:label="@string/title_activity_maps" />
-        <activity android:name="com.sportify.userArea.UserAreaActivity" />
+        <activity android:name="com.sportify.userArea.activity.UserAreaActivity" />
         <activity android:name="com.sportify.event.activity.CreateEventActivity" />
     </application>
 
