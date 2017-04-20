@@ -27,7 +27,6 @@ import sportapp.pvt_sportapp.R;
 public class LoginActivity extends AppCompatActivity implements LoginView {
     private EditText email;
     private EditText password;
-    private LoginButton loginButton;
     private CallbackManager callbackManager; //Added Private
     private ProgressDialog dialog;
     private LoginPresenterImpl loginPresenter;

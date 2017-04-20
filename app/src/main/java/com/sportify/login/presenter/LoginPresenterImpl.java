@@ -1,6 +1,7 @@
 package com.sportify.login.presenter;
 
 import android.util.Log;
+import android.util.Patterns;
 
 import com.sportify.login.activity.LoginView;
 import com.sportify.login.request.LoginRequest;
@@ -29,17 +30,16 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
     public void loginUser() {
         String email = loginView.getEmail();
         String password = loginView.getPassword();
-        Log.d(TAG, "loginUser: " + email);
-        Log.d(TAG, "loginPW: " + password);
+//        Log.d(TAG, "loginUser: " + email);
+//        Log.d(TAG, "loginPW: " + password);
 
         if (email.isEmpty()) {
-            loginView.showEmailEmptyError(R.string.username_empty_error);
+            loginView.showEmailEmptyError(R.string.email_Empty_error);
         } else if (password.isEmpty()) {
             loginView.showPasswordEmptyError(R.string.password_empty_error);
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            loginView.showEmailWrongFormatError(R.string.email_wrongFormat_error);
         } else {
-            //TODO: call LoginRequest.login which will call Rest API
-            //loginView.launchUserActivity();
-
             /**
              *  Convert to JSON object
              */
@@ -73,6 +73,5 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
     public void showApiResponse(String apiResponse) {
         loginView.showApiRequestMessage(apiResponse);
     }
-
 
 }
