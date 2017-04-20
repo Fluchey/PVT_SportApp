@@ -144,6 +144,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @Override
     public void launchUserActivity() {
-        startActivity(new Intent(LoginActivity.this, UserAreaActivity.class));
+        Intent goToUserAreaIntent = new Intent(LoginActivity.this, UserAreaActivity.class);
+        LoginActivity.this.startActivity(goToUserAreaIntent);
+//        startActivity(new Intent(LoginActivity.this, UserAreaActivity.class));
     }
 }

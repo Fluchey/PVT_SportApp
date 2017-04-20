@@ -35,10 +35,10 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
 
         if (email.isEmpty()) {
             loginView.showEmailEmptyError(R.string.email_Empty_error);
-        } else if (password.isEmpty()) {
-            loginView.showPasswordEmptyError(R.string.password_empty_error);
         } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             loginView.showEmailWrongFormatError(R.string.email_wrongFormat_error);
+        } else if (password.isEmpty()) {
+            loginView.showPasswordEmptyError(R.string.password_empty_error);
         } else {
             /**
              *  Convert to JSON object
@@ -70,8 +70,14 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
     }
 
     @Override
-    public void showApiResponse(String apiResponse) {
-        loginView.showApiRequestMessage(apiResponse);
+    public void showApiResponse(String apiResponse, String responseOk) {
+        Log.d("ResponseOK2:", responseOk);
+        /* responsecode 200 maps to sucessfull login */
+        if(responseOk.equals("200")){
+            loginView.launchUserActivity();
+        }else {
+            loginView.showApiRequestMessage(apiResponse);
+        }
     }
 
 }

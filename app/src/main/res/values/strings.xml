@@ -27,5 +27,7 @@
     <string name="phoneNumber_Empty_error">Enter phone number</string>
     <string name="email_Empty_error">Enter email</string>
 
+    <string name="login_successfull">Login succesfull</string>
+
     <string name="email_wrongFormat_error">Invalid format</string>
     </resources>

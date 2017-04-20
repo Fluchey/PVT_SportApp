@@ -1,6 +1,7 @@
 package com.sportify.login.request;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.sportify.util.Connector;
 
@@ -23,6 +24,7 @@ public class LoginRequestImpl implements LoginRequest {
     private class ApiRequest extends AsyncTask<String, LoginRequestImpl, Void> {
         private LoginRequestImpl loginRequestImpl;
         private String responseBody;
+        private String responseCode;
 
         public ApiRequest(LoginRequestImpl loginRequestImpl) {
             this.loginRequestImpl = loginRequestImpl;
@@ -34,6 +36,8 @@ public class LoginRequestImpl implements LoginRequest {
             String[] resultFromApi = Connector.connect("https://pvt15app.herokuapp.com/api/testlogin",
                     "PUT", String.format(params[0]));
             responseBody = resultFromApi[0];
+            responseCode = resultFromApi[1];
+            Log.d("ResponseOK1:", responseCode);
             return null;
         }
 
@@ -41,7 +45,7 @@ public class LoginRequestImpl implements LoginRequest {
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             loginRequestImpl.onLoginAccountFinishedListener.closeProgressDialog();
-            loginRequestImpl.onLoginAccountFinishedListener.showApiResponse(responseBody);
+            loginRequestImpl.onLoginAccountFinishedListener.showApiResponse(responseBody, responseCode);
         }
     }
 }
