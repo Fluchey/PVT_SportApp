@@ -30,8 +30,8 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
     public void loginUser() {
         String email = loginView.getEmail();
         String password = loginView.getPassword();
-        Log.d(TAG, "loginUser: " + email);
-        Log.d(TAG, "loginPW: " + password);
+//        Log.d(TAG, "loginUser: " + email);
+//        Log.d(TAG, "loginPW: " + password);
 
         if (email.isEmpty()) {
             loginView.showEmailEmptyError(R.string.email_Empty_error);
@@ -45,8 +45,8 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
              */
             JSONObject jsonObject = new JSONObject();
             try {
-                jsonObject.put("mailadress", email);
-                jsonObject.put("lösenord", password);
+                jsonObject.put("mail", email);
+                jsonObject.put("password", password);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -73,6 +73,5 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
     public void showApiResponse(String apiResponse) {
         loginView.showApiRequestMessage(apiResponse);
     }
-
 
 }
