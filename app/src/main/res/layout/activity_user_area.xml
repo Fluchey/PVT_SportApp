@@ -46,11 +46,12 @@
                 tools:layout_editor_absoluteY="515dp">
 
                 <Button
-                    android:id="@+id/button3"
+                    android:id="@+id/createEventButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/create_event"
+                    android:onClick="createEventButtonClick"
                     tools:layout_editor_absoluteX="245dp"
                     tools:layout_editor_absoluteY="503dp" />
 
@@ -59,6 +60,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:onClick="findEventButtonClick"
                     android:text="@string/find_event"
                     tools:layout_editor_absoluteX="16dp"
                     tools:layout_editor_absoluteY="503dp" />
