@@ -7,5 +7,4 @@ package com.sportify.login.presenter;
 public interface LoginPresenter {
     void loginUser();
     void loginFB();
-    //void launchUserActivity();
 }
