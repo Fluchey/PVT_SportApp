@@ -76,15 +76,15 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
 
     @Override
     public void showApiResponse(String apiResponse, String responseOk) {
-        /* responsecode 200 maps to sucessfull login */
+        /* responsecode 200 maps to successful login */
         if(responseOk.equals("200")){
             //TODO: store String apiResponse JSONwebtoken in SharePreferences
+            Log.d(TAG, "showApiResponse: " + apiResponse);
             // SharedPreferences pref = loginView.getSharedPreferences("MyPrefs",Context.MODE_PRIVATE); //Optimal solution
             SharedPreferences sharedPref = loginView.getSharedPreferences();
             SharedPreferences.Editor editor = sharedPref.edit();
             editor.putString("Token", apiResponse);
             editor.apply();
-            Log.d(TAG, "showApiResponse: " + apiResponse);
 
             loginView.launchUserActivity();
         }else {
