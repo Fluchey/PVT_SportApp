@@ -1,21 +1,13 @@
 package com.sportify.login.presenter;
-
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 import android.util.Patterns;
-
-import com.sportify.login.activity.LoginActivity;
 import com.sportify.login.activity.LoginView;
 import com.sportify.login.request.LoginRequest;
 import com.sportify.login.request.LoginRequestImpl;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import sportapp.pvt_sportapp.R;
-
-import static com.sportify.login.activity.LoginActivity.MyPREFERENCES;
 
 /**
  * Created by peradrianbergman on 2017-04-18.
@@ -25,9 +17,11 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
     private static final String TAG = "LoginPresenterImpl";
     private LoginView loginView;
     private LoginRequest loginRequest;
+    private SharedPreferences sharedPref;
 
-    public LoginPresenterImpl(LoginView loginView) {
+    public LoginPresenterImpl(LoginView loginView, SharedPreferences sharedPref) {
         this.loginView = loginView;
+        this.sharedPref = sharedPref;
         loginRequest = new LoginRequestImpl(this);
     }
 
@@ -35,8 +29,6 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
     public void loginUser() {
         String email = loginView.getEmail();
         String password = loginView.getPassword();
-//        Log.d(TAG, "loginUser: " + email);
-//        Log.d(TAG, "loginPW: " + password);
 
         if (email.isEmpty()) {
             loginView.showEmailEmptyError(R.string.email_Empty_error);
@@ -78,14 +70,10 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
     public void showApiResponse(String apiResponse, String responseOk) {
         /* response code 200 maps to successful login */
         if(responseOk.equals("200")){
-            //TODO: store String apiResponse JSON web token in SharePreferences
             Log.d(TAG, "showApiResponse: " + apiResponse);
-            // SharedPreferences pref = loginView.getSharedPreferences("MyPrefs",Context.MODE_PRIVATE); //Optimal solution
-            SharedPreferences sharedPref = loginView.getSharedPreferences();//Get SharedPref from the Activity
             SharedPreferences.Editor editor = sharedPref.edit();            //Initializes the editor
             editor.putString("Token", apiResponse);                         //Adds the string SharedPref with key "Token"
             editor.apply();                                                 //Saves changes to SharedPref
-
             loginView.launchUserActivity();
         }else {
             loginView.showApiRequestMessage(apiResponse);
