@@ -1,7 +1,9 @@
 package com.sportify.login.activity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -15,7 +17,6 @@ import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
-import com.facebook.login.widget.LoginButton;
 
 import com.sportify.login.presenter.LoginPresenterImpl;
 import com.sportify.event.activity.CreateEventActivity;
@@ -30,12 +31,17 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     private CallbackManager callbackManager; //Added Private
     private ProgressDialog dialog;
     private LoginPresenterImpl loginPresenter;
+    public static final String MyPREFERENCES = "MyPrefs" ;
+    //public static final String Token = "MyToken";
+    SharedPreferences sharedpreferences;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_main);
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         loginPresenter = new LoginPresenterImpl(this);
         dialog = new ProgressDialog(this);
         initializeControls();
@@ -147,5 +153,11 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         Intent goToUserAreaIntent = new Intent(LoginActivity.this, UserAreaActivity.class);
         LoginActivity.this.startActivity(goToUserAreaIntent);
 //        startActivity(new Intent(LoginActivity.this, UserAreaActivity.class));
+    }
+
+    //TODO: SharedPreferences should be retrieved from LoginPresenterImpl.showApiResponse()
+    public SharedPreferences getSharedPreferences() {
+        SharedPreferences sharedPref = getSharedPreferences("MyPrefs",Context.MODE_PRIVATE);
+        return sharedPref;
     }
 }
