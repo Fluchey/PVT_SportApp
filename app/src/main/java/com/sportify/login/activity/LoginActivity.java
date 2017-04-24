@@ -31,9 +31,6 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     private CallbackManager callbackManager; //Added Private
     private ProgressDialog dialog;
     private LoginPresenterImpl loginPresenter;
-    public static final String MyPREFERENCES = "MyPrefs" ;
-    //public static final String Token = "MyToken";
-    SharedPreferences sharedpreferences;
 
 
     @Override
@@ -41,7 +38,6 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_main);
-        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         loginPresenter = new LoginPresenterImpl(this);
         dialog = new ProgressDialog(this);
         initializeControls();
