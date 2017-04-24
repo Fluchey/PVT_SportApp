@@ -26,7 +26,7 @@ public class CreateEventPresenterImpl implements CreateEventPresenter, CreateEve
     public void createEvent() {
 
         //TODO Måste skicka med profileID när eventet skapas. Fånga vem som är inloggad.
-        int creatorID = 10;
+        int creatorID = 110;
 
         String eventName = createEventView.getEventName();
         String eventPriceEt = createEventView.getEventPrice();
@@ -46,19 +46,18 @@ public class CreateEventPresenterImpl implements CreateEventPresenter, CreateEve
         if (eventName.isEmpty()) {
             createEventView.showEventNameEmptyError();
         }
-//        if(eventDate.isEmpty()){
-//            createEventView.showEventDateEmptyError();
-//        }
-//        if(eventStartTime.isEmpty()){
-//            createEventView.showEventStartTimeEmptyError();
-//        }
-//        if(eventEndTime.isEmpty()){
-//            createEventView.showEventEndTimeEmptyError();
-//        }
+        if(eventDate.isEmpty()){
+            createEventView.showEventDateEmptyError();
+        }
+        if(eventStartTime.isEmpty()){
+            createEventView.showEventStartTimeEmptyError();
+        }
+        if(eventEndTime.isEmpty()){
+            createEventView.showEventEndTimeEmptyError();
+        }
         if(eventType.isEmpty()){
             createEventView.showEventTypeEmptyError();
         }else{
-            System.out.println("Test");
             if (!eventPriceEt.isEmpty()) {
                 try {
                     eventPrice = Integer.parseInt(eventPriceEt);
@@ -70,6 +69,7 @@ public class CreateEventPresenterImpl implements CreateEventPresenter, CreateEve
             createEventView.clearMessageTv();
             JSONObject jsonObject = new JSONObject();
             try {
+                jsonObject.put("eventID", "" + eventName);
                 jsonObject.put("eventCreator", "" + creatorID);
                 jsonObject.put("eventName", eventName);
                 jsonObject.put("eventPrice", "" + eventPrice);
@@ -77,7 +77,9 @@ public class CreateEventPresenterImpl implements CreateEventPresenter, CreateEve
                 jsonObject.put("eventStartTime", "" + eventStartTime);
                 jsonObject.put("eventEndTime", "" + eventEndTime);
                 jsonObject.put("eventType", eventType);
-                jsonObject.put("eventMaxAttendance", eventMaxAttendance);
+                if(!eventMaxAttendance.isEmpty()) {
+                    jsonObject.put("eventMaxAttendance", eventMaxAttendance);
+                }
                 jsonObject.put("eventDescription", eventDescription);
                 jsonObject.put("privateEvent", "" + eventPrivateInt);
                 Log.d("JsonObject", jsonObject.toString());

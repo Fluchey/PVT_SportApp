@@ -54,8 +54,4 @@ public class CreateEventRequestImpl implements CreateEventRequest{
             createEventRequestImpl.onCreateEventFinishedListener.showApiResponse(responseBody);
         }
     }
-
-
-
-
 }
