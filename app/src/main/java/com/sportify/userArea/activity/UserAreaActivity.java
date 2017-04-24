@@ -1,5 +1,7 @@
 package com.sportify.userArea.activity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,7 +19,6 @@ public class UserAreaActivity extends AppCompatActivity implements UserAreaView 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_area);
-
         userAreaPresenter = new UserAreaPresenterImpl();
     }
 

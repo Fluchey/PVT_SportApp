@@ -18,7 +18,4 @@ public interface LoginView {
     void showProgressDialog();
     void closeProgressDialog();
     void launchUserActivity();
-
-    //TODO: SharedPreferences should be retrieved from LoginPresenterImpl.showApiResponse()
-    SharedPreferences getSharedPreferences();
 }
