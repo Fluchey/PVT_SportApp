@@ -15,9 +15,15 @@ public class CreateEventRequestImpl implements CreateEventRequest{
     public CreateEventRequestImpl(final OnCreateEventFinishedListener onCreateEventFinishedListener){
         this.onCreateEventFinishedListener = onCreateEventFinishedListener;
     }
+
+    /**
+     * Create asynctask to create the event
+     * @param jsonMessage - The new event
+     */
     @Override
     public void makeApiRequest(String jsonMessage) {
         ApiRequest apiRequest = (ApiRequest) new ApiRequest(this).execute(jsonMessage);
+        System.out.println("makeApiRequest");
     }
 
     private class ApiRequest extends AsyncTask<String, CreateEventRequestImpl, Void>{
@@ -26,15 +32,19 @@ public class CreateEventRequestImpl implements CreateEventRequest{
         private String responseBody;
 
         public ApiRequest(CreateEventRequestImpl createEventRequestImpl){
+            System.out.println("ApiRequest");
             this.createEventRequestImpl = createEventRequestImpl;
         }
         @Override
         protected Void doInBackground(String... params) {
 
+            System.out.println("Background");
             String[] resultFromApi = Connector.connect("https://pvt15app.herokuapp.com/api/testCreateEvent",
                     "POST", String.format(params[0]));
+            System.out.println("Background2");
             responseBody = resultFromApi[0];
-                return null;
+
+            return null;
         }
 
         @Override

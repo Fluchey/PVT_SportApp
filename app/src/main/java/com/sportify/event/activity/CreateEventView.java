@@ -10,11 +10,31 @@ public interface CreateEventView {
 
     String getEventPrice();
 
+    String getEventDate();
+
+    String getEventStartTime();
+
+    String getEventEndTime();
+
+    String getEventType();
+
+    String getEventMaxAttendance();
+
     String getEventDescription();
+
+    boolean getPrivateEvent();
 
     void showEventNameEmptyError();
 
     void showEventPriceWrongFormatError();
+
+    void showEventDateEmptyError();
+
+    void showEventStartTimeEmptyError();
+
+    void showEventEndTimeEmptyError();
+
+    void showEventTypeEmptyError();
 
     void clearMessageTv();
 

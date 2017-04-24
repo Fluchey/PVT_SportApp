@@ -13,6 +13,13 @@
     <string name="title_activity_maps">Map</string>
     <string name="event_name">event name</string>
     <string name="event_price">price</string>
+    <string name="event_date">date, yyyy-mm-dd</string>
+    <string name="event_start_time">start time, hh:mm</string>
+    <string name="event_end_time">end time, hh:mm</string>
+    <string name="event_type">type</string>
+    <string name="event_max_attendance">max attendance</string>
+    <string name="event_private">private event</string>
+    <string name="event_description">desribe your event</string>
     <string name="create_event">create event</string>
     <string name="createEvent_here">Create event here</string>
     <string name="find_event">Find event</string>

@@ -9,8 +9,6 @@ import com.sportify.event.request.CreateEventRequestImpl;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.Random;
-
 /**
  * Created by Maja on 2017-04-18.
  */
@@ -27,37 +25,70 @@ public class CreateEventPresenterImpl implements CreateEventPresenter, CreateEve
     @Override
     public void createEvent() {
 
+        //TODO Måste skicka med profileID när eventet skapas. Fånga vem som är inloggad.
+        int creatorID = 10;
+
         String eventName = createEventView.getEventName();
         String eventPriceEt = createEventView.getEventPrice();
         int eventPrice = 0;
+        String eventDate = createEventView.getEventDate();
+        String eventStartTime = createEventView.getEventStartTime();
+        String eventEndTime = createEventView.getEventEndTime();
+        String eventType = createEventView.getEventType();
+        String eventMaxAttendance = createEventView.getEventMaxAttendance();
         String eventDescription = createEventView.getEventDescription();
+        boolean eventPrivate = createEventView.getPrivateEvent();
+        int eventPrivateInt = 0;
 
+        if(eventPrivate){
+            eventPrivateInt = 1;
+        }
         if (eventName.isEmpty()) {
             createEventView.showEventNameEmptyError();
-        } else if (!eventPriceEt.isEmpty()) {
-            try {
-                eventPrice = Integer.parseInt(eventPriceEt);
-            } catch (NumberFormatException e) {
-                createEventView.showEventPriceWrongFormatError();
-                return;
+        }
+//        if(eventDate.isEmpty()){
+//            createEventView.showEventDateEmptyError();
+//        }
+//        if(eventStartTime.isEmpty()){
+//            createEventView.showEventStartTimeEmptyError();
+//        }
+//        if(eventEndTime.isEmpty()){
+//            createEventView.showEventEndTimeEmptyError();
+//        }
+        if(eventType.isEmpty()){
+            createEventView.showEventTypeEmptyError();
+        }else{
+            System.out.println("Test");
+            if (!eventPriceEt.isEmpty()) {
+                try {
+                    eventPrice = Integer.parseInt(eventPriceEt);
+                } catch (NumberFormatException e) {
+                    createEventView.showEventPriceWrongFormatError();
+                    return;
+                }
             }
-        } else {
             createEventView.clearMessageTv();
             JSONObject jsonObject = new JSONObject();
             try {
-                Random rn = new Random();
-                String id = "" + rn.nextInt(1) + 1000;
-
-                jsonObject.put("event_id", "" + id);
-                jsonObject.put("event_namn", eventName);
-                jsonObject.put("event_beskrivning", eventDescription);
-                jsonObject.put("event_pris", "" + eventPrice);
+                jsonObject.put("eventCreator", "" + creatorID);
+                jsonObject.put("eventName", eventName);
+                jsonObject.put("eventPrice", "" + eventPrice);
+                jsonObject.put("eventDate", "" + eventDate);
+                jsonObject.put("eventStartTime", "" + eventStartTime);
+                jsonObject.put("eventEndTime", "" + eventEndTime);
+                jsonObject.put("eventType", eventType);
+                jsonObject.put("eventMaxAttendance", eventMaxAttendance);
+                jsonObject.put("eventDescription", eventDescription);
+                jsonObject.put("privateEvent", "" + eventPrivateInt);
                 Log.d("JsonObject", jsonObject.toString());
 
             } catch (JSONException e) {
                 e.printStackTrace();
             }
 
+            /**
+             * Create new asynctask
+             */
             createEventRequest.makeApiRequest(jsonObject.toString());
         }
     }

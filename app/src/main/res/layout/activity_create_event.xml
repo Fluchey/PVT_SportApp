@@ -32,15 +32,64 @@
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
         android:ems="8"
-        android:hint="@string/event_price" />
+        android:hint="@string/event_price"
+        android:inputType="number"/>
+
+        <EditText
+            android:id="@+id/etEventDate"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:ems="8"
+            android:hint="@string/event_date"/>
+
+        <EditText
+            android:id="@+id/etEventStartTime"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:ems="8"
+            android:hint="@string/event_start_time"
+            android:inputType="time" />
+
+        <EditText
+            android:id="@+id/etEventEndTime"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:ems="8"
+            android:hint="@string/event_end_time"
+            android:inputType="time"/>
+
+        <EditText
+            android:id="@+id/etEventType"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:ems="8"
+            android:hint="@string/event_type" />
+
+        <EditText
+            android:id="@+id/etEventMaxAttendance"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:ems="8"
+            android:hint="@string/event_max_attendance"
+            android:inputType="number"/>
+
+        <CheckBox
+            android:id="@+id/cbEventPrivate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/event_private" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Describe your event"
             android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            />
+            android:paddingBottom="5dp" />
 
         <EditText
             android:id="@+id/etEventDescription"
@@ -49,7 +98,7 @@
             android:background="@drawable/border"
             android:textColor="@color/colorPrimaryDark"
             android:gravity="top"
-            android:lines="8"/>
+            android:lines="2"/>
 
         <Button
             android:id="@+id/createEventButton"
