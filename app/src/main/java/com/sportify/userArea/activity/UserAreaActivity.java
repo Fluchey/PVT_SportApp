@@ -1,12 +1,14 @@
 package com.sportify.userArea.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.sportify.event.activity.CreateEventActivity;
 import com.sportify.userArea.presenter.UserAreaPresenter;
 import com.sportify.userArea.presenter.UserAreaPresenterImpl;
 
@@ -30,6 +32,8 @@ public class UserAreaActivity extends AppCompatActivity implements UserAreaView 
     }
 
     public void createEventButtonClick(View v) {
-        Toast.makeText(this, "I do nothing, ask my developers why", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Clicked Create Event", Toast.LENGTH_LONG).show();
+        Intent createEventIntent = new Intent(UserAreaActivity.this, CreateEventActivity.class);
+        UserAreaActivity.this.startActivity(createEventIntent);
     }
 }

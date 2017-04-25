@@ -48,7 +48,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         email = (EditText) findViewById(R.id.etLoginEmail);
         password = (EditText) findViewById(R.id.etLoginPassword);
 
-        //TODO: Move Register new User to UserAreaActivity
+        //Register New User
         TextView tvLoginRegisterHere = (TextView) findViewById(R.id.tvLoginRegisterHere);
         tvLoginRegisterHere.setOnClickListener(new View.OnClickListener() {
             @Override
