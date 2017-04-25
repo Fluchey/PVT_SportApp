@@ -99,7 +99,8 @@ GIT cmd
 Heroku
 	git pull heroku master
 	git push heroku master
-	sbt run
+	sbt run - kör lokalt
+	sbt stage compile - kör på servern
 
 i och message
 esc : wq

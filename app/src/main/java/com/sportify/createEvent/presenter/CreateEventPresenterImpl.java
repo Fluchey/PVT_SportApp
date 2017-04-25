@@ -30,9 +30,6 @@ public class CreateEventPresenterImpl implements CreateEventPresenter, CreateEve
     @Override
     public void createEvent() {
 
-        //TODO Måste skicka med profileID när eventet skapas. Fånga vem som är inloggad.
-        int creatorID = 110;
-
         String eventName = createEventView.getEventName();
         String eventPriceEt = createEventView.getEventPrice();
         int eventPrice = 0;
@@ -74,8 +71,6 @@ public class CreateEventPresenterImpl implements CreateEventPresenter, CreateEve
             createEventView.clearMessageTv();
             JSONObject jsonObject = new JSONObject();
             try {
-                jsonObject.put("eventID", "" + eventName);
-                jsonObject.put("eventCreator", "" + creatorID);
                 jsonObject.put("eventName", eventName);
                 jsonObject.put("eventPrice", "" + eventPrice);
                 jsonObject.put("eventDate", "" + eventDate);
