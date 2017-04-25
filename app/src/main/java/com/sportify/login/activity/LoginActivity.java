@@ -19,7 +19,7 @@ import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 
 import com.sportify.login.presenter.LoginPresenterImpl;
-import com.sportify.event.activity.CreateEventActivity;
+import com.sportify.createEvent.activity.CreateEventActivity;
 import com.sportify.register.activity.RegisterActivity;
 import com.sportify.userArea.activity.UserAreaActivity;
 
