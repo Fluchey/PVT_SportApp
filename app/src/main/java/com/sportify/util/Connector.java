@@ -1,5 +1,7 @@
 package com.sportify.util;
 
+import android.util.Log;
+
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -23,9 +25,9 @@ public class Connector {
             connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod(method);
             connection.setDoOutput(true);
+            connection.setRequestProperty("Authorization", token);
             connection.setRequestProperty("Content-Type", "application/json");
             connection.setRequestProperty("Accept", "application/json");
-            connection.setRequestProperty("Authorization: JWT ", token);
             OutputStreamWriter osw = new OutputStreamWriter(connection.getOutputStream());
             osw.write(params);
             osw.flush();
