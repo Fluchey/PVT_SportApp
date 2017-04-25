@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.sportify.event.activity.CreateEventActivity;
+import com.sportify.createEvent.activity.CreateEventActivity;
 import com.sportify.userArea.presenter.UserAreaPresenter;
 import com.sportify.userArea.presenter.UserAreaPresenterImpl;
 

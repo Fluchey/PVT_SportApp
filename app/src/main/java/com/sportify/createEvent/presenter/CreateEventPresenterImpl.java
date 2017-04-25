@@ -74,7 +74,7 @@ public class CreateEventPresenterImpl implements CreateEventPresenter, CreateEve
             createEventView.clearMessageTv();
             JSONObject jsonObject = new JSONObject();
             try {
-//                jsonObject.put("eventID", "" + eventName);
+                jsonObject.put("eventID", "" + eventName);
                 jsonObject.put("eventCreator", "" + creatorID);
                 jsonObject.put("eventName", eventName);
                 jsonObject.put("eventPrice", "" + eventPrice);
@@ -87,22 +87,6 @@ public class CreateEventPresenterImpl implements CreateEventPresenter, CreateEve
                 }
                 jsonObject.put("eventDescription", eventDescription);
                 jsonObject.put("privateEvent", "" + eventPrivateInt);
-
-
-                String noUpdate = "noUpdate";
-                jsonObject.put("eventID", "123");
-                jsonObject.put("newEventName", eventName);
-                jsonObject.put("newEventDescription", noUpdate);
-                jsonObject.put("newEventDate", noUpdate);
-                jsonObject.put("newStartTime", noUpdate);
-                jsonObject.put("newEndTime", noUpdate);
-                jsonObject.put("newPrice", noUpdate);
-                jsonObject.put("newEventType", noUpdate);
-                jsonObject.put("newEventImage", noUpdate);
-                jsonObject.put("newMaxAttendance", noUpdate);
-                jsonObject.put("privateEvent", noUpdate);
-
-
                 Log.d("JsonObject", jsonObject.toString());
 
             } catch (JSONException e) {
