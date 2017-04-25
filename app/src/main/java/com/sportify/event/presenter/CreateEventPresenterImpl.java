@@ -1,5 +1,6 @@
 package com.sportify.event.presenter;
 
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.sportify.event.activity.CreateEventView;
@@ -16,10 +17,14 @@ import org.json.JSONObject;
 public class CreateEventPresenterImpl implements CreateEventPresenter, CreateEventRequest.OnCreateEventFinishedListener{
     private CreateEventView createEventView;
     private CreateEventRequest createEventRequest;
+    private SharedPreferences sharedPref;
+    private String token = "";
 
-    public CreateEventPresenterImpl(CreateEventView createEventView){
+    public CreateEventPresenterImpl(CreateEventView createEventView, SharedPreferences sharedPref){
         this.createEventView = createEventView;
-        createEventRequest = new CreateEventRequestImpl(this);
+        this.sharedPref = sharedPref;
+        this.token = sharedPref.getString("Token", "");
+        createEventRequest = new CreateEventRequestImpl(this, token);
     }
 
     @Override

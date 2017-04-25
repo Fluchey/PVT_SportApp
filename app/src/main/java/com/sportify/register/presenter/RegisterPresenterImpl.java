@@ -1,5 +1,6 @@
 package com.sportify.register.presenter;
 
+import android.content.SharedPreferences;
 import android.util.Patterns;
 
 import com.sportify.register.request.RegisterRequest;
@@ -18,10 +19,14 @@ import sportapp.pvt_sportapp.R;
 public class RegisterPresenterImpl implements RegisterPresenter, RegisterRequest.OnCreateAccountFinishedListener {
     private RegisterView registerView;
     private RegisterRequest registerRequest;
+    private SharedPreferences sharedPref;
+    private String token = "";
 
-    public RegisterPresenterImpl(RegisterView registerView) {
+    public RegisterPresenterImpl(RegisterView registerView, SharedPreferences sharedPref) {
         this.registerView = registerView;
-        registerRequest = new RegisterRequestImpl(this);
+        this.sharedPref = sharedPref;
+        this.token = sharedPref.getString("Token", "");
+        registerRequest = new RegisterRequestImpl(this, token);
     }
 
     @Override

@@ -14,12 +14,14 @@ import sportapp.pvt_sportapp.R;
 
 public class UserAreaActivity extends AppCompatActivity implements UserAreaView {
     private UserAreaPresenter userAreaPresenter;
+    private SharedPreferences sharedPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_area);
-        userAreaPresenter = new UserAreaPresenterImpl();
+        sharedPref = getSharedPreferences("MyPrefs",Context.MODE_PRIVATE);
+        userAreaPresenter = new UserAreaPresenterImpl(this, sharedPref);
     }
 
 

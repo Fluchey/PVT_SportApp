@@ -5,4 +5,9 @@ package com.sportify.userArea.request;
  */
 
 public class UserAreaRequestImpl implements UserAreaRequest {
+    private String token = "";
+
+    public UserAreaRequestImpl(String token){ //Only added token for now.
+        this.token = token;
+    }
 }

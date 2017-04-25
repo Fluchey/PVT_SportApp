@@ -1,8 +1,5 @@
 package com.sportify.login.activity;
 
-
-import android.content.SharedPreferences;
-
 /**
  * Created by fluchey on 2017-04-16.
  */

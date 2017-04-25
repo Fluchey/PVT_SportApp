@@ -11,9 +11,11 @@ import com.sportify.util.Connector;
 public class CreateEventRequestImpl implements CreateEventRequest{
 
     OnCreateEventFinishedListener onCreateEventFinishedListener;
+    private String token = "";
 
-    public CreateEventRequestImpl(final OnCreateEventFinishedListener onCreateEventFinishedListener){
+    public CreateEventRequestImpl(final OnCreateEventFinishedListener onCreateEventFinishedListener, String token){
         this.onCreateEventFinishedListener = onCreateEventFinishedListener;
+        this.token = token;
     }
 
     /**
@@ -40,7 +42,7 @@ public class CreateEventRequestImpl implements CreateEventRequest{
 
             System.out.println("Background");
             String[] resultFromApi = Connector.connect("https://pvt15app.herokuapp.com/api/testCreateEvent",
-                    "POST", String.format(params[0]));
+                    "POST", String.format(params[0]), token);
             System.out.println("Background2");
             responseBody = resultFromApi[0];
 

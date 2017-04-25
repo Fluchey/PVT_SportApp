@@ -1,5 +1,7 @@
 package com.sportify.event.activity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -29,14 +31,15 @@ public class CreateEventActivity extends AppCompatActivity implements CreateEven
     private EditText eventMaxAttendance;
     private CheckBox eventPrivate;
     private TextView message;
+    private SharedPreferences sharedPref;
 
     private CreateEventPresenter createEventPresenter;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_event);
-
-        createEventPresenter = new CreateEventPresenterImpl(this);
+        sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        createEventPresenter = new CreateEventPresenterImpl(this, sharedPref);
 
         eventName = (EditText) findViewById(R.id.etEventName);
         eventPrice = (EditText) findViewById(R.id.etEventPrice);

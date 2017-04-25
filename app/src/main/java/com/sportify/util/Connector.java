@@ -13,7 +13,8 @@ import java.net.URL;
  */
 
 public class Connector {
-    public static String[] connect(String URL, String method, String params) {
+    public static String[] connect(String URL, String method, String params, String token) {
+        if (token == null) token = "";
         HttpURLConnection connection = null;
         String[] responseFromRest = new String[2];
 
@@ -24,6 +25,7 @@ public class Connector {
             connection.setDoOutput(true);
             connection.setRequestProperty("Content-Type", "application/json");
             connection.setRequestProperty("Accept", "application/json");
+            connection.setRequestProperty("Authorization: JWT ", token);
             OutputStreamWriter osw = new OutputStreamWriter(connection.getOutputStream());
             osw.write(params);
             osw.flush();

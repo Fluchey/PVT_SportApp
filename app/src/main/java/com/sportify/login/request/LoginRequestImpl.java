@@ -1,7 +1,6 @@
 package com.sportify.login.request;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
 import com.sportify.util.Connector;
 
@@ -11,9 +10,11 @@ import com.sportify.util.Connector;
 
 public class LoginRequestImpl implements LoginRequest {
     OnLoginAccountFinishedListener onLoginAccountFinishedListener;
+    private String token = "";
 
-    public LoginRequestImpl(final OnLoginAccountFinishedListener onLoginAccountFinishedListener) {
+    public LoginRequestImpl(final OnLoginAccountFinishedListener onLoginAccountFinishedListener, String token) {
         this.onLoginAccountFinishedListener = onLoginAccountFinishedListener;
+        this.token = token;
     }
 
     public void makeApiRequest(String jsonMessage) {
@@ -33,7 +34,7 @@ public class LoginRequestImpl implements LoginRequest {
         @Override
         protected Void doInBackground(String... params) {
             String[] resultFromApi = Connector.connect("https://pvt15app.herokuapp.com/api/testlogin",
-                    "PUT", String.format(params[0]));
+                    "PUT", String.format(params[0]), token);
             responseBody = resultFromApi[0];
             responseCode = resultFromApi[1];
             return null;

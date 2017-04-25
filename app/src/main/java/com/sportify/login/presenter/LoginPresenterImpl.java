@@ -18,11 +18,13 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
     private LoginView loginView;
     private LoginRequest loginRequest;
     private SharedPreferences sharedPref;
+    private String token = "";
 
     public LoginPresenterImpl(LoginView loginView, SharedPreferences sharedPref) {
         this.loginView = loginView;
         this.sharedPref = sharedPref;
-        loginRequest = new LoginRequestImpl(this);
+        this.token = sharedPref.getString("Token", "");
+        loginRequest = new LoginRequestImpl(this, token);
     }
 
     @Override
@@ -74,6 +76,7 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
             SharedPreferences.Editor editor = sharedPref.edit();            //Initializes the editor
             editor.putString("Token", apiResponse);                         //Adds the string SharedPref with key "Token"
             editor.apply();                                                 //Saves changes to SharedPref
+            Log.d(TAG, "Saved Token: " + sharedPref.getString("Token", ""));
             loginView.launchUserActivity();
         }else {
             loginView.showApiRequestMessage(apiResponse);

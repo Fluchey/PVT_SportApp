@@ -10,9 +10,11 @@ import com.sportify.util.Connector;
 
 public class RegisterRequestImpl implements RegisterRequest {
     OnCreateAccountFinishedListener onCreateAccountFinishedListener;
+    private String token = "";
 
-    public RegisterRequestImpl(final OnCreateAccountFinishedListener onCreateAccountFinishedListener) {
+    public RegisterRequestImpl(final OnCreateAccountFinishedListener onCreateAccountFinishedListener, String token) {
         this.onCreateAccountFinishedListener = onCreateAccountFinishedListener;
+        this.token = token;
     }
 
     public void makeApiRequest(String jsonMessage) {
@@ -32,7 +34,7 @@ public class RegisterRequestImpl implements RegisterRequest {
         @Override
         protected Void doInBackground(String... params) {
             String[] resultFromApi = Connector.connect("https://pvt15app.herokuapp.com/api/testsignup",
-                    "PUT", String.format(params[0]));
+                    "PUT", String.format(params[0]), token);
             responseBody = resultFromApi[0];
             return null;
         }
