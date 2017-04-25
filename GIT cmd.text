@@ -25,7 +25,7 @@
 9. git merge ”Namnet på den branch du jobbat med”
 	Merga dina nya ändringar med developbranchen
 
-10. Hantera eventuell konflikter
+10. Hantera eventuell konflikter och adda och committa dem
 
 11. git push origin develop
 	Pushar upp dina nya ändringar till github! =)

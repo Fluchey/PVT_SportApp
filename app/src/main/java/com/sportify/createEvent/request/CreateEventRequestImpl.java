@@ -1,4 +1,4 @@
-package com.sportify.event.request;
+package com.sportify.createEvent.request;
 
 import android.os.AsyncTask;
 
@@ -40,10 +40,12 @@ public class CreateEventRequestImpl implements CreateEventRequest{
         @Override
         protected Void doInBackground(String... params) {
 
-            System.out.println("Background");
             String[] resultFromApi = Connector.connect("https://pvt15app.herokuapp.com/api/testCreateEvent",
                     "POST", String.format(params[0]), token);
-            System.out.println("Background2");
+
+//            String[] resultFromApi = Connector.connect("http://77.238.55.245:9000/api/changeEvent",
+//                    "PUT", String.format(params[0]), token);
+
             responseBody = resultFromApi[0];
 
             return null;

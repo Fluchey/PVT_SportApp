@@ -1,4 +1,4 @@
-package com.sportify.event.activity;
+package com.sportify.createEvent.activity;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -10,8 +10,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.sportify.event.presenter.CreateEventPresenter;
-import com.sportify.event.presenter.CreateEventPresenterImpl;
+import com.sportify.createEvent.presenter.CreateEventPresenter;
+import com.sportify.createEvent.presenter.CreateEventPresenterImpl;
 
 import sportapp.pvt_sportapp.R;
 
