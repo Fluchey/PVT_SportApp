@@ -40,10 +40,10 @@ public class CreateEventRequestImpl implements CreateEventRequest{
         @Override
         protected Void doInBackground(String... params) {
 
-            String[] resultFromApi = Connector.connect("https://pvt15app.herokuapp.com/api/testCreateEvent",
+            String[] resultFromApi = Connector.connect("http://193.11.94.17:9000/api/createEvent",
                     "POST", String.format(params[0]), token);
-
-//            String[] resultFromApi = Connector.connect("http://77.238.55.245:9000/api/changeEvent",
+            //https://pvt15app.herokuapp.com/api/testCreateEvent
+//            String[] resultFromApi = Connector.connect("http://193.11.94.17:9000/api/changeEvent",
 //                    "PUT", String.format(params[0]), token);
 
             responseBody = resultFromApi[0];
