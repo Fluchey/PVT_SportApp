@@ -24,6 +24,7 @@ public class CreateEventActivity extends AppCompatActivity implements CreateEven
     private EditText eventName;
     private EditText eventPrice;
     private EditText eventDescription;
+    private EditText eventPlace;
     private EditText eventDate;
     private EditText eventStartTime;
     private EditText eventEndTime;
@@ -42,6 +43,7 @@ public class CreateEventActivity extends AppCompatActivity implements CreateEven
         createEventPresenter = new CreateEventPresenterImpl(this, sharedPref);
 
         eventName = (EditText) findViewById(R.id.etEventName);
+        eventPlace = (EditText) findViewById(R.id.etEventPlace);
         eventPrice = (EditText) findViewById(R.id.etEventPrice);
         eventDescription = (EditText) findViewById(R.id.etEventDescription);
         message = (TextView) findViewById(R.id.tvCreateEventMessage);
@@ -60,6 +62,11 @@ public class CreateEventActivity extends AppCompatActivity implements CreateEven
     @Override
     public String getEventName() {
         return eventName.getText().toString();
+    }
+
+    @Override
+    public String getEventPlace() {
+        return eventPlace.getText().toString();
     }
 
     @Override
@@ -104,32 +111,40 @@ public class CreateEventActivity extends AppCompatActivity implements CreateEven
 
     @Override
     public void showEventNameEmptyError() {
-        message.setText("Event name is missing, try again");
+        message.setText(R.string.event_name_empty_error);
     }
 
     @Override
     public void showEventPriceWrongFormatError() {
-        message.setText("Event price is in wrong format, try again");
+        message.setText(R.string.event_price_wrongformat_error);
     }
 
     @Override
     public void showEventDateEmptyError() {
-        message.setText("Event date is missing, try again");
+        message.setText(R.string.event_date_empty_error);
     }
 
     @Override
+    public void showEventDateFormatError(){ message.setText(R.string.event_date_wrongformat_error);}
+
+    @Override
     public void showEventStartTimeEmptyError() {
-        message.setText("Event start time is missing, try again");
+        message.setText(R.string.event_start_time_empty_error);
     }
 
     @Override
     public void showEventEndTimeEmptyError() {
-        message.setText("Event end time is missing, try again");
+        message.setText(R.string.event_end_time_empty_error);
     }
 
     @Override
     public void showEventTypeEmptyError() {
-        message.setText("Event type is missing, try again");
+        message.setText(R.string.event_type_empty_error);
+    }
+
+    @Override
+    public void showEventPlaceEmptyError(){
+        message.setText(R.string.event_place_empty_error);
     }
 
     public void clearMessageTv(){

@@ -10,6 +10,9 @@ import com.sportify.createEvent.request.CreateEventRequestImpl;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 /**
  * Created by Maja on 2017-04-18.
  */
@@ -37,6 +40,7 @@ public class CreateEventPresenterImpl implements CreateEventPresenter, CreateEve
         String eventStartTime = createEventView.getEventStartTime();
         String eventEndTime = createEventView.getEventEndTime();
         String eventType = createEventView.getEventType();
+        String eventPlace = createEventView.getEventPlace();
         String eventMaxAttendance = createEventView.getEventMaxAttendance();
         String eventDescription = createEventView.getEventDescription();
         boolean eventPrivate = createEventView.getPrivateEvent();
@@ -45,20 +49,26 @@ public class CreateEventPresenterImpl implements CreateEventPresenter, CreateEve
         if(eventPrivate){
             eventPrivateInt = 1;
         }
-        if (eventName.isEmpty()) {
+        else if (eventName.isEmpty()) {
             createEventView.showEventNameEmptyError();
         }
-        if(eventDate.isEmpty()){
+        else if(eventDate.isEmpty()){
             createEventView.showEventDateEmptyError();
         }
-        if(eventStartTime.isEmpty()){
+        else if(!validDateFormat(eventDate)){
+            createEventView.showEventDateFormatError();
+        }
+        else if(eventStartTime.isEmpty()){
             createEventView.showEventStartTimeEmptyError();
         }
-        if(eventEndTime.isEmpty()){
+        else if(eventEndTime.isEmpty()){
             createEventView.showEventEndTimeEmptyError();
         }
-        if(eventType.isEmpty()){
+        else if(eventType.isEmpty()) {
             createEventView.showEventTypeEmptyError();
+        }
+        else if(eventPlace.isEmpty()){
+            createEventView.showEventPlaceEmptyError();
         }else{
             if (!eventPriceEt.isEmpty()) {
                 try {
@@ -77,6 +87,7 @@ public class CreateEventPresenterImpl implements CreateEventPresenter, CreateEve
                 jsonObject.put("eventStartTime", "" + eventStartTime);
                 jsonObject.put("eventEndTime", "" + eventEndTime);
                 jsonObject.put("eventType", eventType);
+                jsonObject.put("eventPlace", eventPlace);
                 if(!eventMaxAttendance.isEmpty()) {
                     jsonObject.put("eventMaxAttendance", eventMaxAttendance);
                 }
@@ -98,5 +109,18 @@ public class CreateEventPresenterImpl implements CreateEventPresenter, CreateEve
     @Override
     public void showApiResponse(String apiResponse) {
         createEventView.showApiRequestMessage(apiResponse);
+    }
+
+    private boolean validDateFormat(String date){
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+        dateFormat.setLenient(false);
+
+        try{
+            dateFormat.parse(date);
+        }catch (ParseException e){
+            return false;
+        }
+        return true;
     }
 }

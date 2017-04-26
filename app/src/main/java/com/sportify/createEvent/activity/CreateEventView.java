@@ -8,6 +8,8 @@ public interface CreateEventView {
 
     String getEventName();
 
+    String getEventPlace();
+
     String getEventPrice();
 
     String getEventDate();
@@ -30,11 +32,16 @@ public interface CreateEventView {
 
     void showEventDateEmptyError();
 
+    //TODO: Ska vi ha denna check för tiderna också? Beror ju på hur det kommer läggas in i fortsättningen / om det ska formateras automatiskt
+    void showEventDateFormatError();
+
     void showEventStartTimeEmptyError();
 
     void showEventEndTimeEmptyError();
 
     void showEventTypeEmptyError();
+
+    void showEventPlaceEmptyError();
 
     void clearMessageTv();
 
