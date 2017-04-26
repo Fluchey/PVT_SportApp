@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -79,7 +80,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_LONG).show();
-                //accessToken = loginResult.getAccessToken(); //Needs to be used for FB API calls
+                AccessToken accessToken = loginResult.getAccessToken();
+                loginPresenter.requestFacebookLong(accessToken);
             }
 
             @Override

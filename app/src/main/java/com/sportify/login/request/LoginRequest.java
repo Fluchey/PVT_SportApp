@@ -11,5 +11,5 @@ public interface LoginRequest {
         void closeProgressDialog();
     }
 
-    void makeApiRequest(String jsonMessage);
+    void makeApiRequest(String jsonMessage, String connectorUrl);
 }
