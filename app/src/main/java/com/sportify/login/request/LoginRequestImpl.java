@@ -33,7 +33,7 @@ public class LoginRequestImpl implements LoginRequest {
 
         @Override
         protected Void doInBackground(String... params) {
-            String[] resultFromApi = Connector.connect("https://pvt15app.herokuapp.com/api/testlogin",
+            String[] resultFromApi = Connector.connect("https://pvt15app.herokuapp.com/api/login",
                     "PUT", String.format(params[0]), token);
             responseBody = resultFromApi[0];
             responseCode = resultFromApi[1];

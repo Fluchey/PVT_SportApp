@@ -33,7 +33,7 @@ public class RegisterRequestImpl implements RegisterRequest {
 
         @Override
         protected Void doInBackground(String... params) {
-            String[] resultFromApi = Connector.connect("https://pvt15app.herokuapp.com/api/testsignup",
+            String[] resultFromApi = Connector.connect("https://pvt15app.herokuapp.com/api/signup",
                     "PUT", String.format(params[0]), token);
             responseBody = resultFromApi[0];
             return null;
