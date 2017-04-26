@@ -11,18 +11,32 @@
     <string name="signUp">Sign Up</string>
     <string name="facebook_app_id">2064612590432123</string>
     <string name="title_activity_maps">Map</string>
+
+    /* Strings create event */
     <string name="event_name">event name</string>
     <string name="event_price">price</string>
     <string name="event_date">date, yyyy-mm-dd</string>
     <string name="event_start_time">start time, hh:mm</string>
     <string name="event_end_time">end time, hh:mm</string>
     <string name="event_type">type</string>
+    <string name="event_place">event place</string>
     <string name="event_max_attendance">max attendance</string>
     <string name="event_private">private event</string>
     <string name="event_description">desribe your event</string>
     <string name="create_event">create event</string>
     <string name="createEvent_here">Create event here</string>
     <string name="find_event">Find event</string>
+
+    /* Error messages create event */
+    <string name="event_name_empty_error">Enter name</string>
+    <string name="event_price_wrongformat_error">Price is in wrong format</string>
+    <string name="event_date_empty_error">Enter date</string>
+    <string name="event_date_wrongformat_error">Date is in wrong format</string>
+    <string name="event_start_time_empty_error">Enter start time</string>
+    <string name="event_end_time_empty_error">Enter end time</string>
+    <string name="event_type_empty_error">Enter event type</string>
+    <string name="event_place_empty_error">Enter place</string>
+
 
     <string name="first_name_optional">first name (Optional)</string>
     <string name="last_name_optional">last name (Optional)</string>

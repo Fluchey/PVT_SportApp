@@ -70,6 +70,14 @@
             android:hint="@string/event_type" />
 
         <EditText
+            android:id="@+id/etEventPlace"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:ems="8"
+            android:hint="@string/event_place" />
+
+        <EditText
             android:id="@+id/etEventMaxAttendance"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -87,7 +95,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Describe your event"
+            android:text="@string/event_description"
             android:paddingTop="5dp"
             android:paddingBottom="5dp" />
 

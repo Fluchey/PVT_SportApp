@@ -17,8 +17,8 @@ public class LoginRequestImpl implements LoginRequest {
         this.token = token;
     }
 
-    public void makeApiRequest(String jsonMessage) {
-        ApiRequest apiRequest = (ApiRequest) new ApiRequest(this).execute(jsonMessage);
+    public void makeApiRequest(String jsonMessage, String url) {
+        ApiRequest apiRequest = (ApiRequest) new ApiRequest(this, url).execute(jsonMessage);
     }
 
 
@@ -26,14 +26,16 @@ public class LoginRequestImpl implements LoginRequest {
         private LoginRequestImpl loginRequestImpl;
         private String responseBody;
         private String responseCode;
+        private String connectorUrl;
 
-        public ApiRequest(LoginRequestImpl loginRequestImpl) {
+        public ApiRequest(LoginRequestImpl loginRequestImpl, String connectorUrl) {
             this.loginRequestImpl = loginRequestImpl;
+            this.connectorUrl = connectorUrl;
         }
 
         @Override
         protected Void doInBackground(String... params) {
-            String[] resultFromApi = Connector.connect("https://pvt15app.herokuapp.com/api/testlogin",
+            String[] resultFromApi = Connector.connect(connectorUrl,
                     "PUT", String.format(params[0]), token);
             responseBody = resultFromApi[0];
             responseCode = resultFromApi[1];
