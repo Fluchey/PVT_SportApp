@@ -1,4 +1,4 @@
-package com.sportify.maps;
+package com.sportify.maps.activity;
 
 import android.content.Context;
 import android.location.Location;
@@ -14,21 +14,33 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.sportify.maps.presenter.MapsPresenter;
+import com.sportify.maps.presenter.MapsPresenterImpl;
+
+import java.util.ArrayList;
+
+import javax.inject.Inject;
 
 import sportapp.pvt_sportapp.R;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity extends FragmentActivity implements MapsView, OnMapReadyCallback {
+    @Inject
+    MapsPresenter mapsPresenter;
 
     private static LatLng STHLM = new LatLng(59.3293, 18.0686);
     private static float MIN_ZOOM = 10;
-    private static float DEFAULT_ZOOM = 15;
+    private static float DEFAULT_ZOOM = 12;
 
     private GoogleMap mMap;
+    private ArrayList<Marker> markers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
+        markers = new ArrayList<>();
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -50,19 +62,35 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         // Add a marker and move the camera
         LatLng user = STHLM;
+        LatLng test = new LatLng(59.30449679409284, 18.07552995325442);
 
         try {
             LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
             Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
             user = new LatLng(location.getLatitude(), location.getLongitude());
-        }
-        catch (SecurityException e) {
+            test = new LatLng(location.getLatitude(), location.getLongitude());
+        } catch (SecurityException e) {
             Log.e("Permission error", "Location access permission denied");
         }
 
-        Marker userMarker = mMap.addMarker(new MarkerOptions().position(user).title("Your position"));
+//        Marker userMarker = mMap.addMarker(new MarkerOptions().position(user).title("Your position"));
+//        Marker testMark = mMap.addMarker(new MarkerOptions().position(test).title("Test Eriksdal"));
 
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(user, DEFAULT_ZOOM));
         // mMap.setMinZoomPreference(MIN_ZOOM);
+    }
+
+    @Override
+    public void removeMarkers() {
+
+    }
+
+    @Override
+    public void showMarkerAt(String eventName, double latitude, double longitude) {
+        markers.add(createMarker(eventName, latitude, longitude));
+    }
+
+    private Marker createMarker(String eventName, double latitude, double longitude){
+        return mMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)).title(eventName));
     }
 }

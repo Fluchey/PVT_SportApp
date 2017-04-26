@@ -35,7 +35,7 @@ public class RegisterTest {
      */
     @Before
     public void initObjects() {
-        presenter = new RegisterPresenterImpl(registerView);
+//        presenter = new RegisterPresenterImpl(registerView);
     }
 
     @Test
