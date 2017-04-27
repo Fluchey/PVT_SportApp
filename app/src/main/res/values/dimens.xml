@@ -7,5 +7,6 @@
     <dimen name="paddingBottom">5dp</dimen>
     <dimen name="standardTextSize">15sp</dimen>"
     <dimen name="header">25sp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 
 </resources>

@@ -46,10 +46,14 @@
 
         <activity
             android:name="com.sportify.maps.activity.MapsActivity"
-            android:label="@string/title_activity_maps"
-            android:exported="true"/>
+            android:exported="true"
+            android:label="@string/title_activity_maps" />
         <activity android:name="com.sportify.userArea.activity.UserAreaActivity" />
         <activity android:name="com.sportify.createEvent.activity.CreateEventActivity" />
+        <activity
+            android:name="com.sportify.friends.activity.FriendActivity"
+            android:label="@string/title_activity_friend"
+            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
     </application>
 
 </manifest>

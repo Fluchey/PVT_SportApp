@@ -51,4 +51,5 @@
     <string name="login_successfull">Login succesfull</string>
 
     <string name="email_wrongFormat_error">Invalid format</string>
-    </resources>
+    <string name="title_activity_friend">FriendActivity</string>
+</resources>
