@@ -61,7 +61,18 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
 
     @Override
     public void requestFacebookLong(AccessToken accessToken) {
-
+        Log.d(TAG, "Facebook userid" + accessToken.getUserId().toString());
+        Log.d(TAG, "Facebook token" + accessToken.getToken().toString());
+        /**
+         *  Convert to JSON object
+         */
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("fbtoken", accessToken.getToken());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        loginRequest.makeApiRequest(jsonObject.toString(), "https://pvt15app.herokuapp.com/api/requestFacebookLong");
     }
 
     @Override
