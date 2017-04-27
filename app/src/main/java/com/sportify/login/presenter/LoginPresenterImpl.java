@@ -2,6 +2,8 @@ package com.sportify.login.presenter;
 import android.content.SharedPreferences;
 import android.util.Log;
 import android.util.Patterns;
+
+import com.facebook.AccessToken;
 import com.sportify.login.activity.LoginView;
 import com.sportify.login.request.LoginRequest;
 import com.sportify.login.request.LoginRequestImpl;
@@ -53,14 +55,24 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
             /**
              * Creates new asynctask which runs in background and tries to create new user
              */
-            loginRequest.makeApiRequest(jsonObject.toString());
-
+            loginRequest.makeApiRequest(jsonObject.toString(), "https://pvt15app.herokuapp.com/api/login");
         }
     }
 
     @Override
-    public void loginFB() {
-        //TODO: login() OR registerUser()
+    public void requestFacebookLong(AccessToken accessToken) {
+        Log.d(TAG, "Facebook userid" + accessToken.getUserId().toString());
+        Log.d(TAG, "Facebook token" + accessToken.getToken().toString());
+        /**
+         *  Convert to JSON object
+         */
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("fbtoken", accessToken.getToken());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        loginRequest.makeApiRequest(jsonObject.toString(), "https://pvt15app.herokuapp.com/api/requestFacebookLong");
     }
 
     @Override
