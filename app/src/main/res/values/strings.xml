@@ -52,4 +52,7 @@
 
     <string name="email_wrongFormat_error">Invalid format</string>
     <string name="title_activity_friend">FriendActivity</string>
+
+    /* Strings map */
+    <string name="where_do_you_want_to_go">Where do you want to go?</string>
 </resources>

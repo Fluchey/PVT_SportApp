@@ -1,12 +1,18 @@
 package com.sportify.maps.activity;
 
 import android.content.Context;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -17,7 +23,9 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.sportify.maps.presenter.MapsPresenter;
 import com.sportify.maps.presenter.MapsPresenterImpl;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -34,6 +42,8 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
     private GoogleMap mMap;
     private ArrayList<Marker> markers;
 
+    private EditText wantToGo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +55,8 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        wantToGo = (EditText) (findViewById(R.id.etWantToGo));
     }
 
 
@@ -92,5 +104,27 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
 
     private Marker createMarker(String eventName, double latitude, double longitude){
         return mMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)).title(eventName));
+    }
+
+    private void goToLocation(double lat, double lon, float zoom){
+        LatLng ll = new LatLng(lat, lon);
+        CameraUpdate update = CameraUpdateFactory.newLatLngZoom(ll, zoom);
+        mMap.moveCamera(update);
+    }
+
+    public void geoLocate(View view) throws IOException {
+        String location = wantToGo.getText().toString();
+
+        Geocoder gc = new Geocoder(this);
+        List<Address> list = gc.getFromLocationName(location, 1);
+
+        Address address = list.get(0);
+
+        String locality = address.getLocality();
+
+        Toast.makeText(this, locality, Toast.LENGTH_LONG).show();
+        goToLocation(address.getLatitude(), address.getLongitude(), 15);
+
+
     }
 }
