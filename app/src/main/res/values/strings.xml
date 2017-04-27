@@ -55,4 +55,11 @@
 
     /* Strings map */
     <string name="where_do_you_want_to_go">Where do you want to go?</string>
+    <string name="enter_category">Enter category</string>
+
+    <string name="map_type_none">None</string>
+    <string name="map_type_normal">Normal</string>
+    <string name="map_type_terrain">Terrain</string>
+    <string name="map_type_satellite">Satellite</string>
+    <string name="map_type_hybrid">Hybrid</string>
 </resources>

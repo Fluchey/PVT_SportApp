@@ -68,6 +68,15 @@
             </LinearLayout>
         </LinearLayout>
 
+        <Button
+            android:id="@+id/goToMapButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="Map"
+            android:onClick="startMapActivity"/>
+
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

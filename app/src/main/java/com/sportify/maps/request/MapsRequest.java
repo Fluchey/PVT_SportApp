@@ -5,4 +5,9 @@ package com.sportify.maps.request;
  */
 
 public interface MapsRequest {
+    interface onRequestFinishedListener{
+        void showApiResponse(String... params);
+    }
+
+    void makeApiRequest(String jsonMessage, String endURL);
 }

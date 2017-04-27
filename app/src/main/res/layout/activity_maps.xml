@@ -4,35 +4,51 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.sportify.maps.activity.MapsActivity">
+    tools:context="com.sportify.maps.activity.MapsActivity"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:weightSum="1">
 
-        <EditText
-            android:id="@+id/etWantToGo"
+        <fragment
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="332dp"
+            tools:context="com.sportify.maps.activity.MapsActivity" />
+
+        <Button
+            android:id="@+id/showFootbalButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:hint="@string/where_do_you_want_to_go" />
+            android:text="Fotbollsplaner"
+            android:onClick="showFootBallFields"/>
+
+        <Button
+            android:id="@+id/showSwimButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Simhallar"
+            android:onClick="showSwimPools"/>
+
+        <EditText
+            android:id="@+id/etEnterCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:hint="@string/enter_category" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Go"
             android:layout_gravity="center"
-            android:onClick="geoLocate"/>
-
-        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:map="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:id="@+id/map"
-            android:name="com.google.android.gms.maps.SupportMapFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context="com.sportify.maps.activity.MapsActivity" />
+            android:onClick="showCategory"/>
 
     </LinearLayout>
 
