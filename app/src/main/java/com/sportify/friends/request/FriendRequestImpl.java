@@ -40,10 +40,9 @@ public class FriendRequestImpl implements FriendRequest {
         protected Void doInBackground(String... params) {
 
             String[] resultFromApi = Connector.connect("https://pvt15app.herokuapp.com/api/findfriends",
-                        "PUT", String.format(params[0]), token);
+                        "POST", String.format(params[0]), token);
 
             responsbody = resultFromApi[0];
-
             return null;
         }
 
@@ -51,9 +50,7 @@ public class FriendRequestImpl implements FriendRequest {
         protected void onPostExecute(Void aVoid){
             super.onPostExecute(aVoid);
 
-            friendRequestImpl.onShowFriendsFinishedListener.showApiResponse(responsbody);
+            friendRequestImpl.onShowFriendsFinishedListener.getFriends(responsbody);
         }
     }
-
-
 }

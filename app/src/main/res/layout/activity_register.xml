@@ -14,7 +14,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="77dp"
-        android:text="@string/signUp"
+        android:text="@string/sign_up"
         android:textSize="@dimen/header" />
 
     <LinearLayout
@@ -54,7 +54,7 @@
             android:id="@+id/registerButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/signUp"
+            android:text="@string/sign_up"
             android:onClick="signUpButtonClick"/>
 
         <TextView

@@ -19,6 +19,7 @@ import com.facebook.FacebookSdk;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 
+import com.sportify.friends.activity.FriendActivity;
 import com.sportify.login.presenter.LoginPresenterImpl;
 import com.sportify.createEvent.activity.CreateEventActivity;
 import com.sportify.register.activity.RegisterActivity;
@@ -65,6 +66,15 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
             @Override
             public void onClick(View v) {
                 Intent createEventIntent = new Intent(LoginActivity.this, CreateEventActivity.class);
+                LoginActivity.this.startActivity(createEventIntent);
+            }
+        });
+
+        TextView tvFindFriends = (TextView) findViewById(R.id.tvFindFriends);
+        tvFindFriends.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent createEventIntent = new Intent(LoginActivity.this, FriendActivity.class);
                 LoginActivity.this.startActivity(createEventIntent);
             }
         });

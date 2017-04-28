@@ -6,6 +6,9 @@ import com.sportify.friends.activity.FriendView;
 import com.sportify.friends.request.FriendRequest;
 import com.sportify.friends.request.FriendRequestImpl;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 /**
@@ -19,7 +22,7 @@ public class FriendPresenterImpl implements FriendPresenter, FriendRequest.OnSho
     private SharedPreferences sharedPref;
     private String token = "";
 
-    public FriendPresenterImpl(FriendView friendView, FriendRequest friendRequest, SharedPreferences sharedPref){
+    public FriendPresenterImpl(FriendView friendView, SharedPreferences sharedPref){
         this.friendView = friendView;
         this.sharedPref = sharedPref;
         this.token = sharedPref.getString("Token", "");
@@ -27,10 +30,45 @@ public class FriendPresenterImpl implements FriendPresenter, FriendRequest.OnSho
     }
 
     @Override
-    public void showFriends(ArrayList<String> friendList) {
-        for(int i = 0; i<friendList.size(); i++){
-            friendView.showFriends(friendList.get(i));
+    public void showFriends() {
+        //Ta ID från den som är inloggad
+        String userID = "2";
+        JSONObject jsonObject = new JSONObject();
+
+        try {
+            jsonObject.put("userID", userID);
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
+
+        friendRequest.makeApiRequest(jsonObject.toString());
+    }
+
+    public void getFriends(String friends) {
+
+        JSONObject responseBody = null;
+        ArrayList<String> friendList = null;
+
+        System.out.println("getFriends");
+        try {
+            System.out.println("Json");
+            responseBody = new JSONObject(friends);
+        } catch (JSONException e) {
+            e.printStackTrace();
+            System.out.println("Dåligt");
+        }
+
+        try {
+            friendList = (ArrayList<String>) responseBody.get("friendList");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        String showFriends = null;
+        for(int i = 0; i<friendList.size(); i++){
+            showFriends += friendList.get(i);
+        }
+        friendView.showFriends(showFriends);
     }
 
     @Override
