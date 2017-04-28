@@ -72,7 +72,8 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        loginRequest.makeApiRequest(jsonObject.toString(), "https://pvt15app.herokuapp.com/api/requestFacebookLong");
+        //loginRequest.makeApiRequest(jsonObject.toString(), "https://pvt15app.herokuapp.com/api/requestFacebookLong");
+        loginRequest.makeApiRequest(jsonObject.toString(), "http://77.238.50.184:9000/api/requestFacebookLong");
     }
 
     @Override
@@ -83,8 +84,12 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
     @Override
     public void showApiResponse(String apiResponse, String responseOk) {
         /* response code 200 maps to successful login */
+        //Delete this:
+        if (apiResponse == null) apiResponse = "";
+        if (responseOk == null) responseOk = "";
+        Log.d(TAG, "showApiResponse: " + apiResponse);
+        Log.d(TAG, "showApiCode: " + responseOk);
         if(responseOk.equals("200")){
-            Log.d(TAG, "showApiResponse: " + apiResponse);
             SharedPreferences.Editor editor = sharedPref.edit();            //Initializes the editor
             editor.putString("Token", apiResponse);                         //Adds the string SharedPref with key "Token"
             editor.apply();                                                 //Saves changes to SharedPref
