@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources><string-array name="sections">
+    <item >Bollplan</item>
+    <item >Simhall</item>
+    <item >Vinterfotbollsplan</item>
+    <item >Idrottsplats</item>
+    <item >Utegym</item>
+    <item >Skatepark och parkour</item>
+    <item >Motionsspår</item>
+</string-array></resources>
