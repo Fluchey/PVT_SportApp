@@ -37,8 +37,8 @@ public class MapsRequestImpl implements MapsRequest {
 
         @Override
         protected Void doInBackground(String... params) {
-            Log.d("EndURL:", "https://pvt15app.herokuapp.com/api/" + params[1]);
-            result = Connector.connect("https://pvt15app.herokuapp.com/api/" + params[1],
+            Log.d("EndURL:", "http://77.238.32.226/api/" + params[1]);
+            result = Connector.connect("http://77.238.32.226:9000/api/" + params[1],
                     "PUT", params[0], token);
             return null;
         }

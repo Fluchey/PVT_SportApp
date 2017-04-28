@@ -42,7 +42,7 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
     private SharedPreferences sharedPref;
 
     private static LatLng STHLM;
-    private static float DEFAULT_ZOOM = 1;
+    private static float DEFAULT_ZOOM = 10;
 
     private GoogleMap mMap;
 
@@ -84,7 +84,7 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
     }
 
     @Override
-    public void removeMarkers() {
+    public void clearMarkers() {
         mMap.clear();
     }
 
@@ -122,7 +122,7 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
 
     public void showSwimPools(View view) {
         mMap.clear();
-        createMarker("Eriksdalsbadet", "Simhall", 59.30449679409284, 18.07552995325442);
+//        createMarker("Eriksdalsbadet", "Simhall", 59.30449679409284, 18.07552995325442);
         createMarker("Västertorp simhall", "Simhall", 59.29335865879633, 17.977220258441527);
     }
 
