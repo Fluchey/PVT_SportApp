@@ -55,13 +55,9 @@
             android:id="@+id/registerButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-<<<<<<< HEAD
             android:background="@android:color/holo_green_light"
-=======
-            android:background="@android:color/holo_blue_bright"
->>>>>>> a1cd2d5f82cfae4b1bbd0eb7b4aa0955281a5bc5
-            android:onClick="signUpButtonClick"
             android:text="@string/sign_up" />
+
 
         <TextView
             android:id="@+id/tvSignUpMessage"

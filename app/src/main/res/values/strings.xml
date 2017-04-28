@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">PVT_Sportapp</string>
-    <string name="username">Välj användarnamn</string>
+    <string name="username">Välj ett användarnamn</string>
     <string name="first_name">first name</string>
     <string name="last_name">last name</string>
     <string name="phone_number">phone number</string>
-    <string name="password">lösenord</string>
+    <string name="password">Välj ett lösenord</string>
     <string name="log_in">Log In</string>
     <string name="register_here">Register Here</string>
     <string name="email">E-post</string>
