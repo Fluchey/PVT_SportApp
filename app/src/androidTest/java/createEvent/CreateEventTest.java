@@ -41,6 +41,21 @@ public class CreateEventTest {
         onView(withId(R.id.tvCreateEventMessage)).check(matches(withText(R.string.event_name_empty_error)));
     }
 
+    //TODO: Vet inte vad som egentligen ska checkas, använder detta test för att slippa skriva in allt själv.
+    @Test
+    public void createEventSucceded(){
+        onView(withId(R.id.etEventName)).perform(typeText("Testa espresso"));
+        onView(withId(R.id.etEventDate)).perform(typeText("2017-01-01"));
+        onView(withId(R.id.etEventStartTime)).perform(typeText("13:00"));
+        onView(withId(R.id.etEventEndTime)).perform(typeText("16:00"));
+        onView(withId(R.id.etEventType)).perform(typeText("Basket"));
+        onView(withId(R.id.etEventPlace)).perform(typeText("Kista"));
+        onView(withId(R.id.etEventDescription)).perform(typeText("TestEvent"));
+        onView(withId(R.id.createEventButton)).perform(click());
+
+        onView(withId(R.id.tvCreateEventMessage)).check(matches(withText("")));
+    }
+
     //TODO: Ska vi ha denna check för tiderna också? Beror ju på hur det kommer läggas in i fortsättningen / om det ska formateras automatiskt
     @Test
     public void createEventWrongDateFormat(){

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/test3"
     tools:context="sportapp.pvt_sportapp.Activitys.RegisterActivity">
 
     <TextView
@@ -14,7 +15,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="77dp"
-        android:text="@string/signUp"
+        android:text="@string/sign_up"
         android:textSize="@dimen/header" />
 
     <LinearLayout
@@ -54,8 +55,9 @@
             android:id="@+id/registerButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/signUp"
-            android:onClick="signUpButtonClick"/>
+            android:background="@android:color/holo_green_light"
+            android:text="@string/sign_up" />
+
 
         <TextView
             android:id="@+id/tvSignUpMessage"

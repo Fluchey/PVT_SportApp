@@ -18,7 +18,7 @@ public class Connector {
     public static String[] connect(String URL, String method, String params, String token) {
         if (token == null) token = "";
         HttpURLConnection connection = null;
-        String[] responseFromRest = new String[2];
+        String[] responseFromRest = new String[3];
 
         try {
             URL url = new URL(URL);
@@ -46,9 +46,17 @@ public class Connector {
                 out.append(line);
             }
 
+            Log.d("Out:", out.toString());
+
             JSONObject jsonObject = new JSONObject(out.toString());
             responseFromRest[0] = jsonObject.getString("body");
             responseFromRest[1] = "" + connection.getResponseCode();
+
+            try {
+                responseFromRest[2] = jsonObject.getString("command");
+            }catch (Exception e){
+                e.printStackTrace();
+            }
 
         } catch (Exception e) {
             e.printStackTrace();

@@ -25,7 +25,6 @@ public class CreateEventRequestImpl implements CreateEventRequest{
     @Override
     public void makeApiRequest(String jsonMessage) {
         ApiRequest apiRequest = (ApiRequest) new ApiRequest(this).execute(jsonMessage);
-        System.out.println("makeApiRequest");
     }
 
     private class ApiRequest extends AsyncTask<String, CreateEventRequestImpl, Void>{
@@ -34,7 +33,6 @@ public class CreateEventRequestImpl implements CreateEventRequest{
         private String responseBody;
 
         public ApiRequest(CreateEventRequestImpl createEventRequestImpl){
-            System.out.println("ApiRequest");
             this.createEventRequestImpl = createEventRequestImpl;
         }
         @Override

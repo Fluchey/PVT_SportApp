@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.sportify.createEvent.activity.CreateEventActivity;
+import com.sportify.maps.activity.MapsActivity;
 import com.sportify.userArea.presenter.UserAreaPresenter;
 import com.sportify.userArea.presenter.UserAreaPresenterImpl;
 
@@ -35,5 +36,10 @@ public class UserAreaActivity extends AppCompatActivity implements UserAreaView 
         Toast.makeText(this, "Clicked Create Event", Toast.LENGTH_LONG).show();
         Intent createEventIntent = new Intent(UserAreaActivity.this, CreateEventActivity.class);
         UserAreaActivity.this.startActivity(createEventIntent);
+    }
+
+    public void startMapActivity(View view) {
+        Intent startMapAcitivityIntent = new Intent(UserAreaActivity.this, MapsActivity.class);
+        UserAreaActivity.this.startActivity(startMapAcitivityIntent);
     }
 }
