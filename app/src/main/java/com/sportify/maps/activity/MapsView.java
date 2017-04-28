@@ -11,5 +11,7 @@ public interface MapsView {
 
     void showMarkerAt(String eventName, String description, double latitude, double longitude);
 
+    void goToLocation(double lat, double lon, float zoom);
+
     String getCategory();
 }
