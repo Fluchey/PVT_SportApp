@@ -16,11 +16,13 @@
 6. git commit -m "Commit message"
 	Commita dina ändringar till branchen
 
-7. INNAN steg 8, git pull origin develop
+
+7. git checkout develop
+	Byt till develop branchen för att merga med dina nya ändringar
+
+8.  git pull origin develop
 	Se till att du har en uppdaterad develop branch innan du mergar dina ändringar.
 
-8. git checkout develop
-	Byt till develop branchen för att merga med dina nya ändringar
 
 9. git merge ”Namnet på den branch du jobbat med”
 	Merga dina nya ändringar med developbranchen
