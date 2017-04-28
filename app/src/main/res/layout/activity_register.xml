@@ -54,8 +54,10 @@
             android:id="@+id/registerButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/sign_up"
-            android:onClick="signUpButtonClick"/>
+
+            android:background="@android:color/holo_green_light"
+            android:onClick="signUpButtonClick"
+            android:text="@string/sign_up" />
 
         <TextView
             android:id="@+id/tvSignUpMessage"
