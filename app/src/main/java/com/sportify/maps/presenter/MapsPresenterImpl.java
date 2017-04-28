@@ -43,7 +43,18 @@ public class MapsPresenterImpl implements MapsPresenter, MapsRequest.onRequestFi
     @Override
     public void markCategoriesOnMap(String jsonMessage) {
         mapsView.clearMarkers();
-        mapsView.showMarkerAt("Eriksdalsbadet", "Simhall", 59.30449679409284, 18.07552995325442);
+        JSONObject json = null;
+        try {
+            json = new JSONObject(jsonMessage);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        if(json == null){
+            return;
+        }
+
+        Log.d("Json:", json.toString());
+
 //        Log.d("params[3]", jsonMessage);
 //        Toast.makeText((Context) mapsView, responseBody, Toast.LENGTH_LONG).show();
     }
