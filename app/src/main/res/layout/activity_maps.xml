@@ -52,4 +52,10 @@
 
     </LinearLayout>
 
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/mapLoadIndicator"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:indicatorName="PacmanIndicator" />
+
 </RelativeLayout>

@@ -20,6 +20,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.sportify.maps.presenter.MapsPresenter;
 import com.sportify.maps.presenter.MapsPresenterImpl;
+import com.wang.avi.AVLoadingIndicatorView;
 
 import sportapp.pvt_sportapp.R;
 
@@ -33,6 +34,7 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
     private GoogleMap mMap;
 
     private TextView categoryChosen;
+    private AVLoadingIndicatorView loadingIndicator;
 
 
     @Override
@@ -54,6 +56,8 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
         mapFragment.getMapAsync(this);
 
         categoryChosen = (TextView) (findViewById(R.id.twCategoryChosen));
+        loadingIndicator = (AVLoadingIndicatorView) (findViewById(R.id.mapLoadIndicator));
+//        closeLoadIndicator();
     }
 
 
@@ -102,6 +106,16 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
     @Override
     public String getCategory() {
         return categoryChosen.getText().toString();
+    }
+
+    @Override
+    public void showLoadIndicator() {
+        loadingIndicator.show();
+    }
+
+    @Override
+    public void closeLoadIndicator() {
+        loadingIndicator.hide();
     }
 
     @Override

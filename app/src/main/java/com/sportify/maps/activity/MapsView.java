@@ -14,4 +14,9 @@ public interface MapsView {
     void goToLocation(double lat, double lon, float zoom);
 
     String getCategory();
+
+    void showLoadIndicator();
+
+    void closeLoadIndicator();
+
 }

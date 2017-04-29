@@ -51,6 +51,7 @@ public class MapsRequestImpl implements MapsRequest {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
+            mapsRequestImpl.onRequestFinishedListener.closeLoadIndicator();
             mapsRequestImpl.onRequestFinishedListener.showApiResponse(result);
         }
     }

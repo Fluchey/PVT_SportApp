@@ -10,4 +10,5 @@ public interface MapsPresenter {
     void markCategoriesOnMap(String jsonMessage);
 
     void getMarkersForCategory();
+
 }

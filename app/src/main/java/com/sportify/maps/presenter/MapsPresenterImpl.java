@@ -76,6 +76,9 @@ public class MapsPresenterImpl implements MapsPresenter, MapsRequest.onRequestFi
 
     @Override
     public void getMarkersForCategory() {
+        mapsView.showLoadIndicator();
+
+
         String category = mapsView.getCategory();
         Log.d("CATEGORY", category);
         JSONObject jsonObject = new JSONObject();
@@ -86,6 +89,11 @@ public class MapsPresenterImpl implements MapsPresenter, MapsRequest.onRequestFi
         }
 
         mapsRequest.makeApiRequest(jsonObject.toString(), "showCategoryOnMap");
+    }
+
+    @Override
+    public void closeLoadIndicator() {
+        mapsView.closeLoadIndicator();
     }
 
 
@@ -100,9 +108,9 @@ public class MapsPresenterImpl implements MapsPresenter, MapsRequest.onRequestFi
         if (params == null){
             return;
         }
-        Log.d("Params [0]", params[0]);
-        Log.d("Params [1]", params[1]);
-        Log.d("Params [2]", params[2]);
+//        Log.d("Params [0]", params[0]);
+//        Log.d("Params [1]", params[1]);
+//        Log.d("Params [2]", params[2]);
         switch (params[2]){
             case "Show category":
                 markCategoriesOnMap(params[0]);
