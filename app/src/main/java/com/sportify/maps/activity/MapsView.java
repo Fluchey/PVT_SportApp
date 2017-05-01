@@ -7,9 +7,16 @@ import android.widget.EditText;
  */
 
 public interface MapsView {
-    void removeMarkers();
+    void clearMarkers();
 
     void showMarkerAt(String eventName, String description, double latitude, double longitude);
 
+    void goToLocation(double lat, double lon, float zoom);
+
     String getCategory();
+
+    void showLoadIndicator();
+
+    void closeLoadIndicator();
+
 }

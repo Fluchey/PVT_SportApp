@@ -7,7 +7,8 @@ package com.sportify.maps.presenter;
 public interface MapsPresenter {
     void mark(String eventName, String description, double latitude, double longitude);
 
-    void markCategoriesOnMap(String responseBody);
+    void markCategoriesOnMap(String jsonMessage);
 
     void getMarkersForCategory();
+
 }

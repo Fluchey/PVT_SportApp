@@ -40,7 +40,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(getApplicationContext());
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_login);
         sharedPref = getSharedPreferences("MyPrefs",Context.MODE_PRIVATE);
         loginPresenter = new LoginPresenterImpl(this, sharedPref);
         dialog = new ProgressDialog(this);

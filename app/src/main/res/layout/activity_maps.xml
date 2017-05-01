@@ -18,38 +18,44 @@
             android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"
             android:layout_height="332dp"
-            tools:context="com.sportify.maps.activity.MapsActivity" />
+            tools:context="com.sportify.maps.activity.MapsActivity"
+            android:layout_weight="0.39" />
+
+        <ListView
+            android:id="@+id/mapsListView"
+            android:layout_width="wrap_content"
+            android:layout_height="94dp"
+            android:entries="@array/sections"
+            android:layout_weight="0.30" />
+
+        <!--<AutoCompleteTextView-->
+            <!--android:id="@+id/etEnterCategory"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:hint="@string/enter_category" />-->
+
+        <TextView
+            android:id="@+id/twCategoryChosen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.14" />
 
         <Button
-            android:id="@+id/showFootbalButton"
+            android:id="@+id/button2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Fotbollsplaner"
-            android:onClick="showFootBallFields"/>
-
-        <Button
-            android:id="@+id/showSwimButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Simhallar"
-            android:onClick="showSwimPools"/>
-
-        <EditText
-            android:id="@+id/etEnterCategory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:hint="@string/enter_category" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Go"
-            android:layout_gravity="center"
-            android:onClick="showCategory"/>
+            android:onClick="showCategory"
+            android:text="Go" />
 
     </LinearLayout>
+
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/mapLoadIndicator"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:indicatorName="PacmanIndicator" />
 
 </RelativeLayout>

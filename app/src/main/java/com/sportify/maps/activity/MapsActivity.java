@@ -1,22 +1,14 @@
 package com.sportify.maps.activity;
 
-import android.Manifest;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.location.Address;
-import android.location.Geocoder;
-import android.location.Location;
-import android.location.LocationManager;
-import android.os.Build;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -28,25 +20,22 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.sportify.maps.presenter.MapsPresenter;
 import com.sportify.maps.presenter.MapsPresenterImpl;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.inject.Inject;
+import com.wang.avi.AVLoadingIndicatorView;
 
 import sportapp.pvt_sportapp.R;
 
-public class MapsActivity extends FragmentActivity implements MapsView, OnMapReadyCallback {
+public class MapsActivity extends FragmentActivity implements MapsView, OnMapReadyCallback, AdapterView.OnItemClickListener {
     private MapsPresenter mapsPresenter;
     private SharedPreferences sharedPref;
 
     private static LatLng STHLM;
-    private static float DEFAULT_ZOOM = 1;
+    private static float DEFAULT_ZOOM = 10;
 
     private GoogleMap mMap;
 
-    private EditText category;
+    private TextView categoryChosen;
+    private AVLoadingIndicatorView loadingIndicator;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,12 +46,18 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
 
         mapsPresenter = new MapsPresenterImpl(this, sharedPref);
 
+        ListView listview = (ListView) findViewById(R.id.mapsListView);
+        listview.setOnItemClickListener(this);
+
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        category = (EditText) (findViewById(R.id.etEnterCategory));
+        categoryChosen = (TextView) (findViewById(R.id.twCategoryChosen));
+        loadingIndicator = (AVLoadingIndicatorView) (findViewById(R.id.mapLoadIndicator));
+//        closeLoadIndicator();
     }
 
 
@@ -84,7 +79,7 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
     }
 
     @Override
-    public void removeMarkers() {
+    public void clearMarkers() {
         mMap.clear();
     }
 
@@ -97,33 +92,11 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
         return mMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)).title(eventName).snippet(description));
     }
 
-    private void goToLocation(double lat, double lon, float zoom){
+    @Override
+    public void goToLocation(double lat, double lon, float zoom){
         LatLng ll = new LatLng(lat, lon);
         CameraUpdate update = CameraUpdateFactory.newLatLngZoom(ll, zoom);
         mMap.moveCamera(update);
-    }
-
-    public void geoLocate(View view) throws IOException {
-//        String location = wantToGo.getText().toString();
-
-        Geocoder gc = new Geocoder(this);
-//        List<Address> list = gc.getFromLocationName(location, 1);
-
-//        Address address = list.get(0);
-
-//        goToLocation(address.getLatitude(), address.getLongitude(), 15);
-    }
-
-    public void showFootBallFields(View view) {
-        mMap.clear();
-        createMarker("Älvsjö IP", "Fotboll", 59.274508847095404, 18.009372266458495);
-        createMarker("Gröndal Bollplan", "Fotboll", 59.31491551417768, 18.000463709042712);
-    }
-
-    public void showSwimPools(View view) {
-        mMap.clear();
-        createMarker("Eriksdalsbadet", "Simhall", 59.30449679409284, 18.07552995325442);
-        createMarker("Västertorp simhall", "Simhall", 59.29335865879633, 17.977220258441527);
     }
 
     public void showCategory(View view) {
@@ -132,6 +105,22 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
 
     @Override
     public String getCategory() {
-        return category.getText().toString();
+        return categoryChosen.getText().toString();
+    }
+
+    @Override
+    public void showLoadIndicator() {
+        loadingIndicator.show();
+    }
+
+    @Override
+    public void closeLoadIndicator() {
+        loadingIndicator.hide();
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        String [] arr = getResources().getStringArray(R.array.sections);
+        categoryChosen.setText(arr[(int) id]);
     }
 }

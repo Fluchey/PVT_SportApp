@@ -35,9 +35,14 @@ public class MapsRequestImpl implements MapsRequest {
             this.mapsRequestImpl = mapsRequestImpl;
         }
 
+        /**
+         * @param params
+         * params [0] = jsonMessage
+         * params [1] = endUrl
+         * @return
+         */
         @Override
         protected Void doInBackground(String... params) {
-            Log.d("EndURL:", "https://pvt15app.herokuapp.com/api/" + params[1]);
             result = Connector.connect("https://pvt15app.herokuapp.com/api/" + params[1],
                     "PUT", params[0], token);
             return null;
@@ -46,6 +51,7 @@ public class MapsRequestImpl implements MapsRequest {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
+            mapsRequestImpl.onRequestFinishedListener.closeLoadIndicator();
             mapsRequestImpl.onRequestFinishedListener.showApiResponse(result);
         }
     }
