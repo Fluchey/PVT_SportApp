@@ -18,10 +18,9 @@ import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
-
+import com.sportify.createEvent.activity.CreateEventActivity;
 import com.sportify.friends.activity.FriendActivity;
 import com.sportify.login.presenter.LoginPresenterImpl;
-import com.sportify.createEvent.activity.CreateEventActivity;
 import com.sportify.register.activity.RegisterActivity;
 import com.sportify.userArea.activity.UserAreaActivity;
 
