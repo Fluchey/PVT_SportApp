@@ -18,9 +18,13 @@ import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
+
+import com.facebook.login.widget.LoginButton;
+import com.sportify.login.presenter.LoginPresenterImpl;
+
 import com.sportify.createEvent.activity.CreateEventActivity;
 import com.sportify.friends.activity.FriendActivity;
-import com.sportify.login.presenter.LoginPresenterImpl;
+
 import com.sportify.register.activity.RegisterActivity;
 import com.sportify.userArea.activity.UserAreaActivity;
 
@@ -33,6 +37,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     private ProgressDialog dialog;
     private LoginPresenterImpl loginPresenter;
     private SharedPreferences sharedPref;
+    private LoginButton loginFacebookButton;
 
 
     @Override
@@ -81,16 +86,19 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     //TODO: Move Facebook in presenter/request
     private void initializeControls(){ //Facebook controls
+        loginFacebookButton = (LoginButton) findViewById(R.id.loginFacebookButton);
+        //permissions "birthday" requires: https://developers.facebook.com/docs/facebook-login/review/what-is-login-review
+        loginFacebookButton.setReadPermissions("email", "user_friends");
         callbackManager = CallbackManager.Factory.create();
     }
 
-    private void loginWithFacebook() {
+    private void loginWithFacebook() { //LoginManager
         LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_LONG).show();
                 AccessToken accessToken = loginResult.getAccessToken();
-                loginPresenter.requestFacebookLong(accessToken);
+                loginPresenter.loginUserFacebook(accessToken);
             }
 
             @Override
@@ -105,7 +113,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         });
     }
 
-    @Override
+    @Override //Forwards Facebook result back to callbackManager
     protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);

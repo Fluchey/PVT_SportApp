@@ -60,20 +60,23 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
     }
 
     @Override
-    public void requestFacebookLong(AccessToken accessToken) {
-        Log.d(TAG, "Facebook userid" + accessToken.getUserId().toString());
+    public void loginUserFacebook(AccessToken accessToken) {
+        Log.d(TAG, "Facebook user" + accessToken.getUserId().toString());
         Log.d(TAG, "Facebook token" + accessToken.getToken().toString());
+        Log.d(TAG, "Facebook permissions" + accessToken.getPermissions().toString());
         /**
          *  Convert to JSON object
          */
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("fbtoken", accessToken.getToken());
+            jsonObject.put("userId", accessToken.getUserId());
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
         //loginRequest.makeApiRequest(jsonObject.toString(), "https://pvt15app.herokuapp.com/api/requestFacebookLong");
-        loginRequest.makeApiRequest(jsonObject.toString(), "http://77.238.50.184:9000/api/requestFacebookLong");
+        loginRequest.makeApiRequest(jsonObject.toString(), "http://192.168.0.15:9000/api/loginFacebook");
     }
 
     @Override
@@ -84,7 +87,7 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
     @Override
     public void showApiResponse(String apiResponse, String responseOk) {
         /* response code 200 maps to successful login */
-        //Delete this:
+        //TODO: Delete this and  return will be a JSON object when implemented
         if (apiResponse == null) apiResponse = "";
         if (responseOk == null) responseOk = "";
         Log.d(TAG, "showApiResponse: " + apiResponse);
