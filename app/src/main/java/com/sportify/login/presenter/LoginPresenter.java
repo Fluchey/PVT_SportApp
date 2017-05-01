@@ -8,5 +8,5 @@ import com.facebook.AccessToken;
 
 public interface LoginPresenter {
     void loginUser();
-    void requestFacebookLong(AccessToken token);
+    void loginUserFacebook(AccessToken token);
 }
