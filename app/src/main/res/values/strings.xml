@@ -62,4 +62,7 @@
     <string name="map_type_terrain">Terrain</string>
     <string name="map_type_satellite">Satellite</string>
     <string name="map_type_hybrid">Hybrid</string>
+
+    /* Strings review */
+    <string name="submit_button">Skicka</string>
 </resources>

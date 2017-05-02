@@ -28,8 +28,8 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
     private MapsPresenter mapsPresenter;
     private SharedPreferences sharedPref;
 
-    private static LatLng STHLM;
-    private static float DEFAULT_ZOOM = 10;
+    private static final LatLng STHLM = new LatLng(59.3293, 18.0686);
+    private static final float DEFAULT_ZOOM = 10;
 
     private GoogleMap mMap;
 
@@ -74,7 +74,7 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
         mMap = googleMap;
 
         /* Location of Stockholm */
-        goToLocation(59.3293, 18.0686, DEFAULT_ZOOM);
+        goToLocation(STHLM.latitude, STHLM.longitude, DEFAULT_ZOOM);
 
     }
 
