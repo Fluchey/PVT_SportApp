@@ -9,6 +9,7 @@ import com.sportify.maps.activity.MapsView;
 import com.sportify.maps.request.MapsRequest;
 import com.sportify.maps.request.MapsRequestImpl;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -44,14 +45,28 @@ public class MapsPresenterImpl implements MapsPresenter, MapsRequest.onRequestFi
     public void markCategoriesOnMap(String jsonMessage) {
         mapsView.clearMarkers();
         JSONObject json = null;
+        JSONArray array = null;
         try {
             json = new JSONObject(jsonMessage);
+            array = json.getJSONArray("instance");
+            Log.d("JsonArr: ", array.toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        if(json == null){
+        if(json == null || array == null){
             return;
         }
+
+
+            try {
+                for (int i = 0; i < array.length(); i++){
+                JSONObject jsonObject = array.getJSONObject(i);
+                    mapsView.showMarkerAt(json.getString("category"), jsonObject.getString("name"), Double.parseDouble(jsonObject.getString("lat")), Double.parseDouble(jsonObject.getString("lon")));
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
 
         Log.d("Json:", json.toString());
 
@@ -61,7 +76,11 @@ public class MapsPresenterImpl implements MapsPresenter, MapsRequest.onRequestFi
 
     @Override
     public void getMarkersForCategory() {
+        mapsView.showLoadIndicator();
+
+
         String category = mapsView.getCategory();
+        Log.d("CATEGORY", category);
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("category", category);
@@ -70,6 +89,11 @@ public class MapsPresenterImpl implements MapsPresenter, MapsRequest.onRequestFi
         }
 
         mapsRequest.makeApiRequest(jsonObject.toString(), "showCategoryOnMap");
+    }
+
+    @Override
+    public void closeLoadIndicator() {
+        mapsView.closeLoadIndicator();
     }
 
 
@@ -81,9 +105,12 @@ public class MapsPresenterImpl implements MapsPresenter, MapsRequest.onRequestFi
      */
     @Override
     public void showApiResponse(String... params) {
-        Log.d("Params [0]", params[0]);
-        Log.d("Params [1]", params[1]);
-        Log.d("Params [2]", params[2]);
+        if (params == null){
+            return;
+        }
+//        Log.d("Params [0]", params[0]);
+//        Log.d("Params [1]", params[1]);
+//        Log.d("Params [2]", params[2]);
         switch (params[2]){
             case "Show category":
                 markCategoriesOnMap(params[0]);
