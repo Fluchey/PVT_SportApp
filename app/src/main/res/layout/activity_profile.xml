@@ -122,6 +122,18 @@
         android:layout_marginBottom="8dp"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
-        app:layout_constraintVertical_bias="0.694" />
+        app:layout_constraintVertical_bias="0.762" />
+
+    <EditText
+        android:id="@+id/editText6"
+        android:layout_width="62dp"
+        android:layout_height="37dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/intressen_text"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="13sp"
+        tools:layout_editor_absoluteY="321dp"
+        tools:layout_editor_absoluteX="143dp" />
 
 </android.support.constraint.ConstraintLayout>
