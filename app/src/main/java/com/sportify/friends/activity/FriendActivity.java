@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.sportify.friends.presenter.FriendPresenter;
 import com.sportify.friends.presenter.FriendPresenterImpl;
@@ -36,13 +35,9 @@ public class FriendActivity extends AppCompatActivity implements FriendView {
     public void findFriendClick(View v){
         friendPresenter.showFriends();
     }
-    @Override
-    public void showFriends(String friendsToShow) {
-        friends.setText(friendsToShow);
-    }
 
     @Override
-    public void showApiRequestMessage(String apiResponse) {
-        Toast.makeText(this, apiResponse, Toast.LENGTH_LONG).show();
+    public void showFriend(String friendsToShow) {
+        friends.setText(friendsToShow);
     }
 }

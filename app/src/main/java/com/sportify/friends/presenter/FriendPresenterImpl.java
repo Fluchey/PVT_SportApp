@@ -44,64 +44,36 @@ public class FriendPresenterImpl implements FriendPresenter, FriendRequest.OnSho
         friendRequest.makeApiRequest(jsonObject.toString());
     }
 
-    public void getFriends(String friends) {
+    public void getFriends(String jsonMessage) {
 
         JSONObject json = null;
-//        ArrayList<String> friendList = null;
         JSONArray array = null;
 
-        System.out.println("getFriends");
         try {
-            System.out.println("Json");
-
-            json = new JSONObject(friends);
+            json = new JSONObject(jsonMessage);
             array = json.getJSONArray("friendList");
             Log.d("JsonArr: ", array.toString());
-//            responseBody = new JSONObject(friends.substring(friends.indexOf("{"), friends.lastIndexOf("}") + 1));
-//            if(responseBody != null){
-//                System.out.println("Yay!");
-//            }
         } catch (JSONException e) {
             e.printStackTrace();
-            System.out.println("Dåligt " + e.getMessage().toString());
+            System.out.println("E-message " + e.getMessage().toString());
         }
         if(json == null || array == null){
-            System.out.println("null Array/Json");
             return;
         }
 
         try{
             for(int i=0; i < array.length(); i++){
                 JSONObject jsonObject = array.getJSONObject(i);
-                friendView.showFriends(jsonObject.getString("userID"));
+                friendView.showFriend(jsonObject.getString("userID"));
             }
-
-            }catch(JSONException e){
-            System.out.println("FEL!");
+        }catch(JSONException e){
             e.printStackTrace();
         }
-
-//        try {
-//            friendList = (ArrayList<String>) responseBody.get("friendList");
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//
-//        try {
-//            friendList = (ArrayList<String>) responseBody.get("friendList");
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//
-//        String showFriends = null;
-//        for(int i = 0; i<friendList.size(); i++){
-//            showFriends += friendList.get(i);
-//        }
-//        friendView.showFriends(friendList.toString());
     }
 
     @Override
-    public void showApiResponse(String apiResponse) {
-        friendView.showApiRequestMessage(apiResponse);
+    public void showApiResponse(String... params) {
+//        friendView.showApiRequestMessage(params[0]);
+        getFriends(params[0]);
     }
 }
