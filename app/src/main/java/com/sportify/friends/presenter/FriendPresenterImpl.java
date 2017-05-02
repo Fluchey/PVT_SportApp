@@ -1,15 +1,15 @@
 package com.sportify.friends.presenter;
 
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.sportify.friends.activity.FriendView;
 import com.sportify.friends.request.FriendRequest;
 import com.sportify.friends.request.FriendRequestImpl;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
 
 /**
  * Created by Maja on 2017-04-27.
@@ -46,26 +46,46 @@ public class FriendPresenterImpl implements FriendPresenter, FriendRequest.OnSho
 
     public void getFriends(String friends) {
 
-        JSONObject responseBody = null;
-        ArrayList<String> friendList = null;
+        JSONObject json = null;
+//        ArrayList<String> friendList = null;
+        JSONArray array = null;
 
         System.out.println("getFriends");
         try {
             System.out.println("Json");
-            responseBody = new JSONObject(friends.substring(friends.indexOf("{"), friends.lastIndexOf("}") + 1));
-            if(responseBody != null){
-                System.out.println("Yay!");
-            }
+
+            json = new JSONObject(friends);
+            array = json.getJSONArray("friendList");
+            Log.d("JsonArr: ", array.toString());
+//            responseBody = new JSONObject(friends.substring(friends.indexOf("{"), friends.lastIndexOf("}") + 1));
+//            if(responseBody != null){
+//                System.out.println("Yay!");
+//            }
         } catch (JSONException e) {
             e.printStackTrace();
             System.out.println("Dåligt " + e.getMessage().toString());
         }
+        if(json == null || array == null){
+            System.out.println("null Array/Json");
+            return;
+        }
 
-        try {
-            friendList = (ArrayList<String>) responseBody.get("friendList");
-        } catch (JSONException e) {
+        try{
+            for(int i=0; i < array.length(); i++){
+                JSONObject jsonObject = array.getJSONObject(i);
+                friendView.showFriends(jsonObject.getString("userID"));
+            }
+
+            }catch(JSONException e){
+            System.out.println("FEL!");
             e.printStackTrace();
         }
+
+//        try {
+//            friendList = (ArrayList<String>) responseBody.get("friendList");
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
 //
 //        try {
 //            friendList = (ArrayList<String>) responseBody.get("friendList");
@@ -77,7 +97,7 @@ public class FriendPresenterImpl implements FriendPresenter, FriendRequest.OnSho
 //        for(int i = 0; i<friendList.size(); i++){
 //            showFriends += friendList.get(i);
 //        }
-        friendView.showFriends(friendList.toString());
+//        friendView.showFriends(friendList.toString());
     }
 
     @Override
