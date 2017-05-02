@@ -40,7 +40,6 @@ public class MapsPresenterImpl implements MapsPresenter, MapsRequest.onRequestFi
     }
 
 
-
     @Override
     public void markCategoriesOnMap(String jsonMessage) {
         mapsView.clearMarkers();
@@ -53,19 +52,19 @@ public class MapsPresenterImpl implements MapsPresenter, MapsRequest.onRequestFi
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        if(json == null || array == null){
+        if (json == null || array == null) {
             return;
         }
 
 
-            try {
-                for (int i = 0; i < array.length(); i++){
+        try {
+            for (int i = 0; i < array.length(); i++) {
                 JSONObject jsonObject = array.getJSONObject(i);
-                    mapsView.showMarkerAt(json.getString("category"), jsonObject.getString("name"), Double.parseDouble(jsonObject.getString("lat")), Double.parseDouble(jsonObject.getString("lon")));
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
+                mapsView.showMarkerAt(json.getString("category"), jsonObject.getString("name"), Double.parseDouble(jsonObject.getString("lat")), Double.parseDouble(jsonObject.getString("lon")));
             }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
 
         Log.d("Json:", json.toString());
@@ -98,20 +97,19 @@ public class MapsPresenterImpl implements MapsPresenter, MapsRequest.onRequestFi
 
 
     /**
-     * @param params
-     * params [0] = responseCode.. "200" or "300"
-     * params [1] = jsonMessage in String format
-     * params [2] = command for the switch
+     * @param params params [0] = responseCode.. "200" or "300"
+     *               params [1] = jsonMessage in String format
+     *               params [2] = command for the switch
      */
     @Override
     public void showApiResponse(String... params) {
-        if (params == null){
+        if (params == null) {
             return;
         }
 //        Log.d("Params [0]", params[0]);
 //        Log.d("Params [1]", params[1]);
 //        Log.d("Params [2]", params[2]);
-        switch (params[2]){
+        switch (params[2]) {
             case "Show category":
                 markCategoriesOnMap(params[0]);
                 break;
