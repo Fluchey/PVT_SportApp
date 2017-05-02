@@ -27,7 +27,6 @@ import com.sportify.friends.activity.FriendActivity;
 
 import com.sportify.register.activity.RegisterActivity;
 import com.sportify.userArea.activity.UserAreaActivity;
-
 import sportapp.pvt_sportapp.R;
 
 public class LoginActivity extends AppCompatActivity implements LoginView {
