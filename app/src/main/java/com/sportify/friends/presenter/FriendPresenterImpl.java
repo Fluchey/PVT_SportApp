@@ -49,14 +49,23 @@ public class FriendPresenterImpl implements FriendPresenter, FriendRequest.OnSho
         JSONObject responseBody = null;
         ArrayList<String> friendList = null;
 
-//        System.out.println("getFriends");
-//        try {
-//            System.out.println("Json");
-//            responseBody = new JSONObject(friends);
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//            System.out.println("Dåligt");
-//        }
+        System.out.println("getFriends");
+        try {
+            System.out.println("Json");
+            responseBody = new JSONObject(friends.substring(friends.indexOf("{"), friends.lastIndexOf("}") + 1));
+            if(responseBody != null){
+                System.out.println("Yay!");
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+            System.out.println("Dåligt " + e.getMessage().toString());
+        }
+
+        try {
+            friendList = (ArrayList<String>) responseBody.get("friendList");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 //
 //        try {
 //            friendList = (ArrayList<String>) responseBody.get("friendList");
@@ -68,7 +77,7 @@ public class FriendPresenterImpl implements FriendPresenter, FriendRequest.OnSho
 //        for(int i = 0; i<friendList.size(); i++){
 //            showFriends += friendList.get(i);
 //        }
-        friendView.showFriends(friends);
+        friendView.showFriends(friendList.toString());
     }
 
     @Override
