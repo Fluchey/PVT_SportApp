@@ -62,4 +62,14 @@
     <string name="map_type_terrain">Terrain</string>
     <string name="map_type_satellite">Satellite</string>
     <string name="map_type_hybrid">Hybrid</string>
+
+    /* Strings Profile */
+
+    <string name="profile_name">Namn</string>
+    <string name="profile_name_hint">Förnamn/Efternamn</string>
+    <string name="profile_birthday">Födelsedatum</string>
+    <string name="profile_birthday_hint">DD/MM/YY</string>
+
+
+
 </resources>
