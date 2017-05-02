@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/test3"
     tools:context="sportapp.pvt_sportapp.Activitys.RegisterActivity">
 
     <LinearLayout
@@ -18,22 +19,22 @@
         tools:layout_editor_absoluteY="8dp">
 
         <EditText
-        android:id="@+id/etEventName"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerInParent="true"
-        android:ems="8"
-        android:hint="@string/event_name"
-        />
+            android:id="@+id/etEventName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:ems="8"
+            android:hint="@string/event_name"
+            />
 
         <EditText
-        android:id="@+id/etEventPrice"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerInParent="true"
-        android:ems="8"
-        android:hint="@string/event_price"
-        android:inputType="number"/>
+            android:id="@+id/etEventPrice"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:ems="8"
+            android:hint="@string/event_price"
+            android:inputType="number"/>
 
         <EditText
             android:id="@+id/etEventDate"
@@ -112,8 +113,8 @@
             android:id="@+id/createEventButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/create_event"
-            android:onClick="createEventClick"/>
+            android:onClick="createEventClick"
+            android:text="@string/create_event" />
 
         <TextView
             android:id="@+id/tvCreateEventMessage"
@@ -124,3 +125,7 @@
     </LinearLayout>
 
 </RelativeLayout>
+
+
+
+
