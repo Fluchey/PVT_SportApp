@@ -30,7 +30,7 @@ public class FriendRequestImpl implements FriendRequest {
     private class ApiRequest extends AsyncTask<String, FriendRequestImpl, Void>{
 
         private FriendRequestImpl friendRequestImpl;
-        private String responsbody;
+        private String [] resultFromApi;
 
         public ApiRequest(FriendRequestImpl friendRequestImpl){
             this.friendRequestImpl = friendRequestImpl;
@@ -39,10 +39,11 @@ public class FriendRequestImpl implements FriendRequest {
         @Override
         protected Void doInBackground(String... params) {
 
-            String[] resultFromApi = Connector.connect("https://pvt15app.herokuapp.com/api/findfriends",
-                        "POST", String.format(params[0]), token);
+//          resultFromApi = Connector.connect("https://pvt15app.herokuapp.com/api/findfriends",
+//                        "POST", String.format(params[0]), token);
+            resultFromApi = Connector.connect("http://130.237.89.181:9000/api/findfriends",
+                    "POST", String.format(params[0]), token);
 
-            responsbody = resultFromApi[0];
             return null;
         }
 
@@ -50,7 +51,7 @@ public class FriendRequestImpl implements FriendRequest {
         protected void onPostExecute(Void aVoid){
             super.onPostExecute(aVoid);
 
-            friendRequestImpl.onShowFriendsFinishedListener.getFriends(responsbody);
+            friendRequestImpl.onShowFriendsFinishedListener.showApiResponse(resultFromApi);
         }
     }
 }

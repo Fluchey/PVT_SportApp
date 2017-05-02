@@ -6,8 +6,7 @@ package com.sportify.friends.activity;
 
 public interface FriendView {
 
-    void showFriends(String friends);
-
-    void showApiRequestMessage(String apiResponse);
+    //TODO: Vad ska tas in och hur ska en vän visas?
+    void showFriend(String friend);
 
 }

@@ -71,5 +71,7 @@
     <string name="profile_birthday_hint">DD/MM/YY</string>
 
 
+    /* Strings review */
+    <string name="submit_button">Skicka</string>
 
 </resources>

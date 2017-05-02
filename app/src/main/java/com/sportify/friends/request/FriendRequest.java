@@ -1,7 +1,5 @@
 package com.sportify.friends.request;
 
-import java.util.ArrayList;
-
 /**
  * Created by Maja on 2017-04-27.
  */
@@ -9,8 +7,8 @@ import java.util.ArrayList;
 public interface FriendRequest {
 
     interface OnShowFriendsFinishedListener{
-        void showApiResponse(String apiResponse);
-        void getFriends(String friends);
+        void showApiResponse(String... params);
+//        void getFriends(String... params);
     }
 
     void makeApiRequest(String jsonMessage);
