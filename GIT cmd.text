@@ -11,7 +11,7 @@
 	Byt till den branch du vill commita dina ändringar med
 
 5. git add *
-	Adda alld ina ändringar till branchen
+	Adda all dina ändringar till branchen
 
 6. git commit -m "Commit message"
 	Commita dina ändringar till branchen
