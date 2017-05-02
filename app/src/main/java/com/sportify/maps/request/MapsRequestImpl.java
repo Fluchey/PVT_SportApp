@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.sportify.storage.PlaceStorage;
 import com.sportify.util.Connector;
 
 import javax.inject.Inject;
@@ -15,10 +16,18 @@ import javax.inject.Inject;
 public class MapsRequestImpl implements MapsRequest {
     private onRequestFinishedListener onRequestFinishedListener;
     private String token = "";
+    private PlaceStorage places;
 
     public MapsRequestImpl(final onRequestFinishedListener onRequestFinishedListener, String token) {
         this.onRequestFinishedListener = onRequestFinishedListener;
         this.token = token;
+
+        /**
+         * Fetch all places from the database, for autocompletion when searching for a place
+         */
+        places = new PlaceStorage();
+        ApiRequest apiRequest = (MapsRequestImpl.ApiRequest) new MapsRequestImpl.ApiRequest(this).execute
+        ("", "getallplaces");
     }
 
     @Override
