@@ -19,8 +19,15 @@
     <string name="profile_text">Skapa en profil så andra kan lära känna dig bättre
     och vi kan hjälpa dig hitta roliga event, för just dig!</string>
     <string name="intressen_text">Intressen</string>
-    <string name="profile_interests_fotboll">Fotboll</string>
+    <string name="profile_interests_fotball">Fotboll</string>
     <string name="profile_interests_basket">Basket</string>
+    <string name="profile_interests_bandy">Bandy</string>
+    <string name="profile_interests_volleyball">Vollyboll</string>
+    <string name="profile_interests_swimming">Simming</string>
+    <string name="profile_interests_outdoortraining">Utegym</string>
+    <string name="profile_interests_climbing">Klättring</string>
+    <string name="profile_interests_running">Löpning</string>
+
 
 
     /* Strings Intressen */
