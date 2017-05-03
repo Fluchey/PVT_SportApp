@@ -29,7 +29,7 @@ public class MapsPresenterImpl implements MapsPresenter, MapsRequest.onRequestFi
         this.share = sharedPreferences;
         this.token = sharedPreferences.getString("Token", "");
         this.mapsRequest = new MapsRequestImpl(this, token);
-//        mapsRequest.makeApiRequestGet("GET", "getallplaces", "getAllPlaces");
+        mapsRequest.makeApiRequestGet("GET", "getallplaces", "getAllPlaces");
     }
 
     @Override
@@ -141,7 +141,7 @@ public class MapsPresenterImpl implements MapsPresenter, MapsRequest.onRequestFi
 
             case "getAllPlaces":
                 mapsRequest.updateAllPlaces(params[0]);
-//                mapsView.updatePlaceSearch(mapsRequest.getPlacesName());
+                mapsView.updatePlaceSearch(mapsRequest.getPlacesName());
                 break;
 
             case "updateSearch":
