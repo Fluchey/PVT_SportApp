@@ -1,4 +1,4 @@
-package com.sportify;
+package com.sportify.mainPage.activity;
 
 
 import android.support.v7.app.AppCompatActivity;
