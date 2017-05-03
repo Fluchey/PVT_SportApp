@@ -20,11 +20,8 @@ import org.json.JSONObject;
 
 public class MapsPresenterImpl implements MapsPresenter, MapsRequest.onRequestFinishedListener {
     private MapsView mapsView;
-
     private MapsRequest mapsRequest;
-
     private SharedPreferences share;
-
     private String token = "";
 
     public MapsPresenterImpl(MapsView mapsView, SharedPreferences sharedPreferences) {
@@ -32,7 +29,7 @@ public class MapsPresenterImpl implements MapsPresenter, MapsRequest.onRequestFi
         this.share = sharedPreferences;
         this.token = sharedPreferences.getString("Token", "");
         this.mapsRequest = new MapsRequestImpl(this, token);
-        mapsRequest.makeApiRequestGet("GET", "getallplaces", "getAllPlaces");
+//        mapsRequest.makeApiRequestGet("GET", "getallplaces", "getAllPlaces");
     }
 
     @Override
@@ -77,33 +74,49 @@ public class MapsPresenterImpl implements MapsPresenter, MapsRequest.onRequestFi
 
     @Override
     public void getMarkersForCategory() {
-//        mapsView.showLoadIndicator();
-//
-//
-//        String category = mapsView.getCategory();
-//        Log.d("CATEGORY", category);
-//        JSONObject jsonObject = new JSONObject();
-//        try {
-//            jsonObject.put("category", category);
-//        } catch (JSONException e) {
-//            e.printStackTrace();
+        mapsView.clearMarkers();
+        JSONObject json = new JSONObject();
+
+        try {
+            json.put("category", mapsView.getCategory());
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+        mapsRequest.makeApiRequestPut(json.toString(), "showCategoryOnMap", "PUT", "Show category");
+//        for (Place p: mapsRequest.getPlaces()){
+//            if(p.getCategory().equals(mapsView.getCategory())){
+//                mapsView.showMarkerAt(p.getName(), p.getCategory(), p.getLat(), p.getLon());
+//            }
 //        }
-//
-//        mapsRequest.makeApiRequest(jsonObject.toString(), "showCategoryOnMap", "PUT");
+    }
+
+    @Override
+    public void showPlaceByName() {
         mapsView.clearMarkers();
         for (Place p: mapsRequest.getPlaces()){
-            if(p.getCategory().equals(mapsView.getCategory())){
+            if(p.getName().equals(mapsView.getPlaceName())){
                 mapsView.showMarkerAt(p.getName(), p.getCategory(), p.getLat(), p.getLon());
+                mapsView.goToLocation(p.getLat(), p.getLon(), 15);
             }
-
         }
+    }
+
+    @Override
+    public void updatePlaceSearch(String textChange) {
+        JSONObject json = new JSONObject();
+
+        try {
+            json.put("textChange", textChange);
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+        mapsRequest.makeApiRequestPut(json.toString(), "map/updateSearch", "PUT", "updateSearch");
     }
 
     @Override
     public void closeLoadIndicator() {
         mapsView.closeLoadIndicator();
     }
-
 
     /**
      * @param command The command for the switch
@@ -117,7 +130,8 @@ public class MapsPresenterImpl implements MapsPresenter, MapsRequest.onRequestFi
         if (params[0] == null) {
             return;
         }
-//        Log.d("Params [0]", params[0]);
+        Log.d("Command", command);
+        Log.d("Params [0]", params[0]);
 //        Log.d("Params [1]", params[1]);
 //        Log.d("Params [2]", params[2]);
         switch (command) {
@@ -127,6 +141,13 @@ public class MapsPresenterImpl implements MapsPresenter, MapsRequest.onRequestFi
 
             case "getAllPlaces":
                 mapsRequest.updateAllPlaces(params[0]);
+//                mapsView.updatePlaceSearch(mapsRequest.getPlacesName());
+                break;
+
+            case "updateSearch":
+                mapsRequest.updateCurrentSearch(params[0]);
+                mapsView.updatePlaceSearch(mapsRequest.getPlacesName());
+                Log.d("Ja", "JA");
                 break;
         }
     }

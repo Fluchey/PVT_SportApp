@@ -17,6 +17,8 @@ public interface MapsView {
 
     String getCategory();
 
+    String getPlaceName();
+
     void showLoadIndicator();
 
     void closeLoadIndicator();

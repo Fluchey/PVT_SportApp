@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -24,7 +26,9 @@ import com.sportify.maps.presenter.MapsPresenter;
 import com.sportify.maps.presenter.MapsPresenterImpl;
 import com.wang.avi.AVLoadingIndicatorView;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import sportapp.pvt_sportapp.R;
 
@@ -39,7 +43,7 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
 
     private ArrayAdapter<String> adapter;
     private AutoCompleteTextView autoCompleteTextView;
-    private TextView categoryChosen;
+    private String categoryChosen;
     private AVLoadingIndicatorView loadingIndicator;
 
 
@@ -61,9 +65,35 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+        ArrayList<String> test = new ArrayList<>(Arrays.asList("First item", "Second item"));
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, test);
+        Log.d("Constructor Count: ", String.valueOf(adapter.getCount()));
+        adapter.setNotifyOnChange(true);
         autoCompleteTextView = (AutoCompleteTextView) (findViewById(R.id.etMapsSearch));
-        categoryChosen = (TextView) (findViewById(R.id.twCategoryChosen));
-        loadingIndicator = (AVLoadingIndicatorView) (findViewById(R.id.mapLoadIndicator));
+        autoCompleteTextView.setAdapter(adapter);
+        autoCompleteTextView.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        String textChange = autoCompleteTextView.getText().toString();
+                        mapsPresenter.updatePlaceSearch(textChange);
+                    }
+                });
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+//        categoryChosen = (TextView) (findViewById(R.id.twCategoryChosen));
+//        loadingIndicator = (AVLoadingIndicatorView) (findViewById(R.id.mapLoadIndicator));
 //        closeLoadIndicator();
     }
 
@@ -112,7 +142,12 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
 
     @Override
     public String getCategory() {
-        return categoryChosen.getText().toString();
+        return categoryChosen;
+    }
+
+    @Override
+    public String getPlaceName() {
+        return autoCompleteTextView.getText().toString();
     }
 
     @Override
@@ -127,14 +162,24 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
 
     @Override
     public void updatePlaceSearch(ArrayList<String> places) {
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, places);
-        autoCompleteTextView.setAdapter(adapter);
+//        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, places);
+//        adapter.clear();
+        for (String s : places){
+            adapter.add(s);
+        }
+        adapter.getFilter().filter(autoCompleteTextView.getText(), null);
+        Log.d("Count: ", String.valueOf(adapter.getCount()));
+//        autoCompleteTextView.setAdapter(adapter);
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         String [] arr = getResources().getStringArray(R.array.sections);
-        categoryChosen.setText(arr[(int) id]);
+        categoryChosen = (arr[(int) id]);
         mapsPresenter.getMarkersForCategory();
+    }
+
+    public void showPlaceByName(View view) {
+        mapsPresenter.showPlaceByName();
     }
 }

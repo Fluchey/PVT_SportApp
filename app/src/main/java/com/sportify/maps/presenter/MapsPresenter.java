@@ -11,4 +11,7 @@ public interface MapsPresenter {
 
     void getMarkersForCategory();
 
+    void showPlaceByName();
+
+    void updatePlaceSearch(String textChange);
 }
