@@ -7,26 +7,55 @@
     tools:context="com.sportify.maps.activity.MapsActivity"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.sportify.maps.activity.MapsActivity" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:weightSum="1">
 
-        <fragment
-            android:id="@+id/map"
-            android:name="com.google.android.gms.maps.SupportMapFragment"
-            android:layout_width="match_parent"
-            android:layout_height="332dp"
-            tools:context="com.sportify.maps.activity.MapsActivity"
-            android:layout_weight="0.39" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.39"
+            android:orientation="horizontal">
+
+            <AutoCompleteTextView
+                android:id="@+id/etMapsSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/common_google_signin_btn_text_light_disabled"
+                android:ems="10"
+                android:hint="Search place"
+                android:inputType="textPersonName" />
+
+            <Button
+                android:id="@+id/mapsSearchButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Button" />
+
+            <com.wang.avi.AVLoadingIndicatorView
+                android:id="@+id/mapLoadIndicator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:indicatorName="PacmanIndicator" />
+
+        </LinearLayout>
 
         <ListView
             android:id="@+id/mapsListView"
             android:layout_width="wrap_content"
             android:layout_height="94dp"
-            android:entries="@array/sections"
-            android:layout_weight="0.30" />
+            android:layout_weight="0.09"
+            android:entries="@array/sections" />
 
         <!--<AutoCompleteTextView-->
             <!--android:id="@+id/etEnterCategory"-->
@@ -42,20 +71,6 @@
             android:layout_gravity="center"
             android:layout_weight="0.14" />
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:onClick="showCategory"
-            android:text="Go" />
-
     </LinearLayout>
-
-    <com.wang.avi.AVLoadingIndicatorView
-        android:id="@+id/mapLoadIndicator"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:indicatorName="PacmanIndicator" />
 
 </RelativeLayout>

@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -22,6 +24,8 @@ import com.sportify.maps.presenter.MapsPresenter;
 import com.sportify.maps.presenter.MapsPresenterImpl;
 import com.wang.avi.AVLoadingIndicatorView;
 
+import java.util.ArrayList;
+
 import sportapp.pvt_sportapp.R;
 
 public class MapsActivity extends FragmentActivity implements MapsView, OnMapReadyCallback, AdapterView.OnItemClickListener {
@@ -33,6 +37,8 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
 
     private GoogleMap mMap;
 
+    private ArrayAdapter<String> adapter;
+    private AutoCompleteTextView autoCompleteTextView;
     private TextView categoryChosen;
     private AVLoadingIndicatorView loadingIndicator;
 
@@ -55,6 +61,7 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+        autoCompleteTextView = (AutoCompleteTextView) (findViewById(R.id.etMapsSearch));
         categoryChosen = (TextView) (findViewById(R.id.twCategoryChosen));
         loadingIndicator = (AVLoadingIndicatorView) (findViewById(R.id.mapLoadIndicator));
 //        closeLoadIndicator();
@@ -119,8 +126,15 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
     }
 
     @Override
+    public void updatePlaceSearch(ArrayList<String> places) {
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, places);
+        autoCompleteTextView.setAdapter(adapter);
+    }
+
+    @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         String [] arr = getResources().getStringArray(R.array.sections);
         categoryChosen.setText(arr[(int) id]);
+        mapsPresenter.getMarkersForCategory();
     }
 }

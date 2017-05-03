@@ -8,6 +8,7 @@ import android.widget.Toast;
 import com.sportify.maps.activity.MapsView;
 import com.sportify.maps.request.MapsRequest;
 import com.sportify.maps.request.MapsRequestImpl;
+import com.sportify.storage.Place;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -31,6 +32,7 @@ public class MapsPresenterImpl implements MapsPresenter, MapsRequest.onRequestFi
         this.share = sharedPreferences;
         this.token = sharedPreferences.getString("Token", "");
         this.mapsRequest = new MapsRequestImpl(this, token);
+        mapsRequest.makeApiRequestGet("GET", "getallplaces", "getAllPlaces");
     }
 
     @Override
@@ -67,7 +69,7 @@ public class MapsPresenterImpl implements MapsPresenter, MapsRequest.onRequestFi
         }
 
 
-        Log.d("Json:", json.toString());
+//        Log.d("Json:", json.toString());
 
 //        Log.d("params[3]", jsonMessage);
 //        Toast.makeText((Context) mapsView, responseBody, Toast.LENGTH_LONG).show();
@@ -75,19 +77,26 @@ public class MapsPresenterImpl implements MapsPresenter, MapsRequest.onRequestFi
 
     @Override
     public void getMarkersForCategory() {
-        mapsView.showLoadIndicator();
+//        mapsView.showLoadIndicator();
+//
+//
+//        String category = mapsView.getCategory();
+//        Log.d("CATEGORY", category);
+//        JSONObject jsonObject = new JSONObject();
+//        try {
+//            jsonObject.put("category", category);
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
+//
+//        mapsRequest.makeApiRequest(jsonObject.toString(), "showCategoryOnMap", "PUT");
+        mapsView.clearMarkers();
+        for (Place p: mapsRequest.getPlaces()){
+            if(p.getCategory().equals(mapsView.getCategory())){
+                mapsView.showMarkerAt(p.getName(), p.getCategory(), p.getLat(), p.getLon());
+            }
 
-
-        String category = mapsView.getCategory();
-        Log.d("CATEGORY", category);
-        JSONObject jsonObject = new JSONObject();
-        try {
-            jsonObject.put("category", category);
-        } catch (JSONException e) {
-            e.printStackTrace();
         }
-
-        mapsRequest.makeApiRequest(jsonObject.toString(), "showCategoryOnMap");
     }
 
     @Override
@@ -97,21 +106,27 @@ public class MapsPresenterImpl implements MapsPresenter, MapsRequest.onRequestFi
 
 
     /**
-     * @param params params [0] = responseCode.. "200" or "300"
-     *               params [1] = jsonMessage in String format
+     * @param command The command for the switch
+     * @param params params [0] = jsonMessage in String format
+     *               params [1] = responseCode.. "200" or "300"
      *               params [2] = command for the switch
+     *               OPTIONAL (params[0] = timeOut, if connection has timed out)
      */
     @Override
-    public void showApiResponse(String... params) {
-        if (params == null) {
+    public void showApiResponse(String command, String... params) {
+        if (params[0] == null) {
             return;
         }
 //        Log.d("Params [0]", params[0]);
 //        Log.d("Params [1]", params[1]);
 //        Log.d("Params [2]", params[2]);
-        switch (params[2]) {
+        switch (command) {
             case "Show category":
                 markCategoriesOnMap(params[0]);
+                break;
+
+            case "getAllPlaces":
+                mapsRequest.updateAllPlaces(params[0]);
                 break;
         }
     }

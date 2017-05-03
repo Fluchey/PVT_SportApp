@@ -2,6 +2,8 @@ package com.sportify.maps.activity;
 
 import android.widget.EditText;
 
+import java.util.ArrayList;
+
 /**
  * Created by fluchey on 2017-04-26.
  */
@@ -18,5 +20,7 @@ public interface MapsView {
     void showLoadIndicator();
 
     void closeLoadIndicator();
+
+    void updatePlaceSearch(ArrayList<String> places);
 
 }

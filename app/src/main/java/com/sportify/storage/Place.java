@@ -48,4 +48,9 @@ public class Place {
     public void setLon(double lon) {
         this.lon = lon;
     }
+
+    @Override
+    public String toString() {
+        return "Name: " + name + " Category: " + category + " Lat: " + lat + " Lon: " + lon;
+    }
 }

@@ -4,8 +4,15 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.sportify.storage.Place;
 import com.sportify.storage.PlaceStorage;
 import com.sportify.util.Connector;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 import javax.inject.Inject;
 
@@ -16,7 +23,7 @@ import javax.inject.Inject;
 public class MapsRequestImpl implements MapsRequest {
     private onRequestFinishedListener onRequestFinishedListener;
     private String token = "";
-    private PlaceStorage places;
+    private ArrayList<Place> places;
 
     public MapsRequestImpl(final onRequestFinishedListener onRequestFinishedListener, String token) {
         this.onRequestFinishedListener = onRequestFinishedListener;
@@ -25,43 +32,93 @@ public class MapsRequestImpl implements MapsRequest {
         /**
          * Fetch all places from the database, for autocompletion when searching for a place
          */
-        places = new PlaceStorage();
-        ApiRequest apiRequest = (MapsRequestImpl.ApiRequest) new MapsRequestImpl.ApiRequest(this).execute
-        ("", "getallplaces");
+        places = new ArrayList<>();
     }
 
     @Override
-    public void makeApiRequest(String jsonMessage, String endUrl) {
-        ApiRequest apiRequest = (MapsRequestImpl.ApiRequest) new MapsRequestImpl.ApiRequest(this).execute(jsonMessage, endUrl);
+    public void makeApiRequestPut(String jsonMessage, String endUrl, String method, String command) {
+        ApiRequest apiRequest = (MapsRequestImpl.ApiRequest) new MapsRequestImpl.ApiRequest(this, command).execute(method, endUrl, jsonMessage);
+    }
+
+    @Override
+    public void makeApiRequestGet(String method, String endURL, String command) {
+        ApiRequest apiRequest = (MapsRequestImpl.ApiRequest) new MapsRequestImpl.ApiRequest(this, command).execute
+                (method, endURL);
+    }
+
+    @Override
+    public void updateAllPlaces(String jsonMessage) {
+        JSONObject json = null;
+        JSONArray array = null;
+        try {
+            json = new JSONObject(jsonMessage);
+            array = json.getJSONArray("places");
+            Log.d("JsonArr: ", array.toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        if (json == null || array == null) {
+            return;
+        }
+
+
+        try {
+            for (int i = 0; i < array.length(); i++) {
+                JSONObject jsonObject = array.getJSONObject(i);
+                places.add(new Place(jsonObject.getString("name"), jsonObject.getString("category"), Double.parseDouble(jsonObject.getString("lat")), Double.parseDouble(jsonObject.getString("lon"))));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        for (Place p: places){
+            Log.d("Place", p.toString());
+        }
+    }
+
+    @Override
+    public ArrayList<Place> getPlaces() {
+        return places;
     }
 
     private class ApiRequest extends AsyncTask<String, MapsRequestImpl, Void> {
         private MapsRequestImpl mapsRequestImpl;
-
         private String[] result;
+        private String command;
 
-        public ApiRequest(MapsRequestImpl mapsRequestImpl) {
+        /**
+         *
+         * @param mapsRequestImpl
+         * @param command The command wich decides what to do in PresenterImpl after apiresponse has finished
+         */
+        public ApiRequest(MapsRequestImpl mapsRequestImpl, String command) {
             this.mapsRequestImpl = mapsRequestImpl;
+            this.command = command;
         }
 
         /**
          * @param params
-         * params [0] = jsonMessage
+         * params [0] = method (POST, PUT, GET..)
          * params [1] = endUrl
+         * (params [2] = jsonMessage) - optional, only if PUT or POST
          * @return
          */
         @Override
         protected Void doInBackground(String... params) {
-            result = Connector.connect("https://pvt15app.herokuapp.com/api/" + params[1],
-                    "PUT", params[0], token);
-            return null;
+            if(params[0].equals("GET") || params[0].equals("DELETE")){
+                result = Connector.connectGetOrDelete(params[0], "http://192.168.0.12:9000/api/" + params[1], token);
+                return null;
+            }else {
+                result = Connector.connect("http://192.168.0.12:9000/api/" + params[1],
+                        params[2], params[0], token);
+                return null;
+            }
         }
 
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            mapsRequestImpl.onRequestFinishedListener.closeLoadIndicator();
-            mapsRequestImpl.onRequestFinishedListener.showApiResponse(result);
+            mapsRequestImpl.onRequestFinishedListener.showApiResponse(command, result);
         }
     }
 }
