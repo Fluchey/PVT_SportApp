@@ -18,8 +18,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name="com.sportify.login.activity.LoginActivity">
+        android:theme="@style/AppTheme">
+        <activity android:name="com.sportify.mainPage.activity.MainPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -57,7 +57,8 @@
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name="com.sportify.profile.ProfileActivity" />
         <activity android:name="com.sportify.placeReview.activity.placeReviewActivity" />
-        <activity android:name="com.sportify.login.activity.ForgottenPasswActivity"></activity>
+        <activity android:name="com.sportify.forgottenPass.activity.ForgottenPassActivity" />
+        <activity android:name="com.sportify.settings.activity.SettingsActivity"></activity>
     </application>
 
 </manifest>
