@@ -71,30 +71,12 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
         adapter.setNotifyOnChange(true);
         autoCompleteTextView = (AutoCompleteTextView) (findViewById(R.id.etMapsSearch));
         autoCompleteTextView.setAdapter(adapter);
-        autoCompleteTextView.addTextChangedListener(new TextWatcher() {
+        autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        String textChange = autoCompleteTextView.getText().toString();
-                        mapsPresenter.updatePlaceSearch(textChange);
-                    }
-                });
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
             }
         });
-//        categoryChosen = (TextView) (findViewById(R.id.twCategoryChosen));
-//        loadingIndicator = (AVLoadingIndicatorView) (findViewById(R.id.mapLoadIndicator));
-//        closeLoadIndicator();
     }
 
 
@@ -126,7 +108,7 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
     }
 
     private Marker createMarker(String eventName, String description, double latitude, double longitude){
-        return mMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)).title(eventName).snippet(description));
+        return mMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)).title(eventName).snippet(description).draggable(true));
     }
 
     @Override
@@ -162,14 +144,9 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
 
     @Override
     public void updatePlaceSearch(ArrayList<String> places) {
-//        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, places);
-//        adapter.clear();
-        for (String s : places){
-            adapter.add(s);
-        }
-        adapter.getFilter().filter(autoCompleteTextView.getText(), null);
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, places);
         Log.d("Count: ", String.valueOf(adapter.getCount()));
-//        autoCompleteTextView.setAdapter(adapter);
+        autoCompleteTextView.setAdapter(adapter);
     }
 
     @Override

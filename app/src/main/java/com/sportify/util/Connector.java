@@ -55,12 +55,6 @@ public class Connector {
             responseFromRest[0] = jsonObject.getString("body");
             responseFromRest[1] = "" + connection.getResponseCode();
 
-//            try {
-//                responseFromRest[2] = jsonObject.getString("command");
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -104,12 +98,6 @@ public class Connector {
             JSONObject jsonObject = new JSONObject(out.toString());
             responseFromRest[0] = jsonObject.getString("body");
             responseFromRest[1] = "" + connection.getResponseCode();
-
-            try {
-                responseFromRest[2] = jsonObject.getString("command");
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
 
         } catch (SocketTimeoutException se) {
             responseFromRest[0] = "timeOut";

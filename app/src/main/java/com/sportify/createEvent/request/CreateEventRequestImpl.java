@@ -51,7 +51,6 @@ public class CreateEventRequestImpl implements CreateEventRequest{
         @Override
         protected void onPostExecute(Void aVoid){
             super.onPostExecute(aVoid);
-
             createEventRequestImpl.onCreateEventFinishedListener.showApiResponse(responseBody);
         }
     }
