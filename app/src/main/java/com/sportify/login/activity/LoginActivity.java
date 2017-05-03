@@ -171,4 +171,9 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 //        startActivity(new Intent(LoginActivity.this, UserAreaActivity.class));
     }
 
+    public void goToForgottenPassActivity(View view){
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
+
 }
