@@ -1,77 +1,155 @@
 <resources>
-    <string name="app_name">PVT_Sportapp</string>
-    <string name="username">Välj ett användarnamn</string>
-    <string name="first_name">first name</string>
-    <string name="last_name">last name</string>
-    <string name="phone_number">phone number</string>
-    <string name="password">Välj ett lösenord</string>
-    <string name="log_in">Log In</string>
-    <string name="register_here">Register Here</string>
+    <string name="app_name">Sportify</string>
+    <string name="intro_text">Appen är den perfekta för att kombinera nya upplevelser med sport och umgänge</string>
+
+    /* Strings Registrera konto */
     <string name="email">E-post</string>
+    <string name="username">Välj ett användarnamn</string>
+    <string name="password">Välj ett lösenord</string>
+    <string name="password_repeat">Upprepa lösenord</string>
+    <string name="phone_number">Telefonnummer (valfritt)</string>
     <string name="sign_up">Registrera dig</string>
     <string name="facebook_app_id">2064612590432123</string>
-    <string name="title_activity_maps">Map</string>
 
-    /* Strings create event */
-    <string name="event_name">event name</string>
-    <string name="event_price">price</string>
-    <string name="event_date">date, yyyy-mm-dd</string>
-    <string name="event_start_time">start time, hh:mm</string>
-    <string name="event_end_time">end time, hh:mm</string>
-    <string name="event_type">type</string>
-    <string name="event_place">event place</string>
-    <string name="event_max_attendance">max attendance</string>
-    <string name="event_private">private event</string>
-    <string name="event_description">desribe your event</string>
-    <string name="create_event">create event</string>
-    <string name="createEvent_here">Create event here</string>
-    <string name="find_event">Find event</string>
-
-    /* Error messages create event */
-    <string name="event_name_empty_error">Enter name</string>
-    <string name="event_price_wrongformat_error">Price is in wrong format</string>
-    <string name="event_date_empty_error">Enter date</string>
-    <string name="event_date_wrongformat_error">Date is in wrong format</string>
-    <string name="event_start_time_empty_error">Enter start time</string>
-    <string name="event_end_time_empty_error">Enter end time</string>
-    <string name="event_type_empty_error">Enter event type</string>
-    <string name="event_place_empty_error">Enter place</string>
-
-
-    <string name="first_name_optional">first name (Optional)</string>
-    <string name="last_name_optional">last name (Optional)</string>
-
-    <string name="username_empty_error">Enter username</string>
-    <string name="password_empty_error">Enter password</string>
-    <string name="firstName_Empty_error">Enter first name</string>
-    <string name="lastName_Empty_error">Enter last name</string>
-    <string name="phoneNumber_Empty_error">Enter phone number</string>
-    <string name="email_Empty_error">Enter email</string>
-
-    <string name="login_successfull">Login succesfull</string>
-
-    <string name="email_wrongFormat_error">Invalid format</string>
-    <string name="title_activity_friend">FriendActivity</string>
-
-    /* Strings map */
-    <string name="where_do_you_want_to_go">Where do you want to go?</string>
-    <string name="enter_category">Enter category</string>
-
-    <string name="map_type_none">None</string>
-    <string name="map_type_normal">Normal</string>
-    <string name="map_type_terrain">Terrain</string>
-    <string name="map_type_satellite">Satellite</string>
-    <string name="map_type_hybrid">Hybrid</string>
-
-    /* Strings Profile */
-
+    /* Strings Skapa profil */
     <string name="profile_name">Namn</string>
-    <string name="profile_name_hint">Förnamn/Efternamn</string>
+    <string name="profile_name_hint">Förnamn Efternamn</string>
     <string name="profile_birthday">Födelsedatum</string>
     <string name="profile_birthday_hint">DD/MM/YY</string>
+    <string name="profile_text">Skapa en profil så andra kan lära känna dig bättre
+    och vi kan hjälpa dig hitta roliga event, för just dig!</string>
+    <string name="intressen_text">Intressen</string>
+    <string name="profile_interests_fotball">Fotboll</string>
+    <string name="profile_interests_basket">Basket</string>
+    <string name="profile_interests_bandy">Bandy</string>
+    <string name="profile_interests_volleyball">Vollyboll</string>
+    <string name="profile_interests_swimming">Simming</string>
+    <string name="profile_interests_outdoortraining">Utegym</string>
+    <string name="profile_interests_climbing">Klättring</string>
+    <string name="profile_interests_running">Löpning</string>
 
 
-    /* Strings review */
+
+    /* Strings Intressen */
+    <string name="interest1">Bollsport</string>
+    <string name="interest2">Simning</string>
+    <string name="interest3">Friidrott</string>
+    <string name="interest4">Löpning</string>
+    <string name="interest5">Gymning</string>
+    <string name="interest6">Skating och parkour</string>
+    <string name="interest7">Promenering</string>
+    <string name="interest8">Ridning</string>
+    <string name="interest9">Övrigt</string>
+
+
+    /* Strings Profilflöde */
+    <string name="profile_calendar">Min kalender</string>
+    <string name="profile_event">Mina event</string>
+    <string name="profile_edit">Redigera profil</string>
+    <string name="profile_rec">Rekommendationer</string>
+    <string name="profile_home">Hem</string>
+    <string name="profile_search">Sök</string>
+    <string name="profile_create">Skapa event</string>
+    <string name="profile_notifications">Notiser</string>
+    <string name="profile_friends">Vänner</string>
+
+
+    /* Strings Skapa event */
+    <string name="create_event">Skapa event</string>
+    <string name="event_name">Event titel</string>
+    <string name="create_event_hint">Namn på event</string>
+    <string name="event_price">Pris</string>
+    <string name="event_price_hint">SEK</string>
+    <string name="event_place">Plats</string>
+    <string name="event_date">Datum</string>
+    <string name="event_date_hint">DD/MM/YY</string>
+    <string name="event_start_time">Starttid</string>
+    <string name="event_end_time">Sluttid</string>
+    <string name="event_time_hint">hh:mm</string>
+    <string name="event_type">Typ av sport</string>
+    <string name="event_type_hint">intresse</string>
+	<string name="event_description">Beskrivning</string>
+	<string name="event_pic">Lägg till bild</string>
+	<string name="event_host">Värd:</string>
+	<string name="event_private">Privat</string>
+	<string name="event_private_descr">Endast inbjudna kan gå med i event</string>
+	<string name="event_public">Offentlig</string>
+	<string name="event_public_descr">Vem som helst kan gå med i eventet</string>
+	<string name="event_invite_friends">Nästan klar! Bjud in dina vänner till ditt event</string>
+	<string name="event_created_message">Här ser du en överblick över eventet, gå vidare till nästa steg för att publicera det i appen.</string>
+
+
+    <string name="event_max_attendance">Max antal deltagare</string>
+    <string name="createEvent_here">Skapa ditt event här</string>
+    <string name="find_event">Hitta event</string>
+
+    /* Error messages create event */
+    <string name="event_name_empty_error">Ange namn</string>
+    <string name="event_price_wrongformat_error">Pris är i fel format</string>
+    <string name="event_date_empty_error">Ange datum</string>
+    <string name="event_date_wrongformat_error">Datum är i fel format</string>
+    <string name="event_start_time_empty_error">Ange starttid</string>
+    <string name="event_end_time_empty_error">Ange sluttid</string>
+    <string name="event_type_empty_error">Ange eventtyp</string>
+    <string name="event_place_empty_error">Ange plats</string>
+
+
+
+    <string name="first_name_optional">Förnamn (frivilligt)</string>
+    <string name="last_name_optional">Efternamn (frivilligt)</string>
+    <string name="username_empty_error">Ange användarnamn</string>
+    <string name="password_empty_error">Ange lösenord</string>
+    <string name="firstName_Empty_error">Ange förnamn</string>
+    <string name="lastName_Empty_error">Ange efternamn</string>
+    <string name="phoneNumber_Empty_error">Ange mobilnummer</string>
+    <string name="email_Empty_error">Ange e-mail</string>
+	<string name="email_wrongFormat_error">Invalid format</string>
+
+
+
+    /* Strings Karta */
+    <string name="where_do_you_want_to_go">Vart vill du gå?</string>
+    <string name="enter_category">Välj kategori</string>
+    <string name="map_type_none">None</string>
+    <string name="map_type_normal">Ingen</string>
+    <string name="map_type_terrain">Terräng</string>
+    <string name="map_type_satellite">Satellit</string>
+    <string name="map_type_hybrid">Hybrid</string>
+
+	<string name="title_activity_maps">Karta</string>
+
+
+	/* Strings Inställningar */
+	<string name="settings_sett">Inställningar</string>
+	<string name="settings_invite">Bjud in</string>
+	<string name="settings_fb_friends">Facebook vänner</string>
+	<string name="settings_find_friends">Hitta vänner</string>
+	<string name="settings_contacts">Kontakter</string>
+	<string name="settings_account">Konto</string>
+	<string name="settings_notifications">Notifications</string>
+	<string name="settings_change_password">Byt lösenord</string>
+	<string name="settings_account_settings">Kontoinställningar</string>
+	<string name="settings_support">Support</string>
+	<string name="settings_help">Hjälp</string>
+	<string name="settings_report">Rapportera ett fel</string>
+	<string name="settings_integrity">Integritetspolicy</string>
+	<string name="settings_log_out">Logga ut</string>
+
+
+	/* Strings Recensioner */
+	<string name="review_event">Recensera event</string>
+	<string name="review_score">Betyg</string>
+	<string name="review_write">Skriv en recension (frivilligt)</string>
+	<string name="review_write_hint">Berätta vad du tycker</string>
+
+
+    /* Strings misc */
     <string name="submit_button">Skicka</string>
+	<string name="first_name">Förnamn</string>
+    <string name="last_name">Efternamn</string>
+    <string name="log_in">Logga in</string>
+    <string name="register_here">Registrera konto</string>
+	<string name="title_activity_friend">KompisAktivitet</string>
 
+	<string name="login_successfull">Inloggningen lyckades!</string>
 </resources>

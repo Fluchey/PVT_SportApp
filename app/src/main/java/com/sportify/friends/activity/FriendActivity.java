@@ -5,7 +5,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.sportify.friends.presenter.FriendPresenter;
@@ -17,6 +19,7 @@ public class FriendActivity extends AppCompatActivity implements FriendView {
 
     TextView friends;
     Button showFriends;
+    ListView friendList;
     FriendPresenter friendPresenter;
     private SharedPreferences sharedPref;
 
@@ -29,6 +32,7 @@ public class FriendActivity extends AppCompatActivity implements FriendView {
         friendPresenter = new FriendPresenterImpl(this, sharedPref);
         friends = (TextView) findViewById(R.id.tvShowFriends);
         showFriends = (Button) findViewById(R.id.btShowFriends);
+        friendList = (ListView) findViewById(R.id.lvFriends);
 
     }
 
@@ -37,7 +41,10 @@ public class FriendActivity extends AppCompatActivity implements FriendView {
     }
 
     @Override
-    public void showFriend(String friendsToShow) {
-        friends.setText(friendsToShow);
+    public void showFriends(ArrayAdapter myAdapter) {
+//        friends.setText(friendsToShow);
+        friendList.setAdapter(myAdapter);
+
     }
+
 }

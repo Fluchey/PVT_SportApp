@@ -1,7 +1,9 @@
 package com.sportify.friends.presenter;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
+import android.widget.ArrayAdapter;
 
 import com.sportify.friends.activity.FriendView;
 import com.sportify.friends.request.FriendRequest;
@@ -10,6 +12,8 @@ import com.sportify.friends.request.FriendRequestImpl;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 /**
  * Created by Maja on 2017-04-27.
@@ -32,7 +36,7 @@ public class FriendPresenterImpl implements FriendPresenter, FriendRequest.OnSho
     @Override
     public void showFriends() {
         //Ta ID från den som är inloggad
-        String userID = "2";
+        String userID = "1";
         JSONObject jsonObject = new JSONObject();
 
         try {
@@ -58,15 +62,27 @@ public class FriendPresenterImpl implements FriendPresenter, FriendRequest.OnSho
             System.out.println("E-message " + e.getMessage().toString());
         }
         if(json == null || array == null){
+            System.out.println("null");
             return;
         }
 
         try{
+            ArrayList<String> friends = new ArrayList<>();
+
             for(int i=0; i < array.length(); i++){
                 JSONObject jsonObject = array.getJSONObject(i);
-                friendView.showFriend(jsonObject.getString("userID"));
+                //TODO: Hur ska vänner visas?
+                String firstname = jsonObject.getString("firstname");
+                friends.add(firstname);
             }
+
+            ArrayAdapter<String> myArrayAdapter = new ArrayAdapter<String>((Context) friendView,
+                    android.R.layout.simple_expandable_list_item_1, friends);
+
+            friendView.showFriends(myArrayAdapter);
+
         }catch(JSONException e){
+            System.out.println("Dåligt " + e.getMessage().toString());
             e.printStackTrace();
         }
     }

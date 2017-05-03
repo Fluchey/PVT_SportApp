@@ -1,5 +1,7 @@
 package com.sportify.friends.activity;
 
+import android.widget.ArrayAdapter;
+
 /**
  * Created by Maja on 2017-04-27.
  */
@@ -7,6 +9,6 @@ package com.sportify.friends.activity;
 public interface FriendView {
 
     //TODO: Vad ska tas in och hur ska en vän visas?
-    void showFriend(String friend);
+    void showFriends(ArrayAdapter<String> friend);
 
 }
