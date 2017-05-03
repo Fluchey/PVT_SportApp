@@ -2,6 +2,8 @@ package com.sportify.createEvent.request;
 
 import android.os.AsyncTask;
 
+import com.sportify.util.Connector;
+
 /**
  * Created by Maja on 2017-04-18.
  */
@@ -36,12 +38,12 @@ public class CreateEventRequestImpl implements CreateEventRequest{
         @Override
         protected Void doInBackground(String... params) {
 
-//            String[] resultFromApi = Connector.connect("https://pvt15app.herokuapp.com/api/createEvent",
-//                    "POST", String.format(params[0]), token);
+            String[] resultFromApi = Connector.connect("http://130.237.89.181:9000/api/createEvent",
+                    "POST", String.format(params[0]), token);
 //            String[] resultFromApi = Connector.connect("http://193.11.94.17:9000/api/changeEvent",
 //                    "PUT", String.format(params[0]), token);
 
-//            responseBody = resultFromApi[0];
+            responseBody = resultFromApi[0];
 
             return null;
         }
