@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.sportify.MainPage"
+    tools:context="com.sportify.mainPage.activity.MainPage"
     android:background="@drawable/mainbackground2"
     tools:layout_editor_absoluteY="25dp"
     tools:layout_editor_absoluteX="0dp">
@@ -76,6 +76,7 @@
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:text="@string/intro_text"
+        android:gravity="center"
         android:textColor="@color/colorPrimaryDarkGrey"
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
