@@ -1,10 +1,9 @@
 package com.sportify.friends.presenter;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
-import android.widget.ArrayAdapter;
 
+import com.sportify.friends.Profile;
 import com.sportify.friends.activity.FriendView;
 import com.sportify.friends.request.FriendRequest;
 import com.sportify.friends.request.FriendRequestImpl;
@@ -14,6 +13,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+
+import sportapp.pvt_sportapp.R;
 
 /**
  * Created by Maja on 2017-04-27.
@@ -67,19 +68,19 @@ public class FriendPresenterImpl implements FriendPresenter, FriendRequest.OnSho
         }
 
         try{
-            ArrayList<String> friends = new ArrayList<>();
+            ArrayList<Profile> friends = new ArrayList<>();
 
             for(int i=0; i < array.length(); i++){
                 JSONObject jsonObject = array.getJSONObject(i);
-                //TODO: Hur ska vänner visas?
+                //TODO: Hur ska vänner visas? Byt ut facebook icon till profilbild
                 String firstname = jsonObject.getString("firstname");
-                friends.add(firstname);
+
+                Profile friend = new Profile(firstname, firstname, R.drawable.com_facebook_button_icon_blue);
+
+                friends.add(friend);
             }
 
-            ArrayAdapter<String> myArrayAdapter = new ArrayAdapter<String>((Context) friendView,
-                    android.R.layout.simple_expandable_list_item_1, friends);
-
-            friendView.showFriends(myArrayAdapter);
+            friendView.showFriends(friends);
 
         }catch(JSONException e){
             System.out.println("Dåligt " + e.getMessage().toString());
