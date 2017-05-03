@@ -8,8 +8,19 @@
     <string name="password">Välj ett lösenord</string>
     <string name="password_repeat">Upprepa lösenord</string>
     <string name="phone_number">Telefonnummer (valfritt)</string>
-    <string name="sign_up">Registrera dig</string>
+    <string name="sign_up">Registrera konto</string>
     <string name="facebook_app_id">2064612590432123</string>
+
+    /* Strings Logga in */
+    <string name="log_in">Logga in</string>
+    <string name="logpassword">Lösenord</string>
+    <string name="forgotten_password">Glömt lösenord?</string>
+
+    /* Strings Glömt lösenord*/
+    <string name="forgotten_password_instru">Fyll i din e-postadress så skickar vi xxx xx x</string>
+    <string name="forgotten_pass_send">Skicka</string>
+    <string name="forgotten_password_success">Mailet har nu skickats, det kan ta några minuter innan det dyker upp i din inkorg</string>
+    <string name="forgotten_password_failure">E-postadressen hittades inte i vårt system, men du kan enkelt registrera ett nytt konto.</string>
 
     /* Strings Skapa profil */
     <string name="profile_name">Namn</string>
@@ -27,7 +38,6 @@
     <string name="profile_interests_outdoortraining">Utegym</string>
     <string name="profile_interests_climbing">Klättring</string>
     <string name="profile_interests_running">Löpning</string>
-
 
 
     /* Strings Intressen */
@@ -68,15 +78,15 @@
     <string name="event_time_hint">hh:mm</string>
     <string name="event_type">Typ av sport</string>
     <string name="event_type_hint">intresse</string>
-	<string name="event_description">Beskrivning</string>
-	<string name="event_pic">Lägg till bild</string>
-	<string name="event_host">Värd:</string>
-	<string name="event_private">Privat</string>
-	<string name="event_private_descr">Endast inbjudna kan gå med i event</string>
-	<string name="event_public">Offentlig</string>
-	<string name="event_public_descr">Vem som helst kan gå med i eventet</string>
-	<string name="event_invite_friends">Nästan klar! Bjud in dina vänner till ditt event</string>
-	<string name="event_created_message">Här ser du en överblick över eventet, gå vidare till nästa steg för att publicera det i appen.</string>
+    <string name="event_description">Beskrivning</string>
+    <string name="event_pic">Lägg till bild</string>
+    <string name="event_host">Värd:</string>
+    <string name="event_private">Privat</string>
+    <string name="event_private_descr">Endast inbjudna kan gå med i event</string>
+    <string name="event_public">Offentlig</string>
+    <string name="event_public_descr">Vem som helst kan gå med i eventet</string>
+    <string name="event_invite_friends">Nästan klar! Bjud in dina vänner till ditt event</string>
+    <string name="event_created_message">Här ser du en överblick över eventet, gå vidare till nästa steg för att publicera det i appen.</string>
 
 
     <string name="event_max_attendance">Max antal deltagare</string>
@@ -94,7 +104,6 @@
     <string name="event_place_empty_error">Ange plats</string>
 
 
-
     <string name="first_name_optional">Förnamn (frivilligt)</string>
     <string name="last_name_optional">Efternamn (frivilligt)</string>
     <string name="username_empty_error">Ange användarnamn</string>
@@ -102,9 +111,8 @@
     <string name="firstName_Empty_error">Ange förnamn</string>
     <string name="lastName_Empty_error">Ange efternamn</string>
     <string name="phoneNumber_Empty_error">Ange mobilnummer</string>
-    <string name="email_Empty_error">Ange e-mail</string>
-	<string name="email_wrongFormat_error">Invalid format</string>
-
+    <string name="email_Empty_error">Ange e-post</string>
+    <string name="email_wrongFormat_error">Vänligen skriv in en giltig e-postadress</string>
 
 
     /* Strings Karta */
@@ -116,40 +124,40 @@
     <string name="map_type_satellite">Satellit</string>
     <string name="map_type_hybrid">Hybrid</string>
 
-	<string name="title_activity_maps">Karta</string>
+    <string name="title_activity_maps">Karta</string>
 
 
-	/* Strings Inställningar */
-	<string name="settings_sett">Inställningar</string>
-	<string name="settings_invite">Bjud in</string>
-	<string name="settings_fb_friends">Facebook vänner</string>
-	<string name="settings_find_friends">Hitta vänner</string>
-	<string name="settings_contacts">Kontakter</string>
-	<string name="settings_account">Konto</string>
-	<string name="settings_notifications">Notifications</string>
-	<string name="settings_change_password">Byt lösenord</string>
-	<string name="settings_account_settings">Kontoinställningar</string>
-	<string name="settings_support">Support</string>
-	<string name="settings_help">Hjälp</string>
-	<string name="settings_report">Rapportera ett fel</string>
-	<string name="settings_integrity">Integritetspolicy</string>
-	<string name="settings_log_out">Logga ut</string>
+    /* Strings Inställningar */
+    <string name="settings_sett">Inställningar</string>
+    <string name="settings_invite">Bjud in</string>
+    <string name="settings_fb_friends">Facebook vänner</string>
+    <string name="settings_find_friends">Hitta vänner</string>
+    <string name="settings_contacts">Kontakter</string>
+    <string name="settings_account">Konto</string>
+    <string name="settings_notifications">Notifications</string>
+    <string name="settings_change_password">Byt lösenord</string>
+    <string name="settings_account_settings">Kontoinställningar</string>
+    <string name="settings_support">Support</string>
+    <string name="settings_help">Hjälp</string>
+    <string name="settings_report">Rapportera ett fel</string>
+    <string name="settings_integrity">Integritetspolicy</string>
+    <string name="settings_log_out">Logga ut</string>
 
 
-	/* Strings Recensioner */
-	<string name="review_event">Recensera event</string>
-	<string name="review_score">Betyg</string>
-	<string name="review_write">Skriv en recension (frivilligt)</string>
-	<string name="review_write_hint">Berätta vad du tycker</string>
+    /* Strings Recensioner */
+    <string name="review_event">Recensera event</string>
+    <string name="review_score">Betyg</string>
+    <string name="review_write">Skriv en recension (frivilligt)</string>
+    <string name="review_write_hint">Berätta vad du tycker</string>
 
 
     /* Strings misc */
     <string name="submit_button">Skicka</string>
-	<string name="first_name">Förnamn</string>
+    <string name="first_name">Förnamn</string>
     <string name="last_name">Efternamn</string>
-    <string name="log_in">Logga in</string>
-    <string name="register_here">Registrera konto</string>
-	<string name="title_activity_friend">KompisAktivitet</string>
 
-	<string name="login_successfull">Inloggningen lyckades!</string>
+    <string name="register_here">Registrera konto</string>
+    <string name="title_activity_friend">KompisAktivitet</string>
+    <string name="find_friends">Hitta vänner</string>
+    <string name="login_successfull">Inloggningen lyckades!</string>
 </resources>

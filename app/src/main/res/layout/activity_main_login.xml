@@ -7,24 +7,75 @@
     android:orientation="vertical"
     android:paddingTop="@dimen/paddingTop"
     android:paddingBottom="@dimen/paddingBottom"
-    android:background="@drawable/loggain"
+    android:background="@drawable/neutralbakgrund"
     tools:context="com.sportify.login.activity.LoginActivity"
     tools:layout_editor_absoluteY="25dp"
     tools:layout_editor_absoluteX="0dp">
 
+    <TextView
+        android:id="@+id/loginHeader"
+        android:layout_width="148dp"
+        android:layout_height="40dp"
+        android:text="@string/log_in"
+        android:textSize="35sp"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="21dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/etLoginPassword"
         android:layout_width="0dp"
-        android:layout_height="45dp"
+        android:layout_height="41dp"
+        android:drawableStart="@drawable/user"
+        android:drawablePadding="15sp"
         android:ems="10"
-        android:hint="@string/password"
+        android:fontFamily="serif"
+        android:hint="@string/logpassword"
         android:inputType="textPassword"
-        android:layout_marginStart="42dp"
+        android:textColorHint="@color/colorPrimaryDark"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:textStyle="italic"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="28dp"
+        android:layout_marginEnd="28dp"
         tools:layout_constraintTop_creator="1"
-        android:layout_marginTop="14dp"
-        app:layout_constraintTop_toBottomOf="@+id/etLoginEmail"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="181dp"
         tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <EditText
+        android:id="@+id/etLoginEmail"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:drawableStart="@drawable/mail"
+        android:drawablePadding="15sp"
+        android:ems="10"
+        android:fontFamily="serif"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        android:textColorHint="@color/colorPrimaryDark"
+        android:textStyle="italic"
+        android:layout_width="0dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="@+id/etLoginPassword"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="59dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="59dp"
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <Button
@@ -33,12 +84,44 @@
         android:layout_height="wrap_content"
         android:text="@string/log_in"
         android:onClick="loginButtonClick"
+        tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toTopOf="@+id/loginFacebookButton"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="29dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/loginFacebookButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="45dp"
+        app:layout_constraintTop_toBottomOf="@+id/loginButton"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+
+    <TextView
+        android:id="@+id/tvFindFriends"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/find_friends"
+        android:textColor="@color/colorPrimaryDarkGrey"
+
+
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/tvLoginRegisterHere"
+        android:layout_marginStart="44dp"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="11dp"
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <TextView
@@ -49,10 +132,13 @@
         android:textSize="@dimen/standardTextSize"
         android:textColor="@color/colorPrimaryDarkGrey"
         tools:layout_constraintTop_creator="1"
-        android:layout_marginTop="19dp"
-        app:layout_constraintTop_toBottomOf="@+id/tvFindFriends"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="82dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/tvCreateEventHere" />
+        android:layout_marginBottom="79dp"
+        app:layout_constraintLeft_toLeftOf="@+id/tvFindFriends" />
 
     <TextView
         android:id="@+id/tvCreateEventHere"
@@ -65,58 +151,26 @@
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintBottom_creator="1"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginTop="39dp"
+        android:layout_marginTop="27dp"
+        app:layout_constraintTop_toBottomOf="@+id/tvLoginRegisterHere"
         tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="27dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvLoginRegisterHere" />
-
-    <com.facebook.login.widget.LoginButton
-        android:id="@+id/loginFacebookButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="158dp"
+        android:layout_marginBottom="38dp"
         app:layout_constraintLeft_toLeftOf="parent" />
 
-    <EditText
-        android:id="@+id/etLoginEmail"
-        android:layout_width="0dp"
-        android:layout_height="47dp"
-        android:ems="10"
-        android:hint="@string/email"
-        android:inputType="textEmailAddress"
-        android:layout_alignParentEnd="true"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_constraintRight_creator="1"
-        app:layout_constraintRight_toRightOf="@+id/etLoginPassword"
-        android:layout_marginTop="84dp"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/etLoginPassword"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
-        android:id="@+id/tvFindFriends"
+        android:id="@+id/forgottenPassLink"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Fiend Friends"
-        android:textColor="@color/colorPrimaryDarkGrey"
-
-
-        android:layout_marginEnd="9dp"
+        android:text="@string/forgotten_password"
+        android:textColor="@color/colorPrimaryDark"
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
-        tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="@+id/tvLoginRegisterHere"
-        android:layout_marginTop="97dp"
-        app:layout_constraintTop_toBottomOf="@+id/loginButton"
-        android:layout_marginBottom="99dp" />
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="17dp"
+        app:layout_constraintTop_toBottomOf="@+id/loginFacebookButton"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:onClick="goToForgottenPassActivity" />
 
 
 </android.support.constraint.ConstraintLayout>

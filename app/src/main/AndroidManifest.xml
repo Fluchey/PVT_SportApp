@@ -57,6 +57,7 @@
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name="com.sportify.profile.ProfileActivity" />
         <activity android:name="com.sportify.placeReview.activity.placeReviewActivity" />
+        <activity android:name="com.sportify.login.activity.ForgottenPasswActivity"></activity>
     </application>
 
 </manifest>
