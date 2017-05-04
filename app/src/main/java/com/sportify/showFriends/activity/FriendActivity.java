@@ -1,4 +1,4 @@
-package com.sportify.friends.activity;
+package com.sportify.showFriends.activity;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -14,9 +14,9 @@ import android.widget.CheckedTextView;
 import android.widget.ImageView;
 import android.widget.ListView;
 
-import com.sportify.friends.Profile;
-import com.sportify.friends.presenter.FriendPresenter;
-import com.sportify.friends.presenter.FriendPresenterImpl;
+import com.sportify.showFriends.Profile;
+import com.sportify.showFriends.presenter.FriendPresenter;
+import com.sportify.showFriends.presenter.FriendPresenterImpl;
 
 import java.util.ArrayList;
 import java.util.HashMap;

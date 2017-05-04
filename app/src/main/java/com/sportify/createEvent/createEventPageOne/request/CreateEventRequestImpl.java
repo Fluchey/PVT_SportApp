@@ -1,4 +1,4 @@
-package com.sportify.createEvent.request;
+package com.sportify.createEvent.createEventPageOne.request;
 
 import android.os.AsyncTask;
 

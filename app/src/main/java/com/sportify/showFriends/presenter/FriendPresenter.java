@@ -1,4 +1,4 @@
-package com.sportify.friends.presenter;
+package com.sportify.showFriends.presenter;
 
 /**
  * Created by Maja on 2017-04-27.

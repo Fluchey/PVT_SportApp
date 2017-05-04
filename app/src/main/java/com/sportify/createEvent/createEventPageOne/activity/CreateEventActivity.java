@@ -1,4 +1,4 @@
-package com.sportify.createEvent.activity;
+package com.sportify.createEvent.createEventPageOne.activity;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -9,8 +9,8 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.sportify.createEvent.presenter.CreateEventPresenter;
-import com.sportify.createEvent.presenter.CreateEventPresenterImpl;
+import com.sportify.createEvent.createEventPageOne.presenter.CreateEventPresenter;
+import com.sportify.createEvent.createEventPageOne.presenter.CreateEventPresenterImpl;
 
 import sportapp.pvt_sportapp.R;
 

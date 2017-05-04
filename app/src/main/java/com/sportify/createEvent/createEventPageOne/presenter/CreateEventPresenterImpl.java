@@ -1,11 +1,11 @@
-package com.sportify.createEvent.presenter;
+package com.sportify.createEvent.createEventPageOne.presenter;
 
 import android.content.SharedPreferences;
 import android.util.Log;
 
-import com.sportify.createEvent.activity.CreateEventView;
-import com.sportify.createEvent.request.CreateEventRequest;
-import com.sportify.createEvent.request.CreateEventRequestImpl;
+import com.sportify.createEvent.createEventPageOne.activity.CreateEventView;
+import com.sportify.createEvent.createEventPageOne.request.CreateEventRequest;
+import com.sportify.createEvent.createEventPageOne.request.CreateEventRequestImpl;
 
 import org.json.JSONException;
 import org.json.JSONObject;

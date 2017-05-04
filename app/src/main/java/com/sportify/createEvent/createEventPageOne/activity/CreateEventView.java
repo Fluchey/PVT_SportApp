@@ -1,4 +1,4 @@
-package com.sportify.createEvent.activity;
+package com.sportify.createEvent.createEventPageOne.activity;
 
 /**
  * Created by Maja on 2017-04-18.
