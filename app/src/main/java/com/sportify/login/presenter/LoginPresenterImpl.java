@@ -25,7 +25,7 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
     public LoginPresenterImpl(LoginView loginView, SharedPreferences sharedPref) {
         this.loginView = loginView;
         this.sharedPref = sharedPref;
-        this.token = sharedPref.getString("Token", "");
+        this.token = sharedPref.getString("jwt", "");
         loginRequest = new LoginRequestImpl(this, token);
     }
 
