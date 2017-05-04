@@ -19,38 +19,44 @@
         android:text="@string/find_event"
         android:background="@color/colorButton"
         android:textSize="12sp"
+        tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
-        tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="267dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/rightButton" />
 
     <!--TODO : hämta användarens profiltext -->
     <TextView
         android:id="@+id/profileText"
-        android:layout_width="241dp"
+        android:layout_width="0dp"
         android:layout_height="36dp"
         android:text="@string/userArea_text"
         android:textSize="12sp"
         android:layout_marginStart="16dp"
         tools:layout_constraintTop_creator="1"
-        android:layout_marginTop="125dp"
+        tools:layout_constraintRight_creator="1"
+        android:layout_marginEnd="14dp"
+        app:layout_constraintRight_toRightOf="@+id/userAreaNameText"
+        android:layout_marginTop="107dp"
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.533" />
 
     <!--TODO : hämta användarens info (namn, ålder, intressen) -->
     <TextView
         android:id="@+id/UserInfoText"
-        android:layout_width="103dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="7dp"
+        android:layout_width="0dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="16dp"
         android:text="@string/userArea_userInfo"
         android:textSize="12sp"
         tools:layout_constraintTop_creator="1"
-        android:layout_marginTop="4dp"
+        tools:layout_constraintRight_creator="1"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="@+id/goToMapButton"
+        android:layout_marginTop="16dp"
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -61,17 +67,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/userArea_username"
-        android:layout_marginEnd="30dp"
-        app:layout_constraintRight_toLeftOf="@+id/goToCalendarButton"
         tools:layout_constraintTop_creator="1"
-        tools:layout_constraintRight_creator="1"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginStart="31dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/UserInfoText" />
 
     <!--TODO : hämta användarens profilbild -->
     <ImageView
         android:id="@+id/profilePicView"
-        android:layout_width="77dp"
-        android:layout_height="0dp"
+        android:layout_width="80dp"
+        android:layout_height="83dp"
         app:srcCompat="@drawable/quokkaprofile"
         tools:ignore="ContentDescription"
         tools:layout_constraintTop_creator="1"
@@ -79,11 +85,13 @@
         tools:layout_constraintBottom_creator="1"
         app:layout_constraintBottom_toTopOf="@+id/profileText"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="11dp"
-        app:layout_constraintTop_toBottomOf="@+id/userAreaNameText"
+        android:layout_marginTop="16dp"
         tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="11dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        android:layout_marginBottom="25dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/userAreaNameText"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.498" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/createEventButton"
@@ -106,18 +114,15 @@
         android:id="@+id/goToSettingsButton"
         android:clickable="true"
         android:onClick="goToSettingsActivity"
-        android:layout_width="36dp"
-        android:layout_height="0dp"
+        android:layout_width="31dp"
+        android:layout_height="30dp"
         app:srcCompat="@drawable/settingsicon"
         tools:ignore="ContentDescription"
         android:layout_marginEnd="1dp"
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
-        tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toBottomOf="@+id/UserInfoText"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
@@ -127,94 +132,154 @@
         android:layout_height="42dp"
         app:srcCompat="@drawable/calendar"
         tools:ignore="ContentDescription"
-        android:layout_marginStart="41dp"
-        android:layout_marginEnd="41dp"
-        app:layout_constraintRight_toLeftOf="@+id/goToSettingsButton"
+        android:layout_marginEnd="73dp"
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
-        android:layout_marginTop="31dp"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/profileText" />
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/goToFriendsListButton"
         android:clickable="true"
-        android:layout_width="44dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         app:srcCompat="@drawable/friendsicon"
         tools:ignore="ContentDescription"
-        android:layout_marginStart="34dp"
-        android:layout_marginEnd="25dp"
+        app:layout_constraintRight_toLeftOf="@+id/goToSettingsButton"
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toBottomOf="@+id/goToNotificationsButton"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="12dp"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintTop_toTopOf="@+id/goToNotificationsButton"
-        app:layout_constraintLeft_toRightOf="@+id/goToNotificationsButton" />
+        android:layout_marginBottom="16dp"
+        app:layout_constraintTop_toTopOf="@+id/createEventButton"
+        app:layout_constraintLeft_toRightOf="@+id/goToCalendarButton" />
 
     <ImageView
         android:id="@+id/goToNotificationsButton"
         android:clickable="true"
-        android:layout_width="40dp"
+        android:layout_width="39dp"
         android:layout_height="0dp"
         app:srcCompat="@drawable/notificationicon"
         tools:ignore="ContentDescription"
-        android:layout_marginStart="99dp"
-        android:layout_marginEnd="103dp"
+        android:layout_marginStart="101dp"
+        android:layout_marginEnd="101dp"
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toBottomOf="@+id/createEventButton"
+        app:layout_constraintBottom_toBottomOf="@+id/goToFriendsListButton"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="9dp"
+        android:layout_marginTop="1dp"
         tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="9dp"
+        android:layout_marginBottom="1dp"
         app:layout_constraintLeft_toLeftOf="@+id/createEventButton"
-        app:layout_constraintTop_toTopOf="@+id/createEventButton" />
+        app:layout_constraintTop_toTopOf="@+id/goToFriendsListButton" />
 
     <ImageView
         android:id="@+id/goToMapButton"
         android:onClick="startMapActivity"
         android:clickable="true"
         android:layout_width="35dp"
-        android:layout_height="46dp"
+        android:layout_height="0dp"
         app:srcCompat="@drawable/searchicon"
         tools:ignore="ContentDescription"
-        android:layout_marginStart="103dp"
+        android:layout_marginStart="104dp"
         android:layout_marginEnd="103dp"
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/goToFriendsListButton"
         app:layout_constraintRight_toRightOf="@+id/createEventButton"
-        android:layout_marginTop="17dp"
         tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="16dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/createEventButton" />
+        app:layout_constraintTop_toTopOf="@+id/mainButton" />
 
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/mainButton"
-        android:layout_width="44dp"
+        android:layout_width="40dp"
         android:layout_height="0dp"
         android:clickable="true"
         app:fabSize="mini"
         app:backgroundTint="@color/colorAccent"
         app:srcCompat="@drawable/sportifyrund"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="34dp"
         app:layout_constraintRight_toLeftOf="@+id/goToMapButton"
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintBottom_creator="1"
-        android:layout_marginStart="28dp"
-        app:layout_constraintBottom_toBottomOf="@+id/goToMapButton"
-        android:layout_marginEnd="31dp"
+        app:layout_constraintBottom_toBottomOf="@+id/goToNotificationsButton"
+        android:layout_marginTop="5dp"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/goToFriendsListButton" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/leftButton"
+        android:backgroundTint="@color/colorCrystalWhite"
+        android:layout_width="33dp"
+        android:layout_height="0dp"
+        android:clickable="true"
+        app:fabSize="mini"
+        app:srcCompat="@drawable/chevleft"
+        android:layout_marginStart="16dp"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="@+id/rightButton"
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/goToMapButton" />
+        app:layout_constraintTop_toTopOf="@+id/findEventButton" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/rightButton"
+        android:backgroundTint="@color/colorCrystalWhite"
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:clickable="true"
+        app:fabSize="mini"
+        app:srcCompat="@drawable/chevright"
+        android:layout_marginEnd="16dp"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/goToNotificationsButton"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="218dp"
+        android:layout_marginBottom="217dp"
+        app:layout_constraintTop_toTopOf="@+id/profileText"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/scrollMyEvText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/userArea_event"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        android:layout_marginEnd="17dp"
+        app:layout_constraintRight_toRightOf="@+id/profileText"
+        android:layout_marginTop="35dp"
+        app:layout_constraintTop_toBottomOf="@+id/profileText"
+        android:layout_marginRight="17dp" />
+
+    <ImageView
+        android:id="@+id/editProfileButton"
+        android:clickable="true"
+        android:layout_width="0dp"
+        android:layout_height="26dp"
+        app:srcCompat="@drawable/editicon"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="152dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/goToSettingsButton"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
 
 
 </android.support.constraint.ConstraintLayout>
