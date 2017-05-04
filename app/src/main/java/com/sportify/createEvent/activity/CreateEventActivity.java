@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sportify.createEvent.presenter.CreateEventPresenter;
@@ -31,7 +30,6 @@ public class CreateEventActivity extends AppCompatActivity implements CreateEven
     private EditText eventType;
     private EditText eventMaxAttendance;
     private CheckBox eventPrivate;
-    private TextView message;
     private SharedPreferences sharedPref;
 
     private CreateEventPresenter createEventPresenter;
@@ -46,7 +44,6 @@ public class CreateEventActivity extends AppCompatActivity implements CreateEven
         eventPlace = (EditText) findViewById(R.id.etEventPlace);
         eventPrice = (EditText) findViewById(R.id.etEventPrice);
         eventDescription = (EditText) findViewById(R.id.etEventDescription);
-        message = (TextView) findViewById(R.id.tvCreateEventMessage);
         eventDate = (EditText) findViewById(R.id.etEventDate);
         eventStartTime = (EditText) findViewById(R.id.etEventStartTime);
         eventEndTime = (EditText) findViewById(R.id.etEventEndTime);
@@ -109,46 +106,61 @@ public class CreateEventActivity extends AppCompatActivity implements CreateEven
         return eventPrivate.isChecked();
     }
 
+//    @Override
+//    public void showEventNameEmptyError() {
+//        message.setText(R.string.event_name_empty_error);
+//    }
+
     @Override
-    public void showEventNameEmptyError() {
-        message.setText(R.string.event_name_empty_error);
+    public void showEventNameEmptyError(int resId){
+        eventName.setError(getString(resId));
     }
 
     @Override
-    public void showEventPriceWrongFormatError() {
-        message.setText(R.string.event_price_wrongformat_error);
+    public void showEventPriceWrongFormatError(int resId) {
+        eventPrice.setError(getString(resId));
     }
 
     @Override
-    public void showEventDateEmptyError() {
-        message.setText(R.string.event_date_empty_error);
+    public void showEventDateEmptyError(int resId) {
+        eventDate.setError(getString(resId));
     }
 
     @Override
-    public void showEventDateFormatError(){ message.setText(R.string.event_date_wrongformat_error);}
+    public void showEventDateFormatError(int resId){
+        eventDate.setError(getString(resId));}
 
     @Override
-    public void showEventStartTimeEmptyError() {
-        message.setText(R.string.event_start_time_empty_error);
+    public void showEventStartTimeEmptyError(int resId) {
+        eventStartTime.setError(getString(resId));
     }
 
     @Override
-    public void showEventEndTimeEmptyError() {
-        message.setText(R.string.event_end_time_empty_error);
+    public void showEventEndTimeEmptyError(int resId) {
+        eventEndTime.setError(getString(resId));
     }
 
     @Override
-    public void showEventTypeEmptyError() {
-        message.setText(R.string.event_type_empty_error);
+    public void showEventTypeEmptyError(int resId) {
+        eventType.setError(getString(resId));
     }
 
     @Override
-    public void showEventPlaceEmptyError(){
-        message.setText(R.string.event_place_empty_error);
+    public void showEventPlaceEmptyError(int resId){
+        eventPlace.setError(getString(resId));
     }
 
-    public void clearMessageTv(){
-        message.setText("");
+    @Override
+    public void clearAllErrors() {
+        eventName.setError(null);
+        eventPrice.setError(null);
+        eventDescription.setError(null);
+        eventPlace.setError(null);
+        eventDate.setError(null);
+        eventStartTime.setError(null);
+        eventEndTime.setError(null);
+        eventType.setError(null);
+        eventMaxAttendance.setError(null);
     }
 
     @Override
