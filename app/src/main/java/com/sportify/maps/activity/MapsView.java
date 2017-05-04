@@ -11,6 +11,8 @@ import java.util.ArrayList;
 public interface MapsView {
     String getTextSearch();
 
+    void setTextSearch(String text);
+
     void clearMarkers();
 
     void showMarkerAt(String eventName, String description, double latitude, double longitude);

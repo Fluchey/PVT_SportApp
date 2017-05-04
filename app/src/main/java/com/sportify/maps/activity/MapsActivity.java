@@ -143,6 +143,11 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
     }
 
     @Override
+    public void setTextSearch(String text) {
+        editTextSearch.setText(text);
+    }
+
+    @Override
     public void clearMarkers() {
         mMap.clear();
     }

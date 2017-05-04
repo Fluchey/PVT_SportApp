@@ -36,25 +36,20 @@ public class MapsPresenterImpl implements MapsPresenter, MapsRequest.onRequestFi
 
     @Override
     public void updatePlaceSearch(String textChange) {
-        if(mapsView.getTextSearch().isEmpty()){
-            mapsView.clearPlaces();
-            mapsView.clearMarkers();
-        }else {
-            JSONObject json = new JSONObject();
+        JSONObject json = new JSONObject();
 
-            try {
-                json.put("textChange", textChange);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            mapsRequest.makeApiRequestPut(json.toString(), "map/updateSearch", "PUT", "updateSearch");
+        try {
+            json.put("textChange", textChange);
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
+        mapsRequest.makeApiRequestPut(json.toString(), "map/updateSearch", "PUT", "updateSearch");
     }
 
     @Override
     public void showCurrentPlacesOnMap() {
         mapsView.clearMarkers();
-        for (Place p: mapsRequest.getCurrentSearchPlaces()) {
+        for (Place p : mapsRequest.getCurrentSearchPlaces()) {
             mapsView.showMarkerAt(p.getName(), p.getCategory(), p.getLat(), p.getLon());
         }
     }
@@ -64,15 +59,16 @@ public class MapsPresenterImpl implements MapsPresenter, MapsRequest.onRequestFi
         mapsView.hideSoftKeyboard();
         Place p = mapsRequest.getCurrentSearchPlaces().get(id);
         mapsView.switchToMapFragmentFromPresenter(p.getLat(), p.getLon());
-        mapsView.goToLocation(p.getLat(), p.getLon(), 15);
+        mapsView.setTextSearch(p.getName());
+//        mapsView.goToLocation(p.getLat(), p.getLon(), 15);
     }
 
     /**
      * @param command The command for the switch
-     * @param params params [0] = jsonMessage in String format
-     *               params [1] = responseCode.. "200" or "300"
-     *               params [2] = command for the switch
-     *               OPTIONAL (params[0] = timeOut, if connection has timed out)
+     * @param params  params [0] = jsonMessage in String format
+     *                params [1] = responseCode.. "200" or "300"
+     *                params [2] = command for the switch
+     *                OPTIONAL (params[0] = timeOut, if connection has timed out)
      */
     @Override
     public void showApiResponse(String command, String... params) {
@@ -93,9 +89,10 @@ public class MapsPresenterImpl implements MapsPresenter, MapsRequest.onRequestFi
     }
 
     private void afterApiupdatePlaceSearch() {
-        if(mapsRequest.getCurrentSearchPlaces().isEmpty()){
+        if (mapsView.getTextSearch().isEmpty()) {
             mapsView.clearPlaces();
-        }else {
+            mapsView.clearMarkers();
+        } else {
             ArrayList<String> placesName = new ArrayList<>();
             for (Place p : mapsRequest.getCurrentSearchPlaces()) {
                 placesName.add(p.getName());
