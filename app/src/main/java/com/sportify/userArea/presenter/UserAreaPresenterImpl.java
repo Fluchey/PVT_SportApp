@@ -19,7 +19,7 @@ public class UserAreaPresenterImpl implements UserAreaPresenter {
     public UserAreaPresenterImpl(UserAreaView userAreaView, SharedPreferences sharedPref){
         this.userAreaView = userAreaView;
         this.sharedPref = sharedPref;
-        this.token = sharedPref.getString("Token", "");
+        this.token = sharedPref.getString("jwt", "");
         userAreaRequest = new UserAreaRequestImpl(token);
     }
 
