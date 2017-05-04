@@ -24,7 +24,7 @@
 
     /* Strings Skapa profil */
     <string name="profile_name">Namn</string>
-    <string name="profile_name_hint">Förnamn Efternamn</string>
+    <string name="profile_name_hint">Förnamn/Efternamn</string>
     <string name="profile_birthday">Födelsedatum</string>
     <string name="profile_birthday_hint">DD/MM/YY</string>
     <string name="profile_text">Skapa en profil så andra kan lära känna dig bättre
