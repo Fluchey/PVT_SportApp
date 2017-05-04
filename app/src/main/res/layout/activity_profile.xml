@@ -68,7 +68,7 @@
     android:layout_marginLeft="8dp"
     android:layout_marginRight="8dp"
     android:layout_marginTop="8dp"
-    android:backgroundTint="@color/colorPrimaryDark"
+    android:backgroundTint="@color/colorPrimaryDarkGrey"
     android:textStyle="italic"
     android:ems="10"
     android:hint="@string/profile_name_hint"
@@ -109,7 +109,7 @@
     android:layout_marginLeft="8dp"
     android:layout_marginRight="8dp"
     android:layout_marginTop="8dp"
-    android:backgroundTint="@color/colorPrimaryDark"
+    android:backgroundTint="@color/colorPrimaryDarkGrey"
     android:ems="10"
     android:hint="@string/profile_birthday_hint"
     android:inputType="textPersonName"
@@ -291,22 +291,22 @@
     app:layout_constraintHorizontal_bias="0.763" />
 
 
-<ImageButton
-    android:id="@+id/ibCheckbox"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="8dp"
-    android:layout_marginLeft="8dp"
-    android:layout_marginRight="8dp"
-    android:layout_marginTop="8dp"
-    android:backgroundTint="@color/colorCrystalWhite"
-    android:src="@drawable/checkboxbutton"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintHorizontal_bias="0.81"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.935" />
+    <ImageButton
+        android:id="@+id/ibCheckboxProfileButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/colorCrystalWhite"
+        android:src="@drawable/checkboxbutton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.81"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.935" />
 
     <TextView
         android:id="@+id/tvProfilHeader"

@@ -30,4 +30,7 @@ public class Profile {
         return profilePicture;
     }
 
+    public String toString(){
+        return firstname;
+    }
 }
