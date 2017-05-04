@@ -83,6 +83,7 @@
     <string name="event_type">Typ av sport</string>
     <string name="event_type_hint">intresse</string>
     <string name="event_description">Beskrivning</string>
+    <string name="event_descr_hint">Berätta lite mer om eventet</string>
     <string name="event_pic">Lägg till bild</string>
     <string name="event_host">Värd:</string>
     <string name="event_private">Privat</string>
@@ -149,7 +150,7 @@
 
 
     /* Strings Recensioner */
-    <string name="review_event">Recensera event</string>
+    <string name="review_header">Recensera</string>
     <string name="review_score">Betyg</string>
     <string name="review_write">Skriv en recension (frivilligt)</string>
     <string name="review_write_hint">Berätta vad du tycker</string>
