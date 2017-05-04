@@ -95,4 +95,17 @@
         android:textStyle="italic"
         android:layout_alignEnd="@+id/etRegisterMail" />
 
+    <TextView
+        android:id="@+id/registerHeader"
+        android:layout_width="wrap_content"
+        android:text="@string/register_here"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:textColor="@color/colorCrystalWhite"
+        android:fontFamily="serif"
+        android:textStyle="italic"
+        android:layout_marginTop="25dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>
