@@ -56,7 +56,7 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
              * Creates new asynctask which runs in background and tries to create new user
              */
 //            loginRequest.makeApiRequest(jsonObject.toString(), "https://pvt15app.herokuapp.com/api/login");
-            loginRequest.makeApiRequest(jsonObject.toString(), "http://130.242.47.152/api/login");
+            loginRequest.makeApiRequest(jsonObject.toString(), "http://130.242.47.152:9000/api/login");
         }
     }
 
@@ -115,7 +115,7 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
 
         if (json != null) {
             SharedPreferences.Editor editor = sharedPref.edit();                    //Initializes the editor
-            editor.putString("jwt", fbTokenLong);                                 //Adds the string SharedPref with key "jwt"
+            editor.putString("jwt", jwt);                                 //Adds the string SharedPref with key "jwt"
             if (fbTokenLong!=null) {editor.putString("facebook", fbTokenLong);}   //Adds the string SharedPref with key "facebook"
             editor.apply();
             Log.d(TAG, "From preferences file below." );
