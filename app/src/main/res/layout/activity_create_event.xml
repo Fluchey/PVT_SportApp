@@ -5,9 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/test3"
+    android:background="@drawable/neutralbakgrundnogubbe"
     tools:context="sportapp.pvt_sportapp.Activitys.RegisterActivity">
-
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentStart="true">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -122,7 +125,9 @@
             android:layout_height="wrap_content"
             android:text="" />
 
+
     </LinearLayout>
+</ScrollView>
 
 </RelativeLayout>
 
