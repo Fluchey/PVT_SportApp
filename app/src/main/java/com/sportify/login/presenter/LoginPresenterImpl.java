@@ -55,8 +55,8 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
             /**
              * Creates new asynctask which runs in background and tries to create new user
              */
-//            loginRequest.makeApiRequest(jsonObject.toString(), "https://pvt15app.herokuapp.com/api/login");
-            loginRequest.makeApiRequest(jsonObject.toString(), "http://130.242.47.152:9000/api/login");
+            loginRequest.makeApiRequest(jsonObject.toString(), "https://pvt15app.herokuapp.com/api/login");
+
         }
     }
 
@@ -76,8 +76,8 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        //loginRequest.makeApiRequest(jsonObject.toString(), "https://pvt15app.herokuapp.com/api/requestFacebookLong");
-        loginRequest.makeApiRequest(jsonObject.toString(), "http://130.242.47.152:9000/api/loginFacebook");
+        loginRequest.makeApiRequest(jsonObject.toString(), "https://pvt15app.herokuapp.com/api/loginFacebook");
+
     }
 
     @Override
