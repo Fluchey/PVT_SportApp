@@ -7,6 +7,7 @@ import android.view.View;
 import android.content.Intent;
 
 import com.sportify.login.activity.LoginActivity;
+import com.sportify.register.activity.RegisterActivity;
 
 import sportapp.pvt_sportapp.R;
 
@@ -19,10 +20,14 @@ public class MainPageActivity extends AppCompatActivity {
     }
 
     public void goToLoginActivity(View v){
-        Intent goToUserAreaIntent = new Intent(MainPageActivity.this, LoginActivity.class);
-        MainPageActivity.this.startActivity(goToUserAreaIntent);
-
-//        Intent goToUserAreaIntent = new Intent(LoginActivity.this, UserAreaActivity.class);
-//        LoginActivity.this.startActivity(goToUserAreaIntent);
+        Intent goToLoginViewIntent = new Intent(MainPageActivity.this, LoginActivity.class);
+        MainPageActivity.this.startActivity(goToLoginViewIntent);
     }
+
+    public void goToRegisterActivity(View v){
+        Intent goToRegisterViewIntent = new Intent(MainPageActivity.this, RegisterActivity.class);
+        MainPageActivity.this.startActivity(goToRegisterViewIntent);
+    }
+
+
 }
