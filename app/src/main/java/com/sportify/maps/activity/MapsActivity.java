@@ -11,6 +11,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -44,7 +45,9 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
     private SharedPreferences sharedPref;
 
     private LatLng STHLM;
+    private LatLng CURRENT_LOCATION;
     private float DEFAULT_ZOOM;
+    private float CURRENT_ZOOM;
 
     private SupportMapFragment mapFragment;
     private GoogleMap mMap;
@@ -61,8 +64,8 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
         sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         mapsPresenter = new MapsPresenterImpl(this, sharedPref);
 
-        STHLM = new LatLng(59.3293, 18.0686);
-        DEFAULT_ZOOM = 10;
+        CURRENT_LOCATION = new LatLng(59.3293, 18.0686);
+        CURRENT_ZOOM = 10;
 
         mapFragment = SupportMapFragment.newInstance();
         mapFragment.getMapAsync(this);
@@ -106,14 +109,9 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
         mMap = googleMap;
 
         /* Location of Stockholm */
-        goToLocation(STHLM.latitude, STHLM.longitude, DEFAULT_ZOOM);
+        goToLocation(CURRENT_LOCATION.latitude, CURRENT_LOCATION.longitude, CURRENT_ZOOM);
         mapsPresenter.showCurrentPlacesOnMap();
 
-    }
-
-    @Override
-    public void clearMarkers() {
-        mMap.clear();
     }
 
     @Override
@@ -135,8 +133,25 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
     }
 
     @Override
+    public void clearMarkers() {
+        mMap.clear();
+    }
+
+    @Override
     public void clearPlaces() {
         adapter.clear();
+    }
+
+    @Override
+    public void switchToMapFragmentFromPresenter(double lat, double lon) {
+        CURRENT_LOCATION = new LatLng(lat, lon);
+        CURRENT_ZOOM = 15;
+        mapFragment = SupportMapFragment.newInstance();
+        mapFragment.getMapAsync(this);
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction trans = fm.beginTransaction();
+        trans.replace(R.id.fragment_container, mapFragment);
+        trans.commit();
     }
 
     public void switchToMapFragment(View view) {
@@ -157,4 +172,20 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
         trans.commit();
     }
 
+    /**
+     * This is called from inside the CustListFragments Onclick
+     *
+     * @param id
+     */
+    public void goFromListToMap(int id) {
+        mapsPresenter.goFromListToMap(id);
+    }
+
+    @Override
+    public void hideSoftKeyboard() {
+        if (getCurrentFocus() != null) {
+            InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        }
+    }
 }

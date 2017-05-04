@@ -8,4 +8,6 @@ public interface MapsPresenter {
     void updatePlaceSearch(String textChange);
 
     void showCurrentPlacesOnMap();
+
+    void goFromListToMap(int id);
 }

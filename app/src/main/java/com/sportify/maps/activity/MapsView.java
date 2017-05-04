@@ -19,4 +19,8 @@ public interface MapsView {
 
     void clearPlaces();
 
+    void switchToMapFragmentFromPresenter(double lat, double lon);
+
+    void hideSoftKeyboard();
+
 }

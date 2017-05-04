@@ -54,6 +54,14 @@ public class MapsPresenterImpl implements MapsPresenter, MapsRequest.onRequestFi
         }
     }
 
+    @Override
+    public void goFromListToMap(int id) {
+        mapsView.hideSoftKeyboard();
+        Place p = mapsRequest.getCurrentSearchPlaces().get(id);
+        mapsView.switchToMapFragmentFromPresenter(p.getLat(), p.getLon());
+        mapsView.goToLocation(p.getLat(), p.getLon(), 15);
+    }
+
     /**
      * @param command The command for the switch
      * @param params params [0] = jsonMessage in String format
