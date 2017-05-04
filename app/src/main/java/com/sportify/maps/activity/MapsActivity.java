@@ -28,6 +28,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.sportify.maps.CustListFragment;
 import com.sportify.maps.presenter.MapsPresenter;
 import com.sportify.maps.presenter.MapsPresenterImpl;
 import com.wang.avi.AVLoadingIndicatorView;
@@ -38,22 +39,18 @@ import java.util.Arrays;
 
 import sportapp.pvt_sportapp.R;
 
-public class MapsActivity extends FragmentActivity implements MapsView, OnMapReadyCallback, AdapterView.OnItemClickListener {
-    private MapsPresenter           mapsPresenter;
-    private SharedPreferences       sharedPref;
+public class MapsActivity extends FragmentActivity implements MapsView, OnMapReadyCallback {
+    private MapsPresenter mapsPresenter;
+    private SharedPreferences sharedPref;
 
-    private LatLng                  STHLM;
-    private float                   DEFAULT_ZOOM;
+    private LatLng STHLM;
+    private float DEFAULT_ZOOM;
 
-    private FragmentManager         fragmentManager;
-    private FragmentTransaction     fragmentTransaction;
-    private SupportMapFragment      mapFragment;
-    private ListFragment            listFragment;
-    private GoogleMap               mMap;
+    private SupportMapFragment mapFragment;
+    private GoogleMap mMap;
 
-    private ArrayAdapter<String>    adapter;
-    private EditText                editTextSearch;
-    private String                  categoryChosen;
+    private ArrayAdapter<String> adapter;
+    private EditText editTextSearch;
 
 
     @Override
@@ -70,13 +67,14 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
         mapFragment = SupportMapFragment.newInstance();
         mapFragment.getMapAsync(this);
 
-        fragmentManager = getSupportFragmentManager();
-        fragmentTransaction = fragmentManager.beginTransaction();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.fragment_container, mapFragment);
         fragmentTransaction.commit();
 
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
         adapter.setNotifyOnChange(true);
+
         editTextSearch = (EditText) (findViewById(R.id.etMapsSearch));
         editTextSearch.addTextChangedListener(new TextWatcher() {
             @Override
@@ -86,24 +84,13 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                ArrayList<String> arr = new ArrayList<String>();
-                arr.add(s.toString());
-                updateAdapter(arr);
+                mapsPresenter.updatePlaceSearch(s.toString());
             }
 
             @Override
             public void afterTextChanged(Editable s) {
             }
         });
-    }
-
-    private void updateAdapter(ArrayList<String> s) {
-        ArrayList<String> test = new ArrayList<>(Arrays.asList("First item", "Second item", s.toString()));
-        for(int i = 0; i < 1000; i++){
-            test.add("Nu kör vi");
-        }
-        adapter.clear();
-        adapter.addAll(test);
     }
 
     /**
@@ -119,7 +106,8 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
         mMap = googleMap;
 
         /* Location of Stockholm */
-//        goToLocation(STHLM.latitude, STHLM.longitude, DEFAULT_ZOOM);
+        goToLocation(STHLM.latitude, STHLM.longitude, DEFAULT_ZOOM);
+        mapsPresenter.showCurrentPlacesOnMap();
 
     }
 
@@ -130,46 +118,25 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
 
     @Override
     public void showMarkerAt(String eventName, String description, double latitude, double longitude) {
-        createMarker(eventName, description, latitude, longitude);
-    }
-
-    private Marker createMarker(String eventName, String description, double latitude, double longitude){
-        return mMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)).title(eventName).snippet(description).draggable(true));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)).title(eventName).snippet(description));
     }
 
     @Override
-    public void goToLocation(double lat, double lon, float zoom){
+    public void goToLocation(double lat, double lon, float zoom) {
         LatLng ll = new LatLng(lat, lon);
         CameraUpdate update = CameraUpdateFactory.newLatLngZoom(ll, zoom);
         mMap.moveCamera(update);
     }
 
     @Override
-    public String getCategory() {
-        return categoryChosen;
-    }
-
-    @Override
-    public String getPlaceName() {
-        return editTextSearch.getText().toString();
-    }
-
-    @Override
     public void updatePlaceSearch(ArrayList<String> places) {
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, places);
-        Log.d("Count: ", String.valueOf(adapter.getCount()));
-//        autoCompleteTextView.setAdapter(adapter);
+        adapter.clear();
+        adapter.addAll(places);
     }
 
     @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        String [] arr = getResources().getStringArray(R.array.sections);
-        categoryChosen = (arr[(int) id]);
-        mapsPresenter.getMarkersForCategory();
-    }
-
-    public void showPlaceByName(View view) {
-        mapsPresenter.showPlaceByName();
+    public void clearPlaces() {
+        adapter.clear();
     }
 
     public void switchToMapFragment(View view) {
@@ -179,17 +146,15 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
         FragmentTransaction trans = fm.beginTransaction();
         trans.replace(R.id.fragment_container, mapFragment);
         trans.commit();
-        goToLocation(STHLM.latitude, STHLM.longitude, DEFAULT_ZOOM);
     }
 
     public void switchToListFragment(View view) {
-        listFragment = new ListFragment();
+        ListFragment listFragment = new CustListFragment();
         listFragment.setListAdapter(adapter);
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction trans = fm.beginTransaction();
         trans.replace(R.id.fragment_container, listFragment);
         trans.commit();
     }
-
 
 }
