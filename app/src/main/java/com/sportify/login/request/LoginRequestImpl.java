@@ -24,8 +24,7 @@ public class LoginRequestImpl implements LoginRequest {
 
     private class ApiRequest extends AsyncTask<String, LoginRequestImpl, Void> {
         private LoginRequestImpl loginRequestImpl;
-        private String responseBody;
-        private String responseCode;
+        private String [] resultFromApi;
         private String connectorUrl;
 
         public ApiRequest(LoginRequestImpl loginRequestImpl, String connectorUrl) {
@@ -35,10 +34,8 @@ public class LoginRequestImpl implements LoginRequest {
 
         @Override
         protected Void doInBackground(String... params) {
-            String[] resultFromApi = Connector.connect(connectorUrl,
+            resultFromApi = Connector.connect(connectorUrl,
                     "PUT", String.format(params[0]), token);
-            responseBody = resultFromApi[0];
-            responseCode = resultFromApi[1];
             return null;
         }
 
@@ -46,7 +43,7 @@ public class LoginRequestImpl implements LoginRequest {
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             loginRequestImpl.onLoginAccountFinishedListener.closeProgressDialog();
-            loginRequestImpl.onLoginAccountFinishedListener.showApiResponse(responseBody, responseCode);
+            loginRequestImpl.onLoginAccountFinishedListener.showApiResponse(resultFromApi);
         }
     }
 }

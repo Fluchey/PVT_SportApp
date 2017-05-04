@@ -55,7 +55,8 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
             /**
              * Creates new asynctask which runs in background and tries to create new user
              */
-            loginRequest.makeApiRequest(jsonObject.toString(), "https://pvt15app.herokuapp.com/api/login");
+//            loginRequest.makeApiRequest(jsonObject.toString(), "https://pvt15app.herokuapp.com/api/login");
+            loginRequest.makeApiRequest(jsonObject.toString(), "http://130.242.47.152/api/login");
         }
     }
 
@@ -76,7 +77,7 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
             e.printStackTrace();
         }
         //loginRequest.makeApiRequest(jsonObject.toString(), "https://pvt15app.herokuapp.com/api/requestFacebookLong");
-        loginRequest.makeApiRequest(jsonObject.toString(), "http://192.168.1.170:9000/api/loginFacebook");
+        loginRequest.makeApiRequest(jsonObject.toString(), "http://130.242.47.152:9000/api/loginFacebook");
     }
 
     @Override
@@ -85,22 +86,41 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
     }
 
     @Override
-    public void showApiResponse(String apiResponse, String responseOk) {
+    public void showApiResponse(String... params) {
         /* response code 200 maps to successful login */
         //TODO: Delete this and return will be a JSON object when implemented
-        Log.d(TAG, "showApiResponse: " + apiResponse);
-        Log.d(TAG, "showApiCode: " + responseOk);
-        if (apiResponse == null) apiResponse = "";
-        if (responseOk == null) responseOk = "";
+            if (params[1].equals("200") || params[1].equals("201")){
+            saveToPreferences(params);
+        }
+    }
 
-        if(responseOk.equals("200")){
-            SharedPreferences.Editor editor = sharedPref.edit();            //Initializes the editor
-            editor.putString("Token", apiResponse);                         //Adds the string SharedPref with key "Token"
-            editor.apply();                                                 //Saves changes to SharedPref
-            Log.d(TAG, "Saved Token: " + sharedPref.getString("Token", ""));
-            loginView.launchUserActivity();
-        }else {
-            loginView.showApiRequestMessage(apiResponse);
+    public void saveToPreferences(String... params) {
+        String fbTokenLong = null;
+        String jwt = null;
+
+
+        JSONObject json = null;
+        try {
+            json = new JSONObject(params[0]);
+            jwt = json.getString("JWT");
+            Log.d(TAG, "String jwt: " + jwt);
+            if (params[1].equals("201")){
+                fbTokenLong = json.getString("fbTokenLong");
+                Log.d(TAG, "String fbTokenLong: " + fbTokenLong);
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        if (json != null) {
+            SharedPreferences.Editor editor = sharedPref.edit();                    //Initializes the editor
+            editor.putString("jwt", fbTokenLong);                                 //Adds the string SharedPref with key "jwt"
+            if (fbTokenLong!=null) {editor.putString("facebook", fbTokenLong);}   //Adds the string SharedPref with key "facebook"
+            editor.apply();
+            Log.d(TAG, "From preferences file below." );
+            Log.d(TAG, "jwt: " + sharedPref.getString("jwt", ""));
+            Log.d(TAG, "facebook: " + sharedPref.getString("facebook", ""));
         }
     }
 
