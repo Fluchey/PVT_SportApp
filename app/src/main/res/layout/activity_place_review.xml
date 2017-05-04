@@ -11,14 +11,15 @@
         android:id="@+id/reviewHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:textSize="25sp"
         android:textColor="@color/colorCrystalWhite"
         android:fontFamily="serif"
         android:textStyle="italic"
-        android:layout_marginTop="25dp"
         android:text="@string/review_header"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp" />
 
     <RatingBar
         android:id="@+id/ratingBar"
@@ -37,7 +38,7 @@
         android:layout_marginTop="83dp"
         android:ems="10"
         android:inputType="none"
-        android:text="Plats"
+        android:hint="Plats"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
@@ -58,6 +59,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="53dp"
+        android:background="@color/colorButton"
         android:text="@string/submit_button" />
 
 

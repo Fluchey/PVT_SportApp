@@ -17,6 +17,7 @@
         android:layout_weight="1"
         android:onClick="findEventButtonClick"
         android:text="@string/find_event"
+        android:background="@color/colorButton"
         android:textSize="12sp"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintBottom_creator="1"

@@ -125,6 +125,7 @@
             android:id="@+id/createEventButton"
             android:layout_width="187dp"
             android:layout_height="wrap_content"
+            android:background="@color/colorButton"
             android:onClick="createEventClick"
             android:text="@string/create_event" />
 
