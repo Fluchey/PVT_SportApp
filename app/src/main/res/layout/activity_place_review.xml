@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/neutralbakgrundnogubbe"
     tools:context="com.sportify.placeReview.activity.placeReviewActivity">
 
     <RatingBar
@@ -20,12 +21,12 @@
         android:id="@+id/placeName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="67dp"
+        android:layout_marginTop="83dp"
         android:ems="10"
         android:inputType="none"
-        android:text="Plats" />
+        android:text="Plats"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:id="@+id/reviewText"
