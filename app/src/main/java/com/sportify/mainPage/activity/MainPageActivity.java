@@ -1,4 +1,4 @@
-package com.sportify.mainPage;
+package com.sportify.mainPage.activity;
 
 
 import android.support.v7.app.AppCompatActivity;
@@ -11,7 +11,7 @@ import com.sportify.register.activity.RegisterActivity;
 
 import sportapp.pvt_sportapp.R;
 
-public class MainPageActivity extends AppCompatActivity {
+public class MainPageActivity extends AppCompatActivity implements MainPageView{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
