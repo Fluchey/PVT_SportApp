@@ -134,10 +134,10 @@ public class MapsRequestImpl implements MapsRequest {
         @Override
         protected Void doInBackground(String... params) {
             if (params[0].equals("GET") || params[0].equals("DELETE")) {
-                result = Connector.connectGetOrDelete(params[0], "http://192.168.0.5:9000/api/" + params[1], token);
+                result = Connector.connectGetOrDelete(params[0], "https://pvt15app.herokuapp.com/api/" + params[1], token);
                 return null;
             } else {
-                result = Connector.connect("http://192.168.0.5:9000/api/" + params[0],
+                result = Connector.connect("https://pvt15app.herokuapp.com/api/" + params[0],
                         params[1], params[2], token);
                 return null;
             }
