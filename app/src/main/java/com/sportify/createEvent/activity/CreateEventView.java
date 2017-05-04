@@ -26,24 +26,24 @@ public interface CreateEventView {
 
     boolean getPrivateEvent();
 
-    void showEventNameEmptyError();
+    void showEventNameEmptyError(int resId);
 
-    void showEventPriceWrongFormatError();
+    void showEventPriceWrongFormatError(int resId);
 
-    void showEventDateEmptyError();
+    void showEventDateEmptyError(int resId);
 
     //TODO: Ska vi ha denna check för tiderna också? Beror ju på hur det kommer läggas in i fortsättningen / om det ska formateras automatiskt
-    void showEventDateFormatError();
+    void showEventDateFormatError(int resId);
 
-    void showEventStartTimeEmptyError();
+    void showEventStartTimeEmptyError(int resId);
 
-    void showEventEndTimeEmptyError();
+    void showEventEndTimeEmptyError(int resId);
 
-    void showEventTypeEmptyError();
+    void showEventTypeEmptyError(int resId);
 
-    void showEventPlaceEmptyError();
+    void showEventPlaceEmptyError(int resId);
 
-    void clearMessageTv();
+    void clearAllErrors();
 
     void showApiRequestMessage(String apiResponse);
 

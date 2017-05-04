@@ -13,6 +13,8 @@ import org.json.JSONObject;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import sportapp.pvt_sportapp.R;
+
 /**
  * Created by Maja on 2017-04-18.
  */
@@ -32,7 +34,8 @@ public class CreateEventPresenterImpl implements CreateEventPresenter, CreateEve
 
     @Override
     public void createEvent() {
-
+        createEventView.clearAllErrors();
+        System.out.println("Skapa event!");
         String eventName = createEventView.getEventName();
         String eventPriceEt = createEventView.getEventPrice();
         int eventPrice = 0;
@@ -49,36 +52,35 @@ public class CreateEventPresenterImpl implements CreateEventPresenter, CreateEve
         if(eventPrivate){
             eventPrivateInt = 1;
         }
-        else if (eventName.isEmpty()) {
-            createEventView.showEventNameEmptyError();
+        if (eventName.isEmpty()) {
+            createEventView.showEventNameEmptyError(R.string.event_name_empty_error);
         }
         else if(eventDate.isEmpty()){
-            createEventView.showEventDateEmptyError();
+            createEventView.showEventDateEmptyError(R.string.event_date_empty_error);
         }
         else if(!validDateFormat(eventDate)){
-            createEventView.showEventDateFormatError();
+            createEventView.showEventDateFormatError(R.string.event_date_wrongformat_error);
         }
         else if(eventStartTime.isEmpty()){
-            createEventView.showEventStartTimeEmptyError();
+            createEventView.showEventStartTimeEmptyError(R.string.event_start_time_empty_error);
         }
         else if(eventEndTime.isEmpty()){
-            createEventView.showEventEndTimeEmptyError();
+            createEventView.showEventEndTimeEmptyError(R.string.event_end_time_empty_error);
         }
         else if(eventType.isEmpty()) {
-            createEventView.showEventTypeEmptyError();
+            createEventView.showEventTypeEmptyError(R.string.event_type_empty_error);
         }
         else if(eventPlace.isEmpty()){
-            createEventView.showEventPlaceEmptyError();
+            createEventView.showEventPlaceEmptyError(R.string.event_place_empty_error);
         }else{
             if (!eventPriceEt.isEmpty()) {
                 try {
                     eventPrice = Integer.parseInt(eventPriceEt);
                 } catch (NumberFormatException e) {
-                    createEventView.showEventPriceWrongFormatError();
+                    createEventView.showEventPriceWrongFormatError(R.string.event_price_wrongformat_error);
                     return;
                 }
             }
-            createEventView.clearMessageTv();
             JSONObject jsonObject = new JSONObject();
             try {
                 jsonObject.put("eventName", eventName);
