@@ -36,14 +36,19 @@ public class MapsPresenterImpl implements MapsPresenter, MapsRequest.onRequestFi
 
     @Override
     public void updatePlaceSearch(String textChange) {
-        JSONObject json = new JSONObject();
+        if(mapsView.getTextSearch().isEmpty()){
+            mapsView.clearPlaces();
+            mapsView.clearMarkers();
+        }else {
+            JSONObject json = new JSONObject();
 
-        try {
-            json.put("textChange", textChange);
-        }catch (JSONException e){
-            e.printStackTrace();
+            try {
+                json.put("textChange", textChange);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            mapsRequest.makeApiRequestPut(json.toString(), "map/updateSearch", "PUT", "updateSearch");
         }
-        mapsRequest.makeApiRequestPut(json.toString(), "map/updateSearch", "PUT", "updateSearch");
     }
 
     @Override

@@ -9,6 +9,8 @@ import java.util.ArrayList;
  */
 
 public interface MapsView {
+    String getTextSearch();
+
     void clearMarkers();
 
     void showMarkerAt(String eventName, String description, double latitude, double longitude);

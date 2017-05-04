@@ -107,11 +107,16 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
+            @Override
+            public void onMapLongClick(LatLng latLng) {
+
+            }
+        });
 
         /* Location of Stockholm */
         goToLocation(CURRENT_LOCATION.latitude, CURRENT_LOCATION.longitude, CURRENT_ZOOM);
         mapsPresenter.showCurrentPlacesOnMap();
-
     }
 
     @Override
@@ -130,6 +135,11 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
     public void updatePlaceSearch(ArrayList<String> places) {
         adapter.clear();
         adapter.addAll(places);
+    }
+
+    @Override
+    public String getTextSearch() {
+        return editTextSearch.getText().toString();
     }
 
     @Override
