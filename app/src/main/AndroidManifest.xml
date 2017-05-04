@@ -59,7 +59,11 @@
         <activity android:name="com.sportify.login.activity.LoginActivity" />
         <activity android:name="com.sportify.placeReview.activity.placeReviewActivity" />
         <activity android:name="com.sportify.forgottenPass.activity.ForgottenPassActivity" />
-        <activity android:name="com.sportify.settings.activity.SettingsActivity"></activity>
+        <activity android:name="com.sportify.settings.activity.SettingsActivity" />
+        <activity android:name="com.sportify.createEvent.createEventPageFive.createEventActivity" />
+        <activity android:name="com.sportify.createEvent.createEventPageFour.createEventActivity" />
+        <activity android:name="com.sportify.createEvent.createEventPageThree.createEventActivity" />
+        <activity android:name="com.sportify.createEvent.createEventPageTwo.createEventActivity"></activity>
     </application>
 
 </manifest>
