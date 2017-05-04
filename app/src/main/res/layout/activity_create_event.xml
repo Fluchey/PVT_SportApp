@@ -15,8 +15,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="@dimen/paddingLeft"
-        android:paddingRight="@dimen/paddingRight"
+        android:paddingStart="@dimen/paddingLeft"
+        android:paddingEnd="@dimen/paddingRight"
         android:orientation="vertical"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp"
@@ -44,6 +44,7 @@
 
         <EditText
             android:id="@+id/etEventDate"
+            android:inputType="date"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
@@ -115,7 +116,10 @@
             android:background="@drawable/border"
             android:textColor="@color/colorPrimaryDark"
             android:gravity="top"
-            android:lines="2"/>
+            android:lines="2"
+            android:hint="@string/event_descr_hint"
+            android:textSize="12sp"
+            android:inputType="text"/>
 
         <Button
             android:id="@+id/createEventButton"
@@ -134,6 +138,19 @@
 
 
     </LinearLayout>
+
+       <TextView
+           android:id="@+id/createEventHeader"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textSize="25sp"
+           android:textColor="@color/colorCrystalWhite"
+           android:fontFamily="serif"
+           android:textStyle="italic"
+           android:layout_marginTop="20dp"
+           android:text="@string/create_event"
+           android:layout_alignParentTop="true"
+           android:layout_centerHorizontal="true" />
    </RelativeLayout>
 
 

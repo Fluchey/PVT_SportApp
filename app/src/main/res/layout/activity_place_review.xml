@@ -7,6 +7,19 @@
     android:background="@drawable/neutralbakgrundnogubbe"
     tools:context="com.sportify.placeReview.activity.placeReviewActivity">
 
+    <TextView
+        android:id="@+id/reviewHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:textColor="@color/colorCrystalWhite"
+        android:fontFamily="serif"
+        android:textStyle="italic"
+        android:layout_marginTop="25dp"
+        android:text="@string/review_header"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
     <RatingBar
         android:id="@+id/ratingBar"
         android:layout_width="wrap_content"
@@ -46,4 +59,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="53dp"
         android:text="@string/submit_button" />
+
+
 </RelativeLayout>
