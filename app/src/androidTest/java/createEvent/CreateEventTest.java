@@ -3,7 +3,7 @@ package createEvent;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.sportify.createEvent.activity.CreateEventActivity;
+import com.sportify.createEventPage1.activity.CreateEventActivity;
 
 import org.junit.Rule;
 import org.junit.Test;

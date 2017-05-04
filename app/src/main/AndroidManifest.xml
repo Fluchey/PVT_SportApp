@@ -50,7 +50,7 @@
         <activity
             android:name="com.sportify.userArea.activity.UserAreaActivity"
             android:exported="true" />
-        <activity android:name="com.sportify.createEvent.activity.CreateEventActivity" />
+        <activity android:name="com.sportify.createEventPage1.activity.CreateEventActivity" />
         <activity
             android:name="com.sportify.friends.activity.FriendActivity"
             android:label="@string/title_activity_friend"
@@ -59,7 +59,8 @@
         <activity android:name="com.sportify.login.activity.LoginActivity" />
         <activity android:name="com.sportify.placeReview.activity.placeReviewActivity" />
         <activity android:name="com.sportify.forgottenPass.activity.ForgottenPassActivity" />
-        <activity android:name="com.sportify.settings.activity.SettingsActivity"></activity>
+        <activity android:name="com.sportify.settings.activity.SettingsActivity" />
+        <activity android:name="com.sportify.createEventPage2.createEventPage2"></activity>
     </application>
 
 </manifest>
