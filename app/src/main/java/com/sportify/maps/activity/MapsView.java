@@ -9,20 +9,22 @@ import java.util.ArrayList;
  */
 
 public interface MapsView {
+    String getTextSearch();
+
+    void setTextSearch(String text);
+
     void clearMarkers();
 
     void showMarkerAt(String eventName, String description, double latitude, double longitude);
 
     void goToLocation(double lat, double lon, float zoom);
 
-    String getCategory();
-
-    String getPlaceName();
-
-    void showLoadIndicator();
-
-    void closeLoadIndicator();
-
     void updatePlaceSearch(ArrayList<String> places);
+
+    void clearPlaces();
+
+    void switchToMapFragmentFromPresenter(double lat, double lon);
+
+    void hideSoftKeyboard();
 
 }

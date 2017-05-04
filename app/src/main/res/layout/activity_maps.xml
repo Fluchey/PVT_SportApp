@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/neutralbakgrundnogubbe"
     tools:context="com.sportify.maps.activity.MapsActivity"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
@@ -19,23 +20,32 @@
             android:background="@color/cardview_dark_background"
             android:orientation="horizontal">
 
-            <AutoCompleteTextView
+            <Button
+                android:id="@+id/mapButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Map"
+                android:onClick="switchToMapFragment"/>
+
+            <EditText
                 android:id="@+id/etMapsSearch"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/common_google_signin_btn_text_light_disabled"
+                android:background="@color/colorEditText"
                 android:ems="10"
                 android:hint="Event/Place/Intresse"
                 android:inputType="textPersonName"
                 android:textAlignment="center" />
 
             <Button
-                android:id="@+id/mapsSearchButton"
-                android:layout_width="52dp"
+                android:id="@+id/listButton"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Go"
-                android:onClick="showPlaceByName"/>
+                android:layout_weight="1"
+                android:text="List"
+                android:onClick="switchToListFragment"/>
 
         </LinearLayout>
 
@@ -46,19 +56,16 @@
             <!--android:layout_gravity="center"-->
             <!--android:hint="@string/enter_category" />-->
 
-        <ListView
-            android:id="@+id/mapsListView"
+        <!--<fragment-->
+            <!--android:id="@+id/map"-->
+            <!--android:name="com.google.android.gms.maps.MapFragment"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--tools:context="com.sportify.maps.activity.MapsActivity" />-->
+        <FrameLayout
+            android:id="@+id/fragment_container"
             android:layout_width="match_parent"
-            android:layout_height="117dp"
-            android:background="@color/colorPrimaryDarkGrey"
-            android:entries="@array/sections" />
-
-        <fragment
-            android:id="@+id/map"
-            android:name="com.google.android.gms.maps.SupportMapFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context="com.sportify.maps.activity.MapsActivity" />
+            android:layout_height="match_parent"></FrameLayout>
 
 
     </LinearLayout>

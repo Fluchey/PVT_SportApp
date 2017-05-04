@@ -23,22 +23,19 @@ import javax.inject.Inject;
 public class MapsRequestImpl implements MapsRequest {
     private onRequestFinishedListener onRequestFinishedListener;
     private String token = "";
-    private ArrayList<Place> places;
+//    private ArrayList<Place> places;
     private ArrayList<Place> currentSearchPlaces;
 
     public MapsRequestImpl(final onRequestFinishedListener onRequestFinishedListener, String token) {
         this.onRequestFinishedListener = onRequestFinishedListener;
         this.token = token;
 
-        /**
-         * Fetch all places from the database, for autocompletion when searching for a place
-         */
-        places = new ArrayList<>();
+//        places = new ArrayList<>();
         currentSearchPlaces = new ArrayList<>();
     }
 
     @Override
-    public void updateCurrentSearch(String jsonMessage) {
+    public void updateCurrentSearchPlaces(String jsonMessage) {
         currentSearchPlaces.clear();
         JSONObject json = null;
         JSONArray array = null;
@@ -63,7 +60,7 @@ public class MapsRequestImpl implements MapsRequest {
             e.printStackTrace();
         }
 
-        for (Place p: currentSearchPlaces){
+        for (Place p : currentSearchPlaces) {
             Log.d("Place", p.toString());
         }
     }
@@ -79,48 +76,39 @@ public class MapsRequestImpl implements MapsRequest {
                 (method, endURL);
     }
 
-    @Override
-    public void updateAllPlaces(String jsonMessage) {
-        JSONObject json = null;
-        JSONArray array = null;
-        try {
-            json = new JSONObject(jsonMessage);
-            array = json.getJSONArray("places");
-            Log.d("JsonArr: ", array.toString());
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        if (json == null || array == null) {
-            return;
-        }
-
-
-        try {
-            for (int i = 0; i < array.length(); i++) {
-                JSONObject jsonObject = array.getJSONObject(i);
-                places.add(new Place(jsonObject.getString("name"), jsonObject.getString("category"), Double.parseDouble(jsonObject.getString("lat")), Double.parseDouble(jsonObject.getString("lon"))));
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        for (Place p: places){
-            Log.d("Place", p.toString());
-        }
-    }
-
-    @Override
-    public ArrayList<String> getPlacesName() {
-        ArrayList<String> placesName = new ArrayList<>();
-        for(Place p: places){
-            placesName.add(p.getName());
-        }
-        return placesName;
-    }
+//    @Override
+//    public void updateAllPlaces(String jsonMessage) {
+//        JSONObject json = null;
+//        JSONArray array = null;
+//        try {
+//            json = new JSONObject(jsonMessage);
+//            array = json.getJSONArray("places");
+//            Log.d("JsonArr: ", array.toString());
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
+//        if (json == null || array == null) {
+//            return;
+//        }
+//
+//
+//        try {
+//            for (int i = 0; i < array.length(); i++) {
+//                JSONObject jsonObject = array.getJSONObject(i);
+//                places.add(new Place(jsonObject.getString("name"), jsonObject.getString("category"), Double.parseDouble(jsonObject.getString("lat")), Double.parseDouble(jsonObject.getString("lon"))));
+//            }
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
+//
+//        for (Place p : places) {
+//            Log.d("Place", p.toString());
+//        }
+//    }
 
     @Override
-    public ArrayList<Place> getPlaces() {
-        return places;
+    public ArrayList<Place> getCurrentSearchPlaces() {
+        return currentSearchPlaces;
     }
 
     private class ApiRequest extends AsyncTask<String, MapsRequestImpl, Void> {
@@ -129,9 +117,8 @@ public class MapsRequestImpl implements MapsRequest {
         private String command;
 
         /**
-         *
          * @param mapsRequestImpl
-         * @param command The command wich decides what to do in PresenterImpl after apiresponse has finished
+         * @param command         The command wich decides what to do in PresenterImpl after apiresponse has finished
          */
         public ApiRequest(MapsRequestImpl mapsRequestImpl, String command) {
             this.mapsRequestImpl = mapsRequestImpl;
@@ -139,19 +126,18 @@ public class MapsRequestImpl implements MapsRequest {
         }
 
         /**
-         * @param params
-         * params [0] = method (POST, PUT, GET..)
-         * params [1] = endUrl
-         * (params [2] = jsonMessage) - optional, only if PUT or POST
+         * @param params params [0] = method (POST, PUT, GET..)
+         *               params [1] = endUrl
+         *               (params [2] = jsonMessage) - optional, only if PUT or POST
          * @return
          */
         @Override
         protected Void doInBackground(String... params) {
-            if(params[0].equals("GET") || params[0].equals("DELETE")){
-                result = Connector.connectGetOrDelete(params[0], "http://192.168.0.12:9000/api/" + params[1], token);
+            if (params[0].equals("GET") || params[0].equals("DELETE")) {
+                result = Connector.connectGetOrDelete(params[0], "https://pvt15app.herokuapp.com/api/" + params[1], token);
                 return null;
-            }else {
-                result = Connector.connect("http://192.168.0.12:9000/api/" + params[0],
+            } else {
+                result = Connector.connect("https://pvt15app.herokuapp.com/api/" + params[0],
                         params[1], params[2], token);
                 return null;
             }

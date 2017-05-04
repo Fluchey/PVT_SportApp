@@ -50,7 +50,8 @@
         <activity
             android:name="com.sportify.userArea.activity.UserAreaActivity"
             android:exported="true" />
-        <activity android:name="com.sportify.createEvent.createEventPageOne.activity.CreateEventActivity" />
+        <activity android:name="com.sportify.createEvent.createEventPageOne.activity.CreateEventActivity"
+            android:exported="true"/>
         <activity
             android:name="com.sportify.showFriends.activity.FriendActivity"
             android:label="@string/title_activity_friend"

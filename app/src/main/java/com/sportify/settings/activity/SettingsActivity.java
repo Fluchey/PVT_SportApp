@@ -12,4 +12,5 @@ public class SettingsActivity extends AppCompatActivity implements SettingsView{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
     }
+
 }
