@@ -94,6 +94,13 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
             public void afterTextChanged(Editable s) {
             }
         });
+
+        editTextSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editTextSearch.setText("");
+            }
+        });
     }
 
     /**
