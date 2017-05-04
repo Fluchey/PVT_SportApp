@@ -13,9 +13,6 @@ public interface MapsRequest {
 
     interface onRequestFinishedListener{
         void showApiResponse(String command, String... params);
-
-        void closeLoadIndicator();
-
     }
 
     void makeApiRequestPut(String jsonMessage, String endURL, String method, String command);

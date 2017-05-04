@@ -4,6 +4,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.ListFragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -11,12 +14,15 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
@@ -33,18 +39,21 @@ import java.util.Arrays;
 import sportapp.pvt_sportapp.R;
 
 public class MapsActivity extends FragmentActivity implements MapsView, OnMapReadyCallback, AdapterView.OnItemClickListener {
-    private MapsPresenter mapsPresenter;
-    private SharedPreferences sharedPref;
+    private MapsPresenter           mapsPresenter;
+    private SharedPreferences       sharedPref;
 
-    private static final LatLng STHLM = new LatLng(59.3293, 18.0686);
-    private static final float DEFAULT_ZOOM = 10;
+    private LatLng                  STHLM;
+    private float                   DEFAULT_ZOOM;
 
-    private GoogleMap mMap;
+    private FragmentManager         fragmentManager;
+    private FragmentTransaction     fragmentTransaction;
+    private SupportMapFragment      mapFragment;
+    private ListFragment            listFragment;
+    private GoogleMap               mMap;
 
-    private ArrayAdapter<String> adapter;
-    private AutoCompleteTextView autoCompleteTextView;
-    private String categoryChosen;
-    private AVLoadingIndicatorView loadingIndicator;
+    private ArrayAdapter<String>    adapter;
+    private EditText                editTextSearch;
+    private String                  categoryChosen;
 
 
     @Override
@@ -53,32 +62,49 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
         setContentView(R.layout.activity_maps);
 
         sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-
         mapsPresenter = new MapsPresenterImpl(this, sharedPref);
 
-        ListView listview = (ListView) findViewById(R.id.mapsListView);
-        listview.setOnItemClickListener(this);
+        STHLM = new LatLng(59.3293, 18.0686);
+        DEFAULT_ZOOM = 10;
 
-
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
+        mapFragment = SupportMapFragment.newInstance();
         mapFragment.getMapAsync(this);
 
-        ArrayList<String> test = new ArrayList<>(Arrays.asList("First item", "Second item"));
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, test);
-        Log.d("Constructor Count: ", String.valueOf(adapter.getCount()));
-        adapter.setNotifyOnChange(true);
-        autoCompleteTextView = (AutoCompleteTextView) (findViewById(R.id.etMapsSearch));
-        autoCompleteTextView.setAdapter(adapter);
-        autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        fragmentManager = getSupportFragmentManager();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.fragment_container, mapFragment);
+        fragmentTransaction.commit();
 
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
+        adapter.setNotifyOnChange(true);
+        editTextSearch = (EditText) (findViewById(R.id.etMapsSearch));
+        editTextSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                ArrayList<String> arr = new ArrayList<String>();
+                arr.add(s.toString());
+                updateAdapter(arr);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
             }
         });
     }
 
+    private void updateAdapter(ArrayList<String> s) {
+        ArrayList<String> test = new ArrayList<>(Arrays.asList("First item", "Second item", s.toString()));
+        for(int i = 0; i < 1000; i++){
+            test.add("Nu kör vi");
+        }
+        adapter.clear();
+        adapter.addAll(test);
+    }
 
     /**
      * Manipulates the map once available.
@@ -93,7 +119,7 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
         mMap = googleMap;
 
         /* Location of Stockholm */
-        goToLocation(STHLM.latitude, STHLM.longitude, DEFAULT_ZOOM);
+//        goToLocation(STHLM.latitude, STHLM.longitude, DEFAULT_ZOOM);
 
     }
 
@@ -118,10 +144,6 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
         mMap.moveCamera(update);
     }
 
-    public void showCategory(View view) {
-        mapsPresenter.getMarkersForCategory();
-    }
-
     @Override
     public String getCategory() {
         return categoryChosen;
@@ -129,24 +151,14 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
 
     @Override
     public String getPlaceName() {
-        return autoCompleteTextView.getText().toString();
-    }
-
-    @Override
-    public void showLoadIndicator() {
-        loadingIndicator.show();
-    }
-
-    @Override
-    public void closeLoadIndicator() {
-        loadingIndicator.hide();
+        return editTextSearch.getText().toString();
     }
 
     @Override
     public void updatePlaceSearch(ArrayList<String> places) {
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, places);
         Log.d("Count: ", String.valueOf(adapter.getCount()));
-        autoCompleteTextView.setAdapter(adapter);
+//        autoCompleteTextView.setAdapter(adapter);
     }
 
     @Override
@@ -159,4 +171,25 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
     public void showPlaceByName(View view) {
         mapsPresenter.showPlaceByName();
     }
+
+    public void switchToMapFragment(View view) {
+        mapFragment = SupportMapFragment.newInstance();
+        mapFragment.getMapAsync(this);
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction trans = fm.beginTransaction();
+        trans.replace(R.id.fragment_container, mapFragment);
+        trans.commit();
+        goToLocation(STHLM.latitude, STHLM.longitude, DEFAULT_ZOOM);
+    }
+
+    public void switchToListFragment(View view) {
+        listFragment = new ListFragment();
+        listFragment.setListAdapter(adapter);
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction trans = fm.beginTransaction();
+        trans.replace(R.id.fragment_container, listFragment);
+        trans.commit();
+    }
+
+
 }

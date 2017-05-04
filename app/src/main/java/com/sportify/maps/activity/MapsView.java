@@ -19,10 +19,6 @@ public interface MapsView {
 
     String getPlaceName();
 
-    void showLoadIndicator();
-
-    void closeLoadIndicator();
-
     void updatePlaceSearch(ArrayList<String> places);
 
 }

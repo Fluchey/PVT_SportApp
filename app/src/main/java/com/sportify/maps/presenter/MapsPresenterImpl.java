@@ -82,7 +82,7 @@ public class MapsPresenterImpl implements MapsPresenter, MapsRequest.onRequestFi
         }catch (JSONException e){
             e.printStackTrace();
         }
-        mapsRequest.makeApiRequestPut(json.toString(), "showCategoryOnMap", "PUT", "Show category");
+//        mapsRequest.makeApiRequestPut(json.toString(), "showCategoryOnMap", "PUT", "Show category");
 //        for (Place p: mapsRequest.getPlaces()){
 //            if(p.getCategory().equals(mapsView.getCategory())){
 //                mapsView.showMarkerAt(p.getName(), p.getCategory(), p.getLat(), p.getLon());
@@ -111,11 +111,6 @@ public class MapsPresenterImpl implements MapsPresenter, MapsRequest.onRequestFi
             e.printStackTrace();
         }
         mapsRequest.makeApiRequestPut(json.toString(), "map/updateSearch", "PUT", "updateSearch");
-    }
-
-    @Override
-    public void closeLoadIndicator() {
-        mapsView.closeLoadIndicator();
     }
 
     /**
