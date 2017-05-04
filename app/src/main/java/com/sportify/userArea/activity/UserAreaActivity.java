@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.sportify.createEvent.createEventPageOne.activity.CreateEventActivity;
 import com.sportify.maps.activity.MapsActivity;
+import com.sportify.settings.activity.SettingsActivity;
 import com.sportify.userArea.presenter.UserAreaPresenter;
 import com.sportify.userArea.presenter.UserAreaPresenterImpl;
 
@@ -41,5 +42,10 @@ public class UserAreaActivity extends AppCompatActivity implements UserAreaView 
     public void startMapActivity(View view) {
         Intent startMapAcitivityIntent = new Intent(UserAreaActivity.this, MapsActivity.class);
         UserAreaActivity.this.startActivity(startMapAcitivityIntent);
+    }
+
+    public void goToSettingsActivity(View v){
+        Intent goToSettingsViewIntent = new Intent(UserAreaActivity.this, SettingsActivity.class);
+        UserAreaActivity.this.startActivity(goToSettingsViewIntent);
     }
 }

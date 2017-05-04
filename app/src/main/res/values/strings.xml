@@ -54,15 +54,18 @@
 
 
     /* Strings Profilflöde */
-    <string name="profile_calendar">Min kalender</string>
-    <string name="profile_event">Mina event</string>
-    <string name="profile_edit">Redigera profil</string>
-    <string name="profile_rec">Rekommendationer</string>
-    <string name="profile_home">Hem</string>
-    <string name="profile_search">Sök</string>
-    <string name="profile_create">Skapa event</string>
-    <string name="profile_notifications">Notiser</string>
-    <string name="profile_friends">Vänner</string>
+    <string name="userArea_text">Hej hej! Jag bor i Australien och folk älskar att ta selfies med lilla mig. Massa kärlek!</string>
+    <string name="userArea_username">QuokkaSmileyface</string>
+    <string name="userArea_userInfo">Quokka Deathmetal 26 år -insert interest-</string>
+    <string name="userArea_calendar">Min kalender</string>
+    <string name="userArea_event">Mina event</string>
+    <string name="userArea_edit">Redigera profil</string>
+    <string name="userArea_rec">Rekommendationer</string>
+    <string name="userArea_home">Hem</string>
+    <string name="userArea_search">Sök</string>
+    <string name="userArea_create">Skapa event</string>
+    <string name="userArea_notifications">Notiser</string>
+    <string name="userArea_friends">Vänner</string>
 
 
     /* Strings Skapa event */
@@ -156,6 +159,7 @@
     <string name="submit_button">Skicka</string>
     <string name="first_name">Förnamn</string>
     <string name="last_name">Efternamn</string>
+    <string name="userArea">Profilflöde</string>
 
     <string name="register_here">Registrera konto</string>
     <string name="title_activity_friend">KompisAktivitet</string>
