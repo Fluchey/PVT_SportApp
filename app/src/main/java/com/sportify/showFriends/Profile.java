@@ -1,4 +1,4 @@
-package com.sportify.friends;
+package com.sportify.showFriends;
 
 /**
  * Created by Maja on 2017-05-03.
@@ -30,4 +30,7 @@ public class Profile {
         return profilePicture;
     }
 
+    public String toString(){
+        return firstname;
+    }
 }

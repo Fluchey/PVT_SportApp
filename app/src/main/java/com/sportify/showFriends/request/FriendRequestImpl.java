@@ -1,4 +1,4 @@
-package com.sportify.friends.request;
+package com.sportify.showFriends.request;
 
 import android.os.AsyncTask;
 

@@ -1,4 +1,4 @@
-package com.sportify.friends.request;
+package com.sportify.showFriends.request;
 
 /**
  * Created by Maja on 2017-04-27.

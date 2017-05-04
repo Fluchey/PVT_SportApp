@@ -2,8 +2,8 @@
 <resources>
     <color name="colorPrimary">#13CE66</color>
     <color name="colorAccent">#6ba4ed</color>
-    <color name="colorPrimaryDark">#6f7173</color>
+    <color name="colorPrimaryDark">#636464</color>
     <color name="colorPrimaryDarkGrey">#000000</color>
-    <color name="colorEditText">#9F9A9A</color>
+    <color name="colorEditText">#5e5a5a</color>
     <color name="colorCrystalWhite">#ffffff</color>
 </resources>

@@ -4,8 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.sportify.showFriends.activity.FriendActivity"
-    tools:showIn="@layout/activity_friend">
+    tools:context="com.sportify.createEvent.createEventPageFour.createEventActivity">
 
 </android.support.constraint.ConstraintLayout>
