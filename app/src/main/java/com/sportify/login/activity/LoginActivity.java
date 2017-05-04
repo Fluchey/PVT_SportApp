@@ -20,6 +20,7 @@ import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 
 import com.facebook.login.widget.LoginButton;
+import com.sportify.forgottenPass.activity.ForgottenPassActivity;
 import com.sportify.login.presenter.LoginPresenterImpl;
 
 import com.sportify.createEvent.createEventPageOne.activity.CreateEventActivity;
@@ -170,9 +171,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         LoginActivity.this.startActivity(goToUserAreaIntent);
     }
 
-    public void goToForgottenPassActivity(View view){
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
+    public void goToForgottenPassActivity(View v){
+        Intent goToForgottenPassViewIntent = new Intent(LoginActivity.this, ForgottenPassActivity.class);
+        LoginActivity.this.startActivity(goToForgottenPassViewIntent);
     }
-
 }

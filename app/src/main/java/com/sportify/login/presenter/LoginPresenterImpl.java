@@ -90,7 +90,8 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
         /* response code 200 maps to successful login */
         //TODO: Delete this and return will be a JSON object when implemented
             if (params[1].equals("200") || params[1].equals("201")){
-            saveToPreferences(params);
+                saveToPreferences(params);
+                loginView.launchUserActivity();
         }
     }
 
