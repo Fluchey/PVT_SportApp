@@ -25,7 +25,7 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterRequest
     public RegisterPresenterImpl(RegisterView registerView, SharedPreferences sharedPref) {
         this.registerView = registerView;
         this.sharedPref = sharedPref;
-        this.token = sharedPref.getString("Token", "");
+        this.token = sharedPref.getString("jwt", "");
         registerRequest = new RegisterRequestImpl(this, token);
     }
 

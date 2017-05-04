@@ -29,7 +29,7 @@ public class MapsPresenterImpl implements MapsPresenter, MapsRequest.onRequestFi
     public MapsPresenterImpl(MapsView mapsView, SharedPreferences sharedPreferences) {
         this.mapsView = mapsView;
         this.share = sharedPreferences;
-        this.token = sharedPreferences.getString("Token", "");
+        this.token = sharedPreferences.getString("jwt", "");
         this.mapsRequest = new MapsRequestImpl(this, token);
         mapsRequest.makeApiRequestGet("GET", "getallplaces", "getAllPlaces");
     }

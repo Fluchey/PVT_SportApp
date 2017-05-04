@@ -30,7 +30,7 @@ public class FriendPresenterImpl implements FriendPresenter, FriendRequest.OnSho
     public FriendPresenterImpl(FriendView friendView, SharedPreferences sharedPref){
         this.friendView = friendView;
         this.sharedPref = sharedPref;
-        this.token = sharedPref.getString("Token", "");
+        this.token = sharedPref.getString("jwt", "");
         this.friendRequest = new FriendRequestImpl(this, token);
     }
 
