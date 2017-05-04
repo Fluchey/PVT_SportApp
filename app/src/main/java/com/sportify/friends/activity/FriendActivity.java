@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +14,6 @@ import android.widget.Button;
 import android.widget.CheckedTextView;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.sportify.friends.Profile;
 import com.sportify.friends.presenter.FriendPresenter;
@@ -26,10 +26,11 @@ import sportapp.pvt_sportapp.R;
 
 public class FriendActivity extends AppCompatActivity implements FriendView {
 
-    TextView friends;
-    Button showFriends;
+    Button showMarkedFriends;
     ListView friendList;
+    ArrayList friendArray;
     FriendPresenter friendPresenter;
+    MyArrayAdapter myArrayAdapter;
     private SharedPreferences sharedPref;
 
     @Override
@@ -39,23 +40,37 @@ public class FriendActivity extends AppCompatActivity implements FriendView {
 
         sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         friendPresenter = new FriendPresenterImpl(this, sharedPref);
-        friends = (TextView) findViewById(R.id.tvShowFriends);
-        showFriends = (Button) findViewById(R.id.btShowFriends);
+        showMarkedFriends = (Button) findViewById(R.id.btShowMarkedFriends);
         friendList = (ListView) findViewById(R.id.lvFriends);
+        myArrayAdapter = new MyArrayAdapter(this, R.layout.friend_list_item, null);
 
         friendList.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE);
-    }
 
-    public void findFriendClick(View v){
         friendPresenter.showFriends();
+
+        showMarkedFriends.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("Test!");
+                ArrayList<Profile> markedFriends = myArrayAdapter.getMarkedFriends();
+                if(markedFriends.isEmpty()){
+                    System.out.println("Tomt!");
+                }else {
+                    for (int i = 0; i < markedFriends.size(); i++) {
+                        System.out.println(markedFriends.get(i).getFirstname());
+                    }
+                }
+            }
+        });
     }
 
     @Override
     public void showFriends(ArrayList friends) {
-
-        MyArrayAdapter myArrayAdapter = new MyArrayAdapter(this, R.layout.friend_list_item, friends);
+        friendArray = friends;
+        myArrayAdapter = new MyArrayAdapter(this, R.layout.friend_list_item, friends);
 //        friendList.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE);
         friendList.setAdapter(myArrayAdapter);
+
     }
 
 
@@ -70,14 +85,13 @@ public class FriendActivity extends AppCompatActivity implements FriendView {
         }
 
         /**
-         *
-         * @param position - position in listView
+         * @param position    - position in listView
          * @param convertView - row to be converted
-         * @param parent - parent view
+         * @param parent      - parent view
          * @return
          */
         @Override
-        public View getView(int position, View convertView, ViewGroup parent){
+        public View getView(int position, View convertView, ViewGroup parent) {
 
             View row = convertView;
 
@@ -92,16 +106,28 @@ public class FriendActivity extends AppCompatActivity implements FriendView {
             String lastName = friends.get(position).getLastname();
             friendName.setText(firstName + " " + lastName);
 
+
             friendName.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     friendName.toggle();
                 }
             });
-
             return row;
         }
 
+        public ArrayList<Profile> getMarkedFriends() {
+            ArrayList<Profile> friendsToReturn = new ArrayList<>();
+            SparseBooleanArray checkedFriends = friendList.getCheckedItemPositions();
+            System.out.println("sparse " + checkedFriends.toString());
+
+            for (int i = 0; i < checkedFriends.size(); i++) {
+                if (checkedFriends.get(i) == true) {
+                    friendsToReturn.add(friends.get(i));
+                }
+            }
+            return friendsToReturn;
+        }
     }
 }
 

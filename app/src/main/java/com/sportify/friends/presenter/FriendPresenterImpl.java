@@ -60,10 +60,8 @@ public class FriendPresenterImpl implements FriendPresenter, FriendRequest.OnSho
             Log.d("JsonArr: ", array.toString());
         } catch (JSONException e) {
             e.printStackTrace();
-            System.out.println("E-message " + e.getMessage().toString());
         }
         if(json == null || array == null){
-            System.out.println("null");
             return;
         }
 
@@ -72,7 +70,7 @@ public class FriendPresenterImpl implements FriendPresenter, FriendRequest.OnSho
 
             for(int i=0; i < array.length(); i++){
                 JSONObject jsonObject = array.getJSONObject(i);
-                //TODO: Hur ska vänner visas? Byt ut facebook icon till profilbild
+                //TODO: Byt ut facebook icon till profilbild
                 String firstname = jsonObject.getString("firstname");
 
                 Profile friend = new Profile(firstname, firstname, R.drawable.com_facebook_button_icon_blue);
@@ -83,7 +81,6 @@ public class FriendPresenterImpl implements FriendPresenter, FriendRequest.OnSho
             friendView.showFriends(friends);
 
         }catch(JSONException e){
-            System.out.println("Dåligt " + e.getMessage().toString());
             e.printStackTrace();
         }
     }

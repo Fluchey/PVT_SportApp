@@ -9,9 +9,6 @@ Thumbs.db
 # Files for the Dalvik VM
 *.dex
 
-# Java class files
-*.class
-
 # Generated files
 bin/
 gen/
@@ -34,10 +31,6 @@ proguard/
 
 ### Android Patch ###
 gen-external-apklibs
-
-
-### Java ###
-*.class
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/

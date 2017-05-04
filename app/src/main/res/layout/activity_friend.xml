@@ -11,36 +11,28 @@
     android:paddingRight="@dimen/paddingRight"
     tools:context="com.sportify.login.activity.LoginActivity">
 
-//TODO: Lägg in lämpliga texter i strings.xml och sätt dem sen på respektive objekt
+    //TODO: Lägg in lämpliga texter i strings.xml och sätt dem sen på respektive objekt
 
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true"
+    android:orientation="vertical">
+
+
+    <Button
+        android:id="@+id/btShowMarkedFriends"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:orientation="vertical">
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:text="Show Checked Friends"/>
 
-        <Button
-            android:id="@+id/btShowFriends"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-            android:text="Show Friends"
-            android:onClick="findFriendClick"/>
-
-        <TextView
-            android:id="@+id/tvShowFriends"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/btShowFriends"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="91dp" />
-
-        <ListView
-            android:id="@+id/lvFriends"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="23dp" />
+    <ListView
+        android:id="@+id/lvFriends"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="23dp" />
 
 </RelativeLayout>
