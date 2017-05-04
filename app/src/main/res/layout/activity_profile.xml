@@ -317,7 +317,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/profile_header"
-        android:textSize="35dp"
+        android:textSize="25dp"
         android:textColor="@color/colorCrystalWhite"
         android:fontFamily="serif"
         android:textStyle="italic"
