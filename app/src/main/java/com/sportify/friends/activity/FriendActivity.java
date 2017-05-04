@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,15 +50,7 @@ public class FriendActivity extends AppCompatActivity implements FriendView {
         showMarkedFriends.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("Test!");
-                ArrayList<Profile> markedFriends = myArrayAdapter.getMarkedFriends();
-                if(markedFriends.isEmpty()){
-                    System.out.println("Tomt!");
-                }else {
-                    for (int i = 0; i < markedFriends.size(); i++) {
-                        System.out.println(markedFriends.get(i).getFirstname());
-                    }
-                }
+                myArrayAdapter.getMarkedFriends();
             }
         });
     }
@@ -68,20 +59,23 @@ public class FriendActivity extends AppCompatActivity implements FriendView {
     public void showFriends(ArrayList friends) {
         friendArray = friends;
         myArrayAdapter = new MyArrayAdapter(this, R.layout.friend_list_item, friends);
-//        friendList.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE);
         friendList.setAdapter(myArrayAdapter);
-
     }
 
+    private class MyArrayAdapter extends ArrayAdapter<Profile> {
 
-    private class MyArrayAdapter extends ArrayAdapter<String> {
-
-        private HashMap<Integer, Boolean> myChecked = new HashMap<Integer, Boolean>();
+        private HashMap<Integer, Boolean> checkedFriends = new HashMap<Integer, Boolean>();
         private ArrayList<Profile> friends = new ArrayList<>();
 
-        public MyArrayAdapter(Context context, int rowId, ArrayList friends) {
+        public MyArrayAdapter(Context context, int rowId, ArrayList<Profile> friends) {
             super(context, rowId, friends);
             this.friends = friends;
+
+            if(friends != null) {
+                for (int i = 0; i < friends.size(); i++) {
+                    checkedFriends.put(i, false);
+                }
+            }
         }
 
         /**
@@ -91,7 +85,7 @@ public class FriendActivity extends AppCompatActivity implements FriendView {
          * @return
          */
         @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
+        public View getView(final int position, View convertView, ViewGroup parent) {
 
             View row = convertView;
 
@@ -111,22 +105,21 @@ public class FriendActivity extends AppCompatActivity implements FriendView {
                 @Override
                 public void onClick(View v) {
                     friendName.toggle();
+                    checkedFriends.put(position, friendName.isChecked());
                 }
             });
             return row;
         }
 
         public ArrayList<Profile> getMarkedFriends() {
-            ArrayList<Profile> friendsToReturn = new ArrayList<>();
-            SparseBooleanArray checkedFriends = friendList.getCheckedItemPositions();
-            System.out.println("sparse " + checkedFriends.toString());
-
-            for (int i = 0; i < checkedFriends.size(); i++) {
-                if (checkedFriends.get(i) == true) {
-                    friendsToReturn.add(friends.get(i));
+            ArrayList<Profile> markedFriends = new ArrayList<>();
+            for(int i=0; i<friends.size(); i++){
+                if(checkedFriends.get(i)){
+                    markedFriends.add(friends.get(i));
                 }
             }
-            return friendsToReturn;
+            System.out.println(markedFriends.toString());
+            return markedFriends;
         }
     }
 }
