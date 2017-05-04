@@ -1,12 +1,12 @@
-package com.sportify.friends.presenter;
+package com.sportify.showFriends.presenter;
 
 import android.content.SharedPreferences;
 import android.util.Log;
 
-import com.sportify.friends.Profile;
-import com.sportify.friends.activity.FriendView;
-import com.sportify.friends.request.FriendRequest;
-import com.sportify.friends.request.FriendRequestImpl;
+import com.sportify.showFriends.Profile;
+import com.sportify.showFriends.activity.FriendView;
+import com.sportify.showFriends.request.FriendRequest;
+import com.sportify.showFriends.request.FriendRequestImpl;
 
 import org.json.JSONArray;
 import org.json.JSONException;

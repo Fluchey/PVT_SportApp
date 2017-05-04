@@ -22,8 +22,8 @@ import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.sportify.login.presenter.LoginPresenterImpl;
 
-import com.sportify.createEventPage1.activity.CreateEventActivity;
-import com.sportify.friends.activity.FriendActivity;
+import com.sportify.createEvent.createEventPageOne.activity.CreateEventActivity;
+import com.sportify.showFriends.activity.FriendActivity;
 
 import com.sportify.register.activity.RegisterActivity;
 import com.sportify.userArea.activity.UserAreaActivity;

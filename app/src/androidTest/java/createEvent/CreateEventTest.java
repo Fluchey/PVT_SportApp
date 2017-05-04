@@ -3,7 +3,7 @@ package createEvent;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.sportify.createEventPage1.activity.CreateEventActivity;
+import com.sportify.createEvent.createEventPageOne.activity.CreateEventActivity;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -15,8 +15,8 @@ import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.ViewMatchers.hasErrorText;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
-import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
 /**
  * Created by Maja on 2017-04-26.
@@ -38,7 +38,7 @@ public class CreateEventTest {
         onView(withId(R.id.etEventDescription)).perform(typeText("TestEvent"));
         onView(withId(R.id.createEventButton)).perform(click());
 
-        onView(withId(R.id.tvCreateEventMessage)).check(matches(withText(R.string.event_name_empty_error)));
+        onView(withId(R.id.etEventName)).check(matches(hasErrorText(createEventActivityActivityTestRule.getActivity().getString(R.string.event_name_empty_error))));
     }
 
     //TODO: Vet inte vad som egentligen ska checkas, använder detta test för att slippa skriva in allt själv.
@@ -53,7 +53,6 @@ public class CreateEventTest {
         onView(withId(R.id.etEventDescription)).perform(typeText("TestEvent"));
         onView(withId(R.id.createEventButton)).perform(click());
 
-        onView(withId(R.id.tvCreateEventMessage)).check(matches(withText("")));
     }
 
     //TODO: Ska vi ha denna check för tiderna också? Beror ju på hur det kommer läggas in i fortsättningen / om det ska formateras automatiskt
@@ -68,6 +67,6 @@ public class CreateEventTest {
         onView(withId(R.id.etEventDescription)).perform(typeText("TestEvent"));
         onView(withId(R.id.createEventButton)).perform(click());
 
-        onView(withId(R.id.tvCreateEventMessage)).check(matches(withText(R.string.event_date_wrongformat_error)));
+        onView(withId(R.id.etEventDate)).check(matches(hasErrorText(createEventActivityActivityTestRule.getActivity().getString(R.string.event_date_wrongformat_error))));
     }
 }

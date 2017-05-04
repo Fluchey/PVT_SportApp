@@ -19,7 +19,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.sportify.mainPage.MainPageActivity">
+        <activity android:name="com.sportify.mainPage.activity.MainPageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -50,9 +50,9 @@
         <activity
             android:name="com.sportify.userArea.activity.UserAreaActivity"
             android:exported="true" />
-        <activity android:name="com.sportify.createEventPage1.activity.CreateEventActivity" />
+        <activity android:name="com.sportify.createEvent.createEventPageOne.activity.CreateEventActivity" />
         <activity
-            android:name="com.sportify.friends.activity.FriendActivity"
+            android:name="com.sportify.showFriends.activity.FriendActivity"
             android:label="@string/title_activity_friend"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name="com.sportify.profile.ProfileActivity" />
@@ -60,7 +60,11 @@
         <activity android:name="com.sportify.placeReview.activity.placeReviewActivity" />
         <activity android:name="com.sportify.forgottenPass.activity.ForgottenPassActivity" />
         <activity android:name="com.sportify.settings.activity.SettingsActivity" />
-        <activity android:name="com.sportify.createEventPage2.createEventPage2"></activity>
+
+        <activity android:name="com.sportify.createEvent.createEventPageFive.createEventActivity" />
+        <activity android:name="com.sportify.createEvent.createEventPageFour.createEventActivity" />
+        <activity android:name="com.sportify.createEvent.createEventPageThree.createEventActivity" />
+        <activity android:name="com.sportify.createEvent.createEventPageTwo.createEventActivity"></activity>
     </application>
 
 </manifest>

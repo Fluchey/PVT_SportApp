@@ -1,4 +1,4 @@
-package com.sportify.friends.activity;
+package com.sportify.showFriends.activity;
 
 import java.util.ArrayList;
 

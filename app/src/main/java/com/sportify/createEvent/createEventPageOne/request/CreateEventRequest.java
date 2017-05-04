@@ -1,4 +1,4 @@
-package com.sportify.createEventPage1.request;
+package com.sportify.createEvent.createEventPageOne.request;
 
 /**
  * Created by Maja on 2017-04-18.
