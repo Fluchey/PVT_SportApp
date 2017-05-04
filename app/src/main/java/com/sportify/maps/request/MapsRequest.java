@@ -9,23 +9,17 @@ import java.util.ArrayList;
  */
 
 public interface MapsRequest {
-    void updateCurrentSearch(String jsonMessage);
 
     interface onRequestFinishedListener{
         void showApiResponse(String command, String... params);
-
-        void closeLoadIndicator();
-
     }
 
     void makeApiRequestPut(String jsonMessage, String endURL, String method, String command);
 
     void makeApiRequestGet(String method, String endURL, String command);
 
-    void updateAllPlaces(String jsonMessage);
+    void updateCurrentSearchPlaces(String jsonMessage);
 
-    ArrayList<String> getPlacesName();
-
-    ArrayList<Place> getPlaces();
+    ArrayList<Place> getCurrentSearchPlaces();
 
 }

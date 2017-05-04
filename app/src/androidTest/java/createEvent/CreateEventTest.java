@@ -13,6 +13,7 @@ import sportapp.pvt_sportapp.R;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.hasErrorText;
@@ -30,12 +31,12 @@ public class CreateEventTest {
 
     @Test
     public void createEventShouldFailEmpytName(){
-        onView(withId(R.id.etEventDate)).perform(typeText("2017-01-01"));
-        onView(withId(R.id.etEventStartTime)).perform(typeText("13:00"));
-        onView(withId(R.id.etEventEndTime)).perform(typeText("16:00"));
-        onView(withId(R.id.etEventType)).perform(typeText("Basket"));
-        onView(withId(R.id.etEventPlace)).perform(typeText("Kista"));
-        onView(withId(R.id.etEventDescription)).perform(typeText("TestEvent"));
+        onView(withId(R.id.etEventDate)).perform(typeText("2017-01-01"), closeSoftKeyboard());
+        onView(withId(R.id.etEventStartTime)).perform(typeText("13:00"), closeSoftKeyboard());
+        onView(withId(R.id.etEventEndTime)).perform(typeText("16:00"), closeSoftKeyboard());
+        onView(withId(R.id.etEventType)).perform(typeText("Basket"), closeSoftKeyboard());
+        onView(withId(R.id.etEventPlace)).perform(typeText("Kista"), closeSoftKeyboard());
+        onView(withId(R.id.etEventDescription)).perform(typeText("TestEvent"), closeSoftKeyboard());
         onView(withId(R.id.createEventButton)).perform(click());
 
         onView(withId(R.id.etEventName)).check(matches(hasErrorText(createEventActivityActivityTestRule.getActivity().getString(R.string.event_name_empty_error))));
@@ -44,13 +45,13 @@ public class CreateEventTest {
     //TODO: Vet inte vad som egentligen ska checkas, använder detta test för att slippa skriva in allt själv.
     @Test
     public void createEventSucceded(){
-        onView(withId(R.id.etEventName)).perform(typeText("Testa espresso"));
-        onView(withId(R.id.etEventDate)).perform(typeText("2017-01-01"));
-        onView(withId(R.id.etEventStartTime)).perform(typeText("13:00"));
-        onView(withId(R.id.etEventEndTime)).perform(typeText("16:00"));
-        onView(withId(R.id.etEventType)).perform(typeText("Basket"));
-        onView(withId(R.id.etEventPlace)).perform(typeText("Kista"));
-        onView(withId(R.id.etEventDescription)).perform(typeText("TestEvent"));
+        onView(withId(R.id.etEventName)).perform(typeText("Testa espresso"), closeSoftKeyboard());
+        onView(withId(R.id.etEventDate)).perform(typeText("2017-01-01"), closeSoftKeyboard());
+        onView(withId(R.id.etEventStartTime)).perform(typeText("13:00"), closeSoftKeyboard());
+        onView(withId(R.id.etEventEndTime)).perform(typeText("16:00"), closeSoftKeyboard());
+        onView(withId(R.id.etEventType)).perform(typeText("Basket"), closeSoftKeyboard());
+        onView(withId(R.id.etEventPlace)).perform(typeText("Stadshagens IP"), closeSoftKeyboard());
+        onView(withId(R.id.etEventDescription)).perform(typeText("TestEvent"), closeSoftKeyboard());
         onView(withId(R.id.createEventButton)).perform(click());
 
     }
@@ -58,13 +59,13 @@ public class CreateEventTest {
     //TODO: Ska vi ha denna check för tiderna också? Beror ju på hur det kommer läggas in i fortsättningen / om det ska formateras automatiskt
     @Test
     public void createEventWrongDateFormat(){
-        onView(withId(R.id.etEventName)).perform(typeText("Testa datum"));
-        onView(withId(R.id.etEventDate)).perform(typeText("170101"));
-        onView(withId(R.id.etEventStartTime)).perform(typeText("13:00"));
-        onView(withId(R.id.etEventEndTime)).perform(typeText("16:00"));
-        onView(withId(R.id.etEventType)).perform(typeText("Basket"));
-        onView(withId(R.id.etEventPlace)).perform(typeText("Kista"));
-        onView(withId(R.id.etEventDescription)).perform(typeText("TestEvent"));
+        onView(withId(R.id.etEventName)).perform(typeText("Testa datum"), closeSoftKeyboard());
+        onView(withId(R.id.etEventDate)).perform(typeText("170101"), closeSoftKeyboard());
+        onView(withId(R.id.etEventStartTime)).perform(typeText("13:00"), closeSoftKeyboard());
+        onView(withId(R.id.etEventEndTime)).perform(typeText("16:00"), closeSoftKeyboard());
+        onView(withId(R.id.etEventType)).perform(typeText("Basket"), closeSoftKeyboard());
+        onView(withId(R.id.etEventPlace)).perform(typeText("Kista"), closeSoftKeyboard());
+        onView(withId(R.id.etEventDescription)).perform(typeText("TestEvent"), closeSoftKeyboard());
         onView(withId(R.id.createEventButton)).perform(click());
 
         onView(withId(R.id.etEventDate)).check(matches(hasErrorText(createEventActivityActivityTestRule.getActivity().getString(R.string.event_date_wrongformat_error))));

@@ -15,14 +15,8 @@ public interface MapsView {
 
     void goToLocation(double lat, double lon, float zoom);
 
-    String getCategory();
-
-    String getPlaceName();
-
-    void showLoadIndicator();
-
-    void closeLoadIndicator();
-
     void updatePlaceSearch(ArrayList<String> places);
+
+    void clearPlaces();
 
 }
