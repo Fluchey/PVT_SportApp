@@ -48,7 +48,8 @@
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:ems="8"
-            android:hint="@string/event_date"/>
+            android:hint="@string/event_date"
+            android:focusable="false"/>
 
         <EditText
             android:id="@+id/etEventStartTime"
@@ -57,7 +58,8 @@
             android:layout_centerInParent="true"
             android:ems="8"
             android:hint="@string/event_start_time"
-            android:inputType="time" />
+            android:inputType="time"
+            android:focusable="false"/>
 
         <EditText
             android:id="@+id/etEventEndTime"
@@ -66,7 +68,8 @@
             android:layout_centerInParent="true"
             android:ems="8"
             android:hint="@string/event_end_time"
-            android:inputType="time"/>
+            android:inputType="time"
+            android:focusable="false"/>
 
         <EditText
             android:id="@+id/etEventType"
