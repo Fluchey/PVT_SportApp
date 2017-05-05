@@ -77,7 +77,7 @@
             android:ems="8"
             android:hint="@string/event_type" />
 
-        <EditText
+        <AutoCompleteTextView
             android:id="@+id/etEventPlace"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

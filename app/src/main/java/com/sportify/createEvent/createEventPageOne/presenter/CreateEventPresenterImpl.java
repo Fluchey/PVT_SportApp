@@ -6,12 +6,14 @@ import android.util.Log;
 import com.sportify.createEvent.createEventPageOne.activity.CreateEventView;
 import com.sportify.createEvent.createEventPageOne.request.CreateEventRequest;
 import com.sportify.createEvent.createEventPageOne.request.CreateEventRequestImpl;
+import com.sportify.storage.Place;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 import sportapp.pvt_sportapp.R;
 
@@ -30,6 +32,11 @@ public class CreateEventPresenterImpl implements CreateEventPresenter, CreateEve
         this.sharedPref = sharedPref;
         this.token = sharedPref.getString("jwt", "");
         createEventRequest = new CreateEventRequestImpl(this, token);
+
+        /**
+         * This runs oncreate and updates the ArrayAdapter with all the current places in the database.
+         */
+        createEventRequest.makeApiRequestGet("GET", "getallplaces", "getAllPlaces");
     }
 
     @Override
@@ -104,13 +111,31 @@ public class CreateEventPresenterImpl implements CreateEventPresenter, CreateEve
             /**
              * Create new asynctask
              */
-            createEventRequest.makeApiRequest(jsonObject.toString());
+            createEventRequest.makeApiRequestPut("POST", "createEvent", jsonObject.toString(), "createEvent");
         }
     }
 
     @Override
-    public void showApiResponse(String apiResponse) {
-        createEventView.showApiRequestMessage(apiResponse);
+    public void showApiResponse(String apiResponse, String command) {
+        switch (command){
+            case "createEvent":
+                createEventView.showApiRequestMessage(apiResponse);
+                break;
+
+            case "getAllPlaces":
+                createEventRequest.upDatePlaces(apiResponse);
+                updateViewPlaceAdapter();
+                break;
+        }
+
+    }
+
+    private void updateViewPlaceAdapter() {
+        ArrayList<String> arr = new ArrayList<>();
+        for (Place p : createEventRequest.getPlaces()){
+            arr.add(p.getName());
+        }
+        createEventView.updatePlaceAdapter(arr);
     }
 
     private boolean validDateFormat(String date){

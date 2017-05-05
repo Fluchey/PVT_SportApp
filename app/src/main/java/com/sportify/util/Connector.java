@@ -74,6 +74,7 @@ public class Connector {
             URL url = new URL(URL);
             connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod(method);
+            connection.setRequestProperty("Authorization", token);
 
             /**
              * Connection Timeout to 20 seconds

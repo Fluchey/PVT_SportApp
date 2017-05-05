@@ -1,5 +1,7 @@
 package com.sportify.createEvent.createEventPageOne.activity;
 
+import java.util.ArrayList;
+
 /**
  * Created by Maja on 2017-04-18.
  */
@@ -46,5 +48,7 @@ public interface CreateEventView {
     void clearAllErrors();
 
     void showApiRequestMessage(String apiResponse);
+
+    void updatePlaceAdapter(ArrayList<String> arr);
 
 }

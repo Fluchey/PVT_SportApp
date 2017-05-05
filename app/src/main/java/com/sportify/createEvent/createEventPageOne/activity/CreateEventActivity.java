@@ -5,12 +5,16 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.sportify.createEvent.createEventPageOne.presenter.CreateEventPresenter;
 import com.sportify.createEvent.createEventPageOne.presenter.CreateEventPresenterImpl;
+
+import java.util.ArrayList;
 
 import sportapp.pvt_sportapp.R;
 
@@ -23,7 +27,8 @@ public class CreateEventActivity extends AppCompatActivity implements CreateEven
     private EditText eventName;
     private EditText eventPrice;
     private EditText eventDescription;
-    private EditText eventPlace;
+    private AutoCompleteTextView eventPlace;
+    private ArrayAdapter arrayAdapter;
     private EditText eventDate;
     private EditText eventStartTime;
     private EditText eventEndTime;
@@ -41,7 +46,7 @@ public class CreateEventActivity extends AppCompatActivity implements CreateEven
         createEventPresenter = new CreateEventPresenterImpl(this, sharedPref);
 
         eventName = (EditText) findViewById(R.id.etEventName);
-        eventPlace = (EditText) findViewById(R.id.etEventPlace);
+        eventPlace = (AutoCompleteTextView) findViewById(R.id.etEventPlace);
         eventPrice = (EditText) findViewById(R.id.etEventPrice);
         eventDescription = (EditText) findViewById(R.id.etEventDescription);
         eventDate = (EditText) findViewById(R.id.etEventDate);
@@ -166,5 +171,11 @@ public class CreateEventActivity extends AppCompatActivity implements CreateEven
     @Override
     public void showApiRequestMessage(String apiResponse){
         Toast.makeText(this, apiResponse, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void updatePlaceAdapter(ArrayList<String> arr) {
+        arrayAdapter= new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arr);
+        eventPlace.setAdapter(arrayAdapter);
     }
 }
