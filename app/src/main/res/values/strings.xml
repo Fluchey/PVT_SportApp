@@ -26,6 +26,10 @@
     <string name="profile_name">Namn</string>
     <string name="profile_name_hint">Förnamn/Efternamn</string>
     <string name="profile_birthday">Födelsedatum</string>
+    <string name="descriptionbox_profile_header">Om mig</string>
+    <string name="descriptionbox_profile_text">Berätta om dig själv</string>
+    <string name="profile_picture_text">Lägg till bild</string>
+    <string name="profile_interests_parkour">Parkour</string>
     <string name="profile_birthday_hint">DD/MM/YY</string>
     <string name="profile_text">Skapa en profil så andra kan lära känna dig bättre
     och vi kan hjälpa dig hitta roliga event, för just dig!</string>
