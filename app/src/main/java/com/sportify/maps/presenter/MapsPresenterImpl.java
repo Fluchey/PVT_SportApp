@@ -29,9 +29,8 @@ public class MapsPresenterImpl implements MapsPresenter, MapsRequest.onRequestFi
     public MapsPresenterImpl(MapsView mapsView, SharedPreferences sharedPreferences) {
         this.mapsView = mapsView;
         this.share = sharedPreferences;
-        this.token = sharedPreferences.getString("Token", "");
+        this.token = sharedPreferences.getString("jwt", "");
         this.mapsRequest = new MapsRequestImpl(this, token);
-        mapsRequest.makeApiRequestGet("GET", "getallplaces", "getAllPlaces");
     }
 
     @Override
@@ -60,7 +59,6 @@ public class MapsPresenterImpl implements MapsPresenter, MapsRequest.onRequestFi
         Place p = mapsRequest.getCurrentSearchPlaces().get(id);
         mapsView.switchToMapFragmentFromPresenter(p.getLat(), p.getLon());
         mapsView.setTextSearch(p.getName());
-//        mapsView.goToLocation(p.getLat(), p.getLon(), 15);
     }
 
     /**
@@ -75,15 +73,10 @@ public class MapsPresenterImpl implements MapsPresenter, MapsRequest.onRequestFi
         if (params[0] == null) {
             return;
         }
-        Log.d("Command", command);
-        Log.d("Params [0]", params[0]);
-//        Log.d("Params [1]", params[1]);
-//        Log.d("Params [2]", params[2]);
         switch (command) {
             case "updateSearch":
                 mapsRequest.updateCurrentSearchPlaces(params[0]);
                 afterApiupdatePlaceSearch();
-                Log.d("Ja", "JA");
                 break;
         }
     }

@@ -22,15 +22,13 @@ import javax.inject.Inject;
 
 public class MapsRequestImpl implements MapsRequest {
     private onRequestFinishedListener onRequestFinishedListener;
-    private String token = "";
-//    private ArrayList<Place> places;
+    private String token;
     private ArrayList<Place> currentSearchPlaces;
 
     public MapsRequestImpl(final onRequestFinishedListener onRequestFinishedListener, String token) {
         this.onRequestFinishedListener = onRequestFinishedListener;
         this.token = token;
 
-//        places = new ArrayList<>();
         currentSearchPlaces = new ArrayList<>();
     }
 
@@ -42,7 +40,6 @@ public class MapsRequestImpl implements MapsRequest {
         try {
             json = new JSONObject(jsonMessage);
             array = json.getJSONArray("places");
-            Log.d("JsonArr: ", array.toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -59,10 +56,6 @@ public class MapsRequestImpl implements MapsRequest {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-        for (Place p : currentSearchPlaces) {
-            Log.d("Place", p.toString());
-        }
     }
 
     @Override
@@ -75,36 +68,6 @@ public class MapsRequestImpl implements MapsRequest {
         ApiRequest apiRequest = (MapsRequestImpl.ApiRequest) new MapsRequestImpl.ApiRequest(this, command).execute
                 (method, endURL);
     }
-
-//    @Override
-//    public void updateAllPlaces(String jsonMessage) {
-//        JSONObject json = null;
-//        JSONArray array = null;
-//        try {
-//            json = new JSONObject(jsonMessage);
-//            array = json.getJSONArray("places");
-//            Log.d("JsonArr: ", array.toString());
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//        if (json == null || array == null) {
-//            return;
-//        }
-//
-//
-//        try {
-//            for (int i = 0; i < array.length(); i++) {
-//                JSONObject jsonObject = array.getJSONObject(i);
-//                places.add(new Place(jsonObject.getString("name"), jsonObject.getString("category"), Double.parseDouble(jsonObject.getString("lat")), Double.parseDouble(jsonObject.getString("lon"))));
-//            }
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//
-//        for (Place p : places) {
-//            Log.d("Place", p.toString());
-//        }
-//    }
 
     @Override
     public ArrayList<Place> getCurrentSearchPlaces() {
@@ -133,6 +96,7 @@ public class MapsRequestImpl implements MapsRequest {
          */
         @Override
         protected Void doInBackground(String... params) {
+            Log.d("TOKENAMPS", token);
             if (params[0].equals("GET") || params[0].equals("DELETE")) {
                 result = Connector.connectGetOrDelete(params[0], "https://pvt15app.herokuapp.com/api/" + params[1], token);
                 return null;
