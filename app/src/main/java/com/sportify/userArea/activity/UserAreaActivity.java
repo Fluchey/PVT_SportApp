@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.sportify.createEvent.createEventPageOne.activity.CreateEventActivity;
 import com.sportify.maps.activity.MapsActivity;
 import com.sportify.settings.activity.SettingsActivity;
+import com.sportify.showFriends.activity.FriendActivity;
 import com.sportify.userArea.presenter.UserAreaPresenter;
 import com.sportify.userArea.presenter.UserAreaPresenterImpl;
 
@@ -47,5 +48,10 @@ public class UserAreaActivity extends AppCompatActivity implements UserAreaView 
     public void goToSettingsActivity(View v){
         Intent goToSettingsViewIntent = new Intent(UserAreaActivity.this, SettingsActivity.class);
         UserAreaActivity.this.startActivity(goToSettingsViewIntent);
+    }
+
+    public void goToFriendListButtonClick(View v){
+        Intent goToFriendListIntent = new Intent(UserAreaActivity.this, FriendActivity.class);
+        UserAreaActivity.this.startActivity(goToFriendListIntent);
     }
 }

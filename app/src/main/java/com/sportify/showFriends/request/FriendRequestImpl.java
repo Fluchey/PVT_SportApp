@@ -40,7 +40,7 @@ public class FriendRequestImpl implements FriendRequest {
         protected Void doInBackground(String... params) {
 
           resultFromApi = Connector.connect("https://pvt15app.herokuapp.com/api/findfriends",
-                        "GET", String.format(params[0]), token);
+                        "POST", String.format(params[0]), token);
 //            resultFromApi = Connector.connect("http://130.237.89.181:9000/api/findfriends",
 //                    "POST", String.format(params[0]), token);
 

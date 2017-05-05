@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.CheckedTextView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.sportify.showFriends.Profile;
 import com.sportify.showFriends.presenter.FriendPresenter;
@@ -71,7 +72,7 @@ public class FriendActivity extends AppCompatActivity implements FriendView {
             super(context, rowId, friends);
             this.friends = friends;
 
-            if(friends != null) {
+            if (friends != null) {
                 for (int i = 0; i < friends.size(); i++) {
                     checkedFriends.put(i, false);
                 }
@@ -112,13 +113,26 @@ public class FriendActivity extends AppCompatActivity implements FriendView {
         }
 
         public ArrayList<Profile> getMarkedFriends() {
+            String toastText = "";
             ArrayList<Profile> markedFriends = new ArrayList<>();
-            for(int i=0; i<friends.size(); i++){
-                if(checkedFriends.get(i)){
+            for (int i = 0; i < friends.size(); i++) {
+                if (checkedFriends.get(i)) {
                     markedFriends.add(friends.get(i));
                 }
             }
-            System.out.println(markedFriends.toString());
+
+            for(int i = 0; i < markedFriends.size(); i++){
+                toastText += markedFriends.get(i).getFirstname();
+                if(i<markedFriends.size()-1){
+                    toastText += ", ";
+                }
+            }
+            if (!markedFriends.isEmpty()) {
+                toastText += " " + getText(R.string.have_been_choosen);
+            }else {
+                toastText += getText(R.string.no_friends_have_been_choosen);
+            }
+            Toast.makeText(FriendActivity.this, toastText, Toast.LENGTH_LONG).show();
             return markedFriends;
         }
     }

@@ -36,24 +36,20 @@ public class FriendPresenterImpl implements FriendPresenter, FriendRequest.OnSho
 
     @Override
     public void showFriends() {
-        //Ta ID från den som är inloggad
-        String userID = "1";
-        JSONObject jsonObject = new JSONObject();
-
-        try {
-            jsonObject.put("userID", userID);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        friendRequest.makeApiRequest(jsonObject.toString());
+        //TODO: Skickar nu bara tomt Json för att jag inte får GET att funka, gör fortf med POST i Heroku.
+        friendRequest.makeApiRequest("{}");
     }
 
     public void getFriends(String jsonMessage) {
 
+        System.out.println("Jsonmessage " + jsonMessage);
         JSONObject json = null;
         JSONArray array = null;
 
+        if(jsonMessage == null){
+            System.out.println("Fel format på Json");
+            return;
+        }
         try {
             json = new JSONObject(jsonMessage);
             array = json.getJSONArray("friendList");
