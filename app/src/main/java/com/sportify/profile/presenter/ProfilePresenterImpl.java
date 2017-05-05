@@ -34,4 +34,14 @@ public class ProfilePresenterImpl implements ProfilePresenter, ProfileRequest.On
     public void addProfilePicture() {
 
     }
+
+    @Override
+    public void showApiResponse(String... params) {
+
+    }
+
+    @Override
+    public void closeProgressDialog() {
+
+    }
 }
