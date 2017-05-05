@@ -130,6 +130,10 @@
     <string name="email_wrongFormat_error">Vänligen skriv in en giltig e-postadress</string>
     <string name="event_place_does_not_exist">Platsen finns ej i vår databas</string>
 
+    /* Strings Skapa event activity 3 */
+    <string name="Event_Activity_3_Friends_Header">Vänner</string>
+    <string name="Event_Activity_3_Header">Bjud in dina vänner</string>
+
 
     /* Strings Karta */
     <string name="where_do_you_want_to_go">Vart vill du gå?</string>
