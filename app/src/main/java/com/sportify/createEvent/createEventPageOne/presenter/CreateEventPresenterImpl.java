@@ -28,7 +28,7 @@ public class CreateEventPresenterImpl implements CreateEventPresenter, CreateEve
     public CreateEventPresenterImpl(CreateEventView createEventView, SharedPreferences sharedPref){
         this.createEventView = createEventView;
         this.sharedPref = sharedPref;
-        this.token = sharedPref.getString("Token", "");
+        this.token = sharedPref.getString("jwt", "");
         createEventRequest = new CreateEventRequestImpl(this, token);
     }
 

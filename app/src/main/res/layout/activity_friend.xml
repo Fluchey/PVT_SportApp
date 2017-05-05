@@ -21,6 +21,7 @@
 
     <Button
         android:id="@+id/btShowMarkedFriends"
+        android:background="@color/colorButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"

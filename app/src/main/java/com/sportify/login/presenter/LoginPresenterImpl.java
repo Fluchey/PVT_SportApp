@@ -25,7 +25,7 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
     public LoginPresenterImpl(LoginView loginView, SharedPreferences sharedPref) {
         this.loginView = loginView;
         this.sharedPref = sharedPref;
-        this.token = sharedPref.getString("Token", "");
+        this.token = sharedPref.getString("jwt", "");
         loginRequest = new LoginRequestImpl(this, token);
     }
 
@@ -87,8 +87,8 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
 
     @Override
     public void showApiResponse(String... params) {
-        /* response code 200 maps to successful login */
-        //TODO: Delete this and return will be a JSON object when implemented
+        /* response code 200 maps to successful login and 201 to facebookLogin */
+
             if (params[1].equals("200") || params[1].equals("201")){
                 saveToPreferences(params);
                 loginView.launchUserActivity();
@@ -96,6 +96,7 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
     }
 
     public void saveToPreferences(String... params) {
+        //TODO: When LOGOUT is created these values need to be set to ""
         String fbTokenLong = null;
         String jwt = null;
 
@@ -104,10 +105,8 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
         try {
             json = new JSONObject(params[0]);
             jwt = json.getString("JWT");
-            Log.d(TAG, "String jwt: " + jwt);
             if (params[1].equals("201")){
                 fbTokenLong = json.getString("fbTokenLong");
-                Log.d(TAG, "String fbTokenLong: " + fbTokenLong);
             }
 
         } catch (JSONException e) {

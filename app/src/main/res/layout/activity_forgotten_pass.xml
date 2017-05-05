@@ -70,6 +70,7 @@
 
     <Button
         android:id="@+id/forgottenSendButton"
+        android:background="@color/colorButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/forgotten_pass_send"

@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#13CE66</color>
-    <color name="colorAccent">#6ba4ed</color>
+    <color name="colorAccent">#93e4bb</color>
+    <color name="colorButton">#8dcaab</color>
     <color name="colorPrimaryDark">#636464</color>
     <color name="colorPrimaryDarkGrey">#000000</color>
     <color name="colorEditText">#5e5a5a</color>
+    <color name="colorMPButtons">#77d2c2</color>
+
     <color name="colorCrystalWhite">#ffffff</color>
 </resources>
