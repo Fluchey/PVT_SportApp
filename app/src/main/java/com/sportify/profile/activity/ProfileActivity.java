@@ -1,4 +1,4 @@
-package com.sportify.profile;
+package com.sportify.profile.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
