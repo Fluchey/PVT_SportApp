@@ -35,8 +35,9 @@ public class CreateEventPresenterImpl implements CreateEventPresenter, CreateEve
 
         /**
          * This runs oncreate and updates the ArrayAdapter with all the current places in the database.
+         * Fulaste lösningen i världen, skickar med ett bluff JSON objekt. Plz fix
          */
-        createEventRequest.makeApiRequestGet("GET", "getallplaces", "getAllPlaces");
+        createEventRequest.makeApiRequestPut("PUT", "getallplaces", "\"category\": \"Simhall\"", "getAllPlaces");
     }
 
     @Override
