@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import sportapp.pvt_sportapp.R;
 
-public class createEventActivity extends AppCompatActivity {
+public class CreateEventActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
