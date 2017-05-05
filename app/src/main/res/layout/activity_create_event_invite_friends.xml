@@ -26,10 +26,11 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:text="Show Checked Friends"/>
+        android:text="Show Checked Friends"
+        android:onClick="getMarkedFriends"/>
 
     <ListView
-        android:id="@+id/lvFriends"
+        android:id="@+id/lvCreateEventFriends"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"

@@ -24,7 +24,7 @@ import com.sportify.forgottenPass.activity.ForgottenPassActivity;
 import com.sportify.login.presenter.LoginPresenterImpl;
 
 import com.sportify.createEvent.createEventPageOne.activity.CreateEventActivity;
-import com.sportify.showFriends.activity.FriendActivity;
+import com.sportify.createEvent.createEventPageThree.activity.CreateEventInviteFriendsActivity;
 
 import com.sportify.register.activity.RegisterActivity;
 import com.sportify.userArea.activity.UserAreaActivity;
@@ -78,7 +78,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         tvFindFriends.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent createEventIntent = new Intent(LoginActivity.this, FriendActivity.class);
+                Intent createEventIntent = new Intent(LoginActivity.this, CreateEventInviteFriendsActivity.class);
                 LoginActivity.this.startActivity(createEventIntent);
             }
         });

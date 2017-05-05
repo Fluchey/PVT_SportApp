@@ -1,12 +1,12 @@
-package com.sportify.showFriends.presenter;
+package com.sportify.createEvent.createEventPageThree.presenter;
 
 import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.sportify.showFriends.Profile;
-import com.sportify.showFriends.activity.FriendView;
-import com.sportify.showFriends.request.FriendRequest;
-import com.sportify.showFriends.request.FriendRequestImpl;
+import com.sportify.createEvent.createEventPageThree.activity.CreateEventInviteFriendsView;
+import com.sportify.createEvent.createEventPageThree.request.CreateEventInviteFriendsRequest;
+import com.sportify.createEvent.createEventPageThree.request.CreateEventInviteFriendsRequestImpl;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -20,24 +20,24 @@ import sportapp.pvt_sportapp.R;
  * Created by Maja on 2017-04-27.
  */
 
-public class FriendPresenterImpl implements FriendPresenter, FriendRequest.OnShowFriendsFinishedListener{
+public class CreateEventInviteFriendsPresenterImpl implements CreateEventInviteFriendsPresenter, CreateEventInviteFriendsRequest.OnShowFriendsFinishedListener{
 
-    private FriendView friendView;
-    private FriendRequest friendRequest;
+    private CreateEventInviteFriendsView createEventInviteFriendsView;
+    private CreateEventInviteFriendsRequest createEventInviteFriendsRequest;
     private SharedPreferences sharedPref;
     private String token = "";
 
-    public FriendPresenterImpl(FriendView friendView, SharedPreferences sharedPref){
-        this.friendView = friendView;
+    public CreateEventInviteFriendsPresenterImpl(CreateEventInviteFriendsView createEventInviteFriendsView, SharedPreferences sharedPref){
+        this.createEventInviteFriendsView = createEventInviteFriendsView;
         this.sharedPref = sharedPref;
         this.token = sharedPref.getString("jwt", "");
-        this.friendRequest = new FriendRequestImpl(this, token);
+        this.createEventInviteFriendsRequest = new CreateEventInviteFriendsRequestImpl(this, token);
     }
 
     @Override
     public void showFriends() {
         //TODO: Skickar nu bara tomt Json för att jag inte får GET att funka, gör fortf med POST i Heroku.
-        friendRequest.makeApiRequest("{}");
+        createEventInviteFriendsRequest.makeApiRequest("{}");
     }
 
     public void getFriends(String jsonMessage) {
@@ -74,7 +74,7 @@ public class FriendPresenterImpl implements FriendPresenter, FriendRequest.OnSho
                 friends.add(friend);
             }
 
-            friendView.showFriends(friends);
+            createEventInviteFriendsView.showFriends(friends);
 
         }catch(JSONException e){
             e.printStackTrace();
@@ -83,7 +83,7 @@ public class FriendPresenterImpl implements FriendPresenter, FriendRequest.OnSho
 
     @Override
     public void showApiResponse(String... params) {
-//        friendView.showApiRequestMessage(params[0]);
+//        createEventInviteFriendsView.showApiRequestMessage(params[0]);
         getFriends(params[0]);
     }
 }

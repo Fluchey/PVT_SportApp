@@ -50,10 +50,11 @@
         <activity
             android:name="com.sportify.userArea.activity.UserAreaActivity"
             android:exported="true" />
-        <activity android:name="com.sportify.createEvent.createEventPageOne.activity.CreateEventActivity"
-            android:exported="true"/>
         <activity
-            android:name="com.sportify.showFriends.activity.FriendActivity"
+            android:name="com.sportify.createEvent.createEventPageOne.activity.CreateEventActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.sportify.createEvent.createEventPageThree.activity.CreateEventInviteFriendsActivity"
             android:label="@string/title_activity_friend"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name="com.sportify.profile.activity.ProfileActivity" />
@@ -61,11 +62,11 @@
         <activity android:name="com.sportify.placeReview.activity.placeReviewActivity" />
         <activity android:name="com.sportify.forgottenPass.activity.ForgottenPassActivity" />
         <activity android:name="com.sportify.settings.activity.SettingsActivity" />
-
         <activity android:name="com.sportify.createEvent.createEventPageFive.CreateEventActivity" />
         <activity android:name="com.sportify.createEvent.createEventPageFour.CreateEventActivity" />
         <activity android:name="com.sportify.createEvent.createEventPageThree.CreateEventActivity" />
-        <activity android:name="com.sportify.createEvent.createEventPageTwo.CreateEventActivity"></activity>
+        <activity android:name="com.sportify.createEvent.createEventPageTwo.activity.CreateEventActivityPageTwo" />
+        <activity android:name="com.sportify.showFriends.activity.ShowFriendsActivity"></activity>
     </application>
 
 </manifest>

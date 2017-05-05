@@ -5,12 +5,12 @@
     android:orientation="horizontal">
 
     <ImageView
-        android:id="@+id/profilePicture"
+        android:id="@+id/inviteFriendsProfilePicture"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:src="@drawable/com_facebook_button_icon_blue"/>
     <CheckedTextView
-        android:id="@+id/ctvFriend"
+        android:id="@+id/ctvInviteFriendName"
         android:layout_width="match_parent"
         android:layout_height="?android:attr/listPreferredItemHeightSmall"
         android:textAppearance="?android:attr/textAppearanceListItemSmall"

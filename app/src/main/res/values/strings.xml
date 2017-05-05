@@ -71,6 +71,9 @@
     <string name="userArea_notifications">Notiser</string>
     <string name="userArea_friends">Vänner</string>
 
+    /* Strings vänner */
+    <string name="friends">Vänner</string>
+
 
     /* Strings Skapa event */
     <string name="create_event">Skapa event</string>
@@ -114,7 +117,6 @@
     <string name="event_end_time_empty_error">Ange sluttid</string>
     <string name="event_type_empty_error">Ange eventtyp</string>
     <string name="event_place_empty_error">Ange plats</string>
-
 
 
     <string name="first_name_optional">Förnamn (frivilligt)</string>

@@ -1,4 +1,4 @@
-package com.sportify.showFriends.activity;
+package com.sportify.createEvent.createEventPageThree.activity;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -16,42 +16,42 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.sportify.showFriends.Profile;
-import com.sportify.showFriends.presenter.FriendPresenter;
-import com.sportify.showFriends.presenter.FriendPresenterImpl;
+import com.sportify.createEvent.createEventPageThree.presenter.CreateEventInviteFriendsPresenter;
+import com.sportify.createEvent.createEventPageThree.presenter.CreateEventInviteFriendsPresenterImpl;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import sportapp.pvt_sportapp.R;
 
-public class FriendActivity extends AppCompatActivity implements FriendView {
+public class CreateEventInviteFriendsActivity extends AppCompatActivity implements CreateEventInviteFriendsView {
 
-    Button showMarkedFriends;
-    ListView friendList;
-    ArrayList friendArray;
-    FriendPresenter friendPresenter;
-    MyArrayAdapter myArrayAdapter;
+    private Button showMarkedFriends;
+    private ListView friendList;
+    private ArrayList friendArray;
+    private CreateEventInviteFriendsPresenter createEventInviteFriendsPresenter;
+    private MyArrayAdapter myArrayAdapter;
     private SharedPreferences sharedPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_friend);
+        setContentView(R.layout.activity_create_event_invite_friends);
 
         sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-        friendPresenter = new FriendPresenterImpl(this, sharedPref);
+        createEventInviteFriendsPresenter = new CreateEventInviteFriendsPresenterImpl(this, sharedPref);
         showMarkedFriends = (Button) findViewById(R.id.btShowMarkedFriends);
-        friendList = (ListView) findViewById(R.id.lvFriends);
-        myArrayAdapter = new MyArrayAdapter(this, R.layout.friend_list_item, null);
+        friendList = (ListView) findViewById(R.id.lvCreateEventFriends);
+        myArrayAdapter = new MyArrayAdapter(this, R.layout.create_event_friend_list_item, null);
 
         friendList.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE);
 
-        friendPresenter.showFriends();
+        createEventInviteFriendsPresenter.showFriends();
 
         showMarkedFriends.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myArrayAdapter.getMarkedFriends();
+                getMarkedFriends();
             }
         });
     }
@@ -59,8 +59,13 @@ public class FriendActivity extends AppCompatActivity implements FriendView {
     @Override
     public void showFriends(ArrayList friends) {
         friendArray = friends;
-        myArrayAdapter = new MyArrayAdapter(this, R.layout.friend_list_item, friends);
+        myArrayAdapter = new MyArrayAdapter(this, R.layout.create_event_friend_list_item, friends);
         friendList.setAdapter(myArrayAdapter);
+    }
+
+    @Override
+    public ArrayList getMarkedFriends() {
+        return myArrayAdapter.getMarkedFriends();
     }
 
     private class MyArrayAdapter extends ArrayAdapter<Profile> {
@@ -91,10 +96,10 @@ public class FriendActivity extends AppCompatActivity implements FriendView {
             View row = convertView;
 
             LayoutInflater layoutInflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            row = layoutInflater.inflate(R.layout.friend_list_item, null);
-            final CheckedTextView friendName = (CheckedTextView) row.findViewById(R.id.ctvFriend);
+            row = layoutInflater.inflate(R.layout.create_event_friend_list_item, null);
+            final CheckedTextView friendName = (CheckedTextView) row.findViewById(R.id.ctvInviteFriendName);
 
-            ImageView imageView = (ImageView) row.findViewById(R.id.profilePicture);
+            ImageView imageView = (ImageView) row.findViewById(R.id.inviteFriendsProfilePicture);
             imageView.setImageResource(friends.get(position).getProfilePicture());
 
             String firstName = friends.get(position).getFirstname();
@@ -132,7 +137,7 @@ public class FriendActivity extends AppCompatActivity implements FriendView {
             }else {
                 toastText += getText(R.string.no_friends_have_been_choosen);
             }
-            Toast.makeText(FriendActivity.this, toastText, Toast.LENGTH_LONG).show();
+            Toast.makeText(CreateEventInviteFriendsActivity.this, toastText, Toast.LENGTH_LONG).show();
             return markedFriends;
         }
     }
