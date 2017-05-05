@@ -5,4 +5,10 @@ package com.sportify.profile.request;
  */
 
 public interface ProfileRequest {
+    interface OnCreateProfileFinishedListener {
+        void showApiResponse(String... params);
+        void closeProgressDialog();
+    }
+
+    void makeApiRequest(String jsonMessage, String connectorUrl);
 }

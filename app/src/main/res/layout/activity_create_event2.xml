@@ -77,7 +77,7 @@
         android:id="@+id/imageButton"
         android:layout_width="237dp"
         android:layout_height="179dp"
-        app:srcCompat="@drawable/addPeople"
+        app:srcCompat="@drawable/addpeople"
         android:layout_marginEnd="136dp"
         android:layout_alignParentEnd="true"
         android:background="@drawable/border"
