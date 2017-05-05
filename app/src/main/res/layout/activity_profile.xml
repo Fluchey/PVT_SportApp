@@ -4,8 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/neutralbakgrund"
+    android:background="@drawable/neutralbakgrundnogubbe"
     tools:context="com.sportify.profile.ProfileActivity">
+
+    <TextView
+        android:id="@+id/tvProfilHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="serif"
+        android:text="@string/profile_header"
+        android:textColor="@color/colorCrystalWhite"
+        android:textSize="25sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.013"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <TextView
         android:id="@+id/tvProfilIntro"
@@ -17,7 +39,7 @@
         android:layout_marginTop="8dp"
         android:fontFamily="serif"
         android:text="@string/profile_text"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/colorPrimaryDarkGrey"
         android:textSize="12sp"
         android:textStyle="italic|bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -25,7 +47,9 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.182" />
+        app:layout_constraintVertical_bias="0.145"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <!--todo: namn behövs hämtas <TextView
  android:id="@+id/tvWelcomeUserMessage"
@@ -40,7 +64,48 @@
  -->
 
 
-<TextView
+    <ImageButton
+        android:id="@+id/ibProfilePicturebutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:srcCompat="@drawable/userprofileimage"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintHorizontal_bias="0.081"
+        app:layout_constraintVertical_bias="0.309"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
+
+    <TextView
+        android:id="@+id/tvProfilePictureText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/profile_picture_text"
+        android:textSize="11dp"
+        android:fontFamily="serif"
+        android:textStyle="normal"
+        android:textColor="@color/colorPrimaryDarkGrey"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintHorizontal_bias="0.062"
+        app:layout_constraintVertical_bias="0.396"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
+
+    <TextView
     android:id="@+id/tvProfileName"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -58,7 +123,9 @@
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintBottom_toBottomOf="parent"
     android:layout_marginBottom="8dp"
-    app:layout_constraintVertical_bias="0.376" />
+    app:layout_constraintVertical_bias="0.29"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
 <EditText
     android:id="@+id/etProfileNameHint"
@@ -80,7 +147,9 @@
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.424" />
+    app:layout_constraintVertical_bias="0.326"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp" />
 
 <TextView
     android:id="@+id/tvProfileBirthday"
@@ -99,7 +168,10 @@
     app:layout_constraintHorizontal_bias="0.501"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.397"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp" />
 
 <EditText
     android:id="@+id/etProfileBirthdayhint"
@@ -121,7 +193,9 @@
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.554" />
+    app:layout_constraintVertical_bias="0.443"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp" />
 
 <EditText
     android:id="@+id/editText6"
@@ -144,7 +218,9 @@
     app:layout_constraintTop_toTopOf="parent"
     android:layout_marginTop="8dp"
     app:layout_constraintHorizontal_bias="0.087"
-    app:layout_constraintVertical_bias="0.627" />
+    app:layout_constraintVertical_bias="0.707"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp" />
 
 <CheckBox
     android:id="@+id/cbProfileFotboll"
@@ -161,8 +237,10 @@
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.693"
-    app:layout_constraintHorizontal_bias="0.089" />
+    app:layout_constraintVertical_bias="0.772"
+    app:layout_constraintHorizontal_bias="0.089"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp" />
 
 <CheckBox
     android:id="@+id/cbProfileBasket"
@@ -179,8 +257,10 @@
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.693"
-    app:layout_constraintHorizontal_bias="0.402" />
+    app:layout_constraintVertical_bias="0.772"
+    app:layout_constraintHorizontal_bias="0.402"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp" />
 
 <CheckBox
     android:id="@+id/cbProfileSimmning"
@@ -197,13 +277,15 @@
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.693"
-    app:layout_constraintHorizontal_bias="0.773" />
+    app:layout_constraintVertical_bias="0.772"
+    app:layout_constraintHorizontal_bias="0.755"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp" />
 
 <CheckBox
     android:id="@+id/cbProfileBandy"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="76dp"
+    android:layout_height="35dp"
     android:layout_marginBottom="8dp"
     android:layout_marginLeft="8dp"
     android:layout_marginRight="8dp"
@@ -215,8 +297,10 @@
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.755"
-    app:layout_constraintHorizontal_bias="0.087" />
+    app:layout_constraintVertical_bias="0.838"
+    app:layout_constraintHorizontal_bias="0.087"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp" />
 
 <CheckBox
     android:id="@+id/cbProfileVolleyball"
@@ -233,8 +317,10 @@
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.755"
-    app:layout_constraintHorizontal_bias="0.418" />
+    app:layout_constraintVertical_bias="0.834"
+    app:layout_constraintHorizontal_bias="0.418"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp" />
 
 <CheckBox
     android:id="@+id/cbProfileoutdoortraining"
@@ -251,13 +337,15 @@
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.755"
-    app:layout_constraintHorizontal_bias="0.76" />
+    app:layout_constraintVertical_bias="0.834"
+    app:layout_constraintHorizontal_bias="0.736"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp" />
 
 <CheckBox
     android:id="@+id/cbProfileClimbing"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="91dp"
+    android:layout_height="32dp"
     android:layout_marginBottom="8dp"
     android:layout_marginLeft="8dp"
     android:layout_marginRight="8dp"
@@ -269,8 +357,10 @@
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.816"
-    app:layout_constraintHorizontal_bias="0.091" />
+    app:layout_constraintVertical_bias="0.901"
+    app:layout_constraintHorizontal_bias="0.093"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp" />
 
 <CheckBox
     android:id="@+id/cbProfileRunning"
@@ -287,9 +377,31 @@
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.816"
-    app:layout_constraintHorizontal_bias="0.763" />
+    app:layout_constraintVertical_bias="0.899"
+    app:layout_constraintHorizontal_bias="0.411"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp" />
 
+
+    <CheckBox
+        android:id="@+id/cbPorfileParkour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/profile_interests_parkour"
+        android:textColor="@color/colorPrimaryDarkGrey"
+        android:buttonTint="@color/colorPrimaryDarkGrey"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.735"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.899"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <ImageButton
         android:id="@+id/ibCheckboxProfileButton"
@@ -299,35 +411,57 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
-        android:backgroundTint="@color/colorCrystalWhite"
+        android:backgroundTint="@android:color/transparent"
         android:src="@drawable/checkboxbutton"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.81"
+        app:layout_constraintHorizontal_bias="0.451"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.935"
-        tools:ignore="ContentDescription" />
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="ContentDescription"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
+    <EditText
+        android:id="@+id/etDescriptionBoxProfileOmMig"
+        android:layout_width="160dp"
+        android:layout_height="65sp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:background="@drawable/border"
+        android:textColor="@color/colorPrimaryDarkGrey"
+        android:gravity="top"
+        android:lines="2"
+        android:hint="@string/descriptionbox_profile_text"
+        android:textSize="10sp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintHorizontal_bias="0.677"
+        app:layout_constraintVertical_bias="0.586" />
 
     <TextView
-        android:id="@+id/tvProfilHeader"
+        android:id="@+id/tvOmMigProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/profile_header"
-        android:textSize="25sp"
-        android:textColor="@color/colorCrystalWhite"
         android:fontFamily="serif"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintLeft_toLeftOf="parent"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimaryDarkGrey"
+        android:textSize="12sp"
+        android:text="@string/descriptionbox_profile_header"
+        android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.013" />
-
+        android:layout_marginTop="8dp"
+        app:layout_constraintHorizontal_bias="0.442" />
 
 </android.support.constraint.ConstraintLayout>
