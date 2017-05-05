@@ -89,6 +89,7 @@
     <string name="event_private">Privat</string>
     <string name="event_private_descr">Endast inbjudna kan gå med i event</string>
     <string name="event_public">Offentlig</string>
+    <string name="event_next">Nästa</string>
     <string name="event_public_descr">Vem som helst kan gå med i eventet</string>
     <string name="event_invite_friends">Nästan klar! Bjud in dina vänner till ditt event</string>
     <string name="event_created_message">Här ser du en överblick över eventet, gå vidare till nästa steg för att publicera det i appen.</string>
