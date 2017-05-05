@@ -62,7 +62,6 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
         setContentView(R.layout.activity_maps);
 
         sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-        Log.d("TokenMap", sharedPref.getString("jwt", ""));
         mapsPresenter = new MapsPresenterImpl(this, sharedPref);
 
         CURRENT_LOCATION = new LatLng(59.3293, 18.0686);
