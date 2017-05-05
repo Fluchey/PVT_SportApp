@@ -195,9 +195,6 @@ public class CreateEventActivity extends AppCompatActivity implements CreateEven
         eventPrivate = (CheckBox) findViewById(R.id.cbEventPrivate);
     }
 
-    private void updateDateText() {
-    }
-
     public void createEventClick(View v) {
         createEventPresenter.createEvent();
     }
