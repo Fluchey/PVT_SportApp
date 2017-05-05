@@ -47,8 +47,10 @@ public interface CreateEventView {
 
     void clearAllErrors();
 
-    void showApiRequestMessage(String apiResponse);
+    void showToastToUser(String apiResponse);
 
     void updatePlaceAdapter(ArrayList<String> arr);
+
+    boolean getUserWroteSearch();
 
 }

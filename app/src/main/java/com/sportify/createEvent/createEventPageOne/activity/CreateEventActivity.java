@@ -4,7 +4,11 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.view.animation.BounceInterpolator;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.CheckBox;
@@ -37,6 +41,8 @@ public class CreateEventActivity extends AppCompatActivity implements CreateEven
     private CheckBox eventPrivate;
     private SharedPreferences sharedPref;
 
+    private boolean userWroteSearch;
+
     private CreateEventPresenter createEventPresenter;
 
     protected void onCreate(Bundle savedInstanceState){
@@ -47,6 +53,31 @@ public class CreateEventActivity extends AppCompatActivity implements CreateEven
 
         eventName = (EditText) findViewById(R.id.etEventName);
         eventPlace = (AutoCompleteTextView) findViewById(R.id.etEventPlace);
+        userWroteSearch = true;
+        eventPlace.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                userWroteSearch = true;
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        eventPlace.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                userWroteSearch = false;
+            }
+        });
+
         eventPrice = (EditText) findViewById(R.id.etEventPrice);
         eventDescription = (EditText) findViewById(R.id.etEventDescription);
         eventDate = (EditText) findViewById(R.id.etEventDate);
@@ -169,7 +200,7 @@ public class CreateEventActivity extends AppCompatActivity implements CreateEven
     }
 
     @Override
-    public void showApiRequestMessage(String apiResponse){
+    public void showToastToUser(String apiResponse){
         Toast.makeText(this, apiResponse, Toast.LENGTH_LONG).show();
     }
 
@@ -177,5 +208,10 @@ public class CreateEventActivity extends AppCompatActivity implements CreateEven
     public void updatePlaceAdapter(ArrayList<String> arr) {
         arrayAdapter= new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arr);
         eventPlace.setAdapter(arrayAdapter);
+    }
+
+    @Override
+    public boolean getUserWroteSearch() {
+        return userWroteSearch;
     }
 }

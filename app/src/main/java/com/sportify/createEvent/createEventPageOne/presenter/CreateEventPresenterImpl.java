@@ -77,8 +77,8 @@ public class CreateEventPresenterImpl implements CreateEventPresenter, CreateEve
         else if(eventType.isEmpty()) {
             createEventView.showEventTypeEmptyError(R.string.event_type_empty_error);
         }
-        else if(eventPlace.isEmpty()){
-            createEventView.showEventPlaceEmptyError(R.string.event_place_empty_error);
+        else if(createEventView.getUserWroteSearch()){
+            createEventView.showEventPlaceEmptyError(R.string.event_place_does_not_exist);
         }else{
             if (!eventPriceEt.isEmpty()) {
                 try {
@@ -119,7 +119,7 @@ public class CreateEventPresenterImpl implements CreateEventPresenter, CreateEve
     public void showApiResponse(String apiResponse, String command) {
         switch (command){
             case "createEvent":
-                createEventView.showApiRequestMessage(apiResponse);
+                createEventView.showToastToUser(apiResponse);
                 break;
 
             case "getAllPlaces":

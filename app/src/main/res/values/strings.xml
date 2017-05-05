@@ -119,6 +119,7 @@
     <string name="phoneNumber_Empty_error">Ange mobilnummer</string>
     <string name="email_Empty_error">Ange e-post</string>
     <string name="email_wrongFormat_error">Vänligen skriv in en giltig e-postadress</string>
+    <string name="event_place_does_not_exist">Platsen finns ej i vår databas</string>
 
 
     /* Strings Karta */
