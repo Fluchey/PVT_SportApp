@@ -6,6 +6,10 @@ import com.sportify.profile.activity.ProfileView;
 import com.sportify.profile.request.ProfileRequest;
 import com.sportify.profile.request.ProfileRequestImpl;
 
+import java.util.ArrayList;
+
+import sportapp.pvt_sportapp.R;
+
 /**
  * Created by peradrianbergman on 2017-05-05.
  */
@@ -27,7 +31,20 @@ public class ProfilePresenterImpl implements ProfilePresenter, ProfileRequest.On
 
     @Override
     public void createProfile() {
+        String name = profileView.getProfileName();
+        String dateOfBirth = profileView.getDateOfBirth();
+        String userBio = profileView.getUserBio();
+        ArrayList interests = profileView.getInterests();
 
+        if (name.isEmpty()) {
+            profileView.showNameEmptyError(R.string.name_Empty_error);
+        } else if (dateOfBirth.isEmpty()){
+            profileView.showDateOfBirthEmptyError(R.string.dateOfBirth_Empty_error);
+//        } else if (){ //TODO: write method to check format if necessary.
+//            profileView.showDateOfBirthWrongFormatError(R.string.dateOfBirth_wrongFormat_error);
+        } else if (interests.isEmpty()) {
+            profileView.showNoInterestCheckedError(R.string.interests_Empty_Error);
+        }
     }
 
     @Override

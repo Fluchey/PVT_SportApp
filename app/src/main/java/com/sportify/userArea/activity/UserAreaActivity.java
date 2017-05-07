@@ -11,7 +11,7 @@ import android.widget.Toast;
 import com.sportify.createEvent.createEventPageOne.activity.CreateEventActivity;
 import com.sportify.maps.activity.MapsActivity;
 import com.sportify.settings.activity.SettingsActivity;
-import com.sportify.showFriends.activity.ShowFriendsActivity;
+//import com.sportify.showFriends.activity.ShowFriendsActivity;
 import com.sportify.userArea.presenter.UserAreaPresenter;
 import com.sportify.userArea.presenter.UserAreaPresenterImpl;
 
@@ -51,7 +51,7 @@ public class UserAreaActivity extends AppCompatActivity implements UserAreaView 
     }
 
     public void goToFriendListButtonClick(View v){
-        Intent goToFriendListIntent = new Intent(UserAreaActivity.this, ShowFriendsActivity.class);
-        UserAreaActivity.this.startActivity(goToFriendListIntent);
+//        Intent goToFriendListIntent = new Intent(UserAreaActivity.this, ShowFriendsActivity.class);
+//        UserAreaActivity.this.startActivity(goToFriendListIntent);
     }
 }

@@ -84,7 +84,12 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView {
     }
 
     @Override
-    public void launchUserActivity() {
+    public void showNoInterestCheckedError(int resID) {
 
+    }
+
+    @Override
+    public void launchUserActivity() {
+        //TODO: Goto UserAreaActivity or to Login Screen?
     }
 }

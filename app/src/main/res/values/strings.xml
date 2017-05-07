@@ -44,6 +44,11 @@
     <string name="profile_interests_running">Löpning</string>
     <string name="profile_header">Skapa Profil</string>
 
+    /* Error messages create profile */
+    <string name="name_Empty_error">Ange namn</string>
+    <string name="dateOfBirth_Empty_error">Datum är i fel format</string>
+    <string name="dateOfBirth_wrongFormat_error">Ange lösenord</string>
+    <string name="interests_Empty_Error">Ange minst ett intresse</string>
 
     /* Strings Intressen */
     <string name="interest1">Bollsport</string>
@@ -181,4 +186,6 @@
     <string name="title_activity_friend">KompisAktivitet</string>
     <string name="find_friends">Hitta vänner</string>
     <string name="login_successfull">Inloggningen lyckades!</string>
+
+
 </resources>

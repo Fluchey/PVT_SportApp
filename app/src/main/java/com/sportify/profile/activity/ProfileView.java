@@ -15,5 +15,6 @@ public interface ProfileView {
     void showNameEmptyError(int resId);
     void showDateOfBirthEmptyError(int resId);
     void showDateOfBirthWrongFormatError(int resId);
+    void showNoInterestCheckedError(int resID);
     void launchUserActivity();
 }
