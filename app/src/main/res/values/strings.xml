@@ -188,4 +188,16 @@
     <string name="login_successfull">Inloggningen lyckades!</string>
 
 
+    /* Strings Skapa event activity 5 */
+
+    <string name="Event_activity_5_Header">Förhandsvisning</string>
+    <string name="Event_activity_5_Event_Text">Du har nu skapat ett Event!
+    Här ser du en överblick över eventet</string>
+    <string name="Event_activity_5_Participants">Inbjudna</string>
+    <string name="Event_activity_5_ProfilePictureText">Host</string>
+
+
+
+
+
 </resources>
