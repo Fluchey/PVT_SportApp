@@ -138,6 +138,8 @@
     /* Strings Skapa event activity 3 */
     <string name="Event_Activity_3_Friends_Header">Vänner</string>
     <string name="Event_Activity_3_Header">Bjud in dina vänner</string>
+    <string name="Event_Activity_3_MyFriends">Mina vänner</string>
+    <string name="Event_Activity_3_FriendOneName">Namn?</string>
 
 
     /* Strings Karta */
@@ -192,9 +194,10 @@
 
     <string name="Event_activity_5_Header">Förhandsvisning</string>
     <string name="Event_activity_5_Event_Text">Du har nu skapat ett Event!
-    Här ser du en överblick över eventet</string>
+    Här får du en överblick över eventet</string>
     <string name="Event_activity_5_Participants">Inbjudna</string>
     <string name="Event_activity_5_ProfilePictureText">Host</string>
+    <string name="Event_activity_5_EventName">Eventnamn?</string>
 
 
 
