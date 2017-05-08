@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -70,22 +71,22 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView {
 
     @Override
     public void showNameEmptyError(int resId) {
-
+        name.setError(getString(resId));
     }
 
     @Override
     public void showDateOfBirthEmptyError(int resId) {
-
+        dateOfBirth.setError(getString(resId));
     }
 
     @Override
     public void showDateOfBirthWrongFormatError(int resId) {
-
+        dateOfBirth.setError(getString(resId));
     }
 
     @Override
     public void showNoInterestCheckedError(int resID) {
-
+        Toast.makeText(this, getString(resID), Toast.LENGTH_LONG).show();
     }
 
     @Override

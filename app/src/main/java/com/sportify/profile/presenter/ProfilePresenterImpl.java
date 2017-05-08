@@ -6,6 +6,9 @@ import com.sportify.profile.activity.ProfileView;
 import com.sportify.profile.request.ProfileRequest;
 import com.sportify.profile.request.ProfileRequestImpl;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 import sportapp.pvt_sportapp.R;
@@ -36,6 +39,8 @@ public class ProfilePresenterImpl implements ProfilePresenter, ProfileRequest.On
         String userBio = profileView.getUserBio();
         ArrayList interests = profileView.getInterests();
 
+
+
         if (name.isEmpty()) {
             profileView.showNameEmptyError(R.string.name_Empty_error);
         } else if (dateOfBirth.isEmpty()){
@@ -44,6 +49,22 @@ public class ProfilePresenterImpl implements ProfilePresenter, ProfileRequest.On
 //            profileView.showDateOfBirthWrongFormatError(R.string.dateOfBirth_wrongFormat_error);
         } else if (interests.isEmpty()) {
             profileView.showNoInterestCheckedError(R.string.interests_Empty_Error);
+        } else {
+            /**
+             *  Convert to JSON object
+             */
+            JSONObject jsonObject = new JSONObject();
+            try {
+                jsonObject.put("name", name);
+                jsonObject.put("dateOfBirth", dateOfBirth);
+                jsonObject.put("userBio", userBio);
+                jsonObject.put("interests", interests);
+                //TODO: add picture to json request
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            //profileRequest.makeApiRequest(jsonObject.toString(), "https://pvt15app.herokuapp.com/api/createProfile");
         }
     }
 
