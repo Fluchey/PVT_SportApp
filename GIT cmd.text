@@ -11,18 +11,16 @@
 	Byt till den branch du vill commita dina ändringar med
 
 5. git add *
-	Adda all dina ändringar till branchen
+	Adda alld ina ändringar till branchen
 
 6. git commit -m "Commit message"
 	Commita dina ändringar till branchen
 
+7. INNAN steg 8, git checkout develop
+	Byt till develop branchen för att sedan kunna pulla senaste versionen.
 
-7. git checkout develop
-	Byt till develop branchen för att merga med dina nya ändringar
-
-8.  git pull origin develop
+8. git pull origin develop
 	Se till att du har en uppdaterad develop branch innan du mergar dina ändringar.
-
 
 9. git merge ”Namnet på den branch du jobbat med”
 	Merga dina nya ändringar med developbranchen
@@ -57,6 +55,9 @@ GIT cmd
 
 	git commit -am "CommitMessage"
 		Addar och commitar på en gång
+
+	git merge <branch A> --no-commit
+		;ergar utan att commita. Måste skriva commit-message efter mergen
 
 	git merge feature/new-feature
 		Mergar in den nya featuren in i den branchen man står i
@@ -96,8 +97,6 @@ GIT cmd
 
 	git reset —-hard ”commit nummer ifrån logen”
 		Tar bort all modifierad kod du skrivit och resettar tillbaks till den commit du angivit
-
-
 Heroku
 	git pull heroku master
 	git push heroku master
@@ -106,3 +105,5 @@ Heroku
 
 i och message
 esc : wq
+
+
