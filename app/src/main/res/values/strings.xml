@@ -80,6 +80,7 @@
 
     /* Strings vänner */
     <string name="friends">Vänner</string>
+    <string name="searchFriends">Sök vänner... namn/användarnamn</string>
 
 
     /* Strings Skapa event */

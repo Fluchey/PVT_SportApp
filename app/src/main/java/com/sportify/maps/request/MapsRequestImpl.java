@@ -5,7 +5,6 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.sportify.storage.Place;
-import com.sportify.storage.PlaceStorage;
 import com.sportify.util.Connector;
 
 import org.json.JSONArray;
