@@ -7,6 +7,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import sportapp.pvt_sportapp.R;
 
@@ -16,7 +17,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView {
     private EditText description;
     private CheckBox fotboll, basket, simning, bandy, volleyball,
             outdoortraining, climbing, running, parkour;
-    private ArrayList <String> interests;
+    private List<String> interests;
 
 
     @Override
@@ -56,7 +57,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView {
     }
 
     @Override
-    public ArrayList<String> getInterests() {
+    public List<String> getInterests() {
         if (fotboll.isChecked()) interests.add("fotboll");
         if (basket.isChecked()) interests.add("basket");
         if (simning.isChecked()) interests.add("simning");
