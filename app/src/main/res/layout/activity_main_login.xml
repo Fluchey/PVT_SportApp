@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:paddingTop="@dimen/paddingTop"
     android:paddingBottom="@dimen/paddingBottom"
-    android:background="@drawable/neutralbakgrund"
+    android:background="@drawable/neutralbakgrundnogubbe"
     tools:context="com.sportify.login.activity.LoginActivity"
     tools:layout_editor_absoluteY="25dp"
     tools:layout_editor_absoluteX="0dp">

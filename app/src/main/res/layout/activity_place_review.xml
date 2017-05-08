@@ -88,7 +88,7 @@
         android:id="@+id/imageView4"
         android:layout_width="wrap_content"
         android:layout_height="75dp"
-        app:srcCompat="@drawable/profile_picture"
+        app:srcCompat="@drawable/com_facebook_profile_picture_blank_portrait"
         android:layout_below="@+id/placeName"
         android:layout_alignEnd="@+id/imageButton2" />
 </RelativeLayout>
