@@ -114,7 +114,7 @@
         <EditText
             android:id="@+id/etEventDescription"
             android:layout_width="match_parent"
-            android:layout_height="20sp"
+            android:layout_height="100sp"
             android:background="@drawable/border"
             android:textColor="@color/colorPrimaryDark"
             android:gravity="top"
@@ -125,7 +125,7 @@
 
         <Button
             android:id="@+id/createEventButton"
-            android:layout_width="187dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:onClick="createEventClick"
@@ -141,12 +141,11 @@
             android:id="@+id/Next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/event_next"
+            android:text="@string/event_invite"
             android:textSize="20sp"
             android:onClick="onClick"
+            android:layout_gravity="right|center_horizontal"
             android:clickable="true"/>
-
-
 
 
     </LinearLayout>
