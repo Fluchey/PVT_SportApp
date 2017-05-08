@@ -29,6 +29,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.015" />
 
+    <!--TODO : hämta användarens profilbild -->
+
     <ImageView
         android:id="@+id/ivProfilBilden"
         android:layout_width="wrap_content"
@@ -140,6 +142,7 @@
         app:layout_constraintHorizontal_bias="0.047"
         app:layout_constraintVertical_bias="0.748" />
 
+    <!--TODO : hämta profilbild på användaren(vän) -->
     <ImageView
         android:id="@+id/ivFriendOnePicture"
         android:layout_width="wrap_content"
@@ -155,6 +158,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.754"
         app:srcCompat="@drawable/userprofileimage" />
+
+    <!--TODO : hämta namn på användaren (vän) -->
 
     <TextView
         android:id="@+id/tvFriendOneName"

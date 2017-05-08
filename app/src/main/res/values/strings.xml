@@ -23,8 +23,10 @@
     <string name="forgotten_password_failure">E-postadressen hittades inte i vårt system, men du kan enkelt registrera ett nytt konto.</string>
 
     /* Strings Skapa profil */
-    <string name="profile_name">Namn</string>
-    <string name="profile_name_hint">Förnamn/Efternamn</string>
+    <string name="profile_firstname">Förnamn</string>
+    <string name="profile_firstname_hint">Förnamn</string>
+    <string name="profile_lastname">Efternamn</string>
+    <string name="profile_lastname_hint">Efternamn</string>
     <string name="profile_birthday">Födelsedatum</string>
     <string name="descriptionbox_profile_header">Om mig</string>
     <string name="descriptionbox_profile_text">Berätta om dig själv</string>
