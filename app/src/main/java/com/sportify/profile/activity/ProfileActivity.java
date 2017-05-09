@@ -62,7 +62,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView {
         parkour = (CheckBox) findViewById(R.id.cbProfileParkour);
         outdoortraining = (CheckBox) findViewById(R.id.cbProfileoutdoortraining);
         skateboarding = (CheckBox) findViewById(R.id.cbProfileSkateboarding);
-        badminton = (CheckBox) findViewById(R.id.cbProfileBadmiton);
+        badminton = (CheckBox) findViewById(R.id.cbProfileBadminton);
 
         interests = new ArrayList<>();
 
