@@ -10,6 +10,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import sportapp.pvt_sportapp.R;
 
@@ -37,7 +38,7 @@ public class ProfilePresenterImpl implements ProfilePresenter, ProfileRequest.On
         String name = profileView.getProfileName();
         String dateOfBirth = profileView.getDateOfBirth();
         String userBio = profileView.getUserBio();
-        ArrayList interests = profileView.getInterests();
+        List<String> interests = new ArrayList<>(profileView.getInterests());
 
 
 

@@ -54,11 +54,11 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView {
         basket = (CheckBox) findViewById(R.id.cbProfileBasket);
         simning = (CheckBox) findViewById(R.id.cbProfileSimmning);
         bandy = (CheckBox) findViewById(R.id.cbProfileBandy);
-        volleyball = (CheckBox) findViewById(R.id.cbProfileVolleyball);
+        //volleyball = (CheckBox) findViewById(R.id.cbProfileVolleyball);
         outdoortraining = (CheckBox) findViewById(R.id.cbProfileoutdoortraining);
-        climbing = (CheckBox) findViewById(R.id.cbProfileClimbing);
+        //climbing = (CheckBox) findViewById(R.id.cbProfileClimbing);
         running = (CheckBox) findViewById(R.id.cbProfileRunning);
-        parkour = (CheckBox) findViewById(R.id.cbPorfileParkour);
+        //parkour = (CheckBox) findViewById(R.id.cbPorfileParkour);
         interests = new ArrayList<>();
 
         calendar = Calendar.getInstance();
