@@ -6,5 +6,13 @@ package com.sportify.showFriends.presenter;
 
 public interface ShowFriendsPresenter {
 
+    void getFriendsMakeApiRequest();
+
+    void getFriendsFromApiResponse(String jsonMessage);
+
     void showFriends();
+
+    void updateFriends();
+
+    void goToFriendsProfile(String userID);
 }

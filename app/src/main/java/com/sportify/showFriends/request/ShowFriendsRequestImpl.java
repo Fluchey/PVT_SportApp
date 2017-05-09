@@ -49,3 +49,40 @@ public class ShowFriendsRequestImpl implements ShowFriendsRequest {
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+//    private class ApiRequest extends AsyncTask<String, ShowFriendsRequestImpl, Void>{
+//
+//        private ShowFriendsRequestImpl showFriendsRequestimpl;
+//        private String[] resultFromApi;
+//
+//        public ApiRequest(ShowFriendsRequestImpl showFriendsRequest) {
+//            this.showFriendsRequestimpl = showFriendsRequest;
+//        }
+//
+//        @Override
+//        protected Void doInBackground(String... params) {
+//
+//            resultFromApi = Connector.connect("https://pvt15app.herokuapp.com/api/findfriends",
+//                    "POST", String.format(params[0]), token);
+//
+//            return null;
+//        }
+//
+//        @Override
+//        protected void onPostExecute(Void aVoid){
+//            super.onPostExecute(aVoid);
+//
+//            showFriendsRequestimpl.onShowFriendsFinishedListener.showApiResponse(resultFromApi);
+//        }
+//    }
+//}

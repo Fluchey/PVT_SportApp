@@ -37,9 +37,6 @@ public class ShowFriendsActivity extends AppCompatActivity implements ShowFriend
         showFriendsPresenter = new ShowFriendsPresenterImpl(this, sharedPref);
         friendList = (ListView) findViewById(R.id.lvShowFriends);
         myArrayAdapter = new MyArrayAdapter(this, R.layout.friend_list_item, null);
-
-        showFriendsPresenter.showFriends();
-//        friendList.setAdapter(myArrayAdapter);
     }
 
     @Override
@@ -47,6 +44,16 @@ public class ShowFriendsActivity extends AppCompatActivity implements ShowFriend
         friendArray = friendlist;
         myArrayAdapter = new MyArrayAdapter(this, R.layout.create_event_friend_list_item, friendArray);
         friendList.setAdapter(myArrayAdapter);
+    }
+
+    @Override
+    public void updateFriendAdapter(ArrayList<Profile> friendList) {
+
+    }
+
+    @Override
+    public void getUserWroteSearch() {
+
     }
 
     private class MyArrayAdapter extends ArrayAdapter<Profile> {

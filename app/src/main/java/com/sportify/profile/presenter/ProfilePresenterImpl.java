@@ -9,7 +9,7 @@ import com.sportify.profile.request.ProfileRequestImpl;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import sportapp.pvt_sportapp.R;
 
@@ -33,11 +33,11 @@ public class ProfilePresenterImpl implements ProfilePresenter, ProfileRequest.On
 
 
     @Override
-    public void updateBaseProfile(int userid) {
+    public void createProfile() {
         String name = profileView.getProfileName();
         String dateOfBirth = profileView.getDateOfBirth();
         String userBio = profileView.getUserBio();
-        List<String> interests = profileView.getInterests();
+        ArrayList interests = profileView.getInterests();
 
 
 
@@ -55,7 +55,6 @@ public class ProfilePresenterImpl implements ProfilePresenter, ProfileRequest.On
              */
             JSONObject jsonObject = new JSONObject();
             try {
-                jsonObject.put("profileID", userid);
                 jsonObject.put("name", name);
                 jsonObject.put("dateOfBirth", dateOfBirth);
                 jsonObject.put("userBio", userBio);
@@ -65,7 +64,7 @@ public class ProfilePresenterImpl implements ProfilePresenter, ProfileRequest.On
                 e.printStackTrace();
             }
 
-            //profileRequest.makeApiRequest(jsonObject.toString(), "https://pvt15app.herokuapp.com/api/updateProfile");
+            //profileRequest.makeApiRequest(jsonObject.toString(), "https://pvt15app.herokuapp.com/api/createProfile");
         }
     }
 
