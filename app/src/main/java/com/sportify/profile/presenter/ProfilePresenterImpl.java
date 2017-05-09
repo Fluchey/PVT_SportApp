@@ -34,16 +34,19 @@ public class ProfilePresenterImpl implements ProfilePresenter, ProfileRequest.On
 
 
     @Override
-    public void createProfile() {
-        String name = profileView.getProfileName();
+    public void updateBaseProfileInfo() {
+        String firstname = profileView.getProfileFirstName();
+        String lastname = profileView.getProfileLastName();
         String dateOfBirth = profileView.getDateOfBirth();
         String userBio = profileView.getUserBio();
         List<String> interests = new ArrayList<>(profileView.getInterests());
 
 
 
-        if (name.isEmpty()) {
-            profileView.showNameEmptyError(R.string.name_Empty_error);
+        if (firstname.isEmpty()) {
+            profileView.showFirstNameEmptyError(R.string.name_Empty_error);
+        } else if (lastname.isEmpty()) {
+            profileView.showLastNameEmptyError(R.string.name_Empty_error);
         } else if (dateOfBirth.isEmpty()){
             profileView.showDateOfBirthEmptyError(R.string.dateOfBirth_Empty_error);
 //        } else if (){ //TODO: write method to check format if necessary.
@@ -56,16 +59,18 @@ public class ProfilePresenterImpl implements ProfilePresenter, ProfileRequest.On
              */
             JSONObject jsonObject = new JSONObject();
             try {
-                jsonObject.put("name", name);
+                //jsonObject.put("profileID", profileID);
+                jsonObject.put("firstName", firstname);
+                jsonObject.put("lastName", lastname);
                 jsonObject.put("dateOfBirth", dateOfBirth);
                 jsonObject.put("userBio", userBio);
-                jsonObject.put("interests", interests);
+                //jsonObject.put("interests", interests);
                 //TODO: add picture to json request
             } catch (JSONException e) {
                 e.printStackTrace();
             }
 
-            //profileRequest.makeApiRequest(jsonObject.toString(), "https://pvt15app.herokuapp.com/api/createProfile");
+            profileRequest.makeApiRequest(jsonObject.toString(), "https://pvt15app.herokuapp.com/api/updateProfileInfo");
         }
     }
 

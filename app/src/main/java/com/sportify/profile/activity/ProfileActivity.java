@@ -25,11 +25,13 @@ import sportapp.pvt_sportapp.R;
 public class ProfileActivity extends AppCompatActivity implements ProfileView {
     private SharedPreferences sharedPref;
     private ProfilePresenterImpl profilePresenter;
-    private EditText name;
+    private EditText firstname;
+    private EditText lastname;
     private EditText dateOfBirth;
     private EditText description;
-    private CheckBox fotboll, basket, simning, bandy, volleyball,
-            outdoortraining, climbing, running, parkour;
+    private CheckBox fotboll, basket, simning, bandy, ridning,
+            running, parkour, outdoortraining, skateboarding, badminton;
+
     private ImageButton checkboxProfileButton;
     private ImageButton profilePictureButton;
     private List<String> interests;
@@ -44,7 +46,8 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView {
         sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         profilePresenter = new ProfilePresenterImpl(this, sharedPref);
 
-        name = (EditText) findViewById(R.id.etProfileNameHint);
+        firstname = (EditText) findViewById(R.id.etProfileNameHint);
+        lastname = (EditText) findViewById(R.id.etLastnameHint);
         dateOfBirth  = (EditText) findViewById(R.id.etProfileBirthdayhint);
         description  = (EditText) findViewById(R.id.etDescriptionBoxProfileOmMig);
         profilePictureButton = (ImageButton) findViewById(R.id.ibProfilePicturebutton);
@@ -54,11 +57,13 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView {
         basket = (CheckBox) findViewById(R.id.cbProfileBasket);
         simning = (CheckBox) findViewById(R.id.cbProfileSimmning);
         bandy = (CheckBox) findViewById(R.id.cbProfileBandy);
-        //volleyball = (CheckBox) findViewById(R.id.cbProfileVolleyball);
-        outdoortraining = (CheckBox) findViewById(R.id.cbProfileoutdoortraining);
-        //climbing = (CheckBox) findViewById(R.id.cbProfileClimbing);
+        ridning = (CheckBox) findViewById(R.id.cbProfileHästRidning);
         running = (CheckBox) findViewById(R.id.cbProfileRunning);
-        //parkour = (CheckBox) findViewById(R.id.cbPorfileParkour);
+        parkour = (CheckBox) findViewById(R.id.cbProfileParkour);
+        outdoortraining = (CheckBox) findViewById(R.id.cbProfileoutdoortraining);
+        skateboarding = (CheckBox) findViewById(R.id.cbProfileSkateboarding);
+        badminton = (CheckBox) findViewById(R.id.cbProfileBadmiton);
+
         interests = new ArrayList<>();
 
         calendar = Calendar.getInstance();
@@ -84,8 +89,13 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView {
     }
 
     @Override
-    public String getProfileName() {
-        return name.toString();
+    public String getProfileFirstName() {
+        return firstname.toString();
+    }
+
+    @Override
+    public String getProfileLastName() {
+        return lastname.toString();
     }
 
     @Override //TODO: See if DatePicker stores this as string.
@@ -104,17 +114,23 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView {
         if (basket.isChecked()) interests.add("basket");
         if (simning.isChecked()) interests.add("simning");
         if (bandy.isChecked()) interests.add("bandy");
-        if (volleyball.isChecked()) interests.add("volleyball");
-        if (outdoortraining.isChecked()) interests.add("outdoortraining");
-        if (climbing.isChecked()) interests.add("climbing");
+        if (ridning.isChecked()) interests.add("ridning");
         if (running.isChecked()) interests.add("running");
         if (parkour.isChecked()) interests.add("parkour");
+        if (outdoortraining.isChecked()) interests.add("outdoortraining");
+        if (skateboarding.isChecked()) interests.add("skateboarding");
+        if (badminton.isChecked()) interests.add("badminton");
         return interests;
     }
 
     @Override
-    public void showNameEmptyError(int resId) {
-        name.setError(getString(resId));
+    public void showFirstNameEmptyError(int resId) {
+        firstname.setError(getString(resId));
+    }
+
+    @Override
+    public void showLastNameEmptyError(int resId) {
+        firstname.setError(getString(resId));
     }
 
     @Override
@@ -137,11 +153,11 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView {
     }
 
     public void checkboxProfileButton(){
-        profilePresenter.createProfile();
+        profilePresenter.updateBaseProfileInfo();
     }
 
     @Override
-    public void launchUserActivity() {
+    public void launchLoginActivity() {
         //TODO: Goto Login Screen
     }
 }
