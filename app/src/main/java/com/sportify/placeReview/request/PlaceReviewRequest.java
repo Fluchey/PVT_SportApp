@@ -4,7 +4,7 @@ package com.sportify.placeReview.request;
  * Created by rasmu on 02/05/2017.
  */
 
-public interface placeReviewRequest {
+public interface PlaceReviewRequest {
     interface onRequestFinishedListener{
         void showApiResponse(String... params);
 

@@ -109,4 +109,13 @@
         android:layout_marginBottom="56dp"
         app:layout_constraintLeft_toLeftOf="parent" />
 
+    <Button
+        android:id="@+id/placeReviewTestButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="testGoToPlaceReviewActivity"
+        android:text="Testa platsrecension"
+        tools:layout_editor_absoluteX="97dp"
+        tools:layout_editor_absoluteY="518dp" />
+
 </android.support.constraint.ConstraintLayout>
