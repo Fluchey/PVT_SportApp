@@ -1,12 +1,17 @@
 package com.sportify.profile.activity;
 
+import android.app.DatePickerDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.CheckBox;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import sportapp.pvt_sportapp.R;
@@ -18,6 +23,8 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView {
     private CheckBox fotboll, basket, simning, bandy, volleyball,
             outdoortraining, climbing, running, parkour;
     private List<String> interests;
+    private Calendar calendar;
+    private DatePickerDialog.OnDateSetListener date;
 
 
     @Override
@@ -26,8 +33,30 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView {
         setContentView(R.layout.activity_profile);
 
         name = (EditText) findViewById(R.id.etProfileNameHint);
-        dateOfBirth  = (EditText) findViewById(R.id.etProfileBirthdayhint);
         description  = (EditText) findViewById(R.id.etDescriptionBoxProfileOmMig);
+        dateOfBirth  = (EditText) findViewById(R.id.etProfileBirthdayhint);
+        calendar = Calendar.getInstance();
+        date = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+                // TODO Auto-generated method stub
+                calendar.set(Calendar.YEAR, year);
+                calendar.set(Calendar.MONTH, monthOfYear);
+                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                String myFormat = "yyyy-MM-dd";
+                SimpleDateFormat sdf = new SimpleDateFormat(myFormat);
+                dateOfBirth.setText(sdf.format(calendar.getTime()));
+            }
+        };
+        dateOfBirth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new DatePickerDialog(ProfileActivity.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+
+
 
         fotboll = (CheckBox) findViewById(R.id.cbProfileFotboll);
         basket = (CheckBox) findViewById(R.id.cbProfileBasket);
@@ -92,6 +121,6 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView {
 
     @Override
     public void launchUserActivity() {
-        //TODO: Goto UserAreaActivity or to Login Screen?
+        //TODO: Goto Login Screen
     }
 }
