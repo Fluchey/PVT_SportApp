@@ -39,8 +39,6 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView 
 
     public void signUpButtonClick(View v) {
         registerPresenter.createAccount();
-        Intent gotoCreateUserProfile = new Intent(RegisterActivity.this, ProfileActivity.class);
-        RegisterActivity.this.startActivity(gotoCreateUserProfile);
     }
 
     @Override
@@ -75,6 +73,12 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView 
     @Override
     public void showApiRequestMessage(String message) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+        //responseCode is not handled by any Register Class so we check the responseCode
+        if (!message.isEmpty() && message!=null &&
+                message.equalsIgnoreCase("User succesfully created")) {
+            Intent gotoCreateUserProfile = new Intent(RegisterActivity.this, ProfileActivity.class);
+            RegisterActivity.this.startActivity(gotoCreateUserProfile);
+        }
     }
 
     @Override
