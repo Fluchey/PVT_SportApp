@@ -12,7 +12,7 @@ public interface ShowFriendsPresenter {
 
     void showFriends();
 
-    void updateFriends();
+    void updateFriendsSearchView();
 
     void goToFriendsProfile(String userID);
 }

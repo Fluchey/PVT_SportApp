@@ -26,7 +26,6 @@ public class ShowFriendsPresenterImpl implements ShowFriendsPresenter, ShowFrien
     private ShowFriendsRequest showFriendsRequest;
     private SharedPreferences sharedPref;
     private String token = "";
-    private String command;
     private ArrayList<Profile> friends;
 
     public ShowFriendsPresenterImpl(ShowFriendsView showFriendsView, SharedPreferences sharedPref){
@@ -34,10 +33,8 @@ public class ShowFriendsPresenterImpl implements ShowFriendsPresenter, ShowFrien
         this.sharedPref = sharedPref;
         this.token = sharedPref.getString("jwt", "");
         this.showFriendsRequest = new ShowFriendsRequestImpl(this, token);
-        this.command = "Show Friends";
         getFriendsMakeApiRequest();
     }
-
 
     @Override
     public void getFriendsMakeApiRequest() {
@@ -87,8 +84,8 @@ public class ShowFriendsPresenterImpl implements ShowFriendsPresenter, ShowFrien
     }
 
     @Override
-    public void updateFriends() {
-
+    public void updateFriendsSearchView() {
+        showFriendsView.updateFriendAdapter(friends);
     }
 
     @Override
@@ -100,12 +97,7 @@ public class ShowFriendsPresenterImpl implements ShowFriendsPresenter, ShowFrien
     public void showApiResponse(String... params) {
 
         getFriendsFromApiResponse(params[0]);
-
-        if(command.equalsIgnoreCase("Show Friends")){
-            showFriends();
-        }else{
-            System.out.println("Funkade inte");
-        }
-
+        showFriends();
+        updateFriendsSearchView();
     }
 }
