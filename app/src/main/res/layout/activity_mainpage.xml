@@ -71,9 +71,6 @@
         android:layout_below="@+id/registerMPButton"
         />
 
-</RelativeLayout>
-
-<<<<<<< HEAD
     <Button
         android:id="@+id/placeReviewTestButton"
         android:layout_width="wrap_content"
@@ -82,7 +79,4 @@
         android:text="Testa platsrecension"
         tools:layout_editor_absoluteX="97dp"
         tools:layout_editor_absoluteY="518dp" />
-
-</android.support.constraint.ConstraintLayout>
-=======
->>>>>>> 15d932a4aa4d07e3215512762042bbe63e58d2e4
+</RelativeLayout>
