@@ -92,9 +92,10 @@
     <string name="create_event">Skapa event</string>
     <string name="event_name">Event titel</string>
     <string name="create_event_hint">Namn på event</string>
-    <string name="event_price">Pris</string>
+    <string name="event_price">Priset</string>
     <string name="event_price_hint">SEK</string>
     <string name="event_place">Plats</string>
+    <string name="event_place_hint">Plats</string>
     <string name="event_date">Datum</string>
     <string name="event_date_hint">DD/MM/YY</string>
     <string name="event_start_time">Starttid</string>
@@ -118,7 +119,7 @@
     <string name="no_friends_have_been_choosen">Ingen vän är vald</string>
     <string name="have_been_choosen"> är valda</string>
 
-    <string name="event_max_attendance">Max antal deltagare</string>
+    <string name="event_max_attendance">Max </string>
     <string name="createEvent_here">Skapa ditt event här</string>
     <string name="find_event">Hitta event</string>
 
