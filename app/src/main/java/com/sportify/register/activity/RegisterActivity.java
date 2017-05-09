@@ -2,6 +2,7 @@ package com.sportify.register.activity;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.sportify.profile.activity.ProfileActivity;
 import com.sportify.register.presenter.RegisterPresenter;
 import com.sportify.register.presenter.RegisterPresenterImpl;
 
@@ -71,6 +73,12 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView 
     @Override
     public void showApiRequestMessage(String message) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+        //responseCode is not handled by any Register Class so we check the responseCode
+        if (!message.isEmpty() && message!=null &&
+                message.equalsIgnoreCase("User succesfully created")) {
+            Intent gotoCreateUserProfile = new Intent(RegisterActivity.this, ProfileActivity.class);
+            RegisterActivity.this.startActivity(gotoCreateUserProfile);
+        }
     }
 
     @Override

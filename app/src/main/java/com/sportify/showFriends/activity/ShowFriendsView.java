@@ -15,6 +15,4 @@ public interface ShowFriendsView {
     void showFriends(ArrayList<Profile> friendList);
 
     void updateFriendAdapter(ArrayList<Profile> friendList);
-
-    void getUserWroteSearch();
 }

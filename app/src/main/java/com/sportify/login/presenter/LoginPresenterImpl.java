@@ -56,6 +56,7 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
              * Creates new asynctask which runs in background and tries to create new user
              */
             loginRequest.makeApiRequest(jsonObject.toString(), "https://pvt15app.herokuapp.com/api/login");
+            //loginRequest.makeApiRequest(jsonObject.toString(), "http://192.168.0.15/api/login");
 
         }
     }
@@ -88,10 +89,10 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
     @Override
     public void showApiResponse(String... params) {
         /* response code 200 maps to successful login and 201 to facebookLogin */
-
-            if (params[1].equals("200") || params[1].equals("201")){
-                saveToPreferences(params);
-                loginView.launchUserActivity();
+        Log.d(TAG, "LoginPresenterImpl.showApiResponse(params[1]) " + params[1]);
+        if (params[1].equals("200") || params[1].equals("201")){
+            saveToPreferences(params);
+            loginView.launchUserActivity();
         }
     }
 
