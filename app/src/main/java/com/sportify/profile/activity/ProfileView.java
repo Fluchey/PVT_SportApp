@@ -1,20 +1,23 @@
 package com.sportify.profile.activity;
 
-import java.util.ArrayList;
+
+import java.util.List;
 
 /**
  * Created by peradrianbergman on 2017-05-05.
  */
 
 public interface ProfileView {
-    String getProfileName();
+    String getProfileFirstName();
+    String getProfileLastName();
     String getDateOfBirth();
     String getUserBio();
-    ArrayList<String> getInterests();
+    List<String> getInterests();
 
-    void showNameEmptyError(int resId);
+    void showFirstNameEmptyError(int resId);
+    void showLastNameEmptyError(int resId);
     void showDateOfBirthEmptyError(int resId);
     void showDateOfBirthWrongFormatError(int resId);
     void showNoInterestCheckedError(int resID);
-    void launchUserActivity();
+    void launchLoginActivity();
 }

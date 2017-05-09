@@ -42,9 +42,12 @@
     <string name="profile_interests_volleyball">Vollyboll</string>
     <string name="profile_interests_swimming">Simming</string>
     <string name="profile_interests_outdoortraining">Utegym</string>
-    <string name="profile_interests_climbing">Klättring</string>
+    <string name="profile_interests_ridning">Ridning</string>
     <string name="profile_interests_running">Löpning</string>
     <string name="profile_header">Skapa Profil</string>
+    <string name="profile_interests_skateboard">Skateboard</string>
+    <string name="profile_interests_badminton">Badminton</string>
+
 
     /* Error messages create profile */
     <string name="name_Empty_error">Ange namn</string>
