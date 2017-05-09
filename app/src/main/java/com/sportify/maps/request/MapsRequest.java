@@ -1,5 +1,6 @@
 package com.sportify.maps.request;
 
+import com.sportify.storage.Event;
 import com.sportify.storage.Place;
 
 import java.util.ArrayList;
@@ -18,8 +19,12 @@ public interface MapsRequest {
 
     void makeApiRequestGet(String method, String endURL, String command);
 
-    void updateCurrentSearchPlaces(String jsonMessage);
+    void updateCurrentPlaces(String jsonMessage);
+
+    void updateCurrentEvents(String jsonMessage);
 
     ArrayList<Place> getCurrentSearchPlaces();
+
+    ArrayList<Event> getEvents();
 
 }
