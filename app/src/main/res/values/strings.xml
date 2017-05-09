@@ -45,9 +45,8 @@
     <string name="profile_interests_ridning">Ridning</string>
     <string name="profile_interests_running">Löpning</string>
     <string name="profile_header">Skapa Profil</string>
-    <string name="profile_interests_skateboard">Skateboarding</string>
-    <string name="profile_interests_badmiton">Badmiton</string>
-    <string name="profile_interests_overall">Övrigt</string>
+    <string name="profile_interests_skateboard">Skateboard</string>
+    <string name="profile_interests_badminton">Badminton</string>
 
 
     /* Error messages create profile */
