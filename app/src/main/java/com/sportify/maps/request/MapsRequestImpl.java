@@ -12,6 +12,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import javax.inject.Inject;
@@ -23,6 +24,9 @@ import javax.inject.Inject;
 public class MapsRequestImpl implements MapsRequest {
     private onRequestFinishedListener onRequestFinishedListener;
     private String token;
+
+    private ArrayList<Place> allPlaces;
+    private ArrayList<Event> allEvents;
     private ArrayList<Place> currentSearchPlaces;
     private ArrayList<Event> currentSearchEvents;
 
@@ -30,13 +34,15 @@ public class MapsRequestImpl implements MapsRequest {
         this.onRequestFinishedListener = onRequestFinishedListener;
         this.token = token;
 
+        allPlaces = new ArrayList<>();
+        allEvents = new ArrayList<>();
         currentSearchPlaces = new ArrayList<>();
         currentSearchEvents = new ArrayList<>();
     }
 
     @Override
-    public void updateCurrentPlaces(String jsonMessage) {
-        currentSearchPlaces.clear();
+    public void updateAllPlaces(String jsonMessage) {
+        allPlaces.clear();
         JSONObject json = null;
         JSONArray placeArray = null;
         try {
@@ -51,7 +57,7 @@ public class MapsRequestImpl implements MapsRequest {
         try {
             for (int i = 0; i < placeArray.length(); i++) {
                 JSONObject jsonObject = placeArray.getJSONObject(i);
-                currentSearchPlaces.add(new Place(jsonObject.getString("place_id"), jsonObject.getString("name"), jsonObject.getString("category"), Double.parseDouble(jsonObject.getString("lat")), Double.parseDouble(jsonObject.getString("lon"))));
+                allPlaces.add(new Place(jsonObject.getString("place_id"), jsonObject.getString("name"), jsonObject.getString("category"), Double.parseDouble(jsonObject.getString("lat")), Double.parseDouble(jsonObject.getString("lon"))));
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -59,8 +65,8 @@ public class MapsRequestImpl implements MapsRequest {
     }
 
     @Override
-    public void updateCurrentEvents(String jsonMessage) {
-        currentSearchEvents.clear();
+    public void updateAllEvents(String jsonMessage) {
+        allEvents.clear();
         JSONObject json = null;
         JSONArray eventArray = null;
         try {
@@ -75,12 +81,37 @@ public class MapsRequestImpl implements MapsRequest {
         try {
             for (int i = 0; i < eventArray.length(); i++) {
                 JSONObject jsonObject = eventArray.getJSONObject(i);
-                currentSearchEvents.add(new Event(jsonObject.getInt("eventId"), jsonObject.getString("name"), jsonObject.getString("eventDate"), jsonObject.getString("startTime"), jsonObject.getString("endTime"), jsonObject.getString("eventDescription"), jsonObject.getString("place") ,  jsonObject.getInt("price"),
+                allEvents.add(new Event(jsonObject.getInt("eventId"), jsonObject.getString("name"), jsonObject.getString("eventDate"), jsonObject.getString("startTime"), jsonObject.getString("endTime"), jsonObject.getString("eventDescription"), jsonObject.getString("place") ,  jsonObject.getInt("price"),
                         jsonObject.getString("eventType"), jsonObject.getInt("maxAttendance"), jsonObject.getBoolean("privateEvent")));
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void updateCurrentSearchPlaces(String search) {
+        currentSearchPlaces.clear();
+        for (Place p: allPlaces){
+            if(p.getName().toLowerCase().startsWith(search)){
+                currentSearchPlaces.add(p);
+            }
+        }
+    }
+
+    @Override
+    public void updateCurrentSearchEvents(String search) {
+        currentSearchEvents.clear();
+        for (Event e: allEvents){
+            if(e.getEventName().toLowerCase().startsWith(search)){
+                currentSearchEvents.add(e);
+            }
+        }
+    }
+
+    @Override
+    public ArrayList<Place> getAllPlaces() {
+        return allPlaces;
     }
 
     @Override
@@ -100,7 +131,12 @@ public class MapsRequestImpl implements MapsRequest {
     }
 
     @Override
-    public ArrayList<Event> getEvents() {
+    public ArrayList<Event> getAllEvents() {
+        return allEvents;
+    }
+
+    @Override
+    public ArrayList<Event> getCurrentSearchEvents() {
         return currentSearchEvents;
     }
 

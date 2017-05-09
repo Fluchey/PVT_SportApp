@@ -19,12 +19,20 @@ public interface MapsRequest {
 
     void makeApiRequestGet(String method, String endURL, String command);
 
-    void updateCurrentPlaces(String jsonMessage);
+    void updateAllPlaces(String jsonMessage);
 
-    void updateCurrentEvents(String jsonMessage);
+    void updateAllEvents(String jsonMessage);
+
+    void updateCurrentSearchPlaces(String search);
+
+    void updateCurrentSearchEvents(String search);
+
+    ArrayList<Place> getAllPlaces();
 
     ArrayList<Place> getCurrentSearchPlaces();
 
-    ArrayList<Event> getEvents();
+    ArrayList<Event> getAllEvents();
+
+    ArrayList<Event> getCurrentSearchEvents();
 
 }

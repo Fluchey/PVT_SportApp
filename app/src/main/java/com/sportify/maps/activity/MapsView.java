@@ -31,6 +31,10 @@ public interface MapsView {
 
     void hideSoftKeyboard();
 
+    boolean placesIsChecked();
+
+    boolean eventsIsChecked();
+
     GoogleMap getMap();
 
 }
