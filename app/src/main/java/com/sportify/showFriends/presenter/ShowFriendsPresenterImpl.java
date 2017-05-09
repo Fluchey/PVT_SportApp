@@ -26,20 +26,23 @@ public class ShowFriendsPresenterImpl implements ShowFriendsPresenter, ShowFrien
     private ShowFriendsRequest showFriendsRequest;
     private SharedPreferences sharedPref;
     private String token = "";
+    private ArrayList<Profile> friends;
 
     public ShowFriendsPresenterImpl(ShowFriendsView showFriendsView, SharedPreferences sharedPref){
         this.showFriendsView = showFriendsView;
         this.sharedPref = sharedPref;
         this.token = sharedPref.getString("jwt", "");
         this.showFriendsRequest = new ShowFriendsRequestImpl(this, token);
+        getFriendsMakeApiRequest();
     }
 
     @Override
-    public void showFriends() {
+    public void getFriendsMakeApiRequest() {
         showFriendsRequest.makeApiRequest("{}");
     }
 
-    public void getFriends(String jsonMessage){
+    @Override
+    public void getFriendsFromApiResponse(String jsonMessage) {
         JSONObject json = null;
         JSONArray array = null;
 
@@ -59,7 +62,7 @@ public class ShowFriendsPresenterImpl implements ShowFriendsPresenter, ShowFrien
         }
 
         try{
-            ArrayList<Profile> friends = new ArrayList<>();
+            friends = new ArrayList<>();
 
             for(int i=0; i < array.length(); i++){
                 JSONObject jsonObject = array.getJSONObject(i);
@@ -70,15 +73,31 @@ public class ShowFriendsPresenterImpl implements ShowFriendsPresenter, ShowFrien
 
                 friends.add(friend);
             }
-
-            showFriendsView.showFriends(friends);
         }catch(JSONException e){
             e.printStackTrace();
         }
     }
 
     @Override
+    public void showFriends() {
+        showFriendsView.showFriends(friends);
+    }
+
+    @Override
+    public void updateFriendsSearchView() {
+        showFriendsView.updateFriendAdapter(friends);
+    }
+
+    @Override
+    public void goToFriendsProfile(String userID) {
+
+    }
+
+    @Override
     public void showApiResponse(String... params) {
-        getFriends(params[0]);
+
+        getFriendsFromApiResponse(params[0]);
+        showFriends();
+        updateFriendsSearchView();
     }
 }
