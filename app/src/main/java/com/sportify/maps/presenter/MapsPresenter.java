@@ -5,11 +5,11 @@ package com.sportify.maps.presenter;
  */
 
 public interface MapsPresenter {
-    void updatePlaceSearch(String textChange);
+    void updateSearchResult(String textChange);
 
-    void showCurrentPlacesOnMap();
+    void showCurrentPlacesOnMap(String searchString);
 
-    void showCurrentEventsOnMap();
+    void showCurrentEventsOnMap(String searchString);
 
     void goFromListToMap(int id);
 }

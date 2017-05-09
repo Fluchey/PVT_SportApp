@@ -8,14 +8,16 @@ import java.util.List;
  */
 
 public interface ProfileView {
-    String getProfileName();
+    String getProfileFirstName();
+    String getProfileLastName();
     String getDateOfBirth();
     String getUserBio();
     List<String> getInterests();
 
-    void showNameEmptyError(int resId);
+    void showFirstNameEmptyError(int resId);
+    void showLastNameEmptyError(int resId);
     void showDateOfBirthEmptyError(int resId);
     void showDateOfBirthWrongFormatError(int resId);
     void showNoInterestCheckedError(int resID);
-    void launchUserActivity();
+    void launchLoginActivity();
 }

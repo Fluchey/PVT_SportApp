@@ -51,55 +51,61 @@ public class MapsPresenterImpl implements MapsPresenter, MapsRequest.onRequestFi
     }
 
     @Override
-    public void updatePlaceSearch(String textChange) {
-        JSONObject json = new JSONObject();
-
-        try {
-            json.put("textChange", textChange);
-        } catch (JSONException e) {
-            e.printStackTrace();
+    public void updateSearchResult(String textChange) {
+        String searchInLowCase = textChange.toLowerCase();
+        mapsView.clearMarkers();
+        if(mapsView.placesIsChecked()){
+            mapsRequest.updateCurrentSearchPlaces(searchInLowCase);
+            showCurrentPlacesOnMap(searchInLowCase);
+        }else if(mapsView.eventsIsChecked()){
+            mapsRequest.updateCurrentSearchEvents(searchInLowCase);
+            showCurrentEventsOnMap(searchInLowCase);
         }
-        /**
-         * First get all existing places
-         */
-        mapsRequest.makeApiRequestPut(json.toString(), "map/updateSearch", "PUT", "updatePlaces");
-
-        /**
-         * Then get all existing events
-         */
-        mapsRequest.makeApiRequestPut(json.toString(), "event/getAllEvents", "PUT", "updateEvents");
     }
 
     @Override
-    public void showCurrentPlacesOnMap() {
-        mapsView.clearMarkers();
+    public void showCurrentPlacesOnMap(String search) {
+        ArrayList<String> placesName = new ArrayList<>();
         for (Place p : mapsRequest.getCurrentSearchPlaces()) {
-            mapsView.showPlaceMarkerAt(p.getName(), p.getCategory(), p.getLat(), p.getLon());
+            if (p.getName().toLowerCase().startsWith(search)) {
+                placesName.add(p.getName());
+                mapsView.showPlaceMarkerAt(p.getName(), p.getCategory(), p.getLat(), p.getLon());
+            }
         }
+        mapsView.updatePlaceSearch(placesName);
     }
 
     @Override
-    public void showCurrentEventsOnMap() {
-        mapsView.clearMarkers();
-        for (Event e : mapsRequest.getEvents()) {
-            Place place = null;
-            for (Place p : mapsRequest.getCurrentSearchPlaces()){
-                Log.d("PlaceName:", p.getName());
-                Log.d("EventPlaceName:", e.getPlaceName());
-                if (p.getName().equalsIgnoreCase(e.getPlaceName())){
-                    place = p;
+    public void showCurrentEventsOnMap(String search) {
+        ArrayList<String> eventNames = new ArrayList<>();
+        for (Event e : mapsRequest.getCurrentSearchEvents()) {
+                eventNames.add(e.getEventName());
+                for (Place p : mapsRequest.getAllPlaces()) {
+                    if (p.getName().equalsIgnoreCase(e.getPlaceName())) {
+                        mapsView.showEventMarkerAt(e.getEventName(), e.getEventType(), p.getLat(), p.getLon());
+                    }
                 }
-            }
-            mapsView.showEventMarkerAt(e.getEventName(), e.getEventType(), place.getLat(), place.getLon());
         }
+        mapsView.updatePlaceSearch(eventNames);
     }
 
     @Override
     public void goFromListToMap(int id) {
         mapsView.hideSoftKeyboard();
-        Place p = mapsRequest.getCurrentSearchPlaces().get(id);
-        mapsView.switchToMapFragmentFromPresenter(p.getLat(), p.getLon());
-        mapsView.setTextSearch(p.getName());
+        if(mapsView.placesIsChecked()){
+            Place p = mapsRequest.getCurrentSearchPlaces().get(id);
+            mapsView.switchToMapFragmentFromPresenter(p.getLat(), p.getLon());
+            mapsView.setTextSearch(p.getName());
+        }else{
+            Event e = mapsRequest.getCurrentSearchEvents().get(id);
+            for (Place p : mapsRequest.getAllPlaces()) {
+                if (p.getName().equalsIgnoreCase(e.getPlaceName())) {
+                    mapsView.switchToMapFragmentFromPresenter(p.getLat(), p.getLon());
+                    mapsView.setTextSearch(e.getEventName());
+                }
+            }
+        }
+
     }
 
     /**
@@ -116,31 +122,15 @@ public class MapsPresenterImpl implements MapsPresenter, MapsRequest.onRequestFi
         }
         switch (command) {
             case "updatePlaces":
-                mapsRequest.updateCurrentPlaces(params[0]);
+                mapsRequest.updateAllPlaces(params[0]);
                 if (mapsView.getMap() != null){
-                    showCurrentPlacesOnMap();
+                    showCurrentPlacesOnMap("");
                 }
                 break;
 
             case "updateEvents":
-                mapsRequest.updateCurrentEvents(params[0]);
-                if (mapsView.getMap() != null){
-                    showCurrentEventsOnMap();
-                }
+                mapsRequest.updateAllEvents(params[0]);
                 break;
-        }
-    }
-
-    private void afterApiupdatePlacesOnMap() {
-        if (mapsView.getTextSearch().isEmpty()) {
-            mapsView.clearPlaces();
-            mapsView.clearMarkers();
-        } else {
-            ArrayList<String> placesName = new ArrayList<>();
-            for (Place p : mapsRequest.getCurrentSearchPlaces()) {
-                placesName.add(p.getName());
-            }
-            mapsView.updatePlaceSearch(placesName);
         }
     }
 }

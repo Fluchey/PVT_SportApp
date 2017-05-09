@@ -36,6 +36,7 @@ public class LoginRequestImpl implements LoginRequest {
         protected Void doInBackground(String... params) {
             resultFromApi = Connector.connect(connectorUrl,
                     "PUT", String.format(params[0]), token);
+                    //TODO: add return
             return null;
         }
 

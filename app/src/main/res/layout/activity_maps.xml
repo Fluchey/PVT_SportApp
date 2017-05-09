@@ -16,7 +16,15 @@
 
         <RadioGroup
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:id="@+id/eventPlacesGroup">
+
+            <RadioButton
+                android:id="@+id/EventRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/events" />
 
             <RadioButton
                 android:id="@+id/placesRadioButton"
@@ -24,13 +32,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/places" />
-
-            <RadioButton
-                android:id="@+id/eventsRadioButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/events" />
         </RadioGroup>
 
         <LinearLayout
