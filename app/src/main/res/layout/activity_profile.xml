@@ -245,7 +245,7 @@
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintVertical_bias="0.788"
-    app:layout_constraintHorizontal_bias="0.089"
+    app:layout_constraintHorizontal_bias="0.0"
     android:layout_marginStart="8dp"
     android:layout_marginEnd="8dp" />
 
@@ -265,7 +265,7 @@
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintVertical_bias="0.788"
-    app:layout_constraintHorizontal_bias="0.385"
+    app:layout_constraintHorizontal_bias="0.293"
     android:layout_marginStart="8dp"
     android:layout_marginEnd="8dp" />
 
@@ -285,7 +285,7 @@
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintVertical_bias="0.788"
-    app:layout_constraintHorizontal_bias="0.762"
+    app:layout_constraintHorizontal_bias="0.599"
     android:layout_marginStart="8dp"
     android:layout_marginEnd="8dp" />
 
@@ -304,32 +304,12 @@
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.854"
-    app:layout_constraintHorizontal_bias="0.089"
+    app:layout_constraintVertical_bias="0.792"
+    app:layout_constraintHorizontal_bias="0.924"
     android:layout_marginStart="8dp"
     android:layout_marginEnd="8dp" />
 
-<CheckBox
-    android:id="@+id/cbProfileVolleyball"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="8dp"
-    android:layout_marginLeft="8dp"
-    android:layout_marginRight="8dp"
-    android:layout_marginTop="8dp"
-    android:buttonTint="@color/colorPrimaryDarkGrey"
-    android:text="@string/profile_interests_volleyball"
-    android:textColor="@color/colorPrimaryDarkGrey"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.855"
-    app:layout_constraintHorizontal_bias="0.4"
-    android:layout_marginStart="8dp"
-    android:layout_marginEnd="8dp" />
-
-<CheckBox
+    <CheckBox
     android:id="@+id/cbProfileoutdoortraining"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -344,30 +324,30 @@
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.849"
-    app:layout_constraintHorizontal_bias="0.743"
+    app:layout_constraintVertical_bias="0.847"
+    app:layout_constraintHorizontal_bias="0.937"
     android:layout_marginStart="8dp"
     android:layout_marginEnd="8dp" />
 
-<CheckBox
-    android:id="@+id/cbProfileClimbing"
-    android:layout_width="91dp"
-    android:layout_height="32dp"
-    android:layout_marginBottom="8dp"
-    android:layout_marginLeft="8dp"
-    android:layout_marginRight="8dp"
-    android:layout_marginTop="8dp"
-    android:buttonTint="@color/colorPrimaryDarkGrey"
-    android:text="@string/profile_interests_climbing"
-    android:textColor="@color/colorPrimaryDarkGrey"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.917"
-    app:layout_constraintHorizontal_bias="0.093"
-    android:layout_marginStart="8dp"
-    android:layout_marginEnd="8dp" />
+    <CheckBox
+        android:id="@+id/cbProfileHästRidning"
+        android:layout_width="91dp"
+        android:layout_height="32dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:buttonTint="@color/colorPrimaryDarkGrey"
+        android:text="@string/profile_interests_ridning"
+        android:textColor="@color/colorPrimaryDarkGrey"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.849" />
 
 <CheckBox
     android:id="@+id/cbProfileRunning"
@@ -384,31 +364,31 @@
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.917"
-    app:layout_constraintHorizontal_bias="0.393"
+    app:layout_constraintVertical_bias="0.847"
+    app:layout_constraintHorizontal_bias="0.3"
     android:layout_marginStart="8dp"
     android:layout_marginEnd="8dp" />
 
 
     <CheckBox
-        android:id="@+id/cbPorfileParkour"
+        android:id="@+id/cbProfileParkour"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:buttonTint="@color/colorPrimaryDarkGrey"
         android:text="@string/profile_interests_parkour"
         android:textColor="@color/colorPrimaryDarkGrey"
-        android:buttonTint="@color/colorPrimaryDarkGrey"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.745"
+        app:layout_constraintHorizontal_bias="0.604"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.917"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        app:layout_constraintVertical_bias="0.847" />
 
     <ImageButton
         android:id="@+id/ibCheckboxProfileButton"
@@ -497,5 +477,65 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.729" />
+
+    <CheckBox
+        android:id="@+id/cbProfileSkateboarding"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:buttonTint="@color/colorPrimaryDarkGrey"
+        android:text="@string/profile_interests_skateboard"
+        android:textColor="@color/colorPrimaryDarkGrey"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.902" />
+
+    <CheckBox
+        android:id="@+id/cbProfileBadmiton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:buttonTint="@color/colorPrimaryDarkGrey"
+        android:text="@string/profile_interests_badmiton"
+        android:textColor="@color/colorPrimaryDarkGrey"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.902" />
+
+    <CheckBox
+        android:id="@+id/cbProfileOverall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:buttonTint="@color/colorPrimaryDarkGrey"
+        android:text="@string/profile_interests_overall"
+        android:textColor="@color/colorPrimaryDarkGrey"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.824"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.902" />
 
 </android.support.constraint.ConstraintLayout>
