@@ -9,5 +9,7 @@ public interface MapsPresenter {
 
     void showCurrentPlacesOnMap();
 
+    void showCurrentEventsOnMap();
+
     void goFromListToMap(int id);
 }

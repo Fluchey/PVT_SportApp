@@ -1,16 +1,14 @@
 package com.sportify.maps.presenter;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.sportify.maps.activity.MapsView;
 import com.sportify.maps.request.MapsRequest;
 import com.sportify.maps.request.MapsRequestImpl;
+import com.sportify.storage.Event;
 import com.sportify.storage.Place;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -31,6 +29,25 @@ public class MapsPresenterImpl implements MapsPresenter, MapsRequest.onRequestFi
         this.share = sharedPreferences;
         this.token = sharedPreferences.getString("jwt", "");
         this.mapsRequest = new MapsRequestImpl(this, token);
+        updatePlacesAndEvents();
+    }
+
+    private void updatePlacesAndEvents() {
+        JSONObject json = new JSONObject();
+        try {
+            json.put("textChange", "Empty");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        /**
+         * First get all existing places
+         */
+        mapsRequest.makeApiRequestPut(json.toString(), "getallplaces", "PUT", "updatePlaces");
+
+        /**
+         * Then get all existing events
+         */
+        mapsRequest.makeApiRequestPut(json.toString(), "event/getAllEvents", "PUT", "updateEvents");
     }
 
     @Override
@@ -42,14 +59,38 @@ public class MapsPresenterImpl implements MapsPresenter, MapsRequest.onRequestFi
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        mapsRequest.makeApiRequestPut(json.toString(), "map/updateSearch", "PUT", "updateSearch");
+        /**
+         * First get all existing places
+         */
+        mapsRequest.makeApiRequestPut(json.toString(), "map/updateSearch", "PUT", "updatePlaces");
+
+        /**
+         * Then get all existing events
+         */
+        mapsRequest.makeApiRequestPut(json.toString(), "event/getAllEvents", "PUT", "updateEvents");
     }
 
     @Override
     public void showCurrentPlacesOnMap() {
         mapsView.clearMarkers();
         for (Place p : mapsRequest.getCurrentSearchPlaces()) {
-            mapsView.showMarkerAt(p.getName(), p.getCategory(), p.getLat(), p.getLon());
+            mapsView.showPlaceMarkerAt(p.getName(), p.getCategory(), p.getLat(), p.getLon());
+        }
+    }
+
+    @Override
+    public void showCurrentEventsOnMap() {
+        mapsView.clearMarkers();
+        for (Event e : mapsRequest.getEvents()) {
+            Place place = null;
+            for (Place p : mapsRequest.getCurrentSearchPlaces()){
+                Log.d("PlaceName:", p.getName());
+                Log.d("EventPlaceName:", e.getPlaceName());
+                if (p.getName().equalsIgnoreCase(e.getPlaceName())){
+                    place = p;
+                }
+            }
+            mapsView.showEventMarkerAt(e.getEventName(), e.getEventType(), place.getLat(), place.getLon());
         }
     }
 
@@ -74,14 +115,23 @@ public class MapsPresenterImpl implements MapsPresenter, MapsRequest.onRequestFi
             return;
         }
         switch (command) {
-            case "updateSearch":
-                mapsRequest.updateCurrentSearchPlaces(params[0]);
-                afterApiupdatePlaceSearch();
+            case "updatePlaces":
+                mapsRequest.updateCurrentPlaces(params[0]);
+                if (mapsView.getMap() != null){
+                    showCurrentPlacesOnMap();
+                }
+                break;
+
+            case "updateEvents":
+                mapsRequest.updateCurrentEvents(params[0]);
+                if (mapsView.getMap() != null){
+                    showCurrentEventsOnMap();
+                }
                 break;
         }
     }
 
-    private void afterApiupdatePlaceSearch() {
+    private void afterApiupdatePlacesOnMap() {
         if (mapsView.getTextSearch().isEmpty()) {
             mapsView.clearPlaces();
             mapsView.clearMarkers();
@@ -91,7 +141,6 @@ public class MapsPresenterImpl implements MapsPresenter, MapsRequest.onRequestFi
                 placesName.add(p.getName());
             }
             mapsView.updatePlaceSearch(placesName);
-            showCurrentPlacesOnMap();
         }
     }
 }

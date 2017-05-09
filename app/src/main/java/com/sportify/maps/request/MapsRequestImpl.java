@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.sportify.storage.Event;
 import com.sportify.storage.Place;
 import com.sportify.util.Connector;
 
@@ -23,34 +24,59 @@ public class MapsRequestImpl implements MapsRequest {
     private onRequestFinishedListener onRequestFinishedListener;
     private String token;
     private ArrayList<Place> currentSearchPlaces;
+    private ArrayList<Event> currentSearchEvents;
 
     public MapsRequestImpl(final onRequestFinishedListener onRequestFinishedListener, String token) {
         this.onRequestFinishedListener = onRequestFinishedListener;
         this.token = token;
 
         currentSearchPlaces = new ArrayList<>();
+        currentSearchEvents = new ArrayList<>();
     }
 
     @Override
-    public void updateCurrentSearchPlaces(String jsonMessage) {
+    public void updateCurrentPlaces(String jsonMessage) {
         currentSearchPlaces.clear();
         JSONObject json = null;
-        JSONArray array = null;
+        JSONArray placeArray = null;
         try {
             json = new JSONObject(jsonMessage);
-            array = json.getJSONArray("places");
+            placeArray = json.getJSONArray("places");
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        if (json == null || array == null) {
+        if (json == null || placeArray == null) {
             return;
         }
-
-
         try {
-            for (int i = 0; i < array.length(); i++) {
-                JSONObject jsonObject = array.getJSONObject(i);
-                currentSearchPlaces.add(new Place(jsonObject.getString("name"), jsonObject.getString("category"), Double.parseDouble(jsonObject.getString("lat")), Double.parseDouble(jsonObject.getString("lon"))));
+            for (int i = 0; i < placeArray.length(); i++) {
+                JSONObject jsonObject = placeArray.getJSONObject(i);
+                currentSearchPlaces.add(new Place(jsonObject.getString("place_id"), jsonObject.getString("name"), jsonObject.getString("category"), Double.parseDouble(jsonObject.getString("lat")), Double.parseDouble(jsonObject.getString("lon"))));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void updateCurrentEvents(String jsonMessage) {
+        currentSearchEvents.clear();
+        JSONObject json = null;
+        JSONArray eventArray = null;
+        try {
+            json = new JSONObject(jsonMessage);
+            eventArray = json.getJSONArray("events");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        if (json == null ||  eventArray == null) {
+            return;
+        }
+        try {
+            for (int i = 0; i < eventArray.length(); i++) {
+                JSONObject jsonObject = eventArray.getJSONObject(i);
+                currentSearchEvents.add(new Event(jsonObject.getInt("eventId"), jsonObject.getString("name"), jsonObject.getString("eventDate"), jsonObject.getString("startTime"), jsonObject.getString("endTime"), jsonObject.getString("eventDescription"), jsonObject.getString("place") ,  jsonObject.getInt("price"),
+                        jsonObject.getString("eventType"), jsonObject.getInt("maxAttendance"), jsonObject.getBoolean("privateEvent")));
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -71,6 +97,11 @@ public class MapsRequestImpl implements MapsRequest {
     @Override
     public ArrayList<Place> getCurrentSearchPlaces() {
         return currentSearchPlaces;
+    }
+
+    @Override
+    public ArrayList<Event> getEvents() {
+        return currentSearchEvents;
     }
 
     private class ApiRequest extends AsyncTask<String, MapsRequestImpl, Void> {
@@ -95,13 +126,15 @@ public class MapsRequestImpl implements MapsRequest {
          */
         @Override
         protected Void doInBackground(String... params) {
-            Log.d("TOKENAMPS", token);
             if (params[0].equals("GET") || params[0].equals("DELETE")) {
                 result = Connector.connectGetOrDelete(params[0], "https://pvt15app.herokuapp.com/api/" + params[1], token);
+//                result = Connector.connectGetOrDelete(params[0], "http://192.168.0.12:9000/api/" + params[1], token);
                 return null;
             } else {
                 result = Connector.connect("https://pvt15app.herokuapp.com/api/" + params[0],
                         params[1], params[2], token);
+//                result = Connector.connect("http://192.168.0.12:9000/api/" + params[0],
+//                        params[1], params[2], token);
                 return null;
             }
         }

@@ -202,9 +202,8 @@
     <string name="Event_activity_5_Participants">Inbjudna</string>
     <string name="Event_activity_5_ProfilePictureText">Host</string>
     <string name="Event_activity_5_EventName">Eventnamn?</string>
-
-
-
+    <string name="places">Places</string>
+    <string name="events">Events</string>
 
 
 </resources>

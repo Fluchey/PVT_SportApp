@@ -5,16 +5,26 @@ package com.sportify.storage;
  */
 
 public class Place {
+    private String id;
     private String name;
     private String category;
     private double lat;
     private double lon;
 
-    public Place(String name, String category, double lat, double lon) {
+    public Place(String id, String name, String category, double lat, double lon) {
+        this.id = id;
         this.name = name;
         this.category = category;
         this.lat = lat;
         this.lon = lon;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {

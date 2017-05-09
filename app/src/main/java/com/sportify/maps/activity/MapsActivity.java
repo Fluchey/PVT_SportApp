@@ -1,7 +1,13 @@
 package com.sportify.maps.activity;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -26,6 +32,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -124,11 +131,17 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
         /* Location of Stockholm */
         goToLocation(CURRENT_LOCATION.latitude, CURRENT_LOCATION.longitude, CURRENT_ZOOM);
         mapsPresenter.showCurrentPlacesOnMap();
+        mapsPresenter.showCurrentEventsOnMap();
     }
 
     @Override
-    public void showMarkerAt(String eventName, String description, double latitude, double longitude) {
-        mMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)).title(eventName).snippet(description));
+    public void showPlaceMarkerAt(String placeName, String description, double latitude, double longitude) {
+        mMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)).title(placeName).snippet(description).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+    }
+
+    @Override
+    public void showEventMarkerAt(String eventName, String category, double latitude, double longitude) {
+        mMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)).title(eventName).snippet(category).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
     }
 
     @Override
@@ -209,5 +222,10 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
             InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
             inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
         }
+    }
+
+    @Override
+    public GoogleMap getMap() {
+        return mMap;
     }
 }
