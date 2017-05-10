@@ -9,7 +9,7 @@
     tools:context="sportapp.pvt_sportapp.Activitys.RegisterActivity">
    <RelativeLayout
        android:layout_width="match_parent"
-       android:layout_height="match_parent">
+       android:layout_height="wrap_content">
 
 
     <LinearLayout
@@ -28,7 +28,6 @@
             android:id="@+id/etEventName"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_centerInParent="true"
             android:ems="8"
             android:hint="@string/event_name"
             />
@@ -37,7 +36,6 @@
             android:id="@+id/etEventPrice"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_centerInParent="true"
             android:ems="8"
             android:hint="@string/event_price"
             android:inputType="number"/>
@@ -46,7 +44,7 @@
             android:id="@+id/etEventDate"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_centerInParent="true"
+            android:inputType="date"
             android:ems="8"
             android:hint="@string/event_date"
             android:focusable="false"/>
@@ -55,7 +53,6 @@
             android:id="@+id/etEventStartTime"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_centerInParent="true"
             android:ems="8"
             android:hint="@string/event_start_time"
             android:inputType="time"
@@ -65,7 +62,6 @@
             android:id="@+id/etEventEndTime"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_centerInParent="true"
             android:ems="8"
             android:hint="@string/event_end_time"
             android:inputType="time"
@@ -75,7 +71,6 @@
             android:id="@+id/etEventType"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_centerInParent="true"
             android:ems="8"
             android:hint="@string/event_type" />
 
@@ -83,7 +78,6 @@
             android:id="@+id/etEventPlace"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_centerInParent="true"
             android:ems="8"
             android:hint="@string/event_place" />
 
@@ -91,7 +85,6 @@
             android:id="@+id/etEventMaxAttendance"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_centerInParent="true"
             android:ems="8"
             android:hint="@string/event_max_attendance"
             android:inputType="number"/>
@@ -158,7 +151,7 @@
            android:textColor="@color/colorCrystalWhite"
            android:fontFamily="serif"
            android:textStyle="italic"
-           android:layout_marginTop="20dp"
+           android:layout_marginTop="10dp"
            android:text="@string/create_event"
            android:layout_alignParentTop="true"
            android:layout_centerHorizontal="true" />
