@@ -54,6 +54,9 @@
             android:name="com.sportify.createEvent.createEventPageOne.activity.CreateEventActivity"
             android:exported="true" />
         <activity
+            android:name="com.sportify.addFriend.activity.AddFriendActivity"
+            android:exported="true" />
+        <activity
             android:name="com.sportify.createEvent.createEventPageThree.activity.CreateEventInviteFriendsActivity"
             android:label="@string/title_activity_friend"
             android:theme="@style/Theme.AppCompat.NoActionBar" />

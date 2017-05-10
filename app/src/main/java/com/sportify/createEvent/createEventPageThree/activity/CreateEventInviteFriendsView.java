@@ -1,5 +1,7 @@
 package com.sportify.createEvent.createEventPageThree.activity;
 
+import com.sportify.showFriends.Profile;
+
 import java.util.ArrayList;
 
 /**
@@ -8,8 +10,10 @@ import java.util.ArrayList;
 
 public interface CreateEventInviteFriendsView {
 
-    void showFriends(ArrayList friends);
+    void showFriends(ArrayList<Profile> friends);
 
-    ArrayList getMarkedFriends();
+    void updateFriendAdapter(ArrayList<Profile> friendList);
+
+    ArrayList<Profile> getMarkedFriends();
 
 }

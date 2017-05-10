@@ -9,9 +9,6 @@
     android:background="@drawable/mainbackground2"
     >
 
-
-
-
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="100dp"
@@ -79,4 +76,21 @@
         android:text="Testa platsrecension"
         tools:layout_editor_absoluteX="97dp"
         tools:layout_editor_absoluteY="518dp" />
+
+    <Button
+        android:id="@+id/testAddFriend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorMPButtons"
+        android:text="Test add friend"
+        android:onClick="testAddFriend"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:layout_constraintTop_creator="1"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="526dp"
+        app:layout_constraintVertical_bias="0.111" />
+
 </RelativeLayout>

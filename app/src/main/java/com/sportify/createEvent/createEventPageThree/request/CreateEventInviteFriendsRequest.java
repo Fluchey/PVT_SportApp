@@ -8,7 +8,6 @@ public interface CreateEventInviteFriendsRequest {
 
     interface OnShowFriendsFinishedListener{
         void showApiResponse(String... params);
-//        void getFriends(String... params);
     }
 
     void makeApiRequest(String jsonMessage);

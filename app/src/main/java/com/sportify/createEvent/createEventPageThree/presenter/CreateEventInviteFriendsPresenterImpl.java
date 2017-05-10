@@ -26,21 +26,24 @@ public class CreateEventInviteFriendsPresenterImpl implements CreateEventInviteF
     private CreateEventInviteFriendsRequest createEventInviteFriendsRequest;
     private SharedPreferences sharedPref;
     private String token = "";
+    private ArrayList<Profile> friends;
 
     public CreateEventInviteFriendsPresenterImpl(CreateEventInviteFriendsView createEventInviteFriendsView, SharedPreferences sharedPref){
         this.createEventInviteFriendsView = createEventInviteFriendsView;
         this.sharedPref = sharedPref;
         this.token = sharedPref.getString("jwt", "");
         this.createEventInviteFriendsRequest = new CreateEventInviteFriendsRequestImpl(this, token);
+        getFriendsMakeApiRequest();
     }
 
     @Override
-    public void showFriends() {
+    public void getFriendsMakeApiRequest() {
         //TODO: Skickar nu bara tomt Json för att jag inte får GET att funka, gör fortf med POST i Heroku.
         createEventInviteFriendsRequest.makeApiRequest("{}");
     }
 
-    public void getFriends(String jsonMessage) {
+    @Override
+    public void getFriendsFromApiResponse(String jsonMessage) {
 
         System.out.println("Jsonmessage " + jsonMessage);
         JSONObject json = null;
@@ -62,19 +65,19 @@ public class CreateEventInviteFriendsPresenterImpl implements CreateEventInviteF
         }
 
         try{
-            ArrayList<Profile> friends = new ArrayList<>();
+            friends = new ArrayList<>();
 
             for(int i=0; i < array.length(); i++){
                 JSONObject jsonObject = array.getJSONObject(i);
                 //TODO: Byt ut facebook icon till profilbild
                 String firstname = jsonObject.getString("firstname");
+                String lastname = jsonObject.getString("lastname");
+                int profileID = jsonObject.getInt("profileID");
 
-                Profile friend = new Profile(firstname, firstname, R.drawable.com_facebook_button_icon_blue);
+                Profile friend = new Profile(firstname, lastname, R.drawable.com_facebook_button_icon_blue, profileID);
 
                 friends.add(friend);
             }
-
-            createEventInviteFriendsView.showFriends(friends);
 
         }catch(JSONException e){
             e.printStackTrace();
@@ -82,8 +85,19 @@ public class CreateEventInviteFriendsPresenterImpl implements CreateEventInviteF
     }
 
     @Override
+    public void showFriends() {
+        createEventInviteFriendsView.showFriends(friends);
+    }
+
+    @Override
+    public void updateFriendSearchView() {
+        createEventInviteFriendsView.updateFriendAdapter(friends);
+    }
+
+    @Override
     public void showApiResponse(String... params) {
-//        createEventInviteFriendsView.showApiRequestMessage(params[0]);
-        getFriends(params[0]);
+        getFriendsFromApiResponse(params[0]);
+        showFriends();
+        updateFriendSearchView();
     }
 }

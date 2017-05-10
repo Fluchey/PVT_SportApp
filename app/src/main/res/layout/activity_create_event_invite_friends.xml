@@ -19,22 +19,22 @@
     android:orientation="vertical">
 
 
-    <Button
-        android:id="@+id/btShowMarkedFriends"
-        android:background="@color/colorButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:text="Show Checked Friends"
-        android:onClick="getMarkedFriends"/>
+    <!--<Button-->
+        <!--android:id="@+id/btShowMarkedFriends"-->
+        <!--android:background="@color/colorButton"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:text="Show Checked Friends"-->
+        <!--android:onClick="getMarkedFriends"/>-->
 
-    <ListView
-        android:id="@+id/lvCreateEventFriends"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="23dp" />
+    <!--<ListView-->
+        <!--android:id="@+id/lvCreateEventFriends"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="30dp"-->
+        <!--android:layout_below="@+id/btShowMarkedFriends"-->
+        <!--android:layout_alignParentStart="true" />-->
 
 </RelativeLayout>

@@ -1,10 +1,12 @@
-package com.sportify.showFriends.presenter;
+package com.sportify.addFriend.presenter;
 
 /**
  * Created by Maja on 2017-05-05.
  */
 
-public interface ShowFriendsPresenter {
+public interface AddFriendPresenter {
+
+    void addFriend(int profileID);
 
     void getFriendsMakeApiRequest();
 
