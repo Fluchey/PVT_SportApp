@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.sportify.addFriend.presenter.AddFriendPresenter;
 import com.sportify.addFriend.presenter.AddFriendPresenterImpl;
@@ -102,5 +103,10 @@ public class AddFriendActivity extends AppCompatActivity implements AddFriendVie
         arrayAdapterSearch = new ArrayAdapter(this, android.R.layout.simple_list_item_activated_1, friendList);
 //        arrayAdapterSearch = new ArrayAdapter(this, android.R.layout.activity_list_item, friendList);
         searchFriend.setAdapter(arrayAdapterSearch);
+    }
+
+    @Override
+    public void showToastToUser(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 }

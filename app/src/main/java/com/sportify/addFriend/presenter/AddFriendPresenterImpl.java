@@ -83,6 +83,7 @@ public class AddFriendPresenterImpl implements AddFriendPresenter, AddFriendRequ
                 int profileID = jsonObject.getInt("profileID");
                 String lastName = jsonObject.getString("lastname");
 
+                //TODO: Kan tas bort om vi löser så namn+efternamn aldrig blir null i databasen
                 if(firstName.isEmpty()){
                     firstName = "Anonym";
                 }
@@ -120,5 +121,6 @@ public class AddFriendPresenterImpl implements AddFriendPresenter, AddFriendRequ
         getAllUsersFromApiResponse(params[0]);
         showFriends();
         updateFriendSearchView();
+        System.out.println("Testar, testar");
     }
 }
