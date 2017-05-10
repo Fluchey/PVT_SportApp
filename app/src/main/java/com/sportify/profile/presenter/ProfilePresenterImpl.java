@@ -64,7 +64,7 @@ public class ProfilePresenterImpl implements ProfilePresenter, ProfileRequest.On
                 e.printStackTrace();
             }
 
-            //profileRequest.makeApiRequest(jsonObject.toString(), "https://pvt15app.herokuapp.com/api/createProfile");
+            //profileRequest.makeApiRequestGetUsers(jsonObject.toString(), "https://pvt15app.herokuapp.com/api/createProfile");
         }
     }
 

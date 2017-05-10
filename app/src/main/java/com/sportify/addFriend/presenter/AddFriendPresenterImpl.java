@@ -1,12 +1,12 @@
-package com.sportify.showFriends.presenter;
+package com.sportify.addFriend.presenter;
 
 import android.content.SharedPreferences;
 import android.util.Log;
 
+import com.sportify.addFriend.activity.AddFriendView;
+import com.sportify.addFriend.request.AddFriendRequest;
+import com.sportify.addFriend.request.AddFriendRequestImpl;
 import com.sportify.showFriends.Profile;
-import com.sportify.showFriends.activity.ShowFriendsView;
-import com.sportify.showFriends.request.ShowFriendsRequest;
-import com.sportify.showFriends.request.ShowFriendsRequestImpl;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -20,25 +20,39 @@ import sportapp.pvt_sportapp.R;
  * Created by Maja on 2017-05-05.
  */
 
-public class ShowFriendsPresenterImpl implements ShowFriendsPresenter, ShowFriendsRequest.OnShowFriendsFinishedListener {
+public class AddFriendPresenterImpl implements AddFriendPresenter, AddFriendRequest.OnShowFriendsFinishedListener {
 
-    private ShowFriendsView showFriendsView;
-    private ShowFriendsRequest showFriendsRequest;
+    private AddFriendView addFriendView;
+    private AddFriendRequest addFriendRequest;
     private SharedPreferences sharedPref;
     private String token = "";
     private ArrayList<Profile> friends;
 
-    public ShowFriendsPresenterImpl(ShowFriendsView showFriendsView, SharedPreferences sharedPref){
-        this.showFriendsView = showFriendsView;
+    public AddFriendPresenterImpl(AddFriendView addFriendView, SharedPreferences sharedPref){
+        this.addFriendView = addFriendView;
         this.sharedPref = sharedPref;
         this.token = sharedPref.getString("jwt", "");
-        this.showFriendsRequest = new ShowFriendsRequestImpl(this, token);
+        this.addFriendRequest = new AddFriendRequestImpl(this, token);
         getFriendsMakeApiRequest();
+        System.out.println("Nu har vi kört");
+    }
+
+    @Override
+    public void addFriend(int profileID) {
+        JSONObject jsonObject = new JSONObject();
+//        int friendID = 4;
+        try{
+            jsonObject.put("friendID", "" + profileID);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Add friend: " + jsonObject.toString());
+        addFriendRequest.makeApiRequestAddFriend("PUT", "addfriend", jsonObject.toString());
     }
 
     @Override
     public void getFriendsMakeApiRequest() {
-        showFriendsRequest.makeApiRequest("{}");
+        addFriendRequest.makeApiRequestGetUsers("POST", "findfriends", "{}");
     }
 
     @Override
@@ -82,12 +96,12 @@ public class ShowFriendsPresenterImpl implements ShowFriendsPresenter, ShowFrien
 
     @Override
     public void showFriends() {
-        showFriendsView.showFriends(friends);
+        addFriendView.showFriends(friends);
     }
 
     @Override
     public void updateFriendSearchView() {
-        showFriendsView.updateFriendAdapter(friends);
+        addFriendView.updateFriendAdapter(friends);
     }
 
     @Override
