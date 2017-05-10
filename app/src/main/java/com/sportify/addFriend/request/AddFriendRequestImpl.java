@@ -12,7 +12,6 @@ public class AddFriendRequestImpl implements AddFriendRequest {
 
     OnShowFriendsFinishedListener onShowFriendsFinishedListener;
     private String token = "";
-    private String method;
 
     public AddFriendRequestImpl(final OnShowFriendsFinishedListener onShowFriendsFinishedListener, String token){
         this.onShowFriendsFinishedListener = onShowFriendsFinishedListener;
@@ -21,13 +20,11 @@ public class AddFriendRequestImpl implements AddFriendRequest {
 
     @Override
     public void makeApiRequestGetUsers(String method, String endUrl) {
-        this.method = method;
         ApiRequest apiRequest = (ApiRequest) new ApiRequest(this).execute(method, endUrl);
     }
 
     @Override
     public void makeApiRequestAddFriend(String method, String endUrl, String jsonMessage) {
-        this.method = method;
         ApiRequest apiRequest = (ApiRequest) new ApiRequest(this).execute(method, endUrl, jsonMessage);
     }
 
@@ -60,9 +57,7 @@ public class AddFriendRequestImpl implements AddFriendRequest {
         protected void onPostExecute(Void aVoid){
             super.onPostExecute(aVoid);
 
-            if(method.equalsIgnoreCase("GET")){
-                addFriendRequestImpl.onShowFriendsFinishedListener.showApiResponse(resultFromApi);
-            }
+            addFriendRequestImpl.onShowFriendsFinishedListener.showApiResponse(resultFromApi);
         }
     }
 }

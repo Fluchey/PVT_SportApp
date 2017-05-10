@@ -27,6 +27,7 @@ public class AddFriendPresenterImpl implements AddFriendPresenter, AddFriendRequ
     private SharedPreferences sharedPref;
     private String token = "";
     private ArrayList<Profile> friends;
+    private String method;
 
     public AddFriendPresenterImpl(AddFriendView addFriendView, SharedPreferences sharedPref){
         this.addFriendView = addFriendView;
@@ -45,12 +46,14 @@ public class AddFriendPresenterImpl implements AddFriendPresenter, AddFriendRequ
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        addFriendRequest.makeApiRequestAddFriend("PUT", "addfriend", jsonObject.toString());
+        method = "PUT";
+        addFriendRequest.makeApiRequestAddFriend(method, "addfriend", jsonObject.toString());
     }
 
     @Override
     public void getAllUsersMakeApiRequest() {
-        addFriendRequest.makeApiRequestGetUsers("GET", "getusers");
+        method = "GET";
+        addFriendRequest.makeApiRequestGetUsers(method, "getusers");
     }
 
     @Override
@@ -118,9 +121,18 @@ public class AddFriendPresenterImpl implements AddFriendPresenter, AddFriendRequ
     @Override
     public void showApiResponse(String... params) {
 
-        getAllUsersFromApiResponse(params[0]);
-        showFriends();
-        updateFriendSearchView();
-        System.out.println("Testar, testar");
+        //TODO: Se över hur detta meddelande ska ges. Skickas från Heroku?
+        String apiResponseBody = params [0];
+        if(method.equalsIgnoreCase("GET")){
+            getAllUsersFromApiResponse(apiResponseBody);
+            showFriends();
+            updateFriendSearchView();
+        }else if(method.equalsIgnoreCase("PUT")){
+            if(apiResponseBody.contains("Duplicate entry")){
+                addFriendView.showToastToUser("Ni är redan vänner");
+            }else{
+                addFriendView.showToastToUser("Vännen är tillagd");
+            }
+        }
     }
 }
