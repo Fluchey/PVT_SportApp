@@ -10,6 +10,8 @@ import com.sportify.profile.request.ProfileRequestImpl;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,13 +47,16 @@ public class ProfilePresenterImpl implements ProfilePresenter, ProfileRequest.On
 
 
         if (firstname.isEmpty()) {
-            profileView.showFirstNameEmptyError(R.string.name_Empty_error);
+            profileView.showFirstNameEmptyError(R.string.firstName_Empty_error);
         } else if (lastname.isEmpty()) {
-            profileView.showLastNameEmptyError(R.string.name_Empty_error);
-        } else if (dateOfBirth.isEmpty()){
-            profileView.showDateOfBirthEmptyError(R.string.dateOfBirth_Empty_error);
-//        } else if (){ //TODO: write method to check format if necessary.
-//            profileView.showDateOfBirthWrongFormatError(R.string.dateOfBirth_wrongFormat_error);
+            profileView.showLastNameEmptyError(R.string.lastName_Empty_error);
+
+            //Current design decision states no dateOfBirth required
+//        } else if (dateOfBirth.isEmpty()){
+//            profileView.showDateOfBirthEmptyError(R.string.dateOfBirth_Empty_error);
+
+          } else if (!dateOfBirth.isEmpty() && !validDateFormat(dateOfBirth)){
+            profileView.showDateOfBirthWrongFormatError(R.string.dateOfBirth_wrongFormat_error);
         } else if (interests.isEmpty()) {
             profileView.showNoInterestCheckedError(R.string.interests_Empty_Error);
         } else {
@@ -93,5 +98,18 @@ public class ProfilePresenterImpl implements ProfilePresenter, ProfileRequest.On
     @Override
     public void closeProgressDialog() {
 
+    }
+
+    private boolean validDateFormat(String date){
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+        dateFormat.setLenient(false);
+
+        try{
+            dateFormat.parse(date);
+        }catch (ParseException e){
+            return false;
+        }
+        return true;
     }
 }

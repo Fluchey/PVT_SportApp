@@ -132,7 +132,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView {
 
     @Override
     public void showLastNameEmptyError(int resId) {
-        firstname.setError(getString(resId));
+        lastname.setError(getString(resId));
     }
 
     @Override
