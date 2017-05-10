@@ -73,7 +73,10 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterRequest
     }
 
     @Override
-    public void showApiResponse(String apiResponse) {
-        registerView.showApiRequestMessage(apiResponse);
+    public void showApiResponse(String... params) {
+        registerView.showApiRequestMessage(params[0]);
+        if (params[1].equals("200") || params[1].equals("201")) {
+        registerView.gotoCreateUserProfile();
+        }
     }
 }

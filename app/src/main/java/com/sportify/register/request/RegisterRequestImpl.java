@@ -24,8 +24,7 @@ public class RegisterRequestImpl implements RegisterRequest {
 
     private class ApiRequest extends AsyncTask<String, RegisterRequestImpl, Void> {
         private RegisterRequestImpl registerRequestImpl;
-
-        private String responseBody;
+        private String [] resultFromApi;
 
         public ApiRequest(RegisterRequestImpl registerRequestImpl) {
             this.registerRequestImpl = registerRequestImpl;
@@ -33,9 +32,8 @@ public class RegisterRequestImpl implements RegisterRequest {
 
         @Override
         protected Void doInBackground(String... params) {
-            String[] resultFromApi = Connector.connect("https://pvt15app.herokuapp.com/api/signup",
+            resultFromApi = Connector.connect("https://pvt15app.herokuapp.com/api/signup",
                     "PUT", String.format(params[0]), token);
-            responseBody = resultFromApi[0];
             return null;
         }
 
@@ -43,7 +41,7 @@ public class RegisterRequestImpl implements RegisterRequest {
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             registerRequestImpl.onCreateAccountFinishedListener.closeProgressDialog();
-            registerRequestImpl.onCreateAccountFinishedListener.showApiResponse(responseBody);
+            registerRequestImpl.onCreateAccountFinishedListener.showApiResponse(resultFromApi);
         }
     }
 }
