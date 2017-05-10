@@ -94,7 +94,7 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterRequest
             params[1] = "404";
         }
         registerView.showApiRequestMessage(message);
-        if (params[1].equals("200") || params[1].equals("201")) {
+        if (params[1].equals("201") && (userID!=-1)) {
         registerView.gotoCreateUserProfile(userID);
         }
     }
