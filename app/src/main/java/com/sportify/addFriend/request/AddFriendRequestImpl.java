@@ -19,8 +19,8 @@ public class AddFriendRequestImpl implements AddFriendRequest {
     }
 
     @Override
-    public void makeApiRequestGetUsers(String method, String endUrl, String jsonMessage) {
-        ApiRequest apiRequest = (ApiRequest) new ApiRequest(this).execute(method, endUrl, jsonMessage);
+    public void makeApiRequestGetUsers(String method, String endUrl) {
+        ApiRequest apiRequest = (ApiRequest) new ApiRequest(this).execute(method, endUrl);
     }
 
     @Override
@@ -40,8 +40,13 @@ public class AddFriendRequestImpl implements AddFriendRequest {
         @Override
         protected Void doInBackground(String... params) {
 
-            resultFromApi = Connector.connect("https://pvt15app.herokuapp.com/api/" + params[1],
-                    params[0], String.format(params[2]), token);
+            if(params[0].equals("GET")){
+                resultFromApi = Connector.connectGetOrDelete(params[0], "https://pvt15app.herokuapp.com/api/" + params[1], token);
+            }else {
+
+                resultFromApi = Connector.connect("https://pvt15app.herokuapp.com/api/" + params[1],
+                        params[0], String.format(params[2]), token);
+            }
 //            resultFromApi = Connector.connect("http://192.168.0.11:9000/api/findfriends",
 //                    "POST", String.format(params[0]), token);
 

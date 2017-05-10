@@ -48,6 +48,11 @@ public class MyArrayAdapterShowFriends extends ArrayAdapter {
 
         String firstName = friends.get(position).getFirstname();
         String lastName = friends.get(position).getLastname();
+//        String fullName = "";
+
+//        if(!firstName.isEmpty()){
+//
+//        }
         friendName.setText(firstName + " " + lastName.charAt(0));
 
         return row;
