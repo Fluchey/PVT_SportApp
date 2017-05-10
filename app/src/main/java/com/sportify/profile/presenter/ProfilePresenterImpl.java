@@ -1,6 +1,7 @@
 package com.sportify.profile.presenter;
 
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.sportify.profile.activity.ProfileView;
 import com.sportify.profile.request.ProfileRequest;
@@ -34,7 +35,7 @@ public class ProfilePresenterImpl implements ProfilePresenter, ProfileRequest.On
 
 
     @Override
-    public void updateBaseProfileInfo() {
+    public void updateBaseProfileInfo(int userID) {
         String firstname = profileView.getProfileFirstName();
         String lastname = profileView.getProfileLastName();
         String dateOfBirth = profileView.getDateOfBirth();
@@ -58,8 +59,13 @@ public class ProfilePresenterImpl implements ProfilePresenter, ProfileRequest.On
              *  Convert to JSON object
              */
             JSONObject jsonObject = new JSONObject();
+            Log.d(TAG, "profileID: " + userID);
+            Log.d(TAG, "firstName: " + firstname);
+            Log.d(TAG, "lastName: " + lastname);
+            Log.d(TAG, "dateOfBirth: " + dateOfBirth);
+            Log.d(TAG, "userBio: " + userBio);
             try {
-                //jsonObject.put("profileID", profileID);
+                jsonObject.put("profileID", userID);
                 jsonObject.put("firstName", firstname);
                 jsonObject.put("lastName", lastname);
                 jsonObject.put("dateOfBirth", dateOfBirth);

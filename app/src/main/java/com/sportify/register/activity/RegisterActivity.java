@@ -76,8 +76,9 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView 
     }
 
     @Override
-    public void gotoCreateUserProfile(){
+    public void gotoCreateUserProfile(int userID){
         Intent gotoCreateUserProfile = new Intent(RegisterActivity.this, ProfileActivity.class);
+        gotoCreateUserProfile.putExtra("userID", userID);
         RegisterActivity.this.startActivity(gotoCreateUserProfile);
     }
 

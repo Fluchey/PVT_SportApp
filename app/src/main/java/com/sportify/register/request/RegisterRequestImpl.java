@@ -1,6 +1,7 @@
 package com.sportify.register.request;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.sportify.util.Connector;
 
@@ -10,6 +11,7 @@ import com.sportify.util.Connector;
 
 public class RegisterRequestImpl implements RegisterRequest {
     OnCreateAccountFinishedListener onCreateAccountFinishedListener;
+    private static final String TAG = "RegisterRequestImpl";
     private String token = "";
 
     public RegisterRequestImpl(final OnCreateAccountFinishedListener onCreateAccountFinishedListener, String token) {
@@ -40,6 +42,9 @@ public class RegisterRequestImpl implements RegisterRequest {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
+            for (String s : resultFromApi){
+                Log.d(TAG, " " + s);
+            }
             registerRequestImpl.onCreateAccountFinishedListener.closeProgressDialog();
             registerRequestImpl.onCreateAccountFinishedListener.showApiResponse(resultFromApi);
         }
