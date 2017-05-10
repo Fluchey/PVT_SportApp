@@ -59,7 +59,7 @@
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name="com.sportify.profile.activity.ProfileActivity" />
         <activity android:name="com.sportify.login.activity.LoginActivity" />
-        <activity android:name="com.sportify.placeReview.activity.placeReviewActivity" />
+        <activity android:name="com.sportify.placeReview.activity.PlaceReviewActivity" />
         <activity android:name="com.sportify.forgottenPass.activity.ForgottenPassActivity" />
         <activity android:name="com.sportify.settings.activity.SettingsActivity" />
         <activity android:name="com.sportify.createEvent.createEventPageFive.CreateEventActivity" />

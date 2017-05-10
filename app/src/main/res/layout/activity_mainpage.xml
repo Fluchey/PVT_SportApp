@@ -71,5 +71,12 @@
         android:layout_below="@+id/registerMPButton"
         />
 
+    <Button
+        android:id="@+id/placeReviewTestButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="testGoToPlaceReviewActivity"
+        android:text="Testa platsrecension"
+        tools:layout_editor_absoluteX="97dp"
+        tools:layout_editor_absoluteY="518dp" />
 </RelativeLayout>
-
