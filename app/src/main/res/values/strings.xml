@@ -51,8 +51,8 @@
 
     /* Error messages create profile */
     <string name="name_Empty_error">Ange namn</string>
-    <string name="dateOfBirth_Empty_error">Datum är i fel format</string>
-    <string name="dateOfBirth_wrongFormat_error">Ange lösenord</string>
+    <string name="dateOfBirth_Empty_error">Ange datum</string>
+    <string name="dateOfBirth_wrongFormat_error">Datum är i fel format</string>
     <string name="interests_Empty_Error">Ange minst ett intresse</string>
 
     /* Strings Intressen */

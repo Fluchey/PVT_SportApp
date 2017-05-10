@@ -26,5 +26,5 @@ public interface RegisterView {
 
     void showUsernameEmptyError(int resId);
 
-    void gotoCreateUserProfile();
+    void gotoCreateUserProfile(int userID);
 }
