@@ -1,13 +1,7 @@
 package com.sportify.maps.activity;
 
-import android.Manifest;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -15,35 +9,28 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.ListFragment;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.sportify.maps.CustListFragment;
 import com.sportify.maps.presenter.MapsPresenter;
 import com.sportify.maps.presenter.MapsPresenterImpl;
-import com.wang.avi.AVLoadingIndicatorView;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import sportapp.pvt_sportapp.R;
 
@@ -58,6 +45,11 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
 
     private SupportMapFragment mapFragment;
     private GoogleMap mMap;
+
+    private RadioGroup radioGroup;
+    private RadioButton eventCheckBox;
+    private RadioButton placesCheckBox;
+    private boolean eventToggled;
 
     private ArrayAdapter<String> adapter;
     private EditText editTextSearch;
@@ -94,7 +86,7 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                mapsPresenter.updatePlaceSearch(s.toString());
+                mapsPresenter.updateSearchResult(s.toString());
             }
 
             @Override
@@ -102,12 +94,27 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
             }
         });
 
-        editTextSearch.setOnClickListener(new View.OnClickListener() {
+        radioGroup = (RadioGroup) findViewById(R.id.eventPlacesGroup);
+        placesCheckBox = (RadioButton) findViewById(R.id.placesRadioButton);
+        placesCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View v) {
-                editTextSearch.setText("");
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                mapsPresenter.updateSearchResult(editTextSearch.getText().toString());
+                eventToggled = false;
             }
         });
+        eventCheckBox = (RadioButton) findViewById(R.id.EventRadioButton);
+        eventCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                mapsPresenter.updateSearchResult(editTextSearch.getText().toString());
+                eventToggled = true;
+            }
+        });
+
+        placesCheckBox.setEnabled(false);
+        eventCheckBox.setEnabled(false);
+//        eventToggled = true;
     }
 
     /**
@@ -130,8 +137,15 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
 
         /* Location of Stockholm */
         goToLocation(CURRENT_LOCATION.latitude, CURRENT_LOCATION.longitude, CURRENT_ZOOM);
-        mapsPresenter.showCurrentPlacesOnMap();
-        mapsPresenter.showCurrentEventsOnMap();
+        mapsPresenter.showCurrentPlacesOnMap("");
+        mapsPresenter.showCurrentEventsOnMap("");
+        eventCheckBox.setEnabled(true);
+        placesCheckBox.setEnabled(true);
+        if(eventToggled){
+            eventCheckBox.toggle();
+        }else {
+            placesCheckBox.toggle();
+        }
     }
 
     @Override
@@ -153,7 +167,6 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
 
     @Override
     public void updatePlaceSearch(ArrayList<String> places) {
-        adapter.clear();
         adapter.addAll(places);
     }
 
@@ -170,6 +183,7 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
     @Override
     public void clearMarkers() {
         mMap.clear();
+        adapter.clear();
     }
 
     @Override
@@ -222,6 +236,16 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
             InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
             inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
         }
+    }
+
+    @Override
+    public boolean placesIsChecked() {
+        return placesCheckBox.isChecked();
+    }
+
+    @Override
+    public boolean eventsIsChecked() {
+        return eventCheckBox.isChecked();
     }
 
     @Override
