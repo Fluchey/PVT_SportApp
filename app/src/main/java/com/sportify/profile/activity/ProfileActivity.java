@@ -66,8 +66,6 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView {
         skateboarding = (CheckBox) findViewById(R.id.cbProfileSkateboarding);
         badminton = (CheckBox) findViewById(R.id.cbProfileBadminton);
 
-        interests = new ArrayList<>();
-
         calendar = Calendar.getInstance();
         date = new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -112,16 +110,18 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView {
 
     @Override
     public List<String> getInterests() {
-        if (fotboll.isChecked()) interests.add("fotboll");
-        if (basket.isChecked()) interests.add("basket");
-        if (simning.isChecked()) interests.add("simning");
-        if (bandy.isChecked()) interests.add("bandy");
-        if (ridning.isChecked()) interests.add("ridning");
-        if (running.isChecked()) interests.add("running");
-        if (parkour.isChecked()) interests.add("parkour");
-        if (outdoortraining.isChecked()) interests.add("outdoortraining");
-        if (skateboarding.isChecked()) interests.add("skateboarding");
-        if (badminton.isChecked()) interests.add("badminton");
+        interests = new ArrayList<>();
+        if (badminton.isChecked()) interests.add("Badminton");
+        if (bandy.isChecked()) interests.add("Bandy");
+        if (basket.isChecked()) interests.add("Basket");
+        if (fotboll.isChecked()) interests.add("Fotboll");
+        if (running.isChecked()) interests.add("Löpning");
+        if (parkour.isChecked()) interests.add("Parkour");
+        if (ridning.isChecked()) interests.add("Ridning");
+        if (simning.isChecked()) interests.add("Simning");
+        if (skateboarding.isChecked()) interests.add("Skateboard");
+        if (outdoortraining.isChecked()) interests.add("Utegym");
+
         return interests;
     }
 

@@ -69,18 +69,19 @@ public class ProfilePresenterImpl implements ProfilePresenter, ProfileRequest.On
             Log.d(TAG, "lastName: " + lastname);
             Log.d(TAG, "dateOfBirth: " + dateOfBirth);
             Log.d(TAG, "userBio: " + userBio);
+            Log.d(TAG, "interests: " + interests);
             try {
                 jsonObject.put("profileID", userID);
                 jsonObject.put("firstName", firstname);
                 jsonObject.put("lastName", lastname);
                 jsonObject.put("dateOfBirth", dateOfBirth);
                 jsonObject.put("userBio", userBio);
-                //jsonObject.put("interests", interests);
+                jsonObject.put("interests", interests);
                 //TODO: add picture to json request
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
+            //TODO:remove this arraytest
             profileRequest.makeApiRequest(jsonObject.toString(), "https://pvt15app.herokuapp.com/api/updateProfileInfo");
         }
     }
