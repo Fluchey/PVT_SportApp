@@ -24,6 +24,7 @@ import android.widget.Toast;
 import com.sportify.createEvent.createEventPageOne.presenter.CreateEventPresenter;
 import com.sportify.createEvent.createEventPageOne.presenter.CreateEventPresenterImpl;
 import com.sportify.createEvent.createEventPageThree.activity.CreateEventInviteFriendsActivity;
+import com.sportify.createEvent.createEventPageTwo.activity.CreateEventActivityPageTwo;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -250,7 +251,7 @@ public class CreateEventActivity extends AppCompatActivity implements CreateEven
     }
 
     public void goToInviteFriends(View v){
-        Intent goToInviteFriendsIntent = new Intent(CreateEventActivity.this, CreateEventInviteFriendsActivity.class);
+        Intent goToInviteFriendsIntent = new Intent(CreateEventActivity.this, CreateEventActivityPageTwo.class);
         CreateEventActivity.this.startActivity(goToInviteFriendsIntent);
     }
 
