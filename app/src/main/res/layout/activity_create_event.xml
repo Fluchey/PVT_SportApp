@@ -8,12 +8,13 @@
     tools:context="sportapp.pvt_sportapp.Activitys.RegisterActivity">
 
 
+
+
     <EditText
         android:id="@+id/etEventName"
         android:layout_width="225dp"
         android:layout_height="47dp"
         android:ems="8"
-        android:inputType="textPersonName"
         android:hint="@string/event_name"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
@@ -173,6 +174,8 @@
         app:layout_constraintVertical_bias="0.946"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp" />
+
+    <!--TODO : gå till nästa create_event2  -->
     <TextView
         android:id="@+id/Next"
         android:layout_width="wrap_content"
@@ -196,6 +199,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp" />
 
+    <!--TODO : hämta events bild -->
     <ImageButton
         android:id="@+id/imageButton3"
         android:layout_width="106dp"
@@ -236,7 +240,7 @@
         android:layout_marginEnd="8dp" />
 
 
-    <EditText
+    <AutoCompleteTextView
 
         android:id="@+id/etEventType"
         android:layout_width="111dp"
@@ -245,11 +249,9 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
-
         android:layout_centerInParent="true"
         android:ems="8"
         android:hint="@string/event_type"
-
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -262,9 +264,7 @@
 
 
 
-
-
-    <!--TODO : visaa events skaparens namn -->
+    <!--TODO : visa events skaparens namn -->
 
     <TextView
         android:id="@+id/etEventSkapare"
@@ -364,6 +364,22 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintHorizontal_bias="0.971"
         app:layout_constraintVertical_bias="0.693" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="82dp"
+        android:layout_height="33dp"
+        android:text="Lägg till bild"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintHorizontal_bias="0.059"
+        app:layout_constraintVertical_bias="0.712" />
 
 
 </android.support.constraint.ConstraintLayout>
