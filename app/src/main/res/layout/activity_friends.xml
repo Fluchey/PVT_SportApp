@@ -4,8 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="10dp"
     android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:paddingStart="5dp"
+    android:paddingEnd="5dp"
     android:background="@drawable/backgroundnodude"
     tools:context="com.sportify.showFriends.activity.ShowFriendsActivity">
 
@@ -50,7 +52,7 @@
         android:onClick="ToUserAreaFromFriendsActivity"
         android:layout_toStartOf="@+id/toMapButtonFromFriends"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="40dp"
+        android:layout_marginEnd="38dp"
         android:layout_marginBottom="5dp"/>
 
 
@@ -64,7 +66,7 @@
         tools:ignore="ContentDescription"
         android:layout_toStartOf="@+id/createEventButtonfromFriends"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="40dp"
+        android:layout_marginEnd="38dp"
         android:layout_marginBottom="10dp"/>
 
 
@@ -92,7 +94,7 @@
         tools:ignore="ContentDescription"
         android:layout_alignParentBottom="true"
         android:layout_toEndOf="@+id/createEventButtonfromFriends"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="38dp"
         android:layout_marginBottom="10dp"/>
 
     <ImageView
@@ -103,7 +105,7 @@
         app:srcCompat="@drawable/friendsicon"
         tools:ignore="ContentDescription"
         android:layout_toEndOf="@+id/toNotificationsButtonfromFriends"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="38dp"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="10dp"/>
 
