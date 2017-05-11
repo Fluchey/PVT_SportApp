@@ -9,7 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.view.animation.BounceInterpolator;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -25,7 +24,6 @@ import com.sportify.createEvent.createEventPageOne.presenter.CreateEventPresente
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Locale;
 
 import sportapp.pvt_sportapp.R;
 
@@ -63,7 +61,8 @@ public class CreateEventActivity extends AppCompatActivity implements CreateEven
      */
     private Calendar calendar;
     private DatePickerDialog.OnDateSetListener date;
-    private EditText eventDate;
+    private EditText eventStartDate;
+    private EditText eventEndDate;
 
     /**
      * EVENT TIME
@@ -112,7 +111,7 @@ public class CreateEventActivity extends AppCompatActivity implements CreateEven
         /**
          *  DATE AND CALENDAR
          */
-        eventDate = (EditText) findViewById(R.id.etEventDate);
+        eventStartDate = (EditText) findViewById(R.id.etEventStartDate);
         calendar = Calendar.getInstance();
         date = new DatePickerDialog.OnDateSetListener() {
 
@@ -125,15 +124,40 @@ public class CreateEventActivity extends AppCompatActivity implements CreateEven
                 calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
                 String myFormat = "yyyy-MM-dd";
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat);
-                eventDate.setText(sdf.format(calendar.getTime()));
+                eventStartDate.setText(sdf.format(calendar.getTime()));
             }
         };
-        eventDate.setOnClickListener(new View.OnClickListener() {
+        eventStartDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new DatePickerDialog(CreateEventActivity.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
+
+        eventEndDate = (EditText) findViewById(R.id.etEventEndDate);
+        calendar = Calendar.getInstance();
+        date = new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+                // TODO Auto-generated method stub
+                calendar.set(Calendar.YEAR, year);
+                calendar.set(Calendar.MONTH, monthOfYear);
+                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                String myFormat = "yyyy-MM-dd";
+                SimpleDateFormat sdf = new SimpleDateFormat(myFormat);
+                eventEndDate.setText(sdf.format(calendar.getTime()));
+            }
+        };
+        eventEndDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new DatePickerDialog(CreateEventActivity.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+
+
 
         /**
          *  START AND END TIME
@@ -214,9 +238,13 @@ public class CreateEventActivity extends AppCompatActivity implements CreateEven
         return eventPrice.getText().toString();
     }
 
+    public String getEventStartDate() {
+        return eventStartDate.getText().toString();
+    }
+
     @Override
-    public String getEventDate() {
-        return eventDate.getText().toString();
+    public String getEventEndDate(){
+        return eventEndDate.getText().toString();
     }
 
     @Override
@@ -260,13 +288,23 @@ public class CreateEventActivity extends AppCompatActivity implements CreateEven
     }
 
     @Override
-    public void showEventDateEmptyError(int resId) {
-        eventDate.setError(getString(resId));
+    public void showEventStartDateEmptyError(int resId) {
+        eventStartDate.setError(getString(resId));
     }
 
     @Override
-    public void showEventDateFormatError(int resId) {
-        eventDate.setError(getString(resId));
+    public void showEventEndDateEmptyError(int resId) {
+        eventEndDate.setError(getString(resId));
+    }
+
+    @Override
+    public void showEventStartDateFormatError(int resId) {
+        eventStartDate.setError(getString(resId));
+    }
+
+    @Override
+    public void showEventEndDateFormatError(int resId) {
+        eventEndDate.setError(getString(resId));
     }
 
     @Override
@@ -295,7 +333,7 @@ public class CreateEventActivity extends AppCompatActivity implements CreateEven
         eventPrice.setError(null);
         eventDescription.setError(null);
         eventPlace.setError(null);
-        eventDate.setError(null);
+        eventStartDate.setError(null);
         eventStartTime.setError(null);
         eventEndTime.setError(null);
         eventType.setError(null);
