@@ -60,7 +60,8 @@ public class CreateEventActivity extends AppCompatActivity implements CreateEven
      * EVENT DATE
      */
     private Calendar calendar;
-    private DatePickerDialog.OnDateSetListener date;
+    private DatePickerDialog.OnDateSetListener startDate;
+    private DatePickerDialog.OnDateSetListener endDate;
     private EditText eventStartDate;
     private EditText eventEndDate;
 
@@ -113,7 +114,7 @@ public class CreateEventActivity extends AppCompatActivity implements CreateEven
          */
         eventStartDate = (EditText) findViewById(R.id.etEventStartDate);
         calendar = Calendar.getInstance();
-        date = new DatePickerDialog.OnDateSetListener() {
+        startDate = new DatePickerDialog.OnDateSetListener() {
 
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear,
@@ -130,13 +131,13 @@ public class CreateEventActivity extends AppCompatActivity implements CreateEven
         eventStartDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new DatePickerDialog(CreateEventActivity.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
+                new DatePickerDialog(CreateEventActivity.this, startDate, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
 
         eventEndDate = (EditText) findViewById(R.id.etEventEndDate);
         calendar = Calendar.getInstance();
-        date = new DatePickerDialog.OnDateSetListener() {
+        endDate = new DatePickerDialog.OnDateSetListener() {
 
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear,
@@ -153,7 +154,7 @@ public class CreateEventActivity extends AppCompatActivity implements CreateEven
         eventEndDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new DatePickerDialog(CreateEventActivity.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
+                new DatePickerDialog(CreateEventActivity.this, endDate, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
 
