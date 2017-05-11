@@ -1,6 +1,8 @@
 package com.sportify.profile.activity;
 
 
+import android.graphics.Bitmap;
+
 import java.util.List;
 
 /**
@@ -13,6 +15,8 @@ public interface ProfileView {
     String getDateOfBirth();
     String getUserBio();
     List<String> getInterests();
+    Bitmap getProfileImage();
+    Boolean userSelectedImage();
 
     void showFirstNameEmptyError(int resId);
     void showLastNameEmptyError(int resId);

@@ -7,5 +7,4 @@ package com.sportify.profile.presenter;
 public interface ProfilePresenter {
 
     void updateBaseProfileInfo(int userID);
-    void addProfilePicture();
 }
