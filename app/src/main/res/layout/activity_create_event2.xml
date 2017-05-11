@@ -7,6 +7,28 @@
     android:background="@drawable/neutralbakgrundnogubbe"
     tools:context="com.sportify.createEvent.createEventPageFive.createEventActivity">
 
+    <!--TODO : visa användarens profilbild -->
+
+    <ImageView
+        android:id="@+id/userProfile"
+        android:layout_width="88dp"
+        android:layout_height="90dp"
+        app:srcCompat="@drawable/userprofileimage"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintHorizontal_bias="0.089"
+        app:layout_constraintVertical_bias="0.147"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
+
+
+    <!--TODO : visa events skaparens namn -->
 
     <TextView
         android:id="@+id/profileName"
@@ -14,6 +36,7 @@
         android:layout_height="34dp"
         android:text="@string/event_host"
         android:textSize="20sp"
+        android:textColor="@color/colorPrimaryDarkGrey"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         app:layout_constraintTop_toTopOf="parent"
@@ -22,10 +45,10 @@
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="0.026"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="8dp"
-        app:layout_constraintVertical_bias="0.273"
+        app:layout_constraintVertical_bias="0.328"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp" />
 
@@ -34,6 +57,7 @@
         android:layout_width="138dp"
         android:layout_height="47dp"
         android:text="@string/event_next"
+        android:textColor="@color/colorPrimary"
         android:textSize="20sp"
         android:onClick="onClick"
         android:clickable="true"
@@ -52,30 +76,6 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp" />
 
-    <TextView
-        android:id="@+id/clickBack"
-        android:layout_width="113dp"
-        android:layout_height="43dp"
-        android:text="@string/event_back"
-        android:textSize="20sp"
-        android:onClick="onClick"
-        android:clickable="true"
-        android:layout_marginEnd="13dp"
-        android:layout_alignBaseline="@+id/clickNext"
-        android:layout_alignBottom="@+id/clickNext"
-        android:layout_toStartOf="@+id/clickNext"
-        android:layout_marginRight="13dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintVertical_bias="1.0"
-        android:layout_marginStart="8dp" />
-
     <ImageButton
         android:id="@+id/imageButton"
         android:layout_width="237dp"
@@ -85,14 +85,42 @@
         android:background="@drawable/border"
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toTopOf="@+id/clickNext"
         android:layout_marginStart="57dp"
-        android:layout_marginTop="212dp"
         tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="213dp"
-        app:layout_constraintLeft_toLeftOf="@+id/profileName"
+        tools:ignore="ContentDescription"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.19"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="ContentDescription" />
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintVertical_bias="0.827" />
 
+
+    <TextView
+        android:id="@+id/createEventHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:textColor="@color/colorCrystalWhite"
+        android:fontFamily="serif"
+        android:textStyle="italic"
+        android:text="@string/create_event"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginRight="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintVertical_bias="0.0"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp" />
 
 </android.support.constraint.ConstraintLayout>

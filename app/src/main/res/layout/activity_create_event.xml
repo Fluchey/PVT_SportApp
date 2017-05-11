@@ -217,8 +217,8 @@
         android:layout_marginEnd="8dp" />
     <Button
         android:id="@+id/createEventButton"
-        android:layout_width="91dp"
-        android:layout_height="49dp"
+        android:layout_width="114dp"
+        android:layout_height="48dp"
         android:layout_gravity="center_horizontal"
         android:background="@color/colorPrimary"
         android:onClick="createEventClick"
@@ -234,7 +234,8 @@
         app:layout_constraintHorizontal_bias="0.028"
         app:layout_constraintVertical_bias="1.0"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        android:layout_marginEnd="8dp"
+        tools:layout_editor_absoluteY="511dp" />
 
 
     <AutoCompleteTextView
@@ -268,6 +269,7 @@
         android:layout_width="58dp"
         android:layout_height="32dp"
         android:text="Värd: "
+        android:textColor="@color/colorPrimaryDarkGrey"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
