@@ -43,8 +43,8 @@ public class UserAreaActivity extends AppCompatActivity implements UserAreaView 
     }
 
     public void startMapActivity(View view) {
-        Intent startMapAcitivityIntent = new Intent(UserAreaActivity.this, MapsActivity.class);
-        UserAreaActivity.this.startActivity(startMapAcitivityIntent);
+        Intent startMapActivityIntent = new Intent(UserAreaActivity.this, MapsActivity.class);
+        UserAreaActivity.this.startActivity(startMapActivityIntent);
     }
 
     public void goToSettingsActivity(View v){
@@ -55,5 +55,10 @@ public class UserAreaActivity extends AppCompatActivity implements UserAreaView 
     public void goToFriendListButtonClick(View v){
         Intent goToFriendListIntent = new Intent(UserAreaActivity.this, ShowFriendsActivity.class);
         UserAreaActivity.this.startActivity(goToFriendListIntent);
+    }
+
+    public void goToUserAreaActivity(View v){
+        Intent goToUserAreaIntent = new Intent(UserAreaActivity.this, UserAreaActivity.class);
+        UserAreaActivity.this.startActivity(goToUserAreaIntent);
     }
 }

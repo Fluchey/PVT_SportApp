@@ -1,6 +1,7 @@
 package com.sportify.showFriends.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,11 +12,16 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.sportify.arrayAdapters.MyArrayAdapterShowFriends;
+import com.sportify.createEvent.createEventPageOne.activity.CreateEventActivity;
+import com.sportify.maps.activity.MapsActivity;
+import com.sportify.settings.activity.SettingsActivity;
 import com.sportify.showFriends.Profile;
 import com.sportify.showFriends.presenter.ShowFriendsPresenter;
 import com.sportify.showFriends.presenter.ShowFriendsPresenterImpl;
+import com.sportify.userArea.activity.UserAreaActivity;
 
 import java.util.ArrayList;
 
@@ -94,5 +100,22 @@ public class ShowFriendsActivity extends AppCompatActivity implements ShowFriend
         arrayAdapterSearch = new ArrayAdapter(this, android.R.layout.simple_list_item_activated_1, friendList);
 //        arrayAdapterSearch = new ArrayAdapter(this, android.R.layout.activity_list_item, friendList);
         searchFriend.setAdapter(arrayAdapterSearch);
+    }
+
+    public void createEventfromFriendsActivity(View v) {
+        Toast.makeText(this, "Clicked Create Event", Toast.LENGTH_LONG).show();
+        Intent createEventIntent = new Intent(ShowFriendsActivity.this, CreateEventActivity.class);
+        ShowFriendsActivity.this.startActivity(createEventIntent);
+    }
+
+    public void toMapFromFriendsActivity(View view) {
+        Intent startMapActivityIntent = new Intent(ShowFriendsActivity.this, MapsActivity.class);
+        ShowFriendsActivity.this.startActivity(startMapActivityIntent);
+    }
+
+
+    public void ToUserAreaFromFriendsActivity(View v){
+        Intent goToUserAreaIntent = new Intent(ShowFriendsActivity.this, UserAreaActivity.class);
+        ShowFriendsActivity.this.startActivity(goToUserAreaIntent);
     }
 }

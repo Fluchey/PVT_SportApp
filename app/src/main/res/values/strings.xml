@@ -154,11 +154,13 @@
     /* Strings Karta */
     <string name="where_do_you_want_to_go">Vart vill du gå?</string>
     <string name="enter_category">Välj kategori</string>
-    <string name="map_type_none">None</string>
-    <string name="map_type_normal">Ingen</string>
-    <string name="map_type_terrain">Terräng</string>
-    <string name="map_type_satellite">Satellit</string>
-    <string name="map_type_hybrid">Hybrid</string>
+    <string name="map">Karta</string>
+    <string name="map_event_place_interest">Event/Plats/Intresse</string>
+    <string name="map_listview">Listvy</string>
+    <string name="map_mapview">Kartvy</string>
+    <string name="maps_places">Platser</string>
+    <string name="maps_events">Event</string>
+
 
     <string name="title_activity_maps">Karta</string>
 
@@ -168,16 +170,13 @@
     <string name="settings_invite">Bjud in</string>
     <string name="settings_fb_friends">Facebook vänner</string>
     <string name="settings_find_friends">Hitta vänner</string>
-    <string name="settings_contacts">Kontakter</string>
     <string name="settings_account">Konto</string>
-    <string name="settings_notifications">Notifications</string>
     <string name="settings_change_password">Byt lösenord</string>
     <string name="settings_account_settings">Kontoinställningar</string>
     <string name="settings_support">Support</string>
-    <string name="settings_help">Hjälp</string>
-    <string name="settings_report">Rapportera ett fel</string>
     <string name="settings_integrity">Integritetspolicy</string>
     <string name="settings_log_out">Logga ut</string>
+    <string name="settings_edit_profile">Redigera profil</string>
 
 
     /* Strings Recensioner */
@@ -207,8 +206,7 @@
     <string name="Event_activity_5_Participants">Inbjudna</string>
     <string name="Event_activity_5_ProfilePictureText">Host</string>
     <string name="Event_activity_5_EventName">Eventnamn?</string>
-    <string name="places">Places</string>
-    <string name="events">Events</string>
+
 
 
 </resources>

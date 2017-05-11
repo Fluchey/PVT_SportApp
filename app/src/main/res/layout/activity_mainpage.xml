@@ -6,8 +6,18 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.sportify.mainPage.activity.MainPageActivity"
-    android:background="@drawable/mainbackground2"
+    android:background="@drawable/backgroundmainpage"
     >
+
+    <ImageView
+        android:id="@+id/goToUserAreaButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:clickable="true"
+        android:onClick="goToUserAreaActivity"
+        app:srcCompat="@drawable/homeicon1"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"/>
 
     <ImageView
         android:id="@+id/imageView3"
