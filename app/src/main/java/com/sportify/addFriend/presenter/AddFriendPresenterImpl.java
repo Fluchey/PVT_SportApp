@@ -80,19 +80,14 @@ public class AddFriendPresenterImpl implements AddFriendPresenter, AddFriendRequ
             friends = new ArrayList<>();
 
             for(int i=0; i < array.length(); i++){
+                //TODO: Funkar bara om namn+efternamn inte är null
                 JSONObject jsonObject = array.getJSONObject(i);
                 //TODO: Byt ut facebook icon till profilbild
                 String firstName = jsonObject.getString("firstname");
                 int profileID = jsonObject.getInt("profileID");
                 String lastName = jsonObject.getString("lastname");
 
-                //TODO: Kan tas bort om vi löser så namn+efternamn aldrig blir null i databasen
-                if(firstName.isEmpty()){
-                    firstName = "Anonym";
-                }
-                if(lastName.isEmpty()){
-                    lastName = " ";
-                }
+
 
                 Profile friend = new Profile(firstName, lastName, R.drawable.userprofileimage, profileID);
 
@@ -121,18 +116,12 @@ public class AddFriendPresenterImpl implements AddFriendPresenter, AddFriendRequ
     @Override
     public void showApiResponse(String... params) {
 
-        //TODO: Se över hur detta meddelande ska ges. Skickas från Heroku?
         String apiResponseBody = params [0];
         if(method.equalsIgnoreCase("GET")){
             getAllUsersFromApiResponse(apiResponseBody);
             showFriends();
             updateFriendSearchView();
-        }else if(method.equalsIgnoreCase("PUT")){
-            if(apiResponseBody.contains("Duplicate entry")){
-                addFriendView.showToastToUser("Ni är redan vänner");
-            }else{
-                addFriendView.showToastToUser("Vännen är tillagd");
-            }
-        }
+        }else
+            addFriendView.showToastToUser(apiResponseBody);
     }
 }

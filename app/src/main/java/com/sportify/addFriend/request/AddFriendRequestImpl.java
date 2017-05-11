@@ -41,14 +41,16 @@ public class AddFriendRequestImpl implements AddFriendRequest {
         protected Void doInBackground(String... params) {
 
             if(params[0].equals("GET")){
-                resultFromApi = Connector.connectGetOrDelete(params[0], "https://pvt15app.herokuapp.com/api/" + params[1], token);
+//                resultFromApi = Connector.connectGetOrDelete(params[0], "https://pvt15app.herokuapp.com/api/" + params[1], token);
+                resultFromApi = Connector.connectGetOrDelete(params[0], "http://130.237.89.152:9000/api/" + params[1], token);
             }else {
 
-                resultFromApi = Connector.connect("https://pvt15app.herokuapp.com/api/" + params[1],
-                        params[0], String.format(params[2]), token);
-            }
-//            resultFromApi = Connector.connect("http://192.168.0.11:9000/api/findfriends",
-//                    "POST", String.format(params[0]), token);
+//                resultFromApi = Connector.connect("https://pvt15app.herokuapp.com/api/" + params[1],
+//                        params[0], String.format(params[2]), token);
+//            }
+            resultFromApi = Connector.connect("http://130.237.89.152:9000/api/" + params[1],
+                    params[0], String.format(params[2]), token);
+        }
 
             return null;
         }
