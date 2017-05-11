@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/neutralbakgrundnogubbe"
-    tools:context="sportapp.pvt_sportapp.Activitys.RegisterActivity">
+    tools:context="com.sportify.createEvent.createEventPageOne.activity.CreateEventActivity">
 
     <EditText
         android:id="@+id/etEventName"
@@ -178,6 +178,9 @@
         android:id="@+id/Next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/event_invite"
+        android:textSize="20sp"
+        android:onClick="goToInviteFriends"
         android:layout_gravity="right|center_horizontal"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
@@ -186,10 +189,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:clickable="true"
-        android:onClick="onClick"
-        android:text="@string/event_invite"
         android:textColor="@color/colorPrimary"
-        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
