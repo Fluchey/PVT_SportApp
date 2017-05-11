@@ -5,11 +5,11 @@ import android.os.Bundle;
 
 import sportapp.pvt_sportapp.R;
 
-public class CreateEventActivity extends AppCompatActivity {
+public class CreateEventPreview extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_event2);
+        setContentView(R.layout.activity_create_event5);
     }
 }
