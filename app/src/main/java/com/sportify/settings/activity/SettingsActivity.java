@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Toast;
 
+import com.sportify.changePass.activity.ChangePassActivity;
 import com.sportify.createEvent.createEventPageOne.activity.CreateEventActivity;
 import com.sportify.maps.activity.MapsActivity;
 import com.sportify.showFriends.activity.ShowFriendsActivity;
@@ -40,5 +41,10 @@ public class SettingsActivity extends AppCompatActivity implements SettingsView{
     public void toFriendsListfromSettActivity(View v){
         Intent goToFriendListIntent = new Intent(SettingsActivity.this, ShowFriendsActivity.class);
         SettingsActivity.this.startActivity(goToFriendListIntent);
+    }
+
+    public void toChangePassActivity(View v){
+        Intent goToChangePassIntent = new Intent(SettingsActivity.this, ChangePassActivity.class);
+        SettingsActivity.this.startActivity(goToChangePassIntent);
     }
 }

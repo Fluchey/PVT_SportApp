@@ -70,7 +70,9 @@
     /* Strings Profilflöde */
     <string name="userArea_text">Hej hej! Jag bor i Australien och folk älskar att ta selfies med lilla mig. Massa kärlek!</string>
     <string name="userArea_username">QuokkaSmileyface</string>
-    <string name="userArea_userInfo">Quokka Sweettooth 26 år -insert interest-</string>
+    <string name="userArea_userInfoName">Quokka Sweettooth</string>
+    <string name="userArea_userInfoAge"> 26 år </string>
+    <string name="userArea_userInfoInterest">-insert interest-</string>
     <string name="userArea_calendar">Min kalender</string>
     <string name="userArea_event">Mina event</string>
     <string name="userArea_edit">Redigera profil</string>
@@ -172,6 +174,10 @@
     <string name="settings_find_friends">Hitta vänner</string>
     <string name="settings_account">Konto</string>
     <string name="settings_change_password">Byt lösenord</string>
+    <string name="settings_old_password">Aktuella lösenordet</string>
+    <string name="settings_new_password">Nya lösenordet</string>
+    <string name="settings_new_password_confirm">Skriv det nya igen</string>
+    <string name="settings_new_password_save">Spara ändringen</string>
     <string name="settings_account_settings">Kontoinställningar</string>
     <string name="settings_support">Support</string>
     <string name="settings_integrity">Integritetspolicy</string>

@@ -65,6 +65,7 @@
         <activity android:name="com.sportify.placeReview.activity.PlaceReviewActivity" />
         <activity android:name="com.sportify.forgottenPass.activity.ForgottenPassActivity" />
         <activity android:name="com.sportify.settings.activity.SettingsActivity" />
+        <activity android:name="com.sportify.changePass.activity.ChangePassActivity" />
         <activity android:name="com.sportify.createEvent.createEventPageFive.CreateEventPreview" />
         <activity android:name="com.sportify.createEvent.createEventPageFour.CreateEventActivity" />
         <activity android:name="com.sportify.createEvent.createEventPageTwo.activity.CreateEventActivityPageTwo" />

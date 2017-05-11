@@ -39,6 +39,9 @@
         android:background="@color/colorAccent"
         android:layout_above="@+id/settingsInviteFBFriendsButton"/>
 
+    <!-- TODO FB-vänner från inställningar -->
+
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/settingsInviteFBFriendsButton"
         android:layout_width="23dp"
@@ -117,6 +120,7 @@
         android:layout_below="@+id/settingsFindFBButtons"
         android:layout_marginTop="30dp"/>
 
+    <!-- TODO byt lösenord från inställningar -->
 
 
     <android.support.design.widget.FloatingActionButton
@@ -126,10 +130,10 @@
         android:clickable="true"
         app:fabSize="mini"
         app:srcCompat="@drawable/chevright"
+        android:onClick="toChangePassActivity"
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/settingsAccountText"
         android:layout_marginTop="6dp"/>
-
 
 
     <View
@@ -149,6 +153,8 @@
         android:layout_below="@+id/settingsAccountText"
         android:layout_alignParentStart="true"
         android:layout_marginStart="50dp"/>
+
+    <!-- TODO kontoinställningar från inställningar -->
 
 
     <android.support.design.widget.FloatingActionButton
@@ -174,6 +180,9 @@
         android:layout_alignParentStart="true"
         android:layout_marginStart="50dp"/>
 
+    <!-- TODO redigera från inställningar -->
+
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/settingsEditProfileButton"
         android:layout_width="23dp"
@@ -184,6 +193,7 @@
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/accountSettingButton"
         android:layout_marginTop="10dp"/>
+
 
     <TextView
         android:id="@+id/settEditProfileText"
@@ -266,7 +276,8 @@
         android:layout_toStartOf="@+id/toMapButtonFromSett"
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="38dp"
-        android:layout_marginBottom="5dp"/>
+        android:layout_marginBottom="5dp"
+        tools:ignore="ContentDescription" />
 
 
     <ImageView

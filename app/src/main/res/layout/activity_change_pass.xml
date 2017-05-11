@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:paddingStart="5dp"
+    android:paddingEnd="5dp"
+    android:background="@drawable/backgroundnodude"
+    tools:context="com.sportify.changePass.activity.ChangePassActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="15dp"
+        app:srcCompat="@drawable/changepass"
+        android:layout_above="@+id/etLoginPasswordOld"
+        android:layout_centerHorizontal="true"
+        tools:ignore="ContentDescription" />
+
+    <!--TODO : fixa så att man kan byta lösenord -->
+
+    <TextView
+        android:id="@+id/changePassHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/settings_change_password"
+        android:textSize="25sp"
+        android:textColor="@color/colorCrystalWhite"
+        android:fontFamily="serif"
+        android:textStyle="italic"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:id="@+id/etLoginPasswordOld"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/user"
+        android:drawablePadding="12sp"
+        android:ems="10"
+        android:fontFamily="serif"
+        android:hint="@string/settings_old_password"
+        android:inputType="textPassword"
+        android:textColorHint="@color/colorPrimaryDark"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:textStyle="italic"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/etLoginPasswordNew"/>
+
+    <EditText
+        android:id="@+id/etLoginPasswordNew"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/user"
+        android:drawablePadding="12sp"
+        android:ems="10"
+        android:fontFamily="serif"
+        android:hint="@string/settings_new_password"
+        android:inputType="textPassword"
+        android:textColorHint="@color/colorPrimaryDark"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:textStyle="italic"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true" />
+
+    <EditText
+        android:id="@+id/etLoginPasswordNewConf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/user"
+        android:drawablePadding="12sp"
+        android:ems="10"
+        android:fontFamily="serif"
+        android:hint="@string/settings_new_password_confirm"
+        android:inputType="textPassword"
+        android:textColorHint="@color/colorPrimaryDark"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:textStyle="italic"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/etLoginPasswordNew" />
+
+    <Button
+        android:id="@+id/changePassButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:background="@color/colorButton"
+        android:text="@string/settings_new_password_save"
+        android:layout_below="@+id/etLoginPasswordNewConf"
+        android:layout_centerHorizontal="true" />
+
+
+
+
+</RelativeLayout>

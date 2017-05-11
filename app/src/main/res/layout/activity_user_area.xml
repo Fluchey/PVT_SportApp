@@ -56,11 +56,27 @@
 
     <!--TODO : hämta användarens info (namn, ålder, intressen) -->
     <TextView
-        android:id="@+id/UserInfoText"
-        android:layout_width="100dp"
-        android:layout_height="60dp"
-        android:text="@string/userArea_userInfo"
+        android:id="@+id/UserInfoNameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/userArea_userInfoName"
         android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/UserInfoAgeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/userArea_userInfoAge"
+        android:textSize="12sp"
+        android:layout_below="@+id/UserInfoNameText"/>
+
+    <TextView
+        android:id="@+id/UserInfoInterestText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/userArea_userInfoInterest"
+        android:textSize="12sp"
+        android:layout_below="@+id/UserInfoAgeText"/>
 
 
     <!--TODO : hämta användarens profilbild -->
@@ -90,9 +106,10 @@ gotous
         android:layout_height="25dp"
         app:srcCompat="@drawable/calendar"
         tools:ignore="ContentDescription"
-        android:layout_below="@id/goToSettingsButton"
+        android:layout_below="@+id/goToSettingsButton"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="60dp"/>
 
     <ImageView
         android:id="@+id/goToUserAreaButton"
