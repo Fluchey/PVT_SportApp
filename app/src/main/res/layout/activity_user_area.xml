@@ -8,7 +8,7 @@
     android:paddingBottom="15dp"
     android:paddingLeft="10dp"
     android:paddingRight="10dp"
-    android:background="@drawable/neutralbakgrunduser"
+    android:background="@drawable/backgrounduser"
     tools:context="com.sportify.userArea.activity.UserAreaActivity">
 
 
@@ -30,7 +30,7 @@
         android:layout_height="50dp"
         android:text="@string/userArea_text"
         android:textSize="12sp"
-        android:layout_below="@id/profilePicView"
+        android:layout_below="@+id/profilePicView"
         android:paddingTop="5dp" />
 
     <!--TODO : hämta användarens info (namn, ålder, intressen) -->
@@ -50,18 +50,7 @@
         app:srcCompat="@drawable/quokkaprofile"
         tools:ignore="ContentDescription"
         android:layout_centerHorizontal="true" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/createEventButton"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:clickable="true"
-        android:onClick="createEventButtonClick"
-        app:backgroundTint="@color/colorAccent"
-        app:fabSize="normal"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        app:srcCompat="@drawable/addbutton" />
+gotous
 
     <ImageView
         android:id="@+id/goToSettingsButton"
@@ -76,48 +65,76 @@
     <ImageView
         android:id="@+id/goToCalendarButton"
         android:clickable="true"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         app:srcCompat="@drawable/calendar"
         tools:ignore="ContentDescription"
+        android:layout_toStartOf="@id/goToSettingsButton"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"/>
+
+    <ImageView
+        android:id="@+id/goToUserAreaButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:clickable="true"
+        app:srcCompat="@drawable/homeicon1"
         android:layout_toStartOf="@+id/goToMapButton"
         android:layout_marginEnd="40dp"
-        android:layout_alignParentBottom="true" />
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="5dp" />
 
-    <ImageView
-        android:id="@+id/goToFriendsListButton"
-        android:clickable="true"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        app:srcCompat="@drawable/friendsicon"
-        tools:ignore="ContentDescription"
-        android:onClick="goToFriendListButtonClick"
-        android:layout_toEndOf="@+id/goToNotificationsButton"
-        android:layout_marginStart="40dp"
-        android:layout_alignParentBottom="true"/>
-
-    <ImageView
-        android:id="@+id/goToNotificationsButton"
-        android:clickable="true"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        app:srcCompat="@drawable/notificationicon"
-        tools:ignore="ContentDescription"
-        android:layout_toEndOf="@+id/createEventButton"
-        android:layout_marginStart="40dp"
-        android:layout_alignParentBottom="true"/>
 
     <ImageView
         android:id="@+id/goToMapButton"
         android:onClick="startMapActivity"
         android:clickable="true"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         app:srcCompat="@drawable/searchicon"
         tools:ignore="ContentDescription"
         android:layout_toStartOf="@+id/createEventButton"
         android:layout_marginEnd="40dp"
+        android:layout_marginBottom="10dp"
         android:layout_alignParentBottom="true" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/createEventButton"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:clickable="true"
+        android:onClick="createEventButtonClick"
+        app:backgroundTint="@color/colorAccent"
+        app:fabSize="normal"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:srcCompat="@drawable/addbutton" />
+
+
+    <ImageView
+        android:id="@+id/goToNotificationsButton"
+        android:clickable="true"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:srcCompat="@drawable/notificationicon"
+        tools:ignore="ContentDescription"
+        android:layout_toEndOf="@+id/createEventButton"
+        android:layout_marginStart="40dp"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true"/>
+
+    <ImageView
+        android:id="@+id/goToFriendsListButton"
+        android:clickable="true"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:srcCompat="@drawable/friendsicon"
+        tools:ignore="ContentDescription"
+        android:onClick="goToFriendListButtonClick"
+        android:layout_toEndOf="@+id/goToNotificationsButton"
+        android:layout_marginStart="40dp"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true"/>
 
 
     <TextView
@@ -126,7 +143,7 @@
         android:layout_height="wrap_content"
         android:text="@string/userArea_event"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/profileText"
+        android:layout_below="@+id/profileText"
         android:paddingTop="25dp" />
 
     <ImageView
@@ -137,7 +154,7 @@
         app:srcCompat="@drawable/editicon"
         tools:ignore="ContentDescription"
         android:layout_alignParentEnd="true"
-        android:layout_above="@id/scrollMyEvText"
+        android:layout_above="@+id/scrollMyEvText"
         android:paddingTop="10dp" />
 
     <!--TODO : hämta eventets bild -->
@@ -168,7 +185,7 @@
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_below="@+id/userAreaViewSwim"
-        android:layout_toStartOf="@id/userAreaSwimText"
+        android:layout_toStartOf="@+id/userAreaSwimText"
         android:paddingEnd="10dp"
         app:srcCompat="@drawable/quokkaprofile"
         android:paddingTop="5dp"
@@ -198,6 +215,8 @@
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="10dp"/>
 
-    </RelativeLayout>
+
+
+</RelativeLayout>
 
 
