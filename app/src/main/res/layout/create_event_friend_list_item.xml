@@ -8,39 +8,19 @@
         android:id="@+id/inviteFriendsProfilePicture"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:src="@drawable/com_facebook_button_icon_blue"/>
+        android:src="@drawable/userprofileimage" />
+
     <CheckedTextView
         android:id="@+id/ctvInviteFriendName"
         android:layout_width="match_parent"
         android:layout_height="?android:attr/listPreferredItemHeightSmall"
-        android:textAppearance="?android:attr/textAppearanceListItemSmall"
+        android:drawableEnd="?android:attr/listChoiceIndicatorMultiple"
         android:gravity="center_vertical"
-        android:checkMark="?android:attr/listChoiceIndicatorMultiple"
         android:paddingLeft="?android:attr/listPreferredItemPaddingLeft"
-        android:paddingRight="?android:attr/listPreferredItemPaddingRight"/>
+        android:paddingRight="?android:attr/listPreferredItemPaddingRight"
+        android:textAppearance="?android:attr/textAppearanceListItemSmall"
+        android:textColor="@color/colorPrimaryDarkGrey"
+        />
+
 </LinearLayout>
-
-
-<!--<CheckedTextView xmlns:android="http://schemas.android.com/apk/res/android"-->
-    <!--android:id="@android:id/text1"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="?android:attr/listPreferredItemHeightSmall"-->
-    <!--android:textAppearance="?android:attr/textAppearanceListItemSmall"-->
-    <!--android:gravity="center_vertical"-->
-    <!--android:checkMark="?android:attr/listChoiceIndicatorMultiple"-->
-    <!--android:paddingStart="?android:attr/listPreferredItemPaddingStart"-->
-    <!--android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"/>-->
-
-    <!--<ImageView-->
-        <!--android:id="@+id/profilePicture"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:contentDescription="Profile Picture"-->
-        <!--app:srcCompat="@drawable/com_facebook_button_icon_blue" />-->
-
-    <!--<TextView android:id="@+id/title"-->
-        <!--android:layout_toEndOf="@id/profilePicture"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--/>-->
 

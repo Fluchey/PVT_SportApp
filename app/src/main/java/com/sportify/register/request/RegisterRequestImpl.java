@@ -1,6 +1,7 @@
 package com.sportify.register.request;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.sportify.util.Connector;
 
@@ -10,6 +11,7 @@ import com.sportify.util.Connector;
 
 public class RegisterRequestImpl implements RegisterRequest {
     OnCreateAccountFinishedListener onCreateAccountFinishedListener;
+    private static final String TAG = "RegisterRequestImpl";
     private String token = "";
 
     public RegisterRequestImpl(final OnCreateAccountFinishedListener onCreateAccountFinishedListener, String token) {
@@ -24,8 +26,7 @@ public class RegisterRequestImpl implements RegisterRequest {
 
     private class ApiRequest extends AsyncTask<String, RegisterRequestImpl, Void> {
         private RegisterRequestImpl registerRequestImpl;
-
-        private String responseBody;
+        private String [] resultFromApi;
 
         public ApiRequest(RegisterRequestImpl registerRequestImpl) {
             this.registerRequestImpl = registerRequestImpl;
@@ -33,17 +34,19 @@ public class RegisterRequestImpl implements RegisterRequest {
 
         @Override
         protected Void doInBackground(String... params) {
-            String[] resultFromApi = Connector.connect("https://pvt15app.herokuapp.com/api/signup",
+            resultFromApi = Connector.connect("https://pvt15app.herokuapp.com/api/signup",
                     "PUT", String.format(params[0]), token);
-            responseBody = resultFromApi[0];
             return null;
         }
 
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
+            for (String s : resultFromApi){
+                Log.d(TAG, " " + s);
+            }
             registerRequestImpl.onCreateAccountFinishedListener.closeProgressDialog();
-            registerRequestImpl.onCreateAccountFinishedListener.showApiResponse(responseBody);
+            registerRequestImpl.onCreateAccountFinishedListener.showApiResponse(resultFromApi);
         }
     }
 }

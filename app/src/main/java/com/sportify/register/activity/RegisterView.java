@@ -8,8 +8,6 @@ public interface RegisterView {
 
     String getMail();
 
-    String getUsername();
-
     String getPassword();
 
     void showPasswordEmptyError(int resId);
@@ -25,4 +23,6 @@ public interface RegisterView {
     void closeProgressDialog();
 
     void showUsernameEmptyError(int resId);
+
+    void gotoCreateUserProfile(int userID);
 }

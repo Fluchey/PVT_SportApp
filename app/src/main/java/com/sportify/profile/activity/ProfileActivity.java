@@ -37,6 +37,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView {
     private List<String> interests;
     private Calendar calendar;
     private DatePickerDialog.OnDateSetListener date;
+    int userID;
 
 
     @Override
@@ -44,6 +45,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        userID = getIntent().getIntExtra("userID", -1);
         profilePresenter = new ProfilePresenterImpl(this, sharedPref);
 
         firstname = (EditText) findViewById(R.id.etProfileNameHint);
@@ -63,8 +65,6 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView {
         outdoortraining = (CheckBox) findViewById(R.id.cbProfileoutdoortraining);
         skateboarding = (CheckBox) findViewById(R.id.cbProfileSkateboarding);
         badminton = (CheckBox) findViewById(R.id.cbProfileBadminton);
-
-        interests = new ArrayList<>();
 
         calendar = Calendar.getInstance();
         date = new DatePickerDialog.OnDateSetListener() {
@@ -90,36 +90,38 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView {
 
     @Override
     public String getProfileFirstName() {
-        return firstname.toString();
+        return firstname.getText().toString();
     }
 
     @Override
     public String getProfileLastName() {
-        return lastname.toString();
+        return lastname.getText().toString();
     }
 
     @Override //TODO: See if DatePicker stores this as string.
     public String getDateOfBirth() {
-        return dateOfBirth.toString();
+        return dateOfBirth.getText().toString();
     }
 
     @Override
     public String getUserBio() {
-        return description.toString();
+        return description.getText().toString();
     }
 
     @Override
     public List<String> getInterests() {
-        if (fotboll.isChecked()) interests.add("fotboll");
-        if (basket.isChecked()) interests.add("basket");
-        if (simning.isChecked()) interests.add("simning");
-        if (bandy.isChecked()) interests.add("bandy");
-        if (ridning.isChecked()) interests.add("ridning");
-        if (running.isChecked()) interests.add("running");
-        if (parkour.isChecked()) interests.add("parkour");
-        if (outdoortraining.isChecked()) interests.add("outdoortraining");
-        if (skateboarding.isChecked()) interests.add("skateboarding");
-        if (badminton.isChecked()) interests.add("badminton");
+        interests = new ArrayList<>();
+        if (badminton.isChecked()) interests.add("Badminton");
+        if (bandy.isChecked()) interests.add("Bandy");
+        if (basket.isChecked()) interests.add("Basket");
+        if (fotboll.isChecked()) interests.add("Fotboll");
+        if (running.isChecked()) interests.add("Löpning");
+        if (parkour.isChecked()) interests.add("Parkour");
+        if (ridning.isChecked()) interests.add("Ridning");
+        if (simning.isChecked()) interests.add("Simning");
+        if (skateboarding.isChecked()) interests.add("Skateboard");
+        if (outdoortraining.isChecked()) interests.add("Utegym");
+
         return interests;
     }
 
@@ -130,7 +132,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView {
 
     @Override
     public void showLastNameEmptyError(int resId) {
-        firstname.setError(getString(resId));
+        lastname.setError(getString(resId));
     }
 
     @Override
@@ -148,12 +150,12 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView {
         Toast.makeText(this, getString(resID), Toast.LENGTH_LONG).show();
     }
 
-    public void profilePictureButtonClick(){
+    public void profilePictureButtonClick(View v){
         profilePresenter.addProfilePicture();
     }
 
-    public void checkboxProfileButton(){
-        profilePresenter.updateBaseProfileInfo();
+    public void checkboxProfileButton(View v){
+        profilePresenter.updateBaseProfileInfo(userID);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.sportify.register.presenter;
 
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.util.Patterns;
 
 import com.sportify.register.request.RegisterRequest;
@@ -17,6 +18,7 @@ import sportapp.pvt_sportapp.R;
  */
 
 public class RegisterPresenterImpl implements RegisterPresenter, RegisterRequest.OnCreateAccountFinishedListener {
+    private static final String TAG = "RegisterPresenterImpl";
     private RegisterView registerView;
     private RegisterRequest registerRequest;
     private SharedPreferences sharedPref;
@@ -31,14 +33,10 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterRequest
 
     @Override
     public void createAccount() {
-        String username = registerView.getUsername();
         String email = registerView.getMail();
         String password = registerView.getPassword();
 
-
-        if (username.isEmpty()) {
-            registerView.showUsernameEmptyError(R.string.username_empty_error);
-        } else if (password.isEmpty()) {
+        if (password.isEmpty()) {
             registerView.showPasswordEmptyError(R.string.password_empty_error);
         } else if (email.isEmpty()) {
             registerView.showEmailEmptyError(R.string.email_Empty_error);
@@ -54,7 +52,6 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterRequest
             JSONObject jsonObject = new JSONObject();
             try {
                 jsonObject.put("mail", email);
-                jsonObject.put("username", username);
                 jsonObject.put("password", password);
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -73,7 +70,28 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterRequest
     }
 
     @Override
-    public void showApiResponse(String apiResponse) {
-        registerView.showApiRequestMessage(apiResponse);
+    public void showApiResponse(String... params) {
+        JSONObject json = null;
+        String message = "";
+        int userID = -1;
+        for (String s : params){
+            Log.d(TAG, " " + s);
+        }
+        try {
+            json = new JSONObject(params[0]);
+            message = json.getString("responseBody");
+            userID = json.getInt("userID");
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            message = "Invalid userID: " + userID;
+            params[1] = "404";
+        }
+        registerView.showApiRequestMessage(message);
+        if (params[1].equals("201") && (userID!=-1)) {
+        registerView.gotoCreateUserProfile(userID);
+        }
     }
 }

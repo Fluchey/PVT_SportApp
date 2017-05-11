@@ -3,13 +3,15 @@ package com.sportify.createEvent.createEventPageOne.activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.view.animation.BounceInterpolator;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -21,11 +23,11 @@ import android.widget.Toast;
 
 import com.sportify.createEvent.createEventPageOne.presenter.CreateEventPresenter;
 import com.sportify.createEvent.createEventPageOne.presenter.CreateEventPresenterImpl;
+import com.sportify.createEvent.createEventPageThree.activity.CreateEventInviteFriendsActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Locale;
 
 import sportapp.pvt_sportapp.R;
 
@@ -62,8 +64,10 @@ public class CreateEventActivity extends AppCompatActivity implements CreateEven
      * EVENT DATE
      */
     private Calendar calendar;
-    private DatePickerDialog.OnDateSetListener date;
-    private EditText eventDate;
+    private DatePickerDialog.OnDateSetListener startDate;
+    private DatePickerDialog.OnDateSetListener endDate;
+    private EditText eventStartDate;
+    private EditText eventEndDate;
 
     /**
      * EVENT TIME
@@ -112,9 +116,9 @@ public class CreateEventActivity extends AppCompatActivity implements CreateEven
         /**
          *  DATE AND CALENDAR
          */
-        eventDate = (EditText) findViewById(R.id.etEventDate);
+        eventStartDate = (EditText) findViewById(R.id.etEventStartDate);
         calendar = Calendar.getInstance();
-        date = new DatePickerDialog.OnDateSetListener() {
+        startDate = new DatePickerDialog.OnDateSetListener() {
 
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear,
@@ -125,15 +129,40 @@ public class CreateEventActivity extends AppCompatActivity implements CreateEven
                 calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
                 String myFormat = "yyyy-MM-dd";
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat);
-                eventDate.setText(sdf.format(calendar.getTime()));
+                eventStartDate.setText(sdf.format(calendar.getTime()));
             }
         };
-        eventDate.setOnClickListener(new View.OnClickListener() {
+        eventStartDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new DatePickerDialog(CreateEventActivity.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
+                new DatePickerDialog(CreateEventActivity.this, startDate, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
+
+        eventEndDate = (EditText) findViewById(R.id.etEventEndDate);
+        calendar = Calendar.getInstance();
+        endDate = new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+                // TODO Auto-generated method stub
+                calendar.set(Calendar.YEAR, year);
+                calendar.set(Calendar.MONTH, monthOfYear);
+                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                String myFormat = "yyyy-MM-dd";
+                SimpleDateFormat sdf = new SimpleDateFormat(myFormat);
+                eventEndDate.setText(sdf.format(calendar.getTime()));
+            }
+        };
+        eventEndDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new DatePickerDialog(CreateEventActivity.this, endDate, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+
+
 
         /**
          *  START AND END TIME
@@ -185,14 +214,44 @@ public class CreateEventActivity extends AppCompatActivity implements CreateEven
             }
         });
 
+        eventType = (EditText) findViewById(R.id.etEventType);
+        final String [] categories = getResources().getStringArray(R.array.sections);
+        final AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        dialog.setTitle("Pick category");
+        dialog.setItems(categories, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int position){
+                eventType.setText(categories[position]);
+            }
+        });
+        dialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // TODO Auto-generated method stub
+                dialog.dismiss();
+            }
+        });
+        eventType.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog alert = dialog.create();
+                alert.show();
+            }
+        });
+
 
         /**
          * EDIT TEXTS
          */
         eventName = (EditText) findViewById(R.id.etEventName);
-        eventType = (EditText) findViewById(R.id.etEventType);
         eventMaxAttendance = (EditText) findViewById(R.id.etEventMaxAttendance);
         eventPrivate = (CheckBox) findViewById(R.id.cbEventPrivate);
+    }
+
+    public void goToInviteFriends(View v){
+        Intent goToInviteFriendsIntent = new Intent(CreateEventActivity.this, CreateEventInviteFriendsActivity.class);
+        CreateEventActivity.this.startActivity(goToInviteFriendsIntent);
     }
 
     public void createEventClick(View v) {
@@ -214,9 +273,13 @@ public class CreateEventActivity extends AppCompatActivity implements CreateEven
         return eventPrice.getText().toString();
     }
 
+    public String getEventStartDate() {
+        return eventStartDate.getText().toString();
+    }
+
     @Override
-    public String getEventDate() {
-        return eventDate.getText().toString();
+    public String getEventEndDate(){
+        return eventEndDate.getText().toString();
     }
 
     @Override
@@ -260,13 +323,23 @@ public class CreateEventActivity extends AppCompatActivity implements CreateEven
     }
 
     @Override
-    public void showEventDateEmptyError(int resId) {
-        eventDate.setError(getString(resId));
+    public void showEventStartDateEmptyError(int resId) {
+        eventStartDate.setError(getString(resId));
     }
 
     @Override
-    public void showEventDateFormatError(int resId) {
-        eventDate.setError(getString(resId));
+    public void showEventEndDateEmptyError(int resId) {
+        eventEndDate.setError(getString(resId));
+    }
+
+    @Override
+    public void showEventStartDateFormatError(int resId) {
+        eventStartDate.setError(getString(resId));
+    }
+
+    @Override
+    public void showEventEndDateFormatError(int resId) {
+        eventEndDate.setError(getString(resId));
     }
 
     @Override
@@ -295,7 +368,7 @@ public class CreateEventActivity extends AppCompatActivity implements CreateEven
         eventPrice.setError(null);
         eventDescription.setError(null);
         eventPlace.setError(null);
-        eventDate.setError(null);
+        eventStartDate.setError(null);
         eventStartTime.setError(null);
         eventEndTime.setError(null);
         eventType.setError(null);

@@ -47,7 +47,9 @@ public class CreateEventPresenterImpl implements CreateEventPresenter, CreateEve
         String eventName = createEventView.getEventName();
         String eventPriceEt = createEventView.getEventPrice();
         int eventPrice = 0;
-        String eventDate = createEventView.getEventDate();
+
+        String eventStartDate = createEventView.getEventStartDate();
+        String eventEndDate = createEventView.getEventEndDate();
         String eventStartTime = createEventView.getEventStartTime();
         String eventEndTime = createEventView.getEventEndTime();
         String eventType = createEventView.getEventType();
@@ -63,11 +65,19 @@ public class CreateEventPresenterImpl implements CreateEventPresenter, CreateEve
         if (eventName.isEmpty()) {
             createEventView.showEventNameEmptyError(R.string.event_name_empty_error);
         }
-        else if(eventDate.isEmpty()){
-            createEventView.showEventDateEmptyError(R.string.event_date_empty_error);
+
+        //TODO: Lägg in slutdatum
+        else if(eventStartDate.isEmpty()){
+            createEventView.showEventStartDateEmptyError(R.string.event_date_empty_error);
         }
-        else if(!validDateFormat(eventDate)){
-            createEventView.showEventDateFormatError(R.string.event_date_wrongformat_error);
+        else if(!validDateFormat(eventStartDate)){
+            createEventView.showEventStartDateFormatError(R.string.event_date_wrongformat_error);
+        }
+        else if(eventEndDate.isEmpty()){
+            createEventView.showEventEndDateEmptyError(R.string.event_date_empty_error);
+        }
+        else if(!validDateFormat(eventEndDate)){
+            createEventView.showEventEndDateFormatError(R.string.event_date_wrongformat_error);
         }
         else if(eventStartTime.isEmpty()){
             createEventView.showEventStartTimeEmptyError(R.string.event_start_time_empty_error);
@@ -93,7 +103,8 @@ public class CreateEventPresenterImpl implements CreateEventPresenter, CreateEve
             try {
                 jsonObject.put("eventName", eventName);
                 jsonObject.put("eventPrice", "" + eventPrice);
-                jsonObject.put("eventDate", "" + eventDate);
+                jsonObject.put("eventStartDate", "" + eventStartDate);
+                jsonObject.put("eventEndDate", "" + eventEndDate);
                 jsonObject.put("eventStartTime", "" + eventStartTime);
                 jsonObject.put("eventEndTime", "" + eventEndTime);
                 jsonObject.put("eventType", eventType);

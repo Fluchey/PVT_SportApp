@@ -32,7 +32,6 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView 
         registerPresenter = new RegisterPresenterImpl(this, sharedPref);
         dialog = new ProgressDialog(this);
 
-        username = (EditText) findViewById(R.id.etRegisterUserName);
         password = (EditText) findViewById(R.id.etRegisterPassword);
         email = (EditText) findViewById(R.id.etRegisterMail);
     }
@@ -44,10 +43,6 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView 
     @Override
     public String getMail() {
         return email.getText().toString();
-    }
-
-    public String getUsername() {
-        return username.getText().toString();
     }
 
     @Override
@@ -73,12 +68,13 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView 
     @Override
     public void showApiRequestMessage(String message) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
-        //responseCode is not handled by any Register Class so we check the responseCode
-        if (!message.isEmpty() && message!=null &&
-                message.equalsIgnoreCase("User succesfully created")) {
-            Intent gotoCreateUserProfile = new Intent(RegisterActivity.this, ProfileActivity.class);
-            RegisterActivity.this.startActivity(gotoCreateUserProfile);
-        }
+    }
+
+    @Override
+    public void gotoCreateUserProfile(int userID){
+        Intent gotoCreateUserProfile = new Intent(RegisterActivity.this, ProfileActivity.class);
+        gotoCreateUserProfile.putExtra("userID", userID);
+        RegisterActivity.this.startActivity(gotoCreateUserProfile);
     }
 
     @Override

@@ -41,7 +41,7 @@ public class RegisterTest {
     @Test
     public void shouldShowErrorMessageWhenPasswordIsEmpty() throws Exception {
         when(registerView.getPassword()).thenReturn("");
-        when(registerView.getUsername()).thenReturn("Username");
+//        when(registerView.getUsername()).thenReturn("Username");
         presenter.createAccount();
 
         verify(registerView).showPasswordEmptyError(R.string.password_empty_error);
@@ -51,7 +51,7 @@ public class RegisterTest {
     @Test
     public void shouldShowErrorMessageWhenEmailIsEmpty() throws Exception {
         when(registerView.getMail()).thenReturn("");
-        when(registerView.getUsername()).thenReturn("Username");
+//        when(registerView.getUsername()).thenReturn("Username");
         when(registerView.getPassword()).thenReturn("MockPassword");
 
         presenter.createAccount();

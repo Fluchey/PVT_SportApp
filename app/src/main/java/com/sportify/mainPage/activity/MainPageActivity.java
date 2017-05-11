@@ -1,11 +1,12 @@
 package com.sportify.mainPage.activity;
 
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
+import com.sportify.addFriend.activity.AddFriendActivity;
 import com.sportify.login.activity.LoginActivity;
 import com.sportify.register.activity.RegisterActivity;
 import com.sportify.userArea.activity.UserAreaActivity;
@@ -43,5 +44,10 @@ public class MainPageActivity extends AppCompatActivity implements MainPageView{
         testGoToPlaceReviewViewIntent.putExtras(b);
 
         MainPageActivity.this.startActivity(testGoToPlaceReviewViewIntent);
+    }
+
+    public void testAddFriend(View v){
+        Intent testAddFriendIntent = new Intent(MainPageActivity.this, AddFriendActivity.class);
+        MainPageActivity.this.startActivity(testAddFriendIntent);
     }
 }

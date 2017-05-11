@@ -141,11 +141,6 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
         mapsPresenter.showCurrentEventsOnMap("");
         eventCheckBox.setEnabled(true);
         placesCheckBox.setEnabled(true);
-        if(eventToggled){
-            eventCheckBox.toggle();
-        }else {
-            placesCheckBox.toggle();
-        }
     }
 
     @Override

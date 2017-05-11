@@ -2,6 +2,7 @@ package com.sportify.login.presenter;
 import android.content.SharedPreferences;
 import android.util.Log;
 import android.util.Patterns;
+import android.widget.Toast;
 
 import com.facebook.AccessToken;
 import com.sportify.login.activity.LoginView;
@@ -41,6 +42,7 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
         } else if (password.isEmpty()) {
             loginView.showPasswordEmptyError(R.string.password_empty_error);
         } else {
+            loginView.showProgressDialog();
             /**
              *  Convert to JSON object
              */
@@ -56,7 +58,7 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
              * Creates new asynctask which runs in background and tries to create new user
              */
             loginRequest.makeApiRequest(jsonObject.toString(), "https://pvt15app.herokuapp.com/api/login");
-            //loginRequest.makeApiRequest(jsonObject.toString(), "http://192.168.0.15/api/login");
+//            loginRequest.makeApiRequest(jsonObject.toString(), "http://130.237.89.152:9000/api/login");
 
         }
     }
@@ -88,11 +90,14 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
 
     @Override
     public void showApiResponse(String... params) {
+        loginView.closeProgressDialog();
         /* response code 200 maps to successful login and 201 to facebookLogin */
         Log.d(TAG, "LoginPresenterImpl.showApiResponse(params[1]) " + params[1]);
         if (params[1].equals("200") || params[1].equals("201")){
             saveToPreferences(params);
             loginView.launchUserActivity();
+        }else{
+            loginView.showApiRequestMessage(params[0]);
         }
     }
 
