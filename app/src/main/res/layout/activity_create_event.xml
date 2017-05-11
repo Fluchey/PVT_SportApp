@@ -181,7 +181,7 @@
         android:textColor="@color/colorPrimary"
         android:text="@string/event_invite"
         android:textSize="20sp"
-        android:onClick="onClick"
+        android:onClick="goToInviteFriends"
         android:layout_gravity="right|center_horizontal"
         android:clickable="true"
         android:layout_marginLeft="8dp"
