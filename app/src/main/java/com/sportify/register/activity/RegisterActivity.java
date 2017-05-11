@@ -32,7 +32,6 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView 
         registerPresenter = new RegisterPresenterImpl(this, sharedPref);
         dialog = new ProgressDialog(this);
 
-        username = (EditText) findViewById(R.id.etRegisterUserName);
         password = (EditText) findViewById(R.id.etRegisterPassword);
         email = (EditText) findViewById(R.id.etRegisterMail);
     }
