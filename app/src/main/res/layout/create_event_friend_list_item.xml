@@ -4,13 +4,20 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal">
 
+    <!--TODO: Ändra border color på denna checkbox-->
+    <CheckBox
+        android:id="@+id/checktest"
+        android:buttonTint="@color/cardview_dark_background"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
     <ImageView
         android:id="@+id/inviteFriendsProfilePicture"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:src="@drawable/userprofileimage" />
 
-    <CheckedTextView
+    <TextView
         android:id="@+id/ctvInviteFriendName"
         android:layout_width="match_parent"
         android:layout_height="?android:attr/listPreferredItemHeightSmall"
@@ -21,6 +28,5 @@
         android:textAppearance="?android:attr/textAppearanceListItemSmall"
         android:textColor="@color/colorPrimaryDarkGrey"
         />
-
 </LinearLayout>
 

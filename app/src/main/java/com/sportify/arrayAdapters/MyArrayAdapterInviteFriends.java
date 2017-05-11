@@ -5,8 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.CheckedTextView;
+import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.sportify.showFriends.Profile;
 
@@ -49,7 +50,7 @@ public class MyArrayAdapterInviteFriends extends ArrayAdapter {
 
         LayoutInflater layoutInflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         row = layoutInflater.inflate(R.layout.create_event_friend_list_item, null);
-        final CheckedTextView friendName = (CheckedTextView) row.findViewById(R.id.ctvInviteFriendName);
+        final TextView friendName = (TextView) row.findViewById(R.id.ctvInviteFriendName);
 
         ImageView imageView = (ImageView) row.findViewById(R.id.inviteFriendsProfilePicture);
         imageView.setImageResource(friends.get(position).getProfilePicture());
@@ -58,14 +59,23 @@ public class MyArrayAdapterInviteFriends extends ArrayAdapter {
         String lastName = friends.get(position).getLastname();
         friendName.setText(firstName + " " + lastName);
 
+        final CheckBox checkBox = (CheckBox) row.findViewById(R.id.checktest);
 
+        imageView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                checkBox.toggle();
+                checkedFriends.put(position, checkBox.isChecked());
+            }
+        });
         friendName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                friendName.toggle();
-                checkedFriends.put(position, friendName.isChecked());
+                checkBox.toggle();
+                checkedFriends.put(position, checkBox.isChecked());
             }
         });
+
         return row;
     }
 
