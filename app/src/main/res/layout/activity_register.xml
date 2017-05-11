@@ -30,8 +30,7 @@
         android:id="@+id/etRegisterMail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="61dp"
-        android:backgroundTint="@color/colorPrimaryDark"
+        android:backgroundTint="@color/colorPrimaryDarkGrey"
         android:drawableStart="@drawable/mail"
         android:drawablePadding="15sp"
         android:ems="10"
@@ -39,13 +38,17 @@
         android:hint="@string/email"
         android:inputType="textEmailAddress"
         android:textColorHint="@color/colorPrimaryDark"
-        android:textStyle="italic" />
+        android:textStyle="italic"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="47dp"
+        android:layout_alignBottom="@+id/etRegisterPassword"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:id="@+id/registerButton"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:background="@color/colorButton"
         android:drawablePadding="15sp"
         android:fontFamily="serif"
@@ -54,25 +57,27 @@
         android:textColor="@color/colorPrimaryDarkGrey"
         android:textStyle="italic"
         android:layout_below="@+id/linearLayout"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignEnd="@+id/registerHeader"
+        android:layout_marginTop="64dp" />
 
     <EditText
         android:id="@+id/etRegisterPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/etRegisterMail"
-        android:layout_below="@+id/etRegisterMail"
-        android:layout_marginTop="27dp"
         android:drawableStart="@drawable/key2"
         android:drawablePadding="15sp"
         android:backgroundTint="@color/colorPrimaryDarkGrey"
         android:ems="10"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="26dp"
         android:fontFamily="serif"
         android:hint="@string/password"
         android:inputType="textPassword"
         android:textColorHint="@color/colorPrimaryDark"
         android:textStyle="italic"
-        android:layout_alignEnd="@+id/etRegisterMail" />
+        android:layout_above="@+id/registerButton"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:id="@+id/registerHeader"

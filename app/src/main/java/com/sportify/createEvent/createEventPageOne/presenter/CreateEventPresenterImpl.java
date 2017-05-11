@@ -104,7 +104,7 @@ public class CreateEventPresenterImpl implements CreateEventPresenter, CreateEve
                 jsonObject.put("eventName", eventName);
                 jsonObject.put("eventPrice", "" + eventPrice);
                 jsonObject.put("eventStartDate", "" + eventStartDate);
-                jsonObject.put("eventEndDate", "" + eventStartDate);
+                jsonObject.put("eventEndDate", "" + eventEndDate);
                 jsonObject.put("eventStartTime", "" + eventStartTime);
                 jsonObject.put("eventEndTime", "" + eventEndTime);
                 jsonObject.put("eventType", eventType);

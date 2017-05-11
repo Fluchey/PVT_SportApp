@@ -36,7 +36,6 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterRequest
         String email = registerView.getMail();
         String password = registerView.getPassword();
 
-
         if (password.isEmpty()) {
             registerView.showPasswordEmptyError(R.string.password_empty_error);
         } else if (email.isEmpty()) {
