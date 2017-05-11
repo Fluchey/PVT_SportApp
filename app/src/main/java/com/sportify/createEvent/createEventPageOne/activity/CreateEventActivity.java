@@ -3,6 +3,7 @@ package com.sportify.createEvent.createEventPageOne.activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +21,7 @@ import android.widget.Toast;
 
 import com.sportify.createEvent.createEventPageOne.presenter.CreateEventPresenter;
 import com.sportify.createEvent.createEventPageOne.presenter.CreateEventPresenterImpl;
+import com.sportify.createEvent.createEventPageThree.activity.CreateEventInviteFriendsActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -218,6 +220,11 @@ public class CreateEventActivity extends AppCompatActivity implements CreateEven
         eventType = (EditText) findViewById(R.id.etEventType);
         eventMaxAttendance = (EditText) findViewById(R.id.etEventMaxAttendance);
         eventPrivate = (CheckBox) findViewById(R.id.cbEventPrivate);
+    }
+
+    public void goToInviteFriends(View v){
+        Intent goToInviteFriendsIntent = new Intent(CreateEventActivity.this, CreateEventInviteFriendsActivity.class);
+        CreateEventActivity.this.startActivity(goToInviteFriendsIntent);
     }
 
     public void createEventClick(View v) {
