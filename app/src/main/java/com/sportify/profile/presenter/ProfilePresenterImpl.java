@@ -37,6 +37,7 @@ public class ProfilePresenterImpl implements ProfilePresenter, ProfileRequest.On
 
 
     @Override
+
     public void updateBaseProfileInfo(int userID) {
         String firstname = profileView.getProfileFirstName();
         String lastname = profileView.getProfileLastName();

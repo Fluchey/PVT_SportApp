@@ -10,7 +10,7 @@ public interface AddFriendRequest {
         void showApiResponse(String... params);
     }
 
-    void makeApiRequestGetUsers(String method, String url, String jsonMessage);
+    void makeApiRequestGetUsers(String method, String url);
 
     void makeApiRequestAddFriend(String method, String url, String jsonMessage);
 }

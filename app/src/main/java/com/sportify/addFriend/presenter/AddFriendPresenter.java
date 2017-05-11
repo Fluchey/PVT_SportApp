@@ -8,9 +8,9 @@ public interface AddFriendPresenter {
 
     void addFriend(int profileID);
 
-    void getFriendsMakeApiRequest();
+    void getAllUsersMakeApiRequest();
 
-    void getFriendsFromApiResponse(String jsonMessage);
+    void getAllUsersFromApiResponse(String jsonMessage);
 
     void showFriends();
 

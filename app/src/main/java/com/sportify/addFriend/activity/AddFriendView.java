@@ -13,4 +13,6 @@ public interface AddFriendView {
     void showFriends(ArrayList<Profile> friendList);
 
     void updateFriendAdapter(ArrayList<Profile> friendList);
+
+    void showToastToUser(String message);
 }
