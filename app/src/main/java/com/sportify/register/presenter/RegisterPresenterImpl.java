@@ -33,14 +33,11 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterRequest
 
     @Override
     public void createAccount() {
-        String username = registerView.getUsername();
         String email = registerView.getMail();
         String password = registerView.getPassword();
 
 
-        if (username.isEmpty()) {
-            registerView.showUsernameEmptyError(R.string.username_empty_error);
-        } else if (password.isEmpty()) {
+        if (password.isEmpty()) {
             registerView.showPasswordEmptyError(R.string.password_empty_error);
         } else if (email.isEmpty()) {
             registerView.showEmailEmptyError(R.string.email_Empty_error);

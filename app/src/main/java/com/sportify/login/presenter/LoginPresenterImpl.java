@@ -55,8 +55,8 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
             /**
              * Creates new asynctask which runs in background and tries to create new user
              */
-//            loginRequest.makeApiRequest(jsonObject.toString(), "https://pvt15app.herokuapp.com/api/login");
-            loginRequest.makeApiRequest(jsonObject.toString(), "http://130.237.89.152:9000/api/login");
+            loginRequest.makeApiRequest(jsonObject.toString(), "https://pvt15app.herokuapp.com/api/login");
+//            loginRequest.makeApiRequest(jsonObject.toString(), "http://130.237.89.152:9000/api/login");
 
         }
     }

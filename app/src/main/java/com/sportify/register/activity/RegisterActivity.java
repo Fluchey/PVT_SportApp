@@ -45,10 +45,6 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView 
         return email.getText().toString();
     }
 
-    public String getUsername() {
-        return username.getText().toString();
-    }
-
     @Override
     public String getPassword() {
         return password.getText().toString();
