@@ -7,9 +7,6 @@
     android:background="@drawable/neutralbakgrundnogubbe"
     tools:context="sportapp.pvt_sportapp.Activitys.RegisterActivity">
 
-
-
-
     <EditText
         android:id="@+id/etEventName"
         android:layout_width="225dp"

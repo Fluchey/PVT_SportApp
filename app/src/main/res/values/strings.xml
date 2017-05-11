@@ -51,8 +51,8 @@
 
     /* Error messages create profile */
     <string name="name_Empty_error">Ange namn</string>
-    <string name="dateOfBirth_Empty_error">Datum är i fel format</string>
-    <string name="dateOfBirth_wrongFormat_error">Ange lösenord</string>
+    <string name="dateOfBirth_Empty_error">Ange datum</string>
+    <string name="dateOfBirth_wrongFormat_error">Datum är i fel format</string>
     <string name="interests_Empty_Error">Ange minst ett intresse</string>
 
     /* Strings Intressen */
@@ -70,7 +70,7 @@
     /* Strings Profilflöde */
     <string name="userArea_text">Hej hej! Jag bor i Australien och folk älskar att ta selfies med lilla mig. Massa kärlek!</string>
     <string name="userArea_username">QuokkaSmileyface</string>
-    <string name="userArea_userInfo">Quokka Deathmetal 26 år -insert interest-</string>
+    <string name="userArea_userInfo">Quokka Sweettooth 26 år -insert interest-</string>
     <string name="userArea_calendar">Min kalender</string>
     <string name="userArea_event">Mina event</string>
     <string name="userArea_edit">Redigera profil</string>

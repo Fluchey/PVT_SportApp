@@ -12,10 +12,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:fontFamily="serif"
         android:text="@string/Event_Activity_3_Header"
@@ -27,7 +23,9 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.015" />
+        app:layout_constraintVertical_bias="0.015"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintLeft_creator="1" />
 
     <!--TODO : hämta användarens profilbild -->
 
@@ -70,13 +68,12 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp" />
 
-    <SearchView
+    <AutoCompleteTextView
         android:id="@+id/svFriendsEventActivity3"
-        android:layout_width="213dp"
+        android:hint="@string/searchFriends"
+        android:layout_width="wrap_content"
         android:layout_height="27dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:background="@color/colorMPButtons"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -85,18 +82,14 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.375"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintLeft_creator="1" />
 
     <ImageButton
         android:id="@+id/ibFacebookFriends"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="@android:color/transparent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -104,7 +97,9 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.447"
-        app:srcCompat="@drawable/facebookfriendbutton" />
+        app:srcCompat="@drawable/facebookfriendbutton"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintLeft_creator="1" />
 
     <TextView
         android:id="@+id/tvMyFriends"
@@ -123,60 +118,29 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="8dp"
         app:layout_constraintHorizontal_bias="0.029"
-        app:layout_constraintVertical_bias="0.615" />
+        app:layout_constraintVertical_bias="0.615"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
-    <CheckBox
-        android:id="@+id/cbFriendOne"
-        android:layout_width="wrap_content"
-        android:layout_height="34dp"
-        android:scaleX="1.35"
-        android:scaleY="1.35"
-        android:layout_marginRight="176dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="0.047"
-        app:layout_constraintVertical_bias="0.748" />
-
-    <!--TODO : hämta profilbild på användaren(vän) -->
-    <ImageView
-        android:id="@+id/ivFriendOnePicture"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.16"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.754"
-        app:srcCompat="@drawable/userprofileimage" />
-
-    <!--TODO : hämta namn på användaren (vän) -->
-
-    <TextView
-        android:id="@+id/tvFriendOneName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorPrimaryDarkGrey"
-        android:textSize="17sp"
-        android:text="@string/Event_Activity_3_FriendOneName"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginLeft="8dp"
+    <RelativeLayout
+        android:layout_width="380dp"
+        android:layout_height="567dp"
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="421dp"
+        tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintHorizontal_bias="0.365"
-        app:layout_constraintVertical_bias="0.744" />
+        android:layout_marginLeft="2dp">
+
+        <ListView
+            android:id="@+id/lvCreateEventFriends"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="21dp"
+            tools:layout_editor_absoluteY="291dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

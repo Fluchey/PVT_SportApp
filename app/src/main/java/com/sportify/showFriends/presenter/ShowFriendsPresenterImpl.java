@@ -67,9 +67,11 @@ public class ShowFriendsPresenterImpl implements ShowFriendsPresenter, ShowFrien
             for(int i=0; i < array.length(); i++){
                 JSONObject jsonObject = array.getJSONObject(i);
                 //TODO: Byt ut facebook icon till profilbild
-                String firstname = jsonObject.getString("firstname");
+                String firstName = jsonObject.getString("firstname");
+                String lastName = jsonObject.getString("lastname");
+                int profileID = jsonObject.getInt("profileID");
 
-                Profile friend = new Profile(firstname, firstname, R.drawable.com_facebook_button_icon_blue);
+                Profile friend = new Profile(firstName, lastName, R.drawable.userprofileimage, profileID);
 
                 friends.add(friend);
             }
@@ -84,7 +86,7 @@ public class ShowFriendsPresenterImpl implements ShowFriendsPresenter, ShowFrien
     }
 
     @Override
-    public void updateFriendsSearchView() {
+    public void updateFriendSearchView() {
         showFriendsView.updateFriendAdapter(friends);
     }
 
@@ -98,6 +100,6 @@ public class ShowFriendsPresenterImpl implements ShowFriendsPresenter, ShowFrien
 
         getFriendsFromApiResponse(params[0]);
         showFriends();
-        updateFriendsSearchView();
+        updateFriendSearchView();
     }
 }

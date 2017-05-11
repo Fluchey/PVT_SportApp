@@ -5,17 +5,18 @@ package com.sportify.showFriends;
  */
 
 
-//Test
 public class Profile {
 
     private String firstname;
     private String lastname;
     private int profilePicture;
+    private int profileID;
 
-    public Profile(String firstname, String lastname, int profilePicture){
+    public Profile(String firstname, String lastname, int profilePicture, int profileID){
         this.firstname = firstname;
         this.lastname = lastname;
         this.profilePicture = profilePicture;
+        this.profileID = profileID;
     }
 
     public String getFirstname(){
@@ -30,7 +31,11 @@ public class Profile {
         return profilePicture;
     }
 
+    public int getProfileID() {
+        return profileID;
+    }
+
     public String toString(){
-        return firstname;
+        return firstname + " " + lastname.charAt(0) + " " + profileID;
     }
 }

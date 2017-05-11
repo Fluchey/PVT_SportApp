@@ -37,6 +37,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView {
     private List<String> interests;
     private Calendar calendar;
     private DatePickerDialog.OnDateSetListener date;
+    int userID;
 
 
     @Override
@@ -44,6 +45,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        userID = getIntent().getIntExtra("userID", -1);
         profilePresenter = new ProfilePresenterImpl(this, sharedPref);
 
         firstname = (EditText) findViewById(R.id.etProfileNameHint);
@@ -90,22 +92,22 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView {
 
     @Override
     public String getProfileFirstName() {
-        return firstname.toString();
+        return firstname.getText().toString();
     }
 
     @Override
     public String getProfileLastName() {
-        return lastname.toString();
+        return lastname.getText().toString();
     }
 
     @Override //TODO: See if DatePicker stores this as string.
     public String getDateOfBirth() {
-        return dateOfBirth.toString();
+        return dateOfBirth.getText().toString();
     }
 
     @Override
     public String getUserBio() {
-        return description.toString();
+        return description.getText().toString();
     }
 
     @Override
@@ -130,7 +132,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView {
 
     @Override
     public void showLastNameEmptyError(int resId) {
-        firstname.setError(getString(resId));
+        lastname.setError(getString(resId));
     }
 
     @Override
@@ -148,12 +150,12 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView {
         Toast.makeText(this, getString(resID), Toast.LENGTH_LONG).show();
     }
 
-    public void profilePictureButtonClick(){
+    public void profilePictureButtonClick(View v){
         profilePresenter.addProfilePicture();
     }
 
-    public void checkboxProfileButton(){
-        profilePresenter.updateBaseProfileInfo();
+    public void checkboxProfileButton(View v){
+        profilePresenter.updateBaseProfileInfo(userID);
     }
 
     @Override

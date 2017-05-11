@@ -25,4 +25,6 @@ public interface RegisterView {
     void closeProgressDialog();
 
     void showUsernameEmptyError(int resId);
+
+    void gotoCreateUserProfile(int userID);
 }
