@@ -77,8 +77,8 @@ gotous
         android:id="@+id/goToSettingsButton"
         android:clickable="true"
         android:onClick="goToSettingsActivity"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         app:srcCompat="@drawable/settingsicon"
         tools:ignore="ContentDescription"
         android:layout_alignParentEnd="true" />
@@ -90,9 +90,9 @@ gotous
         android:layout_height="25dp"
         app:srcCompat="@drawable/calendar"
         tools:ignore="ContentDescription"
-        android:layout_toStartOf="@id/goToSettingsButton"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="30dp"/>
+        android:layout_below="@id/goToSettingsButton"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"/>
 
     <ImageView
         android:id="@+id/goToUserAreaButton"

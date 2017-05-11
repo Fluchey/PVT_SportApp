@@ -154,11 +154,13 @@
     /* Strings Karta */
     <string name="where_do_you_want_to_go">Vart vill du gå?</string>
     <string name="enter_category">Välj kategori</string>
-    <string name="map_type_none">None</string>
-    <string name="map_type_normal">Ingen</string>
-    <string name="map_type_terrain">Terräng</string>
-    <string name="map_type_satellite">Satellit</string>
-    <string name="map_type_hybrid">Hybrid</string>
+    <string name="map">Karta</string>
+    <string name="map_event_place_interest">Event/Plats/Intresse</string>
+    <string name="map_listview">Listvy</string>
+    <string name="map_mapview">Kartvy</string>
+    <string name="maps_places">Platser</string>
+    <string name="maps_events">Event</string>
+
 
     <string name="title_activity_maps">Karta</string>
 
@@ -204,8 +206,7 @@
     <string name="Event_activity_5_Participants">Inbjudna</string>
     <string name="Event_activity_5_ProfilePictureText">Host</string>
     <string name="Event_activity_5_EventName">Eventnamn?</string>
-    <string name="places">Places</string>
-    <string name="events">Events</string>
+
 
 
 </resources>
