@@ -3,11 +3,8 @@ package com.sportify.createEvent.createEventPageOne.activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
-<<<<<<< HEAD
 import android.content.DialogInterface;
-=======
 import android.content.Intent;
->>>>>>> 76d5b81ab8037cbfeec076b841806a8918c11fd7
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
