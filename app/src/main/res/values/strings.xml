@@ -167,16 +167,13 @@
     <string name="settings_invite">Bjud in</string>
     <string name="settings_fb_friends">Facebook vänner</string>
     <string name="settings_find_friends">Hitta vänner</string>
-    <string name="settings_contacts">Kontakter</string>
     <string name="settings_account">Konto</string>
-    <string name="settings_notifications">Notifications</string>
     <string name="settings_change_password">Byt lösenord</string>
     <string name="settings_account_settings">Kontoinställningar</string>
     <string name="settings_support">Support</string>
-    <string name="settings_help">Hjälp</string>
-    <string name="settings_report">Rapportera ett fel</string>
     <string name="settings_integrity">Integritetspolicy</string>
     <string name="settings_log_out">Logga ut</string>
+    <string name="settings_edit_profile">Redigera profil</string>
 
 
     /* Strings Recensioner */
