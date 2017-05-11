@@ -45,12 +45,15 @@
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.013"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="8dp"
         app:layout_constraintVertical_bias="0.328"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp" />
+
+    <!--TODO : hoppa över till create_event5 -->
+    <!--OBS: det finns inte create_event4 -->
 
     <TextView
         android:id="@+id/clickNext"
@@ -75,6 +78,8 @@
         app:layout_constraintVertical_bias="1.0"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp" />
+
+    <!--TODO : hämta events bild -->
 
     <ImageButton
         android:id="@+id/imageButton"
@@ -122,5 +127,20 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="16dp" />
+
+    <TextView
+        android:id="@+id/ttViewInviteFriends"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:textColor="@color/colorPrimaryDarkGrey"
+        android:text="@string/event_invite_friends"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp" />
 
 </android.support.constraint.ConstraintLayout>
