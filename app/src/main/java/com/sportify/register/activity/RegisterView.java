@@ -8,8 +8,6 @@ public interface RegisterView {
 
     String getMail();
 
-    String getUsername();
-
     String getPassword();
 
     void showPasswordEmptyError(int resId);
