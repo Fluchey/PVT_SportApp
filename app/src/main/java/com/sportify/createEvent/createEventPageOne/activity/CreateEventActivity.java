@@ -3,8 +3,10 @@ package com.sportify.createEvent.createEventPageOne.activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -210,15 +212,41 @@ public class CreateEventActivity extends AppCompatActivity implements CreateEven
             }
         });
 
+        eventType = (EditText) findViewById(R.id.etEventType);
+        final String [] categories = getResources().getStringArray(R.array.sections);
+        final AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        dialog.setTitle("Pick category");
+        dialog.setItems(categories, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int position){
+                eventType.setText(categories[position]);
+            }
+        });
+        dialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // TODO Auto-generated method stub
+                dialog.dismiss();
+            }
+        });
+        eventType.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog alert = dialog.create();
+                alert.show();
+            }
+        });
+
 
         /**
          * EDIT TEXTS
          */
         eventName = (EditText) findViewById(R.id.etEventName);
-        eventType = (EditText) findViewById(R.id.etEventType);
         eventMaxAttendance = (EditText) findViewById(R.id.etEventMaxAttendance);
         eventPrivate = (CheckBox) findViewById(R.id.cbEventPrivate);
     }
+
 
     public void createEventClick(View v) {
         createEventPresenter.createEvent();
