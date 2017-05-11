@@ -6,9 +6,10 @@
     android:layout_height="match_parent"
     android:background="@drawable/backgroundcool"
     tools:context="com.sportify.settings.activity.SettingsActivity"
-    android:paddingStart="10dp"
-    android:paddingEnd="10dp"
-    android:paddingTop="10dp">
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:paddingStart="5dp"
+    android:paddingEnd="5dp">
 
     <TextView
         android:id="@+id/settingsText"
@@ -209,7 +210,6 @@
         android:layout_marginTop="60dp"/>
 
 
-
     <View
         android:layout_width="fill_parent"
         android:layout_height="2dp"
@@ -243,15 +243,82 @@
     <Button
         android:id="@+id/logOutButton"
         android:layout_width="90dp"
-        android:layout_height="40dp"
+        android:layout_height="70dp"
         android:layout_below="@+id/integrityButton"
-        android:layout_marginTop="49dp"
         android:background="@color/colorButton"
         android:layout_centerHorizontal="true"
         android:text="@string/settings_log_out"
         android:textColor="@color/colorPrimaryDarkGrey"
-        android:textStyle="italic"/>
+        android:textStyle="italic"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="80dp"
+        android:layout_above="@+id/mainButtonfromSett"/>
 
+
+
+    <ImageView
+        android:id="@+id/mainButtonfromSett"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:clickable="true"
+        app:srcCompat="@drawable/homeicon1"
+        android:onClick="ToUserAreaFromSettActivity"
+        android:layout_toStartOf="@+id/toMapButtonFromSett"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="38dp"
+        android:layout_marginBottom="5dp"/>
+
+
+    <ImageView
+        android:id="@+id/toMapButtonFromSett"
+        android:onClick="toMapFromSettActivity"
+        android:clickable="true"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:srcCompat="@drawable/searchicon"
+        tools:ignore="ContentDescription"
+        android:layout_toStartOf="@+id/createEventButtonfromSett"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="38dp"
+        android:layout_marginBottom="10dp"/>
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/createEventButtonfromSett"
+        app:fabSize="normal"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:onClick="createEventfromSettActivity"
+        android:clickable="true"
+        app:srcCompat="@drawable/addbutton"
+        app:backgroundTint="@color/colorAccent"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"/>
+
+    <ImageView
+        android:id="@+id/toNotificationsButtonfromSett"
+        android:clickable="true"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:srcCompat="@drawable/notificationicon"
+        tools:ignore="ContentDescription"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/createEventButtonfromSett"
+        android:layout_marginStart="38dp"
+        android:layout_marginBottom="10dp"/>
+
+    <ImageView
+        android:id="@+id/goToFriendsListButtonSett"
+        android:clickable="true"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:onClick="toFriendsListfromSettActivity"
+        app:srcCompat="@drawable/friendsicon"
+        tools:ignore="ContentDescription"
+        android:layout_toEndOf="@+id/toNotificationsButtonfromSett"
+        android:layout_marginStart="38dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"/>
 
     <!-- <android.support.design.widget.FloatingActionButton
          android:id="@+id/logoutButton"
@@ -275,11 +342,6 @@
          android:layout_below="@+id/integrityButton"
          android:layout_alignParentStart="true"
          android:layout_marginStart="50dp"/>-->
-
-
-    <!--<include layout="@layout/userarea_bar"-->
-        <!--tools:layout_editor_absoluteY="0dp"-->
-        <!--tools:layout_editor_absoluteX="10dp" />-->
 
 
 </RelativeLayout>
