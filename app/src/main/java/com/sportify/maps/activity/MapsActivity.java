@@ -1,6 +1,7 @@
 package com.sportify.maps.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -26,9 +28,13 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.sportify.createEvent.createEventPageOne.activity.CreateEventActivity;
 import com.sportify.maps.CustListFragment;
 import com.sportify.maps.presenter.MapsPresenter;
 import com.sportify.maps.presenter.MapsPresenterImpl;
+import com.sportify.settings.activity.SettingsActivity;
+import com.sportify.showFriends.activity.ShowFriendsActivity;
+import com.sportify.userArea.activity.UserAreaActivity;
 
 import java.util.ArrayList;
 
@@ -247,4 +253,27 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
     public GoogleMap getMap() {
         return mMap;
     }
+
+    public void createEventfromMapActivity(View v) {
+        Toast.makeText(this, "Clicked Create Event", Toast.LENGTH_LONG).show();
+        Intent createEventIntent = new Intent(MapsActivity.this, CreateEventActivity.class);
+        MapsActivity.this.startActivity(createEventIntent);
+    }
+
+
+    public void goToSettingsActivity(View v){
+        Intent goToSettingsViewIntent = new Intent(MapsActivity.this, SettingsActivity.class);
+        MapsActivity.this.startActivity(goToSettingsViewIntent);
+    }
+
+    public void toFriendsListfromMapActivity(View v){
+        Intent goToFriendListIntent = new Intent(MapsActivity.this, ShowFriendsActivity.class);
+        MapsActivity.this.startActivity(goToFriendListIntent);
+    }
+
+    public void ToUserAreaFromMapActivity(View v){
+        Intent goToUserAreaIntent = new Intent(MapsActivity.this, UserAreaActivity.class);
+        MapsActivity.this.startActivity(goToUserAreaIntent);
+    }
+
 }
