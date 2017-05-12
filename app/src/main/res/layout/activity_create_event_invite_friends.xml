@@ -16,7 +16,7 @@
         android:fontFamily="serif"
         android:text="@string/Event_Activity_3_Header"
         android:textColor="@color/colorCrystalWhite"
-        android:textSize="25sp"
+        android:textSize="@dimen/header"
         android:textStyle="italic"
         android:layout_centerHorizontal="true" />
 

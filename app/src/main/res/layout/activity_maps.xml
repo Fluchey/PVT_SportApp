@@ -86,6 +86,17 @@
 
     <!-- TODO only create event button shows, why? -->
 
+    <TextView
+        android:id="@+id/mapHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/map"
+        android:textSize="@dimen/header"
+        android:textColor="@color/colorCrystalWhite"
+        android:fontFamily="serif"
+        android:textStyle="italic"
+        android:layout_centerHorizontal="true" />
+
     <ImageView
         android:id="@+id/mainButtonfromMap"
         android:layout_width="40dp"

@@ -19,7 +19,7 @@
         android:fontFamily="serif"
         android:text="@string/profile_header"
         android:textColor="@color/colorCrystalWhite"
-        android:textSize="25sp"
+        android:textSize="@dimen/header"
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
