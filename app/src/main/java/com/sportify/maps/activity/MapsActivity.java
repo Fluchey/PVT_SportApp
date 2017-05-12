@@ -31,6 +31,7 @@ import com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOnePa
 import com.sportify.maps.CustListFragment;
 import com.sportify.maps.presenter.MapsPresenter;
 import com.sportify.maps.presenter.MapsPresenterImpl;
+import com.sportify.notifications.activity.NotificationsActivity;
 import com.sportify.settings.activity.SettingsActivity;
 import com.sportify.showFriends.activity.ShowFriendsActivity;
 import com.sportify.userArea.activity.UserAreaActivity;
@@ -273,6 +274,11 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
     public void ToUserAreaFromMapActivity(View v){
         Intent goToUserAreaIntent = new Intent(MapsActivity.this, UserAreaActivity.class);
         MapsActivity.this.startActivity(goToUserAreaIntent);
+    }
+
+    public void toNoteFromMapActivity(View v){
+        Intent goToNoteIntent = new Intent(MapsActivity.this, NotificationsActivity.class);
+        MapsActivity.this.startActivity(goToNoteIntent);
     }
 
 }

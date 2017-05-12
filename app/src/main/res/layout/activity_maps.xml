@@ -11,7 +11,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="508dp"
         android:orientation="vertical"
         android:weightSum="1">
 
@@ -91,7 +91,7 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:clickable="true"
-        app:srcCompat="@drawable/homeicon1"
+        android:src="@drawable/homeicon1"
         android:onClick="ToUserAreaFromMapActivity"
         android:layout_toStartOf="@+id/toMapButtonFromMapButton"
         android:layout_alignParentBottom="true"
@@ -104,7 +104,7 @@
         android:clickable="true"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        app:srcCompat="@drawable/searchicon"
+        android:src="@drawable/searchicon"
         tools:ignore="ContentDescription"
         android:layout_toStartOf="@+id/createEventButtonfromMap"
         android:layout_alignParentBottom="true"
@@ -119,7 +119,7 @@
         android:layout_height="80dp"
         android:onClick="createEventfromMapActivity"
         android:clickable="true"
-        app:srcCompat="@drawable/addbutton"
+        android:src="@drawable/addbutton"
         app:backgroundTint="@color/colorAccent"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"/>
@@ -129,7 +129,8 @@
         android:clickable="true"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        app:srcCompat="@drawable/notificationicon"
+        android:onClick="toNoteFromMapActivity"
+        android:src="@drawable/notificationicon"
         tools:ignore="ContentDescription"
         android:layout_alignParentBottom="true"
         android:layout_toEndOf="@+id/createEventButtonfromMap"
@@ -142,7 +143,7 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:onClick="toFriendsListfromMapActivity"
-        app:srcCompat="@drawable/friendsicon"
+        android:src="@drawable/friendsicon"
         tools:ignore="ContentDescription"
         android:layout_toEndOf="@+id/toNotificationsButtonfromMap"
         android:layout_marginStart="38dp"
