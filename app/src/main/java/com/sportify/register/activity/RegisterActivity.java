@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.sportify.forgottenPass.activity.ForgottenPassActivity;
+import com.sportify.login.activity.LoginActivity;
 import com.sportify.profile.activity.ProfileActivity;
 import com.sportify.register.presenter.RegisterPresenter;
 import com.sportify.register.presenter.RegisterPresenterImpl;
@@ -93,6 +95,11 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView 
     @Override
     public void showUsernameEmptyError(int resId) {
         username.setError(getString(resId));
+    }
+
+    public void toLoginFromRegisterActivity(View v){
+        Intent goToMainPageViewIntent = new Intent(RegisterActivity.this, LoginActivity.class);
+        RegisterActivity.this.startActivity(goToMainPageViewIntent);
     }
 }
 

@@ -70,7 +70,9 @@
     /* Strings Profilflöde */
     <string name="userArea_text">Hej hej! Jag bor i Australien och folk älskar att ta selfies med lilla mig. Massa kärlek!</string>
     <string name="userArea_username">QuokkaSmileyface</string>
-    <string name="userArea_userInfo">Quokka Sweettooth 26 år -insert interest-</string>
+    <string name="userArea_userInfoName">Quokka Sweettooth</string>
+    <string name="userArea_userInfoAge"> 26 år </string>
+    <string name="userArea_userInfoInterest">-insert interest-</string>
     <string name="userArea_calendar">Min kalender</string>
     <string name="userArea_event">Mina event</string>
     <string name="userArea_edit">Redigera profil</string>
@@ -154,11 +156,13 @@
     /* Strings Karta */
     <string name="where_do_you_want_to_go">Vart vill du gå?</string>
     <string name="enter_category">Välj kategori</string>
-    <string name="map_type_none">None</string>
-    <string name="map_type_normal">Ingen</string>
-    <string name="map_type_terrain">Terräng</string>
-    <string name="map_type_satellite">Satellit</string>
-    <string name="map_type_hybrid">Hybrid</string>
+    <string name="map">Karta</string>
+    <string name="map_event_place_interest">Event/Plats/Intresse</string>
+    <string name="map_listview">Listvy</string>
+    <string name="map_mapview">Kartvy</string>
+    <string name="maps_places">Platser</string>
+    <string name="maps_events">Event</string>
+
 
     <string name="title_activity_maps">Karta</string>
 
@@ -168,16 +172,17 @@
     <string name="settings_invite">Bjud in</string>
     <string name="settings_fb_friends">Facebook vänner</string>
     <string name="settings_find_friends">Hitta vänner</string>
-    <string name="settings_contacts">Kontakter</string>
     <string name="settings_account">Konto</string>
-    <string name="settings_notifications">Notifications</string>
     <string name="settings_change_password">Byt lösenord</string>
+    <string name="settings_old_password">Aktuella lösenordet</string>
+    <string name="settings_new_password">Nya lösenordet</string>
+    <string name="settings_new_password_confirm">Skriv det nya igen</string>
+    <string name="settings_new_password_save">Spara ändringen</string>
     <string name="settings_account_settings">Kontoinställningar</string>
     <string name="settings_support">Support</string>
-    <string name="settings_help">Hjälp</string>
-    <string name="settings_report">Rapportera ett fel</string>
-    <string name="settings_integrity">Integritetspolicy</string>
+    <string name="sett_integrity">Integritetspolicy</string>
     <string name="settings_log_out">Logga ut</string>
+    <string name="settings_edit_profile">Redigera profil</string>
 
 
     /* Strings Recensioner */
@@ -207,8 +212,29 @@
     <string name="Event_activity_5_Participants">Inbjudna</string>
     <string name="Event_activity_5_ProfilePictureText">Host</string>
     <string name="Event_activity_5_EventName">Eventnamn?</string>
-    <string name="places">Places</string>
-    <string name="events">Events</string>
+
+
+    <string name="integ_text7head">7. Samtycke</string>
+    <string name="integ_text7"> Genom att använda vår webbplats godkänner du vår integritetspolicy.</string>
+    <string name="integ_text6head">6. Använder vi oss av cookies?</string>
+    <string name="integ_text6"> Ja. Våra cookies förbättrar tillgången till vår webbplats och identifierar återkommande besökare. Dessutom förbättrar våra cookies användarupplevelsen genom att spåra och målanpassa användarens intressen. Vår användning av cookies kopplas över huvud taget inte till personligt identifierbar information på vår webbplats. </string>
+    <string name="integ_text5">Vi vidtar en rad olika säkerhetsåtgärder för att skydda dina personliga uppgifter. Vi använder oss av avancerade krypteringsmetoder för att skydda känsliga uppgifter som överförs över internet. </string>
+    <string name="integ_text5head">5. Informationsskydd</string>
+    <string name="integ_text4"> Vi säljer, handlar, eller på annat sätt överför, inte personligt identifierbar information till utomstående parter. Detta inkluderar inte betrodd tredjepart som hjälper oss att driva vår webbplats eller vårt företag, med kravet att dessa parter godkänner att hålla informationen konfidentiell.
+    Vi anser att det är nödvändigt att dela information i syfte att undersöka, förhindra eller vidta åtgärder mot illegala aktiviteter, misstänkt bedrägeri, situationer som medför en potentiell risk för en persons fysiska säkerhet, brott mot våra användarvillkor eller andra tillfällen då lagen kräver så.
+    Allmänna uppgifter kan dock delas vidare till utomstående parter för marknadsföring, i annonssyfte eller andra ändamål.</string>
+    <string name="integ_text4head">4. Utlämnande till tredje part</string>
+    <string name="integ_text3head">3. E-handelssäkerhet</string>
+    <string name="integ_text3">Vi är de enda som äger informationen som samlas in på den här webbplatsen. Din personligt identifierbara information kommer inte att säljas, utbytas, överföras eller delas vidare till något annat företag, i något syfte, utan ditt samtycke, förutom då så krävs för att uppfylla en begäran och/eller överföring.</string>
+    <string name="integ_text2head">2. Användning av information</string>
+    <string name="integ_text2">
+    Den information vi samlar in från dig kan användas för att:
+    •	Göra din upplevelse personlig och tillgodose dina personliga behov
+    •	Förbättra vår hemsida
+    •	Förbättra vår kundservice och ditt behov av hjälp
+    •	Erbjuda personliga event som passer dina intressen eller plats.</string>
+    <string name="integ_text1head">1. Insamling av information</string>
+    <string name="integ_text1"> Vi samlar in information från dig när du registrerar dig på vår webbplats, loggar in på ditt konto, registrerar information och/eller när du loggar ut. Den insamlade informationen inkluderar ditt namn, dina intressen, dina event, dina recensioner. </string>
 
 
 </resources>

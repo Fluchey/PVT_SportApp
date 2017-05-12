@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/neutralbakgrundnogubbe"
+    android:background="@drawable/backgroundnodude"
     tools:context="com.sportify.createEvent.createEventPageFive.createEventActivity">
 
     <!--TODO : visa användarens profilbild -->
@@ -62,7 +62,7 @@
         android:text="@string/event_next"
         android:textColor="@color/colorPrimary"
         android:textSize="20sp"
-        android:onClick="onClick"
+        android:onClick="goToPreviewActivity"
         android:clickable="true"
         android:layout_below="@+id/profileName"
         android:layout_alignParentEnd="true"

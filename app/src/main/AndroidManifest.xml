@@ -11,6 +11,7 @@
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -65,9 +66,10 @@
         <activity android:name="com.sportify.placeReview.activity.PlaceReviewActivity" />
         <activity android:name="com.sportify.forgottenPass.activity.ForgottenPassActivity" />
         <activity android:name="com.sportify.settings.activity.SettingsActivity" />
-        <activity android:name="com.sportify.createEvent.createEventPageFive.CreateEventActivity" />
+        <activity android:name="com.sportify.settingsIntegritypolicy.activity.IntegritypolicyActivity" />
+        <activity android:name="com.sportify.settingsChangePass.activity.ChangePassActivity" />
+        <activity android:name="com.sportify.createEvent.createEventPageFive.CreateEventPreview" />
         <activity android:name="com.sportify.createEvent.createEventPageFour.CreateEventActivity" />
-        <activity android:name="com.sportify.createEvent.createEventPageThree.CreateEventActivity" />
         <activity android:name="com.sportify.createEvent.createEventPageTwo.activity.CreateEventActivityPageTwo" />
         <activity android:name="com.sportify.showFriends.activity.ShowFriendsActivity"></activity>
     </application>

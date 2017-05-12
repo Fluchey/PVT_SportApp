@@ -1,6 +1,8 @@
 package com.sportify.profile.presenter;
 
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.util.Base64;
 import android.util.Log;
 
 import com.sportify.profile.activity.ProfileView;
@@ -10,6 +12,7 @@ import com.sportify.profile.request.ProfileRequestImpl;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -44,8 +47,15 @@ public class ProfilePresenterImpl implements ProfilePresenter, ProfileRequest.On
         String dateOfBirth = profileView.getDateOfBirth();
         String userBio = profileView.getUserBio();
         List<String> interests = new ArrayList<>(profileView.getInterests());
+        Bitmap image = profileView.getProfileImage();
+        String imageBase64 = "";
 
-
+        if (image!=null && profileView.userSelectedImage()) {
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            image.compress(Bitmap.CompressFormat.PNG, 100, bos);
+            byte[] imageBytes = bos.toByteArray();
+            imageBase64 = Base64.encodeToString(imageBytes, Base64.NO_WRAP);
+        }
 
         if (firstname.isEmpty()) {
             profileView.showFirstNameEmptyError(R.string.firstName_Empty_error);
@@ -71,6 +81,7 @@ public class ProfilePresenterImpl implements ProfilePresenter, ProfileRequest.On
             Log.d(TAG, "dateOfBirth: " + dateOfBirth);
             Log.d(TAG, "userBio: " + userBio);
             Log.d(TAG, "interests: " + interests);
+            Log.d(TAG, "imageBase64: " + imageBase64);
             try {
                 jsonObject.put("profileID", userID);
                 jsonObject.put("firstName", firstname);
@@ -78,18 +89,13 @@ public class ProfilePresenterImpl implements ProfilePresenter, ProfileRequest.On
                 jsonObject.put("dateOfBirth", dateOfBirth);
                 jsonObject.put("userBio", userBio);
                 jsonObject.put("interests", interests);
-                //TODO: add picture to json request
+                jsonObject.put("imageBase64", imageBase64);
+
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            //TODO:remove this arraytest
             profileRequest.makeApiRequest(jsonObject.toString(), "https://pvt15app.herokuapp.com/api/updateProfileInfo");
         }
-    }
-
-    @Override
-    public void addProfilePicture() {
-
     }
 
     @Override

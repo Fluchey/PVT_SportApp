@@ -3,8 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:paddingStart="5dp"
+    android:paddingEnd="5dp"
     android:orientation="vertical"
-    android:background="@drawable/neutralbakgrundnogubbe"
+    android:background="@drawable/backgroundnodude"
     tools:context="com.sportify.maps.activity.MapsActivity"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
@@ -24,14 +28,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/events" />
+                android:text="@string/maps_events" />
 
             <RadioButton
                 android:id="@+id/placesRadioButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/places" />
+                android:text="@string/maps_places" />
         </RadioGroup>
 
         <LinearLayout
@@ -45,7 +49,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Map"
+                android:text="@string/map"
                 android:onClick="switchToMapFragment"/>
 
             <EditText
@@ -55,7 +59,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorEditText"
                 android:ems="10"
-                android:hint="Event/Place/Intresse"
+                android:hint="@string/map_event_place_interest"
                 android:inputType="textPersonName"
                 android:textAlignment="center" />
 
@@ -64,7 +68,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="List"
+                android:text="@string/map_listview"
                 android:onClick="switchToListFragment"/>
 
         </LinearLayout>
@@ -78,9 +82,74 @@
         <FrameLayout
             android:id="@+id/fragment_container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></FrameLayout>
+            android:layout_height="500dp"></FrameLayout>
 
 
     </LinearLayout>
+
+    <!-- TODO only create event button shows, why? -->
+
+    <ImageView
+        android:id="@+id/mainButtonfromMap"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:clickable="true"
+        app:srcCompat="@drawable/homeicon1"
+        android:onClick="ToUserAreaFromMapActivity"
+        android:layout_toStartOf="@+id/toMapButtonFromMapButton"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="38dp"
+        android:layout_marginBottom="5dp"/>
+
+
+    <ImageView
+        android:id="@+id/toMapButtonFromMapButton"
+        android:clickable="true"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:srcCompat="@drawable/searchicon"
+        tools:ignore="ContentDescription"
+        android:layout_toStartOf="@+id/createEventButtonfromMap"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="38dp"
+        android:layout_marginBottom="10dp"/>
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/createEventButtonfromMap"
+        app:fabSize="normal"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:onClick="createEventfromMapActivity"
+        android:clickable="true"
+        app:srcCompat="@drawable/addbutton"
+        app:backgroundTint="@color/colorAccent"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"/>
+
+    <ImageView
+        android:id="@+id/toNotificationsButtonfromMap"
+        android:clickable="true"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:srcCompat="@drawable/notificationicon"
+        tools:ignore="ContentDescription"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/createEventButtonfromMap"
+        android:layout_marginStart="38dp"
+        android:layout_marginBottom="10dp"/>
+
+    <ImageView
+        android:id="@+id/goToFriendsListButtonMap"
+        android:clickable="true"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:onClick="toFriendsListfromMapActivity"
+        app:srcCompat="@drawable/friendsicon"
+        tools:ignore="ContentDescription"
+        android:layout_toEndOf="@+id/toNotificationsButtonfromMap"
+        android:layout_marginStart="38dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"/>
 
 </RelativeLayout>

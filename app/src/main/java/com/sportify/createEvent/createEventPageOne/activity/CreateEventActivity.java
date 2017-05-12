@@ -24,6 +24,9 @@ import android.widget.Toast;
 import com.sportify.createEvent.createEventPageOne.presenter.CreateEventPresenter;
 import com.sportify.createEvent.createEventPageOne.presenter.CreateEventPresenterImpl;
 import com.sportify.createEvent.createEventPageThree.activity.CreateEventInviteFriendsActivity;
+import com.sportify.createEvent.createEventPageTwo.activity.CreateEventActivityPageTwo;
+import com.sportify.settings.activity.SettingsActivity;
+import com.sportify.userArea.activity.UserAreaActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -250,7 +253,7 @@ public class CreateEventActivity extends AppCompatActivity implements CreateEven
     }
 
     public void goToInviteFriends(View v){
-        Intent goToInviteFriendsIntent = new Intent(CreateEventActivity.this, CreateEventInviteFriendsActivity.class);
+        Intent goToInviteFriendsIntent = new Intent(CreateEventActivity.this, CreateEventActivityPageTwo.class);
         CreateEventActivity.this.startActivity(goToInviteFriendsIntent);
     }
 
@@ -390,4 +393,10 @@ public class CreateEventActivity extends AppCompatActivity implements CreateEven
     public boolean getUserWroteSearch() {
         return userWroteSearch;
     }
+
+    public void toUserAreFromCreateActivity(View v){
+        Intent goToUserAreaViewIntent = new Intent(CreateEventActivity.this, UserAreaActivity.class);
+        CreateEventActivity.this.startActivity(goToUserAreaViewIntent);
+    }
+
 }
