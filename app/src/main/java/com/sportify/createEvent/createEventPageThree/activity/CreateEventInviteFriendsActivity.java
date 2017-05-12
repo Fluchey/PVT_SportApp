@@ -25,7 +25,6 @@ import sportapp.pvt_sportapp.R;
 
 public class CreateEventInviteFriendsActivity extends AppCompatActivity implements CreateEventInviteFriendsView {
 
-    //    private Button showMarkedFriends;
     private CreateEventInviteFriendsPresenter createEventInviteFriendsPresenter;
     private ArrayList<Profile> friendArray;
     private SharedPreferences sharedPref;
@@ -42,8 +41,6 @@ public class CreateEventInviteFriendsActivity extends AppCompatActivity implemen
     private ArrayAdapter arrayAdapterSearch;
     private AutoCompleteTextView searchFriend;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +48,6 @@ public class CreateEventInviteFriendsActivity extends AppCompatActivity implemen
 
         sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         createEventInviteFriendsPresenter = new CreateEventInviteFriendsPresenterImpl(this, sharedPref);
-//        showMarkedFriends = (Button) findViewById(R.id.btShowMarkedFriends);
         friendList = (ListView) findViewById(R.id.lvCreateEventFriends);
         friendList.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE);
 
@@ -85,17 +81,6 @@ public class CreateEventInviteFriendsActivity extends AppCompatActivity implemen
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             }
         });
-
-
-
-//        createEventInviteFriendsPresenter.showFriends();
-//
-//        showMarkedFriends.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                getMarkedFriends();
-//            }
-//        });
     }
 
     @Override
@@ -111,13 +96,14 @@ public class CreateEventInviteFriendsActivity extends AppCompatActivity implemen
         searchFriend.setAdapter(arrayAdapterSearch);
     }
 
-
     @Override
     public ArrayList<Profile> getMarkedFriends() {
         //TODO: Se till att vännerna blir inbjudna till eventet
         return myArrayAdapter.getMarkedFriends();
     }
+
+    public ArrayList<Profile> getMarkedFriends(View view) {
+        //TODO: Se till att vännerna blir inbjudna till eventet
+        return myArrayAdapter.getMarkedFriends();
+    }
 }
-
-
-

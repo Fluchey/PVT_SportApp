@@ -122,6 +122,14 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp" />
 
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Teeest"
+        android:onClick="getMarkedFriends"
+        android:id="@+id/buttontest"/>
+
     <RelativeLayout
         android:layout_width="380dp"
         android:layout_height="567dp"
@@ -141,6 +149,8 @@
             tools:layout_editor_absoluteY="291dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true" />
+
+
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>
