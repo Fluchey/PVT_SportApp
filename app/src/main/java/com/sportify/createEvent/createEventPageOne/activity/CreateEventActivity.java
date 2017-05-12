@@ -25,6 +25,8 @@ import com.sportify.createEvent.createEventPageOne.presenter.CreateEventPresente
 import com.sportify.createEvent.createEventPageOne.presenter.CreateEventPresenterImpl;
 import com.sportify.createEvent.createEventPageThree.activity.CreateEventInviteFriendsActivity;
 import com.sportify.createEvent.createEventPageTwo.activity.CreateEventActivityPageTwo;
+import com.sportify.settings.activity.SettingsActivity;
+import com.sportify.userArea.activity.UserAreaActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -391,4 +393,10 @@ public class CreateEventActivity extends AppCompatActivity implements CreateEven
     public boolean getUserWroteSearch() {
         return userWroteSearch;
     }
+
+    public void toUserAreFromCreateActivity(View v){
+        Intent goToUserAreaViewIntent = new Intent(CreateEventActivity.this, UserAreaActivity.class);
+        CreateEventActivity.this.startActivity(goToUserAreaViewIntent);
+    }
+
 }
