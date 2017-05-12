@@ -61,6 +61,13 @@ public class MyArrayAdapterInviteFriends extends ArrayAdapter {
 
         final CheckBox checkBox = (CheckBox) row.findViewById(R.id.checktest);
 
+        checkBox.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                checkedFriends.put(position, checkBox.isChecked());
+            }
+        });
         imageView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -80,6 +87,7 @@ public class MyArrayAdapterInviteFriends extends ArrayAdapter {
     }
 
     public ArrayList<Profile> getMarkedFriends() {
+        System.out.println("GetMarkedFriends");
         String toastText = "";
         ArrayList<Profile> markedFriends = new ArrayList<>();
         for (int i = 0; i < friends.size(); i++) {
