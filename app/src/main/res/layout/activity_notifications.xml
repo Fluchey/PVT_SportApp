@@ -38,7 +38,7 @@
             android:layout_below="@+id/notificationsHeader"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="50dp"
-            app:srcCompat="@drawable/notificationyellow"
+            app:srcCompat="@drawable/notification2"
             tools:ignore="ContentDescription" />
 
         <!-- TODO Lägg till notifikationer i flöde -->
