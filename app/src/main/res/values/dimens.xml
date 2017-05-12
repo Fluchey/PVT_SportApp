@@ -5,7 +5,7 @@
     <dimen name="def_paddingEnd">15dp</dimen>
     <dimen name="def_paddingTop">5dp</dimen>
     <dimen name="def_paddingBottom">5dp</dimen>
-    <dimen name="def_pagePadding">5dp</dimen>
+    <dimen name="def_pagePadding">6dp</dimen>
     <dimen name="standardTextSize">15sp</dimen>"
     <dimen name="header">25sp</dimen>
     <dimen name="inputeSize">15sp</dimen>

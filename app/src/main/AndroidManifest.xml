@@ -72,7 +72,9 @@
         <activity android:name="com.sportify.createEvent.createEventPageBeforeInviteFriends.activity.CreateEventBeforeInviteFriendsActivity" />
         <activity android:name="com.sportify.showFriends.activity.ShowFriendsActivity" />
         <activity android:name="com.sportify.notifications.activity.NotificationsActivity" />
-        <activity android:name="com.sportify.calendar.activity.CalendarActivity"></activity>
+        <activity android:name="com.sportify.calendar.activity.CalendarActivity" />
+        <activity android:name="com.sportify.settingsAccountSettings.activity.SettingsAccountActivity" />
+        <activity android:name="com.sportify.settingsEditProfile.activity.EditProfileActivity"></activity>
     </application>
 
 </manifest>

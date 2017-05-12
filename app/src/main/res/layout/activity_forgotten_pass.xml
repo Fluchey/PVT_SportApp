@@ -4,7 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/def_pagePadding"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:paddingStart="5dp"
+    android:paddingEnd="5dp"
     android:background="@drawable/backgroundnodude"
     tools:context="com.sportify.forgottenPass.activity.ForgottenPassActivity">
 
@@ -28,7 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/forgotten_password"
-        android:textSize="@dimen/header"
+        android:textSize="25sp"
         android:textColor="@color/colorCrystalWhite"
         android:fontFamily="serif"
         android:textStyle="italic"
@@ -44,6 +47,8 @@
         android:layout_above="@+id/etForgottenMail"
         android:layout_marginBottom="15dp"
         android:layout_centerHorizontal="true"/>
+
+
     <EditText
         android:id="@+id/etForgottenMail"
         android:backgroundTint="@color/colorPrimaryDark"
@@ -52,7 +57,6 @@
         android:layout_height="wrap_content"
         android:drawablePadding="15sp"
         android:ems="10"
-        android:textSize="@dimen/inputeSize"
         android:fontFamily="serif"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
