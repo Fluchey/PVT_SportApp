@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,21 +11,13 @@
         android:id="@+id/tvHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="19dp"
         android:fontFamily="serif"
         android:text="@string/Event_Activity_3_Header"
         android:textColor="@color/colorCrystalWhite"
         android:textSize="25sp"
         android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.015"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintLeft_creator="1" />
+        android:layout_centerHorizontal="true" />
 
     <!--TODO : hämta användarens profilbild -->
 
@@ -33,19 +25,12 @@
         android:id="@+id/ivProfilBilden"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.468"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.143"
-        app:srcCompat="@drawable/userprofileimage" />
+        android:layout_marginTop="39dp"
+        app:srcCompat="@drawable/userprofileimage"
+        android:layout_below="@+id/tvHeader"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:id="@+id/tvCreateEvent3FriendsHeader"
@@ -58,69 +43,44 @@
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintVertical_bias="0.267"
-        app:layout_constraintHorizontal_bias="0.465"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        android:layout_alignBaseline="@+id/buttontest"
+        android:layout_alignBottom="@+id/buttontest"
+        android:layout_alignStart="@+id/tvMyFriends" />
 
     <AutoCompleteTextView
         android:id="@+id/svFriendsEventActivity3"
         android:hint="@string/searchFriends"
         android:layout_width="wrap_content"
         android:layout_height="27dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="65dp"
         android:background="@color/colorMPButtons"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.375"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintLeft_creator="1" />
+        android:layout_below="@+id/ivProfilBilden"
+        android:layout_centerHorizontal="true" />
 
     <ImageButton
         android:id="@+id/ibFacebookFriends"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="26dp"
         android:background="@android:color/transparent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.447"
         app:srcCompat="@drawable/facebookfriendbutton"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintLeft_creator="1" />
+        android:layout_below="@+id/svFriendsEventActivity3"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:id="@+id/tvMyFriends"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="@string/Event_Activity_3_MyFriends"
+        android:layout_marginLeft="20dp"
         android:fontFamily="serif"
+        tools:layout_editor_absoluteY="291dp"
+        android:text="@string/Event_Activity_3_MyFriends"
         android:textColor="@color/colorPrimaryDarkGrey"
         android:textStyle="italic|bold"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintHorizontal_bias="0.029"
-        app:layout_constraintVertical_bias="0.615"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        android:layout_below="@+id/ibFacebookFriends"
+        android:layout_marginTop="30dp"
+        android:layout_alignParentStart="true" />
 
 
     <Button
@@ -128,29 +88,49 @@
         android:layout_height="wrap_content"
         android:hint="Teeest"
         android:onClick="getMarkedFriends"
-        android:id="@+id/buttontest"/>
+        android:id="@+id/buttontest"
+        android:layout_alignBaseline="@+id/tvHeader"
+        android:layout_alignBottom="@+id/tvHeader" />
 
-    <RelativeLayout
-        android:layout_width="380dp"
-        android:layout_height="567dp"
-        tools:layout_constraintTop_creator="1"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="421dp"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="2dp">
-
-        <ListView
-            android:id="@+id/lvCreateEventFriends"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="21dp"
-            tools:layout_editor_absoluteY="291dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
+    <ScrollView
+        android:id="@+id/svbjudinScroll"
+        style="@android:style/Widget.Holo.Light.ScrollView"
+        android:layout_width="500dp"
+        android:layout_height="300dp"
+        android:layout_marginLeft="7dp"
+        android:fadeScrollbars="false"
+        android:fillViewport="true"
+        android:isScrollContainer="false"
+        android:scrollbarSize="4dp"
+        android:scrollbarThumbVertical="@color/colorDarkBlue"
+        android:visibility="visible"
+        android:layout_marginTop="42dp"
+        android:layout_below="@+id/tvMyFriends"
+        android:layout_alignParentEnd="true">
 
 
-    </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/relativeLayout"
+            android:layout_width="500dp"
+            android:layout_height="500dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/tvMyFriends"
+            android:layout_marginLeft="-10dp"
+            android:layout_marginTop="5dp"
 
-</android.support.constraint.ConstraintLayout>
+            tools:layout_marginRight="-800dp">
+
+            <ListView
+                android:id="@+id/lvCreateEventFriends"
+                android:layout_width="wrap_content"
+                android:layout_height="500dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                tools:layout_editor_absoluteX="10dp"
+                tools:layout_editor_absoluteY="291dp" />
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>
