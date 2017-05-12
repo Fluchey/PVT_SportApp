@@ -9,17 +9,19 @@
     android:paddingStart="5dp"
     android:paddingEnd="5dp"
     android:background="@drawable/backgroundnodude"
-    tools:context="com.sportify.changePass.activity.ChangePassActivity">
+    tools:context="com.sportify.settingsChangePass.activity.ChangePassActivity">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginBottom="15dp"
-        app:srcCompat="@drawable/changepass"
-        android:layout_above="@+id/etLoginPasswordOld"
-        android:layout_centerHorizontal="true"
-        tools:ignore="ContentDescription" />
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/backChangeButton"
+        android:backgroundTint="@color/colorCrystalWhite"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:clickable="true"
+        app:fabSize="mini"
+        app:srcCompat="@drawable/chevleft"
+        android:onClick="toSettFromChangeActivity"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="10dp"/>
 
     <!--TODO : fixa så att man kan byta lösenord -->
 
@@ -33,6 +35,16 @@
         android:fontFamily="serif"
         android:textStyle="italic"
         android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="15dp"
+        app:srcCompat="@drawable/changepass"
+        android:layout_above="@+id/etLoginPasswordOld"
+        android:layout_centerHorizontal="true"
+        tools:ignore="ContentDescription" />
 
     <EditText
         android:id="@+id/etLoginPasswordOld"

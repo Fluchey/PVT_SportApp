@@ -233,8 +233,9 @@
         android:layout_height="23dp"
         android:clickable="true"
         app:fabSize="mini"
+        android:onClick="toIntegritypolicyFromSett"
         app:srcCompat="@drawable/chevright"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="12dp"
         android:layout_below="@+id/settingsSupportText"
         android:layout_alignParentEnd="true" />
 
@@ -242,7 +243,7 @@
         android:id="@+id/settIntegText"
         android:layout_width="130dp"
         android:layout_height="20dp"
-        android:text="@string/settings_integrity"
+        android:text="@string/sett_integrity"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="13sp"
         android:layout_marginTop="15dp"

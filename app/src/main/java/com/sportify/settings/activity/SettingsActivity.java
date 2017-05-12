@@ -6,9 +6,10 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Toast;
 
-import com.sportify.changePass.activity.ChangePassActivity;
+import com.sportify.settingsChangePass.activity.ChangePassActivity;
 import com.sportify.createEvent.createEventPageOne.activity.CreateEventActivity;
 import com.sportify.maps.activity.MapsActivity;
+import com.sportify.settingsIntegritypolicy.activity.IntegritypolicyActivity;
 import com.sportify.showFriends.activity.ShowFriendsActivity;
 import com.sportify.userArea.activity.UserAreaActivity;
 
@@ -47,4 +48,11 @@ public class SettingsActivity extends AppCompatActivity implements SettingsView{
         Intent goToChangePassIntent = new Intent(SettingsActivity.this, ChangePassActivity.class);
         SettingsActivity.this.startActivity(goToChangePassIntent);
     }
+
+    public void toIntegritypolicyFromSett(View v){
+        Intent goToIntegritypolicyIntent = new Intent(SettingsActivity.this, IntegritypolicyActivity.class);
+        SettingsActivity.this.startActivity(goToIntegritypolicyIntent);
+    }
+
+
 }

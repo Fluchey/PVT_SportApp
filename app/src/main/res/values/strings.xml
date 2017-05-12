@@ -180,7 +180,7 @@
     <string name="settings_new_password_save">Spara ändringen</string>
     <string name="settings_account_settings">Kontoinställningar</string>
     <string name="settings_support">Support</string>
-    <string name="settings_integrity">Integritetspolicy</string>
+    <string name="sett_integrity">Integritetspolicy</string>
     <string name="settings_log_out">Logga ut</string>
     <string name="settings_edit_profile">Redigera profil</string>
 
@@ -213,6 +213,28 @@
     <string name="Event_activity_5_ProfilePictureText">Host</string>
     <string name="Event_activity_5_EventName">Eventnamn?</string>
 
+
+    <string name="integ_text7head">7. Samtycke</string>
+    <string name="integ_text7"> Genom att använda vår webbplats godkänner du vår integritetspolicy.</string>
+    <string name="integ_text6head">6. Använder vi oss av cookies?</string>
+    <string name="integ_text6"> Ja. Våra cookies förbättrar tillgången till vår webbplats och identifierar återkommande besökare. Dessutom förbättrar våra cookies användarupplevelsen genom att spåra och målanpassa användarens intressen. Vår användning av cookies kopplas över huvud taget inte till personligt identifierbar information på vår webbplats. </string>
+    <string name="integ_text5">Vi vidtar en rad olika säkerhetsåtgärder för att skydda dina personliga uppgifter. Vi använder oss av avancerade krypteringsmetoder för att skydda känsliga uppgifter som överförs över internet. </string>
+    <string name="integ_text5head">5. Informationsskydd</string>
+    <string name="integ_text4"> Vi säljer, handlar, eller på annat sätt överför, inte personligt identifierbar information till utomstående parter. Detta inkluderar inte betrodd tredjepart som hjälper oss att driva vår webbplats eller vårt företag, med kravet att dessa parter godkänner att hålla informationen konfidentiell.
+    Vi anser att det är nödvändigt att dela information i syfte att undersöka, förhindra eller vidta åtgärder mot illegala aktiviteter, misstänkt bedrägeri, situationer som medför en potentiell risk för en persons fysiska säkerhet, brott mot våra användarvillkor eller andra tillfällen då lagen kräver så.
+    Allmänna uppgifter kan dock delas vidare till utomstående parter för marknadsföring, i annonssyfte eller andra ändamål.</string>
+    <string name="integ_text4head">4. Utlämnande till tredje part</string>
+    <string name="integ_text3head">3. E-handelssäkerhet</string>
+    <string name="integ_text3">Vi är de enda som äger informationen som samlas in på den här webbplatsen. Din personligt identifierbara information kommer inte att säljas, utbytas, överföras eller delas vidare till något annat företag, i något syfte, utan ditt samtycke, förutom då så krävs för att uppfylla en begäran och/eller överföring.</string>
+    <string name="integ_text2head">2. Användning av information</string>
+    <string name="integ_text2">
+    Den information vi samlar in från dig kan användas för att:
+    •	Göra din upplevelse personlig och tillgodose dina personliga behov
+    •	Förbättra vår hemsida
+    •	Förbättra vår kundservice och ditt behov av hjälp
+    •	Erbjuda personliga event som passer dina intressen eller plats.</string>
+    <string name="integ_text1head">1. Insamling av information</string>
+    <string name="integ_text1"> Vi samlar in information från dig när du registrerar dig på vår webbplats, loggar in på ditt konto, registrerar information och/eller när du loggar ut. Den insamlade informationen inkluderar ditt namn, dina intressen, dina event, dina recensioner. </string>
 
 
 </resources>
