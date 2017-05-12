@@ -53,7 +53,8 @@ public class MyArrayAdapterShowFriends extends ArrayAdapter {
 //        if(!firstName.isEmpty()){
 //
 //        }
-        friendName.setText(firstName + " " + lastName.charAt(0));
+//        friendName.setText(firstName + " " + lastName.charAt(0));
+        friendName.setText((String) friends.get(position).toString());
 
         return row;
     }

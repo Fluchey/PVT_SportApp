@@ -70,12 +70,28 @@ public class AddFriendActivity extends AppCompatActivity implements AddFriendVie
         searchFriend.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                AddFriendActivity.this.myArrayAdapterFriendList.getFilter().filter(s);
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
+                //TODO: Ful lösning, om tid finns bör ArrayAdaptern göras Filterable istället.
+
+                ArrayList<Profile> arrayTemplist= new ArrayList<>();
+                String searchString = searchFriend.getText().toString().toLowerCase();
+                if(searchString.length()>0) {
+                    for (int i = 0; i < friendArray.size(); i++) {
+                        String currentString = friendArray.get(i).getFirstname().toLowerCase();
+                        if (currentString.contains(searchString)) {
+                            arrayTemplist.add(friendArray.get(i));
+                        }
+                    }
+                    myArrayAdapterFriendList = new MyArrayAdapterShowFriends(AddFriendActivity.this, R.layout.friend_list_item, arrayTemplist);
+                    friendList.setAdapter(myArrayAdapterFriendList);
+                }else{
+                    myArrayAdapterFriendList = new MyArrayAdapterShowFriends(AddFriendActivity.this, R.layout.friend_list_item, friendArray);
+                    friendList.setAdapter(myArrayAdapterFriendList);
+                }
             }
 
             @Override

@@ -36,6 +36,7 @@ public class Profile {
     }
 
     public String toString(){
-        return firstname + " " + lastname.charAt(0) + " " + profileID;
+        return firstname;
+//                + " " + lastname.charAt(0) + " " + profileID;
     }
 }
