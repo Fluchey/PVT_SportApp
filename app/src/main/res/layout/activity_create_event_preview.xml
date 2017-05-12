@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/backgroundcool"
     tools:context="com.sportify.createEvent.createEventPageBeforeInviteFriends.activity.CreateEventBeforeInviteFriendsActivity">
-
 
     <TextView
         android:id="@+id/tvHeaderText"
@@ -17,15 +16,9 @@
         android:textSize="25sp"
         android:textStyle="italic"
         android:textColor="@color/colorCrystalWhite"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintVertical_bias="0.015" />
+        android:layout_alignParentTop="true"
+        android:layout_alignEnd="@+id/tvEventName"
+        android:layout_marginTop="20dp" />
 
     <TextView
         android:id="@+id/tvEventDescription"
@@ -36,15 +29,9 @@
         android:fontFamily="serif"
         android:textStyle="italic"
         android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
         android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintVertical_bias="0.146"
-        app:layout_constraintHorizontal_bias="0.637" />
+        android:layout_above="@+id/tvEventName"
+        android:layout_centerHorizontal="true" />
 
     <!--TODO : hämta användarens profilbild -->
 
@@ -54,7 +41,9 @@
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/userprofileimage"
         tools:layout_editor_absoluteY="172dp"
-        tools:layout_editor_absoluteX="45dp" />
+        tools:layout_editor_absoluteX="45dp"
+        android:layout_alignTop="@+id/ivEventPicture"
+        android:layout_alignStart="@+id/tvParticipants" />
 
     <TextView
         android:id="@+id/tvParticipants"
@@ -69,34 +58,18 @@
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="342dp"
-        app:layout_constraintHorizontal_bias="0.115" />
-
-    <TextView
-        android:id="@+id/tvProfilePictureText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Event_activity_5_ProfilePictureText"
-        android:textColor="@color/colorPrimaryDarkGrey"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintHorizontal_bias="0.13"
-        app:layout_constraintVertical_bias="0.421" />
+        app:layout_constraintHorizontal_bias="0.115"
+        android:layout_marginStart="38dp"
+        android:layout_marginBottom="18dp"
+        android:layout_above="@+id/ibConfirmEventButton"
+        android:layout_alignParentStart="true" />
 
     <ImageButton
         android:id="@+id/ibConfirmEventButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
         android:background="@android:color/transparent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.964"
@@ -104,41 +77,34 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.751"
-        app:srcCompat="@drawable/confirmbuttonn" />
+        app:srcCompat="@drawable/confirmbuttonn"
+        android:layout_marginBottom="22dp"
+        android:layout_above="@+id/ibModifyEventButton"
+        android:layout_alignStart="@+id/ibRemoveEventButton" />
 
     <ImageButton
         android:id="@+id/ibModifyEventButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
         android:background="@android:color/transparent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.964"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.866"
-        app:srcCompat="@drawable/changebutton" />
+        app:srcCompat="@drawable/changebutton"
+        android:layout_marginBottom="18dp"
+
+        android:layout_above="@+id/ibRemoveEventButton"
+        android:layout_alignStart="@+id/ibRemoveEventButton" />
 
     <ImageButton
         android:id="@+id/ibRemoveEventButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="25dp"
         android:background="@android:color/transparent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.964"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.984"
-        app:srcCompat="@drawable/removeventbutton" />
+        app:srcCompat="@drawable/removeventbutton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="14dp" />
 
     <!--TODO : hämta bild på eventet -->
 
@@ -146,17 +112,13 @@
         android:id="@+id/ivEventPicture"
         android:layout_width="173dp"
         android:layout_height="115dp"
-        android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.81"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.376"
-        app:srcCompat="@drawable/border" />
+        app:srcCompat="@drawable/border"
+        android:layout_marginEnd="18dp"
+        android:layout_marginBottom="88dp"
+        android:layout_above="@+id/tvParticipants"
+        android:layout_alignEnd="@+id/ibRemoveEventButton" />
 
     <!--TODO : hämta namn på eventet -->
     <TextView
@@ -171,10 +133,11 @@
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
         app:layout_constraintHorizontal_bias="0.558"
-        app:layout_constraintVertical_bias="0.271" />
+        app:layout_constraintVertical_bias="0.271"
+        android:layout_above="@+id/ivEventPicture"
+        android:layout_alignStart="@+id/ivEventPicture"
+        android:layout_marginBottom="14dp" />
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>
