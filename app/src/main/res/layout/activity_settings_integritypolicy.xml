@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentStart="true"
+    android:fillViewport="true"
+    android:layout_below="@+id/imageView"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/backgroundnodude"
+    tools:context="com.sportify.settingsIntegritypolicy.activity.IntegritypolicyActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp">
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/backIntegrityButton"
+        android:backgroundTint="@color/colorCrystalWhite"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:clickable="true"
+        app:fabSize="mini"
+        android:onClick="toSettFromIntegrityActivity"
+        app:srcCompat="@drawable/chevleft"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="10dp"/>
+
+    <!--TODO : klistra dit integritetspolicy -->
+
+
+    <TextView
+        android:id="@+id/integrityHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sett_integrity"
+        android:textSize="25sp"
+        android:textColor="@color/colorCrystalWhite"
+        android:fontFamily="serif"
+        android:textStyle="italic"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/integrityHeader"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="20dp"
+        app:srcCompat="@drawable/policyicon2"
+        android:layout_centerHorizontal="true"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/integheader1text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="13dp"
+        android:textStyle="bold"
+        android:text="@string/integ_text1head" />
+
+    <TextView
+        android:id="@+id/integ1text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/integheader1text"
+        android:layout_marginTop="7dp"
+        android:text="@string/integ_text1" />
+
+    <TextView
+        android:id="@+id/integheader2text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/integ1text"
+        android:layout_marginTop="13dp"
+        android:text="@string/integ_text2head" />
+
+    <TextView
+        android:id="@+id/integ2text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/integheader2text"
+        android:layout_marginTop="7dp"
+        android:text="@string/integ_text2" />
+
+    <TextView
+        android:id="@+id/integheader3text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/integ2text"
+        android:layout_marginTop="13dp"
+        android:text="@string/integ_text3head" />
+
+    <TextView
+        android:id="@+id/integ3text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/integheader3text"
+        android:layout_marginTop="7dp"
+        android:text="@string/integ_text3" />
+
+    <TextView
+        android:id="@+id/integheader4text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/integ3text"
+        android:textStyle="bold"
+        android:layout_marginTop="13dp"
+        android:text="@string/integ_text4head" />
+
+    <TextView
+        android:id="@+id/integ4text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/integheader4text"
+        android:layout_marginTop="7dp"
+        android:text="@string/integ_text4" />
+
+    <TextView
+        android:id="@+id/integheader5text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:layout_below="@+id/integ4text"
+        android:layout_marginTop="13dp"
+        android:text="@string/integ_text5head" />
+
+    <TextView
+        android:id="@+id/integ5text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/integheader5text"
+        android:layout_marginTop="7dp"
+        android:text="@string/integ_text5" />
+
+    <TextView
+        android:id="@+id/integheader6text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/integ5text"
+        android:layout_marginTop="13dp"
+        android:text="@string/integ_text6head" />
+
+    <TextView
+        android:id="@+id/integ6text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/integheader6text"
+        android:layout_marginTop="7dp"
+        android:text="@string/integ_text6" />
+
+    <TextView
+        android:id="@+id/integheader7text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/integ6text"
+        android:layout_marginTop="13dp"
+        android:text="@string/integ_text7head" />
+
+    <TextView
+        android:id="@+id/integ7text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/integheader7text"
+        android:layout_marginTop="7dp"
+        android:text="@string/integ_text7" />
+
+
+
+
+
+
+</RelativeLayout>
+    </ScrollView>
