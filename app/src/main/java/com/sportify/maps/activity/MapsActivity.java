@@ -13,7 +13,6 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -28,7 +27,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.sportify.createEvent.createEventPageOne.activity.CreateEventActivity;
+import com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOnePageOneActivity;
 import com.sportify.maps.CustListFragment;
 import com.sportify.maps.presenter.MapsPresenter;
 import com.sportify.maps.presenter.MapsPresenterImpl;
@@ -256,7 +255,7 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
 
     public void createEventfromMapActivity(View v) {
         Toast.makeText(this, "Clicked Create Event", Toast.LENGTH_LONG).show();
-        Intent createEventIntent = new Intent(MapsActivity.this, CreateEventActivity.class);
+        Intent createEventIntent = new Intent(MapsActivity.this, CreateEventPageOnePageOneActivity.class);
         MapsActivity.this.startActivity(createEventIntent);
     }
 

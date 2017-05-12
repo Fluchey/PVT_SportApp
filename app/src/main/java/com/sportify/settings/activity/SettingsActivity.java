@@ -6,8 +6,8 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Toast;
 
+import com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOnePageOneActivity;
 import com.sportify.settingsChangePass.activity.ChangePassActivity;
-import com.sportify.createEvent.createEventPageOne.activity.CreateEventActivity;
 import com.sportify.maps.activity.MapsActivity;
 import com.sportify.settingsIntegritypolicy.activity.IntegritypolicyActivity;
 import com.sportify.showFriends.activity.ShowFriendsActivity;
@@ -30,7 +30,7 @@ public class SettingsActivity extends AppCompatActivity implements SettingsView{
 
     public void createEventfromSettActivity(View v) {
         Toast.makeText(this, "Clicked Create Event", Toast.LENGTH_LONG).show();
-        Intent createEventIntent = new Intent(SettingsActivity.this, CreateEventActivity.class);
+        Intent createEventIntent = new Intent(SettingsActivity.this, CreateEventPageOnePageOneActivity.class);
         SettingsActivity.this.startActivity(createEventIntent);
     }
 

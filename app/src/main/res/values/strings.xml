@@ -118,7 +118,8 @@
     <string name="event_invite_friends">Nästan klar! Bjud in dina vänner till ditt event</string>
     <string name="event_created_message">Här ser du en överblick över eventet, gå vidare till nästa steg för att publicera det i appen.</string>
     <string name="no_friends_have_been_choosen">Ingen vän är vald</string>
-    <string name="have_been_choosen"> är valda</string>
+    <string name="several_friends_have_been_choosen"> är inbjudna</string>
+    <string name="one_friend_has_been_choosen"> är inbjuden</string>
 
     <string name="event_max_attendance">Max deltagare </string>
     <string name="createEvent_here">Skapa ditt event här</string>

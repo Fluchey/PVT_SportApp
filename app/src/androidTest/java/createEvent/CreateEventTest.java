@@ -27,7 +27,7 @@
 //
 //    /* Which class would you like the test to start in? */
 //    @Rule
-//    public ActivityTestRule<CreateEventPreview> createEventActivityActivityTestRule = new ActivityTestRule<CreateEventPreview>(CreateEventPreview.class);
+//    public ActivityTestRule<CreateEventPreviewActivity> createEventActivityActivityTestRule = new ActivityTestRule<CreateEventPreviewActivity>(CreateEventPreviewActivity.class);
 //
 //    @Test
 //    public void createEventShouldFailEmpytName(){

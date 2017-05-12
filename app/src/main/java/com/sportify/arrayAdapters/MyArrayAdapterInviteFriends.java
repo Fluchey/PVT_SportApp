@@ -9,6 +9,7 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.sportify.createEvent.createEventInviteFriends.activity.CreateEventInviteFriendsView;
 import com.sportify.showFriends.Profile;
 
 import java.util.ArrayList;
@@ -22,13 +23,14 @@ import sportapp.pvt_sportapp.R;
 
 public class MyArrayAdapterInviteFriends extends ArrayAdapter {
 
-
+    CreateEventInviteFriendsView inviteFriendsView;
     private HashMap<Integer, Boolean> checkedFriends = new HashMap<Integer, Boolean>();
     private ArrayList<Profile> friends = new ArrayList<>();
 
-    public MyArrayAdapterInviteFriends(Context context, int rowId, ArrayList<Profile> friends) {
+    public MyArrayAdapterInviteFriends(Context context, int rowId, ArrayList<Profile> friends, CreateEventInviteFriendsView inviteFriendsView) {
         super(context, rowId, friends);
         this.friends = friends;
+        this.inviteFriendsView = inviteFriendsView;
 
         if (friends != null) {
             for (int i = 0; i < friends.size(); i++) {
@@ -87,7 +89,6 @@ public class MyArrayAdapterInviteFriends extends ArrayAdapter {
     }
 
     public ArrayList<Profile> getMarkedFriends() {
-        System.out.println("GetMarkedFriends");
         String toastText = "";
         ArrayList<Profile> markedFriends = new ArrayList<>();
         for (int i = 0; i < friends.size(); i++) {
@@ -96,19 +97,26 @@ public class MyArrayAdapterInviteFriends extends ArrayAdapter {
             }
         }
 
-        for(int i = 0; i < markedFriends.size(); i++){
-            toastText += markedFriends.get(i).getFirstname();
-            if(i<markedFriends.size()-1){
-                toastText += ", ";
+        if(!markedFriends.isEmpty()){
+            if(markedFriends.size() == 1){
+                String friendName = markedFriends.get(0).getFirstname();
+                toastText += " " + friendName + " " + getContext().getString(R.string.one_friend_has_been_choosen);
+            }else{
+                for(int i = 0; i<markedFriends.size(); i++){
+                    if(i == markedFriends.size()-1){
+                        toastText += " och " + markedFriends.get(i).getFirstname() + " ";
+                    }else if(i == markedFriends.size()-2){
+                        toastText += markedFriends.get(i).getFirstname() + " ";
+                    }else{
+                        toastText += markedFriends.get(i).getFirstname() + ", ";
+                    }
+                }
+                toastText += getContext().getString(R.string.several_friends_have_been_choosen);
             }
+        }else{
+            toastText += getContext().getString(R.string.no_friends_have_been_choosen);
         }
-        System.out.println(toastText);
-//        if (!markedFriends.isEmpty()) {
-//            toastText += " " + getText(R.string.have_been_choosen);
-//        }else {
-//            toastText += getText(R.string.no_friends_have_been_choosen);
-//        }
-//        Toast.makeText(CreateEventInviteFriendsActivity.this, toastText, Toast.LENGTH_LONG).show();
+        inviteFriendsView.showToastToUser(toastText);
         return markedFriends;
     }
 }

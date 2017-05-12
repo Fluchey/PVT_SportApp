@@ -35,7 +35,6 @@ public class AddFriendPresenterImpl implements AddFriendPresenter, AddFriendRequ
         this.token = sharedPref.getString("jwt", "");
         this.addFriendRequest = new AddFriendRequestImpl(this, token);
         getAllUsersMakeApiRequest();
-        System.out.println("Nu har vi kört");
     }
 
     @Override

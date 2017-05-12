@@ -15,9 +15,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.sportify.arrayAdapters.MyArrayAdapterShowFriends;
-import com.sportify.createEvent.createEventPageOne.activity.CreateEventActivity;
+import com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOnePageOneActivity;
 import com.sportify.maps.activity.MapsActivity;
-import com.sportify.settings.activity.SettingsActivity;
 import com.sportify.showFriends.Profile;
 import com.sportify.showFriends.presenter.ShowFriendsPresenter;
 import com.sportify.showFriends.presenter.ShowFriendsPresenterImpl;
@@ -104,7 +103,7 @@ public class ShowFriendsActivity extends AppCompatActivity implements ShowFriend
 
     public void createEventfromFriendsActivity(View v) {
         Toast.makeText(this, "Clicked Create Event", Toast.LENGTH_LONG).show();
-        Intent createEventIntent = new Intent(ShowFriendsActivity.this, CreateEventActivity.class);
+        Intent createEventIntent = new Intent(ShowFriendsActivity.this, CreateEventPageOnePageOneActivity.class);
         ShowFriendsActivity.this.startActivity(createEventIntent);
     }
 

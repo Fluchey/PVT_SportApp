@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
-import com.sportify.createEvent.createEventPageOne.activity.CreateEventActivity;
+import com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOnePageOneActivity;
 import com.sportify.maps.activity.MapsActivity;
 import com.sportify.settings.activity.SettingsActivity;
 import com.sportify.showFriends.activity.ShowFriendsActivity;
@@ -38,7 +38,7 @@ public class UserAreaActivity extends AppCompatActivity implements UserAreaView 
 
     public void createEventButtonClick(View v) {
         Toast.makeText(this, "Clicked Create Event", Toast.LENGTH_LONG).show();
-        Intent createEventIntent = new Intent(UserAreaActivity.this, CreateEventActivity.class);
+        Intent createEventIntent = new Intent(UserAreaActivity.this, CreateEventPageOnePageOneActivity.class);
         UserAreaActivity.this.startActivity(createEventIntent);
     }
 
