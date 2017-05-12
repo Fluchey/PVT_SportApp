@@ -101,6 +101,7 @@
         android:layout_width="25dp"
         android:layout_height="25dp"
         app:srcCompat="@drawable/calendar"
+        android:onClick="goToCalendarActivity"
         tools:ignore="ContentDescription"
         android:layout_below="@+id/goToSettingsButton"
         android:layout_alignParentEnd="true"

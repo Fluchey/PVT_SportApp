@@ -3,11 +3,13 @@ package com.sportify.userArea.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
+import com.sportify.calendar.activity.CalendarActivity;
 import com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOnePageOneActivity;
 import com.sportify.maps.activity.MapsActivity;
 import com.sportify.notifications.activity.NotificationsActivity;
@@ -64,8 +66,9 @@ public class UserAreaActivity extends AppCompatActivity implements UserAreaView 
         UserAreaActivity.this.startActivity(goToFriendListIntent);
     }
 
-    public void goToUserAreaActivity(View v){
-        Intent goToUserAreaIntent = new Intent(UserAreaActivity.this, UserAreaActivity.class);
-        UserAreaActivity.this.startActivity(goToUserAreaIntent);
+
+    public void goToCalendarActivity(View v){
+        Intent goToCalendarIntent = new Intent(UserAreaActivity.this, CalendarActivity.class);
+        UserAreaActivity.this.startActivity(goToCalendarIntent);
     }
 }
