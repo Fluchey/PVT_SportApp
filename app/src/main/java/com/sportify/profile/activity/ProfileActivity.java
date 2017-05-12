@@ -2,6 +2,7 @@ package com.sportify.profile.activity;
 
 import android.Manifest;
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -22,7 +23,9 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 
+import com.sportify.login.activity.LoginActivity;
 import com.sportify.profile.presenter.ProfilePresenterImpl;
+import com.sportify.userArea.activity.UserAreaActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -52,6 +55,8 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView {
     private int userID;
     private boolean customImage;
 
+    private ProgressDialog dialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,8 +69,8 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView {
 
         firstname = (EditText) findViewById(R.id.etProfileNameHint);
         lastname = (EditText) findViewById(R.id.etLastnameHint);
-        dateOfBirth  = (EditText) findViewById(R.id.etProfileBirthdayhint);
-        description  = (EditText) findViewById(R.id.etDescriptionBoxProfileOmMig);
+        dateOfBirth = (EditText) findViewById(R.id.etProfileBirthdayhint);
+        description = (EditText) findViewById(R.id.etDescriptionBoxProfileOmMig);
         profilePictureButton = (ImageButton) findViewById(R.id.ibProfilePicturebutton);
         checkboxProfileButton = (ImageButton) findViewById(R.id.ibCheckboxProfileButton);
 
@@ -100,6 +105,8 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView {
                 new DatePickerDialog(ProfileActivity.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
+
+        dialog = new ProgressDialog(this);
     }
 
     @Override
@@ -164,7 +171,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView {
         Toast.makeText(this, getString(resID), Toast.LENGTH_LONG).show();
     }
 
-    public void profilePictureButtonClick(View v){
+    public void profilePictureButtonClick(View v) {
         //TODO: REMOVE profilePresenter.addProfilePicture();
         if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -235,23 +242,51 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView {
     }
 
     @Override
-    public Bitmap getProfileImage(){
+    public Bitmap getProfileImage() {
         ImageButton profilePic = (ImageButton) findViewById(R.id.ibProfilePicturebutton);
-        Bitmap image = ((BitmapDrawable)profilePic.getDrawable()).getBitmap();
+        Bitmap image = ((BitmapDrawable) profilePic.getDrawable()).getBitmap();
         return image;
     }
 
     @Override
-    public Boolean userSelectedImage(){
+    public Boolean userSelectedImage() {
         return customImage;
     }
 
-    public void checkboxProfileButton(View v){
+    public void checkboxProfileButton(View v) {
         profilePresenter.updateBaseProfileInfo(userID);
     }
 
     @Override
     public void launchLoginActivity() {
         //TODO: Goto Login Screen
+    }
+
+    @Override
+    public void showProgressDialog() {
+        dialog.setMessage("Entering profile information, just a sec");
+        dialog.show();
+    }
+
+    @Override
+    public void closeProgressDialog() {
+        if (dialog.isShowing()) {
+            dialog.dismiss();
+        }
+    }
+
+    @Override
+    public void goToLoginActivity() {
+        new java.util.Timer().schedule(
+                new java.util.TimerTask() {
+                    @Override
+                    public void run() {
+                        Intent goToLoginActivity = new Intent(ProfileActivity.this, LoginActivity.class);
+                        ProfileActivity.this.startActivity(goToLoginActivity);
+                    }
+                },
+                1000
+        );
+
     }
 }

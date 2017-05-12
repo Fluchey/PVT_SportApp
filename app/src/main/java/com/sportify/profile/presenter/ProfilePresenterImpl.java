@@ -1,9 +1,11 @@
 package com.sportify.profile.presenter;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.util.Base64;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.sportify.profile.activity.ProfileView;
 import com.sportify.profile.request.ProfileRequest;
@@ -40,7 +42,6 @@ public class ProfilePresenterImpl implements ProfilePresenter, ProfileRequest.On
 
 
     @Override
-
     public void updateBaseProfileInfo(int userID) {
         String firstname = profileView.getProfileFirstName();
         String lastname = profileView.getProfileLastName();
@@ -94,18 +95,31 @@ public class ProfilePresenterImpl implements ProfilePresenter, ProfileRequest.On
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+            profileView.showProgressDialog();
             profileRequest.makeApiRequest(jsonObject.toString(), "https://pvt15app.herokuapp.com/api/updateProfileInfo");
         }
     }
 
+    /**
+     *
+     * @param params
+     *        params[0] = Json Body text
+     *        params[1] = ResponseCode (200,201..)
+     */
     @Override
     public void showApiResponse(String... params) {
-
+        Log.d("Params [0]", params[1]);
+        if(params[1].equals("201")){
+            Toast.makeText((Context) profileView, "Profile information entered!", Toast.LENGTH_SHORT).show();
+            profileView.goToLoginActivity();
+        } else {
+            Toast.makeText((Context) profileView, params[0], Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
     public void closeProgressDialog() {
-
+        profileView.closeProgressDialog();
     }
 
     private boolean validDateFormat(String date){

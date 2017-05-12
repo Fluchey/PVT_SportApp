@@ -24,4 +24,9 @@ public interface ProfileView {
     void showDateOfBirthWrongFormatError(int resId);
     void showNoInterestCheckedError(int resID);
     void launchLoginActivity();
+
+    void showProgressDialog();
+    void closeProgressDialog();
+
+    void goToLoginActivity();
 }
