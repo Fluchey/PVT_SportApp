@@ -70,7 +70,8 @@
         <activity android:name="com.sportify.settingsChangePass.activity.ChangePassActivity" />
         <activity android:name="com.sportify.createEvent.createEventPreview.activity.CreateEventPreviewActivity" />
         <activity android:name="com.sportify.createEvent.createEventPageBeforeInviteFriends.activity.CreateEventBeforeInviteFriendsActivity" />
-        <activity android:name="com.sportify.showFriends.activity.ShowFriendsActivity"></activity>
+        <activity android:name="com.sportify.showFriends.activity.ShowFriendsActivity" />
+        <activity android:name="com.sportify.notifications.activity.NotificationsActivity"></activity>
     </application>
 
 </manifest>

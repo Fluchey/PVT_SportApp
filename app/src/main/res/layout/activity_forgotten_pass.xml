@@ -4,10 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="10dp"
-    android:paddingBottom="10dp"
-    android:paddingStart="5dp"
-    android:paddingEnd="5dp"
+    android:padding="@dimen/def_pagePadding"
     android:background="@drawable/backgroundnodude"
     tools:context="com.sportify.forgottenPass.activity.ForgottenPassActivity">
 
@@ -47,8 +44,6 @@
         android:layout_above="@+id/etForgottenMail"
         android:layout_marginBottom="15dp"
         android:layout_centerHorizontal="true"/>
-
-
     <EditText
         android:id="@+id/etForgottenMail"
         android:backgroundTint="@color/colorPrimaryDark"

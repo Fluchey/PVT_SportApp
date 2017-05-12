@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOnePageOneActivity;
 import com.sportify.maps.activity.MapsActivity;
+import com.sportify.notifications.activity.NotificationsActivity;
 import com.sportify.settings.activity.SettingsActivity;
 import com.sportify.showFriends.activity.ShowFriendsActivity;
 import com.sportify.userArea.presenter.UserAreaPresenter;
@@ -35,6 +36,12 @@ public class UserAreaActivity extends AppCompatActivity implements UserAreaView 
     public void findEventButtonClick(View v) {
         Toast.makeText(this, "I do nothing, ask my developers why", Toast.LENGTH_LONG).show();
     }
+
+    public void ToNoteFromUserAreaActivity(View v){
+        Intent goToNotificationsViewIntent = new Intent(UserAreaActivity.this, NotificationsActivity.class);
+        UserAreaActivity.this.startActivity(goToNotificationsViewIntent);
+    }
+
 
     public void createEventButtonClick(View v) {
         Toast.makeText(this, "Clicked Create Event", Toast.LENGTH_LONG).show();

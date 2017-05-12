@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_alignParentStart="true"
+    android:fillViewport="true"
+    android:background="@drawable/backgroundnodude"
+    tools:context="com.sportify.notifications.activity.NotificationsActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp">
+
+
+        <TextView
+            android:id="@+id/notificationsHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/userArea_notifications"
+            android:textSize="25sp"
+            android:textColor="@color/colorCrystalWhite"
+            android:fontFamily="serif"
+            android:textStyle="italic"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <ImageView
+            android:id="@+id/notifView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_below="@+id/notificationsHeader"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            app:srcCompat="@drawable/notificationyellow"
+            tools:ignore="ContentDescription" />
+
+        <!-- TODO Lägg till notifikationer i flöde -->
+
+        <ImageView
+            android:id="@+id/mainButtonfromNote"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:clickable="true"
+            app:srcCompat="@drawable/homeicon1"
+            android:onClick="ToUserAreaFromNoteActivity"
+            android:layout_toStartOf="@+id/toMapButtonFromNote"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="38dp"
+            android:layout_marginBottom="5dp"
+            tools:ignore="ContentDescription" />
+
+
+        <ImageView
+            android:id="@+id/toMapButtonFromNote"
+            android:onClick="toMapFromNoteActivity"
+            android:clickable="true"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:srcCompat="@drawable/searchicon"
+            tools:ignore="ContentDescription"
+            android:layout_toStartOf="@+id/createEventButtonfromNote"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="38dp"
+            android:layout_marginBottom="10dp"/>
+
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/createEventButtonfromNote"
+            app:fabSize="normal"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:onClick="createEventfromNoteActivity"
+            android:clickable="true"
+            app:srcCompat="@drawable/addbutton"
+            app:backgroundTint="@color/colorAccent"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"/>
+
+        <ImageView
+            android:id="@+id/toNotificationsButtonfromNote"
+            android:clickable="true"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:srcCompat="@drawable/notificationicon"
+            tools:ignore="ContentDescription"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@+id/createEventButtonfromNote"
+            android:layout_marginStart="38dp"
+            android:layout_marginBottom="10dp"/>
+
+        <ImageView
+            android:id="@+id/goToFriendsListButtonNote"
+            android:clickable="true"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:onClick="toFriendsListfromNoteActivity"
+            app:srcCompat="@drawable/friendsicon"
+            tools:ignore="ContentDescription"
+            android:layout_toEndOf="@+id/toNotificationsButtonfromNote"
+            android:layout_marginStart="38dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"/>
+    </RelativeLayout>
+</ScrollView>

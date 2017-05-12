@@ -314,6 +314,7 @@
         android:layout_height="30dp"
         app:srcCompat="@drawable/notificationicon"
         tools:ignore="ContentDescription"
+        android:onClick="toNoteFromSettActivity"
         android:layout_alignParentBottom="true"
         android:layout_toEndOf="@+id/createEventButtonfromSett"
         android:layout_marginStart="38dp"

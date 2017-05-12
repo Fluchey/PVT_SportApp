@@ -129,6 +129,10 @@ public class ShowFriendsActivity extends AppCompatActivity implements ShowFriend
         ShowFriendsActivity.this.startActivity(startMapActivityIntent);
     }
 
+    public void toNotificationsfromFriendsActivity(View v){
+        Intent goToNotificationsViewIntent = new Intent(ShowFriendsActivity.this, UserAreaActivity.class);
+        ShowFriendsActivity.this.startActivity(goToNotificationsViewIntent);
+    }
 
     public void ToUserAreaFromFriendsActivity(View v){
         Intent goToUserAreaIntent = new Intent(ShowFriendsActivity.this, UserAreaActivity.class);

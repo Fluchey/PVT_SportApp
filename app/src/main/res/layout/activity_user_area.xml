@@ -4,10 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="10dp"
-    android:paddingBottom="10dp"
-    android:paddingStart="5dp"
-    android:paddingEnd="5dp"
+    android:padding="@dimen/def_pagePadding"
     android:background="@drawable/backgrounduser"
     tools:context="com.sportify.userArea.activity.UserAreaActivity">
 
@@ -87,7 +84,6 @@
         app:srcCompat="@drawable/quokkaprofile"
         tools:ignore="ContentDescription"
         android:layout_centerHorizontal="true" />
-gotous
 
     <ImageView
         android:id="@+id/goToSettingsButton"
@@ -155,6 +151,7 @@ gotous
         android:clickable="true"
         android:layout_width="30dp"
         android:layout_height="30dp"
+        android:onClick="ToNoteFromUserAreaActivity"
         app:srcCompat="@drawable/notificationicon"
         tools:ignore="ContentDescription"
         android:layout_toEndOf="@+id/createEventButton"
