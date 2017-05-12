@@ -71,6 +71,23 @@ public class ShowFriendsActivity extends AppCompatActivity implements ShowFriend
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
+                //TODO: Ful lösning, om tid finns bör ArrayAdaptern göras Filterable istället.
+
+                ArrayList<Profile> arrayTemplist= new ArrayList<>();
+                String searchString = searchFriend.getText().toString().toLowerCase();
+                if(searchString.length()>0) {
+                    for (int i = 0; i < friendArray.size(); i++) {
+                        String currentString = friendArray.get(i).getFirstname().toLowerCase();
+                        if (currentString.contains(searchString)) {
+                            arrayTemplist.add(friendArray.get(i));
+                        }
+                    }
+                    myArrayAdapterFriendList = new MyArrayAdapterShowFriends(ShowFriendsActivity.this, R.layout.friend_list_item, arrayTemplist);
+                    friendList.setAdapter(myArrayAdapterFriendList);
+                }else{
+                    myArrayAdapterFriendList = new MyArrayAdapterShowFriends(ShowFriendsActivity.this, R.layout.friend_list_item, friendArray);
+                    friendList.setAdapter(myArrayAdapterFriendList);
+                }
             }
 
             @Override

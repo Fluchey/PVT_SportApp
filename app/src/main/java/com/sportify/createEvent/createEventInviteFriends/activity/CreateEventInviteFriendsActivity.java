@@ -61,6 +61,7 @@ public class CreateEventInviteFriendsActivity extends AppCompatActivity implemen
          *  Update search
          */
         searchFriend = (AutoCompleteTextView) findViewById(R.id.svFriendsEventActivity3);
+
         searchFriend.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -68,7 +69,29 @@ public class CreateEventInviteFriendsActivity extends AppCompatActivity implemen
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                //TODO: Ful lösning, om tid finns bör ArrayAdaptern göras Filterable istället.
 
+                ArrayList<Profile> arrayTemplist= new ArrayList<>();
+                String searchString = searchFriend.getText().toString().toLowerCase();
+                if(searchString.length()>0) {
+                    for (int i = 0; i < friendArray.size(); i++) {
+                        String currentString = friendArray.get(i).getFirstname().toLowerCase();
+                        if (currentString.contains(searchString)) {
+                            arrayTemplist.add(friendArray.get(i));
+                        }
+                    }
+                    myArrayAdapter = new MyArrayAdapterInviteFriends(CreateEventInviteFriendsActivity.this,
+                            R.layout.create_event_friend_list_item,
+                            arrayTemplist,
+                            CreateEventInviteFriendsActivity.this);
+                    friendList.setAdapter(myArrayAdapter);
+                }else{
+                    myArrayAdapter = new MyArrayAdapterInviteFriends(CreateEventInviteFriendsActivity.this,
+                            R.layout.create_event_friend_list_item,
+                            friendArray,
+                            CreateEventInviteFriendsActivity.this);
+                    friendList.setAdapter(myArrayAdapter);
+                }
             }
 
             @Override
@@ -94,6 +117,7 @@ public class CreateEventInviteFriendsActivity extends AppCompatActivity implemen
     @Override
     public void updateFriendAdapter(ArrayList<Profile> friendList) {
         arrayAdapterSearch = new MyArrayAdapterShowFriends(this, R.layout.friend_list_item, friendList);
+        arrayAdapterSearch = new ArrayAdapter(this, android.R.layout.simple_list_item_activated_1, friendList);
         searchFriend.setAdapter(arrayAdapterSearch);
     }
 
