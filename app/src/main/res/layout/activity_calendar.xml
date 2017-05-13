@@ -20,7 +20,7 @@
         android:textStyle="italic"
         android:layout_centerHorizontal="true" />
 
-    <!-- TODO add calendar -->
+    <!-- TODO add menucalendar -->
 
     <ImageView
         android:id="@+id/calendarView"
@@ -29,7 +29,7 @@
         android:layout_below="@+id/calendarHeader"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="75dp"
-        app:srcCompat="@drawable/calendar"
+        app:srcCompat="@drawable/menucalendar"
         tools:ignore="ContentDescription" />
 
 
@@ -38,7 +38,7 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:clickable="true"
-        app:srcCompat="@drawable/homeicon1"
+        app:srcCompat="@drawable/menuhome"
         android:onClick="toUserAreaFromCalActivity"
         android:layout_toStartOf="@+id/goToMapFromCalButton"
         android:layout_marginEnd="38dp"
@@ -53,7 +53,7 @@
         android:clickable="true"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        app:srcCompat="@drawable/searchicon"
+        app:srcCompat="@drawable/menumapsearch"
         tools:ignore="ContentDescription"
         android:layout_toStartOf="@+id/toCreateEventFromCalButton"
         android:layout_marginEnd="38dp"
@@ -70,7 +70,7 @@
         app:fabSize="normal"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        app:srcCompat="@drawable/addbutton" />
+        app:srcCompat="@drawable/menucreateevent" />
 
 
     <ImageView
@@ -79,7 +79,7 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:onClick="toNoteFromCalActivity"
-        app:srcCompat="@drawable/notificationicon"
+        app:srcCompat="@drawable/menunotification"
         tools:ignore="ContentDescription"
         android:layout_toEndOf="@+id/toCreateEventFromCalButton"
         android:layout_marginStart="38dp"
@@ -91,7 +91,7 @@
         android:clickable="true"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        app:srcCompat="@drawable/friendsicon"
+        app:srcCompat="@drawable/menufriends"
         tools:ignore="ContentDescription"
         android:onClick="toFriendsListFromCalActivity"
         android:layout_toEndOf="@+id/toNotificationsFromCalButton"

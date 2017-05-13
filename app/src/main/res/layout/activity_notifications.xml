@@ -38,7 +38,7 @@
             android:layout_below="@+id/notificationsHeader"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="50dp"
-            app:srcCompat="@drawable/notification2"
+            app:srcCompat="@drawable/settnote"
             tools:ignore="ContentDescription" />
 
         <!-- TODO Lägg till notifikationer i flöde -->
@@ -48,7 +48,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:clickable="true"
-            app:srcCompat="@drawable/homeicon1"
+            app:srcCompat="@drawable/menuhome"
             android:onClick="ToUserAreaFromNoteActivity"
             android:layout_toStartOf="@+id/toMapButtonFromNote"
             android:layout_alignParentBottom="true"
@@ -63,7 +63,7 @@
             android:clickable="true"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            app:srcCompat="@drawable/searchicon"
+            app:srcCompat="@drawable/menumapsearch"
             tools:ignore="ContentDescription"
             android:layout_toStartOf="@+id/createEventButtonfromNote"
             android:layout_alignParentBottom="true"
@@ -78,7 +78,7 @@
             android:layout_height="80dp"
             android:onClick="createEventfromNoteActivity"
             android:clickable="true"
-            app:srcCompat="@drawable/addbutton"
+            app:srcCompat="@drawable/menucreateevent"
             app:backgroundTint="@color/colorAccent"
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"/>
@@ -88,7 +88,7 @@
             android:clickable="true"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            app:srcCompat="@drawable/notificationicon"
+            app:srcCompat="@drawable/menunotification"
             tools:ignore="ContentDescription"
             android:layout_alignParentBottom="true"
             android:layout_toEndOf="@+id/createEventButtonfromNote"
@@ -101,7 +101,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:onClick="toFriendsListfromNoteActivity"
-            app:srcCompat="@drawable/friendsicon"
+            app:srcCompat="@drawable/menufriends"
             tools:ignore="ContentDescription"
             android:layout_toEndOf="@+id/toNotificationsButtonfromNote"
             android:layout_marginStart="38dp"

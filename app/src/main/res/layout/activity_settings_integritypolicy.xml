@@ -53,7 +53,7 @@
         android:layout_below="@+id/integrityHeader"
         android:layout_marginTop="40dp"
         android:layout_marginBottom="20dp"
-        app:srcCompat="@drawable/policyicon2"
+        app:srcCompat="@drawable/settpolicy"
         android:layout_centerHorizontal="true"
         tools:ignore="ContentDescription" />
 

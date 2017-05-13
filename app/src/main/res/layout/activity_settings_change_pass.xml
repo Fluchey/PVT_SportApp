@@ -38,7 +38,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginBottom="15dp"
-        app:srcCompat="@drawable/changepass"
+        app:srcCompat="@drawable/settchangepass"
         android:layout_above="@+id/etLoginPasswordOld"
         android:layout_centerHorizontal="true"
         tools:ignore="ContentDescription" />

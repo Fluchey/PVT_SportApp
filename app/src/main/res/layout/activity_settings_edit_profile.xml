@@ -42,7 +42,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginBottom="15dp"
-        app:srcCompat="@drawable/editprofile1"
+        app:srcCompat="@drawable/setteditprofile"
         android:layout_marginTop="100dp"
         android:layout_centerHorizontal="true"
         tools:ignore="ContentDescription" />

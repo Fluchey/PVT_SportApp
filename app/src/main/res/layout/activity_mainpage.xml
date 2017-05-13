@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:padding="@dimen/def_paddingTop"
     tools:context="com.sportify.mainPage.activity.MainPageActivity"
-    android:background="@drawable/backgroundmainpage"
+    android:background="@drawable/backgroundpage"
     >
 
     <ImageView
@@ -16,7 +16,7 @@
         android:layout_height="50dp"
         android:clickable="true"
         android:onClick="goToUserAreaActivity"
-        app:srcCompat="@drawable/homeicon1"
+        app:srcCompat="@drawable/menuhome"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"/>
 
@@ -58,7 +58,7 @@
         android:id="@+id/registerMPButton"
         android:layout_width="150dp"
         android:layout_height="40dp"
-        android:background="@color/colorMPButtons"
+        android:background="@color/colorButton"
         android:onClick="goToRegisterActivity"
         android:text="@string/register_here"
         android:layout_marginStart="50dp"
@@ -71,7 +71,7 @@
         android:id="@+id/loginMPButton"
         android:layout_width="150dp"
         android:layout_height="40dp"
-        android:background="@color/colorMPButtons"
+        android:background="@color/colorButton"
         android:onClick="goToLoginActivity"
         android:text="@string/log_in"
         android:layout_centerInParent="true"
