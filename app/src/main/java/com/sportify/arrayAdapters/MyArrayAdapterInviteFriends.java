@@ -57,9 +57,7 @@ public class MyArrayAdapterInviteFriends extends ArrayAdapter {
         ImageView imageView = (ImageView) row.findViewById(R.id.inviteFriendsProfilePicture);
         imageView.setImageResource(friends.get(position).getProfilePicture());
 
-        String firstName = friends.get(position).getFirstname();
-        String lastName = friends.get(position).getLastname();
-        friendName.setText(firstName + " " + lastName);
+        friendName.setText(friends.get(position).toString());
 
         final CheckBox checkBox = (CheckBox) row.findViewById(R.id.checktest);
 
