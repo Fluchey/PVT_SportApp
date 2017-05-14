@@ -1,7 +1,6 @@
 package com.sportify.maps.presenter;
 
 import android.content.SharedPreferences;
-import android.util.Log;
 
 import com.sportify.maps.activity.MapsView;
 import com.sportify.maps.request.MapsRequest;
