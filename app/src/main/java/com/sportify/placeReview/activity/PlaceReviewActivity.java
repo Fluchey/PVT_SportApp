@@ -45,7 +45,6 @@ public class PlaceReviewActivity extends AppCompatActivity implements PlaceRevie
 
     @Override
     public float getRating() {
-        reviewText.setText("Rating är: " + ratingBar.getRating() + "\n" + reviewText.getText());
         return ratingBar.getRating();
     }
 

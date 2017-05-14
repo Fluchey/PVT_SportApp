@@ -64,6 +64,11 @@ public class PlaceReviewRequestImpl implements PlaceReviewRequest {
     }
 
     @Override
+    public void submitReview(float rating, String comment, int userId, String placeId){
+
+    }
+
+    @Override
     public ArrayList<PlaceReview> getAllReviews(){
         return allReviews;
     }

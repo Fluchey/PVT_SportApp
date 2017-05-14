@@ -33,6 +33,7 @@ public class PlaceReviewPresenterImpl implements PlaceReviewPresenter, PlaceRevi
     @Override
     public void submitReview() {
         placeReviewView.getRating();
+        placeReviewRequest.submitReview();
     }
 
     @Override
