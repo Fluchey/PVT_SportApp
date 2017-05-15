@@ -33,33 +33,19 @@
         android:layout_below="@+id/tvHeader"
         android:layout_centerHorizontal="true" />
 
-    <TextView
-        android:id="@+id/tvCreateEvent3FriendsHeader"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Event_Activity_3_Friends_Header"
-        android:fontFamily="serif"
-        android:textStyle="italic"
-        android:textColor="@color/colorPrimaryDarkGrey"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginLeft="8dp"
-        android:layout_alignBaseline="@+id/btinvite"
-        android:layout_alignBottom="@+id/btinvite"
-        android:layout_alignStart="@+id/tvMyFriends" />
-
     <AutoCompleteTextView
         android:id="@+id/svFriendsEventActivity3"
-        android:hint="@string/searchFriends"
         android:layout_width="wrap_content"
-        android:layout_height="27dp"
-        android:layout_marginTop="65dp"
-        android:textSize="@dimen/inputeSize"
-        android:textColor="@color/colorPrimaryDark"
-        android:background="@color/colorMPButtons"
+        android:layout_height="40dp"
         android:layout_below="@+id/ivProfilBilden"
         android:layout_centerHorizontal="true"
-        android:completionThreshold="1"/>
+        android:layout_marginTop="65dp"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:completionThreshold="1"
+        android:textColorHint="@color/colorPrimaryDarkGrey"
+        android:hint="@string/searchFriends"
+        android:textColor="@color/colorPrimaryDarkGrey"
+        android:textSize="@dimen/inputeSize" />
 
     <ImageButton
         android:id="@+id/ibFacebookFriends"
@@ -87,15 +73,6 @@
         android:layout_alignParentStart="true" />
 
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Teeest"
-        android:onClick="getMarkedFriends"
-        android:id="@+id/btinvite"
-        android:layout_alignBaseline="@+id/tvHeader"
-        android:layout_alignBottom="@+id/tvHeader" />
-
     <ScrollView
         android:id="@+id/svbjudinScroll"
         style="@android:style/Widget.Holo.Light.ScrollView"
@@ -115,7 +92,7 @@
 
         <RelativeLayout
             android:id="@+id/relativeLayout"
-            android:layout_width="500dp"
+            android:layout_width="340dp"
             android:layout_height="500dp"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/tvMyFriends"
@@ -130,11 +107,22 @@
                 android:layout_height="500dp"
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
-                tools:layout_editor_absoluteX="10dp"
-                tools:layout_editor_absoluteY="291dp" />
-
+                android:layout_marginLeft="10dp"
+                />
 
         </RelativeLayout>
     </ScrollView>
+
+    <ImageButton
+        android:id="@+id/btinvite"
+        android:onClick="getMarkedFriends"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="360dp"
+        android:background="@android:color/transparent"
+        app:srcCompat="@drawable/checkboxbutton"
+
+        />
 
 </RelativeLayout>
