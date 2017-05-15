@@ -1,8 +1,6 @@
 package com.sportify.maps.request;
 
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
-import android.util.Log;
 
 import com.sportify.storage.Event;
 import com.sportify.storage.Place;
@@ -12,10 +10,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-
-import javax.inject.Inject;
 
 /**
  * Created by fluchey on 2017-04-26.

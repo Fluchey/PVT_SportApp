@@ -20,11 +20,11 @@ public class Profile {
     }
 
     public String getFirstname(){
-        return firstname;
+        return Character.toUpperCase(firstname.charAt(0)) + firstname.substring(1);
     }
 
     public String getLastname(){
-        return lastname;
+        return Character.toUpperCase(lastname.charAt(0)) + lastname.substring(1);
     }
 
     public int getProfilePicture(){
@@ -36,7 +36,7 @@ public class Profile {
     }
 
     public String toString(){
-        return firstname;
+        return getFirstname() + " " + getLastname();
 //                + " " + lastname.charAt(0) + " " + profileID;
     }
 }

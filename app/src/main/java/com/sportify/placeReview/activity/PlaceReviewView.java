@@ -11,5 +11,6 @@ public interface PlaceReviewView {
     void submit(View v);
 
     float getRating();
+    void setRating(float rating);
     String getComment();
 }

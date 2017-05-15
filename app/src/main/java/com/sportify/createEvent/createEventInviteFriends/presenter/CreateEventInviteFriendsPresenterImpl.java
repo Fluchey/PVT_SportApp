@@ -67,13 +67,14 @@ public class CreateEventInviteFriendsPresenterImpl implements CreateEventInviteF
             friends = new ArrayList<>();
 
             for(int i=0; i < array.length(); i++){
-                JSONObject jsonObject = array.getJSONObject(i);
                 //TODO: Byt ut facebook icon till profilbild
+
+                JSONObject jsonObject = array.getJSONObject(i);
                 String firstname = jsonObject.getString("firstname");
                 String lastname = jsonObject.getString("lastname");
                 int profileID = jsonObject.getInt("profileID");
 
-                Profile friend = new Profile(firstname, lastname, R.drawable.com_facebook_button_icon_blue, profileID);
+                Profile friend = new Profile(firstname, lastname, R.drawable.userprofileimage, profileID);
 
                 friends.add(friend);
             }

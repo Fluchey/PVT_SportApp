@@ -116,9 +116,8 @@ public class AddFriendActivity extends AppCompatActivity implements AddFriendVie
 
     @Override
     public void updateFriendAdapter(ArrayList<Profile> friendList) {
-        arrayAdapterSearch = new MyArrayAdapterShowFriends(this, R.layout.friend_list_item, friendList);
-        arrayAdapterSearch = new ArrayAdapter(this, android.R.layout.simple_list_item_activated_1, friendList);
-//        arrayAdapterSearch = new ArrayAdapter(this, android.R.layout.activity_list_item, friendList);
+//        arrayAdapterSearch = new MyArrayAdapterShowFriends(this, R.layout.friend_list_item, friendList);
+        arrayAdapterSearch = new ArrayAdapter(this, android.R.layout.simple_list_item_1, friendList);
         searchFriend.setAdapter(arrayAdapterSearch);
     }
 

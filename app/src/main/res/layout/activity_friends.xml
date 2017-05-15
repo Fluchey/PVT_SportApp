@@ -20,8 +20,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="40dp"/>
 
-
-
     <AutoCompleteTextView
         android:id="@+id/searchFrindAcTv"
         android:layout_width="wrap_content"
@@ -29,7 +27,8 @@
         android:textSize="@dimen/inputeSize"
         android:hint="@string/searchFriends"
         android:layout_below="@+id/friendsText"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:completionThreshold="1"/>
 
     <ScrollView
         android:id="@+id/svFriensScroll"

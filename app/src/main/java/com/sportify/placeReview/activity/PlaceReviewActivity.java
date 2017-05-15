@@ -19,6 +19,9 @@ public class PlaceReviewActivity extends AppCompatActivity implements PlaceRevie
     EditText reviewText;
     RatingBar ratingBar;
 
+    int userId;
+    String placeId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,17 +36,22 @@ public class PlaceReviewActivity extends AppCompatActivity implements PlaceRevie
         placeName.setText(place);
         reviewText = (EditText) findViewById(R.id.reviewText);
         ratingBar = (RatingBar) findViewById(R.id.ratingBar);
+        userId = b.getInt("userID", -1);
 
         placeReviewPresenter = new PlaceReviewPresenterImpl(this);
     }
 
     @Override
-    public void submit(View v) { placeReviewPresenter.submitReview(); }
+    public void submit(View v) { placeReviewPresenter.submitReview(getRating(), getComment(), userId, placeId); }
 
     @Override
     public float getRating() {
-        reviewText.setText("Rating är: " + ratingBar.getRating() + "\n" + reviewText.getText());
         return ratingBar.getRating();
+    }
+
+    @Override
+    public void setRating(float rating) {
+        ratingBar.setRating(rating);
     }
 
     @Override

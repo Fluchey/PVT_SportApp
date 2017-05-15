@@ -44,8 +44,8 @@
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginLeft="8dp"
-        android:layout_alignBaseline="@+id/buttontest"
-        android:layout_alignBottom="@+id/buttontest"
+        android:layout_alignBaseline="@+id/btinvite"
+        android:layout_alignBottom="@+id/btinvite"
         android:layout_alignStart="@+id/tvMyFriends" />
 
     <AutoCompleteTextView
@@ -54,9 +54,12 @@
         android:layout_width="wrap_content"
         android:layout_height="27dp"
         android:layout_marginTop="65dp"
+        android:textSize="@dimen/inputeSize"
+        android:textColor="@color/colorPrimaryDark"
         android:background="@color/colorMPButtons"
         android:layout_below="@+id/ivProfilBilden"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:completionThreshold="1"/>
 
     <ImageButton
         android:id="@+id/ibFacebookFriends"
@@ -89,7 +92,7 @@
         android:layout_height="wrap_content"
         android:hint="Teeest"
         android:onClick="getMarkedFriends"
-        android:id="@+id/buttontest"
+        android:id="@+id/btinvite"
         android:layout_alignBaseline="@+id/tvHeader"
         android:layout_alignBottom="@+id/tvHeader" />
 

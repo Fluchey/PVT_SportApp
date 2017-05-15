@@ -46,15 +46,7 @@ public class MyArrayAdapterShowFriends extends ArrayAdapter {
         ImageView imageView = (ImageView) row.findViewById(R.id.profilePicture);
         imageView.setImageResource(friends.get(position).getProfilePicture());
 
-        String firstName = friends.get(position).getFirstname();
-        String lastName = friends.get(position).getLastname();
-//        String fullName = "";
-
-//        if(!firstName.isEmpty()){
-//
-//        }
-//        friendName.setText(firstName + " " + lastName.charAt(0));
-        friendName.setText((String) friends.get(position).toString());
+        friendName.setText(friends.get(position).toString());
 
         return row;
     }
