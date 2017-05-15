@@ -15,7 +15,6 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.sportify.arrayAdapters.MyArrayAdapterInviteFriends;
-import com.sportify.arrayAdapters.MyArrayAdapterShowFriends;
 import com.sportify.createEvent.createEventInviteFriends.presenter.CreateEventInviteFriendsPresenter;
 import com.sportify.createEvent.createEventInviteFriends.presenter.CreateEventInviteFriendsPresenterImpl;
 import com.sportify.showFriends.Profile;
@@ -116,7 +115,8 @@ public class CreateEventInviteFriendsActivity extends AppCompatActivity implemen
 
     @Override
     public void updateFriendAdapter(ArrayList<Profile> friendList) {
-        arrayAdapterSearch = new MyArrayAdapterShowFriends(this, R.layout.friend_list_item, friendList);
+//        arrayAdapterSearch = new MyArrayAdapterShowFriends(this, R.layout.friend_list_item, friendList);
+        arrayAdapterSearch = new ArrayAdapter(this, android.R.layout.simple_list_item_1, friendList);
         searchFriend.setAdapter(arrayAdapterSearch);
     }
 
