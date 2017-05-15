@@ -227,8 +227,16 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView {
                 // Set the Image in ImageButton after scaling the Bitmap to size of imageButton
                 Bitmap bitmap = BitmapFactory.decodeFile(imgDecodableString);
                 Bitmap image = bitmap.createScaledBitmap(bitmap, image_width, image_height, false); //scale the image
+
+                //TODO:Remove this test code
+
+
+
                 profilePic.setImageBitmap(image);
+                //TODO: a check for which way the image is rotated would be elegant
                 customImage = true;
+
+
 
             } else {
                 Toast.makeText(this, "Var god välj en bild",

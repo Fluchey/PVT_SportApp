@@ -88,6 +88,12 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
         loginView.closeProgressDialog();
     }
 
+
+    /**
+     * @param params
+     *        params[0] = Json Body text
+     *        params[1] = ResponseCode (200,201..)
+     */
     @Override
     public void showApiResponse(String... params) {
         loginView.closeProgressDialog();

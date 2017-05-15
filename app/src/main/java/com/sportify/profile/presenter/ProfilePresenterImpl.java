@@ -101,7 +101,6 @@ public class ProfilePresenterImpl implements ProfilePresenter, ProfileRequest.On
     }
 
     /**
-     *
      * @param params
      *        params[0] = Json Body text
      *        params[1] = ResponseCode (200,201..)
