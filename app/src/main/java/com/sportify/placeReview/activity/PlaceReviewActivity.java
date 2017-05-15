@@ -20,6 +20,7 @@ public class PlaceReviewActivity extends AppCompatActivity implements PlaceRevie
     RatingBar ratingBar;
 
     int userId;
+    String placeId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +42,7 @@ public class PlaceReviewActivity extends AppCompatActivity implements PlaceRevie
     }
 
     @Override
-    public void submit(View v) { placeReviewPresenter.submitReview(); }
+    public void submit(View v) { placeReviewPresenter.submitReview(getRating(), getComment(), userId, placeId); }
 
     @Override
     public float getRating() {

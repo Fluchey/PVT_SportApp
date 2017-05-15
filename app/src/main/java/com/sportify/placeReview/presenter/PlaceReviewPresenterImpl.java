@@ -31,9 +31,9 @@ public class PlaceReviewPresenterImpl implements PlaceReviewPresenter, PlaceRevi
     }
 
     @Override
-    public void submitReview() {
+    public void submitReview(float rating, String comment, int userId, String placeId) {
         placeReviewView.getRating();
-        placeReviewRequest.submitReview();
+        placeReviewRequest.submitReview(rating, comment, userId, placeId);
     }
 
     @Override
