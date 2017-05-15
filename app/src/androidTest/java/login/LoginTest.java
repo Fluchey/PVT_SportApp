@@ -1,6 +1,7 @@
 package login;
 
 import android.content.Intent;
+import android.support.test.espresso.Espresso;
 import android.support.test.espresso.action.ViewActions;
 import android.support.test.espresso.core.deps.guava.base.Predicate;
 import android.support.test.espresso.matcher.RootMatchers;
@@ -138,7 +139,7 @@ public class LoginTest {
          * Create event
          */
 
-        onView(withId(R.id.etEventName)).perform(typeText("EspressoEvent"));
+        onView(withId(R.id.etEventName)).perform(typeText(randomMail));
         onView(withId(R.id.etEventPlace)).perform(typeText("Fa"));
         onView(withText("Fagersjö motionsspår")).inRoot(isPlatformPopup()).perform(click());
         onView(withId(R.id.etEventStartDate)).perform(click());
@@ -150,11 +151,25 @@ public class LoginTest {
         onView(withId(R.id.etEventEndTime)).perform(click());
         onView(withText("OK")).perform(click());
         onView(withId(R.id.etEventPrice)).perform(typeText("1337"), closeSoftKeyboard());
-
-
         onView(withId(R.id.etEventType)).perform(click());
         onView(withText("Simhall")).perform(click());
         onView(withId(R.id.createEventButton)).perform(click());
+        Espresso.pressBack();
+
+        /**
+         * User Area
+         */
+        onView(withId(R.id.goToMapButton)).perform(click());
+
+        /**
+         * Map
+         */
+        onView(withId(R.id.EventRadioButton)).perform(click());
+        onView(withId(R.id.listButton)).perform(click());
+        onView(withId(R.id.etMapsSearch)).perform(typeText(randomMail.substring(0, 10)));
+        onView(withText(randomMail)).perform(click());
+
+
     }
 
 }
