@@ -277,16 +277,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView {
 
     @Override
     public void goToLoginActivity() {
-        new java.util.Timer().schedule(
-                new java.util.TimerTask() {
-                    @Override
-                    public void run() {
-                        Intent goToLoginActivity = new Intent(ProfileActivity.this, LoginActivity.class);
-                        ProfileActivity.this.startActivity(goToLoginActivity);
-                    }
-                },
-                1000
-        );
-
+        Intent goToLoginActivity = new Intent(ProfileActivity.this, LoginActivity.class);
+        ProfileActivity.this.startActivity(goToLoginActivity);
     }
 }
