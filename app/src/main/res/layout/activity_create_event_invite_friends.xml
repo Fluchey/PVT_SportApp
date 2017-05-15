@@ -22,6 +22,7 @@
 
     <!--TODO : hämta användarens profilbild -->
 
+
     <ImageView
         android:id="@+id/ivProfilBilden"
         android:layout_width="wrap_content"
@@ -117,6 +118,8 @@
         android:id="@+id/btinvite"
         android:onClick="getMarkedFriends"
         android:layout_width="wrap_content"
+        android:fadeScrollbars="false"
+        android:isScrollContainer="false"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="360dp"
@@ -124,5 +127,17 @@
         app:srcCompat="@drawable/checkboxbutton"
 
         />
+
+    <ImageButton
+        android:id="@+id/ibbuttontonextpage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:fadeScrollbars="false"
+        android:isScrollContainer="false"
+        android:layout_alignTop="@+id/tvMyFriends"
+        android:onClick="goToPreviewAgainActivity"
+        android:background="@android:color/transparent"
+        app:srcCompat="@drawable/previewbutton" />
 
 </RelativeLayout>
