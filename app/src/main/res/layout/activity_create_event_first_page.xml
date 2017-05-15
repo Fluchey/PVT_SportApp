@@ -19,6 +19,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/backFromCreateButton"
         android:backgroundTint="@color/colorCrystalWhite"
@@ -28,6 +29,8 @@
         app:fabSize="mini"
         android:onClick="toUserAreFromCreateActivity"
         app:srcCompat="@drawable/chevleft" />
+
+
 
     <EditText
         android:id="@+id/etEventName"
@@ -207,6 +210,7 @@
         android:textColor="@color/colorPrimary"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true" />
+
 
 
 

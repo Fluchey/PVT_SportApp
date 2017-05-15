@@ -34,18 +34,27 @@
         android:fontFamily="serif"
         android:textStyle="italic"
         android:layout_centerHorizontal="true" />
+    <TextView
+        android:id="@+id/tvProfilIntro"
+        android:layout_width="281dp"
+        android:layout_height="63dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="25dp"
+        android:fontFamily="serif"
+        android:text="Redigera din profile xxx xxx xxx xx
+                       xxxxxxxxxxxxxxxxxxx"
+        android:textColor="@color/colorPrimaryDarkGrey"
+        android:textSize="12sp"
+        android:textStyle="italic|bold"
+        android:layout_below="@+id/editProfileHeader"
+        android:layout_toEndOf="@+id/backEditProButton"
+        android:layout_marginStart="26dp" />
 
 
 
-    <ImageView
-        android:id="@+id/editProView"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginBottom="15dp"
-        app:srcCompat="@drawable/setteditprofile"
-        android:layout_marginTop="100dp"
-        android:layout_centerHorizontal="true"
-        tools:ignore="ContentDescription" />
+
+
 
 
 </RelativeLayout>
