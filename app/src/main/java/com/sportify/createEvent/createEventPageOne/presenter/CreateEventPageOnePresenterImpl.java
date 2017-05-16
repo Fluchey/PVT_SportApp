@@ -128,9 +128,24 @@ public class CreateEventPageOnePresenterImpl implements CreateEventPageOnePresen
 
     @Override
     public void showApiResponse(String apiResponse, String command) {
+
+        JSONObject json = null;
+        String message = "";
+        int eventID = -1;
+
+        try{
+            json = new JSONObject(apiResponse);
+            message = json.getString("message");
+            eventID = json.getInt("eventID");
+
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+
         switch (command){
             case "createEvent":
-                createEventPageOneView.showToastToUser(apiResponse);
+                createEventPageOneView.setEventID(eventID);
+                createEventPageOneView.showToastToUser(message);
                 break;
 
             case "getAllPlaces":

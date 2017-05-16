@@ -59,4 +59,6 @@ public interface CreateEventPageOneView {
 
     boolean getUserWroteSearch();
 
+    void setEventID(int eventID);
+
 }
