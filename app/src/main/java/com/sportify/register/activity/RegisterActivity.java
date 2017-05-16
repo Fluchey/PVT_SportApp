@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.sportify.forgottenPass.activity.ForgottenPassActivity;
 import com.sportify.login.activity.LoginActivity;
 import com.sportify.profile.activity.ProfileActivity;
 import com.sportify.register.presenter.RegisterPresenter;
