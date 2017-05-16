@@ -59,6 +59,7 @@ public class CreateEventPageOnePageOneActivity extends AppCompatActivity impleme
      */
     private AutoCompleteTextView eventPlace;
     private boolean userWroteSearch;
+    private int idOfPlace;
     private ArrayAdapter arrayAdapter;
 
     /**
@@ -108,6 +109,7 @@ public class CreateEventPageOnePageOneActivity extends AppCompatActivity impleme
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 userWroteSearch = false;
+                idOfPlace = (int) id;
             }
         });
 
@@ -267,6 +269,11 @@ public class CreateEventPageOnePageOneActivity extends AppCompatActivity impleme
     @Override
     public String getEventPlace() {
         return eventPlace.getText().toString();
+    }
+
+    @Override
+    public int getEventPlaceId() {
+        return idOfPlace;
     }
 
     @Override

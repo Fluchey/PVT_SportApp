@@ -68,7 +68,7 @@ public class MapsPresenterImpl implements MapsPresenter, MapsRequest.onRequestFi
         for (Place p : mapsRequest.getCurrentSearchPlaces()) {
             if (p.getName().toLowerCase().startsWith(search)) {
                 placesName.add(p.getName());
-                mapsView.showPlaceMarkerAt(p.getName(), "ASD", p.getLat(), p.getLon());
+                mapsView.showPlaceMarkerAt(p.getName(), p.getCategories().toString(), p.getLat(), p.getLon());
             }
         }
         mapsView.updatePlaceSearch(placesName);
