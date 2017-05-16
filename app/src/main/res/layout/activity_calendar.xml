@@ -53,7 +53,7 @@
         android:clickable="true"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        app:srcCompat="@drawable/menumapsearch"
+        app:srcCompat="@drawable/menumap3"
         tools:ignore="ContentDescription"
         android:layout_toStartOf="@+id/toCreateEventFromCalButton"
         android:layout_marginEnd="38dp"

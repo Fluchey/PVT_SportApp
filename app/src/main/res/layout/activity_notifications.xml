@@ -63,7 +63,7 @@
             android:clickable="true"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            app:srcCompat="@drawable/menumapsearch"
+            app:srcCompat="@drawable/menumap3"
             tools:ignore="ContentDescription"
             android:layout_toStartOf="@+id/createEventButtonfromNote"
             android:layout_alignParentBottom="true"
@@ -78,10 +78,23 @@
             android:layout_height="80dp"
             android:onClick="createEventfromNoteActivity"
             android:clickable="true"
+            android:layout_marginBottom="@dimen/createEventMargin"
             app:srcCompat="@drawable/menucreateevent"
             app:backgroundTint="@color/colorAccent"
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"/>
+
+        <TextView
+            android:id="@+id/createEvText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/createEventButton"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/colorCreateEvent"
+            android:elevation="7dp"
+            android:layout_alignParentBottom="true"
+            android:text="@string/create_event" />
 
         <ImageView
             android:id="@+id/toNotificationsButtonfromNote"
