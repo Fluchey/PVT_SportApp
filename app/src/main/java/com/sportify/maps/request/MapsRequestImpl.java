@@ -1,6 +1,7 @@
 package com.sportify.maps.request;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.sportify.storage.Event;
 import com.sportify.storage.Place;
@@ -52,11 +53,19 @@ public class MapsRequestImpl implements MapsRequest {
         try {
             for (int i = 0; i < placeArray.length(); i++) {
                 JSONObject jsonObject = placeArray.getJSONObject(i);
-                allPlaces.add(new Place(jsonObject.getString("place_id"), jsonObject.getString("name"),/* jsonObject.getString("category"),*/ Double.parseDouble(jsonObject.getString("lat")), Double.parseDouble(jsonObject.getString("lon"))));
+                JSONArray categoryArray = jsonObject.getJSONArray("categories");
+                ArrayList<String> categories = new ArrayList<>();
+                for(int j = 0; j < categoryArray.length(); j++){
+                    String category = categoryArray.getString(j);
+                    String categoryFormat = category.substring(13, (category.length() - 2));
+                    categories.add(categoryFormat);
+                }
+                allPlaces.add(new Place(jsonObject.getString("id"), jsonObject.getString("placeName"), categories, Double.parseDouble(jsonObject.getString("lat")), Double.parseDouble(jsonObject.getString("lon"))));
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        Log.d("Size", String.valueOf(allPlaces.size()));
     }
 
     @Override
@@ -164,7 +173,7 @@ public class MapsRequestImpl implements MapsRequest {
             } else {
 //                result = Connector.connect("https://pvt15app.herokuapp.com/api/" + params[0],
 //                        params[1], params[2], token);
-                result = Connector.connect("http://192.168.0.5:9000/api/" + params[0],
+                result = Connector.connect("http://192.168.0.12:9000/api/" + params[0],
                         params[1], params[2], token);
                 return null;
             }
