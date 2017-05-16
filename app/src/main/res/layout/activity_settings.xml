@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgroundcool"
+    android:background="@drawable/backgroundnodude"
     tools:context="com.sportify.settings.activity.SettingsActivity"
     android:paddingTop="10dp"
     android:paddingBottom="10dp"

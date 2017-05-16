@@ -71,6 +71,8 @@
         <activity android:name="com.sportify.showFriends.activity.ShowFriendsActivity" />
         <activity android:name="com.sportify.notifications.activity.NotificationsActivity" />
         <activity android:name="com.sportify.calendar.activity.CalendarActivity" />
+        <activity android:name="com.sportify.eventArea.activity.EventAreaActivity" />
+
         <activity android:name="com.sportify.settingsEditProfile.activity.EditProfileActivity"></activity>
     </application>
 

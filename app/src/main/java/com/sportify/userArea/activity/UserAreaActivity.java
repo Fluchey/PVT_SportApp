@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.sportify.calendar.activity.CalendarActivity;
 import com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOnePageOneActivity;
+import com.sportify.eventArea.activity.EventAreaActivity;
 import com.sportify.maps.activity.MapsActivity;
 import com.sportify.notifications.activity.NotificationsActivity;
 import com.sportify.settings.activity.SettingsActivity;
@@ -77,5 +78,11 @@ public class UserAreaActivity extends AppCompatActivity implements UserAreaView 
         Intent goToEditProfileIntent = new Intent(UserAreaActivity.this, EditProfileActivity.class);
         UserAreaActivity.this.startActivity(goToEditProfileIntent);
     }
+
+    public void goToEventAreaActivity(View v){
+        Intent goToEventAreaIntent = new Intent(UserAreaActivity.this, EventAreaActivity.class);
+        UserAreaActivity.this.startActivity(goToEventAreaIntent);
+    }
+
 
 }

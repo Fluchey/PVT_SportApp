@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/def_pagePadding"
-    android:background="@drawable/backgrounduser"
+    android:background="@drawable/backgroundnodude"
     tools:context="com.sportify.userArea.activity.UserAreaActivity">
 
 
@@ -20,6 +20,12 @@
         android:layout_alignParentEnd="true"
         android:layout_above="@+id/editProfileButton" />
 
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="20dp"
+        android:background="@color/colorAccent"
+        android:layout_below="@+id/profileText"
+        android:layout_marginTop="25dp" />
 
     <TextView
         android:id="@+id/scrollMyEvText"
@@ -190,17 +196,20 @@
         android:layout_alignParentBottom="true"/>
 
 
-
     <!--TODO : hämta eventets bild -->
     <ImageView
         android:id="@+id/userAreaViewSwim"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/userareaflowswim"
+        android:clickable="true"
         android:layout_marginTop="20dp"
         android:layout_below="@+id/scrollMyEvText"
         android:layout_centerHorizontal="true"
-        tools:ignore="ContentDescription" />
+        android:onClick="goToEventAreaActivity"
+        tools:ignore="ContentDescription"/>
+
+
 
     <!--TODO : hämta info om event -->
     <TextView
