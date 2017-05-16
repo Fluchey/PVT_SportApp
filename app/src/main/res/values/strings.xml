@@ -79,7 +79,7 @@
     <string name="userArea_friends">Vänner</string>
 
     /* Strings vänner */
-    <string name="friends">Vänner</string>
+    <string name="friends">Mina Vänner</string>
     <string name="searchFriends">Sök vänner... namn/användarnamn</string>
     <string name="friend_does_not_exist">Finns ingen vän med det namnet</string>
 
