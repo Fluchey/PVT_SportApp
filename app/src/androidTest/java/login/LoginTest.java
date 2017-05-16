@@ -110,7 +110,7 @@ public class LoginTest {
          * First register screen
          */
         onView(withId(R.id.tvLoginRegisterHere)).perform(click());
-        onView(withId(R.id.etRegisterMail)).perform(typeText(randomMail + "@espresso.com"));
+        onView(withId(R.id.etRegisterMail)).perform(typeText(randomMail + "@espresso.com"), closeSoftKeyboard() );
         onView(withId(R.id.etRegisterPassword)).perform(typeText(randomMail), closeSoftKeyboard());
         onView(withId(R.id.registerButton)).perform(click());
 
@@ -118,7 +118,7 @@ public class LoginTest {
         /**
          * Enter Profile screen
          */
-        onView(withId(R.id.etProfileNameHint)).perform(typeText("Espresso"));
+        onView(withId(R.id.etProfileNameHint)).perform(typeText("Espresso"), closeSoftKeyboard());
         onView(withId(R.id.etLastnameHint)).perform(typeText("EspressoLastName"), closeSoftKeyboard());
         onView(withId(R.id.cbProfileFotboll)).perform(click());
         onView(withId(R.id.ibCheckboxProfileButton)).perform(click());
@@ -127,7 +127,7 @@ public class LoginTest {
          * Login Screen
          */
         onView(withId(R.id.etLoginEmail)).perform(typeText(randomMail + "@espresso.com"));
-        onView(withId(R.id.etLoginPassword)).perform(typeText(randomMail));
+        onView(withId(R.id.etLoginPassword)).perform(typeText(randomMail), closeSoftKeyboard());
         onView(withId(R.id.loginButton)).perform(click());
 
         /**
@@ -139,8 +139,8 @@ public class LoginTest {
          * Create event
          */
 
-        onView(withId(R.id.etEventName)).perform(typeText(randomMail));
-        onView(withId(R.id.etEventPlace)).perform(typeText("Fa"));
+        onView(withId(R.id.etEventName)).perform(typeText(randomMail), closeSoftKeyboard());
+        onView(withId(R.id.etEventPlace)).perform(typeText("Fa"), closeSoftKeyboard());
         onView(withText("Fagersjö motionsspår")).inRoot(isPlatformPopup()).perform(click());
         onView(withId(R.id.etEventStartDate)).perform(click());
         onView(withText("OK")).perform(click());
@@ -166,7 +166,7 @@ public class LoginTest {
          */
         onView(withId(R.id.EventRadioButton)).perform(click());
         onView(withId(R.id.listButton)).perform(click());
-        onView(withId(R.id.etMapsSearch)).perform(typeText(randomMail.substring(0, 10)));
+        onView(withId(R.id.etMapsSearch)).perform(typeText(randomMail.substring(0, 10)), closeSoftKeyboard());
         onView(withText(randomMail)).perform(click());
 
 
