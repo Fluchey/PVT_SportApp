@@ -140,8 +140,8 @@ public class LoginTest {
          */
 
         onView(withId(R.id.etEventName)).perform(typeText(randomMail), closeSoftKeyboard());
-        onView(withId(R.id.etEventPlace)).perform(typeText("Fa"), closeSoftKeyboard());
-        onView(withText("Fagersjö motionsspår")).inRoot(isPlatformPopup()).perform(click());
+        onView(withId(R.id.etEventPlace)).perform(typeText("Ab"), closeSoftKeyboard());
+        onView(withText("Abrahamsbergs bollplan")).inRoot(isPlatformPopup()).perform(click());
         onView(withId(R.id.etEventStartDate)).perform(click());
         onView(withText("OK")).perform(click());
         onView(withId(R.id.etEventEndDate)).perform(click());

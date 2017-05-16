@@ -1,5 +1,7 @@
 package com.sportify.storage;
 
+import java.util.ArrayList;
+
 /**
  * Created by antonfluch on 2017-05-02.
  */
@@ -7,14 +9,14 @@ package com.sportify.storage;
 public class Place {
     private String id;
     private String name;
-    private String category;
+    private ArrayList<String> categories;
     private double lat;
     private double lon;
 
-    public Place(String id, String name, String category, double lat, double lon) {
+    public Place(String id, String name, ArrayList<String> categories, double lat, double lon) {
         this.id = id;
         this.name = name;
-        this.category = category;
+        this.categories = categories;
         this.lat = lat;
         this.lon = lon;
     }
@@ -35,12 +37,12 @@ public class Place {
         this.name = name;
     }
 
-    public String getCategory() {
-        return category;
+    public ArrayList<String> getCategories() {
+        return categories;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setCategories(ArrayList<String> categories) {
+        this.categories = categories;
     }
 
     public double getLat() {
@@ -61,6 +63,6 @@ public class Place {
 
     @Override
     public String toString() {
-        return "Name: " + name + " Category: " + category + " Lat: " + lat + " Lon: " + lon;
+        return "Name: " + name + " Category: " + categories.toString() + " Lat: " + lat + " Lon: " + lon;
     }
 }
