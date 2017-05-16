@@ -184,6 +184,7 @@
     <string name="first_name">Förnamn</string>
     <string name="last_name">Efternamn</string>
     <string name="userArea">Profilflöde</string>
+    <string name="edit_profile_intro">Här kan du redigera din profil-information</string>
 
     <string name="register_here">Registrera konto</string>
     <string name="title_activity_friend">KompisAktivitet</string>

@@ -39,7 +39,8 @@
         tools:ignore="ContentDescription"
         android:layout_alignParentEnd="true"
         android:layout_above="@+id/scrollMyEvText"
-        android:paddingTop="10dp" />
+        android:paddingTop="10dp"
+        android:onClick="goToEditProfileFromUser"/>
 
     <!--TODO : hämta användarens profiltext -->
     <TextView

@@ -14,6 +14,7 @@ import com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOnePa
 import com.sportify.maps.activity.MapsActivity;
 import com.sportify.notifications.activity.NotificationsActivity;
 import com.sportify.settings.activity.SettingsActivity;
+import com.sportify.settingsEditProfile.activity.EditProfileActivity;
 import com.sportify.showFriends.activity.ShowFriendsActivity;
 import com.sportify.userArea.presenter.UserAreaPresenter;
 import com.sportify.userArea.presenter.UserAreaPresenterImpl;
@@ -71,4 +72,10 @@ public class UserAreaActivity extends AppCompatActivity implements UserAreaView 
         Intent goToCalendarIntent = new Intent(UserAreaActivity.this, CalendarActivity.class);
         UserAreaActivity.this.startActivity(goToCalendarIntent);
     }
+
+    public void goToEditProfileFromUser(View v){
+        Intent goToEditProfileIntent = new Intent(UserAreaActivity.this, EditProfileActivity.class);
+        UserAreaActivity.this.startActivity(goToEditProfileIntent);
+    }
+
 }
