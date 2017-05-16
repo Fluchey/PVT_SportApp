@@ -156,17 +156,6 @@
         app:srcCompat="@drawable/menucreateevent" />
 
 
-    <TextView
-        android:id="@+id/createEvText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/createEventButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
-        android:textColor="@color/colorCreateEvent"
-        android:elevation="7dp"
-        android:layout_alignParentBottom="true"
-        android:text="@string/create_event" />
 
 
     <ImageView
@@ -258,6 +247,16 @@
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="10dp"/>
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="220dp"
+        android:layout_height="180dp"
+        app:srcCompat="@drawable/placefarsta"
+        android:layout_below="@+id/hostView"
+        android:layout_marginTop="15dp"
+        android:clickable="true"
+        android:onClick="goToReadReviewActivity"
+        android:layout_centerHorizontal="true" />
 
 
 </RelativeLayout>

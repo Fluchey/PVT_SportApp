@@ -14,6 +14,7 @@ import com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOnePa
 import com.sportify.eventArea.activity.EventAreaActivity;
 import com.sportify.maps.activity.MapsActivity;
 import com.sportify.notifications.activity.NotificationsActivity;
+import com.sportify.readReview.activity.ReadReviewActivity;
 import com.sportify.settings.activity.SettingsActivity;
 import com.sportify.settingsEditProfile.activity.EditProfileActivity;
 import com.sportify.showFriends.activity.ShowFriendsActivity;
@@ -84,5 +85,8 @@ public class UserAreaActivity extends AppCompatActivity implements UserAreaView 
         UserAreaActivity.this.startActivity(goToEventAreaIntent);
     }
 
-
+    public void goToReadReviewActivity(View v){
+        Intent goToReadReviewIntent = new Intent(UserAreaActivity.this, ReadReviewActivity.class);
+        UserAreaActivity.this.startActivity(goToReadReviewIntent);
+    }
 }

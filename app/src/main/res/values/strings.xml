@@ -16,7 +16,6 @@
     <string name="logpassword">Lösenord</string>
 
 
-
     /* Strings Skapa profil */
     <string name="profile_firstname">Förnamn</string>
     <string name="profile_firstname_hint">Förnamn</string>
@@ -177,6 +176,8 @@
     <string name="review_score">Betyg</string>
     <string name="review_write">Skriv en recension (frivilligt)</string>
     <string name="review_write_hint">Berätta vad du tycker</string>
+    <string name="review_number_of">Recensioner (10)</string>
+
 
 
     /* Strings Event-sidan */
@@ -188,10 +189,6 @@
     <string name="event_rating">Betyg: </string>
     <string name="event_area_title">Simtävling fjärilssim</string>
     <string name="event_area_price">Pris: </string>
-
-
-
-
 
 
     /* Strings misc */
