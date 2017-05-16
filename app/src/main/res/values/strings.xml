@@ -14,13 +14,8 @@
     /* Strings Logga in */
     <string name="log_in">Logga in</string>
     <string name="logpassword">Lösenord</string>
-    <string name="forgotten_password">Glömt lösenord?</string>
 
-    /* Strings Glömt lösenord*/
-    <string name="forgotten_password_instru">Fyll i din e-postadress så skickar vi xxx xx x</string>
-    <string name="forgotten_pass_send">Skicka</string>
-    <string name="forgotten_password_success">Mailet har nu skickats, det kan ta några minuter innan det dyker upp i din inkorg</string>
-    <string name="forgotten_password_failure">E-postadressen hittades inte i vårt system, men du kan enkelt registrera ett nytt konto.</string>
+
 
     /* Strings Skapa profil */
     <string name="profile_firstname">Förnamn</string>
@@ -34,7 +29,7 @@
     <string name="profile_interests_parkour">Parkour</string>
     <string name="profile_birthday_hint">DD/MM/YY</string>
     <string name="profile_text">Skapa en profil så andra kan lära känna dig bättre
-    och vi kan hjälpa dig hitta roliga event, för just dig!</string>
+    och vi kan hjälpa dig hitta roliga event anpassade efter dina intressen. </string>
     <string name="intressen_text">Intressen</string>
     <string name="profile_interests_fotball">Fotboll</string>
     <string name="profile_interests_basket">Basket</string>
@@ -170,19 +165,10 @@
 
     /* Strings Inställningar */
     <string name="settings_sett">Inställningar</string>
-    <string name="settings_invite">Bjud in</string>
-    <string name="settings_fb_friends">Facebook vänner</string>
-    <string name="settings_find_friends">Hitta vänner</string>
     <string name="settings_account">Konto</string>
-    <string name="settings_change_password">Byt lösenord</string>
-    <string name="settings_old_password">Aktuella lösenordet</string>
-    <string name="settings_new_password">Nya lösenordet</string>
-    <string name="settings_new_password_confirm">Skriv det nya igen</string>
-    <string name="settings_new_password_save">Spara ändringen</string>
     <string name="settings_account_settings">Kontoinställningar</string>
     <string name="settings_support">Support</string>
     <string name="sett_integrity">Integritetspolicy</string>
-    <string name="settings_log_out">Logga ut</string>
     <string name="settings_edit_profile">Redigera profil</string>
 
 
@@ -231,9 +217,9 @@
     <string name="integ_text2">
     Den information vi samlar in från dig kan användas för att:
     •	Göra din upplevelse personlig och tillgodose dina personliga behov
-    •	Förbättra vår hemsida
+    •	Förbättra vår app
     •	Förbättra vår kundservice och ditt behov av hjälp
-    •	Erbjuda personliga event som passer dina intressen eller plats.</string>
+    •	Erbjuda personliga event anpassade efter dina intressen eller lokalisering.</string>
     <string name="integ_text1head">1. Insamling av information</string>
     <string name="integ_text1"> Vi samlar in information från dig när du registrerar dig på vår webbplats, loggar in på ditt konto, registrerar information och/eller när du loggar ut. Den insamlade informationen inkluderar ditt namn, dina intressen, dina event, dina recensioner. </string>
 
