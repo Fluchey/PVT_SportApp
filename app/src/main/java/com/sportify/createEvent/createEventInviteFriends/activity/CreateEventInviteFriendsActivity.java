@@ -131,8 +131,10 @@ public class CreateEventInviteFriendsActivity extends AppCompatActivity implemen
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 
-    public void getMarkedFriends(View view) {
+    @Override
+    public void sendInvites(View view) {
         //TODO: Se till att vännerna blir inbjudna till eventet
-        getMarkedFriends();
+        ArrayList<Profile> markedFriends = getMarkedFriends();
+        createEventInviteFriendsPresenter.sendInvites(markedFriends);
     }
 }

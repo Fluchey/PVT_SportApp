@@ -95,6 +95,14 @@ public class CreateEventInviteFriendsPresenterImpl implements CreateEventInviteF
     }
 
     @Override
+    public void sendInvites(ArrayList<Profile> markedFriends) {
+        System.out.println(markedFriends);
+
+
+
+    }
+
+    @Override
     public void showApiResponse(String... params) {
         getFriendsFromApiResponse(params[0]);
         showFriends();
