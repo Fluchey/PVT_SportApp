@@ -106,10 +106,10 @@ public class CreateEventPageOneRequestImpl implements CreateEventPageOneRequest 
                 Log.d("Token:", token);
                 return null;
             }else {
-//            String[] resultFromApi = Connector.connect("https://pvt15app.herokuapp.com/api/" + params[1],
-//                    params[0], String.format(params[2]), token);
-                String[] resultFromApi = Connector.connect("http://192.168.0.12:9000/api/" + params[1],
-                        params[0], String.format(params[2]), token);
+            String[] resultFromApi = Connector.connect("https://pvt15app.herokuapp.com/api/" + params[1],
+                    params[0], String.format(params[2]), token);
+//                String[] resultFromApi = Connector.connect("http://192.168.0.12:9000/api/" + params[1],
+//                        params[0], String.format(params[2]), token);
                 responseBody = resultFromApi[0];
                 return null;
             }
