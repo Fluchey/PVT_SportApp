@@ -52,7 +52,7 @@ public class MapsRequestImpl implements MapsRequest {
         try {
             for (int i = 0; i < placeArray.length(); i++) {
                 JSONObject jsonObject = placeArray.getJSONObject(i);
-                allPlaces.add(new Place(jsonObject.getString("place_id"), jsonObject.getString("name"), jsonObject.getString("category"), Double.parseDouble(jsonObject.getString("lat")), Double.parseDouble(jsonObject.getString("lon"))));
+                allPlaces.add(new Place(jsonObject.getString("place_id"), jsonObject.getString("name"),/* jsonObject.getString("category"),*/ Double.parseDouble(jsonObject.getString("lat")), Double.parseDouble(jsonObject.getString("lon"))));
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -162,10 +162,10 @@ public class MapsRequestImpl implements MapsRequest {
 //                result = Connector.connectGetOrDelete(params[0], "http://192.168.0.12:9000/api/" + params[1], token);
                 return null;
             } else {
-                result = Connector.connect("https://pvt15app.herokuapp.com/api/" + params[0],
-                        params[1], params[2], token);
-//                result = Connector.connect("http://192.168.0.12:9000/api/" + params[0],
+//                result = Connector.connect("https://pvt15app.herokuapp.com/api/" + params[0],
 //                        params[1], params[2], token);
+                result = Connector.connect("http://192.168.0.5:9000/api/" + params[0],
+                        params[1], params[2], token);
                 return null;
             }
         }

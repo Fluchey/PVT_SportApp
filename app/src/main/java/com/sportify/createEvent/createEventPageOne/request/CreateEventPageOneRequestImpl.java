@@ -46,7 +46,7 @@ public class CreateEventPageOneRequestImpl implements CreateEventPageOneRequest 
         try {
             for (int i = 0; i < array.length(); i++) {
                 JSONObject jsonObject = array.getJSONObject(i);
-                places.add(new Place(jsonObject.getString("place_id"), jsonObject.getString("name"), jsonObject.getString("category"), Double.parseDouble(jsonObject.getString("lat")), Double.parseDouble(jsonObject.getString("lon"))));
+                places.add(new Place(jsonObject.getString("place_id"), jsonObject.getString("name"),/* jsonObject.getString("category"),*/ Double.parseDouble(jsonObject.getString("lat")), Double.parseDouble(jsonObject.getString("lon"))));
             }
         } catch (JSONException e) {
             e.printStackTrace();
