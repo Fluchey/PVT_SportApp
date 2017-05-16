@@ -18,5 +18,5 @@ public interface CreateEventInviteFriendsPresenter {
 
     void updateFriendSearchView();
 
-    void sendInvites(ArrayList<Profile> markedFriends);
+    void sendInvites(ArrayList<Profile> markedFriends, int eventID);
 }

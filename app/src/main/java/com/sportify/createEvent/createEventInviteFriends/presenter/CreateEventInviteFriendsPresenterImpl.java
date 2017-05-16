@@ -39,7 +39,7 @@ public class CreateEventInviteFriendsPresenterImpl implements CreateEventInviteF
     @Override
     public void getFriendsMakeApiRequest() {
         //TODO: Skickar nu bara tomt Json för att jag inte får GET att funka, gör fortf med POST i Heroku.
-        createEventInviteFriendsRequest.makeApiRequest("{}");
+        createEventInviteFriendsRequest.makeApiRequest("findfriends", "POST", "{}");
     }
 
     @Override
@@ -95,15 +95,36 @@ public class CreateEventInviteFriendsPresenterImpl implements CreateEventInviteF
     }
 
     @Override
-    public void sendInvites(ArrayList<Profile> markedFriends) {
+    public void sendInvites(ArrayList<Profile> markedFriends, int eventID) {
         System.out.println(markedFriends);
 
+        JSONObject json = new JSONObject();
+        JSONArray array = new JSONArray();
 
+        try{
+            for(int i = 0; i < markedFriends.size(); i++){
+                JSONObject friendToInvite = new JSONObject();
+                friendToInvite.put("userTo", markedFriends.get(i).getProfileID());
+                friendToInvite.put("eventID", eventID);
+                array.put(friendToInvite);
+            }
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
 
+        try {
+            json.put("invites", array);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        System.out.println(json.toString());
+
+        createEventInviteFriendsRequest.makeApiRequest("inviteFriends", "POST", json.toString());
     }
 
     @Override
     public void showApiResponse(String... params) {
+        System.out.println(params[0].toString());
         getFriendsFromApiResponse(params[0]);
         showFriends();
         updateFriendSearchView();

@@ -18,7 +18,6 @@ import android.widget.Toast;
 import com.sportify.arrayAdapters.MyArrayAdapterInviteFriends;
 import com.sportify.createEvent.createEventInviteFriends.presenter.CreateEventInviteFriendsPresenter;
 import com.sportify.createEvent.createEventInviteFriends.presenter.CreateEventInviteFriendsPresenterImpl;
-import com.sportify.createEvent.createEventPageBeforeInviteFriends.activity.CreateEventBeforeInviteFriendsActivity;
 import com.sportify.createEvent.createEventPreview.activity.CreateEventPreviewActivity;
 import com.sportify.showFriends.Profile;
 
@@ -31,6 +30,7 @@ public class CreateEventInviteFriendsActivity extends AppCompatActivity implemen
     private CreateEventInviteFriendsPresenter createEventInviteFriendsPresenter;
     private ArrayList<Profile> friendArray;
     private SharedPreferences sharedPref;
+    private int eventID;
 
     /**
      *  ArrayAdapter to friend list
@@ -48,6 +48,12 @@ public class CreateEventInviteFriendsActivity extends AppCompatActivity implemen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_event_invite_friends);
+
+        Bundle extras = getIntent().getExtras();
+        if(extras != null){
+            eventID = extras.getInt("EVENT_ID");
+            System.out.println("getfriends " + eventID);
+        }
 
         sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         createEventInviteFriendsPresenter = new CreateEventInviteFriendsPresenterImpl(this, sharedPref);
@@ -138,7 +144,7 @@ public class CreateEventInviteFriendsActivity extends AppCompatActivity implemen
     public void sendInvites(View view) {
         //TODO: Se till att vännerna blir inbjudna till eventet
         ArrayList<Profile> markedFriends = getMarkedFriends();
-        createEventInviteFriendsPresenter.sendInvites(markedFriends);
+        createEventInviteFriendsPresenter.sendInvites(markedFriends, eventID);
     }
 
     public void goToPreviewAgainActivity(View v){
