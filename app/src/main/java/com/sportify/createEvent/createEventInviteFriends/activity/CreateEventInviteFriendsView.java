@@ -1,5 +1,7 @@
 package com.sportify.createEvent.createEventInviteFriends.activity;
 
+import android.view.View;
+
 import com.sportify.showFriends.Profile;
 
 import java.util.ArrayList;
@@ -17,4 +19,6 @@ public interface CreateEventInviteFriendsView {
     ArrayList<Profile> getMarkedFriends();
 
     void showToastToUser(String message);
+
+    void sendInvites(View view);
 }

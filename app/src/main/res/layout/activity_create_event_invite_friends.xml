@@ -116,7 +116,7 @@
 
     <ImageButton
         android:id="@+id/btinvite"
-        android:onClick="getMarkedFriends"
+        android:onClick="sendInvites"
         android:layout_width="wrap_content"
         android:fadeScrollbars="false"
         android:isScrollContainer="false"
