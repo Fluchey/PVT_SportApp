@@ -17,7 +17,7 @@ import android.widget.Toast;
 import com.sportify.arrayAdapters.MyArrayAdapterShowFriends;
 import com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOnePageOneActivity;
 import com.sportify.maps.activity.MapsActivity;
-import com.sportify.notifications.activity.NotificationsActivity;
+import com.sportify.notifications.activity.NotificationActivity;
 import com.sportify.showFriends.Profile;
 import com.sportify.showFriends.presenter.ShowFriendsPresenter;
 import com.sportify.showFriends.presenter.ShowFriendsPresenterImpl;
@@ -130,7 +130,7 @@ public class ShowFriendsActivity extends AppCompatActivity implements ShowFriend
     }
 
     public void toNotificationsfromFriendsActivity(View v){
-        Intent goToNotificationsViewIntent = new Intent(ShowFriendsActivity.this, NotificationsActivity.class);
+        Intent goToNotificationsViewIntent = new Intent(ShowFriendsActivity.this, NotificationActivity.class);
         ShowFriendsActivity.this.startActivity(goToNotificationsViewIntent);
     }
 

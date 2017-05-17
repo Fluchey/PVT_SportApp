@@ -130,6 +130,7 @@
     <string name="event_place_empty_error">Ange plats</string>
 
 
+    /* Registrera konto */
     <string name="first_name_optional">Förnamn (frivilligt)</string>
     <string name="last_name_optional">Efternamn (frivilligt)</string>
     <string name="username_empty_error">Ange användarnamn</string>
@@ -236,5 +237,9 @@
 
     /* Strings läggtillnyavänner */
     <string name="friends_header">Lägg till nya vänner</string>
+
+    /* Notifikationer */
+    <string name="event_invite_notification">har bjudit in dig till sitt event</string>
+
 
 </resources>
