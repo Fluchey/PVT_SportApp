@@ -9,7 +9,7 @@
     <dimen name="standardTextSize">15sp</dimen>"
     <dimen name="header">25sp</dimen>
     <dimen name="inputeSize">15sp</dimen>
-    <dimen name="createEventMargin">15sp</dimen>
+    <dimen name="createEventMargin">5sp</dimen>
     <dimen name="fab_margin">16dp</dimen>
 
 </resources>

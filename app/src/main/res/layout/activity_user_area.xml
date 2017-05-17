@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/def_pagePadding"
-    android:background="@drawable/backgrounduser"
+    android:background="@drawable/backgroundnodude"
     tools:context="com.sportify.userArea.activity.UserAreaActivity">
 
 
@@ -20,6 +20,12 @@
         android:layout_alignParentEnd="true"
         android:layout_above="@+id/editProfileButton" />
 
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="20dp"
+        android:background="@color/colorAccent"
+        android:layout_below="@+id/profileText"
+        android:layout_marginTop="25dp" />
 
     <TextView
         android:id="@+id/scrollMyEvText"
@@ -39,7 +45,8 @@
         tools:ignore="ContentDescription"
         android:layout_alignParentEnd="true"
         android:layout_above="@+id/scrollMyEvText"
-        android:paddingTop="10dp" />
+        android:paddingTop="10dp"
+        android:onClick="goToEditProfileFromUser"/>
 
     <!--TODO : hämta användarens profiltext -->
     <TextView
@@ -149,17 +156,6 @@
         app:srcCompat="@drawable/menucreateevent" />
 
 
-    <TextView
-        android:id="@+id/createEvText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/createEventButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
-        android:textColor="@color/colorCreateEvent"
-        android:elevation="7dp"
-        android:layout_alignParentBottom="true"
-        android:text="@string/create_event" />
 
 
     <ImageView
@@ -189,17 +185,20 @@
         android:layout_alignParentBottom="true"/>
 
 
-
     <!--TODO : hämta eventets bild -->
     <ImageView
         android:id="@+id/userAreaViewSwim"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/userareaflowswim"
+        android:clickable="true"
         android:layout_marginTop="20dp"
         android:layout_below="@+id/scrollMyEvText"
         android:layout_centerHorizontal="true"
-        tools:ignore="ContentDescription" />
+        android:onClick="goToEventAreaActivity"
+        tools:ignore="ContentDescription"/>
+
+
 
     <!--TODO : hämta info om event -->
     <TextView
@@ -248,6 +247,16 @@
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="10dp"/>
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="220dp"
+        android:layout_height="180dp"
+        app:srcCompat="@drawable/placefarsta"
+        android:layout_below="@+id/hostView"
+        android:layout_marginTop="15dp"
+        android:clickable="true"
+        android:onClick="goToReadReviewActivity"
+        android:layout_centerHorizontal="true" />
 
 
 </RelativeLayout>

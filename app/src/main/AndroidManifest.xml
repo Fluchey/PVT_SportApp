@@ -63,7 +63,6 @@
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name="com.sportify.profile.activity.ProfileActivity" />
         <activity android:name="com.sportify.login.activity.LoginActivity" />
-        <activity android:name="com.sportify.placeReview.activity.PlaceReviewActivity" />
         <activity android:name="com.sportify.settings.activity.SettingsActivity" />
         <activity android:name="com.sportify.settingsIntegritypolicy.activity.IntegritypolicyActivity" />
         <activity android:name="com.sportify.createEvent.createEventPreview.activity.CreateEventPreviewActivity" />
@@ -71,7 +70,11 @@
         <activity android:name="com.sportify.showFriends.activity.ShowFriendsActivity" />
         <activity android:name="com.sportify.notifications.activity.NotificationsActivity" />
         <activity android:name="com.sportify.calendar.activity.CalendarActivity" />
-        <activity android:name="com.sportify.settingsEditProfile.activity.EditProfileActivity"></activity>
+        <activity android:name="com.sportify.eventArea.activity.EventAreaActivity" />
+        <activity android:name="com.sportify.settingsEditProfile.activity.EditProfileActivity" />
+        <activity android:name="com.sportify.readReview.activity.ReadReviewActivity">
+            <activity android:name="com.sportify.placeReview.activity.PlaceReviewActivity" />
+        </activity>
     </application>
 
 </manifest>

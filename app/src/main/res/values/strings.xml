@@ -16,7 +16,6 @@
     <string name="logpassword">Lösenord</string>
 
 
-
     /* Strings Skapa profil */
     <string name="profile_firstname">Förnamn</string>
     <string name="profile_firstname_hint">Förnamn</string>
@@ -79,7 +78,7 @@
     <string name="userArea_friends">Vänner</string>
 
     /* Strings vänner */
-    <string name="friends">Vänner</string>
+    <string name="friends">Mina Vänner</string>
     <string name="searchFriends">Sök vänner... namn/användarnamn</string>
     <string name="friend_does_not_exist">Finns ingen vän med det namnet</string>
 
@@ -88,7 +87,7 @@
     <string name="create_event">Skapa event</string>
     <string name="event_name">Event titel</string>
     <string name="create_event_hint">Namn på event</string>
-    <string name="event_price">Priset</string>
+    <string name="event_price">Pris</string>
     <string name="event_price_hint">SEK</string>
     <string name="event_place">Plats</string>
     <string name="event_place_hint">Plats</string>
@@ -177,6 +176,19 @@
     <string name="review_score">Betyg</string>
     <string name="review_write">Skriv en recension (frivilligt)</string>
     <string name="review_write_hint">Berätta vad du tycker</string>
+    <string name="review_number_of">Recensioner (10)</string>
+
+
+
+    /* Strings Event-sidan */
+    <string name="event_interested">Intresserade: </string>
+    <string name="event_coming">Kommer: </string>
+    <string name="event_invited">Inbjudna: </string>
+    <string name="event_intrested_switch">Intresserad</string>
+    <string name="event_comming_switch">Kommer</string>
+    <string name="event_rating">Betyg: </string>
+    <string name="event_area_title">Simtävling fjärilssim</string>
+    <string name="event_area_price">Pris: </string>
 
 
     /* Strings misc */
@@ -184,6 +196,7 @@
     <string name="first_name">Förnamn</string>
     <string name="last_name">Efternamn</string>
     <string name="userArea">Profilflöde</string>
+    <string name="edit_profile_intro">Här kan du redigera din profil-information</string>
 
     <string name="register_here">Registrera konto</string>
     <string name="title_activity_friend">KompisAktivitet</string>
@@ -192,7 +205,6 @@
 
 
     /* Strings Skapa event activity 5 */
-
     <string name="Event_activity_5_Header">Förhandsvisning</string>
     <string name="Event_activity_5_Event_Text">Du har nu skapat ett Event!
     Här får du en överblick över eventet</string>

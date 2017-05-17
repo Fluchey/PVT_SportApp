@@ -136,17 +136,7 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"/>
 
-    <TextView
-        android:id="@+id/createEvText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/createEventButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
-        android:textColor="@color/colorCreateEvent"
-        android:elevation="7dp"
-        android:layout_alignParentBottom="true"
-        android:text="@string/create_event" />
+
 
     <ImageView
         android:id="@+id/toNotificationsButtonfromMap"

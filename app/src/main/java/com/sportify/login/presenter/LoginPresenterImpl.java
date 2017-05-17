@@ -111,12 +111,14 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
         //TODO: When LOGOUT is created these values need to be set to ""
         String fbTokenLong = null;
         String jwt = null;
+        int profileID = -1;
 
 
         JSONObject json = null;
         try {
             json = new JSONObject(params[0]);
             jwt = json.getString("JWT");
+            profileID = json.getInt("profileID");
             if (params[1].equals("201")){
                 fbTokenLong = json.getString("fbTokenLong");
             }
@@ -128,6 +130,8 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
         if (json != null) {
             SharedPreferences.Editor editor = sharedPref.edit();                    //Initializes the editor
             editor.putString("jwt", jwt);                                 //Adds the string SharedPref with key "jwt"
+            editor.putInt("profileID", profileID);
+
             if (fbTokenLong!=null) {editor.putString("facebook", fbTokenLong);}   //Adds the string SharedPref with key "facebook"
             editor.apply();
             Log.d(TAG, "From preferences file below." );
