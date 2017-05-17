@@ -5,20 +5,28 @@
     android:layout_height="match_parent"
     android:padding="@dimen/def_pagePadding"
     android:orientation="vertical"
-    android:background="@drawable/backgroundnodude"
     tools:context="com.sportify.maps.activity.MapsActivity"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="62dp"
+        android:background="@color/colorAccent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/colorHeader"/>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="508dp"
+        android:layout_height="585dp"
         android:orientation="vertical"
         android:weightSum="1">
 
         <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/eventPlacesGroup">
+            android:id="@+id/eventPlacesGroup"
+            android:orientation="vertical">
 
             <RadioButton
                 android:id="@+id/EventRadioButton"
@@ -35,56 +43,61 @@
                 android:text="@string/maps_places" />
         </RadioGroup>
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/cardview_dark_background"
+            android:background="@color/colorCrystalWhite"
             android:orientation="horizontal">
 
-            <Button
+            <ImageButton
                 android:id="@+id/mapButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/map"
-                android:onClick="switchToMapFragment"/>
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.65"
+                android:background="@drawable/mapview2"
+                android:onClick="switchToMapFragment"
+                tools:ignore="ContentDescription" />
 
             <EditText
                 android:id="@+id/etMapsSearch"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorEditText"
+                android:layout_height="30dp"
+                android:layout_weight="1.4"
+                android:background="@color/colorCrystalWhite"
+                android:textColorHint="@color/colorPrimaryDark"
+                android:drawableStart="@drawable/searchicon"
                 android:ems="10"
                 android:hint="@string/map_event_place_interest"
                 android:inputType="textPersonName"
                 android:textAlignment="center" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/listButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_width="20dp"
+                android:layout_height="50dp"
+                android:layout_weight="0.63"
+                android:background="@drawable/listview2"
+                android:onClick="switchToListFragment"
                 android:text="@string/map_listview"
-                android:onClick="switchToListFragment"/>
+                tools:ignore="ContentDescription" />
 
         </LinearLayout>
 
         <!--<AutoCompleteTextView-->
-            <!--android:id="@+id/etEnterCategory"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_gravity="center"-->
-            <!--android:hint="@string/enter_category" />-->
+        <!--android:id="@+id/etEnterCategory"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:hint="@string/enter_category" />-->
         <FrameLayout
             android:id="@+id/fragment_container"
             android:layout_width="match_parent"
-            android:layout_height="402dp"></FrameLayout>
+            android:layout_height="500dp"></FrameLayout>
 
 
     </LinearLayout>
 
-    <!-- TODO only create event button shows, why? -->
 
     <TextView
         android:id="@+id/mapHeader"
@@ -96,6 +109,8 @@
         android:fontFamily="serif"
         android:textStyle="italic"
         android:layout_centerHorizontal="true" />
+
+
 
     <ImageView
         android:id="@+id/mainButtonfromMap"
@@ -165,3 +180,4 @@
         android:layout_marginBottom="10dp"/>
 
 </RelativeLayout>
+
