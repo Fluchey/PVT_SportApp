@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.sportify.addFriend.activity.AddFriendActivity;
-import com.sportify.eventArea.activity.EventAreaActivity;
 import com.sportify.login.activity.LoginActivity;
 import com.sportify.register.activity.RegisterActivity;
 import com.sportify.userArea.activity.UserAreaActivity;

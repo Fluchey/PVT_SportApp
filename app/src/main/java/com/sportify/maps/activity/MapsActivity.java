@@ -10,7 +10,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.ListFragment;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
@@ -27,8 +26,10 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOnePageOneActivity;
+import com.sportify.eventArea.activity.EventAreaActivity;
 import com.sportify.maps.CustListFragment;
 import com.sportify.maps.presenter.MapsPresenter;
 import com.sportify.maps.presenter.MapsPresenterImpl;
@@ -38,10 +39,11 @@ import com.sportify.showFriends.activity.ShowFriendsActivity;
 import com.sportify.userArea.activity.UserAreaActivity;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import sportapp.pvt_sportapp.R;
 
-public class MapsActivity extends FragmentActivity implements MapsView, OnMapReadyCallback {
+public class MapsActivity extends FragmentActivity implements MapsView, OnMapReadyCallback, GoogleMap.OnInfoWindowClickListener {
     private MapsPresenter mapsPresenter;
     private SharedPreferences sharedPref;
 
@@ -60,6 +62,8 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
 
     private ArrayAdapter<String> adapter;
     private EditText editTextSearch;
+
+    HashMap<MarkerOptions, Integer> eventIdMarkerId;
 
 
     @Override
@@ -122,6 +126,7 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
         placesCheckBox.setEnabled(false);
         eventCheckBox.setEnabled(false);
 //        eventToggled = true;
+        eventIdMarkerId = new HashMap<>();
     }
 
     /**
@@ -148,6 +153,8 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
         mapsPresenter.showCurrentEventsOnMap("");
         eventCheckBox.setEnabled(true);
         placesCheckBox.setEnabled(true);
+
+        mMap.setOnInfoWindowClickListener(this);
     }
 
     @Override
@@ -156,8 +163,12 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
     }
 
     @Override
-    public void showEventMarkerAt(String eventName, String category, double latitude, double longitude) {
-        mMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)).title(eventName).snippet(category).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+    public void showEventMarkerAt(String eventName, int eventId, String category, double latitude, double longitude) {
+        Marker marker = mMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)).title(eventName).snippet(category).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+        marker.setTag(eventId);
+//        MarkerOptions marker = new MarkerOptions().position(new LatLng(latitude, longitude)).title(eventName).snippet(category).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
+//        eventIdMarkerId.put(marker, eventId);
+//        mMap.addMarker(marker);
     }
 
     @Override
@@ -229,7 +240,7 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
      * @param id
      */
     public void goFromListToMap(int id) {
-        Log.d("Triggered", "Trigg");
+
         mapsPresenter.goFromListToMap(id);
     }
 
@@ -282,4 +293,14 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
         MapsActivity.this.startActivity(goToNoteIntent);
     }
 
+    @Override
+    public void onInfoWindowClick(Marker marker) {
+        Toast.makeText(this, String.valueOf(marker.getTag()), Toast.LENGTH_SHORT).show();
+        Intent goToEventAreaIntent = new Intent(MapsActivity.this, EventAreaActivity.class);
+        /**
+         * The eventId is in the markerTag
+         */
+        goToEventAreaIntent.putExtra("eventId", (int) marker.getTag());
+        MapsActivity.this.startActivity(goToEventAreaIntent);
+    }
 }
