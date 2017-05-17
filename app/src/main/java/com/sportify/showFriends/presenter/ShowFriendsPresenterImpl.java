@@ -90,6 +90,7 @@ public class ShowFriendsPresenterImpl implements ShowFriendsPresenter, ShowFrien
         showFriendsView.updateFriendAdapter(friends);
     }
 
+    //TODO: Fixa denna metod
     @Override
     public void goToFriendsProfile(String userID) {
 
