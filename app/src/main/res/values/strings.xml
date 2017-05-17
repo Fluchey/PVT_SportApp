@@ -179,7 +179,6 @@
     <string name="review_number_of">Recensioner (10)</string>
 
 
-
     /* Strings Event-sidan */
     <string name="event_interested">Intresserade: </string>
     <string name="event_coming">Kommer: </string>
@@ -235,5 +234,7 @@
     <string name="integ_text1head">1. Insamling av information</string>
     <string name="integ_text1"> Vi samlar in information från dig när du registrerar dig på vår webbplats, loggar in på ditt konto, registrerar information och/eller när du loggar ut. Den insamlade informationen inkluderar ditt namn, dina intressen, dina event, dina recensioner. </string>
 
+    /* Strings läggtillnyavänner */
+    <string name="friends_header">Lägg till nya vänner</string>
 
 </resources>
