@@ -1,6 +1,7 @@
 package com.sportify.maps.presenter;
 
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.sportify.maps.activity.MapsView;
 import com.sportify.maps.request.MapsRequest;
@@ -79,11 +80,13 @@ public class MapsPresenterImpl implements MapsPresenter, MapsRequest.onRequestFi
         ArrayList<String> eventNames = new ArrayList<>();
         for (Event e : mapsRequest.getCurrentSearchEvents()) {
                 eventNames.add(e.getEventName());
-                for (Place p : mapsRequest.getAllPlaces()) {
-                    if (p.getName().equalsIgnoreCase(e.getPlaceName())) {
-                        mapsView.showEventMarkerAt(e.getEventName(), e.getEventType(), p.getLat(), p.getLon());
-                    }
-                }
+                Place place = mapsRequest.getPlaceIdMap().get(e.getPlaceName());
+                mapsView.showEventMarkerAt(e.getEventName(), e.getEventType(), place.getLat(), place.getLon());
+//                for (Place p : mapsRequest.getAllPlaces()) {
+//                    if (p.getName().equalsIgnoreCase(e.getPlaceName())) {
+//                        mapsView.showEventMarkerAt(e.getEventName(), e.getEventType(), p.getLat(), p.getLon());
+//                    }
+//                }
         }
         mapsView.updatePlaceSearch(eventNames);
     }

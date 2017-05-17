@@ -12,7 +12,7 @@ public class Event {
     private String startTime;
     private String endTime;
     private String eventDescription;
-    private String placeName;
+    private String placeId;
     private int price;
     private String eventType;
     private int maxAttendance;
@@ -26,7 +26,7 @@ public class Event {
         this.startTime = startTime;
         this.endTime = endTime;
         this.eventDescription = eventDescription;
-        this.placeName = placeName;
+        this.placeId = placeName;
         this.price = price;
         this.eventType = eventType;
         this.maxAttendance = maxAttendance;
@@ -90,11 +90,11 @@ public class Event {
     }
 
     public String getPlaceName() {
-        return placeName;
+        return placeId;
     }
 
     public void setPlaceName(String placeName) {
-        this.placeName = placeName;
+        this.placeId = placeName;
     }
 
     public int getPrice() {
