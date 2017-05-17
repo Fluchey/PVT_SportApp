@@ -1,12 +1,10 @@
 package com.sportify.util;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.sportify.profile.request.ProfileRequest;
 import com.sportify.profile.request.ProfileRequestImpl;
@@ -14,9 +12,12 @@ import com.sportify.profile.request.ProfileRequestImpl;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by peradrianbergman on 2017-05-13.
@@ -33,19 +34,20 @@ public class Profile implements ProfileRequest.OnCreateProfileFinishedListener {
     private String userBio;
     private List<String> interests;
     private Bitmap image;
-    //Boolean userSelectedImage;
+    private String imageBase64;
 
     //TODO: Include the view in constructor IF closeProgressDialog is required
     //TODO: keep as object retreived, add option to save to pref and get from pref as static
-    public Profile userProfile(int profileID, SharedPreferences sharedPref){
+    public Profile getUserProfile(int profileID, SharedPreferences sharedPref){
         this.sharedPref = sharedPref;
         this.token = sharedPref.getString("jwt", "");
+        this.imageBase64 = "";
         profileRequest = new ProfileRequestImpl(this, token);
-        getProfileInfo(profileID, token);
+        getProfileInfo(profileID);
         return this;
     }
 
-    public void getProfileInfo(int profileID, String token){
+    private void getProfileInfo(int profileID){
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("profileID", profileID);
@@ -63,7 +65,7 @@ public class Profile implements ProfileRequest.OnCreateProfileFinishedListener {
     @Override
     public void showApiResponse(String... params) {
         String interestsString = "";
-        String imageBase64 = "";
+
         Log.d("Params [1]", params[1]);
         JSONObject jsonObject = null;
         if(params[1].equals("201")){
@@ -74,7 +76,7 @@ public class Profile implements ProfileRequest.OnCreateProfileFinishedListener {
                 this.dateOfBirth = jsonObject.get("dateOfBirth").toString();
                 this.userBio = jsonObject.get("userBio").toString();
                 interestsString = jsonObject.get("interests").toString();
-                imageBase64 = jsonObject.get("imageBase64").toString();
+                this.imageBase64 = jsonObject.get("imageBase64").toString();
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -117,9 +119,76 @@ public class Profile implements ProfileRequest.OnCreateProfileFinishedListener {
         return image;
     }
 
+    public void saveMyProfileToSharedPreferences(){
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("firstName", firstName);
+        editor.putString("lastName", lastName);
+        editor.putString("dateOfBirth", dateOfBirth);
+        editor.putString("userBio", userBio);
+
+        //need to convert interests to set to store it
+        Set<String> set = new HashSet<>(interests);
+        editor.putStringSet("interests", set);
+
+        // image needs to be stored as string
+        editor.putString("imageBase64", imageBase64);
+
+        editor.apply();
+    }
+
+    public static String getFirstNameFromSharedPreferences(SharedPreferences sharedPref){
+        SharedPreferences.Editor editor = sharedPref.edit();
+        return sharedPref.getString("firstName", "");
+    }
+
+    public static String getLastNameFromSharedPreferences(SharedPreferences sharedPref){
+        SharedPreferences.Editor editor = sharedPref.edit();
+        return sharedPref.getString("lastName", "");
+    }
+
+    public static String getDateOfBirthFromSharedPreferences(SharedPreferences sharedPref){
+        SharedPreferences.Editor editor = sharedPref.edit();
+        return sharedPref.getString("dateOfBirth", "");
+    }
+
+    public static String getUserBioFromSharedPreferences(SharedPreferences sharedPref){
+        SharedPreferences.Editor editor = sharedPref.edit();
+        return sharedPref.getString("userBio", "");
+    }
+
+    public static List<String> getInterestsFromSharedPreferences(SharedPreferences sharedPref){
+        SharedPreferences.Editor editor = sharedPref.edit();
+        Set<String> set = new HashSet<>();
+        set = sharedPref.getStringSet("interests", null);
+        List<String> interests = new ArrayList<>(set);
+        return interests;
+    }
+
+    public static Bitmap getProfilePictureBitMapFromSharedPreferences(SharedPreferences sharedPref){
+        SharedPreferences.Editor editor = sharedPref.edit();
+        String imageBase64 = sharedPref.getString("imageBase64", "");
+        return decodeStringToBitmap(imageBase64);
+    }
+
     //Not used
     @Override
     public void closeProgressDialog() {
 
+    }
+
+    //Takes a bitmap, encodes it and returns base64String
+    public static String encodeBitMapToString(Bitmap bitmap)
+    {
+        ByteArrayOutputStream baos=new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG,100, baos);
+        byte[] arr = baos.toByteArray();
+        return Base64.encodeToString(arr, Base64.DEFAULT);
+    }
+
+    //Takes a base64String, decodes and returns Bitmap
+    public static Bitmap decodeStringToBitmap (String input)
+    {
+        byte[] decodedByte = Base64.decode(input, 0);
+        return BitmapFactory.decodeByteArray(decodedByte, 0,   decodedByte.length);
     }
 }
