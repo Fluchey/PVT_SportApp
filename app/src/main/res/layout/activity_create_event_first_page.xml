@@ -7,6 +7,7 @@
     android:background="@drawable/backgroundnodude"
     android:padding="@dimen/def_pagePadding"
     tools:context="com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOnePageOneActivity">
+
     <TextView
         android:id="@+id/createEventHeader"
         android:layout_width="wrap_content"
@@ -19,6 +20,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/backFromCreateButton"
         android:backgroundTint="@color/colorCrystalWhite"
@@ -29,13 +31,17 @@
         android:onClick="toUserAreFromCreateActivity"
         app:srcCompat="@drawable/chevleft" />
 
+
+
     <EditText
         android:id="@+id/etEventName"
         android:layout_width="280dp"
         android:layout_height="46dp"
         android:ems="8"
+        android:textSize="@dimen/inputeSize"
+        android:layout_marginStart="8dp"
         android:hint="@string/event_name"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="75dp"
         android:layout_below="@+id/backFromCreateButton"
         android:layout_alignParentStart="true" />
 
@@ -46,9 +52,9 @@
         android:text="@string/event_private"
         android:layout_marginBottom="18dp"
         android:textColor="@color/colorPrimaryDarkGrey"
-        android:layout_alignBaseline="@+id/etEventName"
-        android:layout_alignBottom="@+id/etEventName"
-        android:layout_alignParentEnd="true" />
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="10dp"/>
 
 
     <AutoCompleteTextView
@@ -56,30 +62,34 @@
         android:layout_width="280dp"
         android:layout_height="44dp"
         android:ems="8"
+        android:textSize="@dimen/inputeSize"
         android:inputType="textPersonName"
         android:hint="@string/event_place"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_below="@+id/etEventName"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="15dp" />
+        android:layout_marginTop="10dp" />
 
     <EditText
         android:id="@+id/etEventPrice"
         android:layout_width="62dp"
         android:layout_height="44dp"
+        android:textSize="@dimen/inputeSize"
         android:ems="8"
         android:hint="@string/event_price"
         android:inputType="number"
-        android:layout_alignBaseline="@+id/etEventPlace"
-        android:layout_alignBottom="@+id/etEventPlace"
-        android:layout_alignParentEnd="true" />
+        android:layout_above="@+id/cbEventPrivate"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="10dp"/>
 
     <EditText
         android:id="@+id/etEventStartDate"
         android:ems="8"
         android:hint="@string/event_date_hint"
         android:focusable="false"
+        android:textSize="@dimen/inputeSize"
         android:layout_width="106dp"
         android:layout_height="45dp"
         android:inputType="date"
@@ -92,22 +102,24 @@
         android:layout_width="106dp"
         android:layout_height="45dp"
         android:ems="8"
+        android:textSize="@dimen/inputeSize"
         android:hint="@string/event_date_hint"
         android:focusable="false"
         android:inputType="date"
-        android:layout_marginTop="27dp"
+        android:layout_marginTop="24dp"
         android:layout_below="@+id/etEventPlace"
         android:layout_centerHorizontal="true" />
 
     <EditText
         android:id="@+id/etEventStartTime"
         android:layout_width="103dp"
+        android:textSize="@dimen/inputeSize"
         android:layout_height="44dp"
         android:ems="8"
+        android:layout_marginStart="8dp"
         android:hint="@string/event_start_time"
         android:focusable="false"
-        android:layout_centerVertical="true"
-        android:layout_alignStart="@+id/etEventType" />
+        android:layout_below="@+id/etEventStartDate" />
 
 
     <EditText
@@ -115,6 +127,7 @@
         android:layout_width="103dp"
         android:layout_height="44dp"
         android:ems="8"
+        android:textSize="@dimen/inputeSize"
         android:hint="@string/event_end_time"
         android:focusable="false"
         android:layout_alignBaseline="@+id/etEventStartTime"
@@ -122,23 +135,25 @@
         android:layout_alignEnd="@+id/etEventEndDate" />
 
     <AutoCompleteTextView
-
         android:id="@+id/etEventType"
         android:layout_width="111dp"
         android:layout_height="38dp"
         android:ems="8"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="25dp"
+        android:textSize="@dimen/inputeSize"
         android:focusable="false"
         android:hint="@string/event_type"
         android:inputType="textPersonName"
-        android:layout_above="@+id/ttViewAddPic"
-        android:layout_toStartOf="@+id/createEventHeader"
-        android:layout_marginBottom="29dp" />
+        android:layout_below="@+id/etEventStartTime"
+        android:layout_marginBottom="70dp" />
 
     <EditText
         android:id="@+id/etEventMaxAttendance"
         android:layout_width="140dp"
         android:layout_height="38dp"
         android:ems="8"
+        android:textSize="@dimen/inputeSize"
         android:hint="@string/event_max_attendance"
         android:inputType="number"
         android:layout_alignBaseline="@+id/etEventType"
@@ -146,26 +161,25 @@
         android:layout_alignStart="@+id/etEventEndDate" />
 
 
-
-
     <TextView
         android:id="@+id/ttViewAddPic"
         android:layout_width="82dp"
         android:layout_height="33dp"
         android:text="@string/event_pic"
-        android:layout_alignBaseline="@+id/etEventDescription"
-        android:layout_alignBottom="@+id/etEventDescription"
-        android:layout_alignStart="@+id/etEventType" />
+        android:layout_marginStart="20dp"
+        android:layout_below="@+id/imageButton3" />
 
     <!--TODO : hämta events bild -->
     <ImageButton
         android:id="@+id/imageButton3"
-        android:layout_width="106dp"
-        android:layout_height="96dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="@android:color/transparent"
-        app:srcCompat="@drawable/eventimage"
-        android:layout_marginRight="8dp"
-        android:layout_above="@+id/createEventButton"
+        app:srcCompat="@drawable/camera5"
+        android:clickable="true"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="20dp"
+        android:layout_below="@+id/etEventType"
         android:layout_alignParentStart="true" />
 
     <EditText
@@ -188,11 +202,13 @@
         android:layout_width="114dp"
         android:layout_height="48dp"
         android:layout_gravity="center_horizontal"
-        android:background="@color/colorPrimary"
+        android:background="@color/colorButton"
         android:onClick="createEventClick"
         android:text="@string/create_event"
         android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true" />
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="10dp"/>
 
 
     <TextView
@@ -200,13 +216,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/event_invite"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:onClick="goToInviteFriends"
-        android:layout_gravity="right|center_horizontal"
+        android:layout_gravity="end|center_horizontal"
         android:clickable="true"
         android:textColor="@color/colorPrimary"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true" />
+
 
 
 

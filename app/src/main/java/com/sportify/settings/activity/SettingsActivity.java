@@ -9,8 +9,6 @@ import android.widget.Toast;
 
 import com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOnePageOneActivity;
 import com.sportify.notifications.activity.NotificationsActivity;
-import com.sportify.settingsAccountSettings.activity.SettingsAccountActivity;
-import com.sportify.settingsChangePass.activity.ChangePassActivity;
 import com.sportify.maps.activity.MapsActivity;
 import com.sportify.settingsEditProfile.activity.EditProfileActivity;
 import com.sportify.settingsIntegritypolicy.activity.IntegritypolicyActivity;
@@ -53,10 +51,6 @@ public class SettingsActivity extends AppCompatActivity implements SettingsView{
         SettingsActivity.this.startActivity(goToFriendListIntent);
     }
 
-    public void toChangePassActivity(View v){
-        Intent goToChangePassIntent = new Intent(SettingsActivity.this, ChangePassActivity.class);
-        SettingsActivity.this.startActivity(goToChangePassIntent);
-    }
 
     public void toIntegritypolicyFromSett(View v){
         Intent goToIntegritypolicyIntent = new Intent(SettingsActivity.this, IntegritypolicyActivity.class);
@@ -67,11 +61,6 @@ public class SettingsActivity extends AppCompatActivity implements SettingsView{
     public void goToEditProfileFromSett(View v){
         Intent goToEditProfileIntent = new Intent(SettingsActivity.this, EditProfileActivity.class);
         SettingsActivity.this.startActivity(goToEditProfileIntent);
-    }
-
-    public void goTAccSettFromSett(View v){
-        Intent goToAccSettIntent = new Intent(SettingsActivity.this, SettingsAccountActivity.class);
-        SettingsActivity.this.startActivity(goToAccSettIntent);
     }
 
 }

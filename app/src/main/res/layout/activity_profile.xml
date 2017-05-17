@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/def_pagePadding"
-    android:background="@drawable/backgroundcool"
+    android:background="@drawable/backgroundnodude"
     tools:context="com.sportify.profile.activity.ProfileActivity">
 
     <TextView
@@ -294,8 +294,8 @@
 
 <CheckBox
     android:id="@+id/cbProfileBandy"
-    android:layout_width="71dp"
-    android:layout_height="33dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:layout_marginBottom="8dp"
     android:layout_marginLeft="8dp"
     android:layout_marginRight="8dp"

@@ -1,6 +1,7 @@
 package com.sportify.createEvent.createEventInviteFriends.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +18,8 @@ import android.widget.Toast;
 import com.sportify.arrayAdapters.MyArrayAdapterInviteFriends;
 import com.sportify.createEvent.createEventInviteFriends.presenter.CreateEventInviteFriendsPresenter;
 import com.sportify.createEvent.createEventInviteFriends.presenter.CreateEventInviteFriendsPresenterImpl;
+import com.sportify.createEvent.createEventPageBeforeInviteFriends.activity.CreateEventBeforeInviteFriendsActivity;
+import com.sportify.createEvent.createEventPreview.activity.CreateEventPreviewActivity;
 import com.sportify.showFriends.Profile;
 
 import java.util.ArrayList;
@@ -131,8 +134,18 @@ public class CreateEventInviteFriendsActivity extends AppCompatActivity implemen
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 
-    public void getMarkedFriends(View view) {
+    @Override
+    public void sendInvites(View view) {
         //TODO: Se till att vännerna blir inbjudna till eventet
-        getMarkedFriends();
+        ArrayList<Profile> markedFriends = getMarkedFriends();
+        createEventInviteFriendsPresenter.sendInvites(markedFriends);
     }
+
+    public void goToPreviewAgainActivity(View v){
+        Intent goToPreviewAgainActivityIntent = new Intent(CreateEventInviteFriendsActivity.this, CreateEventPreviewActivity.class);
+        CreateEventInviteFriendsActivity.this.startActivity(goToPreviewAgainActivityIntent);
+
+
+}
+
 }

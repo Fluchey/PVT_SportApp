@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/def_pagePadding"
+    android:background="@drawable/backgroundnodude"
+    tools:context="com.sportify.eventArea.activity.EventAreaActivity">
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/backUserAreaFromEvent"
+        android:backgroundTint="@color/colorCrystalWhite"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:clickable="true"
+        app:fabSize="mini"
+        android:onClick="toUserAreaFromEvent"
+        app:srcCompat="@drawable/chevleft"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="10dp"/>
+
+
+    <TextView
+        android:id="@+id/eventAreaHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/event_area_title"
+        android:textSize="@dimen/header"
+        android:textColor="@color/colorCrystalWhite"
+        android:fontFamily="serif"
+        android:textStyle="italic"
+        android:layout_centerHorizontal="true" />
+
+
+            <ImageView
+                android:id="@+id/eventSwimView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/userareaflowswim"
+                android:layout_marginTop="92dp"
+                android:layout_below="@+id/backUserAreaFromEvent"
+                android:layout_alignParentStart="true"
+                tools:ignore="ContentDescription" />
+
+
+
+                <TextView
+                    android:id="@+id/tvEventAreaHostName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/event_host"
+                    android:layout_below="@+id/eventSwimView"
+                    android:layout_alignStart="@+id/eventSwimView"
+                    android:layout_marginTop="10dp"/>
+
+                <TextView
+                    android:id="@+id/tvEventAreaPlaceText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/event_place"
+                    android:textStyle="bold"
+                    android:layout_below="@+id/eventSwimView"
+                    android:layout_marginStart="25dp"
+                    android:layout_toEndOf="@+id/tvEventAreaHostName"
+                    android:layout_marginTop="10dp"/>
+
+                <TextView
+                    android:id="@+id/tvEventAreaStartTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/event_start_time"
+                    android:layout_alignEnd="@+id/eventSwimView"
+                    android:layout_alignTop="@+id/tvEventAreaPlaceText" />
+
+
+
+                <TextView
+                    android:id="@+id/tvEventAreaEndTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/event_end_time"
+                    android:layout_below="@+id/tvEventAreaStartTime"
+                    android:layout_alignEnd="@+id/eventSwimView"
+                    android:layout_marginTop="5dp" />
+
+
+    <TextView
+        android:id="@+id/tvEventAreaRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@+id/tvEventAreaPrice"
+        android:layout_marginEnd="25dp"
+        android:text="@string/event_rating"
+        android:layout_marginTop="5dp"/>
+
+
+    <TextView
+        android:id="@+id/tvEventAreaPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/tvEventAreaHostName"
+        android:layout_marginEnd="25dp"
+        android:text="@string/event_area_price"
+        android:layout_marginTop="5dp"/>
+
+
+    <TextView
+        android:id="@+id/tvEventAreaDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvEventAreaHostName"
+        android:layout_below="@+id/tvEventAreaHostName"
+        android:text="@string/event_date"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"/>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="20dp"
+        android:background="@color/colorAccent"
+        android:layout_below="@+id/tvEventAreaDate"
+        android:layout_alignParentStart="true" />
+
+
+
+    <TextView
+        android:id="@+id/tvEventAreaInterested"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvEventAreaDate"
+        android:layout_alignParentStart="true"
+        android:text="@string/event_interested" />
+
+
+    <TextView
+        android:id="@+id/tvEventAreaComing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvEventAreaDate"
+        android:layout_toEndOf="@+id/tvEventAreaInterested"
+        android:layout_marginStart="20dp"
+        android:text="@string/event_coming" />
+
+    <TextView
+        android:id="@+id/tvEventAreaInvited"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvEventAreaDate"
+        android:layout_toEndOf="@+id/eventSwimView"
+        android:text="@string/event_invited" />
+
+
+
+    <Switch
+        android:id="@+id/interestedSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignBaseline="@+id/eventSwimView"
+        android:layout_marginTop="150dp"
+        android:text="@string/event_intrested_switch" />
+
+    <Switch
+        android:id="@+id/comingSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/event_comming_switch"
+        android:layout_below="@+id/interestedSwitch"
+        android:layout_alignStart="@+id/interestedSwitch"
+        android:layout_alignParentEnd="true"/>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:background="@color/colorAccent"
+        android:layout_marginTop="45dp"
+        android:layout_below="@+id/tvEventAreaDate" />
+
+
+
+
+    <TextView
+        android:id="@+id/tvEventAreaDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/event_description"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="25dp"
+        android:layout_below="@+id/tvEventAreaDate"/>
+
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:background="@color/colorAccent"
+        android:layout_below="@+id/tvEventAreaDescription" />
+
+
+
+</RelativeLayout>

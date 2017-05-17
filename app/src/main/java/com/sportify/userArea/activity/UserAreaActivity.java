@@ -11,9 +11,12 @@ import android.widget.Toast;
 
 import com.sportify.calendar.activity.CalendarActivity;
 import com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOnePageOneActivity;
+import com.sportify.eventArea.activity.EventAreaActivity;
 import com.sportify.maps.activity.MapsActivity;
 import com.sportify.notifications.activity.NotificationsActivity;
+import com.sportify.readReview.activity.ReadReviewActivity;
 import com.sportify.settings.activity.SettingsActivity;
+import com.sportify.settingsEditProfile.activity.EditProfileActivity;
 import com.sportify.showFriends.activity.ShowFriendsActivity;
 import com.sportify.userArea.presenter.UserAreaPresenter;
 import com.sportify.userArea.presenter.UserAreaPresenterImpl;
@@ -70,5 +73,20 @@ public class UserAreaActivity extends AppCompatActivity implements UserAreaView 
     public void goToCalendarActivity(View v){
         Intent goToCalendarIntent = new Intent(UserAreaActivity.this, CalendarActivity.class);
         UserAreaActivity.this.startActivity(goToCalendarIntent);
+    }
+
+    public void goToEditProfileFromUser(View v){
+        Intent goToEditProfileIntent = new Intent(UserAreaActivity.this, EditProfileActivity.class);
+        UserAreaActivity.this.startActivity(goToEditProfileIntent);
+    }
+
+    public void goToEventAreaActivity(View v){
+        Intent goToEventAreaIntent = new Intent(UserAreaActivity.this, EventAreaActivity.class);
+        UserAreaActivity.this.startActivity(goToEventAreaIntent);
+    }
+
+    public void goToReadReviewActivity(View v){
+        Intent goToReadReviewIntent = new Intent(UserAreaActivity.this, ReadReviewActivity.class);
+        UserAreaActivity.this.startActivity(goToReadReviewIntent);
     }
 }

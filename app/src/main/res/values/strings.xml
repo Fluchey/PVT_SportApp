@@ -14,13 +14,7 @@
     /* Strings Logga in */
     <string name="log_in">Logga in</string>
     <string name="logpassword">Lösenord</string>
-    <string name="forgotten_password">Glömt lösenord?</string>
 
-    /* Strings Glömt lösenord*/
-    <string name="forgotten_password_instru">Fyll i din e-postadress så skickar vi xxx xx x</string>
-    <string name="forgotten_pass_send">Skicka</string>
-    <string name="forgotten_password_success">Mailet har nu skickats, det kan ta några minuter innan det dyker upp i din inkorg</string>
-    <string name="forgotten_password_failure">E-postadressen hittades inte i vårt system, men du kan enkelt registrera ett nytt konto.</string>
 
     /* Strings Skapa profil */
     <string name="profile_firstname">Förnamn</string>
@@ -34,7 +28,7 @@
     <string name="profile_interests_parkour">Parkour</string>
     <string name="profile_birthday_hint">DD/MM/YY</string>
     <string name="profile_text">Skapa en profil så andra kan lära känna dig bättre
-    och vi kan hjälpa dig hitta roliga event, för just dig!</string>
+    och vi kan hjälpa dig hitta roliga event anpassade efter dina intressen. </string>
     <string name="intressen_text">Intressen</string>
     <string name="profile_interests_fotball">Fotboll</string>
     <string name="profile_interests_basket">Basket</string>
@@ -84,7 +78,7 @@
     <string name="userArea_friends">Vänner</string>
 
     /* Strings vänner */
-    <string name="friends">Vänner</string>
+    <string name="friends">Mina Vänner</string>
     <string name="searchFriends">Sök vänner... namn/användarnamn</string>
     <string name="friend_does_not_exist">Finns ingen vän med det namnet</string>
 
@@ -93,7 +87,7 @@
     <string name="create_event">Skapa event</string>
     <string name="event_name">Event titel</string>
     <string name="create_event_hint">Namn på event</string>
-    <string name="event_price">Priset</string>
+    <string name="event_price">Pris</string>
     <string name="event_price_hint">SEK</string>
     <string name="event_place">Plats</string>
     <string name="event_place_hint">Plats</string>
@@ -170,19 +164,10 @@
 
     /* Strings Inställningar */
     <string name="settings_sett">Inställningar</string>
-    <string name="settings_invite">Bjud in</string>
-    <string name="settings_fb_friends">Facebook vänner</string>
-    <string name="settings_find_friends">Hitta vänner</string>
     <string name="settings_account">Konto</string>
-    <string name="settings_change_password">Byt lösenord</string>
-    <string name="settings_old_password">Aktuella lösenordet</string>
-    <string name="settings_new_password">Nya lösenordet</string>
-    <string name="settings_new_password_confirm">Skriv det nya igen</string>
-    <string name="settings_new_password_save">Spara ändringen</string>
     <string name="settings_account_settings">Kontoinställningar</string>
     <string name="settings_support">Support</string>
     <string name="sett_integrity">Integritetspolicy</string>
-    <string name="settings_log_out">Logga ut</string>
     <string name="settings_edit_profile">Redigera profil</string>
 
 
@@ -191,6 +176,19 @@
     <string name="review_score">Betyg</string>
     <string name="review_write">Skriv en recension (frivilligt)</string>
     <string name="review_write_hint">Berätta vad du tycker</string>
+    <string name="review_number_of">Recensioner (10)</string>
+
+
+
+    /* Strings Event-sidan */
+    <string name="event_interested">Intresserade: </string>
+    <string name="event_coming">Kommer: </string>
+    <string name="event_invited">Inbjudna: </string>
+    <string name="event_intrested_switch">Intresserad</string>
+    <string name="event_comming_switch">Kommer</string>
+    <string name="event_rating">Betyg: </string>
+    <string name="event_area_title">Simtävling fjärilssim</string>
+    <string name="event_area_price">Pris: </string>
 
 
     /* Strings misc */
@@ -198,6 +196,7 @@
     <string name="first_name">Förnamn</string>
     <string name="last_name">Efternamn</string>
     <string name="userArea">Profilflöde</string>
+    <string name="edit_profile_intro">Här kan du redigera din profil-information</string>
 
     <string name="register_here">Registrera konto</string>
     <string name="title_activity_friend">KompisAktivitet</string>
@@ -206,7 +205,6 @@
 
 
     /* Strings Skapa event activity 5 */
-
     <string name="Event_activity_5_Header">Förhandsvisning</string>
     <string name="Event_activity_5_Event_Text">Du har nu skapat ett Event!
     Här får du en överblick över eventet</string>
@@ -231,9 +229,9 @@
     <string name="integ_text2">
     Den information vi samlar in från dig kan användas för att:
     •	Göra din upplevelse personlig och tillgodose dina personliga behov
-    •	Förbättra vår hemsida
+    •	Förbättra vår app
     •	Förbättra vår kundservice och ditt behov av hjälp
-    •	Erbjuda personliga event som passer dina intressen eller plats.</string>
+    •	Erbjuda personliga event anpassade efter dina intressen eller lokalisering.</string>
     <string name="integ_text1head">1. Insamling av information</string>
     <string name="integ_text1"> Vi samlar in information från dig när du registrerar dig på vår webbplats, loggar in på ditt konto, registrerar information och/eller när du loggar ut. Den insamlade informationen inkluderar ditt namn, dina intressen, dina event, dina recensioner. </string>
 

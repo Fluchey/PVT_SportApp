@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.sportify.settings.activity.SettingsActivity;
-import com.sportify.settingsChangePass.activity.ChangePassActivity;
 
 import sportapp.pvt_sportapp.R;
 
