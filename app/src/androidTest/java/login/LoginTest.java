@@ -168,8 +168,6 @@ public class LoginTest {
         onView(withId(R.id.listButton)).perform(click());
         onView(withId(R.id.etMapsSearch)).perform(typeText(randomMail.substring(0, 10)), closeSoftKeyboard());
         onView(withText(randomMail)).perform(click());
-
-
     }
 
 }
