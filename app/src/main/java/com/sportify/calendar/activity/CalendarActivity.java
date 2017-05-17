@@ -8,8 +8,7 @@ import android.widget.Toast;
 
 import com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOnePageOneActivity;
 import com.sportify.maps.activity.MapsActivity;
-import com.sportify.notifications.activity.NotificationsActivity;
-import com.sportify.settings.activity.SettingsActivity;
+import com.sportify.notifications.activity.NotificationActivity;
 import com.sportify.showFriends.activity.ShowFriendsActivity;
 import com.sportify.userArea.activity.UserAreaActivity;
 
@@ -40,7 +39,7 @@ public class CalendarActivity extends AppCompatActivity implements CalendarView{
     }
 
     public void toNoteFromCalActivity(View view) {
-        Intent notificationViewIntent = new Intent(CalendarActivity.this, NotificationsActivity.class);
+        Intent notificationViewIntent = new Intent(CalendarActivity.this, NotificationActivity.class);
         CalendarActivity.this.startActivity(notificationViewIntent);
     }
 

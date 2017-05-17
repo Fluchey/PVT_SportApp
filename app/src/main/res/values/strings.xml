@@ -136,6 +136,7 @@
     <string name="event_place_empty_error">Ange plats</string>
 
 
+    /* Registrera konto */
     <string name="first_name_optional">Förnamn (frivilligt)</string>
     <string name="last_name_optional">Efternamn (frivilligt)</string>
     <string name="username_empty_error">Ange användarnamn</string>
@@ -237,5 +238,7 @@
     <string name="integ_text1head">1. Insamling av information</string>
     <string name="integ_text1"> Vi samlar in information från dig när du registrerar dig på vår webbplats, loggar in på ditt konto, registrerar information och/eller när du loggar ut. Den insamlade informationen inkluderar ditt namn, dina intressen, dina event, dina recensioner. </string>
 
+    /* Notifikationer */
+    <string name="event_invite_notification">har bjudit in dig till sitt event</string>
 
 </resources>
