@@ -48,7 +48,9 @@
         android:paddingTop="10dp"
         android:onClick="goToEditProfileFromUser"/>
 
-    <!--TODO : hämta användarens profiltext -->
+    <!--TODO : gör user area dynamisk -->
+
+
     <TextView
         android:id="@+id/profileText"
         android:layout_width="200dp"
@@ -58,7 +60,6 @@
         android:layout_below="@+id/profilePicView"
         android:paddingTop="5dp" />
 
-    <!--TODO : hämta användarens info (namn, ålder, intressen) -->
     <TextView
         android:id="@+id/UserInfoNameText"
         android:layout_width="wrap_content"
@@ -83,7 +84,6 @@
         android:layout_below="@+id/UserInfoAgeText"/>
 
 
-    <!--TODO : hämta användarens profilbild -->
     <ImageView
         android:id="@+id/profilePicView"
         android:layout_width="95dp"
@@ -185,7 +185,6 @@
         android:layout_alignParentBottom="true"/>
 
 
-    <!--TODO : hämta eventets bild -->
     <ImageView
         android:id="@+id/userAreaViewSwim"
         android:layout_width="wrap_content"
@@ -200,7 +199,6 @@
 
 
 
-    <!--TODO : hämta info om event -->
     <TextView
         android:id="@+id/userAreaSwimText"
         android:layout_width="wrap_content"
