@@ -5,13 +5,10 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
 import android.util.Log;
-
 import com.sportify.profile.request.ProfileRequest;
 import com.sportify.profile.request.ProfileRequestImpl;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -37,17 +34,12 @@ public class Profile implements ProfileRequest.OnCreateProfileFinishedListener {
     private String imageBase64;
 
     //TODO: Include the view in constructor IF closeProgressDialog is required
-    //TODO: keep as object retrieved, add option to save to pref and get from pref as static
     public Profile getUserProfile(int profileID, SharedPreferences sharedPref){
         this.sharedPref = sharedPref;
         this.token = sharedPref.getString("jwt", "");
         this.imageBase64 = "";
         profileRequest = new ProfileRequestImpl(this, token);
-        getProfileInfo(profileID);
-        return this;
-    }
 
-    private void getProfileInfo(int profileID){
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("profileID", profileID);
@@ -55,6 +47,7 @@ public class Profile implements ProfileRequest.OnCreateProfileFinishedListener {
             e.printStackTrace();
         }
         profileRequest.makeApiRequest(jsonObject.toString(), "https://pvt15app.herokuapp.com/api/getProfileInfo");
+        return this;
     }
 
     /**
@@ -90,7 +83,7 @@ public class Profile implements ProfileRequest.OnCreateProfileFinishedListener {
 
     }
 
-
+    //Methods to get information from the UserProfileObject
     public String getProfileFirstName(){
         return firstName;
     }
@@ -115,6 +108,7 @@ public class Profile implements ProfileRequest.OnCreateProfileFinishedListener {
         return image;
     }
 
+    //This saved the value from the UserProfileObject to SharedPreferences
     public void saveMyProfileToSharedPreferences(){
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString("firstName", firstName);
@@ -132,6 +126,7 @@ public class Profile implements ProfileRequest.OnCreateProfileFinishedListener {
         editor.apply();
     }
 
+    //Util methods to retreive from SharedPreferences and auto-convert types
     public static String getFirstNameFromSharedPreferences(SharedPreferences sharedPref){
         return sharedPref.getString("firstName", "");
     }
@@ -172,7 +167,7 @@ public class Profile implements ProfileRequest.OnCreateProfileFinishedListener {
         ByteArrayOutputStream baos=new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG,100, baos);
         byte[] arr = baos.toByteArray();
-        return Base64.encodeToString(arr, Base64.DEFAULT);
+        return Base64.encodeToString(arr, Base64.NO_WRAP);
     }
 
     //Takes a base64String, decodes and returns Bitmap

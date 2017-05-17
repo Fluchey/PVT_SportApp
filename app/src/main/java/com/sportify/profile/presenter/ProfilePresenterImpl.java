@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.sportify.profile.activity.ProfileView;
 import com.sportify.profile.request.ProfileRequest;
 import com.sportify.profile.request.ProfileRequestImpl;
+import com.sportify.util.Profile;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -52,10 +53,11 @@ public class ProfilePresenterImpl implements ProfilePresenter, ProfileRequest.On
         String imageBase64 = "";
 
         if (image!=null && profileView.userSelectedImage()) {
-            ByteArrayOutputStream bos = new ByteArrayOutputStream();
-            image.compress(Bitmap.CompressFormat.PNG, 100, bos);
-            byte[] imageBytes = bos.toByteArray();
-            imageBase64 = Base64.encodeToString(imageBytes, Base64.NO_WRAP);
+            imageBase64 = Profile.encodeBitMapToString(image);
+//            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+//            image.compress(Bitmap.CompressFormat.PNG, 100, bos);
+//            byte[] imageBytes = bos.toByteArray();
+//            imageBase64 = Base64.encodeToString(imageBytes, Base64.NO_WRAP);
         }
 
         if (firstname.isEmpty()) {
@@ -107,7 +109,7 @@ public class ProfilePresenterImpl implements ProfilePresenter, ProfileRequest.On
      */
     @Override
     public void showApiResponse(String... params) {
-        Log.d("Params [0]", params[1]);
+        //Log.d("Params [0]", params[0]);
         if(params[1].equals("201")){
             Toast.makeText((Context) profileView, "Profile information entered!", Toast.LENGTH_SHORT).show();
             profileView.goToLoginActivity();
