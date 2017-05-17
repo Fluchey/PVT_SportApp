@@ -12,7 +12,7 @@
         android:id="@+id/friendsText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/friends"
+        android:text="@string/friends_header"
         android:textSize="@dimen/header"
         android:textColor="@color/colorCrystalWhite"
         android:fontFamily="serif"
@@ -34,7 +34,7 @@
         android:id="@+id/svFriensScroll"
         style="@android:style/Widget.Holo.Light.ScrollView"
         android:layout_width="350dp"
-        android:layout_height="500dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/searchFrindAcTv"
@@ -49,7 +49,7 @@
 
         <RelativeLayout
             android:layout_width="350dp"
-            android:layout_height="100dp"
+            android:layout_height="1000dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="1dp"
             android:fadeScrollbars="false"
@@ -63,7 +63,7 @@
             <ListView
                 android:id="@+id/lvShowFriends"
                 android:layout_width="500dp"
-                android:layout_height="700dp"
+                android:layout_height="1000dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="0dp"
@@ -73,92 +73,18 @@
                 android:scrollbarThumbHorizontal="@color/colorPrimary"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:layout_constraintLeft_creator="1"
-                tools:layout_constraintTop_creator="1" />
+                />
 
         </RelativeLayout>
     </ScrollView>
 
-
-
-    <ImageView
-        android:id="@+id/mainButtonfromFriends"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:clickable="true"
-        app:srcCompat="@drawable/menuhome"
-        android:onClick="ToUserAreaFromFriendsActivity"
-        android:layout_toStartOf="@+id/toMapButtonFromFriends"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="38dp"
-        android:layout_marginBottom="5dp"
-        tools:ignore="ContentDescription" />
-
-
-    <ImageView
-        android:id="@+id/toMapButtonFromFriends"
-        android:onClick="toMapFromFriendsActivity"
-        android:clickable="true"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        app:srcCompat="@drawable/menumap3"
-        tools:ignore="ContentDescription"
-        android:layout_toStartOf="@+id/createEventButtonfromFriends"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="38dp"
-        android:layout_marginBottom="10dp"/>
-
-
-
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/createEventButtonfromFriends"
-        app:fabSize="normal"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:onClick="createEventfromFriendsActivity"
-        android:clickable="true"
-        android:layout_marginBottom="@dimen/createEventMargin"
-        app:srcCompat="@drawable/menucreateevent"
-        app:backgroundTint="@color/colorAccent"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"/>
-
-
-
-    <ImageView
-        android:id="@+id/toNotificationsButtonfromFriends"
-        android:clickable="true"
-        android:onClick="toNotificationsfromFriendsActivity"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        app:srcCompat="@drawable/menunotification"
-        tools:ignore="ContentDescription"
-        android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/createEventButtonfromFriends"
-        android:layout_marginStart="38dp"
-        android:layout_marginBottom="10dp"/>
-
-    <ImageView
-        android:id="@+id/goToFriendsListButton"
-        android:clickable="true"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        app:srcCompat="@drawable/menufriends"
-        tools:ignore="ContentDescription"
-        android:layout_toEndOf="@+id/toNotificationsButtonfromFriends"
-        android:layout_marginStart="38dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="10dp"/>
-
-    <ImageButton
-        android:id="@+id/imageButton4"
+    <Button
+        android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="11dp"
-        android:background="@android:color/transparent"
-        app:srcCompat="@drawable/addfriendnew"
+        android:text="Button"
         android:layout_below="@+id/searchFrindAcTv"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp" />
 
 </RelativeLayout>

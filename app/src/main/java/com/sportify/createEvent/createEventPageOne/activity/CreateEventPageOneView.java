@@ -12,6 +12,8 @@ public interface CreateEventPageOneView {
 
     String getEventPlace();
 
+    int getEventPlaceId();
+
     String getEventPrice();
 
     String getEventStartDate();

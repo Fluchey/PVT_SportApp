@@ -99,6 +99,12 @@ public class CreateEventPageOnePresenterImpl implements CreateEventPageOnePresen
                 }
             }
             JSONObject jsonObject = new JSONObject();
+            Place p = createEventPageOneRequest.getPlaces().get(createEventPageOneView.getEventPlaceId());
+//            for(Place p : createEventPageOneRequest.getPlaces()){
+//                if(p.getName().equals(eventPlace)){
+//                    placeId = p.getId();
+//                }
+//            }
             try {
                 jsonObject.put("eventName", eventName);
                 jsonObject.put("eventPrice", "" + eventPrice);
@@ -107,7 +113,7 @@ public class CreateEventPageOnePresenterImpl implements CreateEventPageOnePresen
                 jsonObject.put("eventStartTime", "" + eventStartTime);
                 jsonObject.put("eventEndTime", "" + eventEndTime);
                 jsonObject.put("eventType", eventType);
-                jsonObject.put("eventPlace", eventPlace);
+                jsonObject.put("eventPlace", p.getId());
                 if(!eventMaxAttendance.isEmpty()) {
                     jsonObject.put("eventMaxAttendance", eventMaxAttendance);
                 }
@@ -122,6 +128,7 @@ public class CreateEventPageOnePresenterImpl implements CreateEventPageOnePresen
             /**
              * Create new asynctask
              */
+            Log.d("Event:", jsonObject.toString());
             createEventPageOneRequest.makeApiRequestPut("POST", "createEvent", jsonObject.toString(), "createEvent");
         }
     }

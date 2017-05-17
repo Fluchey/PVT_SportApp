@@ -115,7 +115,7 @@
         android:clickable="true"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:src="@drawable/menumapsearch"
+        android:src="@drawable/menumap3"
         tools:ignore="ContentDescription"
         android:layout_toStartOf="@+id/createEventButtonfromMap"
         android:layout_alignParentBottom="true"
@@ -130,10 +130,13 @@
         android:layout_height="80dp"
         android:onClick="createEventfromMapActivity"
         android:clickable="true"
+        android:layout_marginBottom="@dimen/createEventMargin"
         android:src="@drawable/menucreateevent"
         app:backgroundTint="@color/colorAccent"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"/>
+
+
 
     <ImageView
         android:id="@+id/toNotificationsButtonfromMap"

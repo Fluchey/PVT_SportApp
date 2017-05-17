@@ -46,7 +46,12 @@ public class CreateEventPageOneRequestImpl implements CreateEventPageOneRequest 
         try {
             for (int i = 0; i < array.length(); i++) {
                 JSONObject jsonObject = array.getJSONObject(i);
-                places.add(new Place(jsonObject.getString("place_id"), jsonObject.getString("name"), jsonObject.getString("category"), Double.parseDouble(jsonObject.getString("lat")), Double.parseDouble(jsonObject.getString("lon"))));
+                JSONArray categoryArray = jsonObject.getJSONArray("categories");
+                ArrayList<String> categories = new ArrayList<>();
+                for(int j = 0; j < categoryArray.length(); j++){
+                    categories.add(categoryArray.getString(j));
+                }
+                places.add(new Place(jsonObject.getString("id"), jsonObject.getString("placeName"), categories, Double.parseDouble(jsonObject.getString("lat")), Double.parseDouble(jsonObject.getString("lon"))));
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -103,7 +108,7 @@ public class CreateEventPageOneRequestImpl implements CreateEventPageOneRequest 
             }else {
             String[] resultFromApi = Connector.connect("https://pvt15app.herokuapp.com/api/" + params[1],
                     params[0], String.format(params[2]), token);
-//                String[] resultFromApi = Connector.connect("http://192.168.0.12:9000/api/" + params[1],
+//                String[] resultFromApi = Connector.connect("http://192.168.43.14:9000/api/" + params[1],
 //                        params[0], String.format(params[2]), token);
                 responseBody = resultFromApi[0];
                 return null;

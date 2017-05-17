@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.ListFragment;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
@@ -228,6 +229,7 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
      * @param id
      */
     public void goFromListToMap(int id) {
+        Log.d("Triggered", "Trigg");
         mapsPresenter.goFromListToMap(id);
     }
 
@@ -259,7 +261,6 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
         Intent createEventIntent = new Intent(MapsActivity.this, CreateEventPageOnePageOneActivity.class);
         MapsActivity.this.startActivity(createEventIntent);
     }
-
 
     public void goToSettingsActivity(View v){
         Intent goToSettingsViewIntent = new Intent(MapsActivity.this, SettingsActivity.class);
