@@ -25,6 +25,7 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
 
     private TextView placeName;
     private TextView description;
+    private TextView startDate;
     private TextView startTime;
     private TextView endTime;
     private TextView price;
@@ -42,6 +43,7 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
         presenter.getEventFromDb(eventId);
 
         placeName = (TextView) findViewById(R.id.tvEventAreaPlaceText);
+        startDate = (TextView) findViewById(R.id.tvEventAreaDate);
         startTime = (TextView) findViewById(R.id.tvEventAreaStartTime);
         endTime = (TextView) findViewById(R.id.tvEventAreaEndTime);
         description = (TextView) findViewById(R.id.tvEventAreaDescription);
@@ -76,7 +78,7 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
 
     @Override
     public void setStartDate(String startDate) {
-
+        this.startDate.setText(startDate);
     }
 
     @Override
