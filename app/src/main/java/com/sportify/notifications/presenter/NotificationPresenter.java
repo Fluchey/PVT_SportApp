@@ -8,5 +8,8 @@ public interface NotificationPresenter {
 
     void getNotificationsMakeApiRequest();
 
+    void sendResponseEventInviteMakeApiRequest(String response, int eventID);
+
     void getNotificationsFromApiResponse(String jsonMessage);
+
 }

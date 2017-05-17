@@ -200,7 +200,7 @@
 
 
 
-    <!--TODO : hämta info om event -->
+    <!--TODO : hämta info om eventName -->
     <TextView
         android:id="@+id/userAreaSwimText"
         android:layout_width="wrap_content"

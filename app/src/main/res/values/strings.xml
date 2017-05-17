@@ -28,7 +28,7 @@
     <string name="profile_interests_parkour">Parkour</string>
     <string name="profile_birthday_hint">DD/MM/YY</string>
     <string name="profile_text">Skapa en profil så andra kan lära känna dig bättre
-    och vi kan hjälpa dig hitta roliga event anpassade efter dina intressen. </string>
+    och vi kan hjälpa dig hitta roliga eventName anpassade efter dina intressen. </string>
     <string name="intressen_text">Intressen</string>
     <string name="profile_interests_fotball">Fotboll</string>
     <string name="profile_interests_basket">Basket</string>
@@ -68,12 +68,12 @@
     <string name="userArea_userInfoAge"> 26 år </string>
     <string name="userArea_userInfoInterest">-insert interest-</string>
     <string name="userArea_calendar">Min kalender</string>
-    <string name="userArea_event">Mina event</string>
+    <string name="userArea_event">Mina eventName</string>
     <string name="userArea_edit">Redigera profil</string>
     <string name="userArea_rec">Rekommendationer</string>
     <string name="userArea_home">Hem</string>
     <string name="userArea_search">Sök</string>
-    <string name="userArea_create">Skapa event</string>
+    <string name="userArea_create">Skapa eventName</string>
     <string name="userArea_notifications">Notiser</string>
     <string name="userArea_friends">Vänner</string>
 
@@ -83,10 +83,10 @@
     <string name="friend_does_not_exist">Finns ingen vän med det namnet</string>
 
 
-    /* Strings Skapa event */
-    <string name="create_event">Skapa event</string>
+    /* Strings Skapa eventName */
+    <string name="create_event">Skapa eventName</string>
     <string name="event_name">Event titel</string>
-    <string name="create_event_hint">Namn på event</string>
+    <string name="create_event_hint">Namn på eventName</string>
     <string name="event_price">Pris</string>
     <string name="event_price_hint">SEK</string>
     <string name="event_place">Plats</string>
@@ -103,23 +103,23 @@
     <string name="event_pic">Lägg till bild</string>
     <string name="event_host">Värd:</string>
     <string name="event_private">Privat</string>
-    <string name="event_private_descr">Endast inbjudna kan gå med i event</string>
+    <string name="event_private_descr">Endast inbjudna kan gå med i eventName</string>
     <string name="event_public">Offentlig</string>
     <string name="event_next">Hoppa över>></string>
     <string name="event_back">Tillbaka</string>
     <string name="event_invite">Bjud in vänner>></string>
     <string name="event_public_descr">Vem som helst kan gå med i eventet</string>
-    <string name="event_invite_friends">Nästan klar! Bjud in dina vänner till ditt event</string>
+    <string name="event_invite_friends">Nästan klar! Bjud in dina vänner till ditt eventName</string>
     <string name="event_created_message">Här ser du en överblick över eventet, gå vidare till nästa steg för att publicera det i appen.</string>
     <string name="no_friends_have_been_choosen">Ingen vän är vald</string>
     <string name="several_friends_have_been_choosen"> är inbjudna</string>
     <string name="one_friend_has_been_choosen"> är inbjuden</string>
 
     <string name="event_max_attendance">Max deltagare </string>
-    <string name="createEvent_here">Skapa ditt event här</string>
-    <string name="find_event">Hitta event</string>
+    <string name="createEvent_here">Skapa ditt eventName här</string>
+    <string name="find_event">Hitta eventName</string>
 
-    /* Error messages create event */
+    /* Error messages create eventName */
     <string name="event_name_empty_error">Ange namn</string>
     <string name="event_price_wrongformat_error">Pris är i fel format</string>
     <string name="event_date_empty_error">Ange datum</string>
@@ -142,7 +142,7 @@
     <string name="email_wrongFormat_error">Vänligen skriv in en giltig e-postadress</string>
     <string name="event_place_does_not_exist">Platsen finns ej i vår databas</string>
 
-    /* Strings Skapa event activity 3 */
+    /* Strings Skapa eventName activity 3 */
     <string name="Event_Activity_3_Friends_Header">Vänner</string>
     <string name="Event_Activity_3_Header">Bjud in dina vänner</string>
     <string name="Event_Activity_3_MyFriends">Mina vänner</string>
@@ -204,7 +204,7 @@
     <string name="login_successfull">Inloggningen lyckades!</string>
 
 
-    /* Strings Skapa event activity 5 */
+    /* Strings Skapa eventName activity 5 */
     <string name="Event_activity_5_Header">Förhandsvisning</string>
     <string name="Event_activity_5_Event_Text">Du har nu skapat ett Event!
     Här får du en överblick över eventet</string>
@@ -231,15 +231,15 @@
     •	Göra din upplevelse personlig och tillgodose dina personliga behov
     •	Förbättra vår app
     •	Förbättra vår kundservice och ditt behov av hjälp
-    •	Erbjuda personliga event anpassade efter dina intressen eller lokalisering.</string>
+    •	Erbjuda personliga eventName anpassade efter dina intressen eller lokalisering.</string>
     <string name="integ_text1head">1. Insamling av information</string>
-    <string name="integ_text1"> Vi samlar in information från dig när du registrerar dig på vår webbplats, loggar in på ditt konto, registrerar information och/eller när du loggar ut. Den insamlade informationen inkluderar ditt namn, dina intressen, dina event, dina recensioner. </string>
+    <string name="integ_text1"> Vi samlar in information från dig när du registrerar dig på vår webbplats, loggar in på ditt konto, registrerar information och/eller när du loggar ut. Den insamlade informationen inkluderar ditt namn, dina intressen, dina eventName, dina recensioner. </string>
 
     /* Strings läggtillnyavänner */
     <string name="friends_header">Lägg till nya vänner</string>
 
     /* Notifikationer */
-    <string name="event_invite_notification">har bjudit in dig till sitt event</string>
+    <string name="event_invite_notification">har bjudit in dig till sitt eventName</string>
 
 
 </resources>

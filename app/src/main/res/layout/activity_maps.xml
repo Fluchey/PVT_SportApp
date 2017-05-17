@@ -84,7 +84,7 @@
 
     </LinearLayout>
 
-    <!-- TODO only create event button shows, why? -->
+    <!-- TODO only create eventName button shows, why? -->
 
     <TextView
         android:id="@+id/mapHeader"

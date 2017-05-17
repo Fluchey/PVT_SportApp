@@ -25,6 +25,7 @@ public class NotificationPresenterImpl implements NotificationPresenter, Notific
     private SharedPreferences sharedPref;
     private String token = "";
     private ArrayList<Notification> notifications;
+    String method;
 
     public NotificationPresenterImpl(NotificationView notificationView, SharedPreferences sharedPref){
         this.notificationView = notificationView;
@@ -32,15 +33,30 @@ public class NotificationPresenterImpl implements NotificationPresenter, Notific
         this.token = sharedPref.getString("jwt", "");
         this.notificationRequest = new NotificationRequestImpl(this, token);
         getNotificationsMakeApiRequest();
-
     }
 
     @Override
     public void getNotificationsMakeApiRequest() {
-        notificationRequest.makeApiRequest("{}");
+        method = "POST";
+        notificationRequest.makeApiRequest("geteventinvites", method, "{}");
     }
 
-    //TODO: Slå ihop denna med showNotifications()?
+    @Override
+    public void sendResponseEventInviteMakeApiRequest(String response, int eventID) {
+
+        JSONObject json = new JSONObject();
+        try {
+            json.put("response", response);
+            json.put("eventID", "" + eventID);
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+
+        System.out.println("JSON " + json.toString());
+        method = "PUT";
+        notificationRequest.makeApiRequest("respondeventinvite", method, json.toString());
+    }
+
     @Override
     public void getNotificationsFromApiResponse(String jsonMessage) {
         JSONObject json = null;
@@ -69,9 +85,10 @@ public class NotificationPresenterImpl implements NotificationPresenter, Notific
 
                 JSONObject notification = array.getJSONObject(i);
                 String host = notification.getString("host");
-                String message = notification.getString("event");
+                String eventName = notification.getString("event");
+                int eventID = notification.getInt("eventID");
 
-                Notification newNotification = new Notification(host, message);
+                Notification newNotification = new Notification(host, eventName, eventID);
 
                 notifications.add(newNotification);
             }
@@ -84,6 +101,8 @@ public class NotificationPresenterImpl implements NotificationPresenter, Notific
 
     @Override
     public void showApiResponse(String... params) {
-        getNotificationsFromApiResponse(params[0]);
+        if(method.equalsIgnoreCase("POST")) {
+            getNotificationsFromApiResponse(params[0]);
+        }
     }
 }
