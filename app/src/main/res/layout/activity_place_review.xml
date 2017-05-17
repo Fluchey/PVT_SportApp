@@ -42,7 +42,7 @@
         android:background="@drawable/border"
         android:ems="10"
         android:inputType="textMultiLine"
-        android:singleLine="false" />
+        tools:ignore="LabelFor" />
 
     <Button
         android:id="@+id/submitButton"
@@ -61,7 +61,8 @@
         android:layout_height="200dp"
         app:srcCompat="@drawable/sportifylogosquare"
         android:layout_below="@+id/reviewHeader"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        tools:ignore="ContentDescription" />
 
     <ImageView
         android:id="@+id/imageView4"
@@ -69,7 +70,8 @@
         android:layout_height="75dp"
         app:srcCompat="@drawable/com_facebook_profile_picture_blank_portrait"
         android:layout_alignTop="@+id/imageButton2"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/commentHeader"
