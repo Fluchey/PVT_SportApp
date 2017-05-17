@@ -200,7 +200,7 @@
         android:gravity="top"
         android:lines="2"
         android:hint="@string/event_descr_hint"
-        android:textSize="12sp"
+        android:textSize="@dimen/standardSmallerTextSize"
         android:inputType="textMultiLine"
         android:layout_above="@+id/Next"
         android:layout_alignParentEnd="true"

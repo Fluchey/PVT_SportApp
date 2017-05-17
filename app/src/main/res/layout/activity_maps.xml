@@ -67,6 +67,8 @@
                 android:background="@color/colorCrystalWhite"
                 android:textColorHint="@color/colorPrimaryDark"
                 android:drawableStart="@drawable/searchicon"
+                android:textSize="18sp"
+                android:textStyle="italic"
                 android:ems="10"
                 android:hint="@string/map_event_place_interest"
                 android:inputType="textPersonName"

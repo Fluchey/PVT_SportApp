@@ -39,7 +39,7 @@
         android:text="Löpning/friidrott/etc etc?"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:textSize="12sp"
+        android:textSize="@dimen/standardSmallerTextSize"
         android:layout_below="@+id/readReviewHeader"/>
 
     <ImageView
@@ -95,7 +95,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/staticRatingBar"
         android:layout_marginTop="65dp"
-        android:textSize="12sp"
+        android:textSize="@dimen/standardSmallerTextSize"
         android:text="Mycket trevlig bassäng!"
         android:layout_marginBottom="30dp"
         android:layout_toStartOf="@+id/userStaticRatingBar" />
