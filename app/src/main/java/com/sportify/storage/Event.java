@@ -33,6 +33,10 @@ public class Event {
         this.privateEvent = privateEvent;
     }
 
+    public Event() {
+
+    }
+
     public String getEndDate() {
         return endDate;
     }
