@@ -181,10 +181,10 @@ public class MapsRequestImpl implements MapsRequest {
 //                result = Connector.connectGetOrDelete(params[0], "http://192.168.0.12:9000/api/" + params[1], token);
                 return null;
             } else {
-//                result = Connector.connect("https://pvt15app.herokuapp.com/api/" + params[0],
-//                        params[1], params[2], token);
-                result = Connector.connect("http://192.168.0.12:9000/api/" + params[0],
+                result = Connector.connect("https://pvt15app.herokuapp.com/api/" + params[0],
                         params[1], params[2], token);
+//                result = Connector.connect("http://192.168.0.12:9000/api/" + params[0],
+//                        params[1], params[2], token);
                 return null;
             }
         }
