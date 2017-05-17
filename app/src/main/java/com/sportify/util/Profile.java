@@ -37,7 +37,7 @@ public class Profile implements ProfileRequest.OnCreateProfileFinishedListener {
     private String imageBase64;
 
     //TODO: Include the view in constructor IF closeProgressDialog is required
-    //TODO: keep as object retreived, add option to save to pref and get from pref as static
+    //TODO: keep as object retrieved, add option to save to pref and get from pref as static
     public Profile getUserProfile(int profileID, SharedPreferences sharedPref){
         this.sharedPref = sharedPref;
         this.token = sharedPref.getString("jwt", "");
@@ -65,9 +65,8 @@ public class Profile implements ProfileRequest.OnCreateProfileFinishedListener {
     @Override
     public void showApiResponse(String... params) {
         String interestsString = "";
-
         Log.d("Params [1]", params[1]);
-        JSONObject jsonObject = null;
+        JSONObject jsonObject;
         if(params[1].equals("201")){
             try {
                 jsonObject = new JSONObject(params[0]);
@@ -85,12 +84,8 @@ public class Profile implements ProfileRequest.OnCreateProfileFinishedListener {
                 interestsString = interestsString.replace("]", "");
                 this.interests = new ArrayList<String>(Arrays.asList(interestsString.split(", ")));
             }
-            byte[] imageBytes = null;
-            if (!imageBase64.isEmpty()) {
-                imageBytes = Base64.decode(imageBase64, 0);
-            }
-            this.image = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
-
+            if (!imageBase64.isEmpty())
+            this.image = decodeStringToBitmap(imageBase64);
         }
 
     }
@@ -115,6 +110,7 @@ public class Profile implements ProfileRequest.OnCreateProfileFinishedListener {
     private List<String> getInterests(){
         return interests;
     }
+
     private Bitmap getProfileImage(){
         return image;
     }
@@ -137,27 +133,22 @@ public class Profile implements ProfileRequest.OnCreateProfileFinishedListener {
     }
 
     public static String getFirstNameFromSharedPreferences(SharedPreferences sharedPref){
-        SharedPreferences.Editor editor = sharedPref.edit();
         return sharedPref.getString("firstName", "");
     }
 
     public static String getLastNameFromSharedPreferences(SharedPreferences sharedPref){
-        SharedPreferences.Editor editor = sharedPref.edit();
         return sharedPref.getString("lastName", "");
     }
 
     public static String getDateOfBirthFromSharedPreferences(SharedPreferences sharedPref){
-        SharedPreferences.Editor editor = sharedPref.edit();
         return sharedPref.getString("dateOfBirth", "");
     }
 
     public static String getUserBioFromSharedPreferences(SharedPreferences sharedPref){
-        SharedPreferences.Editor editor = sharedPref.edit();
         return sharedPref.getString("userBio", "");
     }
 
     public static List<String> getInterestsFromSharedPreferences(SharedPreferences sharedPref){
-        SharedPreferences.Editor editor = sharedPref.edit();
         Set<String> set = new HashSet<>();
         set = sharedPref.getStringSet("interests", null);
         List<String> interests = new ArrayList<>(set);
@@ -165,12 +156,11 @@ public class Profile implements ProfileRequest.OnCreateProfileFinishedListener {
     }
 
     public static Bitmap getProfilePictureBitMapFromSharedPreferences(SharedPreferences sharedPref){
-        SharedPreferences.Editor editor = sharedPref.edit();
         String imageBase64 = sharedPref.getString("imageBase64", "");
         return decodeStringToBitmap(imageBase64);
     }
 
-    //Not used
+    //Not used for now
     @Override
     public void closeProgressDialog() {
 
