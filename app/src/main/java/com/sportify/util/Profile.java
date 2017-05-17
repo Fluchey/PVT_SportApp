@@ -36,6 +36,7 @@ public class Profile implements ProfileRequest.OnCreateProfileFinishedListener {
     //Boolean userSelectedImage;
 
     //TODO: Include the view in constructor IF closeProgressDialog is required
+    //TODO: keep as object retreived, add option to save to pref and get from pref as static
     public Profile userProfile(int profileID, SharedPreferences sharedPref){
         this.sharedPref = sharedPref;
         this.token = sharedPref.getString("jwt", "");
