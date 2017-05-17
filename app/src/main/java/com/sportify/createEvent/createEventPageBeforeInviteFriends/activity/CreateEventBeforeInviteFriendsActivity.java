@@ -12,10 +12,17 @@ import sportapp.pvt_sportapp.R;
 
 public class CreateEventBeforeInviteFriendsActivity extends AppCompatActivity {
 
+    private int eventID;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_event_before_invite_friends);
+
+        Bundle extras = getIntent().getExtras();
+        if(extras != null){
+            eventID = extras.getInt("EVENT_ID");
+        }
     }
 
     public void goToPreviewActivity(View v){
@@ -25,6 +32,9 @@ public class CreateEventBeforeInviteFriendsActivity extends AppCompatActivity {
 
     public void goToInviteFriendsActivity(View v){
         Intent goToInviteFriendsActivity = new Intent(CreateEventBeforeInviteFriendsActivity.this, CreateEventInviteFriendsActivity.class);
+        CreateEventBeforeInviteFriendsActivity.this.startActivity(goToInviteFriendsActivity);
+
+        goToInviteFriendsActivity.putExtra("EVENT_ID", eventID);
         CreateEventBeforeInviteFriendsActivity.this.startActivity(goToInviteFriendsActivity);
     }
 }

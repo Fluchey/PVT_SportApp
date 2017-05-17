@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.ListFragment;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
@@ -31,7 +32,7 @@ import com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOnePa
 import com.sportify.maps.CustListFragment;
 import com.sportify.maps.presenter.MapsPresenter;
 import com.sportify.maps.presenter.MapsPresenterImpl;
-import com.sportify.notifications.activity.NotificationsActivity;
+import com.sportify.notifications.activity.NotificationActivity;
 import com.sportify.settings.activity.SettingsActivity;
 import com.sportify.showFriends.activity.ShowFriendsActivity;
 import com.sportify.userArea.activity.UserAreaActivity;
@@ -228,6 +229,7 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
      * @param id
      */
     public void goFromListToMap(int id) {
+        Log.d("Triggered", "Trigg");
         mapsPresenter.goFromListToMap(id);
     }
 
@@ -260,7 +262,6 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
         MapsActivity.this.startActivity(createEventIntent);
     }
 
-
     public void goToSettingsActivity(View v){
         Intent goToSettingsViewIntent = new Intent(MapsActivity.this, SettingsActivity.class);
         MapsActivity.this.startActivity(goToSettingsViewIntent);
@@ -277,7 +278,7 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
     }
 
     public void toNoteFromMapActivity(View v){
-        Intent goToNoteIntent = new Intent(MapsActivity.this, NotificationsActivity.class);
+        Intent goToNoteIntent = new Intent(MapsActivity.this, NotificationActivity.class);
         MapsActivity.this.startActivity(goToNoteIntent);
     }
 

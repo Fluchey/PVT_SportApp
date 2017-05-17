@@ -43,7 +43,7 @@ public class AddFriendActivity extends AppCompatActivity implements AddFriendVie
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_friends);
+        setContentView(R.layout.activity_addnewfriends);
 
         sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         addFriendsPresenter = new AddFriendPresenterImpl(this, sharedPref);
@@ -117,6 +117,7 @@ public class AddFriendActivity extends AppCompatActivity implements AddFriendVie
     @Override
     public void updateFriendAdapter(ArrayList<Profile> friendList) {
 //        arrayAdapterSearch = new MyArrayAdapterShowFriends(this, R.layout.friend_list_item, friendList);
+        System.out.println("Vänlista: " + friendList.toString());
         arrayAdapterSearch = new ArrayAdapter(this, android.R.layout.simple_list_item_1, friendList);
         searchFriend.setAdapter(arrayAdapterSearch);
     }

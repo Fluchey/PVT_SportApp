@@ -78,18 +78,18 @@ public class AddFriendPresenterImpl implements AddFriendPresenter, AddFriendRequ
         try{
             friends = new ArrayList<>();
 
+            System.out.println("Arraylängd " + array.length());
             for(int i=0; i < array.length(); i++){
                 //TODO: Funkar bara om namn+efternamn inte är null
                 JSONObject jsonObject = array.getJSONObject(i);
                 //TODO: Byt ut facebook icon till profilbild
+
                 String firstName = jsonObject.getString("firstname");
                 int profileID = jsonObject.getInt("profileID");
                 String lastName = jsonObject.getString("lastname");
 
-
-
                 Profile friend = new Profile(firstName, lastName, R.drawable.userprofileimage, profileID);
-
+                System.out.println("Vän läggs till ");
                 friends.add(friend);
             }
         }catch(JSONException e){

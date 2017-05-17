@@ -3,7 +3,6 @@ package com.sportify.userArea.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -13,8 +12,8 @@ import com.sportify.calendar.activity.CalendarActivity;
 import com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOnePageOneActivity;
 import com.sportify.eventArea.activity.EventAreaActivity;
 import com.sportify.maps.activity.MapsActivity;
-import com.sportify.notifications.activity.NotificationsActivity;
 import com.sportify.readReview.activity.ReadReviewActivity;
+import com.sportify.notifications.activity.NotificationActivity;
 import com.sportify.settings.activity.SettingsActivity;
 import com.sportify.settingsEditProfile.activity.EditProfileActivity;
 import com.sportify.showFriends.activity.ShowFriendsActivity;
@@ -43,7 +42,7 @@ public class UserAreaActivity extends AppCompatActivity implements UserAreaView 
     }
 
     public void ToNoteFromUserAreaActivity(View v){
-        Intent goToNotificationsViewIntent = new Intent(UserAreaActivity.this, NotificationsActivity.class);
+        Intent goToNotificationsViewIntent = new Intent(UserAreaActivity.this, NotificationActivity.class);
         UserAreaActivity.this.startActivity(goToNotificationsViewIntent);
     }
 

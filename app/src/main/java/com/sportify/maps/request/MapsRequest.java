@@ -4,6 +4,7 @@ import com.sportify.storage.Event;
 import com.sportify.storage.Place;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by fluchey on 2017-04-26.
@@ -34,5 +35,7 @@ public interface MapsRequest {
     ArrayList<Event> getAllEvents();
 
     ArrayList<Event> getCurrentSearchEvents();
+
+    HashMap<String, Place> getPlaceIdMap();
 
 }

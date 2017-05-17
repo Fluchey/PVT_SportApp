@@ -12,6 +12,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by fluchey on 2017-04-26.
@@ -25,6 +26,7 @@ public class MapsRequestImpl implements MapsRequest {
     private ArrayList<Event> allEvents;
     private ArrayList<Place> currentSearchPlaces;
     private ArrayList<Event> currentSearchEvents;
+    private HashMap<String, Place> placeIdMap;
 
     public MapsRequestImpl(final onRequestFinishedListener onRequestFinishedListener, String token) {
         this.onRequestFinishedListener = onRequestFinishedListener;
@@ -34,6 +36,7 @@ public class MapsRequestImpl implements MapsRequest {
         allEvents = new ArrayList<>();
         currentSearchPlaces = new ArrayList<>();
         currentSearchEvents = new ArrayList<>();
+        placeIdMap = new HashMap<>();
     }
 
     @Override
@@ -60,7 +63,9 @@ public class MapsRequestImpl implements MapsRequest {
                     String categoryFormat = category.substring(13, (category.length() - 2));
                     categories.add(categoryFormat);
                 }
-                allPlaces.add(new Place(jsonObject.getString("id"), jsonObject.getString("placeName"), categories, Double.parseDouble(jsonObject.getString("lat")), Double.parseDouble(jsonObject.getString("lon"))));
+                Place place = new Place(jsonObject.getString("id"), jsonObject.getString("placeName"), categories, Double.parseDouble(jsonObject.getString("lat")), Double.parseDouble(jsonObject.getString("lon")));
+                allPlaces.add(place);
+                placeIdMap.put(place.getId(), place);
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -144,6 +149,11 @@ public class MapsRequestImpl implements MapsRequest {
         return currentSearchEvents;
     }
 
+    @Override
+    public HashMap<String, Place> getPlaceIdMap() {
+        return placeIdMap;
+    }
+
     private class ApiRequest extends AsyncTask<String, MapsRequestImpl, Void> {
         private MapsRequestImpl mapsRequestImpl;
         private String[] result;
@@ -173,7 +183,7 @@ public class MapsRequestImpl implements MapsRequest {
             } else {
                 result = Connector.connect("https://pvt15app.herokuapp.com/api/" + params[0],
                         params[1], params[2], token);
-//                result = Connector.connect("http://192.168.0.12:9000/api/" + params[0],
+//                result = Connector.connect("http://192.168.43.14:9000/api/" + params[0],
 //                        params[1], params[2], token);
                 return null;
             }
