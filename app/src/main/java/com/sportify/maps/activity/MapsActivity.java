@@ -229,7 +229,7 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
      * @param id
      */
     public void goFromListToMap(int id) {
-        Log.d("Triggered", "Trigg");
+
         mapsPresenter.goFromListToMap(id);
     }
 

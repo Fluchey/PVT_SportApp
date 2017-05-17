@@ -97,15 +97,11 @@ public class MapsPresenterImpl implements MapsPresenter, MapsRequest.onRequestFi
         if(mapsView.placesIsChecked()){
             Place p = mapsRequest.getCurrentSearchPlaces().get(id);
             mapsView.switchToMapFragmentFromPresenter(p.getLat(), p.getLon());
-            mapsView.setTextSearch(p.getName());
         }else{
             Event e = mapsRequest.getCurrentSearchEvents().get(id);
-            for (Place p : mapsRequest.getAllPlaces()) {
-                if (p.getName().equalsIgnoreCase(e.getPlaceName())) {
-                    mapsView.switchToMapFragmentFromPresenter(p.getLat(), p.getLon());
-                    mapsView.setTextSearch(e.getEventName());
-                }
-            }
+            Log.d("Event:", e.getEventName());
+            Place p = mapsRequest.getPlaceIdMap().get(e.getPlaceName());
+            mapsView.switchToMapFragmentFromPresenter(p.getLat(), p.getLon());
         }
 
     }
