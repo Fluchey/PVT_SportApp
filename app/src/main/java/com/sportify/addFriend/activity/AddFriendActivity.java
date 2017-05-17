@@ -43,7 +43,7 @@ public class AddFriendActivity extends AppCompatActivity implements AddFriendVie
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_friends);
+        setContentView(R.layout.activity_addnewfriends);
 
         sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         addFriendsPresenter = new AddFriendPresenterImpl(this, sharedPref);
