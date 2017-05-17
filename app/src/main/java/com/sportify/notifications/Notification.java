@@ -9,28 +9,30 @@ import android.widget.ImageView;
 public class Notification {
 
     private String typeOfNotification;
-    private String message;
+    private String eventName;
     private ImageView profilePicture;
     private ImageView symbolToLeft;
     private String host;
+    private int eventID;
 
-//    public Notification(String typeOfNotification, String message, ImageView profilePicture, ImageView symbolToLeft){
+//    public Notification(String typeOfNotification, String eventName, ImageView profilePicture, ImageView symbolToLeft){
 //        this.typeOfNotification = typeOfNotification;
-//        this.message = message;
+//        this.eventName = eventName;
 //        this.profilePicture = profilePicture;
 //        this.symbolToLeft = symbolToLeft;
 //    }
-    public Notification(String host, String message) {
+    public Notification(String host, String eventName, int eventID) {
         this.host = host;
-        this.message = message;
+        this.eventName = eventName;
+        this.eventID = eventID;
     }
 
     public String getTypeOfNotification() {
         return typeOfNotification;
     }
 
-    public String getMessage() {
-        return message;
+    public String getEventName() {
+        return eventName;
     }
 
     public ImageView getProfilePicture() {
@@ -43,5 +45,9 @@ public class Notification {
 
     public String getHost() {
         return host;
+    }
+
+    public int getEventID() {
+        return eventID;
     }
 }

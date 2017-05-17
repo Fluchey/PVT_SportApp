@@ -129,7 +129,6 @@
         android:layout_marginBottom="5dp"
         tools:ignore="ContentDescription" />
 
-
     <ImageView
         android:id="@+id/goToMapButton"
         android:onClick="startMapActivity"
@@ -157,9 +156,6 @@
         android:layout_height="80dp"
         app:srcCompat="@drawable/menucreateevent" />
 
-
-
-
     <ImageView
         android:id="@+id/goToNotificationsButton"
         android:clickable="true"
@@ -186,7 +182,6 @@
         android:layout_marginBottom="10dp"
         android:layout_alignParentBottom="true"/>
 
-
     <ImageView
         android:id="@+id/userAreaViewSwim"
         android:layout_width="200dp"
@@ -199,7 +194,6 @@
         android:layout_below="@+id/view2"
         android:layout_toStartOf="@+id/goToFriendsListButton" />
 
-
     <TextView
         android:id="@+id/tvUAEventAreaPlaceText"
         android:layout_width="wrap_content"
@@ -210,8 +204,6 @@
         android:layout_below="@+id/userAreaViewSwim"
         android:layout_alignStart="@+id/userAreaViewSwim" />
 
-
-
     <TextView
         android:id="@+id/tvUAEventAreaHostName"
         android:layout_width="wrap_content"
@@ -221,8 +213,6 @@
         android:textSize="@dimen/standardSmallerTextSize"
         android:layout_toEndOf="@+id/tvUAEventAreaPlaceText"
         android:layout_marginStart="15dp"/>
-
-
 
     <TextView
         android:id="@+id/tvUAEventAreaDate"
@@ -243,8 +233,6 @@
         android:layout_below="@id/tvUAEventAreaHostName"
         android:textSize="@dimen/standardSmallerTextSize"
         android:layout_marginStart="15dp"/>
-
-
 
     <TextView
         android:id="@+id/tvUAEventAreaPrice"
@@ -290,7 +278,6 @@
         android:layout_marginTop="10dp"
         android:layout_below="@+id/tvUAEventAreaDate"
         android:layout_alignStart="@+id/tvUAEventAreaDate" />
-
 
     <TextView
         android:id="@+id/tvUAPlaceAreaPlaceText"

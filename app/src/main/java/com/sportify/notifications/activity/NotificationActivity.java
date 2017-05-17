@@ -53,7 +53,14 @@ public class NotificationActivity extends AppCompatActivity implements Notificat
         notificationList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //TODO: Besvara förfrågan
+                //TODO: Ändra så andra svar kan ges
+
+                Notification notification = (Notification) notificationList.getItemAtPosition(position);
+                String response = "accepted";
+                int eventID = notification.getEventID();
+
+                notificationPresenter.sendResponseEventInviteMakeApiRequest(response, eventID);
+
             }
         });
     }
