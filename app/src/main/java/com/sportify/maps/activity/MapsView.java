@@ -19,7 +19,7 @@ public interface MapsView {
 
     void showPlaceMarkerAt(String placeName, String description, double latitude, double longitude);
 
-    void showEventMarkerAt(String eventName, String category, double latitude, double longitude);
+    void showEventMarkerAt(String eventName, int eventId, String category, double latitude, double longitude);
 
     void goToLocation(double lat, double lon, float zoom);
 

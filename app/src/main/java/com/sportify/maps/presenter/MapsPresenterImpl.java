@@ -81,7 +81,7 @@ public class MapsPresenterImpl implements MapsPresenter, MapsRequest.onRequestFi
         for (Event e : mapsRequest.getCurrentSearchEvents()) {
                 eventNames.add(e.getEventName());
                 Place place = mapsRequest.getPlaceIdMap().get(e.getPlaceName());
-                mapsView.showEventMarkerAt(e.getEventName(), e.getEventType(), place.getLat(), place.getLon());
+                mapsView.showEventMarkerAt(e.getEventName(), e.getId(), e.getEventType(), place.getLat(), place.getLon());
 //                for (Place p : mapsRequest.getAllPlaces()) {
 //                    if (p.getName().equalsIgnoreCase(e.getPlaceName())) {
 //                        mapsView.showEventMarkerAt(e.getEventName(), e.getEventType(), p.getLat(), p.getLon());
