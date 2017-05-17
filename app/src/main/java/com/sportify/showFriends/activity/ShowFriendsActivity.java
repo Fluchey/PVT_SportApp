@@ -14,6 +14,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.sportify.addFriend.activity.AddFriendActivity;
 import com.sportify.arrayAdapters.MyArrayAdapterShowFriends;
 import com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOnePageOneActivity;
 import com.sportify.maps.activity.MapsActivity;
@@ -138,4 +139,12 @@ public class ShowFriendsActivity extends AppCompatActivity implements ShowFriend
         Intent goToUserAreaIntent = new Intent(ShowFriendsActivity.this, UserAreaActivity.class);
         ShowFriendsActivity.this.startActivity(goToUserAreaIntent);
     }
+
+    public void toSearchFriendsActivity(View view){
+
+        Intent goToSearchFriendsactivityIntent = new Intent(ShowFriendsActivity.this, AddFriendActivity.class);
+        ShowFriendsActivity.this.startActivity(goToSearchFriendsactivityIntent);
+    }
 }
+
+

@@ -243,6 +243,7 @@
 
     /* Notifikationer */
     <string name="event_invite_notification">har bjudit in dig till sitt event</string>
+    <string name="friends_text">Personer du kanske känner</string>
 
 
 </resources>
