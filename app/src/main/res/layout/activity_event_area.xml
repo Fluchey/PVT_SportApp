@@ -8,6 +8,17 @@
     android:background="@drawable/backgroundnodude"
     tools:context="com.sportify.eventArea.activity.EventAreaActivity">
 
+    <TextView
+        android:id="@+id/tvEventAreaPlaceText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/eventSwimView"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/tvEventAreaHostName"
+        android:text="@string/event_place"
+        android:textStyle="bold" />
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/backUserAreaFromEvent"
         android:backgroundTint="@color/colorCrystalWhite"
@@ -54,18 +65,7 @@
                     android:layout_alignStart="@+id/eventSwimView"
                     android:layout_marginTop="10dp"/>
 
-                <TextView
-                    android:id="@+id/tvEventAreaPlaceText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/event_place"
-                    android:textStyle="bold"
-                    android:layout_below="@+id/eventSwimView"
-                    android:layout_marginStart="25dp"
-                    android:layout_toEndOf="@+id/tvEventAreaHostName"
-                    android:layout_marginTop="10dp"/>
-
-                <TextView
+    <TextView
                     android:id="@+id/tvEventAreaStartTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -83,17 +83,6 @@
                     android:layout_below="@+id/tvEventAreaStartTime"
                     android:layout_alignEnd="@+id/eventSwimView"
                     android:layout_marginTop="5dp" />
-
-
-    <TextView
-        android:id="@+id/tvEventAreaRating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_above="@+id/tvEventAreaPrice"
-        android:layout_marginEnd="25dp"
-        android:text="@string/event_rating"
-        android:layout_marginTop="5dp"/>
 
 
     <TextView
@@ -154,25 +143,38 @@
 
 
 
-    <Switch
-        android:id="@+id/interestedSwitch"
+    <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:layout_alignParentEnd="true"
-        android:layout_alignBaseline="@+id/eventSwimView"
-        android:layout_marginTop="150dp"
-        android:text="@string/event_intrested_switch" />
+        android:layout_above="@+id/tvEventAreaPrice"
+        android:layout_marginBottom="30dp"
+        android:layout_marginEnd="10dp">
 
-    <Switch
-        android:id="@+id/comingSwitch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:text="@string/event_comming_switch"
-        android:layout_below="@+id/interestedSwitch"
-        android:layout_alignStart="@+id/interestedSwitch"
-        android:layout_alignParentEnd="true"/>
+        <RadioButton
+            android:id="@+id/interestedRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/event_intrested_radio"
+            android:textSize="12sp"/>
+
+        <RadioButton
+            android:id="@+id/comingRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/event_coming_radio"
+            android:textSize="12sp"/>
+
+        <RadioButton
+            android:id="@+id/notComingRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:text="@string/event_not_coming_radio" />
+
+    </RadioGroup>
+
 
     <View
         android:layout_width="fill_parent"
@@ -200,7 +202,10 @@
         android:layout_width="fill_parent"
         android:layout_height="2dp"
         android:background="@color/colorAccent"
-        android:layout_below="@+id/tvEventAreaDescription" />
+        android:layout_below="@+id/tvEventAreaDescription"
+        android:id="@+id/view" />
+
+
 
 
 
