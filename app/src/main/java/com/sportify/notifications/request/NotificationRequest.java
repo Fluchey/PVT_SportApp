@@ -10,5 +10,5 @@ public interface NotificationRequest {
         void showApiResponse(String... params);
     }
 
-    void makeApiRequest(String jsonMessage);
+    void makeApiRequest(String endUrl, String method, String jsonMessage);
 }

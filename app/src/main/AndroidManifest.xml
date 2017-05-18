@@ -75,7 +75,8 @@
         <activity android:name="com.sportify.readReview.activity.ReadReviewActivity">
             <activity android:name="com.sportify.placeReview.activity.PlaceReviewActivity" />
         </activity>
-        <activity android:name="com.sportify.addnewfriends.addnewfriends"></activity>
+        <activity android:name="com.sportify.addnewfriends.addnewfriends" />
+        <activity android:name="com.sportify.placearea.activity.PlaceAreaActivity"></activity>
     </application>
 
 </manifest>

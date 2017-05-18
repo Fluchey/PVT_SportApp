@@ -13,7 +13,7 @@
 5. git add *
 	Adda alld ina ändringar till branchen
 
-6. git commit -m "Commit message"
+6. git commit -m "Commit eventName"
 	Commita dina ändringar till branchen
 
 7. INNAN steg 8, git checkout develop
@@ -50,14 +50,14 @@ GIT cmd
 	git add *
 		Adderar alla nya filer till gitindex för att bli commitade senare
 
-	git commit -m "Commit message"
+	git commit -m "Commit eventName"
 		Commitar ändringarna till branchen
 
 	git commit -am "CommitMessage"
 		Addar och commitar på en gång
 
 	git merge <branch A> --no-commit
-		;ergar utan att commita. Måste skriva commit-message efter mergen
+		;ergar utan att commita. Måste skriva commit-eventName efter mergen
 
 	git merge feature/new-feature
 		Mergar in den nya featuren in i den branchen man står i
@@ -103,7 +103,7 @@ Heroku
 	sbt run - kör lokalt
 	sbt stage compile - kör på servern
 
-i och message
+i och eventName
 esc : wq
 
 

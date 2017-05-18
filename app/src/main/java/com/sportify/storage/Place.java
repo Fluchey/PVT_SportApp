@@ -21,6 +21,15 @@ public class Place {
         this.lon = lon;
     }
 
+    public Place(String id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public Place() {
+
+    }
+
     public String getId() {
         return id;
     }

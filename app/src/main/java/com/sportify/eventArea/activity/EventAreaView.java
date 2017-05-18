@@ -5,4 +5,13 @@ package com.sportify.eventArea.activity;
  */
 
 public interface EventAreaView {
+    void setEventName(String eventName);
+    void setPlaceName(String placeName);
+    void setHostName(String hostName);
+    void setStartTime(String startTime);
+    void setEndTime(String endTime);
+    void setStartDate(String startDate);
+    void setEndDate(String endDate);
+    void setPrice(int price);
+    void setDescription(String description);
 }

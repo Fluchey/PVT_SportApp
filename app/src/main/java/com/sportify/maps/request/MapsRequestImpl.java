@@ -183,7 +183,7 @@ public class MapsRequestImpl implements MapsRequest {
             } else {
                 result = Connector.connect("https://pvt15app.herokuapp.com/api/" + params[0],
                         params[1], params[2], token);
-//                result = Connector.connect("http://192.168.43.14:9000/api/" + params[0],
+//                result = Connector.connect("http://192.168.0.12:9000/api/" + params[0],
 //                        params[1], params[2], token);
                 return null;
             }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/def_pagePadding"
-    android:background="@drawable/backgroundnodude"
+    android:background="@drawable/backgroundforfriends"
     tools:context="com.sportify.showFriends.activity.ShowFriendsActivity">
 
     <TextView
@@ -16,6 +16,7 @@
         android:textSize="@dimen/header"
         android:textColor="@color/colorCrystalWhite"
         android:fontFamily="serif"
+        android:layout_marginTop="10dp"
         android:textStyle="italic"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="40dp"/>
@@ -26,6 +27,7 @@
         android:layout_height="wrap_content"
         android:textSize="@dimen/inputeSize"
         android:hint="@string/searchFriends"
+        android:layout_marginTop="10dp"
         android:layout_below="@+id/friendsText"
         android:layout_centerHorizontal="true"
         android:completionThreshold="1"/>
@@ -33,9 +35,8 @@
     <ScrollView
         android:id="@+id/svFriensScroll"
         style="@android:style/Widget.Holo.Light.ScrollView"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
+        android:layout_width="450dp"
+        android:layout_height="900dp"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/searchFrindAcTv"
         android:layout_marginStart="5dp"
@@ -43,13 +44,13 @@
         android:fillViewport="true"
         android:isScrollContainer="false"
         android:scrollbarSize="3.5dp"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="105dp"
         android:scrollbarThumbVertical="@color/colorDarkBlue"
         android:visibility="visible">
 
         <RelativeLayout
-            android:layout_width="350dp"
-            android:layout_height="1000dp"
+            android:layout_width="500dp"
+            android:layout_height="2000dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="1dp"
             android:fadeScrollbars="false"
@@ -63,7 +64,7 @@
             <ListView
                 android:id="@+id/lvShowFriends"
                 android:layout_width="500dp"
-                android:layout_height="1000dp"
+                android:layout_height="2000dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="0dp"
@@ -73,18 +74,23 @@
                 android:scrollbarThumbHorizontal="@color/colorPrimary"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                />
+                tools:layout_constraintLeft_creator="1"
+                tools:layout_constraintTop_creator="1" />
 
         </RelativeLayout>
     </ScrollView>
 
-    <Button
-        android:id="@+id/button2"
+    <TextView
+        android:id="@+id/tvFriendsText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:layout_marginTop="25dp"
+        android:textSize="18dp"
+        android:textColor="@color/colorPrimaryDarkGrey"
+        android:fontFamily="serif"
+        android:textStyle="italic"
+        android:text="@string/friends_text"
         android:layout_below="@+id/searchFrindAcTv"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="22dp" />
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

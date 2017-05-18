@@ -49,8 +49,8 @@ public class MyArrayAdapterNotifications extends ArrayAdapter {
         //imageView.setImageResource();
 
         String host = notifications.get(position).getHost();
-        String message = notifications.get(position).getMessage();
-        notificationMessage.setText(host + " " + getContext().getString(R.string.event_invite_notification) + " " + message);
+        String eventName = notifications.get(position).getEventName();
+        notificationMessage.setText(host + " " + getContext().getString(R.string.event_invite_notification) + " " + eventName);
 
         return row;
     }

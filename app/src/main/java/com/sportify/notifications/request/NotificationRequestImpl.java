@@ -20,8 +20,8 @@ public class NotificationRequestImpl implements NotificationRequest {
 
 
     @Override
-    public void makeApiRequest(String jsonMessage) {
-        ApiRequest apiRequest = (ApiRequest) new ApiRequest(this).execute(jsonMessage);
+    public void makeApiRequest(String endUrl, String method, String jsonMessage) {
+        ApiRequest apiRequest = (ApiRequest) new ApiRequest(this).execute(endUrl, method, jsonMessage);
     }
 
     private class ApiRequest extends AsyncTask<String, NotificationRequestImpl, Void>{
@@ -35,8 +35,8 @@ public class NotificationRequestImpl implements NotificationRequest {
         @Override
         protected Void doInBackground(String... params) {
 
-            resultFromApi = Connector.connect("https://pvt15app.herokuapp.com/api/geteventinvites",
-                    "POST", String.format(params[0]), token);
+            resultFromApi = Connector.connect("https://pvt15app.herokuapp.com/api/" + params[0],
+                    params[1], String.format(params[2]), token);
 
             return null;
         }

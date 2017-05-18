@@ -156,6 +156,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="11dp"
+        android:onClick="toSearchFriendsActivity"
         android:background="@android:color/transparent"
         app:srcCompat="@drawable/addfriendnew"
         android:layout_below="@+id/searchFrindAcTv"

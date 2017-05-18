@@ -7,9 +7,15 @@
     <dimen name="def_paddingBottom">5dp</dimen>
     <dimen name="def_pagePadding">6dp</dimen>
     <dimen name="standardTextSize">15sp</dimen>"
+    <dimen name="standardSmallerTextSize">12sp</dimen>"
+    <dimen name="standardBitTextSize">13sp</dimen>"
+
+
     <dimen name="header">25sp</dimen>
     <dimen name="inputeSize">15sp</dimen>
     <dimen name="createEventMargin">5sp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+
+
 
 </resources>

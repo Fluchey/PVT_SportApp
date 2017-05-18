@@ -81,7 +81,7 @@ public class MapsPresenterImpl implements MapsPresenter, MapsRequest.onRequestFi
         for (Event e : mapsRequest.getCurrentSearchEvents()) {
                 eventNames.add(e.getEventName());
                 Place place = mapsRequest.getPlaceIdMap().get(e.getPlaceName());
-                mapsView.showEventMarkerAt(e.getEventName(), e.getEventType(), place.getLat(), place.getLon());
+                mapsView.showEventMarkerAt(e.getEventName(), e.getId(), e.getEventType(), place.getLat(), place.getLon());
 //                for (Place p : mapsRequest.getAllPlaces()) {
 //                    if (p.getName().equalsIgnoreCase(e.getPlaceName())) {
 //                        mapsView.showEventMarkerAt(e.getEventName(), e.getEventType(), p.getLat(), p.getLon());
@@ -97,15 +97,11 @@ public class MapsPresenterImpl implements MapsPresenter, MapsRequest.onRequestFi
         if(mapsView.placesIsChecked()){
             Place p = mapsRequest.getCurrentSearchPlaces().get(id);
             mapsView.switchToMapFragmentFromPresenter(p.getLat(), p.getLon());
-            mapsView.setTextSearch(p.getName());
         }else{
             Event e = mapsRequest.getCurrentSearchEvents().get(id);
-            for (Place p : mapsRequest.getAllPlaces()) {
-                if (p.getName().equalsIgnoreCase(e.getPlaceName())) {
-                    mapsView.switchToMapFragmentFromPresenter(p.getLat(), p.getLon());
-                    mapsView.setTextSearch(e.getEventName());
-                }
-            }
+            Log.d("Event:", e.getEventName());
+            Place p = mapsRequest.getPlaceIdMap().get(e.getPlaceName());
+            mapsView.switchToMapFragmentFromPresenter(p.getLat(), p.getLon());
         }
 
     }

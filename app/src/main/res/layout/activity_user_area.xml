@@ -16,7 +16,7 @@
         android:onClick="findEventButtonClick"
         android:text="@string/find_event"
         android:background="@color/colorButton"
-        android:textSize="12sp"
+        android:textSize="@dimen/standardSmallerTextSize"
         android:layout_alignParentEnd="true"
         android:layout_above="@+id/editProfileButton" />
 
@@ -25,7 +25,8 @@
         android:layout_height="20dp"
         android:background="@color/colorAccent"
         android:layout_below="@+id/profileText"
-        android:layout_marginTop="25dp" />
+        android:layout_marginTop="25dp"
+        android:id="@+id/view2" />
 
     <TextView
         android:id="@+id/scrollMyEvText"
@@ -48,30 +49,32 @@
         android:paddingTop="10dp"
         android:onClick="goToEditProfileFromUser"/>
 
-    <!--TODO : hämta användarens profiltext -->
+    <!--TODO : gör user area dynamisk -->
+
+
     <TextView
         android:id="@+id/profileText"
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:text="@string/userArea_text"
-        android:textSize="12sp"
+        android:textSize="@dimen/standardSmallerTextSize"
         android:layout_below="@+id/profilePicView"
         android:paddingTop="5dp" />
 
-    <!--TODO : hämta användarens info (namn, ålder, intressen) -->
     <TextView
         android:id="@+id/UserInfoNameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/userArea_userInfoName"
-        android:textSize="12sp" />
+        android:textSize="@dimen/standardSmallerTextSize"
+        />
 
     <TextView
         android:id="@+id/UserInfoAgeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/userArea_userInfoAge"
-        android:textSize="12sp"
+        android:textSize="@dimen/standardSmallerTextSize"
         android:layout_below="@+id/UserInfoNameText"/>
 
     <TextView
@@ -79,11 +82,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/userArea_userInfoInterest"
-        android:textSize="12sp"
+        android:textSize="@dimen/standardSmallerTextSize"
         android:layout_below="@+id/UserInfoAgeText"/>
 
 
-    <!--TODO : hämta användarens profilbild -->
     <ImageView
         android:id="@+id/profilePicView"
         android:layout_width="95dp"
@@ -102,7 +104,7 @@
         tools:ignore="ContentDescription"
         android:layout_alignParentEnd="true" />
 
-    <ImageView
+  <!--  <ImageView
         android:id="@+id/goToCalendarButton"
         android:clickable="true"
         android:layout_width="25dp"
@@ -113,7 +115,7 @@
         android:layout_below="@+id/goToSettingsButton"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="5dp"
-        android:layout_marginEnd="60dp"/>
+        android:layout_marginEnd="60dp"/>-->
 
     <ImageView
         android:id="@+id/goToUserAreaButton"
@@ -126,7 +128,6 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="5dp"
         tools:ignore="ContentDescription" />
-
 
     <ImageView
         android:id="@+id/goToMapButton"
@@ -155,9 +156,6 @@
         android:layout_height="80dp"
         app:srcCompat="@drawable/menucreateevent" />
 
-
-
-
     <ImageView
         android:id="@+id/goToNotificationsButton"
         android:clickable="true"
@@ -184,44 +182,67 @@
         android:layout_marginBottom="10dp"
         android:layout_alignParentBottom="true"/>
 
-
-    <!--TODO : hämta eventets bild -->
     <ImageView
         android:id="@+id/userAreaViewSwim"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="140dp"
         app:srcCompat="@drawable/userareaflowswim"
         android:clickable="true"
-        android:layout_marginTop="20dp"
-        android:layout_below="@+id/scrollMyEvText"
-        android:layout_centerHorizontal="true"
+        android:layout_marginTop="23dp"
         android:onClick="goToEventAreaActivity"
-        tools:ignore="ContentDescription"/>
+        tools:ignore="ContentDescription"
+        android:layout_below="@+id/view2"
+        android:layout_toStartOf="@+id/goToFriendsListButton" />
 
-
-
-    <!--TODO : hämta info om event -->
     <TextView
-        android:id="@+id/userAreaSwimText"
+        android:id="@+id/tvUAEventAreaPlaceText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/scrollMyEvText"
+        android:text="@string/event_place"
+        android:textStyle="bold"
+        android:textSize="@dimen/standardBitTextSize"
         android:layout_below="@+id/userAreaViewSwim"
-        android:layout_marginTop="10dp"
-        android:layout_centerInParent="true"
-        android:text="TextView"
-        tools:ignore="HardcodedText" />
+        android:layout_alignStart="@+id/userAreaViewSwim" />
 
-    <ImageView
-        android:id="@+id/hostView"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+    <TextView
+        android:id="@+id/tvUAEventAreaHostName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/event_host"
         android:layout_below="@+id/userAreaViewSwim"
-        android:layout_toStartOf="@+id/userAreaSwimText"
-        android:paddingEnd="10dp"
-        app:srcCompat="@drawable/quokkaprofile"
-        android:paddingTop="5dp"
-        tools:ignore="ContentDescription,RtlSymmetry" />
+        android:textSize="@dimen/standardSmallerTextSize"
+        android:layout_toEndOf="@+id/tvUAEventAreaPlaceText"
+        android:layout_marginStart="15dp"/>
+
+    <TextView
+        android:id="@+id/tvUAEventAreaDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/userAreaViewSwim"
+        android:layout_below="@+id/tvUAEventAreaHostName"
+        android:text="@string/event_date"
+        android:textSize="@dimen/standardSmallerTextSize"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:id="@+id/tvUAEventAreaStartEndTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/start_end_time"
+        android:layout_toEndOf="@+id/tvUAEventAreaDate"
+        android:layout_below="@id/tvUAEventAreaHostName"
+        android:textSize="@dimen/standardSmallerTextSize"
+        android:layout_marginStart="15dp"/>
+
+    <TextView
+        android:id="@+id/tvUAEventAreaPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvUAEventAreaHostName"
+        android:text="@string/event_area_price"
+        android:layout_toEndOf="@+id/tvUAEventAreaStartEndTime"
+        android:textSize="@dimen/standardSmallerTextSize"
+        android:layout_marginStart="15dp"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/leftButton"
@@ -248,16 +269,35 @@
         android:layout_marginEnd="10dp"/>
 
     <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="220dp"
-        android:layout_height="180dp"
+        android:id="@+id/farstaView"
+        android:layout_width="200dp"
+        android:layout_height="130dp"
         app:srcCompat="@drawable/placefarsta"
-        android:layout_below="@+id/hostView"
-        android:layout_marginTop="15dp"
         android:clickable="true"
         android:onClick="goToReadReviewActivity"
-        android:layout_centerHorizontal="true" />
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/tvUAEventAreaDate"
+        android:layout_alignStart="@+id/tvUAEventAreaDate" />
 
+    <TextView
+        android:id="@+id/tvUAPlaceAreaPlaceText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/event_place"
+        android:textStyle="bold"
+        android:layout_below="@+id/farstaView"
+        android:layout_alignStart="@+id/farstaView"
+        android:textSize="@dimen/standardSmallerTextSize" />
+
+    <TextView
+        android:id="@+id/tvUAPlaceRatingText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/event_rating"
+        android:layout_below="@+id/farstaView"
+        android:textSize="@dimen/standardSmallerTextSize"
+        android:layout_alignEnd="@+id/farstaView"
+        />
 
 </RelativeLayout>
 
