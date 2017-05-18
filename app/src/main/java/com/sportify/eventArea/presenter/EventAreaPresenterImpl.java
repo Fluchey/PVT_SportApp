@@ -37,7 +37,6 @@ public class EventAreaPresenterImpl implements EventAreaPresenter, EventAreaRequ
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        Log.d("Json", json.toString());
         request.makeApiRequestPut(json.toString(), "event/getEventById", "PUT", "getEventById");
     }
 
@@ -51,6 +50,7 @@ public class EventAreaPresenterImpl implements EventAreaPresenter, EventAreaRequ
     }
 
     private void presentDataOnView() {
+        activity.setHostName(request.getUser().getFirstName(), request.getUser().getLastName());
         activity.setEventName(request.getEvent().getEventName());
         activity.setPlaceName(request.getPlace().getName());
         activity.setStartDate(request.getEvent().getStartDate());
