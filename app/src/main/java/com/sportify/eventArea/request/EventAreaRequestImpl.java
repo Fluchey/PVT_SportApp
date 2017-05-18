@@ -6,6 +6,7 @@ import com.sportify.eventArea.presenter.EventAreaPresenterImpl;
 import com.sportify.maps.request.MapsRequestImpl;
 import com.sportify.storage.Event;
 import com.sportify.storage.Place;
+import com.sportify.storage.User;
 import com.sportify.util.Connector;
 
 import org.json.JSONException;
@@ -21,12 +22,14 @@ public class EventAreaRequestImpl implements EventAreaRequest {
 
     private Event event;
     private Place place;
+    private User user;
 
     public EventAreaRequestImpl(final onRequestFinishedListener onRequestFinishedListener, String token) {
         this.onRequestFinishedListener = onRequestFinishedListener;
         this.token = token;
         event = new Event();
         place = new Place();
+        user = new User();
     }
 
 
@@ -61,6 +64,15 @@ public class EventAreaRequestImpl implements EventAreaRequest {
             JSONObject placeJson = jsonObject.getJSONObject("place");
             place.setId(placeJson.getString("placeId"));
             place.setName(placeJson.getString("placeName"));
+
+            /**
+             * CREATOR GREJER
+             */
+            JSONObject creatorJson = jsonObject.getJSONObject("creator");
+            user.setFirstName(creatorJson.getString("firstName"));
+            user.setLastName(creatorJson.getString("lastName"));
+            user.setUserId(creatorJson.getInt("profileId"));
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -74,6 +86,11 @@ public class EventAreaRequestImpl implements EventAreaRequest {
     @Override
     public Place getPlace() {
         return place;
+    }
+
+    @Override
+    public User getUser() {
+        return user;
     }
 
     private class ApiRequest extends AsyncTask<String, MapsRequestImpl, Void> {

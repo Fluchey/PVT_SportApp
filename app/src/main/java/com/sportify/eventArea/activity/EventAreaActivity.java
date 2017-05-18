@@ -15,6 +15,8 @@ import com.sportify.eventArea.request.EventAreaRequest;
 import com.sportify.settings.activity.SettingsActivity;
 import com.sportify.userArea.activity.UserAreaActivity;
 
+import org.w3c.dom.Text;
+
 import sportapp.pvt_sportapp.R;
 
 public class EventAreaActivity extends AppCompatActivity implements EventAreaView{
@@ -22,6 +24,7 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
     private int eventId;
     private SharedPreferences sharedPref;
 
+    private TextView hostName;
     private TextView eventName;
     private TextView placeName;
     private TextView description;
@@ -42,6 +45,7 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
         eventId = (bundle.getInt("eventId"));
         presenter.getEventFromDb(eventId);
 
+        hostName = (TextView) findViewById(R.id.tvEventAreaHostName);
         eventName = (TextView) findViewById(R.id.eventAreaHeader);
         placeName = (TextView) findViewById(R.id.tvEventAreaPlaceText);
         startDate = (TextView) findViewById(R.id.tvEventAreaDate);
@@ -68,8 +72,8 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
     }
 
     @Override
-    public void setHostName(String hostName) {
-
+    public void setHostName(String firstName, String lastName) {
+        this.hostName.setText(firstName + " " + lastName);
     }
 
     @Override
