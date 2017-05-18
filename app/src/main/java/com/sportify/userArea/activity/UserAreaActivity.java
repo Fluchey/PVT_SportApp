@@ -3,10 +3,15 @@ package com.sportify.userArea.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +28,9 @@ import com.sportify.userArea.presenter.UserAreaPresenter;
 import com.sportify.userArea.presenter.UserAreaPresenterImpl;
 import com.sportify.util.Profile;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+
 import sportapp.pvt_sportapp.R;
 
 //import com.sportify.showFriends.activity.ShowFriendsActivity;
@@ -31,6 +39,7 @@ public class UserAreaActivity extends AppCompatActivity implements UserAreaView 
     private UserAreaPresenter userAreaPresenter;
     private SharedPreferences sharedPref;
     private TextView userName, userAge, userBio, userInterests;
+    private ImageView userProfilePicture;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +68,13 @@ public class UserAreaActivity extends AppCompatActivity implements UserAreaView 
         interestsString = interestsString.replace("]", "");
         interestsString = interestsString.replaceAll(","," #");
         userInterests.setText(interestsString);
+        String imageBase64 = sharedPref.getString("imageBase64", "");
+        Log.d("UserAreaActivity", "imageBase64: " + imageBase64);
+        userProfilePicture = (ImageView) findViewById(R.id.profilePicView);
+        if (!imageBase64.isEmpty()) {
+            Bitmap bitmap = Profile.decodeStringToBitmap(imageBase64);
+            userProfilePicture.setImageBitmap(bitmap);
+        }
     }
 
 

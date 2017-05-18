@@ -54,10 +54,8 @@ public class ProfilePresenterImpl implements ProfilePresenter, ProfileRequest.On
 
         if (image!=null && profileView.userSelectedImage()) {
             imageBase64 = Profile.encodeBitMapToString(image);
-//            ByteArrayOutputStream bos = new ByteArrayOutputStream();
-//            image.compress(Bitmap.CompressFormat.PNG, 100, bos);
-//            byte[] imageBytes = bos.toByteArray();
-//            imageBase64 = Base64.encodeToString(imageBytes, Base64.NO_WRAP);
+//            SharedPreferences.Editor editor = sharedPref.edit();
+//            editor.putString("testPic", imageBase64).apply();
         }
 
         if (firstname.isEmpty()) {
