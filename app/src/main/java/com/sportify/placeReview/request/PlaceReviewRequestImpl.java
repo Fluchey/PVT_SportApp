@@ -2,7 +2,6 @@ package com.sportify.placeReview.request;
 
 import android.os.AsyncTask;
 
-import com.sportify.storage.Place;
 import com.sportify.util.Connector;
 import com.sportify.storage.PlaceReview;
 
@@ -30,12 +29,12 @@ public class PlaceReviewRequestImpl implements PlaceReviewRequest {
     }
 
     @Override
-    public void updateAllReviews(String jsonMessage){
+    public void updateAllReviews(/*String jsonMessage*/){
         allReviews.clear();
         JSONObject json = null;
         JSONArray reviewArray = null;
         try {
-            json = new JSONObject(jsonMessage);
+            json = new JSONObject(/*jsonMessage*/);
             reviewArray = json.getJSONArray("placeReviews");
         } catch (JSONException e) {
             e.printStackTrace();
@@ -46,7 +45,7 @@ public class PlaceReviewRequestImpl implements PlaceReviewRequest {
         try {
             for (int i = 0; i < reviewArray.length(); i++) {
                 JSONObject jsonObject = reviewArray.getJSONObject(i);
-                allReviews.add(new PlaceReview(jsonObject.getString("PlaceID"), jsonObject.getString("Comments"), Integer.parseInt(jsonObject.getString("ProfileID")), Float.parseFloat(jsonObject.getString("Rating"))));
+                allReviews.add(new PlaceReview(jsonObject.getString("placeName"), jsonObject.getString("comment"), Integer.parseInt(jsonObject.getString("profileId")), Float.parseFloat(jsonObject.getString("rating"))));
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -64,12 +63,23 @@ public class PlaceReviewRequestImpl implements PlaceReviewRequest {
     }
 
     @Override
-    public void submitReview(float rating, String comment, int userId, String placeId){
+    public void submitReview(float rating, String comment, int userId, String place){
+        JSONObject json = new JSONObject();
+        try{
+            json.put("profileId", userId);
+            json.put("placeName", place);
+            json.put("comment", comment);
+            json.put("rating", rating);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
+        makeApiRequestPut(json.toString(), "addReview", "PUT", "place");
     }
 
     @Override
     public ArrayList<PlaceReview> getAllReviews(){
+        updateAllReviews();
         return allReviews;
     }
 
@@ -85,7 +95,7 @@ public class PlaceReviewRequestImpl implements PlaceReviewRequest {
 
         /**
          * @param placeReviewRequestImpl
-         * @param command                The command wich decides what to do in PresenterImpl after apiresponse has finished
+         * @param command                The command which decides what to do in PresenterImpl after apiresponse has finished
          */
         public ApiRequest(PlaceReviewRequestImpl placeReviewRequestImpl, String command) {
             this.placeReviewRequestImpl = placeReviewRequestImpl;
@@ -102,12 +112,12 @@ public class PlaceReviewRequestImpl implements PlaceReviewRequest {
         protected Void doInBackground(String... params) {
             if (params[0].equals("GET") || params[0].equals("DELETE")) {
                 result = Connector.connectGetOrDelete(params[0], "https://pvt15app.herokuapp.com/api/" + params[1], token);
-//                result = Connector.connectGetOrDelete(params[0], "http://192.168.0.12:9000/api/" + params[1], token);
+//                result = Connector.connectGetOrDelete(params[0], "http://127.0.0.1:9000/api/" + params[1], token);
                 return null;
             } else {
                 result = Connector.connect("https://pvt15app.herokuapp.com/api/" + params[0],
                         params[1], params[2], token);
-//                result = Connector.connect("http://192.168.0.12:9000/api/" + params[0],
+//                result = Connector.connect("http://127.0.0.1:9000/api/" + params[0],
 //                        params[1], params[2], token);
                 return null;
             }
