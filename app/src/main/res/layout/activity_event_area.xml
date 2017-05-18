@@ -152,14 +152,14 @@
         android:layout_marginEnd="30dp"
         android:orientation="vertical">
 
-     <!--   <RadioButton
+        <RadioButton
             android:id="@+id/interestedRadioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="sendResponsEventInvite"
             android:tag="interested"
             android:text="@string/event_intrested_radio"
-            android:textSize="@dimen/standardSmallerTextSize" />-->
+            android:textSize="@dimen/standardSmallerTextSize" />
 
         <RadioButton
             android:id="@+id/comingRadioButton"

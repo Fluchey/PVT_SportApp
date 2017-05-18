@@ -40,7 +40,6 @@ public class EventAreaPresenterImpl implements EventAreaPresenter, EventAreaRequ
 
     @Override
     public void sendResponsEventInvite(String response, int eventId) {
-        System.out.println("Testar att svara på invite");
         JSONObject json = new JSONObject();
         try {
             json.put("response", response);
@@ -48,8 +47,6 @@ public class EventAreaPresenterImpl implements EventAreaPresenter, EventAreaRequ
         }catch (JSONException e){
             e.printStackTrace();
         }
-        System.out.println("Json-svar: " + json.toString());
-
         request.makeApiRequestPut(json.toString(), "respondeventinvite", "PUT", "respondeventinvite");
     }
 
