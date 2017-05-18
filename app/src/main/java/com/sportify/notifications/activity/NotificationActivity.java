@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.sportify.arrayAdapters.MyArrayAdapterNotifications;
 import com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOnePageOneActivity;
+import com.sportify.eventArea.activity.EventAreaActivity;
 import com.sportify.maps.activity.MapsActivity;
 import com.sportify.notifications.Notification;
 import com.sportify.notifications.presenter.NotificationPresenter;
@@ -29,6 +30,7 @@ public class NotificationActivity extends AppCompatActivity implements Notificat
     private MyArrayAdapterNotifications arrayAdapter;
     private ListView notificationList;
     private SharedPreferences sharedPref;
+    private int eventId;
 
     private ArrayList<Notification> notifications;
 
@@ -48,10 +50,12 @@ public class NotificationActivity extends AppCompatActivity implements Notificat
                 //TODO: Ändra så andra svar kan ges
 
                 Notification notification = (Notification) notificationList.getItemAtPosition(position);
-                String response = "accepted";
-                int eventID = notification.getEventID();
+                eventId = notification.getEventID();
 
-                notificationPresenter.sendResponseEventInviteMakeApiRequest(response, eventID);
+                toEventAreaActivity();
+
+//                String response = "accepted";
+//                notificationPresenter.sendResponseEventInviteMakeApiRequest(response, eventID);
 
             }
         });
@@ -60,6 +64,16 @@ public class NotificationActivity extends AppCompatActivity implements Notificat
     public void ToUserAreaFromNoteActivity(View v){
         Intent goToUserAreaViewIntent = new Intent(NotificationActivity.this, UserAreaActivity.class);
         NotificationActivity.this.startActivity(goToUserAreaViewIntent);
+    }
+
+    public void toEventAreaActivity(){
+        Intent goToEventAreaIntent = new Intent(NotificationActivity.this, EventAreaActivity.class);
+
+        goToEventAreaIntent.putExtra("eventId", eventId);
+        NotificationActivity.this.startActivity(goToEventAreaIntent);
+
+
+
     }
 
     /**
