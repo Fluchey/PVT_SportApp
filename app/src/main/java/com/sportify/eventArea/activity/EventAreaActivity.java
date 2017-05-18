@@ -3,20 +3,15 @@ package com.sportify.eventArea.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.sportify.editEvent.activity.EditEventActivity;
 import com.sportify.eventArea.presenter.EventAreaPresenter;
 import com.sportify.eventArea.presenter.EventAreaPresenterImpl;
-import com.sportify.eventArea.request.EventAreaRequest;
-import com.sportify.settings.activity.SettingsActivity;
 import com.sportify.userArea.activity.UserAreaActivity;
-
-import org.w3c.dom.Text;
 
 import sportapp.pvt_sportapp.R;
 
@@ -111,5 +106,11 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
     @Override
     public void setDescription(String description) {
         this.description.setText(description);
+    }
+
+    @Override
+    public void sendResponsEventInvite(View v) {
+        String response = v.getTag().toString();
+        presenter.sendResponsEventInvite(response, eventId);
     }
 }
