@@ -5,6 +5,9 @@ import com.sportify.placeReview.request.PlaceReviewRequest;
 import com.sportify.placeReview.request.PlaceReviewRequestImpl;
 import com.sportify.storage.PlaceReview;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * Created by rasmu on 02/05/2017.
  */
@@ -31,9 +34,8 @@ public class PlaceReviewPresenterImpl implements PlaceReviewPresenter, PlaceRevi
     }
 
     @Override
-    public void submitReview(float rating, String comment, int userId, String placeId) {
-        placeReviewView.getRating();
-        placeReviewRequest.submitReview(rating, comment, userId, placeId);
+    public void submitReview(int userId, String place) {
+        placeReviewRequest.submitReview(placeReviewView.getRating(),placeReviewView.getComment(), userId, place);
     }
 
     @Override
@@ -43,7 +45,9 @@ public class PlaceReviewPresenterImpl implements PlaceReviewPresenter, PlaceRevi
         }
         switch (command) {
             case "updatePlaceReviews":
-                placeReviewRequest.updateAllReviews(params[0]);
+//                placeReviewRequest.updateAllReviews(/*params[0]*/);
+                break;
+            case "addReview":
 
                 break;
         }

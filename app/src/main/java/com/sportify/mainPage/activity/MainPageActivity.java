@@ -40,7 +40,8 @@ public class MainPageActivity extends AppCompatActivity implements MainPageView{
     public void testGoToPlaceReviewActivity(View v){
         Intent testGoToPlaceReviewViewIntent = new Intent(MainPageActivity.this, PlaceReviewActivity.class);
         Bundle b = new Bundle();
-        b.putString("place", "Testplats");
+        b.putString("place", "Abrahamsbergs bollplan");
+        b.putInt("userID", 232);
         testGoToPlaceReviewViewIntent.putExtras(b);
 
         MainPageActivity.this.startActivity(testGoToPlaceReviewViewIntent);
