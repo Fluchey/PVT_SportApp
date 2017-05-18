@@ -62,7 +62,8 @@ public class PlaceAreaActivity extends AppCompatActivity implements PlaceAreaVie
         Intent goToWriteReviewIntent = new Intent(PlaceAreaActivity.this, PlaceReviewActivity.class);
 
         Bundle b = new Bundle();
-        b.putString("placeId", (String)placeName.getText());
+        b.putString("placeName", (String)placeName.getText());
+        b.putInt("placeId", Integer.parseInt(placeId));
         b.putInt("userId", 335);
         goToWriteReviewIntent.putExtras(b);
 

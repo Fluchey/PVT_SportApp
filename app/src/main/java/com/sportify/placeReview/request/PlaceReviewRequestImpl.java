@@ -1,6 +1,7 @@
 package com.sportify.placeReview.request;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.sportify.util.Connector;
 import com.sportify.storage.PlaceReview;
@@ -54,16 +55,16 @@ public class PlaceReviewRequestImpl implements PlaceReviewRequest {
 
     @Override
     public void makeApiRequestPut(String jsonMessage, String endURL, String method, String command){
-        ApiRequest apiRequest = (ApiRequest) new ApiRequest(this, command).execute(endURL, method, jsonMessage);
+        ApiRequest apiRequest = (ApiRequest) new ApiRequest(this, command).execute(method, endURL, jsonMessage);
     }
 
     @Override
     public void makeApiRequestGet(String method, String endURL, String command){
-        ApiRequest apiRequest = (ApiRequest) new ApiRequest(this, command).execute(endURL, method);
+        ApiRequest apiRequest = (ApiRequest) new ApiRequest(this, command).execute(method, endURL);
     }
 
     @Override
-    public void submitReview(float rating, String comment, int userId, int placeId){
+    public void submitReview(double rating, String comment, int userId, int placeId){
         JSONObject json = new JSONObject();
         try{
             json.put("profileId", userId);
@@ -73,8 +74,8 @@ public class PlaceReviewRequestImpl implements PlaceReviewRequest {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-        makeApiRequestPut(json.toString(), "addReview", "PUT", "place");
+        Log.d("JSON: ", json.toString());
+        makeApiRequestPut(json.toString(), "addReview", "PUT", "addReview");
     }
 
     @Override
@@ -115,10 +116,10 @@ public class PlaceReviewRequestImpl implements PlaceReviewRequest {
 //                result = Connector.connectGetOrDelete(params[0], "http://127.0.0.1:9000/api/" + params[1], token);
                 return null;
             } else {
-                result = Connector.connect("https://pvt15app.herokuapp.com/api/" + params[0],
-                        params[1], params[2], token);
-//                result = Connector.connect("http://127.0.0.1:9000/api/" + params[0],
-//                        params[1], params[2], token);
+                result = Connector.connect("https://pvt15app.herokuapp.com/api/" + params[1],
+                        params[0], params[2], token);
+//                result = Connector.connect("http://127.0.0.1:9000/api/" + params[1],
+//                        params[0], params[2], token);
                 return null;
             }
         }

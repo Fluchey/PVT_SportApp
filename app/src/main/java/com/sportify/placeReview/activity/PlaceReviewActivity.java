@@ -1,5 +1,7 @@
 package com.sportify.placeReview.activity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
@@ -15,6 +17,7 @@ import sportapp.pvt_sportapp.R;
 public class PlaceReviewActivity extends AppCompatActivity implements PlaceReviewView{
     private PlaceReviewPresenter placeReviewPresenter;
 
+    private SharedPreferences sharedPref;
     private TextView header;
     private EditText reviewText;
     private RatingBar ratingBar;
@@ -28,6 +31,7 @@ public class PlaceReviewActivity extends AppCompatActivity implements PlaceRevie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_place_review);
 
+        sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         header = (TextView) findViewById(R.id.reviewHeader);
         reviewText = (EditText) findViewById(R.id.reviewText);
         ratingBar = (RatingBar) findViewById(R.id.ratingBar);
@@ -40,7 +44,7 @@ public class PlaceReviewActivity extends AppCompatActivity implements PlaceRevie
             placeId = b.getInt("placeId", -1);
         }
 
-        placeReviewPresenter = new PlaceReviewPresenterImpl(this);
+        placeReviewPresenter = new PlaceReviewPresenterImpl(this, sharedPref);
     }
 
     @Override
