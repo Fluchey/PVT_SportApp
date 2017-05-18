@@ -1,7 +1,6 @@
 package com.sportify.eventArea.presenter;
 
 import android.content.SharedPreferences;
-import android.util.Log;
 
 import com.sportify.eventArea.activity.EventAreaView;
 import com.sportify.eventArea.request.EventAreaRequest;
@@ -28,7 +27,6 @@ public class EventAreaPresenterImpl implements EventAreaPresenter, EventAreaRequ
     }
 
 
-
     @Override
     public void getEventFromDb(int eventId) {
         JSONObject json = new JSONObject();
@@ -38,6 +36,21 @@ public class EventAreaPresenterImpl implements EventAreaPresenter, EventAreaRequ
             e.printStackTrace();
         }
         request.makeApiRequestPut(json.toString(), "event/getEventById", "PUT", "getEventById");
+    }
+
+    @Override
+    public void sendResponsEventInvite(String response, int eventId) {
+        System.out.println("Testar att svara på invite");
+        JSONObject json = new JSONObject();
+        try {
+            json.put("response", response);
+            json.put("eventID", "" + eventId);
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+        System.out.println("Json-svar: " + json.toString());
+
+        request.makeApiRequestPut(json.toString(), "respondeventinvite", "PUT", "respondeventinvite");
     }
 
     @Override
