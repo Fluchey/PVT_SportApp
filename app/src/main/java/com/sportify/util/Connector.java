@@ -21,7 +21,6 @@ public class Connector {
         if (token == null) token = "";
         HttpURLConnection connection = null;
         String[] responseFromRest = new String[3];
-
         try {
             URL url = new URL(URL);
             connection = (HttpURLConnection) url.openConnection();
