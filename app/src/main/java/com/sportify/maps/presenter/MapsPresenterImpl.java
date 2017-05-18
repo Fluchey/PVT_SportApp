@@ -69,7 +69,7 @@ public class MapsPresenterImpl implements MapsPresenter, MapsRequest.onRequestFi
         for (Place p : mapsRequest.getCurrentSearchPlaces()) {
             if (p.getName().toLowerCase().startsWith(search)) {
                 placesName.add(p.getName());
-                mapsView.showPlaceMarkerAt(p.getName(), p.getCategories().toString(), p.getLat(), p.getLon());
+                mapsView.showPlaceMarkerAt(p);
             }
         }
         mapsView.updatePlaceSearch(placesName);
@@ -78,15 +78,10 @@ public class MapsPresenterImpl implements MapsPresenter, MapsRequest.onRequestFi
     @Override
     public void showCurrentEventsOnMap(String search) {
         ArrayList<String> eventNames = new ArrayList<>();
-        for (Event e : mapsRequest.getCurrentSearchEvents()) {
-                eventNames.add(e.getEventName());
-                Place place = mapsRequest.getPlaceIdMap().get(e.getPlaceName());
-                mapsView.showEventMarkerAt(e.getEventName(), e.getId(), e.getEventType(), place.getLat(), place.getLon());
-//                for (Place p : mapsRequest.getAllPlaces()) {
-//                    if (p.getName().equalsIgnoreCase(e.getPlaceName())) {
-//                        mapsView.showEventMarkerAt(e.getEventName(), e.getEventType(), p.getLat(), p.getLon());
-//                    }
-//                }
+        for (Event event : mapsRequest.getCurrentSearchEvents()) {
+                eventNames.add(event.getEventName());
+                Place place = mapsRequest.getPlaceIdMap().get(event.getPlaceName());
+            mapsView.showEventMarkerAt(event, place);
         }
         mapsView.updatePlaceSearch(eventNames);
     }

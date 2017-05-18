@@ -37,7 +37,6 @@ public class EventAreaPresenterImpl implements EventAreaPresenter, EventAreaRequ
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        Log.d("Json", json.toString());
         request.makeApiRequestPut(json.toString(), "event/getEventById", "PUT", "getEventById");
     }
 

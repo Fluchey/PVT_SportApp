@@ -5,4 +5,5 @@ package com.sportify.placearea.presenter;
  */
 
 public interface PlaceAreaPresenter {
+    void getPlaceFromDb(String placeId);
 }
