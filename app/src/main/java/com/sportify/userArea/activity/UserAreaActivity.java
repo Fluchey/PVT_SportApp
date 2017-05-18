@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sportify.calendar.activity.CalendarActivity;
@@ -19,6 +21,7 @@ import com.sportify.settingsEditProfile.activity.EditProfileActivity;
 import com.sportify.showFriends.activity.ShowFriendsActivity;
 import com.sportify.userArea.presenter.UserAreaPresenter;
 import com.sportify.userArea.presenter.UserAreaPresenterImpl;
+import com.sportify.util.Profile;
 
 import sportapp.pvt_sportapp.R;
 
@@ -27,6 +30,7 @@ import sportapp.pvt_sportapp.R;
 public class UserAreaActivity extends AppCompatActivity implements UserAreaView {
     private UserAreaPresenter userAreaPresenter;
     private SharedPreferences sharedPref;
+    private TextView userName, userAge, userBio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +38,18 @@ public class UserAreaActivity extends AppCompatActivity implements UserAreaView 
         setContentView(R.layout.activity_user_area);
         sharedPref = getSharedPreferences("MyPrefs",Context.MODE_PRIVATE);
         userAreaPresenter = new UserAreaPresenterImpl(this, sharedPref);
+        userName = (TextView) findViewById(R.id.UserInfoNameText);
+        userName.setText(sharedPref.getString("firstName", "") + " " + sharedPref.getString("lastName", ""));
+        userAge = (TextView) findViewById(R.id.UserInfoAgeText);
+        String dateOfBirth = sharedPref.getString("dateOfBirth", "");
+        Log.d("UserAreaActivity", "dob: " + dateOfBirth);
+        int age = -1;
+        if (!dateOfBirth.isEmpty()) {
+            age = Profile.getAge(dateOfBirth);
+        }
+        userAge.setText("" + age + " år");
+        userBio = (TextView) findViewById(R.id.profileText);
+        userBio.setText(sharedPref.getString("userBio", ""));
     }
 
 

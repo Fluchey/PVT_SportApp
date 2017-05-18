@@ -8,8 +8,13 @@ import com.facebook.AccessToken;
 import com.sportify.login.activity.LoginView;
 import com.sportify.login.request.LoginRequest;
 import com.sportify.login.request.LoginRequestImpl;
+import com.sportify.util.Profile;
+
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.List;
+
 import sportapp.pvt_sportapp.R;
 
 /**
@@ -58,6 +63,7 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
              * Creates new asynctask which runs in background and tries to create new user
              */
             loginRequest.makeApiRequest(jsonObject.toString(), "https://pvt15app.herokuapp.com/api/login");
+
 //            loginRequest.makeApiRequest(jsonObject.toString(), "http://130.237.89.152:9000/api/login");
 
         }
@@ -112,16 +118,31 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
         String fbTokenLong = null;
         String jwt = null;
         int profileID = -1;
+        String firstName = "";
+        String lastName = "";
+        String dateOfBirth = "";
+        String userBio = "";
+        List<String> interests = null;
+        String imageBase64 ="";
+
 
 
         JSONObject json = null;
         try {
             json = new JSONObject(params[0]);
             jwt = json.getString("JWT");
-            profileID = json.getInt("profileID");
             if (params[1].equals("201")){
                 fbTokenLong = json.getString("fbTokenLong");
             }
+            profileID = json.getInt("profileID");
+            firstName = json.getString("firstName");
+            lastName = json.getString("lastName");
+            dateOfBirth = json.getString("dateOfBirth");
+            userBio = json.getString("userBio");
+            //todo: interests
+            imageBase64 = json.getString("imageBase64");
+            Log.d("ProfileID: ", "" + profileID);
+
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -129,14 +150,21 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
 
         if (json != null) {
             SharedPreferences.Editor editor = sharedPref.edit();                    //Initializes the editor
-            editor.putString("jwt", jwt);                                 //Adds the string SharedPref with key "jwt"
+            editor.putString("firstName", firstName);
+            editor.putString("lastName", lastName);
+            editor.putString("dateOfBirth", dateOfBirth);
+            editor.putString("userBio", userBio);
+            //todo interests
+            editor.putString("imageBase64", imageBase64);
+            editor.putString("jwt", jwt);
             editor.putInt("profileID", profileID);
 
-            if (fbTokenLong!=null) {editor.putString("facebook", fbTokenLong);}   //Adds the string SharedPref with key "facebook"
+            if (fbTokenLong!=null) {editor.putString("facebook", fbTokenLong);}
             editor.apply();
             Log.d(TAG, "From preferences file below." );
             Log.d(TAG, "jwt: " + sharedPref.getString("jwt", ""));
             Log.d(TAG, "facebook: " + sharedPref.getString("facebook", ""));
+            Log.d(TAG, "firstname: " + sharedPref.getString("firstName", ""));
         }
     }
 
