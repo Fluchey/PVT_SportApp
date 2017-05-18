@@ -22,7 +22,7 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
     private int eventId;
     private SharedPreferences sharedPref;
 
-
+    private TextView eventName;
     private TextView placeName;
     private TextView description;
     private TextView startDate;
@@ -42,6 +42,7 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
         eventId = (bundle.getInt("eventId"));
         presenter.getEventFromDb(eventId);
 
+        eventName = (TextView) findViewById(R.id.eventAreaHeader);
         placeName = (TextView) findViewById(R.id.tvEventAreaPlaceText);
         startDate = (TextView) findViewById(R.id.tvEventAreaDate);
         startTime = (TextView) findViewById(R.id.tvEventAreaStartTime);
@@ -54,6 +55,11 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
     public void toUserAreaFromEvent(View v){
         Intent goToUserAreaViewIntent = new Intent(EventAreaActivity.this, UserAreaActivity.class);
         EventAreaActivity.this.startActivity(goToUserAreaViewIntent);
+    }
+
+    @Override
+    public void setEventName(String eventName) {
+        this.eventName.setText(eventName);
     }
 
     @Override
