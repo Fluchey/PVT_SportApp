@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.sportify.arrayAdapters.MyArrayAdapterNotifications;
 import com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOnePageOneActivity;
+import com.sportify.eventArea.activity.EventAreaActivity;
 import com.sportify.maps.activity.MapsActivity;
 import com.sportify.notifications.Notification;
 import com.sportify.notifications.presenter.NotificationPresenter;
@@ -29,9 +30,9 @@ public class NotificationActivity extends AppCompatActivity implements Notificat
     private MyArrayAdapterNotifications arrayAdapter;
     private ListView notificationList;
     private SharedPreferences sharedPref;
+    private int eventId;
 
     private ArrayList<Notification> notifications;
-//    private ArrayList<String> notifications;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,14 +42,7 @@ public class NotificationActivity extends AppCompatActivity implements Notificat
         sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         notificationPresenter = new NotificationPresenterImpl(this, sharedPref);
 
-        notifications = new ArrayList<>();
         notificationList = (ListView) findViewById(R.id.lvNotifications);
-//        notifications.add("Test");
-//        notifications.add("Massa test");
-
-//        arrayAdapter = new MyArrayAdapterNotifications(this, R.layout.notification_list_item, notifications);
-
-//        notificationList.setAdapter(arrayAdapter);
 
         notificationList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -56,10 +50,12 @@ public class NotificationActivity extends AppCompatActivity implements Notificat
                 //TODO: Ändra så andra svar kan ges
 
                 Notification notification = (Notification) notificationList.getItemAtPosition(position);
-                String response = "accepted";
-                int eventID = notification.getEventID();
+                eventId = notification.getEventID();
 
-                notificationPresenter.sendResponseEventInviteMakeApiRequest(response, eventID);
+                toEventAreaActivity();
+
+//                String response = "accepted";
+//                notificationPresenter.sendResponseEventInviteMakeApiRequest(response, eventID);
 
             }
         });
@@ -68,6 +64,16 @@ public class NotificationActivity extends AppCompatActivity implements Notificat
     public void ToUserAreaFromNoteActivity(View v){
         Intent goToUserAreaViewIntent = new Intent(NotificationActivity.this, UserAreaActivity.class);
         NotificationActivity.this.startActivity(goToUserAreaViewIntent);
+    }
+
+    public void toEventAreaActivity(){
+        Intent goToEventAreaIntent = new Intent(NotificationActivity.this, EventAreaActivity.class);
+
+        goToEventAreaIntent.putExtra("eventId", eventId);
+        NotificationActivity.this.startActivity(goToEventAreaIntent);
+
+
+
     }
 
     /**
@@ -95,5 +101,10 @@ public class NotificationActivity extends AppCompatActivity implements Notificat
         this.notifications = notifications;
         arrayAdapter = new MyArrayAdapterNotifications(this, R.layout.notification_list_item, notifications);
         notificationList.setAdapter(arrayAdapter);
+    }
+
+    @Override
+    public void showToastToUser(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 }

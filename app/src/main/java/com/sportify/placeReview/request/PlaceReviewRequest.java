@@ -13,7 +13,7 @@ public interface PlaceReviewRequest {
         void showApiResponse(String command, String... params);
     }
 
-    void updateAllReviews(String jsonMessage);
+    void updateAllReviews(/*String jsonMessage*/);
 
     void makeApiRequestPut(String jsonMessage, String endURL, String method, String command);
 
@@ -21,7 +21,7 @@ public interface PlaceReviewRequest {
 
     ArrayList<PlaceReview> getAllReviews();
 
-    void submitReview(float rating, String comment, int userId, String placeId);
+    void submitReview(float rating, String comment, int userId, String place);
 
     String getPlaceName(String placeID);
 }

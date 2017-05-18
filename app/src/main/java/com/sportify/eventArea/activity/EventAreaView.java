@@ -7,7 +7,7 @@ package com.sportify.eventArea.activity;
 public interface EventAreaView {
     void setEventName(String eventName);
     void setPlaceName(String placeName);
-    void setHostName(String hostName);
+    void setHostName(String firstName, String lastName);
     void setStartTime(String startTime);
     void setEndTime(String endTime);
     void setStartDate(String startDate);

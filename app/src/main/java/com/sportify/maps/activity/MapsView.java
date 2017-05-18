@@ -3,6 +3,8 @@ package com.sportify.maps.activity;
 import android.widget.EditText;
 
 import com.google.android.gms.maps.GoogleMap;
+import com.sportify.storage.Event;
+import com.sportify.storage.Place;
 
 import java.util.ArrayList;
 
@@ -17,9 +19,9 @@ public interface MapsView {
 
     void clearMarkers();
 
-    void showPlaceMarkerAt(String placeName, String description, double latitude, double longitude);
+    void showPlaceMarkerAt(Place p);
 
-    void showEventMarkerAt(String eventName, int eventId, String category, double latitude, double longitude);
+    void showEventMarkerAt(Event e, Place p);
 
     void goToLocation(double lat, double lon, float zoom);
 

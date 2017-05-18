@@ -104,18 +104,18 @@
         tools:ignore="ContentDescription"
         android:layout_alignParentEnd="true" />
 
-  <!--  <ImageView
-        android:id="@+id/goToCalendarButton"
-        android:clickable="true"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        app:srcCompat="@drawable/menucalendar"
-        android:onClick="goToCalendarActivity"
-        tools:ignore="ContentDescription"
-        android:layout_below="@+id/goToSettingsButton"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="60dp"/>-->
+    <!--  <ImageView
+          android:id="@+id/goToCalendarButton"
+          android:clickable="true"
+          android:layout_width="25dp"
+          android:layout_height="25dp"
+          app:srcCompat="@drawable/menucalendar"
+          android:onClick="goToCalendarActivity"
+          tools:ignore="ContentDescription"
+          android:layout_below="@+id/goToSettingsButton"
+          android:layout_alignParentEnd="true"
+          android:layout_marginTop="5dp"
+          android:layout_marginEnd="60dp"/>-->
 
     <ImageView
         android:id="@+id/goToUserAreaButton"
@@ -210,9 +210,9 @@
         android:layout_height="wrap_content"
         android:text="@string/event_host"
         android:layout_below="@+id/userAreaViewSwim"
-        android:textSize="@dimen/standardSmallerTextSize"
         android:layout_toEndOf="@+id/tvUAEventAreaPlaceText"
-        android:layout_marginStart="15dp"/>
+        android:textSize="@dimen/standardSmallerTextSize"
+        android:layout_marginStart="70dp"/>
 
     <TextView
         android:id="@+id/tvUAEventAreaDate"
@@ -232,17 +232,8 @@
         android:layout_toEndOf="@+id/tvUAEventAreaDate"
         android:layout_below="@id/tvUAEventAreaHostName"
         android:textSize="@dimen/standardSmallerTextSize"
-        android:layout_marginStart="15dp"/>
+        android:layout_marginStart="70dp"/>
 
-    <TextView
-        android:id="@+id/tvUAEventAreaPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tvUAEventAreaHostName"
-        android:text="@string/event_area_price"
-        android:layout_toEndOf="@+id/tvUAEventAreaStartEndTime"
-        android:textSize="@dimen/standardSmallerTextSize"
-        android:layout_marginStart="15dp"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/leftButton"
@@ -277,7 +268,8 @@
         android:onClick="goToReadReviewActivity"
         android:layout_marginTop="10dp"
         android:layout_below="@+id/tvUAEventAreaDate"
-        android:layout_alignStart="@+id/tvUAEventAreaDate" />
+        android:layout_alignStart="@+id/tvUAEventAreaDate"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/tvUAPlaceAreaPlaceText"

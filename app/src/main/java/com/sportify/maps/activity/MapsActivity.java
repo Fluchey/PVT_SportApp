@@ -34,8 +34,11 @@ import com.sportify.maps.CustListFragment;
 import com.sportify.maps.presenter.MapsPresenter;
 import com.sportify.maps.presenter.MapsPresenterImpl;
 import com.sportify.notifications.activity.NotificationActivity;
+import com.sportify.placearea.activity.PlaceAreaActivity;
 import com.sportify.settings.activity.SettingsActivity;
 import com.sportify.showFriends.activity.ShowFriendsActivity;
+import com.sportify.storage.Event;
+import com.sportify.storage.Place;
 import com.sportify.userArea.activity.UserAreaActivity;
 
 import java.util.ArrayList;
@@ -158,17 +161,15 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
     }
 
     @Override
-    public void showPlaceMarkerAt(String placeName, String description, double latitude, double longitude) {
-        mMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)).title(placeName).snippet(description).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+    public void showPlaceMarkerAt(Place p) {
+        Marker marker = mMap.addMarker(new MarkerOptions().position(new LatLng(p.getLat(), p.getLon())).title(p.getName()).snippet(p.getCategories().toString()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+        marker.setTag(p);
     }
 
     @Override
-    public void showEventMarkerAt(String eventName, int eventId, String category, double latitude, double longitude) {
-        Marker marker = mMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)).title(eventName).snippet(category).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
-        marker.setTag(eventId);
-//        MarkerOptions marker = new MarkerOptions().position(new LatLng(latitude, longitude)).title(eventName).snippet(category).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
-//        eventIdMarkerId.put(marker, eventId);
-//        mMap.addMarker(marker);
+    public void showEventMarkerAt(Event e, Place p) {
+        Marker marker = mMap.addMarker(new MarkerOptions().position(new LatLng(p.getLat(), p.getLon())).title(e.getEventName()).snippet(e.getEventType()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+        marker.setTag(e);
     }
 
     @Override
@@ -295,12 +296,14 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
 
     @Override
     public void onInfoWindowClick(Marker marker) {
-        Toast.makeText(this, String.valueOf(marker.getTag()), Toast.LENGTH_SHORT).show();
-        Intent goToEventAreaIntent = new Intent(MapsActivity.this, EventAreaActivity.class);
-        /**
-         * The eventId is in the markerTag
-         */
-        goToEventAreaIntent.putExtra("eventId", (int) marker.getTag());
-        MapsActivity.this.startActivity(goToEventAreaIntent);
+        if(marker.getTag() instanceof Event) {
+            Intent goToEventAreaIntent = new Intent(MapsActivity.this, EventAreaActivity.class);
+            goToEventAreaIntent.putExtra("eventId", ((Event) marker.getTag()).getId());
+            MapsActivity.this.startActivity(goToEventAreaIntent);
+        }else if(marker .getTag() instanceof Place){
+            Intent goToPlaceAreaIntent = new Intent(MapsActivity.this, PlaceAreaActivity.class);
+            goToPlaceAreaIntent.putExtra("placeId", (((Place) marker.getTag()).getId()));
+            MapsActivity.this.startActivity(goToPlaceAreaIntent);
+        }
     }
 }

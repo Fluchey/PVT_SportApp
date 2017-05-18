@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:weightSum="1">
 
@@ -22,8 +23,9 @@
 
     <ImageView
         android:id="@+id/notificationSymbol"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/notificationyellow" />
+        android:layout_width="15dp"
+        android:layout_height="match_parent"
+        android:src="@drawable/chevright"
+        android:layout_weight="0.27" />
 
 </LinearLayout>

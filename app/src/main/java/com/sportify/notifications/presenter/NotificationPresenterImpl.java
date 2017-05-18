@@ -103,6 +103,8 @@ public class NotificationPresenterImpl implements NotificationPresenter, Notific
     public void showApiResponse(String... params) {
         if(method.equalsIgnoreCase("POST")) {
             getNotificationsFromApiResponse(params[0]);
+        }else{
+            notificationView.showToastToUser(params[0]);
         }
     }
 }
