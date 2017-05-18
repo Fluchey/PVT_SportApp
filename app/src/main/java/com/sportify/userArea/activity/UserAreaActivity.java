@@ -30,7 +30,7 @@ import sportapp.pvt_sportapp.R;
 public class UserAreaActivity extends AppCompatActivity implements UserAreaView {
     private UserAreaPresenter userAreaPresenter;
     private SharedPreferences sharedPref;
-    private TextView userName, userAge, userBio;
+    private TextView userName, userAge, userBio, userInterests;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,10 +46,19 @@ public class UserAreaActivity extends AppCompatActivity implements UserAreaView 
         int age = -1;
         if (!dateOfBirth.isEmpty()) {
             age = Profile.getAge(dateOfBirth);
+            userAge.setText("" + age + " år");
+        } else {
+            userAge.setText("");
         }
-        userAge.setText("" + age + " år");
         userBio = (TextView) findViewById(R.id.profileText);
         userBio.setText(sharedPref.getString("userBio", ""));
+        userInterests = (TextView) findViewById(R.id.UserInfoInterestText);
+        String interestsString = (sharedPref.getString("interests", ""));
+        interestsString = interestsString.replaceAll("\"","");
+        interestsString = interestsString.replace("[", "#");
+        interestsString = interestsString.replace("]", "");
+        interestsString = interestsString.replaceAll(","," #");
+        userInterests.setText(interestsString);
     }
 
 

@@ -122,7 +122,7 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
         String lastName = "";
         String dateOfBirth = "";
         String userBio = "";
-        List<String> interests = null;
+        String interestsString = "";
         String imageBase64 ="";
 
 
@@ -139,9 +139,9 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
             lastName = json.getString("lastName");
             dateOfBirth = json.getString("dateOfBirth");
             userBio = json.getString("userBio");
-            //todo: interests
+            interestsString = json.getString("interests");
             imageBase64 = json.getString("imageBase64");
-            Log.d("ProfileID: ", "" + profileID);
+            Log.d("interestsString: ", "" + interestsString);
 
 
         } catch (JSONException e) {
@@ -154,7 +154,7 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
             editor.putString("lastName", lastName);
             editor.putString("dateOfBirth", dateOfBirth);
             editor.putString("userBio", userBio);
-            //todo interests
+            editor.putString("interests", interestsString);
             editor.putString("imageBase64", imageBase64);
             editor.putString("jwt", jwt);
             editor.putInt("profileID", profileID);
