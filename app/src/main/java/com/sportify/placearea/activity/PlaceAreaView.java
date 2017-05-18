@@ -1,5 +1,7 @@
 package com.sportify.placearea.activity;
 
+import android.view.View;
+
 import java.util.ArrayList;
 
 /**
@@ -9,4 +11,6 @@ import java.util.ArrayList;
 public interface PlaceAreaView {
     void setPlaceName(String placeName);
     void setInterests(ArrayList<String> interests);
+    void goToWriteReviewActivity(View v);
+    void goToUserAreaFromRead(View v);
 }
