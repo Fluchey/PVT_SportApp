@@ -3,6 +3,7 @@ package com.sportify.eventArea.request;
 
 import com.sportify.storage.Event;
 import com.sportify.storage.Place;
+import com.sportify.storage.User;
 
 /**
  * Created by fluchey on 2017-05-17.
@@ -17,6 +18,7 @@ public interface EventAreaRequest {
 
     Place getPlace();
 
+    User getUser();
 
     interface onRequestFinishedListener{
         void showApiResponse(String command, String... params);
