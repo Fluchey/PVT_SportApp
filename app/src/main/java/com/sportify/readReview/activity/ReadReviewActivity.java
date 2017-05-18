@@ -6,9 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.sportify.placeReview.activity.PlaceReviewActivity;
-import com.sportify.settings.activity.SettingsActivity;
-import com.sportify.settingsEditProfile.activity.EditProfileActivity;
-import com.sportify.storage.PlaceReview;
 import com.sportify.userArea.activity.UserAreaActivity;
 
 import sportapp.pvt_sportapp.R;

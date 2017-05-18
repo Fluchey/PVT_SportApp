@@ -12,9 +12,9 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
-import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
@@ -22,8 +22,10 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.sportify.login.activity.LoginActivity;
 import com.sportify.profile.presenter.ProfilePresenterImpl;
+import com.sportify.settings.activity.SettingsActivity;
+import com.sportify.settingsEditProfile.activity.EditProfileView;
+import com.sportify.util.Profile;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -32,7 +34,7 @@ import java.util.List;
 
 import sportapp.pvt_sportapp.R;
 
-public class ProfileActivity extends AppCompatActivity implements ProfileView {
+public class EditProfileActivity extends AppCompatActivity implements ProfileView {
     private static int RESULT_LOAD_IMG = 1826;
     private static int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 9287;
     String imgDecodableString;
@@ -44,7 +46,6 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView {
     private EditText description;
     private CheckBox fotboll, basket, simning, bandy, ridning,
             running, parkour, outdoortraining, skateboarding, badminton;
-
     private ImageButton checkboxProfileButton;
     private ImageButton profilePictureButton;
     private List<String> interests;
@@ -52,24 +53,31 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView {
     private DatePickerDialog.OnDateSetListener date;
     private int userID;
     private boolean customImage;
-
     private ProgressDialog dialog;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.activity_settings_edit_profile);
         sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-        userID = getIntent().getIntExtra("userID", -1);
+        userID = sharedPref.getInt("profileID", -1);
         profilePresenter = new ProfilePresenterImpl(this, sharedPref);
         customImage = false;
 
         firstname = (EditText) findViewById(R.id.etProfileNameHint);
+        firstname.setText(sharedPref.getString("firstName", ""));
         lastname = (EditText) findViewById(R.id.etLastnameHint);
+        lastname.setText(sharedPref.getString("lastName", ""));
         dateOfBirth = (EditText) findViewById(R.id.etProfileBirthdayhint);
+        dateOfBirth.setText(sharedPref.getString("dateOfBirth", ""));
         description = (EditText) findViewById(R.id.etDescriptionBoxProfileOmMig);
+        description.setText(sharedPref.getString("userBio", ""));
         profilePictureButton = (ImageButton) findViewById(R.id.ibProfilePicturebutton);
+        String imageBase64 = sharedPref.getString("imageBase64", "");
+        if (!imageBase64.isEmpty()){
+            profilePictureButton.setImageBitmap(Profile.decodeStringToBitmap(imageBase64));
+            customImage = true;
+        }
         checkboxProfileButton = (ImageButton) findViewById(R.id.ibCheckboxProfileButton);
 
         fotboll = (CheckBox) findViewById(R.id.cbProfileFotboll);
@@ -100,7 +108,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView {
         dateOfBirth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new DatePickerDialog(ProfileActivity.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
+                new DatePickerDialog(EditProfileActivity.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
 
@@ -272,7 +280,12 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView {
 
     @Override
     public void goToLoginActivity() {
-        Intent goToLoginActivity = new Intent(ProfileActivity.this, LoginActivity.class);
-        ProfileActivity.this.startActivity(goToLoginActivity);
+
     }
+
+    public void toSettFromEditProActivity(View v){
+        Intent goToSettingsViewIntent = new Intent(EditProfileActivity.this, SettingsActivity.class);
+        EditProfileActivity.this.startActivity(goToSettingsViewIntent);
+    }
+
 }

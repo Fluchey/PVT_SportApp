@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:padding="@dimen/def_pagePadding"
     android:background="@drawable/backgroundnodude"
-    tools:context="com.sportify.settingsEditProfile.activity.EditProfileActivity">
+    tools:context="com.sportify.profile.activity.EditProfileActivity">
 
     <!-- TODO Redigera profil funktionen, ladda in all information om specifika användaren -->
 

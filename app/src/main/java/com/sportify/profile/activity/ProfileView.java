@@ -23,7 +23,6 @@ public interface ProfileView {
     void showDateOfBirthEmptyError(int resId);
     void showDateOfBirthWrongFormatError(int resId);
     void showNoInterestCheckedError(int resID);
-    void launchLoginActivity();
 
     void showProgressDialog();
     void closeProgressDialog();
