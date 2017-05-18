@@ -143,6 +143,7 @@
 
 
     <RadioGroup
+        android:id="@+id/RadioComingNot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/tvEventAreaPrice"
@@ -201,6 +202,18 @@
         android:layout_height="2dp"
         android:layout_below="@+id/tvEventAreaDescription"
         android:background="@color/colorAccent" />
+
+    <ImageView
+        android:id="@+id/editEventButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:srcCompat="@drawable/setteditprofile"
+        android:layout_marginBottom="40dp"
+        android:layout_marginStart="50dp"
+        android:layout_above="@+id/RadioComingNot"
+        android:layout_toEndOf="@+id/eventSwimView"
+        android:clickable="true"
+        android:onClick="goToEditEventActivity"/>
 
 
 </RelativeLayout>

@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.sportify.editEvent.activity.EditEventActivity;
 import com.sportify.eventArea.presenter.EventAreaPresenter;
 import com.sportify.eventArea.presenter.EventAreaPresenterImpl;
 import com.sportify.eventArea.request.EventAreaRequest;
@@ -60,6 +61,12 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
         Intent goToUserAreaViewIntent = new Intent(EventAreaActivity.this, UserAreaActivity.class);
         EventAreaActivity.this.startActivity(goToUserAreaViewIntent);
     }
+
+    public void goToEditEventActivity(View v){
+        Intent goToEditEventViewIntent = new Intent(EventAreaActivity.this, EditEventActivity.class);
+        EventAreaActivity.this.startActivity(goToEditEventViewIntent);
+    }
+
 
     @Override
     public void setEventName(String eventName) {
