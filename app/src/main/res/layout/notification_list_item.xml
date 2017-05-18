@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -10,22 +11,24 @@
         android:id="@+id/profilePictureNotificationView"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:src="@drawable/userprofileimage" />
+        android:src="@drawable/userprofileimage"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/tvNotification"
         android:layout_width="249dp"
         android:layout_height="?android:attr/listPreferredItemHeightSmall"
         android:gravity="center_vertical"
-        android:paddingLeft="?android:attr/listPreferredItemPaddingLeft"
-        android:paddingRight="?android:attr/listPreferredItemPaddingRight"
+        android:paddingStart="?android:attr/listPreferredItemPaddingLeft"
+        android:paddingEnd="?android:attr/listPreferredItemPaddingRight"
         android:textAppearance="?android:attr/textAppearanceListItemSmall" />
 
     <ImageView
         android:id="@+id/notificationSymbol"
-        android:layout_width="15dp"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:src="@drawable/chevright"
-        android:layout_weight="0.27" />
+        android:src="@drawable/noteright"
+        android:layout_weight="0.27"
+        tools:ignore="ContentDescription" />
 
 </LinearLayout>

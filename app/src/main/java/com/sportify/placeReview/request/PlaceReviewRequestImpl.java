@@ -63,11 +63,11 @@ public class PlaceReviewRequestImpl implements PlaceReviewRequest {
     }
 
     @Override
-    public void submitReview(float rating, String comment, int userId, String place){
+    public void submitReview(float rating, String comment, int userId, int placeId){
         JSONObject json = new JSONObject();
         try{
             json.put("profileId", userId);
-            json.put("placeName", place);
+            json.put("placeName", placeId);
             json.put("comment", comment);
             json.put("rating", rating);
         } catch (JSONException e) {

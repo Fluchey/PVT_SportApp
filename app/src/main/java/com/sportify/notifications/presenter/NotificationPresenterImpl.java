@@ -41,20 +41,21 @@ public class NotificationPresenterImpl implements NotificationPresenter, Notific
         notificationRequest.makeApiRequest("geteventinvites", method, "{}");
     }
 
+    //TODO: Radera denna när allt är klar på EventArea
     @Override
     public void sendResponseEventInviteMakeApiRequest(String response, int eventID) {
-
-        JSONObject json = new JSONObject();
-        try {
-            json.put("response", response);
-            json.put("eventID", "" + eventID);
-        }catch (JSONException e){
-            e.printStackTrace();
-        }
-
-        System.out.println("JSON " + json.toString());
-        method = "PUT";
-        notificationRequest.makeApiRequest("respondeventinvite", method, json.toString());
+//
+//        JSONObject json = new JSONObject();
+//        try {
+//            json.put("response", response);
+//            json.put("eventID", "" + eventID);
+//        }catch (JSONException e){
+//            e.printStackTrace();
+//        }
+//
+//        System.out.println("JSON " + json.toString());
+//        method = "PUT";
+//        notificationRequest.makeApiRequest("respondeventinvite", method, json.toString());
     }
 
     @Override

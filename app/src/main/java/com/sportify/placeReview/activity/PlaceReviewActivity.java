@@ -13,36 +13,38 @@ import com.sportify.placeReview.presenter.PlaceReviewPresenterImpl;
 import sportapp.pvt_sportapp.R;
 
 public class PlaceReviewActivity extends AppCompatActivity implements PlaceReviewView{
-    PlaceReviewPresenter placeReviewPresenter;
+    private PlaceReviewPresenter placeReviewPresenter;
 
-    TextView placeName;
-    EditText reviewText;
-    RatingBar ratingBar;
+    private TextView header;
+    private EditText reviewText;
+    private RatingBar ratingBar;
 
     int userId;
-    String place;
+    int placeId;
+    String placeName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_place_review);
 
-        placeName = (TextView) findViewById(R.id.reviewHeader);
+        header = (TextView) findViewById(R.id.reviewHeader);
         reviewText = (EditText) findViewById(R.id.reviewText);
         ratingBar = (RatingBar) findViewById(R.id.ratingBar);
 
         Bundle b = getIntent().getExtras();
         if(b != null){
-            place = b.getString("place");
-            placeName.setText(place);
-            userId = b.getInt("userID", -1);
+            placeName = b.getString("placeName", "Plats");
+            header.setText(placeName);
+            userId = b.getInt("userId", -1);
+            placeId = b.getInt("placeId", -1);
         }
 
         placeReviewPresenter = new PlaceReviewPresenterImpl(this);
     }
 
     @Override
-    public void submit(View v) { placeReviewPresenter.submitReview(userId, place); }
+    public void submit(View v) { placeReviewPresenter.submitReview(userId, placeId); }
 
     @Override
     public float getRating() {

@@ -143,6 +143,7 @@
 
 
     <RadioGroup
+        android:id="@+id/RadioComingNot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/tvEventAreaPrice"
@@ -151,17 +152,21 @@
         android:layout_marginEnd="30dp"
         android:orientation="vertical">
 
-        <RadioButton
+     <!--   <RadioButton
             android:id="@+id/interestedRadioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="sendResponsEventInvite"
+            android:tag="interested"
             android:text="@string/event_intrested_radio"
-            android:textSize="@dimen/standardSmallerTextSize" />
+            android:textSize="@dimen/standardSmallerTextSize" />-->
 
         <RadioButton
             android:id="@+id/comingRadioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="sendResponsEventInvite"
+            android:tag="attending"
             android:text="@string/event_coming_radio"
             android:textSize="@dimen/standardSmallerTextSize" />
 
@@ -169,6 +174,8 @@
             android:id="@+id/notComingRadioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="sendResponsEventInvite"
+            android:tag="not_attending"
             android:text="@string/event_not_coming_radio"
             android:textSize="@dimen/standardSmallerTextSize" />
 
@@ -201,6 +208,18 @@
         android:layout_height="2dp"
         android:layout_below="@+id/tvEventAreaDescription"
         android:background="@color/colorAccent" />
+
+    <ImageView
+        android:id="@+id/editEventButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:srcCompat="@drawable/setteditprofile"
+        android:layout_marginBottom="40dp"
+        android:layout_marginStart="50dp"
+        android:layout_above="@+id/RadioComingNot"
+        android:layout_toEndOf="@+id/eventSwimView"
+        android:clickable="true"
+        android:onClick="goToEditEventActivity"/>
 
 
 </RelativeLayout>

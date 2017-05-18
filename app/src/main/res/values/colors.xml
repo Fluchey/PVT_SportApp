@@ -9,6 +9,8 @@
     <color name="colorMPButtons">#bee8e7</color>
     <color name="colorCreateEvent">#31a979</color>
 
+    <color name="colorDelete">#e45858</color>
+
 
     <color name="colorCrystalWhite">#ffffff</color>
     <color name="colorDarkBlue">#3b5998</color>

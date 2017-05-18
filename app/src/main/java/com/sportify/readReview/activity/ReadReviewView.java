@@ -1,5 +1,6 @@
 package com.sportify.readReview.activity;
 
-public interface ReadReviewView {
+import android.view.View;
 
+public interface ReadReviewView {
 }
