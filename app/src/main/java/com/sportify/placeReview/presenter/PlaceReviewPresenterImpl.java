@@ -34,8 +34,8 @@ public class PlaceReviewPresenterImpl implements PlaceReviewPresenter, PlaceRevi
     }
 
     @Override
-    public void submitReview(int userId, String place) {
-        placeReviewRequest.submitReview(placeReviewView.getRating(),placeReviewView.getComment(), userId, place);
+    public void submitReview(int userId, int placeId) {
+        placeReviewRequest.submitReview(placeReviewView.getRating(),placeReviewView.getComment(), userId, placeId);
     }
 
     @Override

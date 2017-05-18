@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.sportify.placeReview.activity.PlaceReviewActivity;
 import com.sportify.settings.activity.SettingsActivity;
@@ -14,21 +15,20 @@ import com.sportify.userArea.activity.UserAreaActivity;
 import sportapp.pvt_sportapp.R;
 
 public class ReadReviewActivity extends AppCompatActivity implements ReadReviewView{
+    TextView header;
+    String place;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_read_review);
+
+        header = (TextView) findViewById(R.id.readReviewHeader);
+
+        Bundle b = getIntent().getExtras();
+        if(b != null){
+            place = b.getString("placeId");
+            header.setText(place);
+        }
     }
-
-    public void goToWriteReviewActivity(View v){
-        Intent goToWriteReviewIntent = new Intent(ReadReviewActivity.this, PlaceReviewActivity.class);
-        ReadReviewActivity.this.startActivity(goToWriteReviewIntent);
-    }
-
-
-    public void goToUserAreaFromRead(View v){
-        Intent goToUserAreaIntent = new Intent(ReadReviewActivity.this, UserAreaActivity.class);
-        ReadReviewActivity.this.startActivity(goToUserAreaIntent);
-}
 }
