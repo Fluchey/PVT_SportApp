@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/def_pagePadding"
-    tools:context="com.sportify.readReview.activity.ReadReviewActivity"
+    tools:context="com.sportify.placearea.activity.PlaceAreaActivity"
     android:background="@drawable/backgroundnodude">
 
     <android.support.design.widget.FloatingActionButton

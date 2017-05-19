@@ -5,18 +5,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.sportify.eventArea.presenter.EventAreaPresenterImpl;
-import com.sportify.maps.activity.MapsActivity;
 import com.sportify.placeReview.activity.PlaceReviewActivity;
 import com.sportify.placearea.presenter.PlaceAreaPresenter;
 import com.sportify.placearea.presenter.PlaceAreaPresenterImpl;
-import com.sportify.storage.Place;
-import com.sportify.readReview.activity.ReadReviewActivity;
 import com.sportify.userArea.activity.UserAreaActivity;
 
 import java.util.ArrayList;
@@ -34,7 +28,7 @@ public class PlaceAreaActivity extends AppCompatActivity implements PlaceAreaVie
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_read_review);
+        setContentView(R.layout.activity_place_area);
 
         sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         presenter = new PlaceAreaPresenterImpl(this, sharedPref);

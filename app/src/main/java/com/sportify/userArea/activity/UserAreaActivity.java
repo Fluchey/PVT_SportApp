@@ -16,7 +16,7 @@ import com.sportify.calendar.activity.CalendarActivity;
 import com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOnePageOneActivity;
 import com.sportify.eventArea.activity.EventAreaActivity;
 import com.sportify.maps.activity.MapsActivity;
-import com.sportify.readReview.activity.ReadReviewActivity;
+import com.sportify.placearea.activity.PlaceAreaActivity;
 import com.sportify.notifications.activity.NotificationActivity;
 import com.sportify.settings.activity.SettingsActivity;
 import com.sportify.profile.activity.EditProfileActivity;
@@ -116,11 +116,13 @@ public class UserAreaActivity extends AppCompatActivity implements UserAreaView 
 
     public void goToEventAreaActivity(View v){
         Intent goToEventAreaIntent = new Intent(UserAreaActivity.this, EventAreaActivity.class);
+        goToEventAreaIntent.putExtra("eventId", 322);
         UserAreaActivity.this.startActivity(goToEventAreaIntent);
     }
 
     public void goToReadReviewActivity(View v){
-        Intent goToReadReviewIntent = new Intent(UserAreaActivity.this, ReadReviewActivity.class);
-        UserAreaActivity.this.startActivity(goToReadReviewIntent);
+        Intent placeAreaIntent = new Intent(UserAreaActivity.this, PlaceAreaActivity.class);
+        placeAreaIntent.putExtra("placeId", "2220");
+        UserAreaActivity.this.startActivity(placeAreaIntent);
     }
 }
