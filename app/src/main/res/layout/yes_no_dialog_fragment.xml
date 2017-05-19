@@ -7,33 +7,36 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="10dp"
+        android:padding="5dp"
         android:text="@string/dialog_Fragment_friend_request"
-        android:textSize="20dp"/>
+        android:textSize="15sp"/>
 
     <LinearLayout
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp">
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/btnYesDialogFragment"
             android:layout_width="145dp"
+            android:textSize="13sp"
             android:layout_height="wrap_content"
             android:text="@string/dialog_fragment_yes"
-            android:background="#00CC66"
+            android:background="@color/colorCreateEvent"
             android:textColor="#fff"
             android:textStyle="bold"
+            android:fontFamily="sans-serif-condensed"
             android:layout_margin="5dp"/>
 
         <Button
             android:id="@+id/btnNoDialogFragment"
             android:layout_width="145dp"
+            android:textSize="13sp"
             android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed"
             android:text="@string/dialog_fragment_no"
-            android:background="#FF3333"
+            android:background="@color/colorDelete"
             android:textColor="#fff"
             android:textStyle="bold"
             android:layout_margin="5dp" />

@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:text="@string/app_name"
         android:textColor="@color/colorPrimaryDarkGrey"
-        android:textSize="35sp"
+        android:textSize="40sp"
         android:layout_marginTop="18dp"
         android:layout_below="@+id/imageView3"
         android:layout_centerHorizontal="true" />
@@ -57,34 +57,42 @@
     <Button
         android:id="@+id/registerMPButton"
         android:layout_width="150dp"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:background="@color/colorButton"
         android:onClick="goToRegisterActivity"
         android:text="@string/register_here"
         android:layout_marginStart="50dp"
-        android:layout_below="@+id/textViewIntro"
+        android:layout_marginTop="15dp"
         android:layout_centerInParent="true"
+        android:layout_below="@+id/loginMPButton"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-condensed" />
 
-        />
+
+
 
     <Button
         android:id="@+id/loginMPButton"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
         android:background="@color/colorButton"
         android:onClick="goToLoginActivity"
         android:text="@string/log_in"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="18dp"
-        android:layout_below="@+id/registerMPButton"
-        />
+        android:layout_below="@+id/textViewIntro"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/buttonDark"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-condensed" />
 
     <Button
         android:id="@+id/placeReviewTestButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/buttonDark"
         android:onClick="testGoToPlaceReviewActivity"
         android:text="Testa platsrecension"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-condensed"
         tools:layout_editor_absoluteX="97dp"
         tools:layout_editor_absoluteY="518dp" />
 
