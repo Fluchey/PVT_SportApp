@@ -205,6 +205,7 @@
     <string name="register_here">Registrera konto</string>
     <string name="title_activity_friend">KompisAktivitet</string>
     <string name="find_friends">Hitta vänner</string>
+    <string name="log_out">Logga ut</string>
     <string name="login_successfull">Inloggningen lyckades!</string>
 
 

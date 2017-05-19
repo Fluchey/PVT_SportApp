@@ -190,6 +190,17 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="10dp"/>
 
+    <Button
+        android:id="@+id/logOutButton"
+        android:layout_width="85dp"
+        android:layout_height="45dp"
+        android:fontFamily="sans-serif-condensed"
+        android:textSize="12sp"
+        android:layout_above="@+id/createEventButtonfromSett"
+        android:layout_centerHorizontal="true"
+        android:background="@color/colorDelete"
+        android:layout_marginBottom="78dp"
+        android:text="@string/log_out" />
 
 
 </RelativeLayout>
