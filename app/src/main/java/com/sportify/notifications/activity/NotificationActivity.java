@@ -1,5 +1,6 @@
 package com.sportify.notifications.activity;
 
+import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -26,7 +27,7 @@ import java.util.ArrayList;
 
 import sportapp.pvt_sportapp.R;
 
-public class NotificationActivity extends AppCompatActivity implements NotificationView {
+public class NotificationActivity extends AppCompatActivity implements NotificationView, YesNoDialogFragment.YesNoDialogListener {
 
     private NotificationPresenter notificationPresenter;
     private MyArrayAdapterNotifications arrayAdapter;
@@ -58,12 +59,20 @@ public class NotificationActivity extends AppCompatActivity implements Notificat
                     toEventAreaActivity();
                 }
                 if(notificationList.getItemAtPosition(position).getClass() == FriendRequestNotification.class){
+
                     FriendRequestNotification friendRequest = (FriendRequestNotification) notificationList.getItemAtPosition(position);
                     int friendID = friendRequest.getFriendID();
                     String friendName = friendRequest.getName();
-                    String response = "accepted";
-                    //TODO: Fixa response!!
-                    notificationPresenter.respondFriendRequest(friendID, friendName, response);
+
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("friendID", friendID);
+                    bundle.putString("friendName", friendName);
+
+                    FragmentManager fragmentManager = getFragmentManager();
+                    YesNoDialogFragment yesnoDialog = new YesNoDialogFragment();
+                    yesnoDialog.setArguments(bundle);
+                    yesnoDialog.setCancelable(false);
+                    yesnoDialog.show(fragmentManager, "Yes/No Dialog");
                 }
             }
         });
@@ -111,5 +120,10 @@ public class NotificationActivity extends AppCompatActivity implements Notificat
     @Override
     public void showToastToUser(String message) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onFinishYesNoDialog(int friendID, String friendName, String response) {
+        notificationPresenter.respondFriendRequest(friendID, friendName, response);
     }
 }
