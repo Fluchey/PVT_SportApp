@@ -53,7 +53,8 @@ public class AddFriendActivity extends AppCompatActivity implements AddFriendVie
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Profile p = (Profile) friendList.getItemAtPosition(position);
                 int profileID = p.getProfileID();
-                addFriendsPresenter.addFriend(profileID);
+                String name = p.getFirstname();
+                addFriendsPresenter.addFriend(name, profileID);
             }
         });
 

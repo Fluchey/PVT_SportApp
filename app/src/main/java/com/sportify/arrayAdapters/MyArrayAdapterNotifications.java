@@ -21,12 +21,11 @@ import sportapp.pvt_sportapp.R;
 public class MyArrayAdapterNotifications extends ArrayAdapter {
 
 
-//    private ArrayList<String> notifications = new ArrayList<>();
-    private ArrayList<Notification> notifications = new ArrayList<>();
+    private ArrayList<Notification> eventNotifications = new ArrayList<>();
 
-    public MyArrayAdapterNotifications(Context context, int rowId, ArrayList<Notification> notifications) {
-        super(context, rowId, notifications);
-        this.notifications = notifications;
+    public MyArrayAdapterNotifications(Context context, int rowId, ArrayList<Notification> eventNotifications) {
+        super(context, rowId, eventNotifications);
+        this.eventNotifications = eventNotifications;
     }
 
     /**
@@ -46,11 +45,10 @@ public class MyArrayAdapterNotifications extends ArrayAdapter {
 
         ImageView imageView = (ImageView) row.findViewById(R.id.profilePictureNotificationView);
         //TODO: Fånga upp host och hämta dess profilbild
+        //ImageView profilePicture = eventNotifications.get(position).getProfilePicture();
         //imageView.setImageResource();
 
-        String host = notifications.get(position).getHost();
-        String eventName = notifications.get(position).getEventName();
-        notificationMessage.setText(host + " " + getContext().getString(R.string.event_invite_notification) + " " + eventName);
+        notificationMessage.setText(eventNotifications.get(position).getNotificationText(getContext()));
 
         return row;
     }

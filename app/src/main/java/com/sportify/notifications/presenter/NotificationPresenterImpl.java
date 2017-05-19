@@ -3,6 +3,8 @@ package com.sportify.notifications.presenter;
 import android.content.SharedPreferences;
 import android.util.Log;
 
+import com.sportify.notifications.EventNotification;
+import com.sportify.notifications.FriendRequestNotification;
 import com.sportify.notifications.Notification;
 import com.sportify.notifications.activity.NotificationView;
 import com.sportify.notifications.request.NotificationRequest;
@@ -25,41 +27,35 @@ public class NotificationPresenterImpl implements NotificationPresenter, Notific
     private SharedPreferences sharedPref;
     private String token = "";
     private ArrayList<Notification> notifications;
-    String method;
 
     public NotificationPresenterImpl(NotificationView notificationView, SharedPreferences sharedPref){
         this.notificationView = notificationView;
         this.sharedPref = sharedPref;
         this.token = sharedPref.getString("jwt", "");
         this.notificationRequest = new NotificationRequestImpl(this, token);
-        getNotificationsMakeApiRequest();
+        notifications = new ArrayList<>();
+        updateNotificationView();
     }
 
     @Override
-    public void getNotificationsMakeApiRequest() {
-        method = "POST";
-        notificationRequest.makeApiRequest("geteventinvites", method, "{}");
-    }
-
-    //TODO: Radera denna när allt är klar på EventArea
-    @Override
-    public void sendResponseEventInviteMakeApiRequest(String response, int eventID) {
-//
-//        JSONObject json = new JSONObject();
-//        try {
-//            json.put("response", response);
-//            json.put("eventID", "" + eventID);
-//        }catch (JSONException e){
-//            e.printStackTrace();
-//        }
-//
-//        System.out.println("JSON " + json.toString());
-//        method = "PUT";
-//        notificationRequest.makeApiRequest("respondeventinvite", method, json.toString());
+    public void updateNotificationView() {
+        getEventNotificationsMakeApiRequest();
+        getFriendRequestNotificationsMakeApiRequest();
     }
 
     @Override
-    public void getNotificationsFromApiResponse(String jsonMessage) {
+    public void getEventNotificationsMakeApiRequest() {
+        notificationRequest.makeApiRequest("geteventinvites", "POST", "{}", "eventInvitation");
+    }
+
+    @Override
+    public void getFriendRequestNotificationsMakeApiRequest() {
+        notificationRequest.makeApiRequest("getfriendrequests", "POST", "{}", "friendRequest");
+    }
+
+
+    @Override
+    public void getNotificationsFromApiResponse(String jsonMessage, String command) {
         JSONObject json = null;
         JSONArray array = null;
 
@@ -69,7 +65,11 @@ public class NotificationPresenterImpl implements NotificationPresenter, Notific
 
         try{
             json = new JSONObject(jsonMessage);
-            array = json.getJSONArray("eventNotifications");
+            if(command.equalsIgnoreCase("eventInvitation")){
+                array = json.getJSONArray("eventNotifications");
+            }else if(command.equalsIgnoreCase("friendRequest")){
+                array = json.getJSONArray("friendRequests");
+            }
             Log.d("JsonArr: ", array.toString());
         }catch (JSONException e) {
             e.printStackTrace();
@@ -80,32 +80,32 @@ public class NotificationPresenterImpl implements NotificationPresenter, Notific
         }
 
         try{
-            notifications = new ArrayList<>();
-
             for(int i=0; i < array.length(); i++){
 
-                JSONObject notification = array.getJSONObject(i);
-                String host = notification.getString("host");
-                String eventName = notification.getString("event");
-                int eventID = notification.getInt("eventID");
+                //TODO: Hämta profilbild
+                JSONObject jsonNotification = array.getJSONObject(i);
+                Notification notification = null;
+                String friendName = jsonNotification.getString("friendName");
 
-                Notification newNotification = new Notification(host, eventName, eventID);
-
-                notifications.add(newNotification);
+                if(command.equalsIgnoreCase("eventInvitation")){
+                    String eventName = jsonNotification.getString("event");
+                    int eventID = jsonNotification.getInt("eventID");
+                    notification = new EventNotification(friendName, eventName, eventID);
+                }else if(command.equalsIgnoreCase("friendRequest")){
+                    int friendID = jsonNotification.getInt("profileID");
+                    notification = new FriendRequestNotification(friendName, friendID);
+                }
+                notifications.add(notification);
             }
         }catch (JSONException e){
             e.printStackTrace();
         }
-
+        //TODO: Flytta på denna så den görs först efter att hela notification-listan har fyllts på.
         notificationView.showNotifications(notifications);
     }
 
     @Override
-    public void showApiResponse(String... params) {
-        if(method.equalsIgnoreCase("POST")) {
-            getNotificationsFromApiResponse(params[0]);
-        }else{
-            notificationView.showToastToUser(params[0]);
-        }
+    public void showApiResponse(String responseBody, String command) {
+        getNotificationsFromApiResponse(responseBody, command);
     }
 }

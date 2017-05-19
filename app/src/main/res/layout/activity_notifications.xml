@@ -7,7 +7,7 @@
     android:layout_alignParentStart="true"
     android:fillViewport="true"
     android:background="@drawable/backgroundnodude"
-    tools:context="com.sportify.notifications.activity.NotificationActivity">
+    tools:context="com.sportify.eventNotifications.activity.NotificationActivity">
 
 
     <RelativeLayout
@@ -59,7 +59,7 @@
         <ListView
             android:id="@+id/lvNotifications"
             android:layout_width="500dp"
-            android:layout_height="700dp"
+            android:layout_height="10000dp"
             android:layout_marginLeft="0dp"
             android:fadeScrollbars="false"
             android:isScrollContainer="false"

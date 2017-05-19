@@ -8,6 +8,4 @@ public interface NotificationView {
 
     void showNotifications(ArrayList<Notification> notifications);
 
-    void showToastToUser(String message);
-
 }
