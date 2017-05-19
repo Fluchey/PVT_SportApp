@@ -15,4 +15,5 @@ public interface LoginView {
     void showProgressDialog();
     void closeProgressDialog();
     void launchUserActivity();
+    void launchProfileActivity();
 }

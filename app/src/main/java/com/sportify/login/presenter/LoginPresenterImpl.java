@@ -107,13 +107,30 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
         Log.d(TAG, "LoginPresenterImpl.showApiResponse(params[1]) " + params[1]);
         if (params[1].equals("200") || params[1].equals("201")){
             saveToPreferences(params);
-            loginView.launchUserActivity();
+            if (facebookNewUser(params)){
+                loginView.launchProfileActivity();
+            } else {
+                loginView.launchUserActivity();
+            }
         }else{
             loginView.showApiRequestMessage(params[0]);
         }
     }
 
-    public void saveToPreferences(String... params) {
+    private boolean facebookNewUser(String... params){
+        JSONObject json = null;
+        Boolean facebookNewUser = false;
+        try {
+            json = new JSONObject(params[0]);
+            facebookNewUser = json.getBoolean("newFacebook");
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return facebookNewUser;
+    }
+
+    private void saveToPreferences(String... params) {
         //TODO: When LOGOUT is created these values need to be set to ""
         String fbTokenLong = null;
         String jwt = null;

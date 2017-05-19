@@ -25,6 +25,7 @@ import com.sportify.login.presenter.LoginPresenterImpl;
 import com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOnePageOneActivity;
 import com.sportify.createEvent.createEventInviteFriends.activity.CreateEventInviteFriendsActivity;
 
+import com.sportify.profile.activity.ProfileActivity;
 import com.sportify.register.activity.RegisterActivity;
 import com.sportify.userArea.activity.UserAreaActivity;
 import sportapp.pvt_sportapp.R;
@@ -170,4 +171,9 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         LoginActivity.this.startActivity(goToUserAreaIntent);
     }
 
+    @Override
+    public void launchProfileActivity(){
+        Intent goToProfileActivityIntent = new Intent(LoginActivity.this, ProfileActivity.class);
+        LoginActivity.this.startActivity(goToProfileActivityIntent);
+    }
 }
