@@ -100,6 +100,7 @@ public class LoginTest {
          */
         onView(withId(R.id.etProfileNameHint)).perform(typeText("Espresso"), closeSoftKeyboard());
         onView(withId(R.id.etLastnameHint)).perform(typeText("EspressoLastName"), closeSoftKeyboard());
+        onView(withId(R.id.etProfileBirthdayhint)).perform(typeText("1995-01-01"), closeSoftKeyboard());
         onView(withId(R.id.cbProfileFotboll)).perform(click());
         onView(withId(R.id.ibCheckboxProfileButton)).perform(click());
 

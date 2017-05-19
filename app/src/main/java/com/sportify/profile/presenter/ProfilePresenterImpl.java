@@ -62,9 +62,8 @@ public class ProfilePresenterImpl implements ProfilePresenter, ProfileRequest.On
         } else if (lastname.isEmpty()) {
             profileView.showLastNameEmptyError(R.string.lastName_Empty_error);
 
-            //Current design decision states no dateOfBirth required
-//        } else if (dateOfBirth.isEmpty()){
-//            profileView.showDateOfBirthEmptyError(R.string.dateOfBirth_Empty_error);
+        } else if (dateOfBirth.isEmpty()){
+            profileView.showDateOfBirthEmptyError(R.string.dateOfBirth_Empty_error);
 
           } else if (!dateOfBirth.isEmpty() && !validDateFormat(dateOfBirth)){
             profileView.showDateOfBirthWrongFormatError(R.string.dateOfBirth_wrongFormat_error);
