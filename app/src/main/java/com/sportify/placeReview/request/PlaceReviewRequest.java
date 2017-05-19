@@ -21,7 +21,7 @@ public interface PlaceReviewRequest {
 
     ArrayList<PlaceReview> getAllReviews();
 
-    void submitReview(float rating, String comment, int userId, String place);
+    void submitReview(double rating, String comment, int userId, int placeId);
 
     String getPlaceName(String placeID);
 }

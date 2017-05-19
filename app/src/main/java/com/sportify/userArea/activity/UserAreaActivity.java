@@ -4,11 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -22,14 +19,11 @@ import com.sportify.maps.activity.MapsActivity;
 import com.sportify.readReview.activity.ReadReviewActivity;
 import com.sportify.notifications.activity.NotificationActivity;
 import com.sportify.settings.activity.SettingsActivity;
-import com.sportify.settingsEditProfile.activity.EditProfileActivity;
+import com.sportify.profile.activity.EditProfileActivity;
 import com.sportify.showFriends.activity.ShowFriendsActivity;
 import com.sportify.userArea.presenter.UserAreaPresenter;
 import com.sportify.userArea.presenter.UserAreaPresenterImpl;
 import com.sportify.util.Profile;
-
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
 
 import sportapp.pvt_sportapp.R;
 

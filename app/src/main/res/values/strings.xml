@@ -26,7 +26,7 @@
     <string name="descriptionbox_profile_text">Berätta om dig själv</string>
     <string name="profile_picture_text">Lägg till bild</string>
     <string name="profile_interests_parkour">Parkour</string>
-    <string name="profile_birthday_hint">DD/MM/YY</string>
+    <string name="profile_birthday_hint">YYYY-MM-DD</string>
     <string name="profile_text">Skapa en profil så andra kan lära känna dig bättre
     och vi kan hjälpa dig hitta roliga eventName anpassade efter dina intressen. </string>
     <string name="intressen_text">Intressen</string>

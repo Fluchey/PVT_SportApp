@@ -1,5 +1,8 @@
 package com.sportify.placeReview.presenter;
 
+import android.content.SharedPreferences;
+import android.util.Log;
+
 import com.sportify.placeReview.activity.PlaceReviewView;
 import com.sportify.placeReview.request.PlaceReviewRequest;
 import com.sportify.placeReview.request.PlaceReviewRequestImpl;
@@ -15,11 +18,14 @@ import org.json.JSONObject;
 public class PlaceReviewPresenterImpl implements PlaceReviewPresenter, PlaceReviewRequest.onRequestFinishedListener {
     PlaceReviewView placeReviewView;
     PlaceReviewRequest placeReviewRequest;
+    SharedPreferences sharedPref;
 
     private String token = "";
 
-    public PlaceReviewPresenterImpl(PlaceReviewView placeReviewView){
+    public PlaceReviewPresenterImpl(PlaceReviewView placeReviewView, SharedPreferences sharedPref){
         this.placeReviewView = placeReviewView;
+        this.sharedPref = sharedPref;
+        this.token = sharedPref.getString("jwt", "");
         placeReviewRequest = new PlaceReviewRequestImpl(this, token);
     }
 
@@ -34,8 +40,8 @@ public class PlaceReviewPresenterImpl implements PlaceReviewPresenter, PlaceRevi
     }
 
     @Override
-    public void submitReview(int userId, String place) {
-        placeReviewRequest.submitReview(placeReviewView.getRating(),placeReviewView.getComment(), userId, place);
+    public void submitReview(int userId, int placeId) {
+        placeReviewRequest.submitReview((double)placeReviewView.getRating(),placeReviewView.getComment(), userId, placeId);
     }
 
     @Override
@@ -45,10 +51,10 @@ public class PlaceReviewPresenterImpl implements PlaceReviewPresenter, PlaceRevi
         }
         switch (command) {
             case "updatePlaceReviews":
-//                placeReviewRequest.updateAllReviews(/*params[0]*/);
+//                Log.d("GET-request", command + " PARAM0: " + params[0]);
                 break;
             case "addReview":
-
+//                Log.d("PUT-request", command + " PARAM0: " + params[0]);
                 break;
         }
     }

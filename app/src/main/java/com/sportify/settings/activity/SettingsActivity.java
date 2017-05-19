@@ -9,7 +9,7 @@ import android.widget.Toast;
 import com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOnePageOneActivity;
 import com.sportify.notifications.activity.NotificationActivity;
 import com.sportify.maps.activity.MapsActivity;
-import com.sportify.settingsEditProfile.activity.EditProfileActivity;
+import com.sportify.profile.activity.EditProfileActivity;
 import com.sportify.settingsIntegritypolicy.activity.IntegritypolicyActivity;
 import com.sportify.showFriends.activity.ShowFriendsActivity;
 import com.sportify.userArea.activity.UserAreaActivity;

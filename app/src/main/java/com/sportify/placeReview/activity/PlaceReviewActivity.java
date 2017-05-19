@@ -1,5 +1,7 @@
 package com.sportify.placeReview.activity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
@@ -13,36 +15,40 @@ import com.sportify.placeReview.presenter.PlaceReviewPresenterImpl;
 import sportapp.pvt_sportapp.R;
 
 public class PlaceReviewActivity extends AppCompatActivity implements PlaceReviewView{
-    PlaceReviewPresenter placeReviewPresenter;
+    private PlaceReviewPresenter placeReviewPresenter;
 
-    TextView placeName;
-    EditText reviewText;
-    RatingBar ratingBar;
+    private SharedPreferences sharedPref;
+    private TextView header;
+    private EditText reviewText;
+    private RatingBar ratingBar;
 
     int userId;
-    String place;
+    int placeId;
+    String placeName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_place_review);
 
-        placeName = (TextView) findViewById(R.id.reviewHeader);
+        sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        header = (TextView) findViewById(R.id.reviewHeader);
         reviewText = (EditText) findViewById(R.id.reviewText);
         ratingBar = (RatingBar) findViewById(R.id.ratingBar);
 
         Bundle b = getIntent().getExtras();
         if(b != null){
-            place = b.getString("place");
-            placeName.setText(place);
-            userId = b.getInt("userID", -1);
+            placeName = b.getString("placeName", "Plats");
+            header.setText(placeName);
+            userId = b.getInt("userId", -1);
+            placeId = b.getInt("placeId", -1);
         }
 
-        placeReviewPresenter = new PlaceReviewPresenterImpl(this);
+        placeReviewPresenter = new PlaceReviewPresenterImpl(this, sharedPref);
     }
 
     @Override
-    public void submit(View v) { placeReviewPresenter.submitReview(userId, place); }
+    public void submit(View v) { placeReviewPresenter.submitReview(userId, placeId); }
 
     @Override
     public float getRating() {
