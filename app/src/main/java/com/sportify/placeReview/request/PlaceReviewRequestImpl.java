@@ -30,12 +30,12 @@ public class PlaceReviewRequestImpl implements PlaceReviewRequest {
     }
 
     @Override
-    public void updateAllReviews(/*String jsonMessage*/){
+    public void updateAllReviews(String jsonMessage){
         allReviews.clear();
         JSONObject json = null;
         JSONArray reviewArray = null;
         try {
-            json = new JSONObject(/*jsonMessage*/);
+            json = new JSONObject(jsonMessage);
             reviewArray = json.getJSONArray("placeReviews");
         } catch (JSONException e) {
             e.printStackTrace();
@@ -46,7 +46,7 @@ public class PlaceReviewRequestImpl implements PlaceReviewRequest {
         try {
             for (int i = 0; i < reviewArray.length(); i++) {
                 JSONObject jsonObject = reviewArray.getJSONObject(i);
-                allReviews.add(new PlaceReview(jsonObject.getString("placeName"), jsonObject.getString("comment"), Integer.parseInt(jsonObject.getString("profileId")), Float.parseFloat(jsonObject.getString("rating"))));
+                allReviews.add(new PlaceReview(jsonObject.getInt("placeName"), jsonObject.getString("comment"), Integer.parseInt(jsonObject.getString("profileId")), Float.parseFloat(jsonObject.getString("rating"))));
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -74,20 +74,56 @@ public class PlaceReviewRequestImpl implements PlaceReviewRequest {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        Log.d("JSON: ", json.toString());
+
         makeApiRequestPut(json.toString(), "addReview", "PUT", "addReview");
     }
 
     @Override
-    public ArrayList<PlaceReview> getAllReviews(){
-        updateAllReviews();
-        return allReviews;
+    public void updateReview(double rating, String comment, int userId, int placeId){
+        JSONObject json = new JSONObject();
+        try{
+            json.put("profileId", userId);
+            json.put("placeName", placeId);
+            json.put("comment", comment);
+            json.put("rating", rating);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        makeApiRequestPut(json.toString(), "updateReview", "PUT", "addReview");
     }
 
     @Override
-    public String getPlaceName(String placeId){
-        return placeId;
+    public void renewAllReviews(){
+        JSONObject json = new JSONObject();
+        try {
+            json.put("profileId", -1);
+            json.put("placeName", -1);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        /**
+         * First get all existing places
+         */
+        makeApiRequestPut(json.toString(), "getReviews", "PUT", "updateReviews");
     }
+    @Override
+    public void renewAllReviews(int userId, int placeId){
+        JSONObject json = new JSONObject();
+        try {
+            json.put("profileId", userId);
+            json.put("placeName", placeId);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        /**
+         * First get all existing places
+         */
+        makeApiRequestPut(json.toString(), "getReviews", "PUT", "updateReviews");
+    }
+
+    @Override
+    public ArrayList<PlaceReview> getAllReviews(){ return allReviews; }
 
     private class ApiRequest extends AsyncTask<String, PlaceReviewRequestImpl, Void> {
         private PlaceReviewRequestImpl placeReviewRequestImpl;

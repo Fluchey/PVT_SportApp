@@ -1,6 +1,7 @@
 package com.sportify.placeReview.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,8 +10,10 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android .view.View;
 
+import com.sportify.maps.activity.MapsActivity;
 import com.sportify.placeReview.presenter.PlaceReviewPresenter;
 import com.sportify.placeReview.presenter.PlaceReviewPresenterImpl;
+import com.sportify.placearea.activity.PlaceAreaActivity;
 
 import sportapp.pvt_sportapp.R;
 
@@ -45,10 +48,18 @@ public class PlaceReviewActivity extends AppCompatActivity implements PlaceRevie
         }
 
         placeReviewPresenter = new PlaceReviewPresenterImpl(this, sharedPref);
+
+        placeReviewPresenter.showCurrentReview();
     }
 
     @Override
     public void submit(View v) { placeReviewPresenter.submitReview(userId, placeId); }
+
+    @Override
+    public int getUserId(){ return userId; }
+
+    @Override
+    public int getPlaceId(){ return placeId; }
 
     @Override
     public float getRating() {
@@ -67,4 +78,11 @@ public class PlaceReviewActivity extends AppCompatActivity implements PlaceRevie
 
     @Override
     public void setComment(String comment){reviewText.setText(comment);}
+
+    @Override
+    public void returnToPlaceArea(){
+        Intent goToPlaceAreaIntent = new Intent(PlaceReviewActivity.this, PlaceAreaActivity.class);
+        goToPlaceAreaIntent.putExtra("placeId", "" + placeId);
+        PlaceReviewActivity.this.startActivity(goToPlaceAreaIntent);
+    }
 }

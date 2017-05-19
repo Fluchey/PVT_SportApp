@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.sportify.placeReview.activity.PlaceReviewActivity;
@@ -24,6 +25,9 @@ public class PlaceAreaActivity extends AppCompatActivity implements PlaceAreaVie
 
     private TextView placeName;
     private TextView interests;
+    private TextView numberOfReviews;
+
+    private RatingBar averageRating;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +43,10 @@ public class PlaceAreaActivity extends AppCompatActivity implements PlaceAreaVie
 
         placeName = (TextView) findViewById(R.id.readReviewHeader);
         interests = (TextView) findViewById(R.id.interestsAreaText);
+        numberOfReviews = (TextView) findViewById(R.id.numberOfReviews);
+        averageRating = (RatingBar) findViewById(R.id.staticRatingBar);
+
+        presenter.updateReviews(Integer.parseInt(placeId));
     }
 
     @Override
@@ -49,6 +57,15 @@ public class PlaceAreaActivity extends AppCompatActivity implements PlaceAreaVie
     @Override
     public void setInterests(ArrayList<String> interests) {
         this.interests.setText(interests.toString());
+    }
+
+    @Override
+    public void setReviewAverage(){
+        float average = presenter.getRatingAverage();
+        int amount = presenter.getNumberOfReviews();
+
+        numberOfReviews.setText("Recensioner (" + amount + ")");
+        averageRating.setRating(average);
     }
 
     @Override
