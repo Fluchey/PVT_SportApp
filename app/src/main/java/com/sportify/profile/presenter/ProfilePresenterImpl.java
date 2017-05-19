@@ -16,6 +16,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -108,10 +109,44 @@ public class ProfilePresenterImpl implements ProfilePresenter, ProfileRequest.On
         //Log.d("Params [0]", params[0]);
         if(params[1].equals("201")){
             Toast.makeText((Context) profileView, "Profile information entered!", Toast.LENGTH_SHORT).show();
+            saveToPreferences();
             profileView.goToLoginActivity();
         } else {
             Toast.makeText((Context) profileView, params[0], Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void saveToPreferences() {
+        //Save the updated info down to profile so we can display it on UserAreaActivity
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("firstName", profileView.getProfileFirstName());
+        editor.putString("lastName", profileView.getProfileLastName());
+        editor.putString("dateOfBirth", profileView.getDateOfBirth());
+        editor.putString("userBio", profileView.getUserBio());
+
+        //Retrieve and store ProfilePic as StringBase64
+        Bitmap image = profileView.getProfileImage();
+        String imageBase64 = "";
+        if (image!=null && profileView.userSelectedImage()) {
+            imageBase64 = Profile.encodeBitMapToString(image);
+            editor.putString("imageBase64", imageBase64);
+        }
+
+        //Convert to get same format as when sending back from Heroku
+        List<String> interests = new ArrayList<>(profileView.getInterests());
+        try {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("interests", interests);
+            String interestsString = jsonObject.getString("interests");
+            editor.putString("interests", interestsString);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        editor.apply();
+        Log.d(TAG, "firstname: " + sharedPref.getString("firstName", ""));
+        Log.d(TAG, "interests: " + sharedPref.getString("interests", ""));
+        Log.d(TAG, "imageBase64: " + sharedPref.getString("imageBase64", ""));
+
     }
 
     @Override
