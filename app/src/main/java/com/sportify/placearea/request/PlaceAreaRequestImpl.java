@@ -3,6 +3,7 @@ package com.sportify.placearea.request;
 import android.os.AsyncTask;
 
 import com.sportify.storage.Place;
+import com.sportify.storage.PlaceReview;
 import com.sportify.util.Connector;
 
 import org.json.JSONArray;
@@ -20,10 +21,13 @@ public class PlaceAreaRequestImpl implements PlaceAreaRequest {
     private String token;
     private Place place;
 
+    private ArrayList<PlaceReview> allReviews;
+
     public PlaceAreaRequestImpl(OnRequestFinishedListener onRequestFinishedListener, String token) {
         this.onRequestFinishedListener = onRequestFinishedListener;
         this.token = token;
         place = new Place();
+        allReviews = new ArrayList<>();
     }
 
     @Override
@@ -51,6 +55,48 @@ public class PlaceAreaRequestImpl implements PlaceAreaRequest {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void updateAllReviews(String jsonMessage){
+        allReviews.clear();
+        JSONObject json = null;
+        JSONArray reviewArray = null;
+        try {
+            json = new JSONObject(jsonMessage);
+            reviewArray = json.getJSONArray("placeReviews");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        if (json == null || reviewArray == null) {
+            return;
+        }
+        try {
+            for (int i = 0; i < reviewArray.length(); i++) {
+                JSONObject jsonObject = reviewArray.getJSONObject(i);
+                allReviews.add(new PlaceReview(jsonObject.getInt("placeName"), jsonObject.getString("comment"), Integer.parseInt(jsonObject.getString("profileId")), Float.parseFloat(jsonObject.getString("rating"))));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void renewAllReviews(int placeId){
+        JSONObject json = new JSONObject();
+        try {
+            json.put("profileId", -1);
+            json.put("placeName", placeId);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        /**
+         * First get all existing places
+         */
+        makeApiRequestPut(json.toString(), "getReviews", "PUT", "updateReviews");
+    }
+
+    @Override
+    public ArrayList<PlaceReview> getAllReviews(){ return allReviews; }
 
     @Override
     public void makeApiRequestPut(String jsonMessage, String endURL, String method, String command) {

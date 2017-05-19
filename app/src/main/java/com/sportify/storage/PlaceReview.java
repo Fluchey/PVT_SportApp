@@ -1,23 +1,23 @@
 package com.sportify.storage;
 
 public class PlaceReview {
-    private String placeId;
+    private int placeId;
     private String comment;
     private int profileId;
     private float rating;
 
-    public PlaceReview(String placeId, String comment, int profileId, float rating) {
+    public PlaceReview(int placeId, String comment, int profileId, float rating) {
         this.placeId = placeId;
         this.comment = comment;
         this.profileId = profileId;
         this.rating = rating;
     }
 
-    public String getPlaceId() {
+    public int getPlaceId() {
         return placeId;
     }
 
-    public void setPlaceId(String id) {
+    public void setPlaceId(int id) {
         this.placeId = id;
     }
 

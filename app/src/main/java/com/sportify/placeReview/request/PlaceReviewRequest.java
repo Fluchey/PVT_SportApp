@@ -13,15 +13,16 @@ public interface PlaceReviewRequest {
         void showApiResponse(String command, String... params);
     }
 
-    void updateAllReviews(/*String jsonMessage*/);
+    void updateAllReviews(String jsonMessage);
 
     void makeApiRequestPut(String jsonMessage, String endURL, String method, String command);
 
     void makeApiRequestGet(String method, String endURL, String command);
 
+    void renewAllReviews();
+    void renewAllReviews(int placeId, int userId);
     ArrayList<PlaceReview> getAllReviews();
 
     void submitReview(double rating, String comment, int userId, int placeId);
-
-    String getPlaceName(String placeID);
+    void updateReview(double rating, String comment, int userId, int placeId);
 }

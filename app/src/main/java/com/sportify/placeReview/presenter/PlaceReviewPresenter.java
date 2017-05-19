@@ -7,6 +7,7 @@ import com.sportify.placeReview.activity.PlaceReviewView;
  */
 
 public interface PlaceReviewPresenter {
-    void showCurrentRating(int userId);
+    void showCurrentReview();
+    void setCurrentReview();
     void submitReview(int userId, int placeId);
 }
