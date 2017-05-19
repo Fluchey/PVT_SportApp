@@ -15,6 +15,7 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
@@ -91,7 +92,7 @@ public class EditProfileActivity extends AppCompatActivity implements ProfileVie
         outdoortraining = (CheckBox) findViewById(R.id.cbProfileoutdoortraining);
         skateboarding = (CheckBox) findViewById(R.id.cbProfileSkateboarding);
         badminton = (CheckBox) findViewById(R.id.cbProfileBadminton);
-
+        preSetCheckBoxes();
         calendar = Calendar.getInstance();
         date = new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -114,6 +115,20 @@ public class EditProfileActivity extends AppCompatActivity implements ProfileVie
         });
 
         dialog = new ProgressDialog(this);
+    }
+
+    private void preSetCheckBoxes(){
+        String interestsString = sharedPref.getString("interests", "");
+        if (interestsString.contains("Badminton")) badminton.setChecked(true);
+        if (interestsString.contains("Bandy")) bandy.setChecked(true);
+        if (interestsString.contains("Basket")) basket.setChecked(true);
+        if (interestsString.contains("Fotboll")) fotboll.setChecked(true);
+        if (interestsString.contains("Löpning")) running.setChecked(true);
+        if (interestsString.contains("Parkour")) parkour.setChecked(true);
+        if (interestsString.contains("Ridning")) ridning.setChecked(true);
+        if (interestsString.contains("Simning")) simning.setChecked(true);
+        if (interestsString.contains("Skateboard")) skateboarding.setChecked(true);
+        if (interestsString.contains("Utegym")) outdoortraining.setChecked(true);
     }
 
     @Override
