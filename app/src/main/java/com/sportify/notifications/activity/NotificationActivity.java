@@ -58,9 +58,13 @@ public class NotificationActivity extends AppCompatActivity implements Notificat
                     toEventAreaActivity();
                 }
                 if(notificationList.getItemAtPosition(position).getClass() == FriendRequestNotification.class){
-
+                    FriendRequestNotification friendRequest = (FriendRequestNotification) notificationList.getItemAtPosition(position);
+                    int friendID = friendRequest.getFriendID();
+                    String friendName = friendRequest.getName();
+                    String response = "accepted";
+                    //TODO: Fixa response!!
+                    notificationPresenter.respondFriendRequest(friendID, friendName, response);
                 }
-
             }
         });
     }
@@ -102,5 +106,10 @@ public class NotificationActivity extends AppCompatActivity implements Notificat
         this.notifications = notifications;
         arrayAdapter = new MyArrayAdapterNotifications(this, R.layout.notification_list_item, notifications);
         notificationList.setAdapter(arrayAdapter);
+    }
+
+    @Override
+    public void showToastToUser(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 }

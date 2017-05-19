@@ -14,4 +14,5 @@ public interface NotificationPresenter {
 
     void getNotificationsFromApiResponse(String jsonMessage, String command);
 
+    void respondFriendRequest(int friendID, String friendName, String response);
 }

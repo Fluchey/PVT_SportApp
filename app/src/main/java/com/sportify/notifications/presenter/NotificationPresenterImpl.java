@@ -53,7 +53,6 @@ public class NotificationPresenterImpl implements NotificationPresenter, Notific
         notificationRequest.makeApiRequest("getfriendrequests", "POST", "{}", "friendRequest");
     }
 
-
     @Override
     public void getNotificationsFromApiResponse(String jsonMessage, String command) {
         JSONObject json = null;
@@ -105,7 +104,25 @@ public class NotificationPresenterImpl implements NotificationPresenter, Notific
     }
 
     @Override
+    public void respondFriendRequest(int friendID, String friendName, String response) {
+        JSONObject json = new JSONObject();
+
+        try{
+            json.put("friendID", "" + friendID);
+            json.put("friendName", friendName);
+            json.put("response", response);
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+        notificationRequest.makeApiRequest("respondfriendrequest", "PUT", json.toString(), "response");
+    }
+
+    @Override
     public void showApiResponse(String responseBody, String command) {
-        getNotificationsFromApiResponse(responseBody, command);
+        if(!command.equalsIgnoreCase("response")) {
+            getNotificationsFromApiResponse(responseBody, command);
+        }else if(command.equalsIgnoreCase("response")){
+            notificationView.showToastToUser(responseBody);
+        }
     }
 }
