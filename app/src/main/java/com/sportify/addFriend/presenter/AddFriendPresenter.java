@@ -6,7 +6,7 @@ package com.sportify.addFriend.presenter;
 
 public interface AddFriendPresenter {
 
-    void addFriend(int profileID);
+    void addFriend(String name, int profileID);
 
     void getAllUsersMakeApiRequest();
 

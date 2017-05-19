@@ -6,10 +6,12 @@ package com.sportify.notifications.presenter;
 
 public interface NotificationPresenter {
 
-    void getNotificationsMakeApiRequest();
+    void updateNotificationView();
 
-    void sendResponseEventInviteMakeApiRequest(String response, int eventID);
+    void getEventNotificationsMakeApiRequest();
 
-    void getNotificationsFromApiResponse(String jsonMessage);
+    void getFriendRequestNotificationsMakeApiRequest();
+
+    void getNotificationsFromApiResponse(String jsonMessage, String command);
 
 }

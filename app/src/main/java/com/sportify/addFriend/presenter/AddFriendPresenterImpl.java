@@ -38,15 +38,16 @@ public class AddFriendPresenterImpl implements AddFriendPresenter, AddFriendRequ
     }
 
     @Override
-    public void addFriend(int profileID) {
+    public void addFriend(String name, int profileID) {
         JSONObject jsonObject = new JSONObject();
         try{
             jsonObject.put("friendID", "" + profileID);
+            jsonObject.put("friendName", name);
         } catch (JSONException e) {
             e.printStackTrace();
         }
         method = "PUT";
-        addFriendRequest.makeApiRequestAddFriend(method, "addfriend", jsonObject.toString());
+        addFriendRequest.makeApiRequestAddFriend(method, "friendrequest", jsonObject.toString());
     }
 
     @Override

@@ -14,6 +14,8 @@ import com.sportify.arrayAdapters.MyArrayAdapterNotifications;
 import com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOnePageOneActivity;
 import com.sportify.eventArea.activity.EventAreaActivity;
 import com.sportify.maps.activity.MapsActivity;
+import com.sportify.notifications.EventNotification;
+import com.sportify.notifications.FriendRequestNotification;
 import com.sportify.notifications.Notification;
 import com.sportify.notifications.presenter.NotificationPresenter;
 import com.sportify.notifications.presenter.NotificationPresenterImpl;
@@ -47,15 +49,17 @@ public class NotificationActivity extends AppCompatActivity implements Notificat
         notificationList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //TODO: Ändra så andra svar kan ges
 
-                Notification notification = (Notification) notificationList.getItemAtPosition(position);
-                eventId = notification.getEventID();
+                if(notificationList.getItemAtPosition(position).getClass() == EventNotification.class) {
 
-                toEventAreaActivity();
+                    EventNotification eventNotification = (EventNotification) notificationList.getItemAtPosition(position);
+                    eventId = eventNotification.getEventID();
 
-//                String response = "accepted";
-//                notificationPresenter.sendResponseEventInviteMakeApiRequest(response, eventID);
+                    toEventAreaActivity();
+                }
+                if(notificationList.getItemAtPosition(position).getClass() == FriendRequestNotification.class){
+
+                }
 
             }
         });
@@ -71,9 +75,6 @@ public class NotificationActivity extends AppCompatActivity implements Notificat
 
         goToEventAreaIntent.putExtra("eventId", eventId);
         NotificationActivity.this.startActivity(goToEventAreaIntent);
-
-
-
     }
 
     /**
@@ -101,10 +102,5 @@ public class NotificationActivity extends AppCompatActivity implements Notificat
         this.notifications = notifications;
         arrayAdapter = new MyArrayAdapterNotifications(this, R.layout.notification_list_item, notifications);
         notificationList.setAdapter(arrayAdapter);
-    }
-
-    @Override
-    public void showToastToUser(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 }

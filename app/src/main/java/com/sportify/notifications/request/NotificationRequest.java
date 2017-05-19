@@ -7,8 +7,8 @@ package com.sportify.notifications.request;
 public interface NotificationRequest {
 
     interface OnShowNotificationFinishedListener{
-        void showApiResponse(String... params);
+        void showApiResponse(String responseBody, String command);
     }
 
-    void makeApiRequest(String endUrl, String method, String jsonMessage);
+    void makeApiRequest(String endUrl, String method, String jsonMessage, String command);
 }

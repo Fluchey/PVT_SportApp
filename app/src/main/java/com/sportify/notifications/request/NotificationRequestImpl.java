@@ -18,19 +18,20 @@ public class NotificationRequestImpl implements NotificationRequest {
         this.token = token;
     }
 
-
     @Override
-    public void makeApiRequest(String endUrl, String method, String jsonMessage) {
-        ApiRequest apiRequest = (ApiRequest) new ApiRequest(this).execute(endUrl, method, jsonMessage);
+    public void makeApiRequest(String endUrl, String method, String jsonMessage, String command) {
+        ApiRequest apiRequest = (ApiRequest) new ApiRequest(this, command).execute(endUrl, method, jsonMessage);
     }
 
     private class ApiRequest extends AsyncTask<String, NotificationRequestImpl, Void>{
 
         private NotificationRequestImpl notificationRequestImpl;
         private String[] resultFromApi;
+        private String command;
 
-        public ApiRequest(NotificationRequestImpl notificationRequestImpl){
+        public ApiRequest(NotificationRequestImpl notificationRequestImpl, String command){
             this.notificationRequestImpl = notificationRequestImpl;
+            this.command = command;
         }
         @Override
         protected Void doInBackground(String... params) {
@@ -45,7 +46,7 @@ public class NotificationRequestImpl implements NotificationRequest {
         protected void onPostExecute(Void aVoid){
             super.onPostExecute(aVoid);
 
-            notificationRequestImpl.onShowNotificationFinishedListener.showApiResponse(resultFromApi);
+            notificationRequestImpl.onShowNotificationFinishedListener.showApiResponse(resultFromApi[0], command);
         }
     }
 
