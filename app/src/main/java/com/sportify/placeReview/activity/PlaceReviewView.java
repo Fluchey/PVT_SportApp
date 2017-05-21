@@ -10,8 +10,11 @@ public interface PlaceReviewView {
 
     void submit(View v);
 
+    int getUserId();
+    int getPlaceId();
     float getRating();
     void setRating(float rating);
     String getComment();
     void setComment(String comment);
+    void returnToPlaceArea();
 }

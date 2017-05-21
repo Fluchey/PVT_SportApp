@@ -53,6 +53,9 @@
         android:layout_marginBottom="32dp"
         android:background="@color/colorButton"
         android:onClick="submit"
+        android:textColor="@color/buttonDark"
+        android:fontFamily="sans-serif-condensed"
+        android:textStyle="bold"
         android:text="@string/submit_button" />
 
     <ImageButton

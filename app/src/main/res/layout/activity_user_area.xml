@@ -13,11 +13,14 @@
         android:id="@+id/findEventButton"
         android:layout_width="60dp"
         android:layout_height="40dp"
+        android:textColor="@color/buttonDark"
         android:onClick="findEventButtonClick"
         android:text="@string/find_event"
         android:background="@color/colorButton"
         android:textSize="@dimen/standardSmallerTextSize"
         android:layout_alignParentEnd="true"
+        android:fontFamily="sans-serif-condensed"
+        android:textStyle="bold"
         android:layout_above="@+id/editProfileButton" />
 
     <View

@@ -11,6 +11,7 @@ import java.util.ArrayList;
 public interface PlaceAreaView {
     void setPlaceName(String placeName);
     void setInterests(ArrayList<String> interests);
+    void setReviewAverage();
     void goToWriteReviewActivity(View v);
     void goToUserAreaFromRead(View v);
 }

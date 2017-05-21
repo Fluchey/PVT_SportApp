@@ -6,10 +6,13 @@ import android.util.Log;
 import com.sportify.placeReview.activity.PlaceReviewView;
 import com.sportify.placeReview.request.PlaceReviewRequest;
 import com.sportify.placeReview.request.PlaceReviewRequestImpl;
+import com.sportify.storage.Place;
 import com.sportify.storage.PlaceReview;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 /**
  * Created by rasmu on 02/05/2017.
@@ -21,6 +24,7 @@ public class PlaceReviewPresenterImpl implements PlaceReviewPresenter, PlaceRevi
     SharedPreferences sharedPref;
 
     private String token = "";
+    private boolean update;
 
     public PlaceReviewPresenterImpl(PlaceReviewView placeReviewView, SharedPreferences sharedPref){
         this.placeReviewView = placeReviewView;
@@ -30,10 +34,21 @@ public class PlaceReviewPresenterImpl implements PlaceReviewPresenter, PlaceRevi
     }
 
     @Override
-    public void showCurrentRating(int userId){
-        for(PlaceReview review : placeReviewRequest.getAllReviews()){
+    public void showCurrentReview(){
+        int userId = placeReviewView.getUserId();
+        int placeId = placeReviewView.getPlaceId();
+        placeReviewRequest.renewAllReviews(userId, placeId);
+    }
+
+    @Override
+    public void setCurrentReview(){
+        int userId = placeReviewView.getUserId();
+        ArrayList<PlaceReview> reviews = placeReviewRequest.getAllReviews();
+        for(PlaceReview review : reviews){
             if(review.getProfileId() == userId){
                 placeReviewView.setRating(review.getRating());
+                placeReviewView.setComment(review.getComment());
+                update = true;
                 return;
             }
         }
@@ -41,7 +56,10 @@ public class PlaceReviewPresenterImpl implements PlaceReviewPresenter, PlaceRevi
 
     @Override
     public void submitReview(int userId, int placeId) {
-        placeReviewRequest.submitReview((double)placeReviewView.getRating(),placeReviewView.getComment(), userId, placeId);
+        if(!update)
+            placeReviewRequest.submitReview((double)placeReviewView.getRating(),placeReviewView.getComment(), userId, placeId);
+        else
+            placeReviewRequest.updateReview((double)placeReviewView.getRating(),placeReviewView.getComment(), userId, placeId);
     }
 
     @Override
@@ -50,11 +68,14 @@ public class PlaceReviewPresenterImpl implements PlaceReviewPresenter, PlaceRevi
             return;
         }
         switch (command) {
-            case "updatePlaceReviews":
-//                Log.d("GET-request", command + " PARAM0: " + params[0]);
+            case "updateReviews":
+                placeReviewRequest.updateAllReviews(params[0]);
+                ArrayList<PlaceReview> reviews = placeReviewRequest.getAllReviews();
+                setCurrentReview();
                 break;
             case "addReview":
-//                Log.d("PUT-request", command + " PARAM0: " + params[0]);
+                if(params[0].contains("The review is created"))
+                    placeReviewView.returnToPlaceArea();
                 break;
         }
     }
