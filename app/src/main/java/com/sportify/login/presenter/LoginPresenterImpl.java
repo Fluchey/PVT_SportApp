@@ -106,10 +106,20 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
         /* response code 200 maps to successful login and 201 to facebookLogin */
         Log.d(TAG, "LoginPresenterImpl.showApiResponse(params[1]) " + params[1]);
         if (params[1].equals("200") || params[1].equals("201")){
-            saveToPreferences(params);
             if (facebookNewUser(params)){
-                loginView.launchProfileActivity();
+                int profileID = -1;
+                try {
+                    JSONObject json = new JSONObject(params[0]);
+                    profileID = json.getInt("profileID");
+                    SharedPreferences.Editor editor = sharedPref.edit();
+                    editor.putInt("profileID", profileID).apply();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                Log.d(TAG, "profileID IF facebookNewUser" + profileID);
+                loginView.launchProfileActivity(profileID);
             } else {
+                saveToPreferences(params);
                 loginView.launchUserActivity();
             }
         }else{

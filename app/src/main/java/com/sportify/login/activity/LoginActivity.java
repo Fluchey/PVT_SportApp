@@ -172,8 +172,9 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     }
 
     @Override
-    public void launchProfileActivity(){
+    public void launchProfileActivity(int userID){
         Intent goToProfileActivityIntent = new Intent(LoginActivity.this, ProfileActivity.class);
+        goToProfileActivityIntent.putExtra("userID", userID);
         LoginActivity.this.startActivity(goToProfileActivityIntent);
     }
 }
