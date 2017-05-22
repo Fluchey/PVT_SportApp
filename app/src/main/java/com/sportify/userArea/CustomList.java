@@ -12,21 +12,22 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import com.sportify.storage.Event;
 
 import sportapp.pvt_sportapp.R;
 
 public class CustomList extends ArrayAdapter<String> {
 
     private final Activity context;
-    private final String[] web;
+    private final String[] eventName;
+    private final Event[] events;
     private final Integer[] imageId;
 
-    public CustomList(Activity context,
-                      String[] web, Integer[] imageId) {
+    public CustomList(Activity context, String[] web, Event[] events, Integer[] imageId) {
         super(context, R.layout.user_area_list_item, web);
         this.context = context;
-        this.web = web;
+        this.eventName = web;
+        this.events = events;
         this.imageId = imageId;
 
     }
@@ -41,7 +42,7 @@ public class CustomList extends ArrayAdapter<String> {
         TextView eventDate = (TextView) rowView.findViewById(R.id.tvEventDate);
 
         ImageView imageView = (ImageView) rowView.findViewById(R.id.userAreaListItemImg);
-        eventName.setText(web[position]);
+        eventName.setText(this.eventName[position]);
         eventHost.setText("Adrian");
         eventPlace.setText("Abrahamsbergs Bollplan");
         eventDate.setText("2017-01-15");

@@ -23,10 +23,13 @@ import com.sportify.notifications.activity.NotificationActivity;
 import com.sportify.settings.activity.SettingsActivity;
 import com.sportify.profile.activity.EditProfileActivity;
 import com.sportify.showFriends.activity.ShowFriendsActivity;
+import com.sportify.storage.Event;
 import com.sportify.userArea.CustomList;
 import com.sportify.userArea.presenter.UserAreaPresenter;
 import com.sportify.userArea.presenter.UserAreaPresenterImpl;
 import com.sportify.util.Profile;
+
+import java.util.ArrayList;
 
 import sportapp.pvt_sportapp.R;
 
@@ -39,15 +42,6 @@ public class UserAreaActivity extends AppCompatActivity implements UserAreaView 
     private ImageView userProfilePicture;
 
     ListView list;
-    String[] web = {
-            "Fotboll",
-            "Super Mario Party",
-            "Frisbee",
-            "Rave",
-            "Dance",
-            "Party",
-            "Hallelujah"
-    };
     Integer[] imageId = {
             R.drawable.userareaflowswim,
             R.drawable.userareaflowswim,
@@ -96,21 +90,20 @@ public class UserAreaActivity extends AppCompatActivity implements UserAreaView 
         /**
          * MINA EVENT LISTVIEW
          */
-        CustomList adapter = new
-                CustomList(UserAreaActivity.this, web, imageId);
-        list = (ListView) findViewById(R.id.userAreaEventList);
-        list.setAdapter(adapter);
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-                Toast.makeText(UserAreaActivity.this, "You Clicked at " + web[+position], Toast.LENGTH_SHORT).show();
-
-            }
-        });
+//        CustomList adapter = new
+//                CustomList(UserAreaActivity.this, web, imageId);
+//        list = (ListView) findViewById(R.id.userAreaEventList);
+//        list.setAdapter(adapter);
+//        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view,
+//                                    int position, long id) {
+//                Toast.makeText(UserAreaActivity.this, "You Clicked at " + web[+position], Toast.LENGTH_SHORT).show();
+//
+//            }
+//        });
     }
-
 
     public void findEventButtonClick(View v) {
         Toast.makeText(this, "I do nothing, ask my developers why", Toast.LENGTH_LONG).show();
@@ -120,7 +113,6 @@ public class UserAreaActivity extends AppCompatActivity implements UserAreaView 
         Intent goToNotificationsViewIntent = new Intent(UserAreaActivity.this, NotificationActivity.class);
         UserAreaActivity.this.startActivity(goToNotificationsViewIntent);
     }
-
 
     public void createEventButtonClick(View v) {
         Toast.makeText(this, "Clicked Create Event", Toast.LENGTH_LONG).show();
@@ -143,7 +135,6 @@ public class UserAreaActivity extends AppCompatActivity implements UserAreaView 
         UserAreaActivity.this.startActivity(goToFriendListIntent);
     }
 
-
     public void goToCalendarActivity(View v) {
         Intent goToCalendarIntent = new Intent(UserAreaActivity.this, CalendarActivity.class);
         UserAreaActivity.this.startActivity(goToCalendarIntent);
@@ -164,5 +155,28 @@ public class UserAreaActivity extends AppCompatActivity implements UserAreaView 
         Intent placeAreaIntent = new Intent(UserAreaActivity.this, PlaceAreaActivity.class);
         placeAreaIntent.putExtra("placeId", "2220");
         UserAreaActivity.this.startActivity(placeAreaIntent);
+    }
+
+    @Override
+    public void showEvents(ArrayList<Event> events) {
+        ArrayList<String> eventNames = new ArrayList<>();
+        for(Event e: events){
+            eventNames.add(e.getEventName());
+        }
+        String[] nameArr = eventNames.toArray(new String[0]);
+        Event[] eventArr = events.toArray(new Event[0]);
+        CustomList adapter = new CustomList(UserAreaActivity.this, nameArr, eventArr, imageId);
+        list = (ListView) findViewById(R.id.userAreaEventList);
+        list.setAdapter(adapter);
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                Intent goToEventAreaIntent = new Intent(UserAreaActivity.this, EventAreaActivity.class);
+                goToEventAreaIntent.putExtra("eventId", userAreaPresenter.getEventsFromStorage().get(position).getId());
+                UserAreaActivity.this.startActivity(goToEventAreaIntent);
+            }
+        });
     }
 }
