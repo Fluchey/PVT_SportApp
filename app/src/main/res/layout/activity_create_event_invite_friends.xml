@@ -129,16 +129,4 @@
 
         />
 
-    <ImageButton
-        android:id="@+id/ibbuttontonextpage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:fadeScrollbars="false"
-        android:isScrollContainer="false"
-        android:layout_alignTop="@+id/tvMyFriends"
-        android:onClick="goToPreviewAgainActivity"
-        android:background="@android:color/transparent"
-        app:srcCompat="@drawable/previewbutton" />
-
 </RelativeLayout>
