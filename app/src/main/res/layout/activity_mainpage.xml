@@ -84,17 +84,5 @@
         android:textStyle="bold"
         android:fontFamily="sans-serif-condensed" />
 
-    <Button
-        android:id="@+id/placeReviewTestButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/buttonDark"
-        android:onClick="testGoToPlaceReviewActivity"
-        android:text="Testa platsrecension"
-        android:textStyle="bold"
-        android:fontFamily="sans-serif-condensed"
-        tools:layout_editor_absoluteX="97dp"
-        tools:layout_editor_absoluteY="518dp" />
-
 
 </RelativeLayout>

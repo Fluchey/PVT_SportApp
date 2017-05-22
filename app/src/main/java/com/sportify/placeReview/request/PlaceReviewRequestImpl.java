@@ -46,7 +46,7 @@ public class PlaceReviewRequestImpl implements PlaceReviewRequest {
         try {
             for (int i = 0; i < reviewArray.length(); i++) {
                 JSONObject jsonObject = reviewArray.getJSONObject(i);
-                allReviews.add(new PlaceReview(jsonObject.getInt("placeName"), jsonObject.getString("comment"), Integer.parseInt(jsonObject.getString("profileId")), Float.parseFloat(jsonObject.getString("rating"))));
+                allReviews.add(new PlaceReview(jsonObject.getInt("placeName"), jsonObject.getString("comment"), Integer.parseInt(jsonObject.getString("profileId")), "", Float.parseFloat(jsonObject.getString("rating")), ""));
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -107,6 +107,7 @@ public class PlaceReviewRequestImpl implements PlaceReviewRequest {
          */
         makeApiRequestPut(json.toString(), "getReviews", "PUT", "updateReviews");
     }
+
     @Override
     public void renewAllReviews(int userId, int placeId){
         JSONObject json = new JSONObject();

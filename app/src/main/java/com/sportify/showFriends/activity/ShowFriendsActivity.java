@@ -58,7 +58,7 @@ public class ShowFriendsActivity extends AppCompatActivity implements ShowFriend
         /**
          *  Update friend list
          */
-        myArrayAdapterFriendList = new MyArrayAdapterShowFriends(this, R.layout.friend_list_item, null);
+        myArrayAdapterFriendList = new MyArrayAdapterShowFriends(this, R.layout.placereview_list_item, null);
 
         /**
          *  Update search
@@ -84,10 +84,10 @@ public class ShowFriendsActivity extends AppCompatActivity implements ShowFriend
                             arrayTemplist.add(friendArray.get(i));
                         }
                     }
-                    myArrayAdapterFriendList = new MyArrayAdapterShowFriends(ShowFriendsActivity.this, R.layout.friend_list_item, arrayTemplist);
+                    myArrayAdapterFriendList = new MyArrayAdapterShowFriends(ShowFriendsActivity.this, R.layout.placereview_list_item, arrayTemplist);
                     friendList.setAdapter(myArrayAdapterFriendList);
                 }else{
-                    myArrayAdapterFriendList = new MyArrayAdapterShowFriends(ShowFriendsActivity.this, R.layout.friend_list_item, friendArray);
+                    myArrayAdapterFriendList = new MyArrayAdapterShowFriends(ShowFriendsActivity.this, R.layout.placereview_list_item, friendArray);
                     friendList.setAdapter(myArrayAdapterFriendList);
                 }
             }
@@ -114,7 +114,7 @@ public class ShowFriendsActivity extends AppCompatActivity implements ShowFriend
 
     @Override
     public void updateFriendAdapter(ArrayList<Profile> friendList) {
-//        arrayAdapterSearch = new MyArrayAdapterShowFriends(this, R.layout.friend_list_item, friendList);
+//        arrayAdapterSearch = new MyArrayAdapterShowFriends(this, R.layout.placereview_list_item, friendList);
         arrayAdapterSearch = new ArrayAdapter(this, android.R.layout.simple_list_item_1, friendList);
         searchFriend.setAdapter(arrayAdapterSearch);
     }

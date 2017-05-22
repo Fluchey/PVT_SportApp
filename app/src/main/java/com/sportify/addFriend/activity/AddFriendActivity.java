@@ -61,7 +61,7 @@ public class AddFriendActivity extends AppCompatActivity implements AddFriendVie
         /**
          *  Update friend list
          */
-        myArrayAdapterFriendList = new MyArrayAdapterShowFriends(this, R.layout.friend_list_item, null);
+        myArrayAdapterFriendList = new MyArrayAdapterShowFriends(this, R.layout.placereview_list_item, null);
 
         /**
          *  Update search
@@ -87,10 +87,10 @@ public class AddFriendActivity extends AppCompatActivity implements AddFriendVie
                             arrayTemplist.add(friendArray.get(i));
                         }
                     }
-                    myArrayAdapterFriendList = new MyArrayAdapterShowFriends(AddFriendActivity.this, R.layout.friend_list_item, arrayTemplist);
+                    myArrayAdapterFriendList = new MyArrayAdapterShowFriends(AddFriendActivity.this, R.layout.placereview_list_item, arrayTemplist);
                     friendList.setAdapter(myArrayAdapterFriendList);
                 }else{
-                    myArrayAdapterFriendList = new MyArrayAdapterShowFriends(AddFriendActivity.this, R.layout.friend_list_item, friendArray);
+                    myArrayAdapterFriendList = new MyArrayAdapterShowFriends(AddFriendActivity.this, R.layout.placereview_list_item, friendArray);
                     friendList.setAdapter(myArrayAdapterFriendList);
                 }
             }
@@ -111,13 +111,13 @@ public class AddFriendActivity extends AppCompatActivity implements AddFriendVie
     @Override
     public void showFriends(ArrayList<Profile> friendlist) {
         friendArray = friendlist;
-        myArrayAdapterFriendList = new MyArrayAdapterShowFriends(this, R.layout.friend_list_item, friendArray);
+        myArrayAdapterFriendList = new MyArrayAdapterShowFriends(this, R.layout.placereview_list_item, friendArray);
         friendList.setAdapter(myArrayAdapterFriendList);
     }
 
     @Override
     public void updateFriendAdapter(ArrayList<Profile> friendList) {
-//        arrayAdapterSearch = new MyArrayAdapterShowFriends(this, R.layout.friend_list_item, friendList);
+//        arrayAdapterSearch = new MyArrayAdapterShowFriends(this, R.layout.placereview_list_item, friendList);
         System.out.println("Vänlista: " + friendList.toString());
         arrayAdapterSearch = new ArrayAdapter(this, android.R.layout.simple_list_item_1, friendList);
         searchFriend.setAdapter(arrayAdapterSearch);
