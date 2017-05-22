@@ -185,58 +185,6 @@
         android:layout_marginBottom="10dp"
         android:layout_alignParentBottom="true"/>
 
-    <ImageView
-        android:id="@+id/userAreaViewSwim"
-        android:layout_width="200dp"
-        android:layout_height="140dp"
-        app:srcCompat="@drawable/userareaflowswim"
-        android:clickable="true"
-        android:layout_marginTop="23dp"
-        android:onClick="goToEventAreaActivity"
-        tools:ignore="ContentDescription"
-        android:layout_below="@+id/view2"
-        android:layout_toStartOf="@+id/goToFriendsListButton" />
-
-    <TextView
-        android:id="@+id/tvUAEventAreaPlaceText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/event_place"
-        android:textStyle="bold"
-        android:textSize="@dimen/standardBitTextSize"
-        android:layout_below="@+id/userAreaViewSwim"
-        android:layout_alignStart="@+id/userAreaViewSwim" />
-
-    <TextView
-        android:id="@+id/tvUAEventAreaHostName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/event_host"
-        android:layout_below="@+id/userAreaViewSwim"
-        android:layout_toEndOf="@+id/tvUAEventAreaPlaceText"
-        android:textSize="@dimen/standardSmallerTextSize"
-        android:layout_marginStart="70dp"/>
-
-    <TextView
-        android:id="@+id/tvUAEventAreaDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/userAreaViewSwim"
-        android:layout_below="@+id/tvUAEventAreaHostName"
-        android:text="@string/event_date"
-        android:textSize="@dimen/standardSmallerTextSize"
-        android:layout_marginBottom="10dp"/>
-
-    <TextView
-        android:id="@+id/tvUAEventAreaStartEndTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/start_end_time"
-        android:layout_toEndOf="@+id/tvUAEventAreaDate"
-        android:layout_below="@id/tvUAEventAreaHostName"
-        android:textSize="@dimen/standardSmallerTextSize"
-        android:layout_marginStart="70dp"/>
-
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/leftButton"
@@ -262,37 +210,12 @@
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="10dp"/>
 
-    <ImageView
-        android:id="@+id/farstaView"
-        android:layout_width="200dp"
-        android:layout_height="130dp"
-        app:srcCompat="@drawable/placefarsta"
-        android:clickable="true"
-        android:onClick="goToReadReviewActivity"
-        android:layout_marginTop="10dp"
-        android:layout_below="@+id/tvUAEventAreaDate"
-        android:layout_alignStart="@+id/tvUAEventAreaDate"
-        tools:ignore="ContentDescription" />
-
-    <TextView
-        android:id="@+id/tvUAPlaceAreaPlaceText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/event_place"
-        android:textStyle="bold"
-        android:layout_below="@+id/farstaView"
-        android:layout_alignStart="@+id/farstaView"
-        android:textSize="@dimen/standardSmallerTextSize" />
-
-    <TextView
-        android:id="@+id/tvUAPlaceRatingText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/event_rating"
-        android:layout_below="@+id/farstaView"
-        android:textSize="@dimen/standardSmallerTextSize"
-        android:layout_alignEnd="@+id/farstaView"
-        />
+    <ListView
+        android:id="@+id/userAreaEventList"
+        android:layout_width="280dp"
+        android:layout_height="300dp"
+        android:layout_above="@+id/createEventButton"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
 
