@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
-import com.sportify.editEvent.activity.EditEventActivity;
+import com.sportify.editEvent.activity.activity.EditEventActivity;
 import com.sportify.eventArea.presenter.EventAreaPresenter;
 import com.sportify.eventArea.presenter.EventAreaPresenterImpl;
 import com.sportify.userArea.activity.UserAreaActivity;
@@ -59,6 +59,8 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
 
     public void goToEditEventActivity(View v){
         Intent goToEditEventViewIntent = new Intent(EventAreaActivity.this, EditEventActivity.class);
+
+        goToEditEventViewIntent.putExtra("eventId", eventId);
         EventAreaActivity.this.startActivity(goToEditEventViewIntent);
     }
 

@@ -124,7 +124,6 @@ public class CreateEventInviteFriendsPresenterImpl implements CreateEventInviteF
 
     @Override
     public void showApiResponse(String... params) {
-        System.out.println(params[0].toString());
         getFriendsFromApiResponse(params[0]);
         showFriends();
         updateFriendSearchView();

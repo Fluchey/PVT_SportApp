@@ -1,4 +1,4 @@
-package com.sportify.createEvent.createEventPageOne.activity;
+package com.sportify.editEvent.activity.activity;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -21,10 +21,9 @@ import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.sportify.createEvent.createEventPageOne.presenter.CreateEventPageOnePresenter;
-import com.sportify.createEvent.createEventPageOne.presenter.CreateEventPageOnePresenterImpl;
-import com.sportify.createEvent.createEventPageBeforeInviteFriends.activity.CreateEventBeforeInviteFriendsActivity;
-import com.sportify.userArea.activity.UserAreaActivity;
+import com.sportify.editEvent.activity.presenter.EditEventPresenter;
+import com.sportify.editEvent.activity.presenter.EditEventPresenterImpl;
+import com.sportify.eventArea.activity.EventAreaActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -32,16 +31,14 @@ import java.util.Calendar;
 
 import sportapp.pvt_sportapp.R;
 
-/**
- * Created by Maja on 2017-04-18.
- */
+public class EditEventActivity extends AppCompatActivity implements EditEventView{
 
-public class CreateEventPageOnePageOneActivity extends AppCompatActivity implements CreateEventPageOneView {
     /**
      * CONNECTIONS
      */
-    private CreateEventPageOnePresenter createEventPageOnePresenter;
+    private EditEventPresenter editEventPresenter;
     private SharedPreferences sharedPref;
+
     private int eventID;
 
     /**
@@ -53,7 +50,6 @@ public class CreateEventPageOnePageOneActivity extends AppCompatActivity impleme
     private EditText eventType;
     private EditText eventMaxAttendance;
     private CheckBox eventPrivate;
-
 
     /**
      * EVENT PLACE
@@ -78,21 +74,28 @@ public class CreateEventPageOnePageOneActivity extends AppCompatActivity impleme
     private EditText eventStartTime;
     private EditText eventEndTime;
 
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_event_first_page);
+        setContentView(R.layout.activity_edit_event);
+
         sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-        createEventPageOnePresenter = new CreateEventPageOnePresenterImpl(this, sharedPref);
+        editEventPresenter = new EditEventPresenterImpl(this, sharedPref);
+
+        Bundle bundle = getIntent().getExtras();
+        eventID = (bundle.getInt("eventId"));
 
         /**
          *  EVENT PLACE
          */
-        eventPlace = (AutoCompleteTextView) findViewById(R.id.etEventPlace);
+
+        eventPlace = (AutoCompleteTextView) findViewById(R.id.etEditEventPlace);
         userWroteSearch = true;
         eventPlace.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                userWroteSearch = true;
+
             }
 
             @Override
@@ -114,13 +117,13 @@ public class CreateEventPageOnePageOneActivity extends AppCompatActivity impleme
             }
         });
 
-        eventPrice = (EditText) findViewById(R.id.etEventPrice);
-        eventDescription = (EditText) findViewById(R.id.etEventDescription);
+        eventPrice = (EditText) findViewById(R.id.etEditEventPrice);
+        eventDescription = (EditText) findViewById(R.id.etEditEventDescription);
 
         /**
          *  DATE AND CALENDAR
          */
-        eventStartDate = (EditText) findViewById(R.id.etEventStartDate);
+        eventStartDate = (EditText) findViewById(R.id.etEditEventStartDate);
         calendar = Calendar.getInstance();
         startDate = new DatePickerDialog.OnDateSetListener() {
 
@@ -136,14 +139,15 @@ public class CreateEventPageOnePageOneActivity extends AppCompatActivity impleme
                 eventStartDate.setText(sdf.format(calendar.getTime()));
             }
         };
+
         eventStartDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new DatePickerDialog(CreateEventPageOnePageOneActivity.this, startDate, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
+                new DatePickerDialog(EditEventActivity.this, startDate, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
 
-        eventEndDate = (EditText) findViewById(R.id.etEventEndDate);
+        eventEndDate = (EditText) findViewById(R.id.etEditEventEndDate);
         calendar = Calendar.getInstance();
         endDate = new DatePickerDialog.OnDateSetListener() {
 
@@ -159,20 +163,22 @@ public class CreateEventPageOnePageOneActivity extends AppCompatActivity impleme
                 eventEndDate.setText(sdf.format(calendar.getTime()));
             }
         };
+
         eventEndDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new DatePickerDialog(CreateEventPageOnePageOneActivity.this, endDate, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
+                new DatePickerDialog(EditEventActivity.this, endDate, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
-
 
 
         /**
          *  START AND END TIME
          */
-        eventStartTime = (EditText) findViewById(R.id.etEventStartTime);
-        eventStartTime.setOnClickListener(new View.OnClickListener() {
+
+        eventStartTime = (EditText) findViewById(R.id.etEditEventStartTime);
+        eventStartTime.setOnClickListener(new View.OnClickListener(){
+
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
@@ -180,12 +186,14 @@ public class CreateEventPageOnePageOneActivity extends AppCompatActivity impleme
                 int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
                 int minute = mcurrentTime.get(Calendar.MINUTE);
                 TimePickerDialog mTimePicker;
-                mTimePicker = new TimePickerDialog(CreateEventPageOnePageOneActivity.this, new TimePickerDialog.OnTimeSetListener() {
+
+                mTimePicker = new TimePickerDialog(EditEventActivity.this, new TimePickerDialog.OnTimeSetListener() {
+
                     @Override
                     public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                        if (selectedMinute == 0){
+                        if (selectedMinute == 0) {
                             eventStartTime.setText(selectedHour + ":" + String.valueOf(selectedMinute) + "0");
-                        }else {
+                        } else {
                             eventStartTime.setText(selectedHour + ":" + selectedMinute);
                         }
                     }
@@ -194,7 +202,9 @@ public class CreateEventPageOnePageOneActivity extends AppCompatActivity impleme
                 mTimePicker.show();
             }
         });
-        eventEndTime = (EditText) findViewById(R.id.etEventEndTime);
+
+        eventEndTime = (EditText) findViewById(R.id.etEditEventEndTime);
+
         eventEndTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -203,7 +213,7 @@ public class CreateEventPageOnePageOneActivity extends AppCompatActivity impleme
                 int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
                 int minute = mcurrentTime.get(Calendar.MINUTE);
                 TimePickerDialog mTimePicker;
-                mTimePicker = new TimePickerDialog(CreateEventPageOnePageOneActivity.this, new TimePickerDialog.OnTimeSetListener() {
+                mTimePicker = new TimePickerDialog(EditEventActivity.this, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
                         if (selectedMinute == 0){
@@ -218,7 +228,7 @@ public class CreateEventPageOnePageOneActivity extends AppCompatActivity impleme
             }
         });
 
-        eventType = (EditText) findViewById(R.id.etEventType);
+        eventType = (EditText) findViewById(R.id.etEditEventType);
         final String [] categories = getResources().getStringArray(R.array.sections);
         final AlertDialog.Builder dialog = new AlertDialog.Builder(this);
         dialog.setTitle("Pick category");
@@ -244,26 +254,26 @@ public class CreateEventPageOnePageOneActivity extends AppCompatActivity impleme
             }
         });
 
-
         /**
          * EDIT TEXTS
          */
-        eventName = (EditText) findViewById(R.id.etEventName);
-        eventMaxAttendance = (EditText) findViewById(R.id.etEventMaxAttendance);
-        eventPrivate = (CheckBox) findViewById(R.id.cbEventPrivate);
+        eventName = (EditText) findViewById(R.id.etEditEventName);
+        eventMaxAttendance = (EditText) findViewById(R.id.etEditEventMaxAttendance);
+        eventPrivate = (CheckBox) findViewById(R.id.cbEditEventPrivate);
+
+
+
     }
 
-    public void goToInviteFriends(View v){
-        Intent goToInviteFriendsIntent = new Intent(CreateEventPageOnePageOneActivity.this, CreateEventBeforeInviteFriendsActivity.class);
+    public void goToEventArea(){
+        Intent goToEventAreaViewIntent = new Intent(EditEventActivity.this, EventAreaActivity.class);
 
-        //TODO: Ska fixa så man inte kan gå vidare om event inte är korrekt skapat
-        goToInviteFriendsIntent.putExtra("EVENT_ID", eventID);
-        System.out.println("First page: " + eventID);
-        CreateEventPageOnePageOneActivity.this.startActivity(goToInviteFriendsIntent);
+        goToEventAreaViewIntent.putExtra("eventId", eventID);
+        EditEventActivity.this.startActivity(goToEventAreaViewIntent);
     }
 
-    public void createEventClick(View v) {
-        createEventPageOnePresenter.createEvent();
+    public void editEvent(View v){
+        editEventPresenter.editEvent(eventID);
     }
 
     @Override
@@ -331,31 +341,6 @@ public class CreateEventPageOnePageOneActivity extends AppCompatActivity impleme
     }
 
     @Override
-    public void showEventPriceWrongFormatError(int resId) {
-        eventPrice.setError(getString(resId));
-    }
-
-    @Override
-    public void showEventStartDateEmptyError(int resId) {
-        eventStartDate.setError(getString(resId));
-    }
-
-    @Override
-    public void showEventEndDateEmptyError(int resId) {
-        eventEndDate.setError(getString(resId));
-    }
-
-    @Override
-    public void showEventStartDateFormatError(int resId) {
-        eventStartDate.setError(getString(resId));
-    }
-
-    @Override
-    public void showEventEndDateFormatError(int resId) {
-        eventEndDate.setError(getString(resId));
-    }
-
-    @Override
     public void showEventStartTimeEmptyError(int resId) {
         eventStartTime.setError(getString(resId));
     }
@@ -371,11 +356,6 @@ public class CreateEventPageOnePageOneActivity extends AppCompatActivity impleme
     }
 
     @Override
-    public void showEventPlaceEmptyError(int resId) {
-        eventPlace.setError(getString(resId));
-    }
-
-    @Override
     public void clearAllErrors() {
         eventName.setError(null);
         eventPrice.setError(null);
@@ -386,6 +366,36 @@ public class CreateEventPageOnePageOneActivity extends AppCompatActivity impleme
         eventEndTime.setError(null);
         eventType.setError(null);
         eventMaxAttendance.setError(null);
+    }
+
+    @Override
+    public void showEventPriceWrongFormatError(int resId) {
+        eventPrice.setError(getString(resId));
+    }
+
+    @Override
+    public void showEventStartDateFormatError(int resId) {
+        eventStartDate.setError(getString(resId));
+    }
+
+    @Override
+    public void showEventStartDateEmptyError(int resId) {
+        eventStartDate.setError(getString(resId));
+    }
+
+    @Override
+    public void showEventEndDateFormatError(int resId) {
+        eventEndDate.setError(getString(resId));
+    }
+
+    @Override
+    public void showEventEndDateEmptyError(int resId) {
+        eventEndDate.setError(getString(resId));
+    }
+
+    @Override
+    public void showEventPlaceEmptyError(int resId) {
+        eventPlace.setError(getString(resId));
     }
 
     @Override
@@ -405,13 +415,7 @@ public class CreateEventPageOnePageOneActivity extends AppCompatActivity impleme
     }
 
     @Override
-    public void setEventID(int eventID) {
-        this.eventID = eventID;
+    public int getEventID() {
+        return eventID;
     }
-
-    public void toUserAreFromCreateActivity(View v){
-        Intent goToUserAreaViewIntent = new Intent(CreateEventPageOnePageOneActivity.this, UserAreaActivity.class);
-        CreateEventPageOnePageOneActivity.this.startActivity(goToUserAreaViewIntent);
-    }
-
 }

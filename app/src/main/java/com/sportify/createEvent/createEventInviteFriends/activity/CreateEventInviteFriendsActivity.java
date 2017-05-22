@@ -52,8 +52,6 @@ public class CreateEventInviteFriendsActivity extends AppCompatActivity implemen
         Bundle extras = getIntent().getExtras();
         if(extras != null){
             eventID = extras.getInt("EVENT_ID");
-            System.out.println("getfriends " + eventID);
-            System.out.println("Third page: " + eventID);
         }
 
         sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
@@ -144,9 +142,11 @@ public class CreateEventInviteFriendsActivity extends AppCompatActivity implemen
     public void sendInvites(View view) {
         ArrayList<Profile> markedFriends = getMarkedFriends();
         createEventInviteFriendsPresenter.sendInvites(markedFriends, eventID);
+
+        goToPreviewAgainActivity();
     }
 
-    public void goToPreviewAgainActivity(View v){
+    public void goToPreviewAgainActivity(){
         Intent goToPreviewAgainActivityIntent = new Intent(CreateEventInviteFriendsActivity.this, CreateEventPreviewActivity.class);
         CreateEventInviteFriendsActivity.this.startActivity(goToPreviewAgainActivityIntent);
 

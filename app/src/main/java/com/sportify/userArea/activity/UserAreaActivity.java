@@ -13,7 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sportify.calendar.activity.CalendarActivity;
-import com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOnePageOneActivity;
+import com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOneActivity;
 import com.sportify.eventArea.activity.EventAreaActivity;
 import com.sportify.maps.activity.MapsActivity;
 import com.sportify.placearea.activity.PlaceAreaActivity;
@@ -84,7 +84,7 @@ public class UserAreaActivity extends AppCompatActivity implements UserAreaView 
 
     public void createEventButtonClick(View v) {
         Toast.makeText(this, "Clicked Create Event", Toast.LENGTH_LONG).show();
-        Intent createEventIntent = new Intent(UserAreaActivity.this, CreateEventPageOnePageOneActivity.class);
+        Intent createEventIntent = new Intent(UserAreaActivity.this, CreateEventPageOneActivity.class);
         UserAreaActivity.this.startActivity(createEventIntent);
     }
 

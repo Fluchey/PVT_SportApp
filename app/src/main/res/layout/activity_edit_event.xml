@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:padding="@dimen/def_pagePadding"
     android:background="@drawable/backgroundnodude"
-    tools:context="com.sportify.editEvent.activity.EditEventActivity">
+    tools:context="com.sportify.editEvent.activity.activity.EditEventActivity">
 
 
     <!-- TODO remember the milk -->
@@ -217,9 +217,10 @@
         android:id="@+id/editEventButton"
         android:layout_width="114dp"
         android:layout_height="48dp"
+        android:onClick="editEvent"
         android:layout_gravity="center_horizontal"
         android:background="@color/colorButton"
-        android:text="@string/edit_event"
+        android:text="@string/save_changes"
         android:textColor="@color/buttonDark"
         android:textStyle="bold"
         android:fontFamily="sans-serif-condensed"

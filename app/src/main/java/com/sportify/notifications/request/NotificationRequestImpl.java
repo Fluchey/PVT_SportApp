@@ -36,7 +36,7 @@ public class NotificationRequestImpl implements NotificationRequest {
         @Override
         protected Void doInBackground(String... params) {
 
-            resultFromApi = Connector.connect("https://pvt15app.herokuapp.com/api/" + params[0],
+            resultFromApi = Connector.connect("http://130.237.241.83:9000/api/" + params[0],
                     params[1], String.format(params[2]), token);
 
             return null;
