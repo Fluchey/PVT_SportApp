@@ -108,6 +108,13 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
             }
         });
 
+        editTextSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editTextSearch.setText("");
+            }
+        });
+
         radioGroup = (RadioGroup) findViewById(R.id.eventPlacesGroup);
         placesCheckBox = (RadioButton) findViewById(R.id.placesRadioButton);
         placesCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
