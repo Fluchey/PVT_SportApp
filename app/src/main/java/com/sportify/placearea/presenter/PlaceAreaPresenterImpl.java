@@ -46,6 +46,7 @@ public class PlaceAreaPresenterImpl implements PlaceAreaPresenter, PlaceAreaRequ
             case "updateReviews":
                 request.updateAllReviews(result[0]);
                 activity.setReviewAverage();
+                activity.showReviews(request.getAllReviews());
                 break;
         }
 

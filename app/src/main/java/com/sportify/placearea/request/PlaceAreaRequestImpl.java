@@ -1,6 +1,7 @@
 package com.sportify.placearea.request;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.sportify.storage.Place;
 import com.sportify.storage.PlaceReview;
@@ -11,6 +12,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by fluchey on 2017-05-18.
@@ -61,9 +63,12 @@ public class PlaceAreaRequestImpl implements PlaceAreaRequest {
         allReviews.clear();
         JSONObject json = null;
         JSONArray reviewArray = null;
+        JSONArray nameArray = null;
+        HashMap<Integer, String> nameMap = new HashMap();
         try {
             json = new JSONObject(jsonMessage);
             reviewArray = json.getJSONArray("placeReviews");
+            nameArray = json.getJSONArray("userNames");
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -71,9 +76,15 @@ public class PlaceAreaRequestImpl implements PlaceAreaRequest {
             return;
         }
         try {
+            for (int i = 0; i < nameArray.length(); i++) {
+                JSONObject jsonObject = nameArray.getJSONObject(i);
+                Log.d("Name: ", jsonObject.getString("name"));
+                nameMap.put(jsonObject.getInt("profileId"), jsonObject.getString("name"));
+            }
             for (int i = 0; i < reviewArray.length(); i++) {
                 JSONObject jsonObject = reviewArray.getJSONObject(i);
-                allReviews.add(new PlaceReview(jsonObject.getInt("placeName"), jsonObject.getString("comment"), Integer.parseInt(jsonObject.getString("profileId")), Float.parseFloat(jsonObject.getString("rating"))));
+                int profileId = Integer.parseInt(jsonObject.getString("profileId"));
+                allReviews.add(new PlaceReview(jsonObject.getInt("placeName"), jsonObject.getString("comment"), profileId, nameMap.get(profileId), Float.parseFloat(jsonObject.getString("rating")), jsonObject.getString("date")));
             }
         } catch (JSONException e) {
             e.printStackTrace();

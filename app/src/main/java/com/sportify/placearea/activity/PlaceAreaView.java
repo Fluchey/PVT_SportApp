@@ -2,6 +2,10 @@ package com.sportify.placearea.activity;
 
 import android.view.View;
 
+import com.sportify.arrayAdapters.MyArrayAdapterShowPlaceReviews;
+import com.sportify.storage.Place;
+import com.sportify.storage.PlaceReview;
+
 import java.util.ArrayList;
 
 /**
@@ -14,4 +18,5 @@ public interface PlaceAreaView {
     void setReviewAverage();
     void goToWriteReviewActivity(View v);
     void goToUserAreaFromRead(View v);
+    void showReviews(ArrayList<PlaceReview> reviews);
 }
