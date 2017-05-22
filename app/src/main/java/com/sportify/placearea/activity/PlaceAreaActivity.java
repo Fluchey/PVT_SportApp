@@ -57,7 +57,7 @@ public class PlaceAreaActivity extends AppCompatActivity implements PlaceAreaVie
 
         placeName = (TextView) findViewById(R.id.readReviewHeader);
         interests = (TextView) findViewById(R.id.interestsAreaText);
-//        numberOfReviews = (TextView) findViewById(R.id.);
+        numberOfReviews = (TextView) findViewById(R.id.numberOfReviews);
         averageRating = (RatingBar) findViewById(R.id.staticRatingBar);
 
         reviewsList = (ListView) findViewById(R.id.placereviewsListView);
