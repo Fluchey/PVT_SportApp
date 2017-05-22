@@ -213,8 +213,8 @@
     <ListView
         android:id="@+id/userAreaEventList"
         android:layout_width="280dp"
-        android:layout_height="300dp"
-        android:layout_above="@+id/createEventButton"
+        android:layout_height="390dp"
+        android:layout_below="@+id/view2"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

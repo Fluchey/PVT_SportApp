@@ -47,7 +47,8 @@
         <activity
             android:name="com.sportify.maps.activity.MapsActivity"
             android:exported="true"
-            android:label="@string/title_activity_maps" />
+            android:label="@string/title_activity_maps"
+            android:screenOrientation="portrait"/>
         <activity
             android:name="com.sportify.userArea.activity.UserAreaActivity"
             android:exported="true" />
