@@ -258,6 +258,7 @@ public class CreateEventPageOnePageOneActivity extends AppCompatActivity impleme
 
         //TODO: Ska fixa så man inte kan gå vidare om event inte är korrekt skapat
         goToInviteFriendsIntent.putExtra("EVENT_ID", eventID);
+        System.out.println("First page: " + eventID);
         CreateEventPageOnePageOneActivity.this.startActivity(goToInviteFriendsIntent);
     }
 

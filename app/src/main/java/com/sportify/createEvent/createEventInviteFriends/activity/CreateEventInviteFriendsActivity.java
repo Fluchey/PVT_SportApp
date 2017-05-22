@@ -53,6 +53,7 @@ public class CreateEventInviteFriendsActivity extends AppCompatActivity implemen
         if(extras != null){
             eventID = extras.getInt("EVENT_ID");
             System.out.println("getfriends " + eventID);
+            System.out.println("Third page: " + eventID);
         }
 
         sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
@@ -124,7 +125,6 @@ public class CreateEventInviteFriendsActivity extends AppCompatActivity implemen
 
     @Override
     public void updateFriendAdapter(ArrayList<Profile> friendList) {
-//        arrayAdapterSearch = new MyArrayAdapterShowFriends(this, R.layout.friend_list_item, friendList);
         arrayAdapterSearch = new ArrayAdapter(this, android.R.layout.simple_list_item_1, friendList);
         searchFriend.setAdapter(arrayAdapterSearch);
     }
@@ -142,7 +142,6 @@ public class CreateEventInviteFriendsActivity extends AppCompatActivity implemen
 
     @Override
     public void sendInvites(View view) {
-        //TODO: Se till att vännerna blir inbjudna till eventet
         ArrayList<Profile> markedFriends = getMarkedFriends();
         createEventInviteFriendsPresenter.sendInvites(markedFriends, eventID);
     }
