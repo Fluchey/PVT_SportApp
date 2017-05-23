@@ -63,8 +63,7 @@ public class EventAreaPresenterImpl implements EventAreaPresenter, EventAreaRequ
         activity.setHostName(request.getUser().getFirstName(), request.getUser().getLastName());
         activity.setEventName(request.getEvent().getEventName());
         activity.setPlaceName(request.getPlace().getName());
-        activity.setStartDate(request.getEvent().getStartDate());
-        activity.setEndDate(request.getEvent().getEndDate());
+        activity.setEventDate(request.getEvent().getDate());
         activity.setStartTime(request.getEvent().getStartTime());
         activity.setEndTime(request.getEvent().getEndTime());
         activity.setEventType(request.getEvent().getEventType());

@@ -17,8 +17,7 @@ public interface EditEventView {
     String getEventPlace();
     String getEventPlaceId();
     String getEventPrice();
-    String getEventStartDate();
-    String getEventEndDate();
+    String getEventDate();
     String getEventStartTime();
     String getEventEndTime();
     String getEventType();
@@ -31,8 +30,7 @@ public interface EditEventView {
      */
     void setEventName(String eventName);
     void setEventPlace(String eventPlace);
-    void setStartDate(String startDate);
-    void setEndDate(String endDate);
+    void setDate(String date);
     void setStartTime(String startTime);
     void setEndTime(String endTime);
     void setEventType(String eventType);
@@ -47,17 +45,14 @@ public interface EditEventView {
     void showEventStartTimeEmptyError(int resId);
     void showEventEndTimeEmptyError(int resId);
     void showEventTypeEmptyError(int resId);
-    void showEventStartDateEmptyError(int resId);
-    void showEventEndDateEmptyError(int resId);
+    void showEventDateEmptyError(int resId);
     void showEventPlaceEmptyError(int resId);
 
     /*
      * WRONG FORMAT ERROR
      */
     void showEventPriceWrongFormatError(int resId);
-    void showEventStartDateFormatError(int resId);
-    void showEventEndDateFormatError(int resId);
-
+    void showEventDateFormatError(int resId);
 
     void clearAllErrors();
     void showToastToUser(String apiResponse);

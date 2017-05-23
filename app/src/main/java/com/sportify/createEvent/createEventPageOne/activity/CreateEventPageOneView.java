@@ -18,9 +18,7 @@ public interface CreateEventPageOneView {
 
     String getEventPrice();
 
-    String getEventStartDate();
-
-    String getEventEndDate();
+    String getEventDate();
 
     String getEventStartTime();
 
@@ -38,14 +36,10 @@ public interface CreateEventPageOneView {
 
     void showEventPriceWrongFormatError(int resId);
 
-    void showEventStartDateEmptyError(int resId);
-
-    void showEventEndDateEmptyError(int resId);
+    void showEventDateEmptyError(int resId);
 
     //TODO: Ska vi ha denna check för tiderna också? Beror ju på hur det kommer läggas in i fortsättningen / om det ska formateras automatiskt
-    void showEventStartDateFormatError(int resId);
-
-    void showEventEndDateFormatError(int resId);
+    void showEventDateFormatError(int resId);
 
     void showEventStartTimeEmptyError(int resId);
 

@@ -47,8 +47,7 @@ public class CreateEventPageOnePresenterImpl implements CreateEventPageOnePresen
         String eventPriceEt = createEventPageOneView.getEventPrice();
         int eventPrice = 0;
 
-        String eventStartDate = createEventPageOneView.getEventStartDate();
-        String eventEndDate = createEventPageOneView.getEventEndDate();
+        String eventDate = createEventPageOneView.getEventDate();
         String eventStartTime = createEventPageOneView.getEventStartTime();
         String eventEndTime = createEventPageOneView.getEventEndTime();
         String eventType = createEventPageOneView.getEventType();
@@ -65,17 +64,11 @@ public class CreateEventPageOnePresenterImpl implements CreateEventPageOnePresen
         }
 
         //TODO: Lägg in slutdatum
-        else if(eventStartDate.isEmpty()){
-            createEventPageOneView.showEventStartDateEmptyError(R.string.event_date_empty_error);
+        else if(eventDate.isEmpty()){
+            createEventPageOneView.showEventDateEmptyError(R.string.event_date_empty_error);
         }
-        else if(!validDateFormat(eventStartDate)){
-            createEventPageOneView.showEventStartDateFormatError(R.string.event_date_wrongformat_error);
-        }
-        else if(eventEndDate.isEmpty()){
-            createEventPageOneView.showEventEndDateEmptyError(R.string.event_date_empty_error);
-        }
-        else if(!validDateFormat(eventEndDate)){
-            createEventPageOneView.showEventEndDateFormatError(R.string.event_date_wrongformat_error);
+        else if(!validDateFormat(eventDate)){
+            createEventPageOneView.showEventDateFormatError(R.string.event_date_wrongformat_error);
         }
         else if(eventStartTime.isEmpty()){
             createEventPageOneView.showEventStartTimeEmptyError(R.string.event_start_time_empty_error);
@@ -107,8 +100,7 @@ public class CreateEventPageOnePresenterImpl implements CreateEventPageOnePresen
             try {
                 jsonObject.put("eventName", eventName);
                 jsonObject.put("eventPrice", "" + eventPrice);
-                jsonObject.put("eventStartDate", "" + eventStartDate);
-                jsonObject.put("eventEndDate", "" + eventEndDate);
+                jsonObject.put("eventDate", "" + eventDate);
                 jsonObject.put("eventStartTime", "" + eventStartTime);
                 jsonObject.put("eventEndTime", "" + eventEndTime);
                 jsonObject.put("eventType", eventType);

@@ -2,7 +2,6 @@ package com.sportify.eventArea.request;
 
 import android.os.AsyncTask;
 
-import com.sportify.eventArea.presenter.EventAreaPresenterImpl;
 import com.sportify.maps.request.MapsRequestImpl;
 import com.sportify.storage.Event;
 import com.sportify.storage.Place;
@@ -48,8 +47,7 @@ public class EventAreaRequestImpl implements EventAreaRequest {
             jsonObject = new JSONObject(json);
             event.setId(jsonObject.getInt("eventId"));
             event.setEventName(jsonObject.getString("name"));
-            event.setEndDate(jsonObject.getString("eventEndDate"));
-            event.setStartDate(jsonObject.getString("eventStartDate"));
+            event.setDate(jsonObject.getString("eventDate"));
             event.setStartTime(jsonObject.getString("startTime"));
             event.setEndTime(jsonObject.getString("endTime"));
             event.setPrice(jsonObject.getInt("price"));

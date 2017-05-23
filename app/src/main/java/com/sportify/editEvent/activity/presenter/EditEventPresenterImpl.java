@@ -46,8 +46,7 @@ public class EditEventPresenterImpl implements EditEventPresenter, EditEventRequ
         String eventPrice = editEventView.getEventPrice();
         int eventPriceInt = 0;
 
-        String eventStartDate = editEventView.getEventStartDate();
-        String eventEndDate = editEventView.getEventEndDate();
+        String eventDate = editEventView.getEventDate();
         String eventStartTime = editEventView.getEventStartTime();
         String eventEndTime = editEventView.getEventEndTime();
         String eventType = editEventView.getEventType();
@@ -63,20 +62,16 @@ public class EditEventPresenterImpl implements EditEventPresenter, EditEventRequ
         if (eventName.isEmpty()) {
             editEventView.showEventNameEmptyError(R.string.event_name_empty_error);
         }
-        else if(eventStartDate.isEmpty()){
-            editEventView.showEventStartDateEmptyError(R.string.event_date_empty_error);
-        }else if(eventEndDate.isEmpty()){
-            editEventView.showEventEndDateEmptyError(R.string.event_date_empty_error);
+        else if(eventDate.isEmpty()){
+            editEventView.showEventDateEmptyError(R.string.event_date_empty_error);
         }else if(eventStartTime.isEmpty()){
             editEventView.showEventStartTimeEmptyError(R.string.event_start_time_empty_error);
         }else if(eventEndTime.isEmpty()){
             editEventView.showEventEndTimeEmptyError(R.string.event_end_time_empty_error);
         }else if(eventType.isEmpty()) {
             editEventView.showEventTypeEmptyError(R.string.event_type_empty_error);
-        }else if(!validDateFormat(eventStartDate)){
-            editEventView.showEventStartDateFormatError(R.string.event_date_wrongformat_error);
-        }else if(!validDateFormat(eventEndDate)){
-            editEventView.showEventEndDateFormatError(R.string.event_date_wrongformat_error);
+        }else if(!validDateFormat(eventDate)){
+            editEventView.showEventDateFormatError(R.string.event_date_wrongformat_error);
         }else if(editEventView.getUserWroteSearch()){
             editEventView.showEventPlaceEmptyError(R.string.event_place_does_not_exist);
         }else {
@@ -97,8 +92,7 @@ public class EditEventPresenterImpl implements EditEventPresenter, EditEventRequ
                 jsonObject.put("eventID", "" + eventID);
                 jsonObject.put("newEventName", eventName);
                 jsonObject.put("newEventPrice", "" + eventPriceInt);
-                jsonObject.put("newEventStartDate", "" + eventStartDate);
-                jsonObject.put("newEventEndDate", "" + eventEndDate);
+                jsonObject.put("newEventDate", "" + eventDate);
                 jsonObject.put("newEventStartTime", "" + eventStartTime);
                 jsonObject.put("newEventEndTime", "" + eventEndTime);
                 jsonObject.put("newEventType", eventType);
