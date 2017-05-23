@@ -14,7 +14,10 @@ public interface EventAreaView {
     void setEndTime(String endTime);
     void setStartDate(String startDate);
     void setEndDate(String endDate);
+    void setEventType(String eventType);
     void setPrice(int price);
+    void setMaxAttendance(int maxAttendance);
+    void setPrivateEvent(boolean privateEvent);
     void setDescription(String description);
 
     void sendResponsEventInvite(View v);

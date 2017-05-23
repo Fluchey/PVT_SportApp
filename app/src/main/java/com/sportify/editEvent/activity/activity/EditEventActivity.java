@@ -24,6 +24,7 @@ import android.widget.Toast;
 import com.sportify.editEvent.activity.presenter.EditEventPresenter;
 import com.sportify.editEvent.activity.presenter.EditEventPresenterImpl;
 import com.sportify.eventArea.activity.EventAreaActivity;
+import com.sportify.storage.Place;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -56,7 +57,7 @@ public class EditEventActivity extends AppCompatActivity implements EditEventVie
      */
     private AutoCompleteTextView eventPlace;
     private boolean userWroteSearch;
-    private int idOfPlace;
+    private String idOfPlace;
     private ArrayAdapter arrayAdapter;
 
     /**
@@ -82,9 +83,6 @@ public class EditEventActivity extends AppCompatActivity implements EditEventVie
 
         sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         editEventPresenter = new EditEventPresenterImpl(this, sharedPref);
-
-        Bundle bundle = getIntent().getExtras();
-        eventID = (bundle.getInt("eventId"));
 
         /**
          *  EVENT PLACE
@@ -113,7 +111,9 @@ public class EditEventActivity extends AppCompatActivity implements EditEventVie
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 userWroteSearch = false;
-                idOfPlace = (int) id;
+                Place p = (Place) parent.getItemAtPosition(position);
+                idOfPlace = p.getId();
+                System.out.println("Place id " + idOfPlace);
             }
         });
 
@@ -261,7 +261,32 @@ public class EditEventActivity extends AppCompatActivity implements EditEventVie
         eventMaxAttendance = (EditText) findViewById(R.id.etEditEventMaxAttendance);
         eventPrivate = (CheckBox) findViewById(R.id.cbEditEventPrivate);
 
+        //Set all information of the event in edit text fields
+        Bundle bundle = getIntent().getExtras();
+        this.eventID = (bundle.getInt("eventId"));
+        eventName.setText(bundle.getString("eventName"));
+        eventPlace.setText(bundle.getString("place"));
+        //TODO: StartDate, endDate, startTime, endTime
+        eventStartDate.setText(bundle.getString("startDate"));
+        eventEndDate.setText(bundle.getString("endDate"));
+        eventStartTime.setText(bundle.getString("startTime"));
+        eventEndTime.setText(bundle.getString("endTime"));
+        eventType.setText(bundle.getString("eventType"));
 
+        String maxAttendance = String.valueOf(bundle.getInt("maxAttendance"));
+        if(!maxAttendance.equals("0")){
+            eventMaxAttendance.setText(maxAttendance);
+        }
+        String price = String.valueOf(bundle.getInt("price"));
+        if(!price.equals("0")){
+            eventPrice.setText(price);
+        }
+
+        if(bundle.getBoolean("privateEvent")){
+            eventPrivate.setChecked(true);
+        }
+        eventDescription.setText(bundle.getString("description"));
+//        eventMaxAttendance.setText(bundle.getInt("maxAttendance"));
 
     }
 
@@ -287,7 +312,7 @@ public class EditEventActivity extends AppCompatActivity implements EditEventVie
     }
 
     @Override
-    public int getEventPlaceId() {
+    public String getEventPlaceId() {
         return idOfPlace;
     }
 
@@ -333,6 +358,65 @@ public class EditEventActivity extends AppCompatActivity implements EditEventVie
     @Override
     public boolean getPrivateEvent() {
         return eventPrivate.isChecked();
+    }
+
+    @Override
+    public void setEventName(String eventName) {
+        this.eventName.setText(eventName);
+    }
+
+    @Override
+    public void setEventPlace(String eventPlace) {
+        this.eventPlace.setText(eventPlace);
+    }
+
+    @Override
+    public void setStartDate(String startDate) {
+        String myFormat = "yyyy-MM-dd";
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat);
+        eventEndDate.setText(sdf.format(startDate));
+    }
+
+//    @Override
+//    public void setStartDate(String startDate) {
+//        this.startDate.onDateSet((DatePicker) this.startDate, 2014, 03, 03);
+//    }
+
+    @Override
+    public void setEndDate(String endDate) {
+
+    }
+
+    @Override
+    public void setStartTime(String startTime) {
+
+    }
+
+    @Override
+    public void setEndTime(String endTime) {
+
+    }
+
+    @Override
+    public void setEventType(String eventType) {
+        this.eventType.setText(eventType);
+    }
+
+    @Override
+    public void setMaxAttendance(int maxAttendance) {
+        this.eventMaxAttendance.setText(maxAttendance);
+    }
+
+    @Override
+    public void setPrice(int price) {
+        this.eventPrice.setText(price);
+    }
+
+    @Override
+    public void setPrivate(boolean privateEvent) {
+        if(privateEvent){
+            eventPrivate.setChecked(true);
+        }
     }
 
     @Override
@@ -404,7 +488,7 @@ public class EditEventActivity extends AppCompatActivity implements EditEventVie
     }
 
     @Override
-    public void updatePlaceAdapter(ArrayList<String> arr) {
+    public void updatePlaceAdapter(ArrayList<Place> arr) {
         arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arr);
         eventPlace.setAdapter(arrayAdapter);
     }

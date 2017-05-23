@@ -1,5 +1,7 @@
 package com.sportify.createEvent.createEventPageOne.activity;
 
+import com.sportify.storage.Place;
+
 import java.util.ArrayList;
 
 /**
@@ -12,7 +14,7 @@ public interface CreateEventPageOneView {
 
     String getEventPlace();
 
-    int getEventPlaceId();
+    String getEventPlaceId();
 
     String getEventPrice();
 
@@ -57,7 +59,7 @@ public interface CreateEventPageOneView {
 
     void showToastToUser(String apiResponse);
 
-    void updatePlaceAdapter(ArrayList<String> arr);
+    void updatePlaceAdapter(ArrayList<Place> arr);
 
     boolean getUserWroteSearch();
 

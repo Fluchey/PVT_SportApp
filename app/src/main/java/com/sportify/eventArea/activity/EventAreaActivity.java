@@ -20,14 +20,32 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
     private int eventId;
     private SharedPreferences sharedPref;
 
-    private TextView hostName;
-    private TextView eventName;
-    private TextView placeName;
-    private TextView description;
-    private TextView startDate;
-    private TextView startTime;
-    private TextView endTime;
-    private TextView price;
+    private TextView hostNameTv;
+    private TextView eventNameTv;
+    private TextView placeNameTv;
+    private TextView descriptionTv;
+    private TextView startDateTv;
+    private TextView startTimeTv;
+    private TextView endTimeTv;
+    private TextView priceTv;
+
+    /*
+     * Event information
+     */
+
+    private String eventName;
+    private String placeName;
+    private String startDate;
+    private String endDate;
+    private String startTime;
+    private String endTime;
+    private String eventType;
+    private int price;
+    private boolean privateEvent;
+    private String description;
+    private int maxAttendance;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,14 +59,14 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
         eventId = (bundle.getInt("eventId"));
         presenter.getEventFromDb(eventId);
 
-        hostName = (TextView) findViewById(R.id.tvEventAreaHostName);
-        eventName = (TextView) findViewById(R.id.eventAreaHeader);
-        placeName = (TextView) findViewById(R.id.tvEventAreaPlaceText);
-        startDate = (TextView) findViewById(R.id.tvEventAreaDate);
-        startTime = (TextView) findViewById(R.id.tvEventAreaStartTime);
-        endTime = (TextView) findViewById(R.id.tvEventAreaEndTime);
-        description = (TextView) findViewById(R.id.tvEventAreaDescription);
-        price = (TextView) findViewById(R.id.tvEventAreaPrice);
+        hostNameTv = (TextView) findViewById(R.id.tvEventAreaHostName);
+        eventNameTv = (TextView) findViewById(R.id.eventAreaHeader);
+        placeNameTv = (TextView) findViewById(R.id.tvEventAreaPlaceText);
+        startDateTv = (TextView) findViewById(R.id.tvEventAreaDate);
+        startTimeTv = (TextView) findViewById(R.id.tvEventAreaStartTime);
+        endTimeTv = (TextView) findViewById(R.id.tvEventAreaEndTime);
+        descriptionTv = (TextView) findViewById(R.id.tvEventAreaDescription);
+        priceTv = (TextView) findViewById(R.id.tvEventAreaPrice);
     }
 
 
@@ -61,53 +79,88 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
         Intent goToEditEventViewIntent = new Intent(EventAreaActivity.this, EditEventActivity.class);
 
         goToEditEventViewIntent.putExtra("eventId", eventId);
+        goToEditEventViewIntent.putExtra("eventName", eventName);
+        goToEditEventViewIntent.putExtra("place", placeName);
+        goToEditEventViewIntent.putExtra("startDate", startDate);
+        goToEditEventViewIntent.putExtra("endDate", endDate);
+        goToEditEventViewIntent.putExtra("startTime", startTime);
+        goToEditEventViewIntent.putExtra("endTime", endTime);
+        goToEditEventViewIntent.putExtra("eventType", eventType);
+        goToEditEventViewIntent.putExtra("maxAttendance", maxAttendance);
+        goToEditEventViewIntent.putExtra("price", price);
+        goToEditEventViewIntent.putExtra("privateEvent", privateEvent);
+        goToEditEventViewIntent.putExtra("description", description);
+
+
         EventAreaActivity.this.startActivity(goToEditEventViewIntent);
     }
 
 
     @Override
     public void setEventName(String eventName) {
-        this.eventName.setText(eventName);
+        this.eventNameTv.setText(eventName);
+        this.eventName = eventName;
     }
 
     @Override
     public void setPlaceName(String placeName) {
-        this.placeName.setText(placeName);
+        this.placeNameTv.setText(placeName);
+        this.placeName = placeName;
     }
 
     @Override
     public void setHostName(String firstName, String lastName) {
-        this.hostName.setText(firstName + " " + lastName);
+        this.hostNameTv.setText(firstName + " " + lastName);
     }
 
     @Override
     public void setStartTime(String startTime) {
-        this.startTime.setText(startTime);
+        this.startTimeTv.setText(startTime);
+        this.startTime = startTime;
     }
 
     @Override
     public void setEndTime(String endTime) {
-        this.endTime.setText(endTime);
+        this.endTimeTv.setText(endTime);
+        this.endTime = endTime;
     }
 
     @Override
     public void setStartDate(String startDate) {
-        this.startDate.setText(startDate);
+        this.startDateTv.setText(startDate);
+        this.startDate = startDate;
     }
 
     @Override
     public void setEndDate(String endDate) {
+        this.endDate = endDate;
+    }
 
+    @Override
+    public void setEventType(String eventType) {
+        this.eventType = eventType;
     }
 
     @Override
     public void setPrice(int price) {
-        this.price.setText(String.valueOf(price));
+        this.priceTv.setText(String.valueOf(price));
+        this.price = price;
+    }
+
+    @Override
+    public void setMaxAttendance(int maxAttendance) {
+        this.maxAttendance = maxAttendance;
+    }
+
+    @Override
+    public void setPrivateEvent(boolean privateEvent) {
+        this.privateEvent = privateEvent;
     }
 
     @Override
     public void setDescription(String description) {
-        this.description.setText(description);
+        this.descriptionTv.setText(description);
+        this.description = description;
     }
 
     @Override

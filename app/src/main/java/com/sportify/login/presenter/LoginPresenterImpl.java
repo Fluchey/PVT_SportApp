@@ -2,18 +2,14 @@ package com.sportify.login.presenter;
 import android.content.SharedPreferences;
 import android.util.Log;
 import android.util.Patterns;
-import android.widget.Toast;
 
 import com.facebook.AccessToken;
 import com.sportify.login.activity.LoginView;
 import com.sportify.login.request.LoginRequest;
 import com.sportify.login.request.LoginRequestImpl;
-import com.sportify.util.Profile;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.List;
 
 import sportapp.pvt_sportapp.R;
 
@@ -62,9 +58,10 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
             /**
              * Creates new asynctask which runs in background and tries to create new user
              */
+
             loginRequest.makeApiRequest(jsonObject.toString(), "https://pvt15app.herokuapp.com/api/login");
 
-//            loginRequest.makeApiRequest(jsonObject.toString(), "http://130.237.89.152:9000/api/login");
+//            loginRequest.makeApiRequest(jsonObject.toString(), "http://192.168.0.11:9000/api/login");
 
         }
     }

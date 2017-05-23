@@ -51,20 +51,18 @@ public class EditEventPresenterImpl implements EditEventPresenter, EditEventRequ
         String eventStartTime = editEventView.getEventStartTime();
         String eventEndTime = editEventView.getEventEndTime();
         String eventType = editEventView.getEventType();
-        String eventPlace = editEventView.getEventPlace();
         String eventMaxAttendance = editEventView.getEventMaxAttendance();
         String eventDescription = editEventView.getEventDescription();
         boolean eventPrivate = editEventView.getPrivateEvent();
         int eventPrivateInt = 0;
 
         if(eventPrivate){
-            eventPrivateInt = -1;
+            eventPrivateInt = 1;
         }
 
         if (eventName.isEmpty()) {
             editEventView.showEventNameEmptyError(R.string.event_name_empty_error);
         }
-
         else if(eventStartDate.isEmpty()){
             editEventView.showEventStartDateEmptyError(R.string.event_date_empty_error);
         }else if(eventEndDate.isEmpty()){
@@ -93,7 +91,7 @@ public class EditEventPresenterImpl implements EditEventPresenter, EditEventRequ
 
             JSONObject jsonObject = new JSONObject();
 
-            Place p = editEventRequest.getPlaces().get(editEventView.getEventPlaceId());
+            String placeID = editEventView.getEventPlaceId();
 
             try {
                 jsonObject.put("eventID", "" + eventID);
@@ -104,9 +102,9 @@ public class EditEventPresenterImpl implements EditEventPresenter, EditEventRequ
                 jsonObject.put("newEventStartTime", "" + eventStartTime);
                 jsonObject.put("newEventEndTime", "" + eventEndTime);
                 jsonObject.put("newEventType", eventType);
-                jsonObject.put("newEventPlace", p.getId());
+                jsonObject.put("newEventPlace", placeID);
                 if(!eventMaxAttendance.isEmpty()) {
-                    jsonObject.put("newEventMaxAttendance", eventMaxAttendance);
+                    jsonObject.put("newMaxAttendance", eventMaxAttendance);
                 }
                 jsonObject.put("newEventDescription", eventDescription);
                 jsonObject.put("privateEvent", "" + eventPrivateInt);
@@ -153,9 +151,9 @@ public class EditEventPresenterImpl implements EditEventPresenter, EditEventRequ
     }
 
     private void updateViewPlaceAdapter(){
-        ArrayList<String> arr = new ArrayList<>();
+        ArrayList<Place> arr = new ArrayList<>();
         for(Place p : editEventRequest.getPlaces()){
-            arr.add(p.getName());
+            arr.add(p);
         }
         editEventView.updatePlaceAdapter(arr);
     }
