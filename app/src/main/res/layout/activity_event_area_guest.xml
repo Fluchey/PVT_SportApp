@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/backgroundnodude"
-    android:padding="@dimen/def_pagePadding"
-    tools:context="com.sportify.eventAreaGuestActivity">
+    android:padding="@dimen/def_pagePadding">
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/backUserAreaFromEvent"
