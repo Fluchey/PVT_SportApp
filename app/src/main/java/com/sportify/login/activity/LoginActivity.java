@@ -51,7 +51,12 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         dialog = new ProgressDialog(this);
         initializeControls();
         loginWithFacebook();
-        if (facebookIsLoggedIn()) Log.d("LoginActivity.java", "logged in true");
+        if (facebookIsLoggedIn()) {
+            Log.d("LoginActivity.java", "logged in true");
+            AccessToken accessToken = AccessToken.getCurrentAccessToken();
+            //loginPresenter.loginUserFacebook(accessToken);  skickar inte med något jsonobject!
+            Log.d("LoginActivity.java", sharedPref.getString("firstName", ""));
+        }
             //launchUserActivity();
 
         email = (EditText) findViewById(R.id.etLoginEmail);
