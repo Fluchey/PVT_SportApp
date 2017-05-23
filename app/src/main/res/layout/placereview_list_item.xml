@@ -2,46 +2,43 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:background="@color/colorreview">
 
     <TextView
         android:id="@+id/placereviewName"
-        android:layout_width="142dp"
-        android:layout_height="?android:attr/listPreferredItemHeightSmall"
-        android:layout_above="@+id/placereviewDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_weight="1"
-        android:gravity="center_vertical"
-        android:paddingLeft="?android:attr/listPreferredItemPaddingLeft"
-        android:paddingRight="?android:attr/listPreferredItemPaddingRight"
         android:text="Namn"
-        android:textAppearance="?android:attr/textAppearanceListItemSmall" />
+        android:textStyle="bold"
+        android:textSize="15sp"/>
 
     <TextView
         android:id="@+id/placereviewComment"
         android:layout_width="wrap_content"
-        android:layout_height="72dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/placereviewName"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/placereviewName"
+        android:textSize="@dimen/standardSmallerTextSize"
         android:text="Kommentar" />
 
     <TextView
         android:id="@+id/placereviewDate"
         android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_alignBottom="@+id/placereviewRating"
-        android:layout_alignParentStart="true"
-        android:layout_alignTop="@+id/placereviewRating"
-        android:layout_toStartOf="@+id/placereviewRating"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/placereviewComment"
+        android:textSize="@dimen/standardSmallerTextSize"
+
         android:text="dd/mm/åå" />
 
     <RatingBar
         android:id="@+id/placereviewRating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="?android:attr/ratingBarStyleSmall"
         android:layout_alignParentEnd="true"
-        android:layout_below="@+id/placereviewComment" />
+        android:layout_toEndOf="@+id/placereviewDate"/>
 
 </RelativeLayout>
 
