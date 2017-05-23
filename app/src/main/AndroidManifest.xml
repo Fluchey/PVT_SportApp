@@ -48,7 +48,7 @@
             android:name="com.sportify.maps.activity.MapsActivity"
             android:exported="true"
             android:label="@string/title_activity_maps"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.sportify.userArea.activity.UserAreaActivity"
             android:exported="true" />
@@ -75,7 +75,8 @@
         <activity android:name="com.sportify.profile.activity.EditProfileActivity" />
         <activity android:name="com.sportify.placeReview.activity.PlaceReviewActivity" />
         <activity android:name="com.sportify.placearea.activity.PlaceAreaActivity" />
-        <activity android:name="com.sportify.editEvent.activity.activity.EditEventActivity"></activity>
+        <activity android:name="com.sportify.editEvent.activity.activity.EditEventActivity" />
+        <activity android:name="com.sportify.eventAreaGuestActivity"></activity>
     </application>
 
 </manifest>

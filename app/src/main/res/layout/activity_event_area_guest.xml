@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/backgroundnodude"
+    android:padding="@dimen/def_pagePadding"
+    tools:context="com.sportify.eventAreaGuestActivity">
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/backUserAreaFromEvent"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="10dp"
+        android:backgroundTint="@color/colorCrystalWhite"
+        android:clickable="true"
+        android:onClick="toUserAreaFromEvent"
+        app:fabSize="mini"
+        app:srcCompat="@drawable/chevleft" />
+
+
+    <TextView
+        android:id="@+id/eventAreaHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="serif"
+        android:text="@string/event_area_title"
+        android:textColor="@color/colorCrystalWhite"
+        android:textSize="@dimen/header"
+        android:textStyle="italic"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/tvEventAreaCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="serif"
+        android:text="@string/enter_category"
+        android:textColor="@color/colorCrystalWhite"
+        android:textSize="@dimen/standardSmallerTextSize"
+        android:textStyle="italic"
+        android:layout_below="@+id/eventAreaHeader"
+        android:layout_centerHorizontal="true" />
+
+
+
+    <ImageView
+        android:id="@+id/eventSwimView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/backUserAreaFromEvent"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="40dp"
+        app:srcCompat="@drawable/userareaflowswim"
+        tools:ignore="ContentDescription" />
+
+
+    <TextView
+        android:id="@+id/tvEventAreaPlaceText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/eventSwimView"
+        android:layout_below="@+id/eventSwimView"
+        android:text="@string/event_place"
+        android:textSize="@dimen/standardBitTextSize"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvEventAreaHostName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/eventSwimView"
+        android:layout_marginStart="70dp"
+        android:layout_centerHorizontal="true"
+        android:text="@string/event_host"
+        android:textSize="@dimen/standardSmallerTextSize" />
+
+    <TextView
+        android:id="@+id/tvEventAreaStartTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/tvEventAreaPlaceText"
+        android:text="@string/event_start_time"
+        android:textSize="@dimen/standardSmallerTextSize" />
+
+
+    <TextView
+        android:id="@+id/tvEventAreaEndTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/tvEventAreaStartTime"
+        android:text="@string/event_end_time"
+        android:textSize="@dimen/standardSmallerTextSize" />
+
+    <TextView
+        android:id="@+id/tvEventAreaPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/tvEventAreaEndTime"
+        android:text="@string/event_area_price"
+        android:textSize="@dimen/standardSmallerTextSize" />
+
+
+
+
+    <TextView
+        android:id="@+id/tvMaxAtt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvEventAreaDate"
+        android:layout_centerHorizontal="true"
+        android:text="@string/event_max_attendance"
+        android:textSize="@dimen/standardSmallerTextSize" />
+
+    <TextView
+        android:id="@+id/tvEventAreaDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvEventAreaHostName"
+        android:layout_below="@+id/tvEventAreaHostName"
+        android:text="@string/event_date"
+        android:textSize="@dimen/standardSmallerTextSize" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="20dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/secondLine"
+        android:background="@color/colorAccent"/>
+
+
+    <TextView
+        android:id="@+id/tvEventAreaInterested"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/secondLine"
+        android:textSize="@dimen/standardSmallerTextSize"
+        android:text="@string/event_interested"
+        android:textStyle="bold"/>
+
+
+    <TextView
+        android:id="@+id/tvEventAreaComing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/secondLine"
+        android:textSize="@dimen/standardSmallerTextSize"
+        android:layout_marginStart="20dp"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:text="@string/event_coming" />
+
+    <TextView
+        android:id="@+id/tvEventAreaInvited"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="@dimen/standardSmallerTextSize"
+        android:layout_below="@+id/secondLine"
+        android:layout_alignParentEnd="true"
+        android:text="@string/event_invited" />
+
+
+    <RadioGroup
+        android:id="@+id/RadioComingNot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tvEventAreaStartTime"
+        android:layout_marginEnd="20dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/interestedRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="sendResponsEventInvite"
+            android:tag="interested"
+            android:text="@string/event_intrested_radio"
+            android:textSize="@dimen/standardSmallerTextSize" />
+
+        <RadioButton
+            android:id="@+id/comingRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="sendResponsEventInvite"
+            android:tag="attending"
+            android:text="@string/event_coming_radio"
+            android:textSize="@dimen/standardSmallerTextSize" />
+
+        <RadioButton
+            android:id="@+id/notComingRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="sendResponsEventInvite"
+            android:tag="not_attending"
+            android:text="@string/event_not_coming_radio"
+            android:textSize="@dimen/standardSmallerTextSize" />
+
+    </RadioGroup>
+
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/tvMaxAtt"
+        android:background="@color/colorAccent"
+        android:layout_marginTop="10dp"
+        android:id="@+id/firstLine"/>
+
+
+    <TextView
+        android:id="@+id/tvEventAreaDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="25dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/event_description"
+        android:layout_below="@+id/firstLine"/>
+
+
+    <View
+        android:id="@+id/secondLine"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/tvEventAreaDescription"
+        android:background="@color/colorAccent"
+        android:layout_marginBottom="10dp"/>
+
+
+    <!-- Share to Facebook -->
+
+
+    <ImageButton
+        android:id="@+id/imageButton6"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:background="@android:color/transparent"
+        app:srcCompat="@drawable/facebook" />
+
+</RelativeLayout>
