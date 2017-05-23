@@ -47,12 +47,13 @@
         <activity
             android:name="com.sportify.maps.activity.MapsActivity"
             android:exported="true"
-            android:label="@string/title_activity_maps" />
+            android:label="@string/title_activity_maps"
+            android:screenOrientation="portrait"/>
         <activity
             android:name="com.sportify.userArea.activity.UserAreaActivity"
             android:exported="true" />
         <activity
-            android:name="com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOnePageOneActivity"
+            android:name="com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOneActivity"
             android:exported="true" />
         <activity
             android:name="com.sportify.addFriend.activity.AddFriendActivity"
@@ -74,7 +75,7 @@
         <activity android:name="com.sportify.profile.activity.EditProfileActivity" />
         <activity android:name="com.sportify.placeReview.activity.PlaceReviewActivity" />
         <activity android:name="com.sportify.placearea.activity.PlaceAreaActivity" />
-        <activity android:name="com.sportify.editEvent.activity.EditEventActivity"></activity>
+        <activity android:name="com.sportify.editEvent.activity.activity.EditEventActivity"></activity>
     </application>
 
 </manifest>

@@ -12,7 +12,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.sportify.arrayAdapters.MyArrayAdapterNotifications;
-import com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOnePageOneActivity;
+import com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOneActivity;
 import com.sportify.eventArea.activity.EventAreaActivity;
 import com.sportify.maps.activity.MapsActivity;
 import com.sportify.notifications.EventNotification;
@@ -95,7 +95,7 @@ public class NotificationActivity extends AppCompatActivity implements Notificat
      */
     public void createEventfromNoteActivity(View v) {
         Toast.makeText(this, "Clicked Create Event", Toast.LENGTH_LONG).show();
-        Intent createEventIntent = new Intent(NotificationActivity.this, CreateEventPageOnePageOneActivity.class);
+        Intent createEventIntent = new Intent(NotificationActivity.this, CreateEventPageOneActivity.class);
         NotificationActivity.this.startActivity(createEventIntent);
     }
 

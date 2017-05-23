@@ -8,12 +8,14 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sportify.calendar.activity.CalendarActivity;
-import com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOnePageOneActivity;
+import com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOneActivity;
 import com.sportify.eventArea.activity.EventAreaActivity;
 import com.sportify.maps.activity.MapsActivity;
 import com.sportify.placearea.activity.PlaceAreaActivity;
@@ -21,9 +23,13 @@ import com.sportify.notifications.activity.NotificationActivity;
 import com.sportify.settings.activity.SettingsActivity;
 import com.sportify.profile.activity.EditProfileActivity;
 import com.sportify.showFriends.activity.ShowFriendsActivity;
+import com.sportify.storage.Event;
+import com.sportify.userArea.CustomList;
 import com.sportify.userArea.presenter.UserAreaPresenter;
 import com.sportify.userArea.presenter.UserAreaPresenterImpl;
 import com.sportify.util.Profile;
+
+import java.util.ArrayList;
 
 import sportapp.pvt_sportapp.R;
 
@@ -35,11 +41,22 @@ public class UserAreaActivity extends AppCompatActivity implements UserAreaView 
     private TextView userName, userAge, userBio, userInterests;
     private ImageView userProfilePicture;
 
+    ListView list;
+    Integer[] imageId = {
+            R.drawable.userareaflowswim,
+            R.drawable.userareaflowswim,
+            R.drawable.userareaflowswim,
+            R.drawable.userareaflowswim,
+            R.drawable.userareaflowswim,
+            R.drawable.userareaflowswim,
+            R.drawable.userareaflowswim,
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_area);
-        sharedPref = getSharedPreferences("MyPrefs",Context.MODE_PRIVATE);
+        sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         userAreaPresenter = new UserAreaPresenterImpl(this, sharedPref);
         userName = (TextView) findViewById(R.id.UserInfoNameText);
         userName.setText(sharedPref.getString("firstName", "") + " " + sharedPref.getString("lastName", ""));
@@ -57,10 +74,10 @@ public class UserAreaActivity extends AppCompatActivity implements UserAreaView 
         userBio.setText(sharedPref.getString("userBio", ""));
         userInterests = (TextView) findViewById(R.id.UserInfoInterestText);
         String interestsString = (sharedPref.getString("interests", ""));
-        interestsString = interestsString.replaceAll("\"","");
+        interestsString = interestsString.replaceAll("\"", "");
         interestsString = interestsString.replace("[", "#");
         interestsString = interestsString.replace("]", "");
-        interestsString = interestsString.replaceAll(","," #");
+        interestsString = interestsString.replaceAll(",", " #");
         userInterests.setText(interestsString);
         String imageBase64 = sharedPref.getString("imageBase64", "");
         Log.d("UserAreaActivity", "imageBase64: " + imageBase64);
@@ -69,22 +86,37 @@ public class UserAreaActivity extends AppCompatActivity implements UserAreaView 
             Bitmap bitmap = Profile.decodeStringToBitmap(imageBase64);
             userProfilePicture.setImageBitmap(bitmap);
         }
-    }
 
+        /**
+         * MINA EVENT LISTVIEW
+         */
+//        CustomList adapter = new
+//                CustomList(UserAreaActivity.this, web, imageId);
+//        list = (ListView) findViewById(R.id.userAreaEventList);
+//        list.setAdapter(adapter);
+//        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view,
+//                                    int position, long id) {
+//                Toast.makeText(UserAreaActivity.this, "You Clicked at " + web[+position], Toast.LENGTH_SHORT).show();
+//
+//            }
+//        });
+    }
 
     public void findEventButtonClick(View v) {
         Toast.makeText(this, "I do nothing, ask my developers why", Toast.LENGTH_LONG).show();
     }
 
-    public void ToNoteFromUserAreaActivity(View v){
+    public void ToNoteFromUserAreaActivity(View v) {
         Intent goToNotificationsViewIntent = new Intent(UserAreaActivity.this, NotificationActivity.class);
         UserAreaActivity.this.startActivity(goToNotificationsViewIntent);
     }
 
-
     public void createEventButtonClick(View v) {
         Toast.makeText(this, "Clicked Create Event", Toast.LENGTH_LONG).show();
-        Intent createEventIntent = new Intent(UserAreaActivity.this, CreateEventPageOnePageOneActivity.class);
+        Intent createEventIntent = new Intent(UserAreaActivity.this, CreateEventPageOneActivity.class);
         UserAreaActivity.this.startActivity(createEventIntent);
     }
 
@@ -93,36 +125,58 @@ public class UserAreaActivity extends AppCompatActivity implements UserAreaView 
         UserAreaActivity.this.startActivity(startMapActivityIntent);
     }
 
-    public void goToSettingsActivity(View v){
+    public void goToSettingsActivity(View v) {
         Intent goToSettingsViewIntent = new Intent(UserAreaActivity.this, SettingsActivity.class);
         UserAreaActivity.this.startActivity(goToSettingsViewIntent);
     }
 
-    public void goToFriendListButtonClick(View v){
+    public void goToFriendListButtonClick(View v) {
         Intent goToFriendListIntent = new Intent(UserAreaActivity.this, ShowFriendsActivity.class);
         UserAreaActivity.this.startActivity(goToFriendListIntent);
     }
 
-
-    public void goToCalendarActivity(View v){
+    public void goToCalendarActivity(View v) {
         Intent goToCalendarIntent = new Intent(UserAreaActivity.this, CalendarActivity.class);
         UserAreaActivity.this.startActivity(goToCalendarIntent);
     }
 
-    public void goToEditProfileFromUser(View v){
+    public void goToEditProfileFromUser(View v) {
         Intent goToEditProfileIntent = new Intent(UserAreaActivity.this, EditProfileActivity.class);
         UserAreaActivity.this.startActivity(goToEditProfileIntent);
     }
 
-    public void goToEventAreaActivity(View v){
+    public void goToEventAreaActivity(View v) {
         Intent goToEventAreaIntent = new Intent(UserAreaActivity.this, EventAreaActivity.class);
         goToEventAreaIntent.putExtra("eventId", 322);
         UserAreaActivity.this.startActivity(goToEventAreaIntent);
     }
 
-    public void goToReadReviewActivity(View v){
+    public void goToReadReviewActivity(View v) {
         Intent placeAreaIntent = new Intent(UserAreaActivity.this, PlaceAreaActivity.class);
         placeAreaIntent.putExtra("placeId", "2220");
         UserAreaActivity.this.startActivity(placeAreaIntent);
+    }
+
+    @Override
+    public void showEvents(ArrayList<Event> events) {
+        ArrayList<String> eventNames = new ArrayList<>();
+        for(Event e: events){
+            eventNames.add(e.getEventName());
+        }
+        String[] nameArr = eventNames.toArray(new String[0]);
+        Event[] eventArr = events.toArray(new Event[0]);
+        CustomList adapter = new CustomList(UserAreaActivity.this, nameArr, eventArr, imageId);
+        list = (ListView) findViewById(R.id.userAreaEventList);
+        list.setAdapter(adapter);
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                Intent goToEventAreaIntent = new Intent(UserAreaActivity.this, EventAreaActivity.class);
+                goToEventAreaIntent.putExtra("eventId", userAreaPresenter.getEventsFromStorage().get(position).getId());
+                UserAreaActivity.this.startActivity(goToEventAreaIntent);
+            }
+        });
     }
 }

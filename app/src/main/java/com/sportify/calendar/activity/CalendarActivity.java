@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOnePageOneActivity;
+import com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOneActivity;
 import com.sportify.maps.activity.MapsActivity;
 import com.sportify.notifications.activity.NotificationActivity;
 import com.sportify.showFriends.activity.ShowFriendsActivity;
@@ -29,7 +29,7 @@ public class CalendarActivity extends AppCompatActivity implements CalendarView{
 
     public void createEventButtonClickFromCalAct(View v) {
         Toast.makeText(this, "Clicked Create Event", Toast.LENGTH_LONG).show();
-        Intent createEventIntent = new Intent(CalendarActivity.this, CreateEventPageOnePageOneActivity.class);
+        Intent createEventIntent = new Intent(CalendarActivity.this, CreateEventPageOneActivity.class);
         CalendarActivity.this.startActivity(createEventIntent);
     }
 

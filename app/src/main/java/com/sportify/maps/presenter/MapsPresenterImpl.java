@@ -91,11 +91,12 @@ public class MapsPresenterImpl implements MapsPresenter, MapsRequest.onRequestFi
         mapsView.hideSoftKeyboard();
         if(mapsView.placesIsChecked()){
             Place p = mapsRequest.getCurrentSearchPlaces().get(id);
+            mapsView.setTextSearch(p.getName());
             mapsView.switchToMapFragmentFromPresenter(p.getLat(), p.getLon());
         }else{
             Event e = mapsRequest.getCurrentSearchEvents().get(id);
-            Log.d("Event:", e.getEventName());
             Place p = mapsRequest.getPlaceIdMap().get(e.getPlaceName());
+            mapsView.setTextSearch(e.getEventName());
             mapsView.switchToMapFragmentFromPresenter(p.getLat(), p.getLon());
         }
 

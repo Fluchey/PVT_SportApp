@@ -28,7 +28,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOnePageOneActivity;
+import com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOneActivity;
 import com.sportify.eventArea.activity.EventAreaActivity;
 import com.sportify.maps.CustListFragment;
 import com.sportify.maps.presenter.MapsPresenter;
@@ -105,6 +105,13 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
 
             @Override
             public void afterTextChanged(Editable s) {
+            }
+        });
+
+        editTextSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editTextSearch.setText("");
             }
         });
 
@@ -270,7 +277,7 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
 
     public void createEventfromMapActivity(View v) {
         Toast.makeText(this, "Clicked Create Event", Toast.LENGTH_LONG).show();
-        Intent createEventIntent = new Intent(MapsActivity.this, CreateEventPageOnePageOneActivity.class);
+        Intent createEventIntent = new Intent(MapsActivity.this, CreateEventPageOneActivity.class);
         MapsActivity.this.startActivity(createEventIntent);
     }
 

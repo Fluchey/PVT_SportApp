@@ -48,5 +48,4 @@ public class YesNoDialogFragment extends DialogFragment{
             dismiss();
         }
     };
-
 }

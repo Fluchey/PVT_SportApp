@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 import com.sportify.addFriend.activity.AddFriendActivity;
 import com.sportify.arrayAdapters.MyArrayAdapterShowFriends;
-import com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOnePageOneActivity;
+import com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOneActivity;
 import com.sportify.maps.activity.MapsActivity;
 import com.sportify.notifications.activity.NotificationActivity;
 import com.sportify.showFriends.Profile;
@@ -58,7 +58,7 @@ public class ShowFriendsActivity extends AppCompatActivity implements ShowFriend
         /**
          *  Update friend list
          */
-        myArrayAdapterFriendList = new MyArrayAdapterShowFriends(this, R.layout.friend_list_item, null);
+        myArrayAdapterFriendList = new MyArrayAdapterShowFriends(this, R.layout.placereview_list_item, null);
 
         /**
          *  Update search
@@ -84,10 +84,10 @@ public class ShowFriendsActivity extends AppCompatActivity implements ShowFriend
                             arrayTemplist.add(friendArray.get(i));
                         }
                     }
-                    myArrayAdapterFriendList = new MyArrayAdapterShowFriends(ShowFriendsActivity.this, R.layout.friend_list_item, arrayTemplist);
+                    myArrayAdapterFriendList = new MyArrayAdapterShowFriends(ShowFriendsActivity.this, R.layout.placereview_list_item, arrayTemplist);
                     friendList.setAdapter(myArrayAdapterFriendList);
                 }else{
-                    myArrayAdapterFriendList = new MyArrayAdapterShowFriends(ShowFriendsActivity.this, R.layout.friend_list_item, friendArray);
+                    myArrayAdapterFriendList = new MyArrayAdapterShowFriends(ShowFriendsActivity.this, R.layout.placereview_list_item, friendArray);
                     friendList.setAdapter(myArrayAdapterFriendList);
                 }
             }
@@ -114,14 +114,14 @@ public class ShowFriendsActivity extends AppCompatActivity implements ShowFriend
 
     @Override
     public void updateFriendAdapter(ArrayList<Profile> friendList) {
-//        arrayAdapterSearch = new MyArrayAdapterShowFriends(this, R.layout.friend_list_item, friendList);
+//        arrayAdapterSearch = new MyArrayAdapterShowFriends(this, R.layout.placereview_list_item, friendList);
         arrayAdapterSearch = new ArrayAdapter(this, android.R.layout.simple_list_item_1, friendList);
         searchFriend.setAdapter(arrayAdapterSearch);
     }
 
     public void createEventfromFriendsActivity(View v) {
         Toast.makeText(this, "Clicked Create Event", Toast.LENGTH_LONG).show();
-        Intent createEventIntent = new Intent(ShowFriendsActivity.this, CreateEventPageOnePageOneActivity.class);
+        Intent createEventIntent = new Intent(ShowFriendsActivity.this, CreateEventPageOneActivity.class);
         ShowFriendsActivity.this.startActivity(createEventIntent);
     }
 

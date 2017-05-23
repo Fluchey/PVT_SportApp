@@ -76,51 +76,6 @@
         android:text="@string/review_number_of" />
 
 
-
-
-
-    <TextView
-        android:id="@+id/userReviewNameText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/userStaticRatingBar"
-        android:layout_toEndOf="@+id/backReadReviewButton"
-        android:text="Kim Hellström" />
-
-
-
-    <TextView
-        android:id="@+id/userCommentText1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/staticRatingBar"
-        android:layout_marginTop="65dp"
-        android:textSize="@dimen/standardSmallerTextSize"
-        android:text="Mycket trevlig bassäng!"
-        android:layout_marginBottom="30dp"
-        android:layout_toStartOf="@+id/userStaticRatingBar" />
-
-    <RatingBar
-        android:id="@+id/userStaticRatingBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:isIndicator="true"
-        android:layout_alignParentEnd="true"
-        style="@style/Base.Widget.AppCompat.RatingBar.Small"
-        android:layout_below="@+id/staticRatingBar"
-        android:layout_marginTop="65dp"
-        android:layout_marginStart="20dp"/>
-
-    <TextView
-        android:id="@+id/userReviewDateText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/userReviewNameText"
-        android:layout_below="@+id/userReviewNameText"
-        android:text="6/6/2017"
-        android:textSize="11sp"
-        tools:ignore="SmallSp" />
-
     <ImageView
         android:id="@+id/goToWriteReviewButton"
         android:layout_width="50dp"
@@ -133,6 +88,25 @@
         android:onClick="goToWriteReviewActivity"
         app:srcCompat="@drawable/setteditprofile"
         tools:ignore="ContentDescription" />
+
+    <ScrollView
+        android:id="@+id/reviewsScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/staticRatingBar"
+        android:layout_marginTop="12dp"
+        android:layout_toStartOf="@+id/goToWriteReviewButton">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ListView
+                android:id="@+id/placereviewsListView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </RelativeLayout>
+    </ScrollView>
 
 
 </RelativeLayout>

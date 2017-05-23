@@ -23,7 +23,7 @@ import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.sportify.login.presenter.LoginPresenterImpl;
 
-import com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOnePageOneActivity;
+import com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOneActivity;
 import com.sportify.createEvent.createEventInviteFriends.activity.CreateEventInviteFriendsActivity;
 
 import com.sportify.profile.activity.ProfileActivity;
@@ -72,7 +72,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         tvCreateEventHere.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent createEventIntent = new Intent(LoginActivity.this, CreateEventPageOnePageOneActivity.class);
+                Intent createEventIntent = new Intent(LoginActivity.this, CreateEventPageOneActivity.class);
                 LoginActivity.this.startActivity(createEventIntent);
             }
         });

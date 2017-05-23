@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/backgroundnodude"
     android:padding="@dimen/def_pagePadding"
-    tools:context="com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOnePageOneActivity">
+    tools:context="com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOneActivity">
 
     <TextView
         android:id="@+id/createEventHeader"

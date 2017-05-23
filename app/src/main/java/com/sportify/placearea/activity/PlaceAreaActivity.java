@@ -5,15 +5,23 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.ArrayAdapter;
 
+import com.sportify.arrayAdapters.MyArrayAdapterShowFriends;
+import com.sportify.arrayAdapters.MyArrayAdapterShowPlaceReviews;
 import com.sportify.placeReview.activity.PlaceReviewActivity;
 import com.sportify.placearea.presenter.PlaceAreaPresenter;
 import com.sportify.placearea.presenter.PlaceAreaPresenterImpl;
+import com.sportify.showFriends.Profile;
+import com.sportify.storage.PlaceReview;
 import com.sportify.userArea.activity.UserAreaActivity;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 import sportapp.pvt_sportapp.R;
@@ -29,6 +37,11 @@ public class PlaceAreaActivity extends AppCompatActivity implements PlaceAreaVie
 
     private RatingBar averageRating;
 
+    private ListView reviewsList;
+    private ArrayList<PlaceReview> allReviews;
+
+    private ArrayAdapter arrayAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,13 +53,15 @@ public class PlaceAreaActivity extends AppCompatActivity implements PlaceAreaVie
         Bundle bundle = getIntent().getExtras();
         placeId = (bundle.getString("placeId"));
         presenter.getPlaceFromDb(placeId);
+        presenter.updateReviews(Integer.parseInt(placeId));
 
         placeName = (TextView) findViewById(R.id.readReviewHeader);
         interests = (TextView) findViewById(R.id.interestsAreaText);
         numberOfReviews = (TextView) findViewById(R.id.numberOfReviews);
         averageRating = (RatingBar) findViewById(R.id.staticRatingBar);
 
-        presenter.updateReviews(Integer.parseInt(placeId));
+        reviewsList = (ListView) findViewById(R.id.placereviewsListView);
+        arrayAdapter = new MyArrayAdapterShowPlaceReviews(this, R.layout.placereview_list_item, null);
     }
 
     @Override
@@ -69,13 +84,22 @@ public class PlaceAreaActivity extends AppCompatActivity implements PlaceAreaVie
     }
 
     @Override
+    public void showReviews(ArrayList<PlaceReview> reviews) {
+        allReviews = reviews;
+        arrayAdapter = new MyArrayAdapterShowPlaceReviews(this, R.layout.placereview_list_item, allReviews);
+        reviewsList.setAdapter(arrayAdapter);
+    }
+
+
+
+    @Override
     public void goToWriteReviewActivity(View v){
         Intent goToWriteReviewIntent = new Intent(PlaceAreaActivity.this, PlaceReviewActivity.class);
 
         Bundle b = new Bundle();
         b.putString("placeName", (String)placeName.getText());
         b.putInt("placeId", Integer.parseInt(placeId));
-        b.putInt("userId", 335);
+        b.putInt("userId", sharedPref.getInt("profileID", -1));
         goToWriteReviewIntent.putExtras(b);
 
         PlaceAreaActivity.this.startActivity(goToWriteReviewIntent);

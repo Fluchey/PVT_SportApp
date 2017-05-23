@@ -22,6 +22,7 @@ public class CreateEventBeforeInviteFriendsActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if(extras != null){
             eventID = extras.getInt("EVENT_ID");
+            System.out.println("Second page: " + eventID);
         }
     }
 
