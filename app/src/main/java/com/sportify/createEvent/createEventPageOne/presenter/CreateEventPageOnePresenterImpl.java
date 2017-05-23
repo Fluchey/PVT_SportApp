@@ -52,7 +52,6 @@ public class CreateEventPageOnePresenterImpl implements CreateEventPageOnePresen
         String eventStartTime = createEventPageOneView.getEventStartTime();
         String eventEndTime = createEventPageOneView.getEventEndTime();
         String eventType = createEventPageOneView.getEventType();
-        String eventPlace = createEventPageOneView.getEventPlace();
         String eventMaxAttendance = createEventPageOneView.getEventMaxAttendance();
         String eventDescription = createEventPageOneView.getEventDescription();
         boolean eventPrivate = createEventPageOneView.getPrivateEvent();
@@ -99,7 +98,7 @@ public class CreateEventPageOnePresenterImpl implements CreateEventPageOnePresen
                 }
             }
             JSONObject jsonObject = new JSONObject();
-            Place p = createEventPageOneRequest.getPlaces().get(createEventPageOneView.getEventPlaceId());
+            String placeID = createEventPageOneView.getEventPlaceId();
 //            for(Place p : createEventPageOneRequest.getPlaces()){
 //                if(p.getName().equals(eventPlace)){
 //                    placeId = p.getId();
@@ -113,7 +112,7 @@ public class CreateEventPageOnePresenterImpl implements CreateEventPageOnePresen
                 jsonObject.put("eventStartTime", "" + eventStartTime);
                 jsonObject.put("eventEndTime", "" + eventEndTime);
                 jsonObject.put("eventType", eventType);
-                jsonObject.put("eventPlace", p.getId());
+                jsonObject.put("eventPlace", placeID);
                 if(!eventMaxAttendance.isEmpty()) {
                     jsonObject.put("eventMaxAttendance", eventMaxAttendance);
                 }
@@ -164,9 +163,9 @@ public class CreateEventPageOnePresenterImpl implements CreateEventPageOnePresen
     }
 
     private void updateViewPlaceAdapter() {
-        ArrayList<String> arr = new ArrayList<>();
+        ArrayList<Place> arr = new ArrayList<>();
         for (Place p : createEventPageOneRequest.getPlaces()){
-            arr.add(p.getName());
+            arr.add(p);
         }
         createEventPageOneView.updatePlaceAdapter(arr);
     }

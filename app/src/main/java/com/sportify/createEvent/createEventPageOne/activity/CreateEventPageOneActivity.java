@@ -21,9 +21,10 @@ import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.sportify.createEvent.createEventPageBeforeInviteFriends.activity.CreateEventBeforeInviteFriendsActivity;
 import com.sportify.createEvent.createEventPageOne.presenter.CreateEventPageOnePresenter;
 import com.sportify.createEvent.createEventPageOne.presenter.CreateEventPageOnePresenterImpl;
-import com.sportify.createEvent.createEventPageBeforeInviteFriends.activity.CreateEventBeforeInviteFriendsActivity;
+import com.sportify.storage.Place;
 import com.sportify.userArea.activity.UserAreaActivity;
 
 import java.text.SimpleDateFormat;
@@ -60,7 +61,7 @@ public class CreateEventPageOneActivity extends AppCompatActivity implements Cre
      */
     private AutoCompleteTextView eventPlace;
     private boolean userWroteSearch;
-    private int idOfPlace;
+    private String idOfPlace;
     private ArrayAdapter arrayAdapter;
 
     /**
@@ -110,7 +111,9 @@ public class CreateEventPageOneActivity extends AppCompatActivity implements Cre
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 userWroteSearch = false;
-                idOfPlace = (int) id;
+//                idOfPlace = (int) id;
+                Place p = (Place) parent.getItemAtPosition(position);
+                idOfPlace = p.getId();
             }
         });
 
@@ -275,7 +278,7 @@ public class CreateEventPageOneActivity extends AppCompatActivity implements Cre
     }
 
     @Override
-    public int getEventPlaceId() {
+    public String getEventPlaceId() {
         return idOfPlace;
     }
 
@@ -392,7 +395,7 @@ public class CreateEventPageOneActivity extends AppCompatActivity implements Cre
     }
 
     @Override
-    public void updatePlaceAdapter(ArrayList<String> arr) {
+    public void updatePlaceAdapter(ArrayList<Place> arr) {
         arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arr);
         eventPlace.setAdapter(arrayAdapter);
     }

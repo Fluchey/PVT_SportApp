@@ -72,6 +72,7 @@ public class Place {
 
     @Override
     public String toString() {
-        return "Name: " + name + " Category: " + categories.toString() + " Lat: " + lat + " Lon: " + lon;
+//        return "Name: " + name + " Category: " + categories.toString() + " Lat: " + lat + " Lon: " + lon;
+        return name;
     }
 }
