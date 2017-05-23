@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -50,6 +51,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         dialog = new ProgressDialog(this);
         initializeControls();
         loginWithFacebook();
+        if (facebookIsLoggedIn()) Log.d("LoginActivity.java", "logged in true");
+            //launchUserActivity();
 
         email = (EditText) findViewById(R.id.etLoginEmail);
         password = (EditText) findViewById(R.id.etLoginPassword);
@@ -176,5 +179,11 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         Intent goToProfileActivityIntent = new Intent(LoginActivity.this, ProfileActivity.class);
         goToProfileActivityIntent.putExtra("userID", userID);
         LoginActivity.this.startActivity(goToProfileActivityIntent);
+    }
+
+    private boolean facebookIsLoggedIn(){
+        AccessToken accessToken = AccessToken.getCurrentAccessToken();
+        if (accessToken==null || accessToken.isExpired()) return false;
+        return true;
     }
 }
