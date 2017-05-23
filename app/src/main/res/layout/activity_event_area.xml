@@ -26,12 +26,14 @@
         android:id="@+id/eventAreaHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:fontFamily="serif"
         android:text="@string/event_area_title"
         android:textColor="@color/colorCrystalWhite"
         android:textSize="@dimen/header"
-        android:textStyle="italic" />
+        android:textStyle="italic"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
 
 
     <ImageView
@@ -214,12 +216,24 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         app:srcCompat="@drawable/setteditprofile"
-        android:layout_marginBottom="40dp"
-        android:layout_marginStart="50dp"
-        android:layout_above="@+id/RadioComingNot"
-        android:layout_toEndOf="@+id/eventSwimView"
         android:clickable="true"
-        android:onClick="goToEditEventActivity"/>
+        android:onClick="goToEditEventActivity"
+        android:layout_below="@+id/imageButton6"
+        android:layout_alignStart="@+id/imageButton6"
+        android:layout_marginTop="24dp" />
+
+
+    <!-- Share to Facebook -->
+
+
+    <ImageButton
+        android:id="@+id/imageButton6"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:background="@android:color/transparent"
+        app:srcCompat="@drawable/facebook" />
 
 
 </RelativeLayout>
