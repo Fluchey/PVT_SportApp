@@ -94,7 +94,7 @@ public class NotificationActivity extends AppCompatActivity implements Notificat
      * Usage for the buttons
      */
     public void createEventfromNoteActivity(View v) {
-        Toast.makeText(this, "Clicked Create Event", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Klickat skapa event", Toast.LENGTH_LONG).show();
         Intent createEventIntent = new Intent(NotificationActivity.this, CreateEventPageOneActivity.class);
         NotificationActivity.this.startActivity(createEventIntent);
     }

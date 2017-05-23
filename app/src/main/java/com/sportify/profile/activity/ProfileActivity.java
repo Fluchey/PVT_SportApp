@@ -236,7 +236,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG)
+            Toast.makeText(this, "Något gick fel :(", Toast.LENGTH_LONG)
                     .show();
         }
     }

@@ -139,7 +139,7 @@ public class EditEventPresenterImpl implements EditEventPresenter, EditEventRequ
 
         switch (command){
             case "changeEvent" :
-                System.out.println("respone" + apiResponse.toString());
+                System.out.println("response" + apiResponse.toString());
                 editEventView.showToastToUser(apiResponse);
                 editEventView.goToEventArea();
                 break;

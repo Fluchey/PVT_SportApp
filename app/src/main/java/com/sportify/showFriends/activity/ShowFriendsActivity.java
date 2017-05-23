@@ -120,7 +120,7 @@ public class ShowFriendsActivity extends AppCompatActivity implements ShowFriend
     }
 
     public void createEventfromFriendsActivity(View v) {
-        Toast.makeText(this, "Clicked Create Event", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Klickat skapa event", Toast.LENGTH_LONG).show();
         Intent createEventIntent = new Intent(ShowFriendsActivity.this, CreateEventPageOneActivity.class);
         ShowFriendsActivity.this.startActivity(createEventIntent);
     }

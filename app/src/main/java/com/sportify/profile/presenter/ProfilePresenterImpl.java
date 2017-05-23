@@ -107,7 +107,7 @@ public class ProfilePresenterImpl implements ProfilePresenter, ProfileRequest.On
     public void showApiResponse(String... params) {
         //Log.d("Params [0]", params[0]);
         if(params[1].equals("201")){
-            Toast.makeText((Context) profileView, "Profile information entered!", Toast.LENGTH_SHORT).show();
+            Toast.makeText((Context) profileView, "Profilinformation inmatad!", Toast.LENGTH_SHORT).show();
             saveToPreferences();
             profileView.goToLoginActivity();
         } else {

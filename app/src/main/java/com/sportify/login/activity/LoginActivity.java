@@ -104,19 +104,19 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Inloggningen lyckades! :)", Toast.LENGTH_LONG).show();
                 AccessToken accessToken = loginResult.getAccessToken();
                 loginPresenter.loginUserFacebook(accessToken);
             }
 
             @Override
             public void onCancel() {
-                Toast.makeText(getApplicationContext(), "Login Cancelled", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Inloggningen avbröts", Toast.LENGTH_LONG).show();
             }
 
             @Override
             public void onError(FacebookException error) {
-                Toast.makeText(getApplicationContext(), "Login error: "+error.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Inloggningsfel: "+error.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -162,7 +162,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @Override
     public void showProgressDialog() {
-        dialog.setMessage("Signing in, please wait");
+        dialog.setMessage("Loggar in...");
         dialog.show();
     }
 

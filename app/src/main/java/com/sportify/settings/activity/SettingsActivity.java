@@ -30,7 +30,7 @@ public class SettingsActivity extends AppCompatActivity implements SettingsView{
     }
 
     public void createEventfromSettActivity(View v) {
-        Toast.makeText(this, "Clicked Create Event", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Klickat skapa event", Toast.LENGTH_LONG).show();
         Intent createEventIntent = new Intent(SettingsActivity.this, CreateEventPageOneActivity.class);
         SettingsActivity.this.startActivity(createEventIntent);
     }

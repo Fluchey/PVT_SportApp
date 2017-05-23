@@ -106,7 +106,7 @@ public class UserAreaActivity extends AppCompatActivity implements UserAreaView 
     }
 
     public void findEventButtonClick(View v) {
-        Toast.makeText(this, "I do nothing, ask my developers why", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Jag gör inget, fråga min mjukvaruingenjör varför", Toast.LENGTH_LONG).show();
     }
 
     public void ToNoteFromUserAreaActivity(View v) {
@@ -115,7 +115,7 @@ public class UserAreaActivity extends AppCompatActivity implements UserAreaView 
     }
 
     public void createEventButtonClick(View v) {
-        Toast.makeText(this, "Clicked Create Event", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Klickat skapa event", Toast.LENGTH_LONG).show();
         Intent createEventIntent = new Intent(UserAreaActivity.this, CreateEventPageOneActivity.class);
         UserAreaActivity.this.startActivity(createEventIntent);
     }

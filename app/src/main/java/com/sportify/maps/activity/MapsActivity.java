@@ -276,7 +276,7 @@ public class MapsActivity extends FragmentActivity implements MapsView, OnMapRea
     }
 
     public void createEventfromMapActivity(View v) {
-        Toast.makeText(this, "Clicked Create Event", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Klickat skapa event", Toast.LENGTH_LONG).show();
         Intent createEventIntent = new Intent(MapsActivity.this, CreateEventPageOneActivity.class);
         MapsActivity.this.startActivity(createEventIntent);
     }
