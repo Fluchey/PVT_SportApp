@@ -175,6 +175,7 @@
     /* Strings Recensioner */
     <string name="review_header">Recensera</string>
     <string name="review_score">Betyg</string>
+    <string name="review_descriptionbox">Berätta vad du tycker....</string>
     <string name="review_write">Skriv en recension (frivilligt)</string>
     <string name="review_write_hint">Berätta vad du tycker</string>
     <string name="review_number_of">Recensioner (10)</string>

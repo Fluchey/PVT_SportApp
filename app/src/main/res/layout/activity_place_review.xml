@@ -1,48 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/def_pagePadding"
-    android:background="@drawable/backgroundnodude"
+    android:background="@drawable/backgroundcool"
     tools:context="com.sportify.placeReview.activity.PlaceReviewActivity">
 
     <TextView
         android:id="@+id/reviewHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="@dimen/header"
+        android:textSize="30dp"
         android:textColor="@color/colorCrystalWhite"
         android:fontFamily="serif"
         android:textStyle="italic"
         android:text="@string/review_header"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp" />
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintHorizontal_bias="0.413"
+        app:layout_constraintVertical_bias="0.0" />
 
     <RatingBar
         android:id="@+id/ratingBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="71dp"
-        tools:layout_editor_absoluteY="160dp"
-        android:layout_below="@+id/imageButton2"
+        android:layout_width="233dp"
+        android:layout_height="46dp"
+        android:scaleX="0.55"
+        android:scaleY="0.55"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp" />
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.578" />
 
     <EditText
         android:id="@+id/reviewText"
         android:layout_width="300dp"
         android:layout_height="100dp"
-        android:layout_above="@+id/submitButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"
         android:background="@drawable/border"
         android:ems="10"
+        android:hint="@string/review_descriptionbox"
+        android:gravity="top"
+        android:padding="11dp"
+        android:lines="2"
+        android:textSize="14dp"
         android:inputType="textMultiLine"
-        tools:ignore="LabelFor" />
+        tools:ignore="LabelFor"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintVertical_bias="0.756" />
 
     <Button
         android:id="@+id/submitButton"
@@ -50,37 +75,53 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="32dp"
         android:background="@color/colorButton"
         android:onClick="submit"
         android:textColor="@color/buttonDark"
         android:fontFamily="sans-serif-condensed"
         android:textStyle="bold"
-        android:text="@string/submit_button" />
-
-    <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        app:srcCompat="@drawable/sportifylogosquare"
-        android:layout_below="@+id/reviewHeader"
-        android:layout_alignParentStart="true"
-        tools:ignore="ContentDescription" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="75dp"
-        app:srcCompat="@drawable/com_facebook_profile_picture_blank_portrait"
-        android:layout_alignTop="@+id/imageButton2"
-        android:layout_centerHorizontal="true"
-        tools:ignore="ContentDescription" />
+        android:text="@string/submit_button"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintVertical_bias="0.962"
+        app:layout_constraintHorizontal_bias="0.46" />
 
     <TextView
         android:id="@+id/commentHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/reviewText"
-        android:layout_alignStart="@+id/reviewText"
-        android:text="@string/review_write" />
-</RelativeLayout>
+        android:text="@string/review_write"
+        android:textColor="@color/colorPrimaryDarkGrey"
+        android:textSize="14dp"
+        android:drawableRight="@drawable/fotbolliconnew"
+        android:drawablePadding="10dp"
+        android:fontFamily="serif"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintVertical_bias="0.844" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="650dp"
+        android:layout_height="210dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintVertical_bias="0.161"
+        app:srcCompat="@drawable/utegymbild" />
+</android.support.constraint.ConstraintLayout>
