@@ -6,6 +6,6 @@ package com.sportify.eventArea.presenter;
 
 public interface EventAreaPresenter {
     void getEventFromDb(int eventId);
-
+    void shareEventToFacebook();
     void sendResponsEventInvite(String response, int eventId);
 }

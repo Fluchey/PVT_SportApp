@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.facebook.AccessToken;
 import com.sportify.editEvent.activity.activity.EditEventActivity;
 import com.sportify.eventArea.presenter.EventAreaPresenter;
 import com.sportify.eventArea.presenter.EventAreaPresenterImpl;
@@ -104,9 +106,19 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
     }
 
     @Override
+    public String getEventName() {
+        return eventName;
+    }
+
+    @Override
     public void setPlaceName(Place place) {
         this.placeNameTv.setText(place.getName());
         this.place = place;
+    }
+
+    @Override
+    public Place getPlaceName() {
+        return place;
     }
 
     @Override
@@ -115,9 +127,19 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
     }
 
     @Override
+    public String getHostName() {
+        return hostNameTv.getText().toString();
+    }
+
+    @Override
     public void setStartTime(String startTime) {
         this.startTimeTv.setText(startTime);
         this.startTime = startTime;
+    }
+
+    @Override
+    public String getStartTime() {
+        return startTime;
     }
 
     @Override
@@ -132,8 +154,18 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
     }
 
     @Override
+    public String getEventDate() {
+        return eventDate;
+    }
+
+    @Override
     public void setEventType(String eventType) {
         this.eventType = eventType;
+    }
+
+    @Override
+    public String getEventType() {
+        return eventType;
     }
 
     @Override
@@ -143,8 +175,18 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
     }
 
     @Override
+    public int getPrice() {
+        return price;
+    }
+
+    @Override
     public void setMaxAttendance(int maxAttendance) {
         this.maxAttendance = maxAttendance;
+    }
+
+    @Override
+    public int getMaxAttendance() {
+        return maxAttendance;
     }
 
     @Override
@@ -160,8 +202,22 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
     }
 
     @Override
+    public String getDescription() {
+        return description;
+    }
+
+    @Override
     public void sendResponsEventInvite(View v) {
         String response = v.getTag().toString();
         presenter.sendResponsEventInvite(response, eventId);
+    }
+
+    public void shareToFacebook(View v){
+        AccessToken accessToken = AccessToken.getCurrentAccessToken();
+        if (accessToken==null || accessToken.isExpired()){
+            Toast.makeText(this, "Fel: Du har inte loggat in med Facebook", Toast.LENGTH_LONG).show();
+        } else {
+            presenter.shareEventToFacebook();
+        }
     }
 }

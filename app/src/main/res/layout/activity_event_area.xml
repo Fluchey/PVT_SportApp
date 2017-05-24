@@ -254,13 +254,14 @@
 
 
     <ImageButton
-        android:id="@+id/imageButton6"
+        android:id="@+id/shareToFacebookButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
         android:background="@android:color/transparent"
-        app:srcCompat="@drawable/facebook" />
+        app:srcCompat="@drawable/facebook"
+        android:onClick="shareToFacebook"/>
 
 
 </RelativeLayout>

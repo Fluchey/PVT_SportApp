@@ -39,6 +39,23 @@ public class EventAreaPresenterImpl implements EventAreaPresenter, EventAreaRequ
     }
 
     @Override
+    public void shareEventToFacebook() {
+        JSONObject json = new JSONObject();
+        try {
+            json.put("name", activity.getEventName());
+            json.put("description", activity.getDescription());
+            json.put("date", activity.getEventDate());
+            json.put("type", activity.getEventType());
+            json.put("hostName", activity.getHostName());
+            json.put("placeName", activity.getPlaceName().getName());
+            json.put("time", activity.getStartTime());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        request.makeApiRequestPut(json.toString(), "shareToFacebook", "PUT", "shareToFacebook");
+    }
+
+    @Override
     public void sendResponsEventInvite(String response, int eventId) {
         JSONObject json = new JSONObject();
         try {
