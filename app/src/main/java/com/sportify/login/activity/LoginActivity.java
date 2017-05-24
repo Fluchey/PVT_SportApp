@@ -54,10 +54,9 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         if (facebookIsLoggedIn()) {
             Log.d("LoginActivity.java", "logged in true");
             AccessToken accessToken = AccessToken.getCurrentAccessToken();
-            //loginPresenter.loginUserFacebook(accessToken);  skickar inte med något jsonobject!
+            loginPresenter.loginUserFacebook(accessToken);
             Log.d("LoginActivity.java", sharedPref.getString("firstName", ""));
         }
-            //launchUserActivity();
 
         email = (EditText) findViewById(R.id.etLoginEmail);
         password = (EditText) findViewById(R.id.etLoginPassword);
