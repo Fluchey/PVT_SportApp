@@ -258,9 +258,9 @@ public class EditEventActivity extends AppCompatActivity implements EditEventVie
             eventPrice.setText(price);
         }
 
-        if(bundle.getBoolean("privateEvent")){
-            eventPrivate.setChecked(true);
-        }
+        eventPrivate.setChecked(bundle.getBoolean("privateEvent"));
+        System.out.println("Privat " + bundle.getBoolean("privateEvent"));
+
         eventDescription.setText(bundle.getString("description"));
 //        eventMaxAttendance.setText(bundle.getInt("maxAttendance"));
 

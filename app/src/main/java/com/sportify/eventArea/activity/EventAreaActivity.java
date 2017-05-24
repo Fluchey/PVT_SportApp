@@ -149,6 +149,7 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
 
     @Override
     public void setPrivateEvent(boolean privateEvent) {
+        System.out.println("Kolla privat " + privateEvent);
         this.privateEvent = privateEvent;
     }
 

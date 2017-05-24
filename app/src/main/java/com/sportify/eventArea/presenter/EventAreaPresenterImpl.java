@@ -69,6 +69,7 @@ public class EventAreaPresenterImpl implements EventAreaPresenter, EventAreaRequ
         activity.setEventType(request.getEvent().getEventType());
         activity.setMaxAttendance(request.getEvent().getMaxAttendance());
         activity.setPrice(request.getEvent().getPrice());
+        activity.setPrivateEvent(request.getEvent().isPrivateEvent());
 
 
         activity.setDescription(request.getEvent().getEventDescription());
