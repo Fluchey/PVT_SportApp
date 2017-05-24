@@ -32,6 +32,7 @@ public class EventAreaPresenterImpl implements EventAreaPresenter, EventAreaRequ
         JSONObject json = new JSONObject();
         try {
             json.put("eventId", String.valueOf(eventId));
+
         } catch (JSONException e) {
             e.printStackTrace();
         }

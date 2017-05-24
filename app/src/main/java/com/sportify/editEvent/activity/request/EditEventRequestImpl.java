@@ -1,7 +1,6 @@
 package com.sportify.editEvent.activity.request;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
 import com.sportify.storage.Place;
 import com.sportify.util.Connector;
@@ -75,11 +74,6 @@ public class EditEventRequestImpl implements EditEventRequest {
         ApiRequest apiRequest = (ApiRequest) new ApiRequest(this, command).execute(method, endUrl, jsonMessage, command);
     }
 
-    @Override
-    public void makeApiRequestGet(String method, String endUrl, String command) {
-        ApiRequest apiRequest = (ApiRequest) new ApiRequest(this, command).execute(method, endUrl, command);
-    }
-
     private class ApiRequest extends AsyncTask<String, EditEventRequestImpl, Void>{
 
         EditEventRequestImpl editEventRequestImpl;
@@ -101,20 +95,13 @@ public class EditEventRequestImpl implements EditEventRequest {
         @Override
         protected Void doInBackground(String... params) {
 
-            if(params[0].equals("GET") || params[0].equals("DELETE")){
-                String[] resultFromApi = Connector.connectGetOrDelete(params[0], "https://pvt15app.herokuapp.com/api/" + params[1], token);
-                responseBody = resultFromApi[0];
-                Log.d("Token:", token);
-                return null;
-            }else {
-                String[] resultFromApi = Connector.connect("https://pvt15app.herokuapp.com/api/" + params[1],
+            String[] resultFromApi = Connector.connect("https://pvt15app.herokuapp.com/api/" + params[1],
                         params[0], String.format(params[2]), token);
 //                String[] resultFromApi = Connector.connect("http://130.237.241.83:9000/api/" + params[1],
 //                        params[0], String.format(params[2]), token);
                 responseBody = resultFromApi[0];
 
                 return null;
-            }
         }
 
         @Override

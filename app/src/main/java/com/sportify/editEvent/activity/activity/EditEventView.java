@@ -1,12 +1,17 @@
 package com.sportify.editEvent.activity.activity;
 
+import android.view.View;
+
 import com.sportify.storage.Place;
 
 import java.util.ArrayList;
 
 public interface EditEventView {
 
+    void editEvent(View v);
     void goToEventArea();
+    void deleteEvent(View v);
+    void goToUserArea();
 
     /*
      * GETTERS

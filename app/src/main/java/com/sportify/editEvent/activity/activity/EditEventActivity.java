@@ -25,6 +25,7 @@ import com.sportify.editEvent.activity.presenter.EditEventPresenter;
 import com.sportify.editEvent.activity.presenter.EditEventPresenterImpl;
 import com.sportify.eventArea.activity.EventAreaActivity;
 import com.sportify.storage.Place;
+import com.sportify.userArea.activity.UserAreaActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -259,13 +260,19 @@ public class EditEventActivity extends AppCompatActivity implements EditEventVie
         }
 
         eventPrivate.setChecked(bundle.getBoolean("privateEvent"));
-        System.out.println("Privat " + bundle.getBoolean("privateEvent"));
 
         eventDescription.setText(bundle.getString("description"));
 //        eventMaxAttendance.setText(bundle.getInt("maxAttendance"));
 
     }
 
+    @Override
+    public void goToUserArea() {
+        Intent goToUserAreaIntent = new Intent(EditEventActivity.this, UserAreaActivity.class);
+        EditEventActivity.this.startActivity(goToUserAreaIntent);
+    }
+
+    @Override
     public void goToEventArea(){
         Intent goToEventAreaViewIntent = new Intent(EditEventActivity.this, EventAreaActivity.class);
 
@@ -273,8 +280,14 @@ public class EditEventActivity extends AppCompatActivity implements EditEventVie
         EditEventActivity.this.startActivity(goToEventAreaViewIntent);
     }
 
+    @Override
     public void editEvent(View v){
         editEventPresenter.editEvent(eventID);
+    }
+
+    @Override
+    public void deleteEvent(View v){
+        editEventPresenter.deleteEvent(eventID);
     }
 
     @Override

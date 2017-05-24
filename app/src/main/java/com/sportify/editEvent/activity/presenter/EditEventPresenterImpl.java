@@ -37,7 +37,6 @@ public class EditEventPresenterImpl implements EditEventPresenter, EditEventRequ
         editEventRequest.makeApiRequestPut("PUT", "getallplaces", "\"category\": \"Simhall\"", "getAllPlaces");
     }
 
-
     @Override
     public void editEvent(int eventID) {
 
@@ -118,7 +117,7 @@ public class EditEventPresenterImpl implements EditEventPresenter, EditEventRequ
         JSONObject jsonObject = new JSONObject();
 
         try{
-            jsonObject.put("eventID", "" + eventID);
+            jsonObject.put("eventID", String.valueOf(eventID));
         }catch (JSONException e){
             e.printStackTrace();
         }
@@ -140,7 +139,10 @@ public class EditEventPresenterImpl implements EditEventPresenter, EditEventRequ
                 updateViewPlaceAdapter();
                 break;
             case "deleteEvent" :
-
+                System.out.println("response delete " + apiResponse.toString());
+                editEventView.showToastToUser(apiResponse);
+                editEventView.goToUserArea();
+                break;
         }
     }
 

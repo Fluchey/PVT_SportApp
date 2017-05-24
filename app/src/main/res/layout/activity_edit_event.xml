@@ -220,7 +220,8 @@
         android:text="@string/delete_event"
         android:layout_alignParentBottom="true"
         android:layout_toEndOf="@+id/etEditEventPrice"
-        android:layout_marginStart="13dp" />
+        android:layout_marginStart="13dp"
+        android:onClick="deleteEvent"/>
 
 
 </RelativeLayout>
