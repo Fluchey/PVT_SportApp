@@ -87,7 +87,6 @@ public class EditEventActivity extends AppCompatActivity implements EditEventVie
          */
 
         eventPlace = (AutoCompleteTextView) findViewById(R.id.etEditEventPlace);
-        userWroteSearch = true;
         eventPlace.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -96,7 +95,7 @@ public class EditEventActivity extends AppCompatActivity implements EditEventVie
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+                userWroteSearch = true;
             }
 
             @Override
@@ -238,12 +237,17 @@ public class EditEventActivity extends AppCompatActivity implements EditEventVie
         Bundle bundle = getIntent().getExtras();
         this.eventID = (bundle.getInt("eventId"));
         eventName.setText(bundle.getString("eventName"));
-        eventPlace.setText(bundle.getString("place"));
+//        eventPlace.setText(bundle.getString("place"));
+        Place p = (Place) getIntent().getSerializableExtra("place");
+        eventPlace.setText(p.getName());
+        userWroteSearch = false;
+
         //TODO: StartDate, endDate, startTime, endTime
         eventDate.setText(bundle.getString("eventDate"));
         eventStartTime.setText(bundle.getString("startTime"));
         eventEndTime.setText(bundle.getString("endTime"));
         eventType.setText(bundle.getString("eventType"));
+        idOfPlace = p.getId();
 
         String maxAttendance = String.valueOf(bundle.getInt("maxAttendance"));
         if(!maxAttendance.equals("0")){

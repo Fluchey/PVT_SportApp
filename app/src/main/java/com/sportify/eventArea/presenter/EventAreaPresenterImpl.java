@@ -62,7 +62,7 @@ public class EventAreaPresenterImpl implements EventAreaPresenter, EventAreaRequ
     private void presentDataOnView() {
         activity.setHostName(request.getUser().getFirstName(), request.getUser().getLastName());
         activity.setEventName(request.getEvent().getEventName());
-        activity.setPlaceName(request.getPlace().getName());
+        activity.setPlaceName(request.getPlace());
         activity.setEventDate(request.getEvent().getDate());
         activity.setStartTime(request.getEvent().getStartTime());
         activity.setEndTime(request.getEvent().getEndTime());

@@ -164,4 +164,5 @@ public class EditEventPresenterImpl implements EditEventPresenter, EditEventRequ
         }
         return true;
     }
+
 }

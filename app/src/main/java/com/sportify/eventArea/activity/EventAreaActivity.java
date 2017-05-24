@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.sportify.editEvent.activity.activity.EditEventActivity;
 import com.sportify.eventArea.presenter.EventAreaPresenter;
 import com.sportify.eventArea.presenter.EventAreaPresenterImpl;
+import com.sportify.storage.Place;
 import com.sportify.userArea.activity.UserAreaActivity;
 
 import sportapp.pvt_sportapp.R;
@@ -34,7 +35,8 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
      */
 
     private String eventName;
-    private String placeName;
+//    private String placeName;
+    private Place place;
     private String eventDate;
     private String startTime;
     private String endTime;
@@ -79,7 +81,8 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
 
         goToEditEventViewIntent.putExtra("eventId", eventId);
         goToEditEventViewIntent.putExtra("eventName", eventName);
-        goToEditEventViewIntent.putExtra("place", placeName);
+//        goToEditEventViewIntent.putExtra("place", placeName);
+        goToEditEventViewIntent.putExtra("place", place);
         goToEditEventViewIntent.putExtra("eventDate", eventDate);
         goToEditEventViewIntent.putExtra("startTime", startTime);
         goToEditEventViewIntent.putExtra("endTime", endTime);
@@ -101,9 +104,9 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
     }
 
     @Override
-    public void setPlaceName(String placeName) {
-        this.placeNameTv.setText(placeName);
-        this.placeName = placeName;
+    public void setPlaceName(Place place) {
+        this.placeNameTv.setText(place.getName());
+        this.place = place;
     }
 
     @Override
