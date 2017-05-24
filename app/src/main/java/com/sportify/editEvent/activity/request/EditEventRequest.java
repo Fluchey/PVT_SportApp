@@ -19,6 +19,4 @@ public interface EditEventRequest {
     }
 
     void makeApiRequestPut(String method, String endUrl, String jsonMessage, String command);
-
-    void makeApiRequestGet(String method, String endUrl, String command);
 }

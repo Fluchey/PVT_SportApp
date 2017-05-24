@@ -241,7 +241,8 @@
         android:background="@color/colorDelete"
         android:textStyle="bold"
         android:fontFamily="sans-serif-condensed"
-        android:text="@string/delete_event" />
+        android:text="@string/delete_event"
+        android:onClick="deleteEvent"/>
 
 
 </RelativeLayout>

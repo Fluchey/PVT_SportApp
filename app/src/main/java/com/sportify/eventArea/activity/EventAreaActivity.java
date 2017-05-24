@@ -33,9 +33,6 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
     /*
      * Event information
      */
-
-    private String eventName;
-//    private String placeName;
     private Place place;
     private String eventDate;
     private String startTime;
@@ -45,6 +42,9 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
     private boolean privateEvent;
     private String description;
     private int maxAttendance;
+
+    private String eventName;
+//    private String placeName;
 
 
 
@@ -59,6 +59,7 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
         Bundle bundle = getIntent().getExtras();
         eventId = (bundle.getInt("eventId"));
         presenter.getEventFromDb(eventId);
+        System.out.println("Kolla eventID " + eventId);
 
         hostNameTv = (TextView) findViewById(R.id.tvEventAreaHostName);
         eventNameTv = (TextView) findViewById(R.id.eventAreaHeader);
@@ -149,7 +150,6 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
 
     @Override
     public void setPrivateEvent(boolean privateEvent) {
-        System.out.println("Kolla privat " + privateEvent);
         this.privateEvent = privateEvent;
     }
 
