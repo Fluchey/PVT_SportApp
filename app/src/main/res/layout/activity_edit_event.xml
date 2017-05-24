@@ -43,22 +43,19 @@
         android:layout_height="46dp"
         android:ems="8"
         android:textSize="@dimen/inputeSize"
-        android:layout_marginStart="8dp"
         android:hint="@string/event_name"
-        android:layout_marginTop="75dp"
-        android:layout_below="@+id/backToEventButton"
-        android:layout_alignParentStart="true" />
+        android:layout_above="@+id/etEditEventPlace"
+        android:layout_alignStart="@+id/etEditEventPlace" />
 
     <CheckBox
         android:id="@+id/cbEditEventPrivate"
         android:layout_width="78dp"
         android:layout_height="22dp"
         android:text="@string/event_private"
-        android:layout_marginBottom="18dp"
         android:textColor="@color/colorPrimaryDarkGrey"
-        android:layout_centerVertical="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="10dp"/>
+        android:layout_alignBaseline="@+id/etEditEventName"
+        android:layout_alignBottom="@+id/etEditEventName"
+        android:layout_toEndOf="@+id/etEditEventName" />
 
 
     <AutoCompleteTextView
@@ -69,11 +66,10 @@
         android:textSize="@dimen/inputeSize"
         android:inputType="textPersonName"
         android:hint="@string/event_place"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="4dp"
-        android:layout_below="@+id/etEditEventName"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="10dp" />
+        android:layout_marginStart="11dp"
+        android:layout_marginBottom="15dp"
+        android:layout_above="@+id/etEditEventPrice"
+        android:layout_alignParentStart="true" />
 
     <ImageButton
         android:layout_width="30dp"
@@ -94,10 +90,8 @@
         android:ems="8"
         android:hint="@string/event_price"
         android:inputType="number"
-        android:layout_above="@+id/cbEditEventPrivate"
-        android:layout_marginBottom="10dp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="10dp"/>
+        android:layout_alignTop="@+id/etEditEventStartDate"
+        android:layout_alignStart="@+id/etEditEventDescription" />
 
     <EditText
         android:id="@+id/etEditEventStartDate"
@@ -108,22 +102,12 @@
         android:layout_width="106dp"
         android:layout_height="45dp"
         android:inputType="date"
-        android:layout_alignBottom="@+id/etEditEventEndDate"
-        android:layout_alignStart="@+id/etEditEventPlace" />
+        android:layout_above="@+id/etEditEventEndTime"
+        android:layout_alignEnd="@+id/etEditEventType"
+        android:layout_marginBottom="17dp" />
 
 
-    <EditText
-        android:id="@+id/etEditEventEndDate"
-        android:layout_width="106dp"
-        android:layout_height="45dp"
-        android:ems="8"
-        android:textSize="@dimen/inputeSize"
-        android:hint="@string/event_date_hint"
-        android:focusable="false"
-        android:inputType="date"
-        android:layout_marginTop="24dp"
-        android:layout_below="@+id/etEditEventPlace"
-        android:layout_centerHorizontal="true" />
+
 
     <EditText
         android:id="@+id/etEditEventStartTime"
@@ -131,10 +115,11 @@
         android:textSize="@dimen/inputeSize"
         android:layout_height="44dp"
         android:ems="8"
-        android:layout_marginStart="8dp"
         android:hint="@string/event_start_time"
         android:focusable="false"
-        android:layout_below="@+id/etEditEventStartDate" />
+        android:layout_alignBaseline="@+id/etEditEventEndTime"
+        android:layout_alignBottom="@+id/etEditEventEndTime"
+        android:layout_alignStart="@+id/etEditEventPrice" />
 
 
     <EditText
@@ -145,23 +130,21 @@
         android:textSize="@dimen/inputeSize"
         android:hint="@string/event_end_time"
         android:focusable="false"
-        android:layout_alignBaseline="@+id/etEditEventStartTime"
-        android:layout_alignBottom="@+id/etEditEventStartTime"
-        android:layout_alignEnd="@+id/etEditEventEndDate" />
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/etEditEventName" />
 
     <AutoCompleteTextView
         android:id="@+id/etEditEventType"
         android:layout_width="111dp"
         android:layout_height="38dp"
         android:ems="8"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="25dp"
         android:textSize="@dimen/inputeSize"
         android:focusable="false"
-        android:hint="@string/event_type"
+        android:hint="@string/event_kategori"
         android:inputType="textPersonName"
-        android:layout_below="@+id/etEditEventStartTime"
-        android:layout_marginBottom="70dp" />
+        android:layout_alignBaseline="@+id/etEditEventMaxAttendance"
+        android:layout_alignBottom="@+id/etEditEventMaxAttendance"
+        android:layout_alignStart="@+id/etEditEventEndTime" />
 
     <EditText
         android:id="@+id/etEditEventMaxAttendance"
@@ -171,18 +154,18 @@
         android:textSize="@dimen/inputeSize"
         android:hint="@string/event_max_attendance"
         android:inputType="number"
-        android:layout_alignBaseline="@+id/etEditEventType"
-        android:layout_alignBottom="@+id/etEditEventType"
-        android:layout_alignStart="@+id/etEditEventEndDate" />
+        android:layout_above="@+id/etEditEventDescription"
+        android:layout_alignEnd="@+id/editEventDeleteButton"
+        android:layout_marginBottom="23dp" />
 
 
     <TextView
         android:id="@+id/ttViewAddPic"
         android:layout_width="82dp"
         android:layout_height="33dp"
-        android:text="@string/event_pic"
-        android:layout_marginStart="20dp"
-        android:layout_below="@+id/imageButton3" />
+        android:text="Byt bild"
+        android:layout_below="@+id/imageButton3"
+        android:layout_alignEnd="@+id/etEditEventType" />
 
     <!--TODO : hämta events bild -->
     <ImageButton
@@ -192,11 +175,9 @@
         android:background="@android:color/transparent"
         app:srcCompat="@drawable/camera5"
         android:clickable="true"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="20dp"
-        android:layout_below="@+id/etEditEventType"
-        android:layout_alignParentStart="true"
-        tools:ignore="ContentDescription" />
+        tools:ignore="ContentDescription"
+        android:layout_alignTop="@+id/etEditEventDescription"
+        android:layout_toStartOf="@+id/editEventHeader" />
 
     <EditText
         android:id="@+id/etEditEventDescription"
@@ -209,8 +190,8 @@
         android:hint="@string/event_descr_hint"
         android:textSize="@dimen/standardSmallerTextSize"
         android:inputType="textMultiLine"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
+        android:layout_above="@+id/editEventButton"
+        android:layout_alignEnd="@+id/cbEditEventPrivate"
         android:layout_marginBottom="13dp" />
 
     <Button
@@ -224,24 +205,22 @@
         android:textColor="@color/buttonDark"
         android:textStyle="bold"
         android:fontFamily="sans-serif-condensed"
-        android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="10dp"
-        android:layout_marginStart="10dp"/>
+        android:layout_toEndOf="@+id/backToEventButton" />
 
     <Button
         android:id="@+id/editEventDeleteButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="12sp"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/etEditEventMaxAttendance"
-        android:layout_marginTop="44dp"
         android:textColor="@color/buttonDark"
         android:background="@color/colorDelete"
         android:textStyle="bold"
         android:fontFamily="sans-serif-condensed"
-        android:text="@string/delete_event" />
+        android:text="@string/delete_event"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/etEditEventPrice"
+        android:layout_marginStart="13dp" />
 
 
 </RelativeLayout>
