@@ -96,7 +96,7 @@
     <string name="event_start_time">Starttid</string>
     <string name="event_end_time">Sluttid</string>
     <string name="event_time_hint">hh:mm</string>
-    <string name="event_type">Typ av sport</string>
+    <string name="event_kategori">Kategori</string>
     <string name="event_type_hint">intresse</string>
     <string name="event_description">Beskrivning</string>
     <string name="event_descr_hint">Berätta lite mer om eventet</string>
