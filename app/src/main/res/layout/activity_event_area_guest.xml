@@ -5,9 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/backgroundnodude"
-    android:padding="@dimen/def_pagePadding"
-    tools:context="com.sportify.eventArea.activity.EventAreaActivity">
-
+    android:padding="@dimen/def_pagePadding">
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/backUserAreaFromEvent"
@@ -238,17 +236,6 @@
         android:background="@color/colorAccent"
         android:layout_marginBottom="10dp"/>
 
-    <ImageView
-        android:id="@+id/editEventButton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        app:srcCompat="@drawable/setteditprofile"
-        android:clickable="true"
-        android:onClick="goToEditEventActivity"
-        android:layout_marginTop="24dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"/>
-
 
     <!-- Share to Facebook -->
 
@@ -262,6 +249,4 @@
         android:background="@android:color/transparent"
         app:srcCompat="@drawable/facebook" />
 
-
 </RelativeLayout>
-

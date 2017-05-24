@@ -64,10 +64,8 @@ public class EditEventActivity extends AppCompatActivity implements EditEventVie
      * EVENT DATE
      */
     private Calendar calendar;
-    private DatePickerDialog.OnDateSetListener startDate;
-    private DatePickerDialog.OnDateSetListener endDate;
-    private EditText eventStartDate;
-    private EditText eventEndDate;
+    private DatePickerDialog.OnDateSetListener eventDatePickerDialog;
+    private EditText eventDate;
 
     /**
      * EVENT TIME
@@ -89,7 +87,6 @@ public class EditEventActivity extends AppCompatActivity implements EditEventVie
          */
 
         eventPlace = (AutoCompleteTextView) findViewById(R.id.etEditEventPlace);
-        userWroteSearch = true;
         eventPlace.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -98,7 +95,7 @@ public class EditEventActivity extends AppCompatActivity implements EditEventVie
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+                userWroteSearch = true;
             }
 
             @Override
@@ -123,9 +120,9 @@ public class EditEventActivity extends AppCompatActivity implements EditEventVie
         /**
          *  DATE AND CALENDAR
          */
-        eventStartDate = (EditText) findViewById(R.id.etEditEventStartDate);
+        eventDate = (EditText) findViewById(R.id.etEditEventStartDate);
         calendar = Calendar.getInstance();
-        startDate = new DatePickerDialog.OnDateSetListener() {
+        eventDatePickerDialog = new DatePickerDialog.OnDateSetListener() {
 
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear,
@@ -136,41 +133,16 @@ public class EditEventActivity extends AppCompatActivity implements EditEventVie
                 calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
                 String myFormat = "yyyy-MM-dd";
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat);
-                eventStartDate.setText(sdf.format(calendar.getTime()));
+                eventDate.setText(sdf.format(calendar.getTime()));
             }
         };
 
-        eventStartDate.setOnClickListener(new View.OnClickListener() {
+        eventDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new DatePickerDialog(EditEventActivity.this, startDate, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
+                new DatePickerDialog(EditEventActivity.this, eventDatePickerDialog, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
-
-        eventEndDate = (EditText) findViewById(R.id.etEditEventEndDate);
-        calendar = Calendar.getInstance();
-        endDate = new DatePickerDialog.OnDateSetListener() {
-
-            @Override
-            public void onDateSet(DatePicker view, int year, int monthOfYear,
-                                  int dayOfMonth) {
-                // TODO Auto-generated method stub
-                calendar.set(Calendar.YEAR, year);
-                calendar.set(Calendar.MONTH, monthOfYear);
-                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                String myFormat = "yyyy-MM-dd";
-                SimpleDateFormat sdf = new SimpleDateFormat(myFormat);
-                eventEndDate.setText(sdf.format(calendar.getTime()));
-            }
-        };
-
-        eventEndDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new DatePickerDialog(EditEventActivity.this, endDate, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
-            }
-        });
-
 
         /**
          *  START AND END TIME
@@ -265,13 +237,17 @@ public class EditEventActivity extends AppCompatActivity implements EditEventVie
         Bundle bundle = getIntent().getExtras();
         this.eventID = (bundle.getInt("eventId"));
         eventName.setText(bundle.getString("eventName"));
-        eventPlace.setText(bundle.getString("place"));
+//        eventPlace.setText(bundle.getString("place"));
+        Place p = (Place) getIntent().getSerializableExtra("place");
+        eventPlace.setText(p.getName());
+        userWroteSearch = false;
+
         //TODO: StartDate, endDate, startTime, endTime
-        eventStartDate.setText(bundle.getString("startDate"));
-        eventEndDate.setText(bundle.getString("endDate"));
+        eventDate.setText(bundle.getString("eventDate"));
         eventStartTime.setText(bundle.getString("startTime"));
         eventEndTime.setText(bundle.getString("endTime"));
         eventType.setText(bundle.getString("eventType"));
+        idOfPlace = p.getId();
 
         String maxAttendance = String.valueOf(bundle.getInt("maxAttendance"));
         if(!maxAttendance.equals("0")){
@@ -282,9 +258,9 @@ public class EditEventActivity extends AppCompatActivity implements EditEventVie
             eventPrice.setText(price);
         }
 
-        if(bundle.getBoolean("privateEvent")){
-            eventPrivate.setChecked(true);
-        }
+        eventPrivate.setChecked(bundle.getBoolean("privateEvent"));
+        System.out.println("Privat " + bundle.getBoolean("privateEvent"));
+
         eventDescription.setText(bundle.getString("description"));
 //        eventMaxAttendance.setText(bundle.getInt("maxAttendance"));
 
@@ -321,13 +297,9 @@ public class EditEventActivity extends AppCompatActivity implements EditEventVie
         return eventPrice.getText().toString();
     }
 
-    public String getEventStartDate() {
-        return eventStartDate.getText().toString();
-    }
-
     @Override
-    public String getEventEndDate(){
-        return eventEndDate.getText().toString();
+    public String getEventDate() {
+        return eventDate.getText().toString();
     }
 
     @Override
@@ -371,20 +343,10 @@ public class EditEventActivity extends AppCompatActivity implements EditEventVie
     }
 
     @Override
-    public void setStartDate(String startDate) {
+    public void setDate(String date) {
         String myFormat = "yyyy-MM-dd";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat);
-        eventEndDate.setText(sdf.format(startDate));
-    }
-
-//    @Override
-//    public void setStartDate(String startDate) {
-//        this.startDate.onDateSet((DatePicker) this.startDate, 2014, 03, 03);
-//    }
-
-    @Override
-    public void setEndDate(String endDate) {
-
+        eventDate.setText(sdf.format(date));
     }
 
     @Override
@@ -445,7 +407,7 @@ public class EditEventActivity extends AppCompatActivity implements EditEventVie
         eventPrice.setError(null);
         eventDescription.setError(null);
         eventPlace.setError(null);
-        eventStartDate.setError(null);
+        eventDate.setError(null);
         eventStartTime.setError(null);
         eventEndTime.setError(null);
         eventType.setError(null);
@@ -458,23 +420,13 @@ public class EditEventActivity extends AppCompatActivity implements EditEventVie
     }
 
     @Override
-    public void showEventStartDateFormatError(int resId) {
-        eventStartDate.setError(getString(resId));
+    public void showEventDateEmptyError(int resId) {
+        eventDate.setError(getString(resId));
     }
 
     @Override
-    public void showEventStartDateEmptyError(int resId) {
-        eventStartDate.setError(getString(resId));
-    }
-
-    @Override
-    public void showEventEndDateFormatError(int resId) {
-        eventEndDate.setError(getString(resId));
-    }
-
-    @Override
-    public void showEventEndDateEmptyError(int resId) {
-        eventEndDate.setError(getString(resId));
+    public void showEventDateFormatError(int resId) {
+        eventDate.setError(getString(resId));
     }
 
     @Override

@@ -125,8 +125,6 @@ public class LoginTest {
         onView(withText("Abrahamsbergs bollplan")).inRoot(isPlatformPopup()).perform(click());
         onView(withId(R.id.etEventStartDate)).perform(click());
         onView(withText("OK")).perform(click());
-        onView(withId(R.id.etEventEndDate)).perform(click());
-        onView(withText("OK")).perform(click());
         onView(withId(R.id.etEventStartTime)).perform(click());
         onView(withText("OK")).perform(click());
         onView(withId(R.id.etEventEndTime)).perform(click());

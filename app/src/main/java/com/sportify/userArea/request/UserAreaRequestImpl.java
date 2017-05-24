@@ -48,7 +48,7 @@ public class UserAreaRequestImpl implements UserAreaRequest {
         try {
             for (int i = 0; i < eventArray.length(); i++) {
                 JSONObject jsonObject = eventArray.getJSONObject(i);
-                events.add(new Event(jsonObject.getInt("eventId"), jsonObject.getString("name"), jsonObject.getString("eventStartDate"), jsonObject.getString("eventEndDate"), jsonObject.getString("startTime"), jsonObject.getString("endTime"), jsonObject.getString("eventDescription"), jsonObject.getString("place") ,  jsonObject.getInt("price"),
+                events.add(new Event(jsonObject.getInt("eventId"), jsonObject.getString("name"), jsonObject.getString("eventDate"), jsonObject.getString("startTime"), jsonObject.getString("endTime"), jsonObject.getString("eventDescription"), jsonObject.getString("place") ,  jsonObject.getInt("price"),
                         jsonObject.getString("eventType"), jsonObject.getInt("maxAttendance"), jsonObject.getBoolean("privateEvent")));
             }
         } catch (JSONException e) {

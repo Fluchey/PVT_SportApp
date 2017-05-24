@@ -68,10 +68,8 @@ public class CreateEventPageOneActivity extends AppCompatActivity implements Cre
      * EVENT DATE
      */
     private Calendar calendar;
-    private DatePickerDialog.OnDateSetListener startDate;
-    private DatePickerDialog.OnDateSetListener endDate;
-    private EditText eventStartDate;
-    private EditText eventEndDate;
+    private DatePickerDialog.OnDateSetListener eventDatePickerDialog;
+    private EditText eventDate;
 
     /**
      * EVENT TIME
@@ -123,9 +121,9 @@ public class CreateEventPageOneActivity extends AppCompatActivity implements Cre
         /**
          *  DATE AND CALENDAR
          */
-        eventStartDate = (EditText) findViewById(R.id.etEventStartDate);
+        eventDate = (EditText) findViewById(R.id.etEventStartDate);
         calendar = Calendar.getInstance();
-        startDate = new DatePickerDialog.OnDateSetListener() {
+        eventDatePickerDialog = new DatePickerDialog.OnDateSetListener() {
 
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear,
@@ -136,36 +134,13 @@ public class CreateEventPageOneActivity extends AppCompatActivity implements Cre
                 calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
                 String myFormat = "yyyy-MM-dd";
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat);
-                eventStartDate.setText(sdf.format(calendar.getTime()));
+                eventDate.setText(sdf.format(calendar.getTime()));
             }
         };
-        eventStartDate.setOnClickListener(new View.OnClickListener() {
+        eventDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new DatePickerDialog(CreateEventPageOneActivity.this, startDate, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
-            }
-        });
-
-        eventEndDate = (EditText) findViewById(R.id.etEventEndDate);
-        calendar = Calendar.getInstance();
-        endDate = new DatePickerDialog.OnDateSetListener() {
-
-            @Override
-            public void onDateSet(DatePicker view, int year, int monthOfYear,
-                                  int dayOfMonth) {
-                // TODO Auto-generated method stub
-                calendar.set(Calendar.YEAR, year);
-                calendar.set(Calendar.MONTH, monthOfYear);
-                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                String myFormat = "yyyy-MM-dd";
-                SimpleDateFormat sdf = new SimpleDateFormat(myFormat);
-                eventEndDate.setText(sdf.format(calendar.getTime()));
-            }
-        };
-        eventEndDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new DatePickerDialog(CreateEventPageOneActivity.this, endDate, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
+                new DatePickerDialog(CreateEventPageOneActivity.this, eventDatePickerDialog, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
 
@@ -287,13 +262,9 @@ public class CreateEventPageOneActivity extends AppCompatActivity implements Cre
         return eventPrice.getText().toString();
     }
 
-    public String getEventStartDate() {
-        return eventStartDate.getText().toString();
-    }
-
     @Override
-    public String getEventEndDate(){
-        return eventEndDate.getText().toString();
+    public String getEventDate(){
+        return eventDate.getText().toString();
     }
 
     @Override
@@ -337,23 +308,13 @@ public class CreateEventPageOneActivity extends AppCompatActivity implements Cre
     }
 
     @Override
-    public void showEventStartDateEmptyError(int resId) {
-        eventStartDate.setError(getString(resId));
+    public void showEventDateEmptyError(int resId) {
+        eventDate.setError(getString(resId));
     }
 
     @Override
-    public void showEventEndDateEmptyError(int resId) {
-        eventEndDate.setError(getString(resId));
-    }
-
-    @Override
-    public void showEventStartDateFormatError(int resId) {
-        eventStartDate.setError(getString(resId));
-    }
-
-    @Override
-    public void showEventEndDateFormatError(int resId) {
-        eventEndDate.setError(getString(resId));
+    public void showEventDateFormatError(int resId) {
+        eventDate.setError(getString(resId));
     }
 
     @Override
@@ -382,7 +343,7 @@ public class CreateEventPageOneActivity extends AppCompatActivity implements Cre
         eventPrice.setError(null);
         eventDescription.setError(null);
         eventPlace.setError(null);
-        eventStartDate.setError(null);
+        eventDate.setError(null);
         eventStartTime.setError(null);
         eventEndTime.setError(null);
         eventType.setError(null);

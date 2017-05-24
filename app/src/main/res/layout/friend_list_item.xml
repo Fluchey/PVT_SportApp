@@ -8,7 +8,7 @@
         android:id="@+id/profilePicture"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:src="@drawable/userprofileimage" />
+        android:src="@drawable/userprofileimage1" />
 
     <TextView
         android:id="@+id/tvFriend"

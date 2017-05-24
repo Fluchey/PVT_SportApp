@@ -7,8 +7,7 @@ package com.sportify.storage;
 public class Event {
     private int id;
     private String eventName;
-    private String startDate;
-    private String endDate;
+    private String eventDate;
     private String startTime;
     private String endTime;
     private String eventDescription;
@@ -18,11 +17,10 @@ public class Event {
     private int maxAttendance;
     private boolean privateEvent;
 
-    public Event(int id, String eventName, String startDate, String endDate, String startTime, String endTime, String eventDescription, String placeName, int price, String eventType, int maxAttendance, boolean privateEvent) {
+    public Event(int id, String eventName, String eventDate, String startTime, String endTime, String eventDescription, String placeName, int price, String eventType, int maxAttendance, boolean privateEvent) {
         this.id = id;
         this.eventName = eventName;
-        this.startDate = startDate;
-        this.endDate = endDate;
+        this.eventDate = eventDate;
         this.startTime = startTime;
         this.endTime = endTime;
         this.eventDescription = eventDescription;
@@ -37,12 +35,12 @@ public class Event {
 
     }
 
-    public String getEndDate() {
-        return endDate;
+    public String getDate() {
+        return eventDate;
     }
 
-    public void setEndDate(String endDate) {
-        this.endDate = endDate;
+    public void setDate(String date) {
+        this.eventDate = date;
     }
 
     public int getId() {
@@ -59,14 +57,6 @@ public class Event {
 
     public void setEventName(String eventName) {
         this.eventName = eventName;
-    }
-
-    public String getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
     }
 
     public String getStartTime() {

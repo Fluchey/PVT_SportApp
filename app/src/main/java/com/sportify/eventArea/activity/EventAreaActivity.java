@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.sportify.editEvent.activity.activity.EditEventActivity;
 import com.sportify.eventArea.presenter.EventAreaPresenter;
 import com.sportify.eventArea.presenter.EventAreaPresenterImpl;
+import com.sportify.storage.Place;
 import com.sportify.userArea.activity.UserAreaActivity;
 
 import sportapp.pvt_sportapp.R;
@@ -24,7 +25,7 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
     private TextView eventNameTv;
     private TextView placeNameTv;
     private TextView descriptionTv;
-    private TextView startDateTv;
+    private TextView eventDateTv;
     private TextView startTimeTv;
     private TextView endTimeTv;
     private TextView priceTv;
@@ -34,9 +35,9 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
      */
 
     private String eventName;
-    private String placeName;
-    private String startDate;
-    private String endDate;
+//    private String placeName;
+    private Place place;
+    private String eventDate;
     private String startTime;
     private String endTime;
     private String eventType;
@@ -62,7 +63,7 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
         hostNameTv = (TextView) findViewById(R.id.tvEventAreaHostName);
         eventNameTv = (TextView) findViewById(R.id.eventAreaHeader);
         placeNameTv = (TextView) findViewById(R.id.tvEventAreaPlaceText);
-        startDateTv = (TextView) findViewById(R.id.tvEventAreaDate);
+        eventDateTv = (TextView) findViewById(R.id.tvEventAreaDate);
         startTimeTv = (TextView) findViewById(R.id.tvEventAreaStartTime);
         endTimeTv = (TextView) findViewById(R.id.tvEventAreaEndTime);
         descriptionTv = (TextView) findViewById(R.id.tvEventAreaDescription);
@@ -80,9 +81,9 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
 
         goToEditEventViewIntent.putExtra("eventId", eventId);
         goToEditEventViewIntent.putExtra("eventName", eventName);
-        goToEditEventViewIntent.putExtra("place", placeName);
-        goToEditEventViewIntent.putExtra("startDate", startDate);
-        goToEditEventViewIntent.putExtra("endDate", endDate);
+//        goToEditEventViewIntent.putExtra("place", placeName);
+        goToEditEventViewIntent.putExtra("place", place);
+        goToEditEventViewIntent.putExtra("eventDate", eventDate);
         goToEditEventViewIntent.putExtra("startTime", startTime);
         goToEditEventViewIntent.putExtra("endTime", endTime);
         goToEditEventViewIntent.putExtra("eventType", eventType);
@@ -103,9 +104,9 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
     }
 
     @Override
-    public void setPlaceName(String placeName) {
-        this.placeNameTv.setText(placeName);
-        this.placeName = placeName;
+    public void setPlaceName(Place place) {
+        this.placeNameTv.setText(place.getName());
+        this.place = place;
     }
 
     @Override
@@ -126,14 +127,8 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
     }
 
     @Override
-    public void setStartDate(String startDate) {
-        this.startDateTv.setText(startDate);
-        this.startDate = startDate;
-    }
-
-    @Override
-    public void setEndDate(String endDate) {
-        this.endDate = endDate;
+    public void setEventDate(String date) {
+        this.eventDate = date;
     }
 
     @Override
@@ -154,6 +149,7 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
 
     @Override
     public void setPrivateEvent(boolean privateEvent) {
+        System.out.println("Kolla privat " + privateEvent);
         this.privateEvent = privateEvent;
     }
 

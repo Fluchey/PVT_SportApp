@@ -1,12 +1,13 @@
 package com.sportify.storage;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by antonfluch on 2017-05-02.
  */
 
-public class Place {
+public class Place implements Serializable{
     private String id;
     private String name;
     private ArrayList<String> categories;
