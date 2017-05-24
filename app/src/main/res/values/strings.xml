@@ -253,5 +253,22 @@
     <string name="dialog_fragment_no">Nej, tyvärr</string>
     <string name="dialog_Fragment_friend_request">Vill du acceptera vänförfrågan?</string>
 
+    /* Strings frienndsProfile */
+    <string name="friendname">Namn?</string>
+    <string name="friendage">Ålder?</string>
+    <string name="friend_add">Lägg till som vän</string>
+    <string name="friend_description">Beskrivning?</string>
+    <string name="friend_interests">Intressen?</string>
+    <string name="friend_event">Event</string>
+    <string name="friend_event_place">Plats:</string>
+    <string name="friend_event_host">Värd:</string>
+    <string name="friend_event_date">Datum:</string>
+    <string name="friend_event_max">Max deltagare:</string>
+    <string name="friend_event_start_time">Starttid:</string>
+    <string name="friend_event__end_time">Sluttid:</string>
+    <string name="friend_event_price">Pris:</string>
+
+
+
 
 </resources>
