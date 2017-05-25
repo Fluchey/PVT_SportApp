@@ -167,7 +167,6 @@
         android:layout_alignBottom="@+id/etEventDescription"
         android:layout_alignEnd="@+id/etEventType" />
 
-    <!--TODO : hämta events bild -->
     <ImageButton
         android:id="@+id/imageButton3"
         android:layout_width="wrap_content"
@@ -219,15 +218,11 @@
         android:text="@string/event_realnext"
         android:textSize="15sp"
         android:textStyle="bold"
-        android:onClick="goToInviteFriends"
+        android:onClick="createEventClick"
         android:layout_gravity="end|center_horizontal"
         android:clickable="true"
         android:textColor="@color/colorPrimary"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true" />
-
-
-
-
 
 </RelativeLayout>

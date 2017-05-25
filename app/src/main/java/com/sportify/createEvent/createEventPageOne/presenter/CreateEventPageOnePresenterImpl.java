@@ -70,8 +70,9 @@ public class CreateEventPageOnePresenterImpl implements CreateEventPageOnePresen
         }
         if (eventName.isEmpty()) {
             createEventPageOneView.showEventNameEmptyError(R.string.event_name_empty_error);
+        }else if(createEventPageOneView.getUserWroteSearch()){
+            createEventPageOneView.showEventPlaceEmptyError(R.string.event_place_does_not_exist);
         }
-
         //TODO: Lägg in slutdatum
         else if(eventDate.isEmpty()){
             createEventPageOneView.showEventDateEmptyError(R.string.event_date_empty_error);
@@ -88,9 +89,7 @@ public class CreateEventPageOnePresenterImpl implements CreateEventPageOnePresen
         else if(eventType.isEmpty()) {
             createEventPageOneView.showEventTypeEmptyError(R.string.event_type_empty_error);
         }
-        else if(createEventPageOneView.getUserWroteSearch()){
-            createEventPageOneView.showEventPlaceEmptyError(R.string.event_place_does_not_exist);
-        }else{
+        else{
             if (!eventPriceEt.isEmpty()) {
                 try {
                     eventPrice = Integer.parseInt(eventPriceEt);
@@ -153,7 +152,8 @@ public class CreateEventPageOnePresenterImpl implements CreateEventPageOnePresen
         switch (command){
             case "createEvent":
                 createEventPageOneView.setEventID(eventID);
-                createEventPageOneView.showToastToUser(message);
+//                createEventPageOneView.showToastToUser(message);
+                createEventPageOneView.goToInviteFriends();
                 break;
 
             case "getAllPlaces":

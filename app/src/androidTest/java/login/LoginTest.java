@@ -132,7 +132,9 @@ public class LoginTest {
         onView(withId(R.id.etEventPrice)).perform(typeText("1337"), closeSoftKeyboard());
         onView(withId(R.id.etEventType)).perform(click());
         onView(withText("Simhall")).perform(click());
-        onView(withId(R.id.createEventButton)).perform(click());
+//        onView(withId(R.id.Next)).perform(click());
+        onView(withText(R.string.event_realnext)).perform(click());
+        Espresso.pressBack();
         Espresso.pressBack();
 
         /**

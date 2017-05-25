@@ -13,6 +13,8 @@ import java.util.ArrayList;
 
 public interface CreateEventPageOneView {
 
+    void goToInviteFriends();
+
     /**
      * GETTERS
      */
@@ -54,5 +56,6 @@ public interface CreateEventPageOneView {
     void eventPictureButtonClick(View v);
 
     Bitmap getEventImage();
+
     Boolean userSelectedImage();
 }

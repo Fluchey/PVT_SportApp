@@ -135,7 +135,6 @@ public class CreateEventPageOneActivity extends AppCompatActivity implements Cre
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 userWroteSearch = false;
-//                idOfPlace = (int) id;
                 Place p = (Place) parent.getItemAtPosition(position);
                 idOfPlace = p.getId();
             }
@@ -256,11 +255,10 @@ public class CreateEventPageOneActivity extends AppCompatActivity implements Cre
         eventPrivate = (CheckBox) findViewById(R.id.cbEventPrivate);
     }
 
-    public void goToInviteFriends(View v){
+    public void goToInviteFriends(){
         Intent goToInviteFriendsIntent = new Intent(CreateEventPageOneActivity.this, CreateEventBeforeInviteFriendsActivity.class);
-
-        //TODO: Ska fixa så man inte kan gå vidare om event inte är korrekt skapat
         goToInviteFriendsIntent.putExtra("EVENT_ID", eventID);
+        goToInviteFriendsIntent.putExtra("EVENT_NAME", getEventName());
         CreateEventPageOneActivity.this.startActivity(goToInviteFriendsIntent);
     }
 
