@@ -13,6 +13,7 @@ import sportapp.pvt_sportapp.R;
 public class CreateEventBeforeInviteFriendsActivity extends AppCompatActivity {
 
     private int eventID;
+    private String eventName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,12 +23,14 @@ public class CreateEventBeforeInviteFriendsActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if(extras != null){
             eventID = extras.getInt("EVENT_ID");
-            System.out.println("Second page: " + eventID);
+            eventName = extras.getString("EVENT_NAME");
         }
     }
 
     public void goToPreviewActivity(View v){
         Intent goToPreviewActivityIntent = new Intent(CreateEventBeforeInviteFriendsActivity.this, CreateEventPreviewActivity.class);
+        goToPreviewActivityIntent.putExtra("EVENT_ID", eventID);
+        goToPreviewActivityIntent.putExtra("EVENT_NAME", eventName);
         CreateEventBeforeInviteFriendsActivity.this.startActivity(goToPreviewActivityIntent);
     }
 
@@ -36,6 +39,7 @@ public class CreateEventBeforeInviteFriendsActivity extends AppCompatActivity {
         CreateEventBeforeInviteFriendsActivity.this.startActivity(goToInviteFriendsActivity);
 
         goToInviteFriendsActivity.putExtra("EVENT_ID", eventID);
+        goToInviteFriendsActivity.putExtra("EVENT_NAME", eventName);
         CreateEventBeforeInviteFriendsActivity.this.startActivity(goToInviteFriendsActivity);
     }
 }

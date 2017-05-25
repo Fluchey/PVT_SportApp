@@ -5,4 +5,10 @@ package com.sportify.createEvent.createEventPreview.request;
  */
 
 public interface CreateEventPreviewRequest {
+
+    interface OnCreateEventPreviewFinishedListener {
+        void showApiResponse(String apiResponse);
+    }
+
+    void makeApiRequest(String method, String endUrl, String jsonMessage);
 }

@@ -31,6 +31,7 @@ public class CreateEventInviteFriendsActivity extends AppCompatActivity implemen
     private ArrayList<Profile> friendArray;
     private SharedPreferences sharedPref;
     private int eventID;
+    private String eventName;
 
     /**
      *  ArrayAdapter to friend list
@@ -52,6 +53,7 @@ public class CreateEventInviteFriendsActivity extends AppCompatActivity implemen
         Bundle extras = getIntent().getExtras();
         if(extras != null){
             eventID = extras.getInt("EVENT_ID");
+            eventName = extras.getString("EVENT_NAME");
         }
 
         sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
@@ -148,6 +150,9 @@ public class CreateEventInviteFriendsActivity extends AppCompatActivity implemen
 
     public void goToPreviewAgainActivity(){
         Intent goToPreviewAgainActivityIntent = new Intent(CreateEventInviteFriendsActivity.this, CreateEventPreviewActivity.class);
+
+        goToPreviewAgainActivityIntent.putExtra("EVENT_ID", eventID);
+        goToPreviewAgainActivityIntent.putExtra("EVENT_NAME", eventName);
         CreateEventInviteFriendsActivity.this.startActivity(goToPreviewAgainActivityIntent);
 
 

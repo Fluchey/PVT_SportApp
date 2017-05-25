@@ -217,7 +217,7 @@
         android:layout_height="wrap_content"
         android:text="@string/event_invite"
         android:textSize="15sp"
-        android:onClick="goToInviteFriends"
+        android:onClick="createEventClick"
         android:layout_gravity="end|center_horizontal"
         android:clickable="true"
         android:textColor="@color/colorPrimary"

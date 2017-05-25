@@ -80,7 +80,7 @@
         app:layout_constraintVertical_bias="0.79"
         app:srcCompat="@drawable/confirmbuttonn"
         android:layout_marginBottom="22dp"
-        android:onClick="goToUserArea"/>
+        android:onClick="createEvent"/>
 
     <ImageButton
         android:id="@+id/ibModifyEventButton"
@@ -112,7 +112,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="8dp"
         app:layout_constraintHorizontal_bias="0.866"
-        app:layout_constraintVertical_bias="0.984" />
+        app:layout_constraintVertical_bias="0.984"
+        android:onClick="deleteEvent"/>
 
     <!--TODO : hämta bild på eventet -->
 
