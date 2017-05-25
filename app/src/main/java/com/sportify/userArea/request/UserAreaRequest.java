@@ -3,6 +3,7 @@ package com.sportify.userArea.request;
 import com.sportify.storage.Event;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by fluchey on 2017-04-20.
@@ -18,4 +19,8 @@ public interface UserAreaRequest {
     void updateEvents(String json);
 
     ArrayList<Event> getEvents();
+
+    HashMap<Integer, String> getCreator();
+
+    HashMap<Integer, String> getPlaceName();
 }

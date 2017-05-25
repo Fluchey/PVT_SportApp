@@ -53,7 +53,7 @@ public class UserAreaPresenterImpl implements UserAreaPresenter, UserAreaRequest
     }
 
     private void showEventOnView() {
-        userAreaView.showEvents(request.getEvents());
+        userAreaView.showEvents(request.getEvents(), request.getCreator(), request.getPlaceName());
     }
 
     @Override

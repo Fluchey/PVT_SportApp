@@ -10,7 +10,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.sql.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 
 /**
  * Created by fluchey on 2017-04-20.
@@ -20,11 +23,15 @@ public class UserAreaRequestImpl implements UserAreaRequest {
     private String token = "";
     UserAreaRequest.OnRequestFinishedListener onRequestFinishedListener;
     private ArrayList<Event> events;
+    private HashMap<Integer, String> creator;
+    private HashMap<Integer, String> placeName;
 
     public UserAreaRequestImpl(String token, OnRequestFinishedListener listener){
         this.token = token;
         onRequestFinishedListener = listener;
         events = new ArrayList<>();
+        creator = new HashMap<>();
+        placeName = new HashMap<>();
     }
 
     @Override
@@ -48,8 +55,22 @@ public class UserAreaRequestImpl implements UserAreaRequest {
         try {
             for (int i = 0; i < eventArray.length(); i++) {
                 JSONObject jsonObject = eventArray.getJSONObject(i);
-                events.add(new Event(jsonObject.getInt("eventId"), jsonObject.getString("name"), jsonObject.getString("eventDate"), jsonObject.getString("startTime"), jsonObject.getString("endTime"), jsonObject.getString("eventDescription"), jsonObject.getString("place") ,  jsonObject.getInt("price"),
-                        jsonObject.getString("eventType"), jsonObject.getInt("maxAttendance"), jsonObject.getBoolean("privateEvent")));
+                events.add(new Event(jsonObject.getInt("eventId"),
+                        jsonObject.getString("name"),
+                        jsonObject.getString("eventDate"),
+                        jsonObject.getString("startTime"),
+                        jsonObject.getString("endTime"),
+                        jsonObject.getString("eventDescription"),
+                        jsonObject.getString("place"),
+                        jsonObject.getInt("price"),
+                        jsonObject.getString("eventType"),
+                        jsonObject.getInt("maxAttendance"),
+                        jsonObject.getBoolean("privateEvent")));
+
+                creator.put(jsonObject.getInt("eventId"), (jsonObject.getString("creatorFirstName") + " " + jsonObject.getString("creatorLastName")));
+
+                placeName.put(jsonObject.getInt("eventId"), jsonObject.getString("placeName"));
+
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -63,6 +84,16 @@ public class UserAreaRequestImpl implements UserAreaRequest {
     @Override
     public ArrayList<Event> getEvents() {
         return events;
+    }
+
+    @Override
+    public HashMap<Integer, String> getCreator() {
+        return creator;
+    }
+
+    @Override
+    public HashMap<Integer, String> getPlaceName() {
+        return placeName;
     }
 
     private class ApiRequest extends AsyncTask<String, UserAreaRequestImpl, Void> {

@@ -30,6 +30,7 @@ import com.sportify.userArea.presenter.UserAreaPresenterImpl;
 import com.sportify.util.Profile;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import sportapp.pvt_sportapp.R;
 
@@ -158,14 +159,14 @@ public class UserAreaActivity extends AppCompatActivity implements UserAreaView 
     }
 
     @Override
-    public void showEvents(ArrayList<Event> events) {
+    public void showEvents(ArrayList<Event> events, HashMap<Integer, String> creator, HashMap<Integer, String> placeName) {
         ArrayList<String> eventNames = new ArrayList<>();
         for(Event e: events){
             eventNames.add(e.getEventName());
         }
         String[] nameArr = eventNames.toArray(new String[0]);
         Event[] eventArr = events.toArray(new Event[0]);
-        CustomList adapter = new CustomList(UserAreaActivity.this, nameArr, eventArr, imageId);
+        CustomList adapter = new CustomList(UserAreaActivity.this, nameArr, eventArr, creator, placeName, imageId);
         list = (ListView) findViewById(R.id.userAreaEventList);
         list.setAdapter(adapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
