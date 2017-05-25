@@ -188,6 +188,7 @@
     <string name="event_intrested_radio">Intresserad</string>
     <string name="event_coming_radio">Kommer</string>
     <string name="event_not_coming_radio">Kommer inte</string>
+    <string name="event_realnext">Nästa sida &gt;&gt;</string>
 
     <string name="event_rating">Betyg: </string>
     <string name="event_area_title">Simtävling fjärilssim</string>

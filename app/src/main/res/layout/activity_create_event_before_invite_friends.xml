@@ -52,14 +52,16 @@
 
     <!--TODO : hämta events bild -->
 
+
+
     <ImageButton
         android:id="@+id/imageButton"
         android:layout_width="194dp"
         android:layout_height="200dp"
         app:srcCompat="@drawable/addpeople"
         android:layout_alignParentEnd="true"
-        android:background="@drawable/border"
         tools:ignore="ContentDescription"
+        android:background="@drawable/border"
         android:onClick="goToInviteFriendsActivity"
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"

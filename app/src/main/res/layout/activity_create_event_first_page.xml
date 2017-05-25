@@ -79,7 +79,8 @@
         android:clickable="true"
         android:layout_alignTop="@+id/etEventPlace"
         android:layout_alignStart="@+id/Next"
-        android:id="@+id/imageButton7" />
+        android:id="@+id/imageButton7"
+        tools:ignore="ContentDescription" />
 
 
     <EditText
@@ -162,10 +163,9 @@
         android:layout_width="82dp"
         android:layout_height="33dp"
         android:text="@string/event_pic"
-        android:layout_above="@+id/createEventButton"
-        android:layout_alignStart="@+id/createEventButton"
-        android:layout_marginBottom="24dp"
-        android:onClick="eventPictureButtonClick"/>
+        android:onClick="eventPictureButtonClick"
+        android:layout_alignBottom="@+id/etEventDescription"
+        android:layout_alignEnd="@+id/etEventType" />
 
     <!--TODO : hämta events bild -->
     <ImageButton
@@ -175,9 +175,10 @@
         android:background="@android:color/transparent"
         app:srcCompat="@drawable/camera5"
         android:clickable="true"
-        android:layout_above="@+id/ttViewAddPic"
-        android:layout_alignEnd="@+id/ttViewAddPic"
-        android:onClick="eventPictureButtonClick"/>
+        android:onClick="eventPictureButtonClick"
+        android:layout_alignTop="@+id/etEventDescription"
+        android:layout_alignEnd="@+id/etEventStartTime"
+        tools:ignore="ContentDescription" />
 
     <EditText
         android:id="@+id/etEventDescription"
@@ -194,7 +195,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginBottom="13dp" />
 
-    <Button
+   <!-- <Button
         android:id="@+id/createEventButton"
         android:layout_width="114dp"
         android:layout_height="48dp"
@@ -208,15 +209,16 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="10dp"
-        android:layout_marginStart="10dp"/>
+        android:layout_marginStart="10dp"/>-->
 
 
     <TextView
         android:id="@+id/Next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/event_invite"
+        android:text="@string/event_realnext"
         android:textSize="15sp"
+        android:textStyle="bold"
         android:onClick="goToInviteFriends"
         android:layout_gravity="end|center_horizontal"
         android:clickable="true"
