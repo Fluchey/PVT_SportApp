@@ -1,5 +1,6 @@
 package com.sportify.editEvent.activity.activity;
 
+import android.graphics.Bitmap;
 import android.view.View;
 
 import com.sportify.storage.Place;
@@ -63,4 +64,11 @@ public interface EditEventView {
     void showToastToUser(String apiResponse);
     void updatePlaceAdapter(ArrayList<Place> arr);
     boolean getUserWroteSearch();
+
+    /**
+     * IMAGES
+     */
+    void eventPictureButtonClick(View v);
+    Bitmap getEventImage();
+    Boolean userSelectedImage();
 }

@@ -12,7 +12,7 @@ import com.sportify.storage.User;
 public interface EventAreaRequest {
      void makeApiRequestPut(String jsonMessage, String endUrl, String method, String command);
 
-    void loadEventData(String json);
+    String[] loadEventData(String json);
 
     Event getEvent();
 

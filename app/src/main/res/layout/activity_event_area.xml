@@ -49,7 +49,7 @@
 
 
     <ImageView
-        android:id="@+id/eventSwimView"
+        android:id="@+id/eventImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -64,8 +64,8 @@
         android:id="@+id/tvEventAreaPlaceText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/eventSwimView"
-        android:layout_below="@+id/eventSwimView"
+        android:layout_alignStart="@+id/eventImage"
+        android:layout_below="@+id/eventImage"
         android:text="@string/event_place"
         android:textSize="@dimen/standardBitTextSize"
         android:textStyle="bold" />
@@ -74,7 +74,7 @@
         android:id="@+id/tvEventAreaHostName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/eventSwimView"
+        android:layout_below="@+id/eventImage"
         android:layout_marginStart="70dp"
         android:layout_centerHorizontal="true"
         android:text="@string/event_host"

@@ -1,5 +1,8 @@
 package com.sportify.createEvent.createEventPageOne.activity;
 
+import android.graphics.Bitmap;
+import android.view.View;
+
 import com.sportify.storage.Place;
 
 import java.util.ArrayList;
@@ -10,43 +13,32 @@ import java.util.ArrayList;
 
 public interface CreateEventPageOneView {
 
+    /**
+     * GETTERS
+     */
     String getEventName();
-
     String getEventPlace();
-
     String getEventPlaceId();
-
     String getEventPrice();
-
     String getEventDate();
-
     String getEventStartTime();
-
     String getEventEndTime();
-
     String getEventType();
-
     String getEventMaxAttendance();
-
     String getEventDescription();
-
     boolean getPrivateEvent();
 
+    /**
+     * ERROR MESSAGES
+     */
     void showEventNameEmptyError(int resId);
-
     void showEventPriceWrongFormatError(int resId);
-
     void showEventDateEmptyError(int resId);
-
     //TODO: Ska vi ha denna check för tiderna också? Beror ju på hur det kommer läggas in i fortsättningen / om det ska formateras automatiskt
     void showEventDateFormatError(int resId);
-
     void showEventStartTimeEmptyError(int resId);
-
     void showEventEndTimeEmptyError(int resId);
-
     void showEventTypeEmptyError(int resId);
-
     void showEventPlaceEmptyError(int resId);
 
     void clearAllErrors();
@@ -59,4 +51,8 @@ public interface CreateEventPageOneView {
 
     void setEventID(int eventID);
 
+    void eventPictureButtonClick(View v);
+
+    Bitmap getEventImage();
+    Boolean userSelectedImage();
 }

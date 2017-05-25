@@ -1,12 +1,14 @@
 package com.sportify.createEvent.createEventPageOne.presenter;
 
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.util.Log;
 
 import com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOneView;
 import com.sportify.createEvent.createEventPageOne.request.CreateEventPageOneRequest;
 import com.sportify.createEvent.createEventPageOne.request.CreateEventPageOneRequestImpl;
 import com.sportify.storage.Place;
+import com.sportify.util.Profile;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -54,6 +56,13 @@ public class CreateEventPageOnePresenterImpl implements CreateEventPageOnePresen
         String eventMaxAttendance = createEventPageOneView.getEventMaxAttendance();
         String eventDescription = createEventPageOneView.getEventDescription();
         boolean eventPrivate = createEventPageOneView.getPrivateEvent();
+        Bitmap image = createEventPageOneView.getEventImage();
+        String imageBase64 = "";
+
+        if(image != null && createEventPageOneView.userSelectedImage()){
+            imageBase64 = Profile.encodeBitMapToString(image);
+        }
+
         int eventPrivateInt = 0;
 
         if(eventPrivate){
@@ -110,6 +119,7 @@ public class CreateEventPageOnePresenterImpl implements CreateEventPageOnePresen
                 }
                 jsonObject.put("eventDescription", eventDescription);
                 jsonObject.put("privateEvent", "" + eventPrivateInt);
+                jsonObject.put("imageBase64", imageBase64);
                 Log.d("JsonObject", jsonObject.toString());
 
             } catch (JSONException e) {

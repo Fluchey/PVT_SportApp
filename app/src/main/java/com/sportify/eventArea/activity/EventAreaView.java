@@ -1,5 +1,6 @@
 package com.sportify.eventArea.activity;
 
+import android.graphics.Bitmap;
 import android.view.View;
 
 import com.sportify.storage.Place;
@@ -29,5 +30,8 @@ public interface EventAreaView {
     void setPrivateEvent(boolean privateEvent);
     void setDescription(String description);
     String getDescription();
+    void setEventImage(String imageBase64);
+    Bitmap getEventImage();
     void sendResponsEventInvite(View v);
+    void setAttendance(String attendance);
 }

@@ -165,7 +165,8 @@
         android:layout_height="33dp"
         android:text="Byt bild"
         android:layout_below="@+id/imageButton3"
-        android:layout_alignEnd="@+id/etEditEventType" />
+        android:layout_alignEnd="@+id/etEditEventType"
+        android:onClick="eventPictureButtonClick"/>
 
     <!--TODO : hämta events bild -->
     <ImageButton
@@ -177,7 +178,8 @@
         android:clickable="true"
         tools:ignore="ContentDescription"
         android:layout_alignTop="@+id/etEditEventDescription"
-        android:layout_toStartOf="@+id/editEventHeader" />
+        android:layout_toStartOf="@+id/editEventHeader"
+        android:onClick="eventPictureButtonClick"/>
 
     <EditText
         android:id="@+id/etEditEventDescription"
