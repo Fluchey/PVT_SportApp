@@ -46,7 +46,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_main_login);
-        sharedPref = getSharedPreferences("MyPrefs",Context.MODE_PRIVATE);
+        sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         loginPresenter = new LoginPresenterImpl(this, sharedPref);
         dialog = new ProgressDialog(this);
         initializeControls();
@@ -60,8 +60,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
         email = (EditText) findViewById(R.id.etLoginEmail);
         password = (EditText) findViewById(R.id.etLoginPassword);
-
-        //Register New User
+    }
+/*        //Register New User
         TextView tvLoginRegisterHere = (TextView) findViewById(R.id.tvLoginRegisterHere);
         tvLoginRegisterHere.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,7 +89,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
                 LoginActivity.this.startActivity(createEventIntent);
             }
         });
-    }
+    }*/
 
     //TODO: Move Facebook in presenter/request
     private void initializeControls(){ //Facebook controls
