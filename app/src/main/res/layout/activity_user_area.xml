@@ -29,7 +29,8 @@
         android:background="@color/colorAccent"
         android:layout_below="@+id/profileText"
         android:layout_marginTop="25dp"
-        android:id="@+id/view2" />
+        android:id="@+id/view2"
+        android:layout_marginBottom="10dp"/>
 
     <TextView
         android:id="@+id/scrollMyEvText"
@@ -186,34 +187,10 @@
         android:layout_alignParentBottom="true"/>
 
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/leftButton"
-        android:backgroundTint="@color/colorCrystalWhite"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:clickable="true"
-        app:fabSize="mini"
-        app:srcCompat="@drawable/chevleft"
-        android:layout_centerVertical="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="10dp"/>
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/rightButton"
-        android:backgroundTint="@color/colorCrystalWhite"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:clickable="true"
-        app:fabSize="mini"
-        app:srcCompat="@drawable/chevright"
-        android:layout_centerVertical="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="10dp"/>
-
     <ListView
         android:id="@+id/userAreaEventList"
-        android:layout_width="280dp"
-        android:layout_height="390dp"
+        android:layout_width="fill_parent"
+        android:layout_height="500dp"
         android:layout_below="@+id/view2"
         android:layout_centerHorizontal="true" />
 
