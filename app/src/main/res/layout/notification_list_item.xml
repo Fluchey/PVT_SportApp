@@ -11,7 +11,7 @@
         android:id="@+id/profilePictureNotificationView"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:src="@drawable/userprofileimage1"
+        android:src="@drawable/userprofileimage2"
         tools:ignore="ContentDescription" />
 
     <TextView

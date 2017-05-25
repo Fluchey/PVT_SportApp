@@ -12,7 +12,7 @@
         android:id="@+id/ivProfilePicture"
         android:layout_width="106dp"
         android:layout_height="65dp"
-        app:srcCompat="@drawable/userprofileimage1"
+        app:srcCompat="@drawable/userprofileimage2"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginLeft="8dp"
