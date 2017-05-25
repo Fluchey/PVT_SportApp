@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.sportify.createEvent.createEventInviteFriends.activity.CreateEventInviteFriendsActivity;
+import com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOneActivity;
 import com.sportify.createEvent.createEventPreview.activity.CreateEventPreviewActivity;
 
 import sportapp.pvt_sportapp.R;
@@ -37,5 +38,13 @@ public class CreateEventBeforeInviteFriendsActivity extends AppCompatActivity {
 
         goToInviteFriendsActivity.putExtra("EVENT_ID", eventID);
         CreateEventBeforeInviteFriendsActivity.this.startActivity(goToInviteFriendsActivity);
+    }
+
+    public void goToCreateEventFromAdd(View v){
+        Intent goToCreateActivity = new Intent(CreateEventBeforeInviteFriendsActivity.this, CreateEventPageOneActivity.class);
+        CreateEventBeforeInviteFriendsActivity.this.startActivity(goToCreateActivity);
+
+        goToCreateActivity.putExtra("EVENT_ID", eventID);
+        CreateEventBeforeInviteFriendsActivity.this.startActivity(goToCreateActivity);
     }
 }

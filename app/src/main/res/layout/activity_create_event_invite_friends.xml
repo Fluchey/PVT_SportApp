@@ -5,8 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/def_pagePadding"
-    android:background="@drawable/backgroundforevent"
+    android:background="@drawable/backgroundcool"
     tools:context="com.sportify.createEvent.createEventPageFour.CreateEventActivity">
+
+
 
     <TextView
         android:id="@+id/tvHeader"
@@ -20,59 +22,61 @@
         android:textStyle="italic"
         android:layout_centerHorizontal="true" />
 
-    <!--TODO : hämta användarens profilbild -->
 
 
-    <ImageView
-        android:id="@+id/ivProfilBilden"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="39dp"
-        app:srcCompat="@drawable/userprofileimage1"
-        android:layout_below="@+id/tvHeader"
-        android:layout_centerHorizontal="true" />
 
     <AutoCompleteTextView
         android:id="@+id/svFriendsEventActivity3"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_below="@+id/ivProfilBilden"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="65dp"
+        android:layout_marginTop="11dp"
         android:backgroundTint="@color/colorPrimaryDark"
         android:completionThreshold="1"
         android:popupTheme="@color/colorCrystalWhite"
         android:textColorHint="@color/colorPrimaryDarkGrey"
         android:hint="@string/searchFriends"
         android:textColor="@color/colorPrimaryDarkGrey"
-        android:textSize="@dimen/inputeSize" />
+        android:textSize="@dimen/inputeSize"
+        android:layout_below="@+id/tvHeader"
+        android:layout_centerHorizontal="true" />
 
     <ImageButton
         android:id="@+id/ibFacebookFriends"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="26dp"
         android:background="@android:color/transparent"
         app:srcCompat="@drawable/facebookfriendbutton"
         android:layout_below="@+id/svFriendsEventActivity3"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
+        tools:ignore="ContentDescription" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/ibFacebookFriends"
+        android:background="@color/colorAccent"
+        android:id="@+id/view3" />
+
+
+
 
     <TextView
         android:id="@+id/tvMyFriends"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
         android:fontFamily="serif"
         tools:layout_editor_absoluteY="291dp"
         android:text="@string/Event_Activity_3_MyFriends"
         android:textColor="@color/colorPrimaryDarkGrey"
         android:textStyle="italic|bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_below="@+id/ibFacebookFriends"
-        android:layout_marginTop="30dp"
-        android:layout_alignParentStart="true" />
+        android:layout_marginTop="12dp"
+        android:layout_below="@+id/view3"
+        android:layout_alignEnd="@+id/ivProfilBilden" />
 
 
     <ScrollView
@@ -80,14 +84,14 @@
         style="@android:style/Widget.Holo.Light.ScrollView"
         android:layout_width="500dp"
         android:layout_height="300dp"
-        android:layout_marginLeft="7dp"
+        android:layout_marginStart="7dp"
         android:fadeScrollbars="false"
         android:fillViewport="true"
         android:isScrollContainer="false"
         android:scrollbarSize="4dp"
         android:scrollbarThumbVertical="@color/colorDarkBlue"
         android:visibility="visible"
-        android:layout_marginTop="42dp"
+        android:layout_marginTop="10dp"
         android:layout_below="@+id/tvMyFriends"
         android:layout_alignParentEnd="true">
 
@@ -96,9 +100,7 @@
             android:id="@+id/relativeLayout"
             android:layout_width="340dp"
             android:layout_height="500dp"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/tvMyFriends"
-            android:layout_marginLeft="-10dp"
+            android:layout_marginStart="-10dp"
             android:layout_marginTop="5dp"
 
             tools:layout_marginRight="-800dp">
@@ -109,7 +111,7 @@
                 android:layout_height="500dp"
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 />
 
         </RelativeLayout>
@@ -127,6 +129,7 @@
         android:background="@android:color/transparent"
         app:srcCompat="@drawable/checkboxbutton"
 
-        />
+        tools:ignore="ContentDescription" />
 
 </RelativeLayout>
+
