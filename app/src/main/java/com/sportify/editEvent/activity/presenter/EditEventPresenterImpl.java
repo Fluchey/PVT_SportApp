@@ -1,12 +1,14 @@
 package com.sportify.editEvent.activity.presenter;
 
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.util.Log;
 
 import com.sportify.editEvent.activity.activity.EditEventView;
 import com.sportify.editEvent.activity.request.EditEventRequest;
 import com.sportify.editEvent.activity.request.EditEventRequestImpl;
 import com.sportify.storage.Place;
+import com.sportify.util.Profile;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -52,6 +54,15 @@ public class EditEventPresenterImpl implements EditEventPresenter, EditEventRequ
         String eventMaxAttendance = editEventView.getEventMaxAttendance();
         String eventDescription = editEventView.getEventDescription();
         boolean eventPrivate = editEventView.getPrivateEvent();
+
+        Bitmap image = editEventView.getEventImage();
+        String imageBase64 = "";
+
+        if(image != null && editEventView.userSelectedImage()){
+            imageBase64 = Profile.encodeBitMapToString(image);
+        }
+
+
         int eventPrivateInt = 0;
 
         if(eventPrivate){
@@ -101,6 +112,7 @@ public class EditEventPresenterImpl implements EditEventPresenter, EditEventRequ
                 }
                 jsonObject.put("newEventDescription", eventDescription);
                 jsonObject.put("privateEvent", "" + eventPrivateInt);
+                jsonObject.put("imageBase64", imageBase64);
                 Log.d("JsonObject", jsonObject.toString());
 
             } catch (JSONException e) {

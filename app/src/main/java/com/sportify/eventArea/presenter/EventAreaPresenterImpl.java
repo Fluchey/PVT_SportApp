@@ -18,6 +18,8 @@ public class EventAreaPresenterImpl implements EventAreaPresenter, EventAreaRequ
     private EventAreaView activity;
     private SharedPreferences sharedPreferences;
     private EventAreaRequest request;
+    String attendance;
+    String imageBase64;
 
     public EventAreaPresenterImpl(EventAreaView eventAreaActivity, SharedPreferences sharedPreferences) {
         this.activity = eventAreaActivity;
@@ -72,7 +74,9 @@ public class EventAreaPresenterImpl implements EventAreaPresenter, EventAreaRequ
     public void showApiResponse(String command, String... params) {
         switch (command){
             case "getEventById":
-                request.loadEventData(params[0]);
+                String result[] = request.loadEventData(params[0]);;
+                attendance = result[0];
+                imageBase64 = result[1];
                 presentDataOnView();
         }
     }
@@ -88,8 +92,8 @@ public class EventAreaPresenterImpl implements EventAreaPresenter, EventAreaRequ
         activity.setMaxAttendance(request.getEvent().getMaxAttendance());
         activity.setPrice(request.getEvent().getPrice());
         activity.setPrivateEvent(request.getEvent().isPrivateEvent());
-
-
+        activity.setAttendance(attendance);
+        activity.setEventImage(imageBase64);
         activity.setDescription(request.getEvent().getEventDescription());
 
 

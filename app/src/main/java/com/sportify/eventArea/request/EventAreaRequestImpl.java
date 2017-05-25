@@ -38,8 +38,13 @@ public class EventAreaRequestImpl implements EventAreaRequest {
     }
 
     @Override
-    public void loadEventData(String json) {
+    public String[] loadEventData(String json) {
+
+        String[] setToReturn = new String[2];
+
         JSONObject jsonObject = null;
+        String attendance = "";
+        String imageBase64 = "";
         try{
             /**
              * EVENT GREJER
@@ -71,9 +76,16 @@ public class EventAreaRequestImpl implements EventAreaRequest {
             user.setLastName(creatorJson.getString("lastName"));
             user.setUserId(creatorJson.getInt("profileId"));
 
+            attendance = jsonObject.getString("attendance");
+            imageBase64 = jsonObject.getString("imageBase64");
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+        setToReturn[0] = attendance;
+        setToReturn[1] = imageBase64;
+        return setToReturn;
     }
 
     @Override

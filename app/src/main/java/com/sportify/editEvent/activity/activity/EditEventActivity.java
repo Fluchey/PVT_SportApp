@@ -1,12 +1,20 @@
 package com.sportify.editEvent.activity.activity;
 
+import android.Manifest;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -18,6 +26,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -34,6 +43,15 @@ import java.util.Calendar;
 import sportapp.pvt_sportapp.R;
 
 public class EditEventActivity extends AppCompatActivity implements EditEventView{
+
+    /**
+     * IMAGES
+     */
+    private static int RESULT_LOAD_IMG = 1826;
+    private static int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 9287;
+    String imgDecodableString;
+    ImageButton eventPicture;
+    boolean customImage;
 
     /**
      * CONNECTIONS
@@ -82,6 +100,12 @@ public class EditEventActivity extends AppCompatActivity implements EditEventVie
 
         sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         editEventPresenter = new EditEventPresenterImpl(this, sharedPref);
+
+        /**
+         * Event picture
+         */
+        eventPicture = (ImageButton) findViewById(R.id.imageButton3);
+        customImage = false;
 
         /**
          *  EVENT PLACE
@@ -466,5 +490,90 @@ public class EditEventActivity extends AppCompatActivity implements EditEventVie
     @Override
     public int getEventID() {
         return eventID;
+    }
+
+    @Override
+    public void eventPictureButtonClick(View v) {
+        //TODO: REMOVE profilePresenter.addProfilePicture();
+        if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            // Should we show an explanation?
+            if (shouldShowRequestPermissionRationale(
+                    Manifest.permission.READ_EXTERNAL_STORAGE)) {
+                // Explain to the user why we need to read the contacts
+            }
+
+            requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                    MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE);
+
+            // MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE is an
+            // app-defined int constant that should be quite unique
+
+            return;
+        }
+        // Create intent to Open Image applications like Gallery, Google Photos
+        Intent galleryIntent = new Intent(Intent.ACTION_PICK,
+                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        // Start the Intent
+        startActivityForResult(galleryIntent, RESULT_LOAD_IMG);
+    }
+
+    @Override
+    public Bitmap getEventImage() {
+        ImageButton eventImage = (ImageButton) findViewById(R.id.imageButton3);
+        Bitmap image = ((BitmapDrawable) eventImage.getDrawable()).getBitmap();
+        return image;
+    }
+
+    @Override
+    public Boolean userSelectedImage() {
+        return customImage;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        try {
+            // When an Image is picked
+            if (requestCode == RESULT_LOAD_IMG && resultCode == RESULT_OK
+                    && null != data) {
+                // Get the Image from data
+
+                Uri selectedImage = data.getData();
+                String[] filePathColumn = {MediaStore.Images.Media.DATA};
+
+                // Get the cursor
+                Cursor cursor = getContentResolver().query(selectedImage,
+                        filePathColumn, null, null, null);
+                // Move to first row
+                cursor.moveToFirst();
+
+                int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+                imgDecodableString = cursor.getString(columnIndex);
+                cursor.close();
+                ImageButton eventPicture = (ImageButton) findViewById(R.id.imageButton3);
+
+                //Get Height and Width of imageButton
+                int image_width = eventPicture.getWidth();
+                int image_height = eventPicture.getHeight();
+
+                // Set the Image in ImageButton after scaling the Bitmap to size of imageButton
+                Bitmap bitmap = BitmapFactory.decodeFile(imgDecodableString);
+                Bitmap image = bitmap.createScaledBitmap(bitmap, image_width, image_height, false); //scale the image
+
+                eventPicture.setImageBitmap(image);
+                //TODO: a check for which way the image is rotated would be elegant
+                customImage = true;
+
+            } else {
+                Toast.makeText(this, "Var god välj en bild",
+                        Toast.LENGTH_LONG).show();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Något gick fel :(", Toast.LENGTH_LONG)
+                    .show();
+        }
     }
 }

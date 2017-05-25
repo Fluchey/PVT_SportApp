@@ -3,9 +3,12 @@ package com.sportify.eventArea.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,6 +18,7 @@ import com.sportify.eventArea.presenter.EventAreaPresenter;
 import com.sportify.eventArea.presenter.EventAreaPresenterImpl;
 import com.sportify.storage.Place;
 import com.sportify.userArea.activity.UserAreaActivity;
+import com.sportify.util.Profile;
 
 import sportapp.pvt_sportapp.R;
 
@@ -31,6 +35,13 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
     private TextView startTimeTv;
     private TextView endTimeTv;
     private TextView priceTv;
+    private TextView maxAttTv;
+    private TextView dateTv;
+    private ImageView eventImage;
+    private RadioButton interestedRb;
+    private RadioButton comingRb;
+    private RadioButton notComingRb;
+
 
     /*
      * Event information
@@ -71,6 +82,12 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
         endTimeTv = (TextView) findViewById(R.id.tvEventAreaEndTime);
         descriptionTv = (TextView) findViewById(R.id.tvEventAreaDescription);
         priceTv = (TextView) findViewById(R.id.tvEventAreaPrice);
+        maxAttTv = (TextView) findViewById(R.id.tvMaxAtt);
+        dateTv = (TextView) findViewById(R.id.tvEventAreaDate);
+        eventImage = (ImageView) findViewById(R.id.eventImage);
+        interestedRb = (RadioButton) findViewById(R.id.interestedRadioButton);
+        comingRb = (RadioButton) findViewById(R.id.comingRadioButton);
+        notComingRb = (RadioButton) findViewById(R.id.notComingRadioButton);
     }
 
 
@@ -113,7 +130,7 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
 
     @Override
     public void setPlaceName(Place place) {
-        this.placeNameTv.setText(place.getName());
+        this.placeNameTv.setText("Plats: " + place.getName());
         this.place = place;
     }
 
@@ -124,7 +141,7 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
 
     @Override
     public void setHostName(String firstName, String lastName) {
-        this.hostNameTv.setText(firstName + " " + lastName);
+        this.hostNameTv.setText("Värd: " + firstName + " " + lastName);
     }
 
     @Override
@@ -134,7 +151,7 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
 
     @Override
     public void setStartTime(String startTime) {
-        this.startTimeTv.setText(startTime);
+        this.startTimeTv.setText("Starttid: " + startTime);
         this.startTime = startTime;
     }
 
@@ -145,12 +162,13 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
 
     @Override
     public void setEndTime(String endTime) {
-        this.endTimeTv.setText(endTime);
+        this.endTimeTv.setText("Sluttid: " + endTime);
         this.endTime = endTime;
     }
 
     @Override
     public void setEventDate(String date) {
+        dateTv.setText("Datum: " + date);
         this.eventDate = date;
     }
 
@@ -171,7 +189,7 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
 
     @Override
     public void setPrice(int price) {
-        this.priceTv.setText(String.valueOf(price));
+        this.priceTv.setText("Pris: " + String.valueOf(price));
         this.price = price;
     }
 
@@ -182,6 +200,7 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
 
     @Override
     public void setMaxAttendance(int maxAttendance) {
+        this.maxAttTv.setText("Max deltagare: " + String.valueOf(maxAttendance));
         this.maxAttendance = maxAttendance;
     }
 
@@ -197,7 +216,7 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
 
     @Override
     public void setDescription(String description) {
-        this.descriptionTv.setText(description);
+        this.descriptionTv.setText("Beskrivning av eventet: " + description);
         this.description = description;
     }
 
@@ -207,9 +226,33 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
     }
 
     @Override
+    public void setEventImage(String imageBase64) {
+        if(!imageBase64.isEmpty()){
+            Bitmap image = Profile.decodeStringToBitmap(imageBase64);
+            eventImage.setImageBitmap(image);
+        }
+    }
+
+    @Override
+    public Bitmap getEventImage() {
+        return null;
+    }
+
+    @Override
     public void sendResponsEventInvite(View v) {
         String response = v.getTag().toString();
         presenter.sendResponsEventInvite(response, eventId);
+    }
+
+    @Override
+    public void setAttendance(String attendance) {
+        if(attendance.equalsIgnoreCase("attending")) {
+            comingRb.setChecked(true);
+        }else if(attendance.equalsIgnoreCase("not_attending")){
+            notComingRb.setChecked(true);
+        }else if(attendance.equalsIgnoreCase("interested")){
+            interestedRb.setChecked(true);
+        }
     }
 
     public void shareToFacebook(View v){

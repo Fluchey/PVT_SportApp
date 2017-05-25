@@ -164,7 +164,8 @@
         android:text="@string/event_pic"
         android:layout_above="@+id/createEventButton"
         android:layout_alignStart="@+id/createEventButton"
-        android:layout_marginBottom="24dp" />
+        android:layout_marginBottom="24dp"
+        android:onClick="eventPictureButtonClick"/>
 
     <!--TODO : hämta events bild -->
     <ImageButton
@@ -175,7 +176,8 @@
         app:srcCompat="@drawable/camera5"
         android:clickable="true"
         android:layout_above="@+id/ttViewAddPic"
-        android:layout_alignEnd="@+id/ttViewAddPic" />
+        android:layout_alignEnd="@+id/ttViewAddPic"
+        android:onClick="eventPictureButtonClick"/>
 
     <EditText
         android:id="@+id/etEventDescription"
