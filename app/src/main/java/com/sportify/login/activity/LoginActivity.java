@@ -19,16 +19,12 @@ import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
-
 import com.facebook.login.widget.LoginButton;
 import com.sportify.login.presenter.LoginPresenterImpl;
-
-import com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOneActivity;
-import com.sportify.createEvent.createEventInviteFriends.activity.CreateEventInviteFriendsActivity;
-
 import com.sportify.profile.activity.ProfileActivity;
 import com.sportify.register.activity.RegisterActivity;
 import com.sportify.userArea.activity.UserAreaActivity;
+
 import sportapp.pvt_sportapp.R;
 
 public class LoginActivity extends AppCompatActivity implements LoginView {
@@ -61,35 +57,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         email = (EditText) findViewById(R.id.etLoginEmail);
         password = (EditText) findViewById(R.id.etLoginPassword);
     }
-/*        //Register New User
-        TextView tvLoginRegisterHere = (TextView) findViewById(R.id.tvLoginRegisterHere);
-        tvLoginRegisterHere.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent registerIntent = new Intent(LoginActivity.this, RegisterActivity.class);
-                LoginActivity.this.startActivity(registerIntent);
-            }
-        });
 
-        //TODO: Move Create Event to UserAreaActivity
-        TextView tvCreateEventHere = (TextView) findViewById(R.id.tvCreateEventHere);
-        tvCreateEventHere.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent createEventIntent = new Intent(LoginActivity.this, CreateEventPageOneActivity.class);
-                LoginActivity.this.startActivity(createEventIntent);
-            }
-        });
-
-        TextView tvFindFriends = (TextView) findViewById(R.id.tvFindFriends);
-        tvFindFriends.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent createEventIntent = new Intent(LoginActivity.this, CreateEventInviteFriendsActivity.class);
-                LoginActivity.this.startActivity(createEventIntent);
-            }
-        });
-    }*/
 
     //TODO: Move Facebook in presenter/request
     private void initializeControls(){ //Facebook controls

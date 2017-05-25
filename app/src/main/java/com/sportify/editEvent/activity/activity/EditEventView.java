@@ -11,8 +11,9 @@ public interface EditEventView {
 
     void editEvent(View v);
     void goToEventArea();
-    void deleteEvent(View v);
     void goToUserArea();
+    void deleteEvent(View v);
+    void deleteEventWithoutView(int eventID);
 
     /*
      * GETTERS

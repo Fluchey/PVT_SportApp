@@ -5,4 +5,8 @@ package com.sportify.createEvent.createEventPreview.presenter;
  */
 
 public interface CreateEventPreviewPresenter {
+
+    void deleteEvent(int eventID);
+
+    void showApiResponse(String apiResponse);
 }

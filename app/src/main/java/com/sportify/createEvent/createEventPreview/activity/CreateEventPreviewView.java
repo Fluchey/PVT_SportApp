@@ -5,4 +5,8 @@ package com.sportify.createEvent.createEventPreview.activity;
  */
 
 public interface CreateEventPreviewView {
+
+    void showToastToUser(String message);
+
+    void goToUserArea(String message);
 }
