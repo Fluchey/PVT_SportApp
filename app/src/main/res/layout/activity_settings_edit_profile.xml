@@ -158,11 +158,11 @@
         android:textColorHint="@color/colorPrimaryDark"
         android:textSize="@dimen/standardSmallerTextSize"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.735"
+        app:layout_constraintHorizontal_bias="0.784"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.284"
+        app:layout_constraintVertical_bias="0.294"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp" />
 
@@ -208,8 +208,8 @@
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="8dp"
-        app:layout_constraintHorizontal_bias="0.728"
-        app:layout_constraintVertical_bias="0.394"
+        app:layout_constraintHorizontal_bias="0.775"
+        app:layout_constraintVertical_bias="0.388"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp" />
 
@@ -235,19 +235,20 @@
 
     <EditText
         android:id="@+id/etProfileBirthdayhint"
-        android:layout_width="167dp"
+        android:layout_width="175dp"
         android:layout_height="37dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:backgroundTint="@color/colorPrimaryDarkGrey"
         android:ems="10"
+        android:drawableRight="@drawable/asteriskicon"
         android:hint="@string/profile_birthday_hint"
         android:inputType="textPersonName"
         android:textColorHint="@color/colorPrimaryDark"
         android:textSize="@dimen/standardSmallerTextSize"
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.699"
+        app:layout_constraintHorizontal_bias="0.757"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -450,6 +451,7 @@
         android:lines="2"
         android:hint="@string/descriptionbox_profile_text"
         android:textSize="@dimen/standardSmallerTextSize"
+        android:padding="5dp"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginLeft="8dp"
@@ -458,8 +460,8 @@
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="8dp"
-        app:layout_constraintHorizontal_bias="0.717"
-        app:layout_constraintVertical_bias="0.638"
+        app:layout_constraintHorizontal_bias="0.761"
+        app:layout_constraintVertical_bias="0.666"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp" />
 
@@ -481,7 +483,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
         app:layout_constraintHorizontal_bias="0.442"
-        app:layout_constraintVertical_bias="0.545"
+        app:layout_constraintVertical_bias="0.55"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp" />
 
