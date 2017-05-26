@@ -315,6 +315,11 @@ public class EditEventActivity extends AppCompatActivity implements EditEventVie
     }
 
     @Override
+    public void deleteEventWithoutView(int eventID){
+        editEventPresenter.deleteEvent(eventID);
+    }
+
+    @Override
     public String getEventName() {
         return eventName.getText().toString();
     }

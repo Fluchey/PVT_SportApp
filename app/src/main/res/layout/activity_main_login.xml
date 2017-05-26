@@ -81,18 +81,6 @@
 
 
 
-    <TextView
-        android:id="@+id/tvCreateEventHere"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/createEvent_here"
-        android:textColor="@color/colorPrimaryDarkGrey"
-        android:textSize="@dimen/standardTextSize"
-        android:layout_alignParentStart="true"
-        android:layout_above="@+id/tvLoginRegisterHere"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="10dp"/>
 
 
     <TextView
@@ -102,20 +90,8 @@
         android:text="@string/register_here"
         android:textSize="@dimen/standardTextSize"
         android:textColor="@color/colorPrimaryDarkGrey"
-        android:layout_alignParentStart="true"
-        android:layout_above="@+id/tvFindFriends"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="10dp"/>
-
-
-    <TextView
-        android:id="@+id/tvFindFriends"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/find_friends"
-        android:textColor="@color/colorPrimaryDarkGrey"
-        android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
         android:layout_marginStart="20dp"
         android:layout_marginBottom="10dp"/>
 

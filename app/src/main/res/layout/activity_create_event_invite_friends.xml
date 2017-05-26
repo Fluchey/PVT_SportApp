@@ -75,15 +75,14 @@
         android:textStyle="italic|bold"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginTop="12dp"
-        android:layout_below="@+id/view3"
-        android:layout_alignEnd="@+id/ivProfilBilden" />
+        android:layout_below="@+id/view3" />
 
 
     <ScrollView
         android:id="@+id/svbjudinScroll"
         style="@android:style/Widget.Holo.Light.ScrollView"
         android:layout_width="500dp"
-        android:layout_height="300dp"
+        android:layout_height="420dp"
         android:layout_marginStart="7dp"
         android:fadeScrollbars="false"
         android:fillViewport="true"
@@ -99,7 +98,7 @@
         <RelativeLayout
             android:id="@+id/relativeLayout"
             android:layout_width="340dp"
-            android:layout_height="500dp"
+            android:layout_height="650dp"
             android:layout_marginStart="-10dp"
             android:layout_marginTop="5dp"
 
@@ -108,7 +107,7 @@
             <ListView
                 android:id="@+id/lvCreateEventFriends"
                 android:layout_width="wrap_content"
-                android:layout_height="500dp"
+                android:layout_height="650dp"
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="10dp"
@@ -125,7 +124,9 @@
         android:isScrollContainer="false"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginLeft="360dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="295dp"
+
         android:background="@android:color/transparent"
         app:srcCompat="@drawable/checkboxbutton"
 

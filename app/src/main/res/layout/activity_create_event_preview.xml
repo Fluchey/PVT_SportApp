@@ -51,8 +51,8 @@
 
     <ImageView
         android:id="@+id/ivProfilePicture"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="109dp"
+        android:layout_height="88dp"
         app:srcCompat="@drawable/userprofileimage1"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
@@ -62,8 +62,8 @@
         android:layout_marginBottom="8dp"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
-        app:layout_constraintHorizontal_bias="0.088"
-        app:layout_constraintVertical_bias="0.367" />
+        app:layout_constraintHorizontal_bias="0.034"
+        app:layout_constraintVertical_bias="0.397" />
 
     <ImageButton
         android:id="@+id/ibConfirmEventButton"
@@ -80,7 +80,7 @@
         app:layout_constraintVertical_bias="0.79"
         app:srcCompat="@drawable/confirmbuttonn"
         android:layout_marginBottom="22dp"
-        android:onClick="goToUserArea"/>
+        android:onClick="createEvent"/>
 
     <ImageButton
         android:id="@+id/ibModifyEventButton"
@@ -112,7 +112,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="8dp"
         app:layout_constraintHorizontal_bias="0.866"
-        app:layout_constraintVertical_bias="0.984" />
+        app:layout_constraintVertical_bias="0.984"
+        android:onClick="deleteEvent"/>
 
     <!--TODO : hämta bild på eventet -->
 

@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 import com.sportify.storage.Event;
 
+import java.util.HashMap;
+
 import sportapp.pvt_sportapp.R;
 
 public class CustomList extends ArrayAdapter<String> {
@@ -22,14 +24,17 @@ public class CustomList extends ArrayAdapter<String> {
     private final String[] eventName;
     private final Event[] events;
     private final Integer[] imageId;
+    HashMap<Integer, String> creator;
+    HashMap<Integer, String> placeName;
 
-    public CustomList(Activity context, String[] web, Event[] events, Integer[] imageId) {
+    public CustomList(Activity context, String[] web, Event[] events, HashMap<Integer, String> creator, HashMap<Integer, String> placeName, Integer[] imageId) {
         super(context, R.layout.user_area_list_item, web);
         this.context = context;
         this.eventName = web;
         this.events = events;
         this.imageId = imageId;
-
+        this.creator = creator;
+        this.placeName = placeName;
     }
 
     @Override
@@ -42,12 +47,12 @@ public class CustomList extends ArrayAdapter<String> {
         TextView eventDate = (TextView) rowView.findViewById(R.id.tvEventDate);
 
         ImageView imageView = (ImageView) rowView.findViewById(R.id.userAreaListItemImg);
-        eventName.setText(this.eventName[position]);
-        eventHost.setText("Adrian");
-        eventPlace.setText("Abrahamsbergs Bollplan");
-        eventDate.setText("2017-01-15");
+        eventName.setText(this.events[position].getEventName());
+        eventHost.setText(this.creator.get(this.events[position].getId()));
+        eventPlace.setText(this.placeName.get(this.events[position].getId()));
+        eventDate.setText(this.events[position].getDate());
 
-        imageView.setImageResource(imageId[position]);
+        imageView.setImageResource(imageId[1]);
         return rowView;
     }
 }

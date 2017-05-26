@@ -6,6 +6,7 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
 import com.sportify.login.activity.LoginActivity;
+import com.sportify.mainPage.activity.MainPageActivity;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -44,13 +45,13 @@ public class LoginTest {
     private String ra;
 
     @Rule
-    public ActivityTestRule<LoginActivity> loginActivityActivityTestRule = new ActivityTestRule<>(LoginActivity.class);
+    public ActivityTestRule<MainPageActivity> loginActivityActivityTestRule = new ActivityTestRule<>(MainPageActivity.class);
     private LoginActivity loginActivity;
 
-    @Before
-    public void setLoginActivity(){
-        loginActivity = loginActivityActivityTestRule.getActivity();
-    }
+//    @Before
+//    public void setLoginActivity(){
+//        loginActivity = loginActivityActivityTestRule.getActivity();
+//    }
 
 //    @Test
 //    public void loginNoPasswordShouldFail(){
@@ -89,7 +90,7 @@ public class LoginTest {
         /**
          * First register screen
          */
-        onView(withId(R.id.tvLoginRegisterHere)).perform(click());
+        onView(withId(R.id.registerMPButton)).perform(click());
         onView(withId(R.id.etRegisterMail)).perform(typeText(randomMail + "@espresso.com"), closeSoftKeyboard() );
         onView(withId(R.id.etRegisterPassword)).perform(typeText(randomMail), closeSoftKeyboard());
         onView(withId(R.id.registerButton)).perform(click());
@@ -132,7 +133,9 @@ public class LoginTest {
         onView(withId(R.id.etEventPrice)).perform(typeText("1337"), closeSoftKeyboard());
         onView(withId(R.id.etEventType)).perform(click());
         onView(withText("Simhall")).perform(click());
-        onView(withId(R.id.createEventButton)).perform(click());
+//        onView(withId(R.id.Next)).perform(click());
+        onView(withText(R.string.event_realnext)).perform(click());
+        Espresso.pressBack();
         Espresso.pressBack();
 
         /**
