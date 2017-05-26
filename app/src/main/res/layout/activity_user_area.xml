@@ -192,7 +192,8 @@
         android:layout_width="fill_parent"
         android:layout_height="500dp"
         android:layout_below="@+id/view2"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/goToMapButton" />
 
 </RelativeLayout>
 

@@ -76,7 +76,7 @@
         <activity android:name="com.sportify.placeReview.activity.PlaceReviewActivity" />
         <activity android:name="com.sportify.placearea.activity.PlaceAreaActivity" />
         <activity android:name="com.sportify.editEvent.activity.activity.EditEventActivity" />
-        <activity android:name="com.sportify.friendprofile.friendprofile"></activity>
+        <activity android:name="com.sportify.friendprofile.activity.FriendprofileActivity"></activity>
     </application>
 
 </manifest>

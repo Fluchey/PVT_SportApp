@@ -48,7 +48,6 @@ public class PlaceReviewActivity extends AppCompatActivity implements PlaceRevie
         }
 
         placeReviewPresenter = new PlaceReviewPresenterImpl(this, sharedPref);
-
         placeReviewPresenter.showCurrentReview();
     }
 
