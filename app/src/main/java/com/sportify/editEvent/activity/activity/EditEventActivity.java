@@ -267,7 +267,6 @@ public class EditEventActivity extends AppCompatActivity implements EditEventVie
         eventPlace.setText(p.getName());
         userWroteSearch = false;
 
-        //TODO: StartDate, endDate, startTime, endTime
         eventDate.setText(bundle.getString("eventDate"));
         eventStartTime.setText(bundle.getString("startTime"));
         eventEndTime.setText(bundle.getString("endTime"));
@@ -499,7 +498,6 @@ public class EditEventActivity extends AppCompatActivity implements EditEventVie
 
     @Override
     public void eventPictureButtonClick(View v) {
-        //TODO: REMOVE profilePresenter.addProfilePicture();
         if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
 
@@ -568,7 +566,6 @@ public class EditEventActivity extends AppCompatActivity implements EditEventVie
                 Bitmap image = bitmap.createScaledBitmap(bitmap, image_width, image_height, false); //scale the image
 
                 eventPicture.setImageBitmap(image);
-                //TODO: a check for which way the image is rotated would be elegant
                 customImage = true;
 
             } else {

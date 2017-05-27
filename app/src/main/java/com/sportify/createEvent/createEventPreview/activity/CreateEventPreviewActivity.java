@@ -50,7 +50,6 @@ public class CreateEventPreviewActivity extends AppCompatActivity implements Cre
         CreateEventPreviewActivity.this.startActivity(goToUserAreaIntent);
     }
 
-    //TODO: Koppla denna så eventet tas bort
     public void deleteEvent(View v){
         previewPresenter.deleteEvent(eventID);
     }

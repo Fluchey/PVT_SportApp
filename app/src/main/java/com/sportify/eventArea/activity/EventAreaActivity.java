@@ -72,7 +72,6 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
         Bundle bundle = getIntent().getExtras();
         eventId = (bundle.getInt("eventId"));
         presenter.getEventFromDb(eventId);
-        System.out.println("Kolla eventID " + eventId);
 
         hostNameTv = (TextView) findViewById(R.id.tvEventAreaHostName);
         eventNameTv = (TextView) findViewById(R.id.eventAreaHeader);

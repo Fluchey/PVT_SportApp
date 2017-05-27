@@ -41,7 +41,6 @@
             app:srcCompat="@drawable/settnote"
             tools:ignore="ContentDescription" />
 
-        <!-- TODO Lägg till notifikationer i flöde -->
     <RelativeLayout
         android:layout_width="350dp"
         android:layout_height="100dp"
