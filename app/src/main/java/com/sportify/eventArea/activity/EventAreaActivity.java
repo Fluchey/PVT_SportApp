@@ -46,6 +46,7 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
     /*
      * Event information
      */
+    private String imageBase64;
     private Place place;
     private String eventDate;
     private String startTime;
@@ -99,8 +100,8 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
         Intent goToEditEventViewIntent = new Intent(EventAreaActivity.this, EditEventActivity.class);
 
         goToEditEventViewIntent.putExtra("eventId", eventId);
+        goToEditEventViewIntent.putExtra("eventImage", imageBase64);
         goToEditEventViewIntent.putExtra("eventName", eventName);
-//        goToEditEventViewIntent.putExtra("place", placeName);
         goToEditEventViewIntent.putExtra("place", place);
         goToEditEventViewIntent.putExtra("eventDate", eventDate);
         goToEditEventViewIntent.putExtra("startTime", startTime);
@@ -188,7 +189,7 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
 
     @Override
     public void setPrice(int price) {
-        this.priceTv.setText("Pris: " + String.valueOf(price));
+        this.priceTv.setText(getText(R.string.event_area_price) + String.valueOf(price));
         this.price = price;
     }
 
@@ -226,6 +227,7 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
 
     @Override
     public void setEventImage(String imageBase64) {
+        this.imageBase64 = imageBase64;
         if(!imageBase64.isEmpty()){
             Bitmap image = Profile.decodeStringToBitmap(imageBase64);
             eventImage.setImageBitmap(image);

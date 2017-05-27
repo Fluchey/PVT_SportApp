@@ -56,13 +56,12 @@ public class EditEventPresenterImpl implements EditEventPresenter, EditEventRequ
         boolean eventPrivate = editEventView.getPrivateEvent();
 
         Bitmap image = editEventView.getEventImage();
-        String imageBase64 = "";
+        String imageBase64 = editEventView.getImageBase64();
 
         if(image != null && editEventView.userSelectedImage()){
             imageBase64 = Profile.encodeBitMapToString(image);
         }
-
-
+        
         int eventPrivateInt = 0;
 
         if(eventPrivate){
@@ -142,7 +141,6 @@ public class EditEventPresenterImpl implements EditEventPresenter, EditEventRequ
 
         switch (command){
             case "changeEvent" :
-                System.out.println("response" + apiResponse.toString());
                 editEventView.showToastToUser(apiResponse);
                 editEventView.goToEventArea();
                 break;
@@ -151,7 +149,6 @@ public class EditEventPresenterImpl implements EditEventPresenter, EditEventRequ
                 updateViewPlaceAdapter();
                 break;
             case "deleteEvent" :
-                System.out.println("response delete " + apiResponse.toString());
                 editEventView.showToastToUser(apiResponse);
                 editEventView.goToUserArea();
                 break;

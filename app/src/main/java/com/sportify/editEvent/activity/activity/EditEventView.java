@@ -18,7 +18,8 @@ public interface EditEventView {
     /*
      * GETTERS
      */
-    //TODO: Sätt bild
+    Bitmap getEventImage();
+    String getImageBase64();
     int getEventID();
     String getEventName();
     String getEventPlace();
@@ -35,6 +36,7 @@ public interface EditEventView {
     /*
      * SETTERS
      */
+    void setEventImage(String imageBase64);
     void setEventName(String eventName);
     void setEventPlace(String eventPlace);
     void setDate(String date);
@@ -70,6 +72,5 @@ public interface EditEventView {
      * IMAGES
      */
     void eventPictureButtonClick(View v);
-    Bitmap getEventImage();
     Boolean userSelectedImage();
 }

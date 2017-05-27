@@ -35,6 +35,7 @@ import com.sportify.createEvent.createEventPageOne.presenter.CreateEventPageOneP
 import com.sportify.createEvent.createEventPageOne.presenter.CreateEventPageOnePresenterImpl;
 import com.sportify.storage.Place;
 import com.sportify.userArea.activity.UserAreaActivity;
+import com.sportify.util.Profile;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -259,6 +260,16 @@ public class CreateEventPageOneActivity extends AppCompatActivity implements Cre
         Intent goToInviteFriendsIntent = new Intent(CreateEventPageOneActivity.this, CreateEventBeforeInviteFriendsActivity.class);
         goToInviteFriendsIntent.putExtra("EVENT_ID", eventID);
         goToInviteFriendsIntent.putExtra("EVENT_NAME", getEventName());
+        goToInviteFriendsIntent.putExtra("eventDescription", getEventDescription());
+
+        Bitmap image = getEventImage();
+        String imageBase64 = "";
+
+        if(image != null && userSelectedImage()){
+            imageBase64 = Profile.encodeBitMapToString(image);
+        }
+
+        goToInviteFriendsIntent.putExtra("imageBase64", imageBase64);
         CreateEventPageOneActivity.this.startActivity(goToInviteFriendsIntent);
     }
 
