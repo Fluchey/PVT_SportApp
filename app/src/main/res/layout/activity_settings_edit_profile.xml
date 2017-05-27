@@ -8,8 +8,6 @@
     android:background="@drawable/backgroundnodude"
     tools:context="com.sportify.profile.activity.EditProfileActivity">
 
-    <!-- TODO Redigera profil funktionen, ladda in all information om specifika användaren -->
-
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/backEditProButton"
         android:backgroundTint="@color/colorCrystalWhite"

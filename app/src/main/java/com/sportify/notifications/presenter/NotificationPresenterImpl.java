@@ -55,6 +55,7 @@ public class NotificationPresenterImpl implements NotificationPresenter, Notific
 
     @Override
     public void getNotificationsFromApiResponse(String jsonMessage, String command) {
+        System.out.println("Dags för Json, ser ut såhär: " + jsonMessage.toString());
         JSONObject json = null;
         JSONArray array = null;
 
@@ -119,7 +120,9 @@ public class NotificationPresenterImpl implements NotificationPresenter, Notific
 
     @Override
     public void showApiResponse(String responseBody, String command) {
+        System.out.println("Testar api " + responseBody + " " + command);
         if(!command.equalsIgnoreCase("response")) {
+            System.out.println("Hämta notifications");
             getNotificationsFromApiResponse(responseBody, command);
         }else if(command.equalsIgnoreCase("response")){
             notificationView.showToastToUser(responseBody);

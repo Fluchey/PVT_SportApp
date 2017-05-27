@@ -397,7 +397,6 @@ public class CreateEventPageOneActivity extends AppCompatActivity implements Cre
 
     @Override
     public void eventPictureButtonClick(View v) {
-            //TODO: REMOVE profilePresenter.addProfilePicture();
             if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
                     != PackageManager.PERMISSION_GRANTED) {
 
@@ -466,7 +465,6 @@ public class CreateEventPageOneActivity extends AppCompatActivity implements Cre
                 Bitmap image = bitmap.createScaledBitmap(bitmap, image_width, image_height, false); //scale the image
 
                 eventPicture.setImageBitmap(image);
-                //TODO: a check for which way the image is rotated would be elegant
                 customImage = true;
 
             } else {
