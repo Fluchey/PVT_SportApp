@@ -1,7 +1,6 @@
 package com.sportify.userArea.presenter;
 
 import android.content.SharedPreferences;
-import android.util.Log;
 
 import com.sportify.storage.Event;
 import com.sportify.userArea.activity.UserAreaView;
@@ -53,7 +52,7 @@ public class UserAreaPresenterImpl implements UserAreaPresenter, UserAreaRequest
     }
 
     private void showEventOnView() {
-        userAreaView.showEvents(request.getEvents(), request.getCreator(), request.getPlaceName());
+        userAreaView.showEvents(request.getEvents(), request.getCreator(), request.getPlaceName(), request.getEventImages());
     }
 
     @Override

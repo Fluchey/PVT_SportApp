@@ -8,13 +8,17 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.sportify.arrayAdapters.MyArrayAdapterShowFriends;
 import com.sportify.createEvent.createEventPreview.presenter.CreateEventPreviewPresenter;
 import com.sportify.createEvent.createEventPreview.presenter.CreateEventPreviewPresenterImpl;
 import com.sportify.userArea.activity.UserAreaActivity;
 import com.sportify.util.Profile;
+
+import java.util.ArrayList;
 
 import sportapp.pvt_sportapp.R;
 
@@ -25,6 +29,8 @@ public class CreateEventPreviewActivity extends AppCompatActivity implements Cre
     private int eventID;
     private String eventName = "";
     private String eventDescription;
+    private ListView invitedFriendsLv;
+    private MyArrayAdapterShowFriends myArrayAdapterShowFriends;
 
 
     private TextView eventNameTv;
@@ -43,6 +49,9 @@ public class CreateEventPreviewActivity extends AppCompatActivity implements Cre
         eventNameTv = (TextView) findViewById(R.id.tvEventName);
         eventDescriptionTv = (TextView) findViewById(R.id.tvEventDescriptionPreview);
         eventImage = (ImageView) findViewById(R.id.ivEventPicture);
+        invitedFriendsLv = (ListView) findViewById(R.id.lvCreateEventFriends);
+
+        ArrayList<com.sportify.showFriends.Profile> invitedFriends = new ArrayList<>();
 
         Bundle extras = getIntent().getExtras();
         String eventImageBase64 = "";
@@ -51,7 +60,12 @@ public class CreateEventPreviewActivity extends AppCompatActivity implements Cre
             eventName = extras.getString("EVENT_NAME");
             eventImageBase64 = extras.getString("imageBase64");
             eventDescription = extras.getString("eventDescription");
+            invitedFriends = (ArrayList<com.sportify.showFriends.Profile>) getIntent().getSerializableExtra("invitedFriends");
+        }
 
+        if(invitedFriends != null) {
+            myArrayAdapterShowFriends = new MyArrayAdapterShowFriends(CreateEventPreviewActivity.this, R.layout.create_event_friend_list_item, invitedFriends);
+            invitedFriendsLv.setAdapter(myArrayAdapterShowFriends);
         }
 
         eventNameTv.setText(eventName);

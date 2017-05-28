@@ -91,7 +91,7 @@ public class MapsRequestImpl implements MapsRequest {
             for (int i = 0; i < eventArray.length(); i++) {
                 JSONObject jsonObject = eventArray.getJSONObject(i);
                 allEvents.add(new Event(jsonObject.getInt("eventId"), jsonObject.getString("name"), jsonObject.getString("eventDate"), jsonObject.getString("startTime"), jsonObject.getString("endTime"), jsonObject.getString("eventDescription"), jsonObject.getString("place") ,  jsonObject.getInt("price"),
-                        jsonObject.getString("eventType"), jsonObject.getInt("maxAttendance"), jsonObject.getBoolean("privateEvent")));
+                        jsonObject.getString("eventType"), jsonObject.getInt("maxAttendance"), jsonObject.getBoolean("privateEvent"), jsonObject.getString("imageBase64")));
             }
         } catch (JSONException e) {
             e.printStackTrace();

@@ -149,16 +149,17 @@ public class CreateEventInviteFriendsActivity extends AppCompatActivity implemen
         ArrayList<Profile> markedFriends = getMarkedFriends();
         createEventInviteFriendsPresenter.sendInvites(markedFriends, eventID);
 
-        goToPreviewAgainActivity();
+        goToPreviewAgainActivity(markedFriends);
     }
 
-    public void goToPreviewAgainActivity(){
+    public void goToPreviewAgainActivity(ArrayList<Profile> invitedFriends){
         Intent goToPreviewAgainActivityIntent = new Intent(CreateEventInviteFriendsActivity.this, CreateEventPreviewActivity.class);
 
         goToPreviewAgainActivityIntent.putExtra("EVENT_ID", eventID);
         goToPreviewAgainActivityIntent.putExtra("EVENT_NAME", eventName);
         goToPreviewAgainActivityIntent.putExtra("imageBase64", imageBase64);
         goToPreviewAgainActivityIntent.putExtra("eventDescription", eventDescription);
+        goToPreviewAgainActivityIntent.putExtra("invitedFriends", invitedFriends);
         CreateEventInviteFriendsActivity.this.startActivity(goToPreviewAgainActivityIntent);
 
 

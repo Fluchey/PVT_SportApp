@@ -16,8 +16,9 @@ public class Event {
     private String eventType;
     private int maxAttendance;
     private boolean privateEvent;
+    private String imageBase64;
 
-    public Event(int id, String eventName, String eventDate, String startTime, String endTime, String eventDescription, String placeName, int price, String eventType, int maxAttendance, boolean privateEvent) {
+    public Event(int id, String eventName, String eventDate, String startTime, String endTime, String eventDescription, String placeName, int price, String eventType, int maxAttendance, boolean privateEvent, String imageBase64) {
         this.id = id;
         this.eventName = eventName;
         this.eventDate = eventDate;
@@ -29,6 +30,7 @@ public class Event {
         this.eventType = eventType;
         this.maxAttendance = maxAttendance;
         this.privateEvent = privateEvent;
+        this.imageBase64 = imageBase64;
     }
 
     public Event() {
@@ -121,5 +123,9 @@ public class Event {
 
     public void setPrivateEvent(boolean privateEvent) {
         this.privateEvent = privateEvent;
+    }
+
+    public String getImageBase64() {
+        return imageBase64;
     }
 }

@@ -23,4 +23,6 @@ public interface UserAreaRequest {
     HashMap<Integer, String> getCreator();
 
     HashMap<Integer, String> getPlaceName();
+
+    ArrayList<String> getEventImages();
 }
