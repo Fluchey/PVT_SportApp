@@ -1,4 +1,5 @@
 package com.sportify.login.presenter;
+
 import android.content.SharedPreferences;
 import android.util.Log;
 import android.util.Patterns;
@@ -93,38 +94,43 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
 
 
     /**
-     * @param params
-     *        params[0] = Json Body text
-     *        params[1] = ResponseCode (200,201..)
+     * @param params params[0] = Json Body text
+     *               params[1] = ResponseCode (200,201..)
      */
     @Override
     public void showApiResponse(String... params) {
         loginView.closeProgressDialog();
         /* response code 200 maps to successful login and 201 to facebookLogin */
-        Log.d(TAG, "LoginPresenterImpl.showApiResponse(params[1]) " + params[1]);
-        if (params[1].equals("200") || params[1].equals("201")){
-            if (facebookNewUser(params)){
-                int profileID = -1;
-                try {
-                    JSONObject json = new JSONObject(params[0]);
-                    profileID = json.getInt("profileID");
-                    SharedPreferences.Editor editor = sharedPref.edit();
-                    editor.putInt("profileID", profileID).apply();
-                } catch (JSONException e) {
-                    e.printStackTrace();
+        try {
+            Log.d(TAG, "LoginPresenterImpl.showApiResponse(params[1]) " + params[1]);
+            if (params[1].equals("200") || params[1].equals("201")) {
+                if (facebookNewUser(params)) {
+                    int profileID = -1;
+                    try {
+                        JSONObject json = new JSONObject(params[0]);
+                        profileID = json.getInt("profileID");
+                        SharedPreferences.Editor editor = sharedPref.edit();
+                        editor.putInt("profileID", profileID).apply();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    Log.d(TAG, "profileID IF facebookNewUser" + profileID);
+                    loginView.launchProfileActivity(profileID);
+                } else {
+                    saveToPreferences(params);
+                    loginView.launchUserActivity();
                 }
-                Log.d(TAG, "profileID IF facebookNewUser" + profileID);
-                loginView.launchProfileActivity(profileID);
             } else {
-                saveToPreferences(params);
-                loginView.launchUserActivity();
+                loginView.showApiRequestMessage(params[0]);
             }
-        }else{
-            loginView.showApiRequestMessage(params[0]);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            //TODO: show error message to user that no response from server was received
+            //Added this to stop APP from crashing
         }
     }
 
-    private boolean facebookNewUser(String... params){
+    private boolean facebookNewUser(String... params) {
         JSONObject json = null;
         Boolean facebookNewUser = false;
         try {
@@ -147,15 +153,14 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
         String dateOfBirth = "";
         String userBio = "";
         String interestsString = "";
-        String imageBase64 ="";
-
+        String imageBase64 = "";
 
 
         JSONObject json = null;
         try {
             json = new JSONObject(params[0]);
             jwt = json.getString("JWT");
-            if (params[1].equals("201")){
+            if (params[1].equals("201")) {
                 fbTokenLong = json.getString("fbTokenLong");
             }
             profileID = json.getInt("profileID");
@@ -183,9 +188,11 @@ public class LoginPresenterImpl implements LoginPresenter, LoginRequest.OnLoginA
             editor.putString("jwt", jwt);
             editor.putInt("profileID", profileID);
 
-            if (fbTokenLong!=null) {editor.putString("facebook", fbTokenLong);}
+            if (fbTokenLong != null) {
+                editor.putString("facebook", fbTokenLong);
+            }
             editor.apply();
-            Log.d(TAG, "From preferences file below." );
+            Log.d(TAG, "From preferences file below.");
             Log.d(TAG, "jwt: " + sharedPref.getString("jwt", ""));
             Log.d(TAG, "facebook: " + sharedPref.getString("facebook", ""));
             Log.d(TAG, "firstname: " + sharedPref.getString("firstName", ""));

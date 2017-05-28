@@ -13,6 +13,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.AccessToken;
+import com.facebook.share.model.ShareOpenGraphAction;
+import com.facebook.share.model.ShareOpenGraphContent;
+import com.facebook.share.model.ShareOpenGraphObject;
+import com.facebook.share.widget.ShareDialog;
 import com.sportify.editEvent.activity.activity.EditEventActivity;
 import com.sportify.eventArea.presenter.EventAreaPresenter;
 import com.sportify.eventArea.presenter.EventAreaPresenterImpl;
@@ -59,6 +63,10 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
     private String eventName;
 //    private String placeName;
 
+    private ShareOpenGraphObject object;
+    private ShareOpenGraphAction action;
+    private ShareOpenGraphContent content;
+
 
 
     @Override
@@ -88,6 +96,7 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
         interestedRb = (RadioButton) findViewById(R.id.interestedRadioButton);
         comingRb = (RadioButton) findViewById(R.id.comingRadioButton);
         notComingRb = (RadioButton) findViewById(R.id.notComingRadioButton);
+
     }
 
 
@@ -125,7 +134,7 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
 
     @Override
     public String getEventName() {
-        return eventName;
+        return eventNameTv.getText().toString();
     }
 
     @Override
@@ -255,12 +264,47 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
         }
     }
 
+
     public void shareToFacebook(View v){
         AccessToken accessToken = AccessToken.getCurrentAccessToken();
         if (accessToken==null || accessToken.isExpired()){
             Toast.makeText(this, "Fel: Du har inte loggat in med Facebook", Toast.LENGTH_LONG).show();
         } else {
-            presenter.shareEventToFacebook();
+            // Format the date into for example: 30/05
+            StringBuilder date = new StringBuilder(eventDate.subSequence(8,10) + "/" + eventDate.subSequence(5,7));
+            // Format the date into for example: 30/5
+            if (date.charAt(3)=='0') date.deleteCharAt(3);
+
+            // Create an object
+            this.object = new ShareOpenGraphObject.Builder()
+                    .putString("og:type", "object")
+                    .putString("og:title", eventName + " " + date)
+                    .putString("og:description", description + "\n"
+                            + startTime.subSequence(0,5) + " @" + place.getName())
+
+
+//                            + place.getLat() + place.getLon()
+
+
+                    .putString("og:image", "http://drive.google.com/uc?export=view&id=0B9pMqKohmtD4bm9XbXIxTGJpQkk")
+                    .putString("og:url", "http://maps.google.com/?q=Stockholm+" + place.getName().replaceAll("\\s+",""))
+                    .build();
+
+            // Create an action
+            this.action = new ShareOpenGraphAction.Builder()
+                    .setActionType("og.likes")
+                    .putObject("object", object)
+                    .build();
+
+            // Create the content
+            this.content = new ShareOpenGraphContent.Builder()
+                    .setPreviewPropertyName("object")
+                    .setAction(action)
+                    .build();
+
+            // Launch Facebook Hodoo
+            ShareDialog.show(this, content);
+
         }
     }
 }
