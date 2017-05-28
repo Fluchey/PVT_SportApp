@@ -267,10 +267,9 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
 
 
     public void shareToFacebook(View v){
-        AccessToken accessToken = AccessToken.getCurrentAccessToken();
-        if (accessToken==null || accessToken.isExpired()){
-            Toast.makeText(this, "Fel: Du har inte loggat in med Facebook", Toast.LENGTH_LONG).show();
-        } else {
+//        AccessToken accessToken = AccessToken.getCurrentAccessToken();
+//        if (accessToken==null || accessToken.isExpired()){
+
             // Format the date into for example: 30/05
             StringBuilder date = new StringBuilder(eventDate.subSequence(8,10) + "/" + eventDate.subSequence(5,7));
             // Format the date into for example: 30/5
@@ -282,13 +281,8 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
                     .putString("og:title", eventName + " " + date)
                     .putString("og:description", description + "\n"
                             + startTime.subSequence(0,5) + " @" + place.getName())
-
-
-//                            + place.getLat() + place.getLon()
-
-
                     .putString("og:image", "http://drive.google.com/uc?export=view&id=0B9pMqKohmtD4bm9XbXIxTGJpQkk")
-                    .putString("og:url", "http://maps.google.com/?q=Stockholm+" + place.getName().replaceAll("\\s+",""))
+                    .putString("og:url", "http://maps.google.com/?q=Stockholm+" + place.getName().replaceAll("\\s+","+"))
                     .build();
 
             // Create an action
@@ -305,7 +299,5 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
 
             // Launch Facebook Hodoo
             ShareDialog.show(this, content);
-
-        }
     }
 }
