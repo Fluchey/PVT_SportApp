@@ -225,7 +225,8 @@
                 android:layout_height="650dp"
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="10dp"
-                android:layout_alignParentTop="true" />
+                android:layout_alignParentTop="true"
+                android:clickable="false"/>
 
         </RelativeLayout>
     </ScrollView>

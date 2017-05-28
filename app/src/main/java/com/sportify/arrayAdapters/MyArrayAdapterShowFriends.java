@@ -1,6 +1,7 @@
 package com.sportify.arrayAdapters;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,7 +45,16 @@ public class MyArrayAdapterShowFriends extends ArrayAdapter {
         final TextView friendName = (TextView) row.findViewById(R.id.tvFriend);
 
         ImageView imageView = (ImageView) row.findViewById(R.id.profilePicture);
-        imageView.setImageResource(friends.get(position).getProfilePicture());
+
+        String imageBase64 = friends.get(position).getProfilePicture();
+        System.out.println("Profilbild " + imageBase64);
+
+        if (!imageBase64.isEmpty()) {
+            Bitmap bitmap = com.sportify.util.Profile.decodeStringToBitmap(imageBase64);
+            imageView.setImageBitmap(bitmap);
+        }
+
+//        imageView.setImageResource(friends.get(position).getProfilePicture());
 
         friendName.setText(friends.get(position).toString());
 

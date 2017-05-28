@@ -11,14 +11,17 @@ public class Profile implements Serializable {
 
     private String firstname;
     private String lastname;
-    private int profilePicture;
+//    private int profilePicture;
+    private String profilePicture;
     private int profileID;
 
-    public Profile(String firstname, String lastname, int profilePicture, int profileID){
+    public Profile(String firstname, String lastname, String profilePicture, int profileID){
         this.firstname = firstname;
         this.lastname = lastname;
+//        this.profilePicture = profilePicture;
         this.profilePicture = profilePicture;
         this.profileID = profileID;
+
     }
 
     public String getFirstname(){
@@ -29,7 +32,7 @@ public class Profile implements Serializable {
         return Character.toUpperCase(lastname.charAt(0)) + lastname.substring(1);
     }
 
-    public int getProfilePicture(){
+    public String getProfilePicture(){
         return profilePicture;
     }
 

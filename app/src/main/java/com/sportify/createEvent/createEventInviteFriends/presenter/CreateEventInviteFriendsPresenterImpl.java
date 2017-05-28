@@ -3,18 +3,16 @@ package com.sportify.createEvent.createEventInviteFriends.presenter;
 import android.content.SharedPreferences;
 import android.util.Log;
 
-import com.sportify.showFriends.Profile;
 import com.sportify.createEvent.createEventInviteFriends.activity.CreateEventInviteFriendsView;
 import com.sportify.createEvent.createEventInviteFriends.request.CreateEventInviteFriendsRequest;
 import com.sportify.createEvent.createEventInviteFriends.request.CreateEventInviteFriendsRequestImpl;
+import com.sportify.showFriends.Profile;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-
-import sportapp.pvt_sportapp.R;
 
 /**
  * Created by Maja on 2017-04-27.
@@ -74,7 +72,12 @@ public class CreateEventInviteFriendsPresenterImpl implements CreateEventInviteF
                 String lastname = jsonObject.getString("lastname");
                 int profileID = jsonObject.getInt("profileID");
 
-                Profile friend = new Profile(firstname, lastname, R.drawable.userprofileimage, profileID);
+                String imageBase64 = jsonObject.getString("imageBase64");
+                if(imageBase64 == null || imageBase64.isEmpty()){
+                    imageBase64 = "";
+                }
+
+                Profile friend = new Profile(firstname, lastname, imageBase64, profileID);
 
                 friends.add(friend);
             }

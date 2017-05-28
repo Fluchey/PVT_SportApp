@@ -14,8 +14,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import sportapp.pvt_sportapp.R;
-
 /**
  * Created by Maja on 2017-05-05.
  */
@@ -71,7 +69,12 @@ public class ShowFriendsPresenterImpl implements ShowFriendsPresenter, ShowFrien
                 String lastName = jsonObject.getString("lastname");
                 int profileID = jsonObject.getInt("profileID");
 
-                Profile friend = new Profile(firstName, lastName, R.drawable.userprofileimage, profileID);
+                String imageBase64 = jsonObject.getString("imageBase64");
+                if(imageBase64 == null || imageBase64.isEmpty()){
+                    imageBase64 = "";
+                }
+
+                Profile friend = new Profile(firstName, lastName, imageBase64, profileID);
 
                 friends.add(friend);
             }
