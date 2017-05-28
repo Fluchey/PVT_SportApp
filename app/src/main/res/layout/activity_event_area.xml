@@ -47,22 +47,21 @@
         android:layout_centerHorizontal="true" />
 
 
-
+    <!--TODO: Lägg in någon annan bild som default?-->
     <ImageView
         android:id="@+id/eventImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/backUserAreaFromEvent"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="40dp"
+        android:layout_width="250dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="25dp"
         app:srcCompat="@drawable/userareaflowswim"
-        tools:ignore="ContentDescription" />
+        tools:ignore="ContentDescription"
+        android:layout_below="@+id/tvEventAreaCategory"
+        android:layout_alignParentStart="true" />
 
 
     <TextView
         android:id="@+id/tvEventAreaPlaceText"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/eventImage"
         android:layout_below="@+id/eventImage"
@@ -72,7 +71,7 @@
 
     <TextView
         android:id="@+id/tvEventAreaHostName"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/eventImage"
         android:layout_marginStart="70dp"
@@ -82,7 +81,7 @@
 
     <TextView
         android:id="@+id/tvEventAreaStartTime"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignTop="@+id/tvEventAreaPlaceText"
@@ -92,7 +91,7 @@
 
     <TextView
         android:id="@+id/tvEventAreaEndTime"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/tvEventAreaStartTime"
@@ -101,19 +100,16 @@
 
     <TextView
         android:id="@+id/tvEventAreaPrice"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/tvEventAreaEndTime"
         android:text="@string/event_area_price"
         android:textSize="@dimen/standardSmallerTextSize" />
 
-
-
-
     <TextView
         android:id="@+id/tvMaxAtt"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvEventAreaDate"
         android:layout_centerHorizontal="true"
@@ -122,7 +118,7 @@
 
     <TextView
         android:id="@+id/tvEventAreaDate"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/tvEventAreaHostName"
         android:layout_below="@+id/tvEventAreaHostName"

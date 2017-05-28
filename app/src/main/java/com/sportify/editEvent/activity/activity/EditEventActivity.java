@@ -35,6 +35,7 @@ import com.sportify.editEvent.activity.presenter.EditEventPresenterImpl;
 import com.sportify.eventArea.activity.EventAreaActivity;
 import com.sportify.storage.Place;
 import com.sportify.userArea.activity.UserAreaActivity;
+import com.sportify.util.Profile;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -52,6 +53,7 @@ public class EditEventActivity extends AppCompatActivity implements EditEventVie
     String imgDecodableString;
     ImageButton eventPicture;
     boolean customImage;
+    String imageBase64;
 
     /**
      * CONNECTIONS
@@ -262,12 +264,10 @@ public class EditEventActivity extends AppCompatActivity implements EditEventVie
         Bundle bundle = getIntent().getExtras();
         this.eventID = (bundle.getInt("eventId"));
         eventName.setText(bundle.getString("eventName"));
-//        eventPlace.setText(bundle.getString("place"));
         Place p = (Place) getIntent().getSerializableExtra("place");
         eventPlace.setText(p.getName());
         userWroteSearch = false;
 
-        //TODO: StartDate, endDate, startTime, endTime
         eventDate.setText(bundle.getString("eventDate"));
         eventStartTime.setText(bundle.getString("startTime"));
         eventEndTime.setText(bundle.getString("endTime"));
@@ -286,8 +286,9 @@ public class EditEventActivity extends AppCompatActivity implements EditEventVie
         eventPrivate.setChecked(bundle.getBoolean("privateEvent"));
 
         eventDescription.setText(bundle.getString("description"));
-//        eventMaxAttendance.setText(bundle.getInt("maxAttendance"));
 
+        imageBase64 = bundle.getString("eventImage");
+        setEventImage(imageBase64);
     }
 
     @Override
@@ -372,6 +373,14 @@ public class EditEventActivity extends AppCompatActivity implements EditEventVie
     @Override
     public boolean getPrivateEvent() {
         return eventPrivate.isChecked();
+    }
+
+    @Override
+    public void setEventImage(String imageBase64) {
+        if(!imageBase64.isEmpty()){
+            Bitmap image = Profile.decodeStringToBitmap(imageBase64);
+            eventPicture.setImageBitmap(image);
+        }
     }
 
     @Override
@@ -499,7 +508,6 @@ public class EditEventActivity extends AppCompatActivity implements EditEventVie
 
     @Override
     public void eventPictureButtonClick(View v) {
-        //TODO: REMOVE profilePresenter.addProfilePicture();
         if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
 
@@ -529,6 +537,11 @@ public class EditEventActivity extends AppCompatActivity implements EditEventVie
         ImageButton eventImage = (ImageButton) findViewById(R.id.imageButton3);
         Bitmap image = ((BitmapDrawable) eventImage.getDrawable()).getBitmap();
         return image;
+    }
+
+    @Override
+    public String getImageBase64() {
+        return imageBase64;
     }
 
     @Override
@@ -568,7 +581,6 @@ public class EditEventActivity extends AppCompatActivity implements EditEventVie
                 Bitmap image = bitmap.createScaledBitmap(bitmap, image_width, image_height, false); //scale the image
 
                 eventPicture.setImageBitmap(image);
-                //TODO: a check for which way the image is rotated would be elegant
                 customImage = true;
 
             } else {

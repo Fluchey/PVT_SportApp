@@ -32,6 +32,8 @@ public class CreateEventInviteFriendsActivity extends AppCompatActivity implemen
     private SharedPreferences sharedPref;
     private int eventID;
     private String eventName;
+    String imageBase64;
+    String eventDescription;
 
     /**
      *  ArrayAdapter to friend list
@@ -54,6 +56,9 @@ public class CreateEventInviteFriendsActivity extends AppCompatActivity implemen
         if(extras != null){
             eventID = extras.getInt("EVENT_ID");
             eventName = extras.getString("EVENT_NAME");
+            imageBase64 = extras.getString("imageBase64");
+            eventDescription = extras.getString("eventDescription");
+
         }
 
         sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
@@ -131,7 +136,6 @@ public class CreateEventInviteFriendsActivity extends AppCompatActivity implemen
 
     @Override
     public ArrayList<Profile> getMarkedFriends() {
-        //TODO: Se till att vännerna blir inbjudna till eventet
         return myArrayAdapter.getMarkedFriends();
     }
 
@@ -153,6 +157,8 @@ public class CreateEventInviteFriendsActivity extends AppCompatActivity implemen
 
         goToPreviewAgainActivityIntent.putExtra("EVENT_ID", eventID);
         goToPreviewAgainActivityIntent.putExtra("EVENT_NAME", eventName);
+        goToPreviewAgainActivityIntent.putExtra("imageBase64", imageBase64);
+        goToPreviewAgainActivityIntent.putExtra("eventDescription", eventDescription);
         CreateEventInviteFriendsActivity.this.startActivity(goToPreviewAgainActivityIntent);
 
 

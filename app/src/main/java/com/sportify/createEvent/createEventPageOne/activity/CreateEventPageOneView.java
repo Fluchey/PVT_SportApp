@@ -18,6 +18,7 @@ public interface CreateEventPageOneView {
     /**
      * GETTERS
      */
+    Bitmap getEventImage();
     String getEventName();
     String getEventPlace();
     String getEventPlaceId();
@@ -54,8 +55,6 @@ public interface CreateEventPageOneView {
     void setEventID(int eventID);
 
     void eventPictureButtonClick(View v);
-
-    Bitmap getEventImage();
 
     Boolean userSelectedImage();
 }

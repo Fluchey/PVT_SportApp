@@ -15,6 +15,8 @@ public class CreateEventBeforeInviteFriendsActivity extends AppCompatActivity {
 
     private int eventID;
     private String eventName;
+    private String imageBase64;
+    private String eventDescription;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,8 @@ public class CreateEventBeforeInviteFriendsActivity extends AppCompatActivity {
         if(extras != null){
             eventID = extras.getInt("EVENT_ID");
             eventName = extras.getString("EVENT_NAME");
+            imageBase64 = extras.getString("imageBase64");
+            eventDescription = extras.getString("eventDescription");
         }
     }
 
@@ -32,6 +36,8 @@ public class CreateEventBeforeInviteFriendsActivity extends AppCompatActivity {
         Intent goToPreviewActivityIntent = new Intent(CreateEventBeforeInviteFriendsActivity.this, CreateEventPreviewActivity.class);
         goToPreviewActivityIntent.putExtra("EVENT_ID", eventID);
         goToPreviewActivityIntent.putExtra("EVENT_NAME", eventName);
+        goToPreviewActivityIntent.putExtra("imageBase64", imageBase64);
+        goToPreviewActivityIntent.putExtra("eventDescription", eventDescription);
         CreateEventBeforeInviteFriendsActivity.this.startActivity(goToPreviewActivityIntent);
     }
 
@@ -41,6 +47,8 @@ public class CreateEventBeforeInviteFriendsActivity extends AppCompatActivity {
 
         goToInviteFriendsActivity.putExtra("EVENT_ID", eventID);
         goToInviteFriendsActivity.putExtra("EVENT_NAME", eventName);
+        goToInviteFriendsActivity.putExtra("imageBase64", imageBase64);
+        goToInviteFriendsActivity.putExtra("eventDescription", eventDescription);
         CreateEventBeforeInviteFriendsActivity.this.startActivity(goToInviteFriendsActivity);
     }
 
@@ -49,6 +57,9 @@ public class CreateEventBeforeInviteFriendsActivity extends AppCompatActivity {
         CreateEventBeforeInviteFriendsActivity.this.startActivity(goToCreateActivity);
 
         goToCreateActivity.putExtra("EVENT_ID", eventID);
+        goToCreateActivity.putExtra("EVENT_NAME", eventName);
+        goToCreateActivity.putExtra("imageBase64", imageBase64);
+        goToCreateActivity.putExtra("eventDescription", eventDescription);
         CreateEventBeforeInviteFriendsActivity.this.startActivity(goToCreateActivity);
     }
 }

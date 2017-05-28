@@ -38,7 +38,7 @@ public class CreateEventInviteFriendsPresenterImpl implements CreateEventInviteF
 
     @Override
     public void getFriendsMakeApiRequest() {
-        //TODO: Skickar nu bara tomt Json för att jag inte får GET att funka, gör fortf med POST i Heroku.
+        //TODO: Skickar nu bara tomt Json för att jag inte får GET att funka, kör fortf med POST i Heroku.
         createEventInviteFriendsRequest.makeApiRequest("findfriends", "POST", "{}");
     }
 

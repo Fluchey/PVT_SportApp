@@ -3,15 +3,18 @@ package com.sportify.createEvent.createEventPreview.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sportify.createEvent.createEventPreview.presenter.CreateEventPreviewPresenter;
 import com.sportify.createEvent.createEventPreview.presenter.CreateEventPreviewPresenterImpl;
 import com.sportify.userArea.activity.UserAreaActivity;
+import com.sportify.util.Profile;
 
 import sportapp.pvt_sportapp.R;
 
@@ -21,8 +24,13 @@ public class CreateEventPreviewActivity extends AppCompatActivity implements Cre
     SharedPreferences sharedPref;
     private int eventID;
     private String eventName = "";
+    private String eventDescription;
+
 
     private TextView eventNameTv;
+    private TextView eventDescriptionTv;
+    private ImageView eventImage;
+    private ImageView userProfilePicture;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,14 +41,29 @@ public class CreateEventPreviewActivity extends AppCompatActivity implements Cre
         previewPresenter = new CreateEventPreviewPresenterImpl(this, sharedPref);
 
         eventNameTv = (TextView) findViewById(R.id.tvEventName);
+        eventDescriptionTv = (TextView) findViewById(R.id.tvEventDescriptionPreview);
+        eventImage = (ImageView) findViewById(R.id.ivEventPicture);
 
         Bundle extras = getIntent().getExtras();
+        String eventImageBase64 = "";
         if(extras != null){
             eventID = extras.getInt("EVENT_ID");
             eventName = extras.getString("EVENT_NAME");
+            eventImageBase64 = extras.getString("imageBase64");
+            eventDescription = extras.getString("eventDescription");
+
         }
 
         eventNameTv.setText(eventName);
+        setEventImage(eventImageBase64);
+        eventDescriptionTv.setText(eventDescription);
+
+        String imageBase64 = sharedPref.getString("imageBase64", "");
+        userProfilePicture = (ImageView) findViewById(R.id.ivProfilePicture);
+        if (!imageBase64.isEmpty()) {
+            Bitmap bitmap = Profile.decodeStringToBitmap(imageBase64);
+            userProfilePicture.setImageBitmap(bitmap);
+        }
     }
 
     @Override
@@ -50,7 +73,6 @@ public class CreateEventPreviewActivity extends AppCompatActivity implements Cre
         CreateEventPreviewActivity.this.startActivity(goToUserAreaIntent);
     }
 
-    //TODO: Koppla denna så eventet tas bort
     public void deleteEvent(View v){
         previewPresenter.deleteEvent(eventID);
     }
@@ -62,5 +84,12 @@ public class CreateEventPreviewActivity extends AppCompatActivity implements Cre
     @Override
     public void showToastToUser(String message) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+    }
+
+    private void setEventImage(String imageBase64){
+        if(!imageBase64.isEmpty()){
+            Bitmap image = Profile.decodeStringToBitmap(imageBase64);
+            eventImage.setImageBitmap(image);
+        }
     }
 }
