@@ -8,7 +8,6 @@ import android.support.test.runner.AndroidJUnit4;
 import com.sportify.login.activity.LoginActivity;
 import com.sportify.mainPage.activity.MainPageActivity;
 
-import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -132,7 +131,7 @@ public class LoginTest {
         onView(withText("OK")).perform(click());
         onView(withId(R.id.etEventPrice)).perform(typeText("1337"), closeSoftKeyboard());
         onView(withId(R.id.etEventType)).perform(click());
-        onView(withText("Simhall")).perform(click());
+        onView(withText("Simhall")).perform(click(), closeSoftKeyboard());
 //        onView(withId(R.id.Next)).perform(click());
         onView(withText(R.string.event_realnext)).perform(click());
         Espresso.pressBack();

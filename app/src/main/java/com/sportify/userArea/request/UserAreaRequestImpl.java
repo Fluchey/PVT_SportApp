@@ -10,9 +10,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.sql.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 
 /**
@@ -25,6 +23,7 @@ public class UserAreaRequestImpl implements UserAreaRequest {
     private ArrayList<Event> events;
     private HashMap<Integer, String> creator;
     private HashMap<Integer, String> placeName;
+    private ArrayList<String> eventImages;
 
     public UserAreaRequestImpl(String token, OnRequestFinishedListener listener){
         this.token = token;
@@ -32,6 +31,7 @@ public class UserAreaRequestImpl implements UserAreaRequest {
         events = new ArrayList<>();
         creator = new HashMap<>();
         placeName = new HashMap<>();
+        eventImages = new ArrayList<>();
     }
 
     @Override
@@ -65,12 +65,18 @@ public class UserAreaRequestImpl implements UserAreaRequest {
                         jsonObject.getInt("price"),
                         jsonObject.getString("eventType"),
                         jsonObject.getInt("maxAttendance"),
-                        jsonObject.getBoolean("privateEvent")));
+                        jsonObject.getBoolean("privateEvent"),
+                        jsonObject.getString("imageBase64")));
 
                 creator.put(jsonObject.getInt("eventId"), (jsonObject.getString("creatorFirstName") + " " + jsonObject.getString("creatorLastName")));
 
                 placeName.put(jsonObject.getInt("eventId"), jsonObject.getString("placeName"));
 
+//                String imageBase64 = "No Image";
+//                if(!jsonObject.getString("imageBase64").isEmpty()) {
+//                    imageBase64 = jsonObject.getString("imageBase64");
+//                }
+                eventImages.add(jsonObject.getString("imageBase64"));
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -94,6 +100,11 @@ public class UserAreaRequestImpl implements UserAreaRequest {
     @Override
     public HashMap<Integer, String> getPlaceName() {
         return placeName;
+    }
+
+    @Override
+    public ArrayList<String> getEventImages() {
+        return eventImages;
     }
 
     private class ApiRequest extends AsyncTask<String, UserAreaRequestImpl, Void> {

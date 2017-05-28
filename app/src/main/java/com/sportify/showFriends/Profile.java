@@ -1,11 +1,13 @@
 package com.sportify.showFriends;
 
+import java.io.Serializable;
+
 /**
  * Created by Maja on 2017-05-03.
  */
 
 
-public class Profile {
+public class Profile implements Serializable {
 
     private String firstname;
     private String lastname;

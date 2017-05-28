@@ -5,6 +5,7 @@ package com.sportify.userArea;
  */
 
 import android.app.Activity;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +14,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.sportify.storage.Event;
+import com.sportify.util.Profile;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import sportapp.pvt_sportapp.R;
@@ -23,18 +26,18 @@ public class CustomList extends ArrayAdapter<String> {
     private final Activity context;
     private final String[] eventName;
     private final Event[] events;
-    private final Integer[] imageId;
+    private ArrayList<String> imageBase64Array;
     HashMap<Integer, String> creator;
     HashMap<Integer, String> placeName;
 
-    public CustomList(Activity context, String[] web, Event[] events, HashMap<Integer, String> creator, HashMap<Integer, String> placeName, Integer[] imageId) {
+    public CustomList(Activity context, String[] web, Event[] events, HashMap<Integer, String> creator, HashMap<Integer, String> placeName, ArrayList<String> imageBase64Array) {
         super(context, R.layout.user_area_list_item, web);
         this.context = context;
         this.eventName = web;
         this.events = events;
-        this.imageId = imageId;
         this.creator = creator;
         this.placeName = placeName;
+        this.imageBase64Array = imageBase64Array;
     }
 
     @Override
@@ -52,7 +55,13 @@ public class CustomList extends ArrayAdapter<String> {
         eventPlace.setText(this.placeName.get(this.events[position].getId()));
         eventDate.setText(this.events[position].getDate());
 
-        imageView.setImageResource(imageId[1]);
+
+        String imageBase64 = imageBase64Array.get(position);
+
+        if (!imageBase64.isEmpty()) {
+            Bitmap bitmap = Profile.decodeStringToBitmap(imageBase64);
+            imageView.setImageBitmap(bitmap);
+        }
         return rowView;
     }
 }

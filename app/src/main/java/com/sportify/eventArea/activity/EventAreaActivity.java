@@ -125,7 +125,6 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
         EventAreaActivity.this.startActivity(goToEditEventViewIntent);
     }
 
-
     @Override
     public void setEventName(String eventName) {
         this.eventNameTv.setText(eventName);

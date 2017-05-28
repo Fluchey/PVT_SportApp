@@ -43,15 +43,6 @@ public class UserAreaActivity extends AppCompatActivity implements UserAreaView 
     private ImageView userProfilePicture;
 
     ListView list;
-    Integer[] imageId = {
-            R.drawable.userareaflowswim,
-            R.drawable.userareaflowswim,
-            R.drawable.userareaflowswim,
-            R.drawable.userareaflowswim,
-            R.drawable.userareaflowswim,
-            R.drawable.userareaflowswim,
-            R.drawable.userareaflowswim,
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -159,14 +150,15 @@ public class UserAreaActivity extends AppCompatActivity implements UserAreaView 
     }
 
     @Override
-    public void showEvents(ArrayList<Event> events, HashMap<Integer, String> creator, HashMap<Integer, String> placeName) {
+    public void showEvents(ArrayList<Event> events, HashMap<Integer, String> creator, HashMap<Integer, String> placeName, ArrayList<String> eventImage) {
         ArrayList<String> eventNames = new ArrayList<>();
         for(Event e: events){
             eventNames.add(e.getEventName());
         }
         String[] nameArr = eventNames.toArray(new String[0]);
         Event[] eventArr = events.toArray(new Event[0]);
-        CustomList adapter = new CustomList(UserAreaActivity.this, nameArr, eventArr, creator, placeName, imageId);
+        ArrayList<String> eventImages = eventImage;
+        CustomList adapter = new CustomList(UserAreaActivity.this, nameArr, eventArr, creator, placeName, eventImages);
         list = (ListView) findViewById(R.id.userAreaEventList);
         list.setAdapter(adapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
