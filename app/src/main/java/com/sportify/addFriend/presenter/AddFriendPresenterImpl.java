@@ -74,12 +74,11 @@ public class AddFriendPresenterImpl implements AddFriendPresenter, AddFriendRequ
             return;
         }
 
-        try{
-            friends = new ArrayList<>();
+        friends = new ArrayList<>();
 
-            System.out.println("Arraylängd " + array.length());
-            for(int i=0; i < array.length(); i++){
-                //TODO: Funkar bara om namn+efternamn inte är null
+        for(int i=0; i < array.length(); i++) {
+            try {
+                //TODO: Hoppar över användare som har efternamn/förnamn som är null
                 JSONObject jsonObject = array.getJSONObject(i);
 
                 String firstName = jsonObject.getString("firstname");
@@ -87,16 +86,16 @@ public class AddFriendPresenterImpl implements AddFriendPresenter, AddFriendRequ
                 String lastName = jsonObject.getString("lastname");
 
                 String imageBase64 = jsonObject.getString("imageBase64");
-                if(imageBase64 == null || imageBase64.isEmpty()){
+                if (imageBase64 == null || imageBase64.isEmpty()) {
                     imageBase64 = "";
                 }
 
                 Profile friend = new Profile(firstName, lastName, imageBase64, profileID);
-                System.out.println("Vän läggs till ");
                 friends.add(friend);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
-        }catch(JSONException e){
-            e.printStackTrace();
         }
     }
 

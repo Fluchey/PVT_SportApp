@@ -11,14 +11,12 @@ public class Profile implements Serializable {
 
     private String firstname;
     private String lastname;
-//    private int profilePicture;
     private String profilePicture;
     private int profileID;
 
     public Profile(String firstname, String lastname, String profilePicture, int profileID){
         this.firstname = firstname;
         this.lastname = lastname;
-//        this.profilePicture = profilePicture;
         this.profilePicture = profilePicture;
         this.profileID = profileID;
 

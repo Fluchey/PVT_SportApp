@@ -1,12 +1,9 @@
 package com.sportify.showFriends.presenter;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.util.Log;
 
-import com.sportify.friendprofile.activity.FriendprofileActivity;
 import com.sportify.showFriends.Profile;
-import com.sportify.showFriends.activity.ShowFriendsActivity;
 import com.sportify.showFriends.activity.ShowFriendsView;
 import com.sportify.showFriends.request.ShowFriendsRequest;
 import com.sportify.showFriends.request.ShowFriendsRequestImpl;
@@ -62,26 +59,26 @@ public class ShowFriendsPresenterImpl implements ShowFriendsPresenter, ShowFrien
             return;
         }
 
-        try{
-            friends = new ArrayList<>();
 
-            for(int i=0; i < array.length(); i++){
+        friends = new ArrayList<>();
+        for(int i=0; i < array.length(); i++) {
+            try {
                 JSONObject jsonObject = array.getJSONObject(i);
                 String firstName = jsonObject.getString("firstname");
                 String lastName = jsonObject.getString("lastname");
                 int profileID = jsonObject.getInt("profileID");
 
                 String imageBase64 = jsonObject.getString("imageBase64");
-                if(imageBase64 == null || imageBase64.isEmpty()){
+                if (imageBase64 == null || imageBase64.isEmpty()) {
                     imageBase64 = "";
                 }
 
                 Profile friend = new Profile(firstName, lastName, imageBase64, profileID);
-
                 friends.add(friend);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
-        }catch(JSONException e){
-            e.printStackTrace();
         }
     }
 

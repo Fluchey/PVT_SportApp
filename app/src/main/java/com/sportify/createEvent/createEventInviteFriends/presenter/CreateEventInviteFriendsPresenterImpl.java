@@ -61,28 +61,29 @@ public class CreateEventInviteFriendsPresenterImpl implements CreateEventInviteF
             return;
         }
 
-        try{
-            friends = new ArrayList<>();
 
-            for(int i=0; i < array.length(); i++){
+        friends = new ArrayList<>();
 
+        for(int i=0; i < array.length(); i++) {
+            try {
                 JSONObject jsonObject = array.getJSONObject(i);
                 String firstname = jsonObject.getString("firstname");
                 String lastname = jsonObject.getString("lastname");
                 int profileID = jsonObject.getInt("profileID");
 
                 String imageBase64 = jsonObject.getString("imageBase64");
-                if(imageBase64 == null || imageBase64.isEmpty()){
+                if (imageBase64 == null || imageBase64.isEmpty()) {
                     imageBase64 = "";
                 }
 
                 Profile friend = new Profile(firstname, lastname, imageBase64, profileID);
 
                 friends.add(friend);
-            }
 
-        }catch(JSONException e){
-            e.printStackTrace();
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
     }
 
