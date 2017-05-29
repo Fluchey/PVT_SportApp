@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 import com.sportify.addFriend.activity.AddFriendActivity;
 import com.sportify.arrayAdapters.MyArrayAdapterShowFriends;
 import com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOneActivity;
+import com.sportify.friendprofile.activity.FriendprofileActivity;
 import com.sportify.maps.activity.MapsActivity;
 import com.sportify.notifications.activity.NotificationActivity;
 import com.sportify.showFriends.Profile;
@@ -103,6 +105,14 @@ public class ShowFriendsActivity extends AppCompatActivity implements ShowFriend
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             }
         });
+
+        friendList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                int userId = friendArray.get((int) id).getProfileID();
+                toFriendProfile(userId);
+            }
+        });
     }
 
     @Override
@@ -141,9 +151,16 @@ public class ShowFriendsActivity extends AppCompatActivity implements ShowFriend
     }
 
     public void toSearchFriendsActivity(View view){
-
         Intent goToSearchFriendsactivityIntent = new Intent(ShowFriendsActivity.this, AddFriendActivity.class);
         ShowFriendsActivity.this.startActivity(goToSearchFriendsactivityIntent);
+    }
+
+    public void toFriendProfile(int userId){
+        Intent goToFriendProfileIntent = new Intent(ShowFriendsActivity.this, FriendprofileActivity.class);
+        Bundle b = new Bundle();
+        b.putInt("friendId", userId);
+        goToFriendProfileIntent.putExtras(b);
+        ShowFriendsActivity.this.startActivity(goToFriendProfileIntent);
     }
 }
 

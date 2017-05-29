@@ -45,7 +45,7 @@ public class FriendprofileActivity extends AppCompatActivity implements Friendpr
 
         Bundle b = getIntent().getExtras();
         if(b != null){
-            b.getInt("friendId");
+            friendId = b.getInt("friendId");
         } else friendId = -1;
     }
 
