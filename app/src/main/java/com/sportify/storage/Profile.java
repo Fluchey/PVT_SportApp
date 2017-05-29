@@ -16,11 +16,11 @@ public class Profile {
     private List<String> interests;
 
     private int id;
-    private int age;
+    private String age;
 
     private String picture;
 
-    public Profile(String firstname, String lastname, String description, List<String> interests, int id, int age, String picture){
+    public Profile(String firstname, String lastname, String description, List<String> interests, int id, String age, String picture){
         this.firstname = firstname;
         this.lastname = lastname;
         this.description = description;
@@ -50,7 +50,7 @@ public class Profile {
         return id;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 

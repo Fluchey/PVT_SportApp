@@ -1,15 +1,20 @@
 package com.sportify.friendprofile.request;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.sportify.placeReview.request.PlaceReviewRequest;
 import com.sportify.placeReview.request.PlaceReviewRequestImpl;
+import com.sportify.storage.Event;
 import com.sportify.storage.Profile;
 import com.sportify.util.Connector;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -22,9 +27,19 @@ public class FriendprofileRequestImpl implements FriendprofileRequest {
 
     private Profile profile;
 
+    private ArrayList<Event> events;
+    private HashMap<Integer, String> creator;
+    private HashMap<Integer, String> placeName;
+    private ArrayList<String> eventImages;
+
     public FriendprofileRequestImpl(final onRequestFinishedListener onRequestFinishedListener, String token) {
         this.onRequestFinishedListener = onRequestFinishedListener;
         this.token = token;
+
+        events = new ArrayList<>();
+        creator = new HashMap<>();
+        placeName = new HashMap<>();
+        eventImages = new ArrayList<>();
     }
 
     public void updateProfile(int userId){
@@ -48,15 +63,16 @@ public class FriendprofileRequestImpl implements FriendprofileRequest {
         List<String> interests = null;
         String image = "";
         int id = -1;
-        int age = -1;
+        String age = "";
 
         try {
             json = new JSONObject(jsonMessage);
             firstname = json.getString("firstName");
             lastname = json.getString("lastName");
             description = json.getString("userBio");
-            interests = (List) json.get("interests");
             image = json.getString("imageBase64");
+            interests = com.sportify.util.Profile.getInterestsListFromString(json.get("interests").toString());
+            age = json.getString("dateOfBirth");
 
             profile = new Profile(firstname, lastname, description, interests, id, age, image);
         } catch (JSONException e) {
@@ -64,8 +80,85 @@ public class FriendprofileRequestImpl implements FriendprofileRequest {
         }
     }
 
+    @Override
     public Profile getProfile(){
          return profile;
+    }
+
+    @Override
+    public ArrayList<Event> getEvents(){ return events; }
+
+    @Override
+    public void updateEvents(int userId){
+        JSONObject json = new JSONObject();
+        try {
+            json.put("profileID", userId);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        makeApiRequestPut(json.toString(), "geteventforuser", "PUT", "geteventforuser");
+    }
+    @Override
+    public void setEvents(String jsonMessage){
+        JSONObject json = null;
+        JSONArray eventArray = null;
+        try {
+            json = new JSONObject(jsonMessage);
+            eventArray = json.getJSONArray("events");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        if (json == null ||  eventArray == null) {
+            return;
+        }
+        try {
+            for (int i = 0; i < eventArray.length(); i++) {
+                JSONObject jsonObject = eventArray.getJSONObject(i);
+                events.add(new Event(jsonObject.getInt("eventId"),
+                        jsonObject.getString("name"),
+                        jsonObject.getString("eventDate"),
+                        jsonObject.getString("startTime"),
+                        jsonObject.getString("endTime"),
+                        jsonObject.getString("eventDescription"),
+                        jsonObject.getString("place"),
+                        jsonObject.getInt("price"),
+                        jsonObject.getString("eventType"),
+                        jsonObject.getInt("maxAttendance"),
+                        jsonObject.getBoolean("privateEvent"),
+                        jsonObject.getString("imageBase64")));
+
+                creator.put(jsonObject.getInt("eventId"), (jsonObject.getString("creatorFirstName") + " " + jsonObject.getString("creatorLastName")));
+
+                placeName.put(jsonObject.getInt("eventId"), jsonObject.getString("placeName"));
+
+//                String imageBase64 = "No Image";
+//                if(!jsonObject.getString("imageBase64").isEmpty()) {
+//                    imageBase64 = jsonObject.getString("imageBase64");
+//                }
+                eventImages.add(jsonObject.getString("imageBase64"));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        for(Event e: events){
+            Log.d("Event", e.getEventName());
+        }
+    }
+
+    @Override
+    public HashMap<Integer, String> getCreator() {
+        return creator;
+    }
+
+    @Override
+    public HashMap<Integer, String> getPlaceName() {
+        return placeName;
+    }
+
+    @Override
+    public ArrayList<String> getEventImages() {
+        return eventImages;
     }
 
     @Override

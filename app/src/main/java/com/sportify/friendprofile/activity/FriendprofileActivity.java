@@ -1,17 +1,27 @@
 package com.sportify.friendprofile.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import com.sportify.eventArea.activity.EventAreaActivity;
 import com.sportify.friendprofile.presenter.FriendprofilePresenter;
 import com.sportify.friendprofile.presenter.FriendprofilePresenterImpl;
+import com.sportify.storage.Event;
+import com.sportify.userArea.CustomList;
+import com.sportify.userArea.activity.UserAreaActivity;
 import com.sportify.util.Profile;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import sportapp.pvt_sportapp.R;
@@ -28,6 +38,8 @@ public class FriendprofileActivity extends AppCompatActivity implements Friendpr
     private TextView interestsView;
     private TextView descriptionView;
     private ImageView pictureView;
+    private ImageButton addButton;
+    private ListView eventList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,11 +54,15 @@ public class FriendprofileActivity extends AppCompatActivity implements Friendpr
         interestsView =(TextView) findViewById(R.id.tvFriendintressen);
         descriptionView = (TextView) findViewById(R.id.tvFriendDescription);
         pictureView = (ImageView) findViewById(R.id.ivProfilePicture);
+        addButton = (ImageButton) findViewById(R.id.ibAddFriend);
+        eventList = (ListView) findViewById(R.id.lvFriendEvents);
 
         Bundle b = getIntent().getExtras();
         if(b != null){
             friendId = b.getInt("friendId");
         } else friendId = -1;
+
+        presenter.updateInfo();
     }
 
     @Override
@@ -56,7 +72,7 @@ public class FriendprofileActivity extends AppCompatActivity implements Friendpr
     public void setNameView(String name) { nameView.setText(name);}
 
     @Override
-    public void setAgeView(String age) { ageView.setText(Profile.getAge(age));}
+    public void setAgeView(String age) { ageView.setText(Profile.getAge(age) + ""); }
 
     @Override
     public void setInterestsView(List<String> interests) {
@@ -70,7 +86,38 @@ public class FriendprofileActivity extends AppCompatActivity implements Friendpr
         interestsView.setText(formattedInterests);
     }
 
+    @Override
     public void setDescriptionView(String description) { descriptionView.setText(description);}
 
+    @Override
     public void setPictureView(String img) { pictureView.setImageBitmap(Profile.decodeStringToBitmap(img)); }
+
+    @Override
+    public void alreadyFriend(){
+        addButton.setImageBitmap(null);
+    }
+
+    @Override
+    public void showEvents(ArrayList<Event> events, HashMap<Integer, String> creator, HashMap<Integer, String> placeName, ArrayList<String> eventImage) {
+        ArrayList<String> eventNames = new ArrayList<>();
+        for(Event e: events){
+            eventNames.add(e.getEventName());
+        }
+        String[] nameArr = eventNames.toArray(new String[0]);
+        Event[] eventArr = events.toArray(new Event[0]);
+        ArrayList<String> eventImages = eventImage;
+        CustomList adapter = new CustomList(FriendprofileActivity.this, nameArr, eventArr, creator, placeName, eventImages);
+        eventList = (ListView) findViewById(R.id.lvFriendEvents);
+        eventList.setAdapter(adapter);
+        eventList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                Intent goToEventAreaIntent = new Intent(FriendprofileActivity.this, EventAreaActivity.class);
+                goToEventAreaIntent.putExtra("eventId", presenter.getEvents().get(position).getId());
+                FriendprofileActivity.this.startActivity(goToEventAreaIntent);
+            }
+        });
+    }
 }

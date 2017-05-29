@@ -3,6 +3,10 @@ package com.sportify.friendprofile.activity;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.sportify.storage.Event;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -17,4 +21,6 @@ public interface FriendprofileView {
     public void setInterestsView(List<String> interests);
     public void setDescriptionView(String description);
     public void setPictureView(String img);
+    public void alreadyFriend();
+    public void showEvents(ArrayList<Event> events, HashMap<Integer, String> creator, HashMap<Integer, String> placeName, ArrayList<String> eventImage);
 }
