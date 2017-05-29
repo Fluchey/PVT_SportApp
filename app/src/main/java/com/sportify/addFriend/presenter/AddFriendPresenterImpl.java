@@ -81,7 +81,6 @@ public class AddFriendPresenterImpl implements AddFriendPresenter, AddFriendRequ
             for(int i=0; i < array.length(); i++){
                 //TODO: Funkar bara om namn+efternamn inte är null
                 JSONObject jsonObject = array.getJSONObject(i);
-                //TODO: Byt ut facebook icon till profilbild
 
                 String firstName = jsonObject.getString("firstname");
                 int profileID = jsonObject.getInt("profileID");

@@ -259,7 +259,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView {
 
     @Override
     public void showProgressDialog() {
-        dialog.setMessage("Entering profile information, just a sec");
+        dialog.setMessage("Skapar profil");
         dialog.show();
     }
 

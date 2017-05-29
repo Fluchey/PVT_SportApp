@@ -65,7 +65,6 @@ public class CreateEventInviteFriendsPresenterImpl implements CreateEventInviteF
             friends = new ArrayList<>();
 
             for(int i=0; i < array.length(); i++){
-                //TODO: Byt ut facebook icon till profilbild
 
                 JSONObject jsonObject = array.getJSONObject(i);
                 String firstname = jsonObject.getString("firstname");

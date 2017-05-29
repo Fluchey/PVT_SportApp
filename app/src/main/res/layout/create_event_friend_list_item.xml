@@ -4,7 +4,6 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal">
 
-    <!--TODO: Ändra border color på denna checkbox-->
     <CheckBox
         android:id="@+id/checktest"
         android:buttonTint="@color/colorPrimaryDark"

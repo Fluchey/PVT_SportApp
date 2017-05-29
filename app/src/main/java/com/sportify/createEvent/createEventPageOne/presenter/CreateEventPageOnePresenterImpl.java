@@ -73,7 +73,6 @@ public class CreateEventPageOnePresenterImpl implements CreateEventPageOnePresen
         }else if(createEventPageOneView.getUserWroteSearch()){
             createEventPageOneView.showEventPlaceEmptyError(R.string.event_place_does_not_exist);
         }
-        //TODO: Lägg in slutdatum
         else if(eventDate.isEmpty()){
             createEventPageOneView.showEventDateEmptyError(R.string.event_date_empty_error);
         }

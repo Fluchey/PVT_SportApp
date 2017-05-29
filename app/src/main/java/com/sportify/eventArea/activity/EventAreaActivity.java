@@ -10,9 +10,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.facebook.AccessToken;
 import com.facebook.share.model.ShareOpenGraphAction;
 import com.facebook.share.model.ShareOpenGraphContent;
 import com.facebook.share.model.ShareOpenGraphObject;
@@ -20,6 +18,7 @@ import com.facebook.share.widget.ShareDialog;
 import com.sportify.editEvent.activity.activity.EditEventActivity;
 import com.sportify.eventArea.presenter.EventAreaPresenter;
 import com.sportify.eventArea.presenter.EventAreaPresenterImpl;
+import com.sportify.placearea.activity.PlaceAreaActivity;
 import com.sportify.storage.Place;
 import com.sportify.userArea.activity.UserAreaActivity;
 import com.sportify.util.Profile;
@@ -123,6 +122,13 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
 
 
         EventAreaActivity.this.startActivity(goToEditEventViewIntent);
+    }
+
+    public void goToPlaceArea(View v){
+        Intent goToPlaceAreaIntent = new Intent(EventAreaActivity.this, PlaceAreaActivity.class);
+
+        goToPlaceAreaIntent.putExtra("placeId", place.getId());
+        EventAreaActivity.this.startActivity(goToPlaceAreaIntent);
     }
 
     @Override

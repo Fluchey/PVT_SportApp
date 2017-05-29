@@ -67,7 +67,6 @@ public class ShowFriendsPresenterImpl implements ShowFriendsPresenter, ShowFrien
 
             for(int i=0; i < array.length(); i++){
                 JSONObject jsonObject = array.getJSONObject(i);
-                //TODO: Byt ut facebook icon till profilbild
                 String firstName = jsonObject.getString("firstname");
                 String lastName = jsonObject.getString("lastname");
                 int profileID = jsonObject.getInt("profileID");

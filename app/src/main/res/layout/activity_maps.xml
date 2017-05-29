@@ -72,7 +72,8 @@
                 android:ems="10"
                 android:hint="@string/map_event_place_interest"
                 android:inputType="textPersonName"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:completionThreshold="1"/>
 
             <ImageButton
                 android:id="@+id/listButton"

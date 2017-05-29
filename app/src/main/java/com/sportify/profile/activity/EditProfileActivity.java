@@ -12,10 +12,9 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
+import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
@@ -25,7 +24,6 @@ import android.widget.Toast;
 
 import com.sportify.profile.presenter.ProfilePresenterImpl;
 import com.sportify.settings.activity.SettingsActivity;
-import com.sportify.settingsEditProfile.activity.EditProfileView;
 import com.sportify.userArea.activity.UserAreaActivity;
 import com.sportify.util.Profile;
 
@@ -283,7 +281,7 @@ public class EditProfileActivity extends AppCompatActivity implements ProfileVie
 
     @Override
     public void showProgressDialog() {
-        dialog.setMessage("Entering profile information, just a sec");
+        dialog.setMessage("Uppdaterar profil");
         dialog.show();
     }
 

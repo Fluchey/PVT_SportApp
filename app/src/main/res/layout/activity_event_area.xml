@@ -67,7 +67,8 @@
         android:layout_below="@+id/eventImage"
         android:text="@string/event_place"
         android:textSize="@dimen/standardBitTextSize"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:onClick="goToPlaceArea"/>
 
     <TextView
         android:id="@+id/tvEventAreaHostName"

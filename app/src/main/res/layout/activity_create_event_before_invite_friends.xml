@@ -10,10 +10,6 @@
     tools:layout_editor_absoluteY="25dp"
     tools:layout_editor_absoluteX="0dp">
 
-
-    <!--TODO : hoppa över till create_event5 -->
-    <!--OBS: det finns inte create_event4 -->
-
     <TextView
         android:id="@+id/clickNext"
         android:layout_width="wrap_content"
@@ -49,10 +45,6 @@
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="@+id/clickNext" />
-
-    <!--TODO : hämta events bild -->
-
-
 
     <ImageButton
         android:id="@+id/imageButton"
