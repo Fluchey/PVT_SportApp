@@ -195,8 +195,8 @@
     <ScrollView
         android:id="@+id/svInvitedFriends"
         style="@android:style/Widget.Holo.Light.ScrollView"
-        android:layout_width="500dp"
-        android:layout_height="420dp"
+        android:layout_width="203dp"
+        android:layout_height="422dp"
         android:layout_above="@+id/tvParticipants"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="7dp"
@@ -206,8 +206,8 @@
         android:scrollbarSize="4dp"
         android:scrollbarThumbVertical="@color/colorDarkBlue"
         android:visibility="visible"
-        tools:layout_editor_absoluteX="-6dp"
-        tools:layout_editor_absoluteY="393dp">
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="397dp">
 
 
         <RelativeLayout
@@ -222,7 +222,7 @@
             <ListView
                 android:id="@+id/lvCreateEventFriends"
                 android:layout_width="wrap_content"
-                android:layout_height="650dp"
+                android:layout_height="600dp"
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="10dp"
                 android:layout_alignParentTop="true"
