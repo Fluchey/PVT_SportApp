@@ -1,9 +1,12 @@
 package com.sportify.showFriends.presenter;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.util.Log;
 
+import com.sportify.friendprofile.activity.FriendprofileActivity;
 import com.sportify.showFriends.Profile;
+import com.sportify.showFriends.activity.ShowFriendsActivity;
 import com.sportify.showFriends.activity.ShowFriendsView;
 import com.sportify.showFriends.request.ShowFriendsRequest;
 import com.sportify.showFriends.request.ShowFriendsRequestImpl;
