@@ -25,7 +25,9 @@
         android:layout_marginBottom="8dp"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <TextView
         android:id="@+id/tvEventDescription"
@@ -45,7 +47,9 @@
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="8dp"
-        app:layout_constraintVertical_bias="0.146" />
+        app:layout_constraintVertical_bias="0.146"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <ImageView
         android:id="@+id/ivProfilePicture"
@@ -61,7 +65,9 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
         app:layout_constraintHorizontal_bias="0.034"
-        app:layout_constraintVertical_bias="0.397" />
+        app:layout_constraintVertical_bias="0.397"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <ImageButton
         android:id="@+id/ibConfirmEventButton"
@@ -78,7 +84,9 @@
         app:layout_constraintVertical_bias="0.89"
         app:srcCompat="@drawable/confirmbuttonn"
         android:layout_marginBottom="22dp"
-        android:onClick="createEvent"/>
+        android:onClick="createEvent"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
 <!--    <ImageButton
         android:id="@+id/ibModifyEventButton"
@@ -121,14 +129,15 @@
         android:layout_marginEnd="18dp"
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginRight="8dp"
+        android:layout_marginRight="18dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="8dp"
         app:layout_constraintHorizontal_bias="0.958"
-        app:layout_constraintVertical_bias="0.419" />
+        app:layout_constraintVertical_bias="0.419"
+        android:layout_marginStart="8dp" />
 
     <TextView
         android:id="@+id/tvEventName"
@@ -147,7 +156,9 @@
         app:layout_constraintVertical_bias="0.309"
         android:layout_above="@+id/ivEventPicture"
         android:layout_alignStart="@+id/ivEventPicture"
-        android:layout_marginBottom="14dp" />
+        android:layout_marginBottom="14dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <TextView
         android:id="@+id/tvParticipants"
@@ -167,7 +178,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="8dp"
         app:layout_constraintHorizontal_bias="0.053"
-        app:layout_constraintVertical_bias="0.659" />
+        app:layout_constraintVertical_bias="0.659"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <TextView
         android:id="@+id/tvEventDescriptionPreview"
@@ -183,10 +196,11 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.607"
-        app:layout_constraintVertical_bias="0.600"
+        app:layout_constraintVertical_bias="0.6"
         android:layout_above="@+id/ivEventPicture"
         android:layout_marginBottom="14dp"
-        />
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <ScrollView
     android:id="@+id/svInvitedFriends"
@@ -208,7 +222,6 @@
     tools:layout_constraintBottom_creator="1"
     tools:layout_constraintLeft_creator="1"
     tools:layout_constraintTop_creator="1">
-
 
         <RelativeLayout
             android:id="@+id/relativeLayout"
