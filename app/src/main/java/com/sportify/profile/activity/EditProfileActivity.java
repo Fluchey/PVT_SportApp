@@ -23,7 +23,6 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.sportify.profile.presenter.ProfilePresenterImpl;
-import com.sportify.settings.activity.SettingsActivity;
 import com.sportify.userArea.activity.UserAreaActivity;
 import com.sportify.util.Profile;
 
@@ -297,10 +296,4 @@ public class EditProfileActivity extends AppCompatActivity implements ProfileVie
         Intent goToUserAreaIntent = new Intent(EditProfileActivity.this, UserAreaActivity.class);
         EditProfileActivity.this.startActivity(goToUserAreaIntent);
     }
-
-    public void toSettFromEditProActivity(View v){
-        Intent goToSettingsViewIntent = new Intent(EditProfileActivity.this, SettingsActivity.class);
-        EditProfileActivity.this.startActivity(goToSettingsViewIntent);
-    }
-
 }

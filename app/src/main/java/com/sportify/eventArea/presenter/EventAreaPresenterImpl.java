@@ -65,6 +65,7 @@ public class EventAreaPresenterImpl implements EventAreaPresenter, EventAreaRequ
     }
 
     private void presentDataOnView() {
+        activity.setEventImage(imageBase64);
         activity.setHostName(request.getUser().getFirstName(), request.getUser().getLastName());
         activity.setEventName(request.getEvent().getEventName());
         activity.setPlaceName(request.getPlace());
@@ -76,7 +77,6 @@ public class EventAreaPresenterImpl implements EventAreaPresenter, EventAreaRequ
         activity.setPrice(request.getEvent().getPrice());
         activity.setPrivateEvent(request.getEvent().isPrivateEvent());
         activity.setAttendance(attendance);
-        activity.setEventImage(imageBase64);
         activity.setDescription(request.getEvent().getEventDescription());
 
 

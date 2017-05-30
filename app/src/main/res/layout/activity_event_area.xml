@@ -46,14 +46,11 @@
         android:layout_below="@+id/eventAreaHeader"
         android:layout_centerHorizontal="true" />
 
-
-    <!--TODO: Lägg in någon annan bild som default?-->
     <ImageView
         android:id="@+id/eventImage"
         android:layout_width="250dp"
         android:layout_height="150dp"
         android:layout_marginTop="25dp"
-        app:srcCompat="@drawable/userareaflowswim"
         tools:ignore="ContentDescription"
         android:layout_below="@+id/tvEventAreaCategory"
         android:layout_alignParentStart="true" />
@@ -269,24 +266,12 @@
         android:id="@+id/viewLockedIcon"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        app:srcCompat="@drawable/lockedicon"
         android:layout_below="@+id/tvEventAreaPlaceText"
         android:layout_alignParentStart="true"
         android:layout_marginTop="7dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
-        tools:ignore="ContentDescription" />
-
-    <ImageView
-        android:id="@+id/viewUnlockedIcon"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        app:srcCompat="@drawable/unlockedicon"
-        android:layout_marginTop="7dp"
-        android:layout_below="@+id/tvEventAreaPlaceText"
-        android:layout_toEndOf="@+id/viewLockedIcon"
-        tools:ignore="ContentDescription" />
-
+        tools:ignore="ContentDescription" />O
 
 </RelativeLayout>
 
