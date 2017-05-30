@@ -230,7 +230,7 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
 
     @Override
     public void setDescription(String description) {
-        this.descriptionTv.setText("Beskrivning av eventet: " + description);
+        this.descriptionTv.setText(description);
         this.description = description;
     }
 
