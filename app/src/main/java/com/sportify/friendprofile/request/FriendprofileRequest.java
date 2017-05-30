@@ -1,5 +1,6 @@
 package com.sportify.friendprofile.request;
 
+import com.sportify.addFriend.request.AddFriendRequestImpl;
 import com.sportify.storage.Event;
 import com.sportify.storage.Profile;
 
@@ -16,7 +17,7 @@ public interface FriendprofileRequest {
     }
 
     public void updateProfile(int id);
-    public void setProfile(String jsonMessage);
+    public void setProfile(String jsonMessage, int userId);
     public Profile getProfile();
     public ArrayList<Event> getEvents();
     public void setEvents(String json);
@@ -24,7 +25,9 @@ public interface FriendprofileRequest {
     public HashMap<Integer, String> getCreator();
     public HashMap<Integer, String> getPlaceName();
     public ArrayList<String> getEventImages();
+    public boolean isFriend(String jsonMessage);
 
     void makeApiRequestPut(String jsonMessage, String endURL, String method, String command);
     void makeApiRequestGet(String endURL, String method, String command);
+    void makeApiRequestAddFriend(String method, String endUrl, String jsonMessage, String command);
 }
