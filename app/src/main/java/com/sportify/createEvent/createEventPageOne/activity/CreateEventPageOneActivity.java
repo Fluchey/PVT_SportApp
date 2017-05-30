@@ -488,10 +488,4 @@ public class CreateEventPageOneActivity extends AppCompatActivity implements Cre
                     .show();
         }
     }
-
-    public void toUserAreFromCreateActivity(View v){
-        Intent goToUserAreaViewIntent = new Intent(CreateEventPageOneActivity.this, UserAreaActivity.class);
-        CreateEventPageOneActivity.this.startActivity(goToUserAreaViewIntent);
-    }
-
 }
