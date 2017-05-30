@@ -3,13 +3,17 @@ package com.sportify.eventArea.activity;
 import android.graphics.Bitmap;
 import android.view.View;
 
+import com.sportify.storage.Participant;
 import com.sportify.storage.Place;
+
+import java.util.ArrayList;
 
 /**
  * Created by antonfluch on 2017-05-15.
  */
 
 public interface EventAreaView {
+    void showParticipants(ArrayList<Participant> participants);
     void setEventName(String eventName);
     String getEventName();
     void setPlaceName(Place place);

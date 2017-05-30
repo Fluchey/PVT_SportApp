@@ -42,8 +42,8 @@ public class EditEventRequestImpl implements EditEventRequest {
         }
 
 
-        try {
-            for (int i = 0; i < array.length(); i++) {
+        for (int i = 0; i < array.length(); i++) {
+            try {
                 JSONObject jsonObject = array.getJSONObject(i);
                 JSONArray categoryArray = jsonObject.getJSONArray("categories");
                 ArrayList<String> categories = new ArrayList<>();
@@ -51,9 +51,10 @@ public class EditEventRequestImpl implements EditEventRequest {
                     categories.add(categoryArray.getString(j));
                 }
                 places.add(new Place(jsonObject.getString("id"), jsonObject.getString("placeName"), categories, Double.parseDouble(jsonObject.getString("lat")), Double.parseDouble(jsonObject.getString("lon"))));
+
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
-        } catch (JSONException e) {
-            e.printStackTrace();
         }
     }
 
@@ -96,12 +97,12 @@ public class EditEventRequestImpl implements EditEventRequest {
         protected Void doInBackground(String... params) {
 
             String[] resultFromApi = Connector.connect("https://pvt15app.herokuapp.com/api/" + params[1],
-                        params[0], String.format(params[2]), token);
+                    params[0], String.format(params[2]), token);
 //                String[] resultFromApi = Connector.connect("http://130.237.241.83:9000/api/" + params[1],
 //                        params[0], String.format(params[2]), token);
-                responseBody = resultFromApi[0];
+            responseBody = resultFromApi[0];
 
-                return null;
+            return null;
         }
 
         @Override

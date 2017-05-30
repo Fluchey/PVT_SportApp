@@ -47,7 +47,6 @@ public class MyArrayAdapterShowFriends extends ArrayAdapter {
         ImageView imageView = (ImageView) row.findViewById(R.id.profilePicture);
 
         String imageBase64 = friends.get(position).getProfilePicture();
-        System.out.println("Profilbild " + imageBase64);
 
         if (!imageBase64.isEmpty()) {
             Bitmap bitmap = com.sportify.util.Profile.decodeStringToBitmap(imageBase64);

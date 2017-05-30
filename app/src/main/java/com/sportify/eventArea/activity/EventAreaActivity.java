@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -15,13 +16,17 @@ import com.facebook.share.model.ShareOpenGraphAction;
 import com.facebook.share.model.ShareOpenGraphContent;
 import com.facebook.share.model.ShareOpenGraphObject;
 import com.facebook.share.widget.ShareDialog;
+import com.sportify.arrayAdapters.MyArrayAdapterParticipants;
 import com.sportify.editEvent.activity.activity.EditEventActivity;
 import com.sportify.eventArea.presenter.EventAreaPresenter;
 import com.sportify.eventArea.presenter.EventAreaPresenterImpl;
 import com.sportify.placearea.activity.PlaceAreaActivity;
+import com.sportify.storage.Participant;
 import com.sportify.storage.Place;
 import com.sportify.userArea.activity.UserAreaActivity;
 import com.sportify.util.Profile;
+
+import java.util.ArrayList;
 
 import sportapp.pvt_sportapp.R;
 
@@ -29,6 +34,8 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
     private EventAreaPresenter presenter;
     private int eventId;
     private SharedPreferences sharedPref;
+
+    private MyArrayAdapterParticipants arrayAdapterParticipants;
 
     private TextView hostNameTv;
     private TextView eventNameTv;
@@ -45,6 +52,7 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
     private RadioButton comingRb;
     private RadioButton notComingRb;
     private ImageView privateEventImage;
+    private ListView participantList;
 
 
     /*
@@ -78,6 +86,8 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
         sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         presenter = new EventAreaPresenterImpl(this, sharedPref);
 
+        arrayAdapterParticipants = new MyArrayAdapterParticipants(this, R.layout.participant_list_item, null);
+
         Bundle bundle = getIntent().getExtras();
         eventId = (bundle.getInt("eventId"));
         presenter.getEventFromDb(eventId);
@@ -98,6 +108,7 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
         notComingRb = (RadioButton) findViewById(R.id.notComingRadioButton);
         privateEventImage = (ImageView) findViewById(R.id.viewLockedIcon);
 
+        participantList = (ListView) findViewById(R.id.lvParticipants);
     }
 
 
@@ -131,6 +142,14 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
 
         goToPlaceAreaIntent.putExtra("placeId", place.getId());
         EventAreaActivity.this.startActivity(goToPlaceAreaIntent);
+    }
+
+    @Override
+    public void showParticipants(ArrayList<Participant> participants) {
+        System.out.println(participants.toString());
+        arrayAdapterParticipants = new MyArrayAdapterParticipants(this, R.layout.participant_list_item, participants);
+        participantList.setAdapter(arrayAdapterParticipants);
+
     }
 
     @Override
