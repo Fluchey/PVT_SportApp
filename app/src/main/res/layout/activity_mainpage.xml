@@ -10,15 +10,6 @@
     android:background="@drawable/backgroundpage"
     >
 
-    <ImageView
-        android:id="@+id/goToUserAreaButton"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:clickable="true"
-        android:onClick="goToUserAreaActivity"
-        app:srcCompat="@drawable/menuhome"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"/>
 
     <ImageView
         android:id="@+id/imageView3"
