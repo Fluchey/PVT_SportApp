@@ -28,7 +28,6 @@ public class CalendarActivity extends AppCompatActivity implements CalendarView{
     }
 
     public void createEventButtonClickFromCalAct(View v) {
-        Toast.makeText(this, "Klickat skapa event", Toast.LENGTH_LONG).show();
         Intent createEventIntent = new Intent(CalendarActivity.this, CreateEventPageOneActivity.class);
         CalendarActivity.this.startActivity(createEventIntent);
     }

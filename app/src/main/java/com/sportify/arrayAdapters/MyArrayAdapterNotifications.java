@@ -1,6 +1,7 @@
 package com.sportify.arrayAdapters;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,6 +45,13 @@ public class MyArrayAdapterNotifications extends ArrayAdapter {
         final TextView notificationMessage = (TextView) row.findViewById(R.id.tvNotification);
 
         ImageView imageView = (ImageView) row.findViewById(R.id.profilePictureNotificationView);
+
+        String imageBase64 = eventNotifications.get(position).getProfilePicture();
+
+        if(!imageBase64.isEmpty()){
+            Bitmap bitmap = com.sportify.util.Profile.decodeStringToBitmap(imageBase64);
+            imageView.setImageBitmap(bitmap);
+        }
         //TODO: Fånga upp host och hämta dess profilbild
         //ImageView profilePicture = eventNotifications.get(position).getProfilePicture();
         //imageView.setImageResource();

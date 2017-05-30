@@ -1,14 +1,13 @@
 package com.sportify.settings.activity;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Toast;
 
 import com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOneActivity;
-import com.sportify.notifications.activity.NotificationActivity;
 import com.sportify.maps.activity.MapsActivity;
+import com.sportify.notifications.activity.NotificationActivity;
 import com.sportify.profile.activity.EditProfileActivity;
 import com.sportify.settingsIntegritypolicy.activity.IntegritypolicyActivity;
 import com.sportify.showFriends.activity.ShowFriendsActivity;
@@ -30,7 +29,6 @@ public class SettingsActivity extends AppCompatActivity implements SettingsView{
     }
 
     public void createEventfromSettActivity(View v) {
-        Toast.makeText(this, "Klickat skapa event", Toast.LENGTH_LONG).show();
         Intent createEventIntent = new Intent(SettingsActivity.this, CreateEventPageOneActivity.class);
         SettingsActivity.this.startActivity(createEventIntent);
     }
