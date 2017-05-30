@@ -14,4 +14,5 @@ public interface FriendprofilePresenter {
     public void showFriendInfo(Profile info);
     public void updateInfo();
     public ArrayList<Event> getEvents();
+    public void addFriend();
 }

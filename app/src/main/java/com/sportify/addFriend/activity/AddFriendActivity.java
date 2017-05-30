@@ -1,6 +1,7 @@
 package com.sportify.addFriend.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -16,7 +17,9 @@ import android.widget.Toast;
 import com.sportify.addFriend.presenter.AddFriendPresenter;
 import com.sportify.addFriend.presenter.AddFriendPresenterImpl;
 import com.sportify.arrayAdapters.MyArrayAdapterShowFriends;
+import com.sportify.friendprofile.activity.FriendprofileActivity;
 import com.sportify.showFriends.Profile;
+import com.sportify.showFriends.activity.ShowFriendsActivity;
 
 import java.util.ArrayList;
 
@@ -48,13 +51,21 @@ public class AddFriendActivity extends AppCompatActivity implements AddFriendVie
         sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         addFriendsPresenter = new AddFriendPresenterImpl(this, sharedPref);
         friendList = (ListView) findViewById(R.id.lvShowFriends);
+//        friendList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                Profile p = (Profile) friendList.getItemAtPosition(position);
+//                int profileID = p.getProfileID();
+//                String name = p.getFirstname();
+//                addFriendsPresenter.addFriend(name, profileID);
+//
+//            }
+//        });
         friendList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Profile p = (Profile) friendList.getItemAtPosition(position);
-                int profileID = p.getProfileID();
-                String name = p.getFirstname();
-                addFriendsPresenter.addFriend(name, profileID);
+                int userId = friendArray.get((int) id).getProfileID();
+                toFriendProfile(userId);
             }
         });
 
@@ -126,5 +137,13 @@ public class AddFriendActivity extends AppCompatActivity implements AddFriendVie
     @Override
     public void showToastToUser(String message) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+    }
+
+    public void toFriendProfile(int userId){
+        Intent goToFriendProfileIntent = new Intent(AddFriendActivity.this, FriendprofileActivity.class);
+        Bundle b = new Bundle();
+        b.putInt("friendId", userId);
+        goToFriendProfileIntent.putExtras(b);
+        AddFriendActivity.this.startActivity(goToFriendProfileIntent);
     }
 }

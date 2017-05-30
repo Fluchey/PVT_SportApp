@@ -163,11 +163,12 @@
         android:id="@+id/ibAddFriend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        app:srcCompat="@drawable/adduserfriend2"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="50dp"
         android:layout_marginTop="7dp"
+        android:background="@android:color/transparent"
+        android:onClick="addFriendButtonClick"
+        app:srcCompat="@drawable/adduserfriend2"
         tools:ignore="ContentDescription" />
 
 

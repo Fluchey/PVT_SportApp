@@ -1,8 +1,10 @@
 package com.sportify.friendprofile.request;
 
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.sportify.addFriend.request.AddFriendRequestImpl;
 import com.sportify.placeReview.request.PlaceReviewRequest;
 import com.sportify.placeReview.request.PlaceReviewRequestImpl;
 import com.sportify.storage.Event;
@@ -22,6 +24,7 @@ import java.util.List;
  */
 
 public class FriendprofileRequestImpl implements FriendprofileRequest {
+    private SharedPreferences sharedPrefs;
     private onRequestFinishedListener onRequestFinishedListener;
     private String token;
 
@@ -32,8 +35,9 @@ public class FriendprofileRequestImpl implements FriendprofileRequest {
     private HashMap<Integer, String> placeName;
     private ArrayList<String> eventImages;
 
-    public FriendprofileRequestImpl(final onRequestFinishedListener onRequestFinishedListener, String token) {
+    public FriendprofileRequestImpl(final onRequestFinishedListener onRequestFinishedListener, SharedPreferences sharedPrefs, String token) {
         this.onRequestFinishedListener = onRequestFinishedListener;
+        this.sharedPrefs = sharedPrefs;
         this.token = token;
 
         events = new ArrayList<>();
@@ -42,27 +46,27 @@ public class FriendprofileRequestImpl implements FriendprofileRequest {
         eventImages = new ArrayList<>();
     }
 
-    public void updateProfile(int userId){
+    public void updateProfile(int profileId){
         JSONObject json = new JSONObject();
         try {
-            json.put("profileID", userId);
+            json.put("profileID", profileId +"");
+            Log.d("profile id", profileId +"");
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        /**
-         * First get all existing places
-         */
         makeApiRequestPut(json.toString(), "getProfileInfo", "PUT", "showInfo");
+
+        makeApiRequestPut(json.toString(), "isfriend", "PUT", "isfriend");
     }
 
-    public void setProfile(String jsonMessage){
+    public void setProfile(String jsonMessage, int userId){
         JSONObject json = null;
         String firstname = "";
         String lastname = "";
         String description = "";
         List<String> interests = null;
         String image = "";
-        int id = -1;
+        int id = userId;
         String age = "";
 
         try {
@@ -92,7 +96,7 @@ public class FriendprofileRequestImpl implements FriendprofileRequest {
     public void updateEvents(int userId){
         JSONObject json = new JSONObject();
         try {
-            json.put("profileID", userId);
+            json.put("profileId", userId);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -162,6 +166,20 @@ public class FriendprofileRequestImpl implements FriendprofileRequest {
     }
 
     @Override
+    public boolean isFriend(String jsonMessage){
+        Log.d("isFriend json", jsonMessage);
+        JSONObject json = null;
+        boolean friend = false;
+        try {
+            json = new JSONObject(jsonMessage);
+            friend = json.getBoolean("friend");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return friend;
+    }
+
+    @Override
     public void makeApiRequestPut(String jsonMessage, String endURL, String method, String command){
         ApiRequest apiRequest = (ApiRequest) new ApiRequest(this, command).execute(method, endURL, jsonMessage);
     }
@@ -169,6 +187,11 @@ public class FriendprofileRequestImpl implements FriendprofileRequest {
     @Override
     public void makeApiRequestGet(String method, String endURL, String command){
         ApiRequest apiRequest = (ApiRequest) new ApiRequest(this, command).execute(method, endURL);
+    }
+
+    @Override
+    public void makeApiRequestAddFriend(String method, String endUrl, String jsonMessage, String command) {
+        ApiRequest apiRequest = (ApiRequest) new ApiRequest(this, command).execute(method, endUrl, jsonMessage);
     }
 
     private class ApiRequest extends AsyncTask<String, PlaceReviewRequestImpl, Void> {

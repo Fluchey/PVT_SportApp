@@ -150,4 +150,13 @@ public class FriendprofileActivity extends AppCompatActivity implements Friendpr
         Intent goToFriendListIntent = new Intent(FriendprofileActivity.this, ShowFriendsActivity.class);
         FriendprofileActivity.this.startActivity(goToFriendListIntent);
     }
+
+    public void addFriendButtonClick(View v) {
+        presenter.addFriend();
+    }
+
+    @Override
+    public void showToastToUser(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+    }
 }
