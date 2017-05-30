@@ -9,7 +9,6 @@ import android.view.View;
 import com.sportify.login.activity.LoginActivity;
 import com.sportify.placeReview.activity.PlaceReviewActivity;
 import com.sportify.register.activity.RegisterActivity;
-import com.sportify.userArea.activity.UserAreaActivity;
 
 import sportapp.pvt_sportapp.R;
 
@@ -40,11 +39,5 @@ public class MainPageActivity extends AppCompatActivity implements MainPageView{
         testGoToPlaceReviewViewIntent.putExtras(b);
 
         MainPageActivity.this.startActivity(testGoToPlaceReviewViewIntent);
-    }
-
-    //TODO: Ta bort, bara för testning!!!
-    public void goToUserAreaActivity(View v){
-        Intent goToUserAreaViewIntent = new Intent(MainPageActivity.this, UserAreaActivity.class);
-        MainPageActivity.this.startActivity(goToUserAreaViewIntent);
     }
 }
