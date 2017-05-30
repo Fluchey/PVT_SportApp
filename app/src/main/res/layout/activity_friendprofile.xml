@@ -1,182 +1,175 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bakgrundforprofilef"
-    tools:context="com.sportify.friendprofile.activity.FriendprofileActivity">
+    android:background="@drawable/backgroundcool"
+    android:padding="@dimen/def_pagePadding"
+    tools:context="com.sportify.friendprofile.activity.FriendprofileActivity"
+    >
 
 
-    <ImageView
-        android:id="@+id/ivProfilePicture"
-        android:layout_width="106dp"
-        android:layout_height="65dp"
-        app:srcCompat="@drawable/userprofileimage2"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintVertical_bias="0.0"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
-
-    <TextView
-        android:id="@+id/tvFriendName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="serif"
-        android:text="@string/friendname"
-        android:textColor="@color/colorPrimaryDarkGrey"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.024"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.143"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
-
-    <TextView
-        android:id="@+id/tvFriendAge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="serif"
-        android:text="@string/friendage"
-        android:textColor="@color/colorPrimaryDarkGrey"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.024"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.197"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
-
-    <TextView
-        android:id="@+id/tvFriendintressen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/friend_interests"
-        android:fontFamily="serif"
-        android:textSize="14dp"
-        android:textStyle="normal"
-        android:textColor="@color/colorPrimaryDarkGrey"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintHorizontal_bias="0.028"
-        app:layout_constraintVertical_bias="0.261"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="20dp"
+        android:background="@color/colorAccent"
+        android:layout_below="@+id/tvFriendDescription"
+        android:layout_marginTop="25dp"
+        android:id="@+id/view2"
+        android:layout_marginBottom="10dp"/>
 
     <TextView
         android:id="@+id/tvFriendEvent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="serif"
-        android:text="@string/friend_event"
-        android:textColor="@color/colorPrimaryDarkGrey"
-        android:textSize="16dp"
-        android:textStyle="italic"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintHorizontal_bias="0.455"
-        app:layout_constraintVertical_bias="0.478"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        android:text="@string/maps_events"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/tvFriendDescription"
+        android:paddingTop="25dp" />
+
 
     <TextView
         android:id="@+id/tvFriendDescription"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="@string/userArea_text"
+        android:textSize="@dimen/standardSmallerTextSize"
+        android:layout_below="@+id/ivProfilePicture"
+        android:paddingTop="5dp" />
+
+    <TextView
+        android:id="@+id/tvFriendName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorPrimaryDarkGrey"
-        android:textSize="14dp"
-        android:textStyle="italic"
-        android:fontFamily="serif"
-        android:text="@string/friend_description"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintHorizontal_bias="0.03"
-        app:layout_constraintVertical_bias="0.334"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        android:text="@string/userArea_userInfoName"
+        android:textSize="@dimen/standardSmallerTextSize" />
+
+    <TextView
+        android:id="@+id/tvFriendAge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/userArea_userInfoAge"
+        android:textSize="@dimen/standardSmallerTextSize"
+        android:layout_below="@+id/tvFriendName"/>
+
+    <TextView
+        android:id="@+id/tvFriendintressen"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:text="@string/userArea_userInfoInterest"
+        android:textSize="@dimen/standardSmallerTextSize"
+        android:layout_below="@+id/tvFriendAge"/>
+
+
+    <ImageView
+        android:id="@+id/ivProfilePicture"
+        android:layout_width="95dp"
+        android:layout_height="95dp"
+        app:srcCompat="@drawable/quokkaprofile"
+        tools:ignore="ContentDescription"
+        android:layout_centerHorizontal="true" />
+
+
+    <!--  <ImageView
+          android:id="@+id/goToCalendarButton"
+          android:clickable="true"
+          android:layout_width="25dp"
+          android:layout_height="25dp"
+          app:srcCompat="@drawable/menucalendar"
+          android:onClick="goToCalendarActivity"
+          tools:ignore="ContentDescription"
+          android:layout_below="@+id/goToSettingsButton"
+          android:layout_alignParentEnd="true"
+          android:layout_marginTop="5dp"
+          android:layout_marginEnd="60dp"/>-->
+
+    <ImageView
+        android:id="@+id/goToUserAreaButtonFromF"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:clickable="true"
+        android:onClick="goToUserAreaActivityFromF"
+        app:srcCompat="@drawable/menuhome"
+        android:layout_toStartOf="@+id/goToMapButtonFromF"
+        android:layout_marginEnd="38dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="5dp"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/goToMapButtonFromF"
+        android:onClick="startMapActivityFromF"
+        android:clickable="true"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:srcCompat="@drawable/menumap3"
+        tools:ignore="ContentDescription"
+        android:layout_toStartOf="@+id/createEventButtonFromF"
+        android:layout_marginEnd="38dp"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/createEventButtonFromF"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:clickable="true"
+        android:onClick="createEventButtonClickFromF"
+        app:backgroundTint="@color/colorAccent"
+        app:fabSize="normal"
+        android:elevation="0dp"
+        android:layout_marginBottom="@dimen/createEventMargin"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:srcCompat="@drawable/menucreateevent" />
+
+    <ImageView
+        android:id="@+id/goToNotificationsButtonFromF"
+        android:clickable="true"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:onClick="ToNoteActivityFromF"
+        app:srcCompat="@drawable/menunotification"
+        tools:ignore="ContentDescription"
+        android:layout_toEndOf="@+id/createEventButtonFromF"
+        android:layout_marginStart="38dp"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true"/>
+
+    <ImageView
+        android:id="@+id/goToFriendsListButtonFromF"
+        android:clickable="true"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:srcCompat="@drawable/menufriends"
+        tools:ignore="ContentDescription"
+        android:onClick="goToFriendListButtonClickFromF"
+        android:layout_toEndOf="@+id/goToNotificationsButtonFromF"
+        android:layout_marginStart="38dp"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true"/>
+
+    <ListView
+        android:id="@+id/lvFriendEvents"
+        android:layout_width="fill_parent"
+        android:layout_height="500dp"
+        android:layout_below="@+id/view2"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/goToMapButtonFromF" />
 
     <ImageButton
         android:id="@+id/ibAddFriend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
         android:background="@android:color/transparent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.875"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.12"
-        app:srcCompat="@drawable/adduserfriend"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
-
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/friend_add"
-        android:textColor="@color/colorPrimaryDarkGrey"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintHorizontal_bias="0.98"
-        app:layout_constraintVertical_bias="0.211"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
-
-    <ListView
-        android:id="@+id/lvFriendEvents"
-        android:layout_width="0dp"
-        android:layout_height="551dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="283dp" />
+        app:srcCompat="@drawable/adduserfriend2"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="7dp"
+        tools:ignore="ContentDescription" />
 
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>
+

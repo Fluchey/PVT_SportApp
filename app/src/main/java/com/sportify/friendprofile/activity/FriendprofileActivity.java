@@ -11,10 +11,15 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOneActivity;
 import com.sportify.eventArea.activity.EventAreaActivity;
 import com.sportify.friendprofile.presenter.FriendprofilePresenter;
 import com.sportify.friendprofile.presenter.FriendprofilePresenterImpl;
+import com.sportify.maps.activity.MapsActivity;
+import com.sportify.notifications.activity.NotificationActivity;
+import com.sportify.showFriends.activity.ShowFriendsActivity;
 import com.sportify.storage.Event;
 import com.sportify.userArea.CustomList;
 import com.sportify.userArea.activity.UserAreaActivity;
@@ -119,5 +124,31 @@ public class FriendprofileActivity extends AppCompatActivity implements Friendpr
                 FriendprofileActivity.this.startActivity(goToEventAreaIntent);
             }
         });
+    }
+
+    public void ToNoteActivityFromF(View v) {
+        Intent goToNotificationsViewIntent = new Intent(FriendprofileActivity.this, NotificationActivity.class);
+        FriendprofileActivity.this.startActivity(goToNotificationsViewIntent);
+    }
+
+    public void createEventButtonClickFromF(View v) {
+        Toast.makeText(this, "Klickat skapa event", Toast.LENGTH_LONG).show();
+        Intent createEventIntent = new Intent(FriendprofileActivity.this, CreateEventPageOneActivity.class);
+        FriendprofileActivity.this.startActivity(createEventIntent);
+    }
+
+    public void startMapActivityFromF(View view) {
+        Intent startMapActivityIntent = new Intent(FriendprofileActivity.this, MapsActivity.class);
+        FriendprofileActivity.this.startActivity(startMapActivityIntent);
+    }
+
+    public void goToUserAreaActivityFromF(View v) {
+        Intent goToUserAreaViewIntent = new Intent(FriendprofileActivity.this, UserAreaActivity.class);
+        FriendprofileActivity.this.startActivity(goToUserAreaViewIntent);
+    }
+
+    public void goToFriendListButtonClickFromF(View v) {
+        Intent goToFriendListIntent = new Intent(FriendprofileActivity.this, ShowFriendsActivity.class);
+        FriendprofileActivity.this.startActivity(goToFriendListIntent);
     }
 }
