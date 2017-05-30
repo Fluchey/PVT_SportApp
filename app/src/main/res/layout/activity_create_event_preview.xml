@@ -189,27 +189,31 @@
         />
 
     <ScrollView
-        android:id="@+id/svInvitedFriends"
-        style="@android:style/Widget.Holo.Light.ScrollView"
-        android:layout_width="203dp"
-        android:layout_height="422dp"
-        android:layout_above="@+id/tvParticipants"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="7dp"
-        android:fadeScrollbars="false"
-        android:fillViewport="true"
-        android:isScrollContainer="false"
-        android:scrollbarSize="4dp"
-        android:scrollbarThumbVertical="@color/colorDarkBlue"
-        android:visibility="visible"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="397dp">
+    android:id="@+id/svInvitedFriends"
+    style="@android:style/Widget.Holo.Light.ScrollView"
+    android:layout_width="200dp"
+    android:layout_height="wrap_content"
+    android:layout_alignParentEnd="true"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="0dp"
+    android:layout_marginLeft="-1dp"
+    android:fadeScrollbars="false"
+    android:fillViewport="true"
+    android:isScrollContainer="true"
+    android:scrollbarSize="3dp"
+    android:scrollbarThumbVertical="@color/colorDarkBlue"
+    android:visibility="visible"
+    app:layout_constraintTop_toBottomOf="@+id/tvParticipants"
+    app:layout_constraintVertical_bias="1.0"
+    tools:layout_constraintBottom_creator="1"
+    tools:layout_constraintLeft_creator="1"
+    tools:layout_constraintTop_creator="1">
 
 
         <RelativeLayout
             android:id="@+id/relativeLayout"
-            android:layout_width="340dp"
-            android:layout_height="650dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_above="@+id/tvParticipants"
             android:layout_marginStart="-10dp"
             android:layout_marginTop="5dp"
@@ -218,7 +222,7 @@
             <ListView
                 android:id="@+id/lvCreateEventFriends"
                 android:layout_width="wrap_content"
-                android:layout_height="600dp"
+                android:layout_height="180dp"
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="10dp"
                 android:layout_alignParentTop="true"

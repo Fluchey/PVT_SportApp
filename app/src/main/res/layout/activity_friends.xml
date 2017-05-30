@@ -33,12 +33,11 @@
     <ScrollView
         android:id="@+id/svFriensScroll"
         style="@android:style/Widget.Holo.Light.ScrollView"
-        android:layout_width="350dp"
-        android:layout_height="500dp"
+        android:layout_width="450dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/searchFrindAcTv"
-        android:layout_marginStart="5dp"
         android:fadeScrollbars="false"
         android:fillViewport="true"
         android:isScrollContainer="false"
@@ -48,8 +47,8 @@
         android:visibility="visible">
 
         <RelativeLayout
-            android:layout_width="350dp"
-            android:layout_height="100dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_marginStart="10dp"
             android:layout_marginTop="1dp"
             android:fadeScrollbars="false"
@@ -62,8 +61,8 @@
 
             <ListView
                 android:id="@+id/lvShowFriends"
-                android:layout_width="500dp"
-                android:layout_height="700dp"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
                 android:layout_marginLeft="0dp"
                 android:fadeScrollbars="false"
                 android:isScrollContainer="false"
