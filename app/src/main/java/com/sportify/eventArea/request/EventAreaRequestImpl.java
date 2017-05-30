@@ -4,12 +4,16 @@ import android.os.AsyncTask;
 
 import com.sportify.maps.request.MapsRequestImpl;
 import com.sportify.storage.Event;
+import com.sportify.storage.Participant;
 import com.sportify.storage.Place;
 import com.sportify.storage.User;
 import com.sportify.util.Connector;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 /**
  * Created by fluchey on 2017-05-17.
@@ -22,6 +26,7 @@ public class EventAreaRequestImpl implements EventAreaRequest {
     private Event event;
     private Place place;
     private User user;
+    private ArrayList<Participant> participants;
 
     public EventAreaRequestImpl(final onRequestFinishedListener onRequestFinishedListener, String token) {
         this.onRequestFinishedListener = onRequestFinishedListener;
@@ -29,6 +34,7 @@ public class EventAreaRequestImpl implements EventAreaRequest {
         event = new Event();
         place = new Place();
         user = new User();
+        participants = new ArrayList<>();
     }
 
 
@@ -79,6 +85,20 @@ public class EventAreaRequestImpl implements EventAreaRequest {
             attendance = jsonObject.getString("attendance");
             imageBase64 = jsonObject.getString("imageBase64");
 
+            /**
+             * PARTICIPANTS
+             */
+            JSONArray participantArray = jsonObject.getJSONArray("participants");
+            if(!(participants == null)) {
+
+                for (int i = 0; i < participantArray.length(); i++){
+                    JSONObject participant= participantArray.getJSONObject(i);
+                    participants.add(new Participant(participant.getString("firstname"), participant.getString("lastname"),
+                                     participant.getString("imageBase64"), participant.getInt("participantid"), participant.getString("status")));
+                }
+            }
+
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -101,6 +121,11 @@ public class EventAreaRequestImpl implements EventAreaRequest {
     @Override
     public User getUser() {
         return user;
+    }
+
+    @Override
+    public ArrayList<Participant> getParticipants() {
+        return participants;
     }
 
     private class ApiRequest extends AsyncTask<String, MapsRequestImpl, Void> {
