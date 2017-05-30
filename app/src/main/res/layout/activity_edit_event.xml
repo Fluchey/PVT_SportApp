@@ -20,19 +20,6 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/backToEventButton"
-        android:backgroundTint="@color/colorCrystalWhite"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:clickable="true"
-        app:fabSize="mini"
-        android:onClick="goToEventAreaFromEditButton"
-        app:srcCompat="@drawable/chevleft" />
-
-
-
     <EditText
         android:id="@+id/etEditEventName"
         android:layout_width="280dp"

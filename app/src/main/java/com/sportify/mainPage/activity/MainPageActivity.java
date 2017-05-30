@@ -9,7 +9,6 @@ import android.view.View;
 import com.sportify.login.activity.LoginActivity;
 import com.sportify.placeReview.activity.PlaceReviewActivity;
 import com.sportify.register.activity.RegisterActivity;
-import com.sportify.userArea.activity.UserAreaActivity;
 
 import sportapp.pvt_sportapp.R;
 

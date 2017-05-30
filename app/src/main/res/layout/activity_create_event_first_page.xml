@@ -20,19 +20,6 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/backFromCreateButton"
-        android:backgroundTint="@color/colorCrystalWhite"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:clickable="true"
-        app:fabSize="mini"
-        android:onClick="toUserAreFromCreateActivity"
-        app:srcCompat="@drawable/chevleft" />
-
-
-
     <EditText
         android:id="@+id/etEventName"
         android:layout_width="280dp"
@@ -42,7 +29,7 @@
         android:layout_marginStart="8dp"
         android:hint="@string/event_name"
         android:layout_marginTop="75dp"
-        android:layout_below="@+id/backFromCreateButton"
+        android:layout_below="@+id/createEventHeader"
         android:layout_alignParentStart="true"
         android:layout_toStartOf="@+id/imageButton7" />
 
