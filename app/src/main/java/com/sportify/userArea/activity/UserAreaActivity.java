@@ -97,9 +97,6 @@ public class UserAreaActivity extends AppCompatActivity implements UserAreaView 
 //        });
     }
 
-    public void findEventButtonClick(View v) {
-        Toast.makeText(this, "Jag gör inget, fråga min mjukvaruingenjör varför", Toast.LENGTH_LONG).show();
-    }
 
     public void ToNoteFromUserAreaActivity(View v) {
         Intent goToNotificationsViewIntent = new Intent(UserAreaActivity.this, NotificationActivity.class);
