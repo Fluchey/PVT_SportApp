@@ -273,7 +273,7 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
             eventImage.setImageBitmap(image);
         }else{
             //TODO: Lägg in någon annan bild som default?
-            eventImage.setImageResource(R.drawable.userareaflowswim);
+            eventImage.setImageResource(R.drawable.defaultevent1);
         }
     }
 

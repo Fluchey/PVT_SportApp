@@ -54,7 +54,7 @@
         android:layout_below="@+id/backUserAreaFromEvent"
         android:layout_marginBottom="5dp"
         android:layout_marginTop="40dp"
-        app:srcCompat="@drawable/userareaflowswim"
+        app:srcCompat="@drawable/defaultevent1"
         tools:ignore="ContentDescription" />
 
 

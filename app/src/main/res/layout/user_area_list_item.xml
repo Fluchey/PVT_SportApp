@@ -12,7 +12,7 @@
         android:id="@+id/userAreaListItemImg"
         android:layout_width="90dp"
         android:layout_height="50dp"
-        app:srcCompat="@drawable/userareaflowswim"
+        app:srcCompat="@drawable/defaultevent1"
         tools:ignore="ContentDescription" />
 
     <TableLayout
