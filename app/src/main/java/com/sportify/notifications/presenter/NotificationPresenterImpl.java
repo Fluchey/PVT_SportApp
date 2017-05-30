@@ -55,7 +55,6 @@ public class NotificationPresenterImpl implements NotificationPresenter, Notific
 
     @Override
     public void getNotificationsFromApiResponse(String jsonMessage, String command) {
-        System.out.println("Dags för Json, ser ut såhär: " + jsonMessage.toString());
         JSONObject json = null;
         JSONArray array = null;
 
@@ -86,14 +85,15 @@ public class NotificationPresenterImpl implements NotificationPresenter, Notific
                 JSONObject jsonNotification = array.getJSONObject(i);
                 Notification notification = null;
                 String friendName = jsonNotification.getString("friendName");
+                String imageBase64 = jsonNotification.getString("imageBase64");
 
                 if(command.equalsIgnoreCase("eventInvitation")){
                     String eventName = jsonNotification.getString("event");
                     int eventID = jsonNotification.getInt("eventID");
-                    notification = new EventNotification(friendName, eventName, eventID);
+                    notification = new EventNotification(friendName, imageBase64, eventName, eventID);
                 }else if(command.equalsIgnoreCase("friendRequest")){
                     int friendID = jsonNotification.getInt("profileID");
-                    notification = new FriendRequestNotification(friendName, friendID);
+                    notification = new FriendRequestNotification(friendName, imageBase64, friendID);
                 }
                 notifications.add(notification);
             }
@@ -120,9 +120,7 @@ public class NotificationPresenterImpl implements NotificationPresenter, Notific
 
     @Override
     public void showApiResponse(String responseBody, String command) {
-        System.out.println("Testar api " + responseBody + " " + command);
         if(!command.equalsIgnoreCase("response")) {
-            System.out.println("Hämta notifications");
             getNotificationsFromApiResponse(responseBody, command);
         }else if(command.equalsIgnoreCase("response")){
             notificationView.showToastToUser(responseBody);

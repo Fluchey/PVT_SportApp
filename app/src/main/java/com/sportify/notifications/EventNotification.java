@@ -1,7 +1,6 @@
 package com.sportify.notifications;
 
 import android.content.Context;
-import android.widget.ImageView;
 
 import sportapp.pvt_sportapp.R;
 
@@ -14,8 +13,8 @@ public class EventNotification extends Notification {
     private String eventName;
     private int eventID;
 
-    public EventNotification(String friendname, String eventName, int eventID) {
-        super(friendname);
+    public EventNotification(String friendname, String imageBase64,String eventName, int eventID) {
+        super(friendname, imageBase64);
         this.eventName = eventName;
         this.eventID = eventID;
     }

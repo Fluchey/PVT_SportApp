@@ -1,7 +1,6 @@
 package com.sportify.notifications;
 
 import android.content.Context;
-import android.widget.ImageView;
 
 /**
  * Created by Maja on 2017-05-19.
@@ -9,12 +8,14 @@ import android.widget.ImageView;
 
 public class Notification {
 
-    ImageView profilePicture;
+//    ImageView profilePicture;
+    String profilePicture;
     String friendName;
 
-    public Notification(String friendName){
+    public Notification(String friendName, String imageBase64){
         //TODO: Hämta med profilbild
         this.friendName = friendName;
+        this.profilePicture = imageBase64;
     }
 
     public String getNotificationText(Context context){
@@ -25,7 +26,10 @@ public class Notification {
         return friendName;
     }
 
-    public ImageView getProfilePicture(){
+    public String getProfilePicture(){
         return profilePicture;
     }
+//    public ImageView getProfilePicture(){
+//        return profilePicture;
+//    }
 }

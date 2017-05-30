@@ -104,7 +104,6 @@ public class UserAreaActivity extends AppCompatActivity implements UserAreaView 
     }
 
     public void createEventButtonClick(View v) {
-        Toast.makeText(this, "Klickat skapa event", Toast.LENGTH_LONG).show();
         Intent createEventIntent = new Intent(UserAreaActivity.this, CreateEventPageOneActivity.class);
         UserAreaActivity.this.startActivity(createEventIntent);
     }

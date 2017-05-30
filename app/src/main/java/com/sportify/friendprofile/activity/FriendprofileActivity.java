@@ -132,7 +132,6 @@ public class FriendprofileActivity extends AppCompatActivity implements Friendpr
     }
 
     public void createEventButtonClickFromF(View v) {
-        Toast.makeText(this, "Klickat skapa event", Toast.LENGTH_LONG).show();
         Intent createEventIntent = new Intent(FriendprofileActivity.this, CreateEventPageOneActivity.class);
         FriendprofileActivity.this.startActivity(createEventIntent);
     }

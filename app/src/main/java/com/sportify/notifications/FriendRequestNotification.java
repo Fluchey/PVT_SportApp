@@ -12,8 +12,8 @@ public class FriendRequestNotification extends Notification {
 
     private int friendID;
 
-    public FriendRequestNotification(String friendName, int friendID){
-        super(friendName);
+    public FriendRequestNotification(String friendName, String imageBase64, int friendID){
+        super(friendName, imageBase64);
         this.friendID = friendID;
     }
 
