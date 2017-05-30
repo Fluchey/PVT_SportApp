@@ -79,6 +79,8 @@ public class EventAreaPresenterImpl implements EventAreaPresenter, EventAreaRequ
         activity.setAttendance(attendance);
         activity.setDescription(request.getEvent().getEventDescription());
 
+        activity.showParticipants(request.getParticipants());
+
 
     }
 }

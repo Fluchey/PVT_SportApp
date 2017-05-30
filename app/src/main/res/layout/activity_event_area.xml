@@ -130,38 +130,17 @@
         android:layout_below="@+id/secondLine"
         android:background="@color/colorAccent"/>
 
+    <!--//TODO: Gick inte att lägga in event_participants så skrev in "Deltagare" här-->
 
     <TextView
         android:id="@+id/tvEventAreaInterested"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/secondLine"
-        android:textSize="@dimen/standardSmallerTextSize"
-        android:text="@string/event_interested"
+        android:textAlignment="center"
+        android:text="Deltagare"
         android:textStyle="bold"/>
-
-
-    <TextView
-        android:id="@+id/tvEventAreaComing"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/secondLine"
-        android:textSize="@dimen/standardSmallerTextSize"
-        android:layout_marginStart="20dp"
-        android:layout_centerHorizontal="true"
-        android:textStyle="bold"
-        android:text="@string/event_coming" />
-
-    <TextView
-        android:id="@+id/tvEventAreaInvited"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:textSize="@dimen/standardSmallerTextSize"
-        android:layout_below="@+id/secondLine"
-        android:layout_alignParentEnd="true"
-        android:text="@string/event_invited" />
 
 
     <RadioGroup
@@ -231,6 +210,54 @@
         android:layout_below="@+id/tvEventAreaDescription"
         android:background="@color/colorAccent"
         android:layout_marginBottom="10dp"/>
+
+    <ScrollView
+        android:id="@+id/svParticipants"
+        style="@android:style/Widget.Holo.Light.ScrollView"
+        android:layout_width="350dp"
+        android:layout_height="500dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tvEventAreaInterested"
+        android:layout_marginStart="5dp"
+        android:fadeScrollbars="false"
+        android:fillViewport="true"
+        android:isScrollContainer="false"
+        android:scrollbarSize="3.5dp"
+        android:layout_marginTop="20dp"
+        android:scrollbarThumbVertical="@color/colorDarkBlue"
+        android:visibility="visible">
+
+        <RelativeLayout
+            android:layout_width="350dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="1dp"
+            android:fadeScrollbars="false"
+            android:isScrollContainer="false"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_constraintLeft_creator="1"
+            tools:layout_constraintTop_creator="1">
+
+
+            <ListView
+                android:id="@+id/lvParticipants"
+                android:layout_width="500dp"
+                android:layout_height="700dp"
+                android:layout_marginLeft="0dp"
+                android:fadeScrollbars="false"
+                android:isScrollContainer="false"
+                android:scrollbarThumbHorizontal="@color/colorPrimary"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_constraintLeft_creator="1"
+                tools:layout_constraintTop_creator="1"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true" />
+
+        </RelativeLayout>
+    </ScrollView>
 
     <ImageView
         android:id="@+id/editEventButton"
