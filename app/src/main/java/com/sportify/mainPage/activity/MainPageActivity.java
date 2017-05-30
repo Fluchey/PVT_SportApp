@@ -41,4 +41,10 @@ public class MainPageActivity extends AppCompatActivity implements MainPageView{
 
         MainPageActivity.this.startActivity(testGoToPlaceReviewViewIntent);
     }
+
+    //TODO: Ta bort, bara för testning!!!
+    public void goToUserAreaActivity(View v){
+        Intent goToUserAreaViewIntent = new Intent(MainPageActivity.this, UserAreaActivity.class);
+        MainPageActivity.this.startActivity(goToUserAreaViewIntent);
+    }
 }

@@ -44,6 +44,7 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
     private RadioButton interestedRb;
     private RadioButton comingRb;
     private RadioButton notComingRb;
+    private ImageView privateEventImage;
 
 
     /*
@@ -95,6 +96,7 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
         interestedRb = (RadioButton) findViewById(R.id.interestedRadioButton);
         comingRb = (RadioButton) findViewById(R.id.comingRadioButton);
         notComingRb = (RadioButton) findViewById(R.id.notComingRadioButton);
+        privateEventImage = (ImageView) findViewById(R.id.viewLockedIcon);
 
     }
 
@@ -226,6 +228,11 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
     @Override
     public void setPrivateEvent(boolean privateEvent) {
         this.privateEvent = privateEvent;
+        if(privateEvent){
+            privateEventImage.setImageResource(R.drawable.lockedicon);
+        }else{
+            privateEventImage.setImageResource(R.drawable.unlockedicon);
+        }
     }
 
     @Override
@@ -245,6 +252,9 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
         if(!imageBase64.isEmpty()){
             Bitmap image = Profile.decodeStringToBitmap(imageBase64);
             eventImage.setImageBitmap(image);
+        }else{
+            //TODO: Lägg in någon annan bild som default?
+            eventImage.setImageResource(R.drawable.userareaflowswim);
         }
     }
 
