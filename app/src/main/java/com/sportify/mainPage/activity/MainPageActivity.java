@@ -1,7 +1,9 @@
 package com.sportify.mainPage.activity;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -19,6 +21,17 @@ public class MainPageActivity extends AppCompatActivity implements MainPageView{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mainpage);
+        autoLogin();
+    }
+
+    private void autoLogin(){
+        SharedPreferences sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        String jwt = sharedPref.getString("jwt", "");
+        if (!jwt.isEmpty()){
+            Intent goToUserAreaKillAllOther = new Intent(getApplicationContext(), UserAreaActivity.class);
+            goToUserAreaKillAllOther.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(goToUserAreaKillAllOther);
+        }
     }
 
     public void goToLoginActivity(View v){

@@ -1,8 +1,11 @@
 package com.sportify.settings.activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 
 import com.facebook.FacebookSdk;
@@ -64,6 +67,11 @@ public class SettingsActivity extends AppCompatActivity implements SettingsView{
     public void logOutButtonClick(View v){
         FacebookSdk.sdkInitialize(this.getApplicationContext());
         LoginManager.getInstance().logOut();
+        SharedPreferences sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("jwt", "").apply();
+        Log.d("this", "does not show?");
+        Log.d("JWT", sharedPref.getString("jwt", "test"));
         Intent goToMainPageKillAllOther = new Intent(getApplicationContext(), MainPageActivity.class);
         goToMainPageKillAllOther.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(goToMainPageKillAllOther);
