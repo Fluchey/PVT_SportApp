@@ -20,21 +20,28 @@
         android:roundIcon="@drawable/sportifyrund"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.sportify.mainPage.activity.MainPageActivity">
+        <activity
+            android:name="com.sportify.mainPage.activity.MainPageActivity"
+            android:screenOrientation="portrait">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.sportify.register.activity.RegisterActivity" />
+        <activity
+            android:name="com.sportify.register.activity.RegisterActivity"
+            android:screenOrientation="portrait" />
+
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
-        <provider android:authorities="com.facebook.app.FacebookContentProvider2064612590432123"
+        <provider
             android:name="com.facebook.FacebookContentProvider"
-            android:exported="true"/>
+            android:authorities="com.facebook.app.FacebookContentProvider2064612590432123"
+            android:exported="true" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -54,32 +61,70 @@
             android:screenOrientation="portrait" />
         <activity
             android:name="com.sportify.userArea.activity.UserAreaActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOneActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.sportify.addFriend.activity.AddFriendActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.sportify.createEvent.createEventInviteFriends.activity.CreateEventInviteFriendsActivity"
             android:label="@string/title_activity_friend"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name="com.sportify.profile.activity.ProfileActivity" />
-        <activity android:name="com.sportify.login.activity.LoginActivity" />
-        <activity android:name="com.sportify.settings.activity.SettingsActivity" />
-        <activity android:name="com.sportify.settingsIntegritypolicy.activity.IntegritypolicyActivity" />
-        <activity android:name="com.sportify.createEvent.createEventPreview.activity.CreateEventPreviewActivity" />
-        <activity android:name="com.sportify.createEvent.createEventPageBeforeInviteFriends.activity.CreateEventBeforeInviteFriendsActivity" />
-        <activity android:name="com.sportify.showFriends.activity.ShowFriendsActivity" />
-        <activity android:name="com.sportify.notifications.activity.NotificationActivity" />
-        <activity android:name="com.sportify.calendar.activity.CalendarActivity" />
-        <activity android:name="com.sportify.eventArea.activity.EventAreaActivity" />
-        <activity android:name="com.sportify.profile.activity.EditProfileActivity" />
-        <activity android:name="com.sportify.placeReview.activity.PlaceReviewActivity" />
-        <activity android:name="com.sportify.placearea.activity.PlaceAreaActivity" />
-        <activity android:name="com.sportify.editEvent.activity.activity.EditEventActivity" />
-        <activity android:name="com.sportify.friendprofile.activity.FriendprofileActivity"></activity>
+        <activity
+            android:name="com.sportify.profile.activity.ProfileActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.sportify.login.activity.LoginActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.sportify.settings.activity.SettingsActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.sportify.settingsIntegritypolicy.activity.IntegritypolicyActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.sportify.createEvent.createEventPreview.activity.CreateEventPreviewActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.sportify.createEvent.createEventPageBeforeInviteFriends.activity.CreateEventBeforeInviteFriendsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.sportify.showFriends.activity.ShowFriendsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.sportify.notifications.activity.NotificationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.sportify.calendar.activity.CalendarActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.sportify.eventArea.activity.EventAreaActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.sportify.profile.activity.EditProfileActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.sportify.placeReview.activity.PlaceReviewActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.sportify.placearea.activity.PlaceAreaActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.sportify.editEvent.activity.activity.EditEventActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.sportify.friendprofile.activity.FriendprofileActivity"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
