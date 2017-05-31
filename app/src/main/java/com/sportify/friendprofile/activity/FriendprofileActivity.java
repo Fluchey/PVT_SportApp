@@ -106,8 +106,10 @@ public class FriendprofileActivity extends AppCompatActivity implements Friendpr
     }
 
     @Override
-    public void alreadyFriend(){
-        addButton.setImageBitmap(null);
+    public void setAddFriendButton(boolean alreadyFriends) {
+        if (!alreadyFriends){
+            addButton.setImageResource(R.drawable.adduserfriend2);
+        }
     }
 
     @Override

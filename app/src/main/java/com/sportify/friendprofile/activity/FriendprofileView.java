@@ -1,9 +1,5 @@
 package com.sportify.friendprofile.activity;
 
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
-
 import com.sportify.storage.Event;
 
 import java.util.ArrayList;
@@ -22,7 +18,7 @@ public interface FriendprofileView {
     public void setInterestsView(List<String> interests);
     public void setDescriptionView(String description);
     public void setPictureView(String img);
-    public void alreadyFriend();
+    public void setAddFriendButton(boolean alreadyFriends);
     public void showEvents(ArrayList<Event> events, HashMap<Integer, String> creator, HashMap<Integer, String> placeName, ArrayList<String> eventImage);
     public void showToastToUser(String message);
 }

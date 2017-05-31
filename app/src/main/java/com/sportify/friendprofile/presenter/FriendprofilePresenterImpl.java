@@ -83,7 +83,7 @@ public class FriendprofilePresenterImpl implements FriendprofilePresenter, Frien
                 break;
             case "isfriend":
                 Log.d("isFriend", request.getProfile().getFirstname() + " is " + request.isFriend(params[0]) + "!");
-                if(request.isFriend(params[0])) activity.alreadyFriend();
+                activity.setAddFriendButton(request.isFriend(params[0]));
                 break;
             case "friendrequest":
                 activity.showToastToUser(params[0]);
