@@ -194,13 +194,28 @@
 
     <TextView
         android:id="@+id/tvEventAreaDescription"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_marginBottom="25dp"
-        android:layout_marginTop="20dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="15dp"
         android:text="@string/event_description"
         android:layout_below="@+id/firstLine"/>
+
+    <ImageView
+        android:id="@+id/editEventButton"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        app:srcCompat="@drawable/setteditprofile"
+        android:clickable="true"
+        android:layout_below="@+id/firstLine"
+        android:layout_above="@+id/secondLine"
+        android:onClick="goToEditEventActivity"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginEnd="10dp"
+        android:layout_alignParentEnd="true"
+        tools:ignore="ContentDescription" />
 
 
     <View
@@ -219,6 +234,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/tvEventAreaInterested"
+        android:layout_above="@+id/goToUserAreaButtonFromEE"
         android:fadeScrollbars="false"
         android:fillViewport="true"
         android:isScrollContainer="false"
@@ -258,19 +274,7 @@
         </RelativeLayout>
     </ScrollView>
 
-    <ImageView
-        android:id="@+id/editEventButton"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        app:srcCompat="@drawable/setteditprofile"
-        android:clickable="true"
-        android:layout_above="@+id/RadioComingNot"
-        android:onClick="goToEditEventActivity"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="5dp"
-        android:layout_alignParentEnd="true"
-        tools:ignore="ContentDescription" />
+
 
 
     <!-- Share to Facebook -->
@@ -299,7 +303,75 @@
         android:layout_marginTop="7dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
-        tools:ignore="ContentDescription" />O
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/goToUserAreaButtonFromEE"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:clickable="true"
+        android:onClick="goToUserAreaActivityFromEE"
+        app:srcCompat="@drawable/menuhome"
+        android:layout_toStartOf="@+id/goToMapButtonFromEE"
+        android:layout_marginEnd="38dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="5dp"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/goToMapButtonFromEE"
+        android:onClick="startMapActivityFromEE"
+        android:clickable="true"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:srcCompat="@drawable/menumap3"
+        tools:ignore="ContentDescription"
+        android:layout_toStartOf="@+id/createEventButtonFromEE"
+        android:layout_marginEnd="38dp"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/createEventButtonFromEE"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:clickable="true"
+        android:onClick="createEventButtonClickFromEE"
+        app:backgroundTint="@color/colorAccent"
+        app:fabSize="normal"
+        android:elevation="0dp"
+        android:layout_marginBottom="@dimen/createEventMargin"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:srcCompat="@drawable/menucreateevent" />
+
+    <ImageView
+        android:id="@+id/goToNotificationsButtonFromEE"
+        android:clickable="true"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:onClick="ToNoteActivityFromEE"
+        app:srcCompat="@drawable/menunotification"
+        tools:ignore="ContentDescription"
+        android:layout_toEndOf="@+id/createEventButtonFromEE"
+        android:layout_marginStart="38dp"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true"/>
+
+    <ImageView
+        android:id="@+id/goToFriendsListButtonFromEE"
+        android:clickable="true"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:srcCompat="@drawable/menufriends"
+        tools:ignore="ContentDescription"
+        android:onClick="goToFriendListButtonClickFromEE"
+        android:layout_toEndOf="@+id/goToNotificationsButtonFromEE"
+        android:layout_marginStart="38dp"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true"/>
+
+
 
 </RelativeLayout>
 

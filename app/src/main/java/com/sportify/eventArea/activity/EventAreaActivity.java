@@ -17,10 +17,14 @@ import com.facebook.share.model.ShareOpenGraphContent;
 import com.facebook.share.model.ShareOpenGraphObject;
 import com.facebook.share.widget.ShareDialog;
 import com.sportify.arrayAdapters.MyArrayAdapterParticipants;
+import com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOneActivity;
 import com.sportify.editEvent.activity.activity.EditEventActivity;
 import com.sportify.eventArea.presenter.EventAreaPresenter;
 import com.sportify.eventArea.presenter.EventAreaPresenterImpl;
+import com.sportify.maps.activity.MapsActivity;
+import com.sportify.notifications.activity.NotificationActivity;
 import com.sportify.placearea.activity.PlaceAreaActivity;
+import com.sportify.showFriends.activity.ShowFriendsActivity;
 import com.sportify.storage.Participant;
 import com.sportify.storage.Place;
 import com.sportify.userArea.activity.UserAreaActivity;
@@ -328,4 +332,31 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
             // Launch Facebook Hodoo
             ShareDialog.show(this, content);
     }
+
+    public void ToNoteActivityFromEE(View v) {
+        Intent goToNotificationsViewIntent = new Intent(EventAreaActivity.this, NotificationActivity.class);
+        EventAreaActivity.this.startActivity(goToNotificationsViewIntent);
+    }
+
+    public void createEventButtonClickFromEE(View v) {
+        Intent createEventIntent = new Intent(EventAreaActivity.this, CreateEventPageOneActivity.class);
+        EventAreaActivity.this.startActivity(createEventIntent);
+    }
+
+    public void startMapActivityFromEE(View view) {
+        Intent startMapActivityIntent = new Intent(EventAreaActivity.this, MapsActivity.class);
+        EventAreaActivity.this.startActivity(startMapActivityIntent);
+    }
+
+    public void goToUserAreaActivityFromEE(View v) {
+        Intent goToUserAreaViewIntent = new Intent(EventAreaActivity.this, UserAreaActivity.class);
+        EventAreaActivity.this.startActivity(goToUserAreaViewIntent);
+    }
+
+    public void goToFriendListButtonClickFromEE(View v) {
+        Intent goToFriendListIntent = new Intent(EventAreaActivity.this, ShowFriendsActivity.class);
+        EventAreaActivity.this.startActivity(goToFriendListIntent);
+    }
+
+
 }
