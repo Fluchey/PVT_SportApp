@@ -68,9 +68,9 @@ public class CreateEventPreviewActivity extends AppCompatActivity implements Cre
             invitedFriendsLv.setAdapter(myArrayAdapterShowFriends);
         }
 
-        eventNameTv.setText(eventName);
+        eventNameTv.setText("Eventnamn: " + eventName);
         setEventImage(eventImageBase64);
-        eventDescriptionTv.setText(eventDescription);
+        eventDescriptionTv.setText("Beskrivning: " + eventDescription);
 
         String imageBase64 = sharedPref.getString("imageBase64", "");
         userProfilePicture = (ImageView) findViewById(R.id.ivProfilePicture);
@@ -104,6 +104,8 @@ public class CreateEventPreviewActivity extends AppCompatActivity implements Cre
         if(!imageBase64.isEmpty()){
             Bitmap image = Profile.decodeStringToBitmap(imageBase64);
             eventImage.setImageBitmap(image);
+        }else{
+            eventImage.setImageResource(R.drawable.defaultevent1);
         }
     }
 }
