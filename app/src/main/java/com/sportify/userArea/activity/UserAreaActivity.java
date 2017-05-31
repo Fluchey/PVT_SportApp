@@ -12,16 +12,15 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.sportify.calendar.activity.CalendarActivity;
 import com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOneActivity;
 import com.sportify.eventArea.activity.EventAreaActivity;
 import com.sportify.maps.activity.MapsActivity;
-import com.sportify.placearea.activity.PlaceAreaActivity;
 import com.sportify.notifications.activity.NotificationActivity;
-import com.sportify.settings.activity.SettingsActivity;
+import com.sportify.placearea.activity.PlaceAreaActivity;
 import com.sportify.profile.activity.EditProfileActivity;
+import com.sportify.settings.activity.SettingsActivity;
 import com.sportify.showFriends.activity.ShowFriendsActivity;
 import com.sportify.storage.Event;
 import com.sportify.userArea.CustomList;
