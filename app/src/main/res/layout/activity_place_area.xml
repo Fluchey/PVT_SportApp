@@ -49,7 +49,7 @@
         android:layout_below="@+id/readReviewHeader"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="45dp"
-        app:srcCompat="@drawable/placefarsta"
+        app:srcCompat="@drawable/defplacepic"
         tools:ignore="ContentDescription" />
 
 

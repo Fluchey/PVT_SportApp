@@ -131,7 +131,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintVertical_bias="0.192"
-        app:srcCompat="@drawable/placefarsta"
+        app:srcCompat="@drawable/defplacepic"
         android:layout_marginBottom="12dp"
         android:layout_above="@+id/ratingBar"
         android:layout_alignParentStart="true" />

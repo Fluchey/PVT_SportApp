@@ -68,9 +68,9 @@ public class CreateEventPreviewActivity extends AppCompatActivity implements Cre
             invitedFriendsLv.setAdapter(myArrayAdapterShowFriends);
         }
 
-        eventNameTv.setText("Eventnamn: " + eventName);
+        eventNameTv.setText(eventName);
         setEventImage(eventImageBase64);
-        eventDescriptionTv.setText("Beskrivning: " + eventDescription);
+        eventDescriptionTv.setText(eventDescription);
 
         String imageBase64 = sharedPref.getString("imageBase64", "");
         userProfilePicture = (ImageView) findViewById(R.id.ivProfilePicture);
