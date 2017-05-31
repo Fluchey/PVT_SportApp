@@ -15,10 +15,13 @@ import android.widget.ArrayAdapter;
 import com.sportify.arrayAdapters.MyArrayAdapterShowFriends;
 import com.sportify.arrayAdapters.MyArrayAdapterShowPlaceReviews;
 import com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOneActivity;
+import com.sportify.maps.activity.MapsActivity;
+import com.sportify.notifications.activity.NotificationActivity;
 import com.sportify.placeReview.activity.PlaceReviewActivity;
 import com.sportify.placearea.presenter.PlaceAreaPresenter;
 import com.sportify.placearea.presenter.PlaceAreaPresenterImpl;
 import com.sportify.showFriends.Profile;
+import com.sportify.showFriends.activity.ShowFriendsActivity;
 import com.sportify.storage.PlaceReview;
 import com.sportify.userArea.activity.UserAreaActivity;
 
@@ -117,4 +120,30 @@ public class PlaceAreaActivity extends AppCompatActivity implements PlaceAreaVie
         createEventIntent.putExtra("placeId", placeId);
         PlaceAreaActivity.this.startActivity(createEventIntent);
     }
+
+    public void ToNoteActivityFromPA(View v) {
+        Intent goToNotificationsViewIntent = new Intent(PlaceAreaActivity.this, NotificationActivity.class);
+        PlaceAreaActivity.this.startActivity(goToNotificationsViewIntent);
+    }
+
+    public void createEventButtonClickFromPA(View v) {
+        Intent createEventIntent = new Intent(PlaceAreaActivity.this, CreateEventPageOneActivity.class);
+        PlaceAreaActivity.this.startActivity(createEventIntent);
+    }
+
+    public void startMapActivityFromPA(View view) {
+        Intent startMapActivityIntent = new Intent(PlaceAreaActivity.this, MapsActivity.class);
+        PlaceAreaActivity.this.startActivity(startMapActivityIntent);
+    }
+
+    public void goToUserAreaActivityFromPA(View v) {
+        Intent goToUserAreaViewIntent = new Intent(PlaceAreaActivity.this, UserAreaActivity.class);
+        PlaceAreaActivity.this.startActivity(goToUserAreaViewIntent);
+    }
+
+    public void goToFriendListButtonClickFromPA(View v) {
+        Intent goToFriendListIntent = new Intent(PlaceAreaActivity.this, ShowFriendsActivity.class);
+        PlaceAreaActivity.this.startActivity(goToFriendListIntent);
+    }
+
 }
