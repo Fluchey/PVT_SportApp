@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgroundnodude"
+    android:background="@drawable/backgroundcool"
     android:padding="@dimen/def_pagePadding"
     tools:context="com.sportify.eventArea.activity.EventAreaActivity">
 
@@ -260,13 +260,15 @@
 
     <ImageView
         android:id="@+id/editEventButton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         app:srcCompat="@drawable/setteditprofile"
         android:clickable="true"
+        android:layout_above="@+id/RadioComingNot"
         android:onClick="goToEditEventActivity"
         android:layout_marginTop="24dp"
-        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="5dp"
         android:layout_alignParentEnd="true"
         tools:ignore="ContentDescription" />
 

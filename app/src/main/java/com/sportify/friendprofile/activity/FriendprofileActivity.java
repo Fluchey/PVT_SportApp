@@ -109,6 +109,8 @@ public class FriendprofileActivity extends AppCompatActivity implements Friendpr
     public void setAddFriendButton(boolean alreadyFriends) {
         if (!alreadyFriends){
             addButton.setImageResource(R.drawable.adduserfriend2);
+        }else {
+            addButton.setImageResource(R.drawable.alreadyfriendicon);
         }
     }
 
