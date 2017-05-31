@@ -97,13 +97,10 @@ public class CreateEventPageOnePresenterImpl implements CreateEventPageOnePresen
                     return;
                 }
             }
+
             JSONObject jsonObject = new JSONObject();
             String placeID = createEventPageOneView.getEventPlaceId();
-//            for(Place p : createEventPageOneRequest.getPlaces()){
-//                if(p.getName().equals(eventPlace)){
-//                    placeId = p.getId();
-//                }
-//            }
+
             try {
                 jsonObject.put("eventName", eventName);
                 jsonObject.put("eventPrice", "" + eventPrice);

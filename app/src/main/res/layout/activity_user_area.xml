@@ -76,7 +76,7 @@
         android:id="@+id/profilePicView"
         android:layout_width="95dp"
         android:layout_height="95dp"
-        app:srcCompat="@drawable/quokkaprofile"
+        app:srcCompat="@drawable/userprofileimage1"
         tools:ignore="ContentDescription"
         android:layout_centerHorizontal="true" />
 

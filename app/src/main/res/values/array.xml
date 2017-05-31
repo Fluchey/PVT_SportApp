@@ -1,18 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources><string-array name="sections">
-    <item >Bollplan</item>
-    <item >Simhall</item>
-    <item >Vinterfotbollsplan</item>
-    <item >Idrottsplats</item>
-    <item >Utegym</item>
-    <item >Skatepark och parkour</item>
-    <item >Motionsspår</item>
-    <item >Ridskola</item>
+    <!--<item >Bollplan</item>-->
+    <!--<item >Simhall</item>-->
+    <!--<item >Vinterfotbollsplan</item>-->
+    <!--<item >Idrottsplats</item>-->
+    <!--<item >Utegym</item>-->
+    <!--<item >Skatepark och parkour</item>-->
+    <!--<item >Motionsspår</item>-->
+    <!--<item >Ridskola</item>-->
+    <!--<item >Övrigt</item>-->
 
+    <item >Badminton</item>
+    <item >Bandy</item>
+    <item >Basket</item>
+    <item >Fotboll</item>
+    <item >Idrott</item>
+    <item >Löpning</item>
+    <item >Parkour</item>
+    <item >Ridning</item>
+    <item >Simning</item>
+    <item >Skateboard</item>
+    <item >Utegym</item>
     <item >Övrigt</item>
-<!--    <item >Cykel/mountainbike</item>
-    <item >Gruppträning</item>
-    <item >Skidor/snowboard</item>
-    <item >Yoga</item>
-    <item >Dans</item>-->
+
 </string-array></resources>
