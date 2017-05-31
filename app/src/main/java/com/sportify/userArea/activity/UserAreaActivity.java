@@ -97,7 +97,6 @@ public class UserAreaActivity extends AppCompatActivity implements UserAreaView 
 //        });
     }
 
-
     public void ToNoteFromUserAreaActivity(View v) {
         Intent goToNotificationsViewIntent = new Intent(UserAreaActivity.this, NotificationActivity.class);
         UserAreaActivity.this.startActivity(goToNotificationsViewIntent);

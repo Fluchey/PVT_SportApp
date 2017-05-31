@@ -34,7 +34,6 @@
         android:id="@+id/tvFriendDescription"
         android:layout_width="200dp"
         android:layout_height="50dp"
-        android:text="@string/userArea_text"
         android:textSize="@dimen/standardSmallerTextSize"
         android:layout_below="@+id/ivProfilePicture"
         android:paddingTop="5dp" />
@@ -43,14 +42,12 @@
         android:id="@+id/tvFriendName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/userArea_userInfoName"
         android:textSize="@dimen/standardSmallerTextSize" />
 
     <TextView
         android:id="@+id/tvFriendAge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/userArea_userInfoAge"
         android:textSize="@dimen/standardSmallerTextSize"
         android:layout_below="@+id/tvFriendName"/>
 
@@ -58,7 +55,6 @@
         android:id="@+id/tvFriendintressen"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:text="@string/userArea_userInfoInterest"
         android:textSize="@dimen/standardSmallerTextSize"
         android:layout_below="@+id/tvFriendAge"/>
 
@@ -67,7 +63,6 @@
         android:id="@+id/ivProfilePicture"
         android:layout_width="95dp"
         android:layout_height="95dp"
-        app:srcCompat="@drawable/quokkaprofile"
         tools:ignore="ContentDescription"
         android:layout_centerHorizontal="true" />
 
@@ -168,7 +163,6 @@
         android:layout_marginTop="7dp"
         android:background="@android:color/transparent"
         android:onClick="addFriendButtonClick"
-        app:srcCompat="@drawable/adduserfriend2"
         tools:ignore="ContentDescription" />
 
 

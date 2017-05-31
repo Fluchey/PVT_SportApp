@@ -13,7 +13,6 @@ public class Notification {
     String friendName;
 
     public Notification(String friendName, String imageBase64){
-        //TODO: Hämta med profilbild
         this.friendName = friendName;
         this.profilePicture = imageBase64;
     }

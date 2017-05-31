@@ -52,10 +52,6 @@ public class MyArrayAdapterNotifications extends ArrayAdapter {
             Bitmap bitmap = com.sportify.util.Profile.decodeStringToBitmap(imageBase64);
             imageView.setImageBitmap(bitmap);
         }
-        //TODO: Fånga upp host och hämta dess profilbild
-        //ImageView profilePicture = eventNotifications.get(position).getProfilePicture();
-        //imageView.setImageResource();
-
         notificationMessage.setText(eventNotifications.get(position).getNotificationText(getContext()));
 
         return row;

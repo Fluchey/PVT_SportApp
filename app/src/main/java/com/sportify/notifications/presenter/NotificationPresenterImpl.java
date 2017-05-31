@@ -81,7 +81,6 @@ public class NotificationPresenterImpl implements NotificationPresenter, Notific
         try{
             for(int i=0; i < array.length(); i++){
 
-                //TODO: Hämta profilbild
                 JSONObject jsonNotification = array.getJSONObject(i);
                 Notification notification = null;
                 String friendName = jsonNotification.getString("friendName");

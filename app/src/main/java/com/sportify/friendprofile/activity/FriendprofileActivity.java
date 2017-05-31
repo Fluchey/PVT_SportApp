@@ -3,6 +3,7 @@ package com.sportify.friendprofile.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -95,7 +96,14 @@ public class FriendprofileActivity extends AppCompatActivity implements Friendpr
     public void setDescriptionView(String description) { descriptionView.setText(description);}
 
     @Override
-    public void setPictureView(String img) { pictureView.setImageBitmap(Profile.decodeStringToBitmap(img)); }
+    public void setPictureView(String imageBase64) {
+        if(!imageBase64.isEmpty()){
+            Bitmap image = Profile.decodeStringToBitmap(imageBase64);
+            pictureView.setImageBitmap(image);
+        }else{
+            pictureView.setImageResource(R.drawable.userprofileimage1);
+        }
+    }
 
     @Override
     public void alreadyFriend(){
