@@ -4,8 +4,6 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.sportify.addFriend.request.AddFriendRequestImpl;
-import com.sportify.placeReview.request.PlaceReviewRequest;
 import com.sportify.placeReview.request.PlaceReviewRequestImpl;
 import com.sportify.storage.Event;
 import com.sportify.storage.Profile;
@@ -96,7 +94,7 @@ public class FriendprofileRequestImpl implements FriendprofileRequest {
     public void updateEvents(int userId){
         JSONObject json = new JSONObject();
         try {
-            json.put("profileId", userId);
+            json.put("profileId", "" + userId);
         } catch (JSONException e) {
             e.printStackTrace();
         }

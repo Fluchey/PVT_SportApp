@@ -278,11 +278,6 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
     }
 
     @Override
-    public Bitmap getEventImage() {
-        return null;
-    }
-
-    @Override
     public void sendResponsEventInvite(View v) {
         String response = v.getTag().toString();
         presenter.sendResponsEventInvite(response, eventId);

@@ -61,6 +61,8 @@ public class CustomList extends ArrayAdapter<String> {
         if (!imageBase64.isEmpty()) {
             Bitmap bitmap = Profile.decodeStringToBitmap(imageBase64);
             imageView.setImageBitmap(bitmap);
+        }else{
+            imageView.setImageResource(R.drawable.defaultevent1);
         }
         return rowView;
     }
