@@ -19,7 +19,6 @@ import com.sportify.addFriend.presenter.AddFriendPresenterImpl;
 import com.sportify.arrayAdapters.MyArrayAdapterShowFriends;
 import com.sportify.friendprofile.activity.FriendprofileActivity;
 import com.sportify.showFriends.Profile;
-import com.sportify.showFriends.activity.ShowFriendsActivity;
 
 import java.util.ArrayList;
 
@@ -64,7 +63,8 @@ public class AddFriendActivity extends AppCompatActivity implements AddFriendVie
         friendList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                int userId = friendArray.get((int) id).getProfileID();
+                Profile friendProfile = (Profile) parent.getItemAtPosition(position);
+                int userId = friendProfile.getProfileID();
                 toFriendProfile(userId);
             }
         });
@@ -141,9 +141,7 @@ public class AddFriendActivity extends AppCompatActivity implements AddFriendVie
 
     public void toFriendProfile(int userId){
         Intent goToFriendProfileIntent = new Intent(AddFriendActivity.this, FriendprofileActivity.class);
-        Bundle b = new Bundle();
-        b.putInt("friendId", userId);
-        goToFriendProfileIntent.putExtras(b);
+        goToFriendProfileIntent.putExtra("friendId", userId);
         AddFriendActivity.this.startActivity(goToFriendProfileIntent);
     }
 }

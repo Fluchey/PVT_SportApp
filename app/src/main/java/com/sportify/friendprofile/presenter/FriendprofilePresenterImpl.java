@@ -7,7 +7,6 @@ import com.sportify.friendprofile.activity.FriendprofileView;
 import com.sportify.friendprofile.request.FriendprofileRequest;
 import com.sportify.friendprofile.request.FriendprofileRequestImpl;
 import com.sportify.storage.Event;
-import com.sportify.storage.PlaceReview;
 import com.sportify.storage.Profile;
 
 import org.json.JSONException;
@@ -46,14 +45,13 @@ public class FriendprofilePresenterImpl implements FriendprofilePresenter, Frien
         activity.setAgeView(info.getAge() + "");
         activity.setDescriptionView(info.getDescription());
         activity.setInterestsView(info.getInterests());
-        if(info.getPicture() != null) activity.setPictureView(info.getPicture());
+        activity.setPictureView(info.getPicture());
     }
 
     @Override
     public ArrayList<Event> getEvents(){
         return request.getEvents();
     }
-
 
     @Override
     public void addFriend() {

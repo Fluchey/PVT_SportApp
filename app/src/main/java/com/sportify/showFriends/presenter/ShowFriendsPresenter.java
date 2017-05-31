@@ -13,6 +13,4 @@ public interface ShowFriendsPresenter {
     void showFriends();
 
     void updateFriendSearchView();
-
-    void goToFriendsProfile(String userID);
 }

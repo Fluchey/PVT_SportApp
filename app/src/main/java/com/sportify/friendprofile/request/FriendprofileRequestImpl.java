@@ -94,12 +94,14 @@ public class FriendprofileRequestImpl implements FriendprofileRequest {
     public void updateEvents(int userId){
         JSONObject json = new JSONObject();
         try {
-            json.put("profileId", "" + userId);
+            json.put("userID", "" + userId);
+            System.out.println("User: " + userId);
         } catch (JSONException e) {
             e.printStackTrace();
         }
         makeApiRequestPut(json.toString(), "geteventforuser", "PUT", "geteventforuser");
     }
+
     @Override
     public void setEvents(String jsonMessage){
         JSONObject json = null;

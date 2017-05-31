@@ -85,10 +85,10 @@ public class ShowFriendsActivity extends AppCompatActivity implements ShowFriend
                         }
                     }
                     myArrayAdapterFriendList = new MyArrayAdapterShowFriends(ShowFriendsActivity.this, R.layout.placereview_list_item, arrayTemplist);
-                    friendList.setAdapter(myArrayAdapterFriendList);
+                        friendList.setAdapter(myArrayAdapterFriendList);
                 }else{
                     myArrayAdapterFriendList = new MyArrayAdapterShowFriends(ShowFriendsActivity.this, R.layout.placereview_list_item, friendArray);
-                    friendList.setAdapter(myArrayAdapterFriendList);
+                        friendList.setAdapter(myArrayAdapterFriendList);
                 }
             }
 
@@ -107,7 +107,8 @@ public class ShowFriendsActivity extends AppCompatActivity implements ShowFriend
         friendList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                int userId = friendArray.get((int) id).getProfileID();
+                Profile friendProfile = (Profile) parent.getItemAtPosition(position);
+                int userId = friendProfile.getProfileID();
                 toFriendProfile(userId);
             }
         });

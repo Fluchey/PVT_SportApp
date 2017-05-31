@@ -272,7 +272,6 @@ public class EventAreaActivity extends AppCompatActivity implements EventAreaVie
             Bitmap image = Profile.decodeStringToBitmap(imageBase64);
             eventImage.setImageBitmap(image);
         }else{
-            //TODO: Lägg in någon annan bild som default?
             eventImage.setImageResource(R.drawable.defaultevent1);
         }
     }
