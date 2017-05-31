@@ -78,6 +78,7 @@ public class UserAreaActivity extends AppCompatActivity implements UserAreaView 
             Bitmap bitmap = Profile.decodeStringToBitmap(imageBase64);
             userProfilePicture.setImageBitmap(bitmap);
         }
+        Log.d("UserAreaActivity", "imageBase64: " + sharedPref.getString("imageBase64", ""));
 
         /**
          * MINA EVENT LISTVIEW

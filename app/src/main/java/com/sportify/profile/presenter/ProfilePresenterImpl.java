@@ -142,10 +142,7 @@ public class ProfilePresenterImpl implements ProfilePresenter, ProfileRequest.On
             e.printStackTrace();
         }
         editor.apply();
-        Log.d(TAG, "firstname: " + sharedPref.getString("firstName", ""));
-        Log.d(TAG, "interests: " + sharedPref.getString("interests", ""));
-        Log.d(TAG, "imageBase64: " + sharedPref.getString("imageBase64", ""));
-
+        Log.d(TAG, "LOGIN PRESENTER imageBase64: " + sharedPref.getString("imageBase64", ""));
     }
 
     @Override

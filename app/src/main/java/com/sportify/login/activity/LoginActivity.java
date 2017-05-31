@@ -52,6 +52,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
             AccessToken accessToken = AccessToken.getCurrentAccessToken();
             loginPresenter.loginUserFacebook(accessToken);
             Log.d("LoginActivity.java", sharedPref.getString("firstName", ""));
+            Log.d("LoginActivity", "imageBase64: " + sharedPref.getString("imageBase64", ""));
         }
 
         email = (EditText) findViewById(R.id.etLoginEmail);
