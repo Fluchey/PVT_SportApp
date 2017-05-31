@@ -39,6 +39,8 @@ public class FriendprofileActivity extends AppCompatActivity implements Friendpr
     private SharedPreferences sharedPref;
     private int friendId;
 
+    private boolean friend;
+
     private TextView nameView;
     private TextView ageView;
     private TextView interestsView;
@@ -108,8 +110,10 @@ public class FriendprofileActivity extends AppCompatActivity implements Friendpr
     @Override
     public void setAddFriendButton(boolean alreadyFriends) {
         if (!alreadyFriends){
+            friend = false;
             addButton.setImageResource(R.drawable.adduserfriend2);
         }else {
+            friend = true;
             addButton.setImageResource(R.drawable.alreadyfriendicon);
         }
     }
@@ -164,7 +168,9 @@ public class FriendprofileActivity extends AppCompatActivity implements Friendpr
     }
 
     public void addFriendButtonClick(View v) {
-        presenter.addFriend();
+        if(!friend) {
+            presenter.addFriend();
+        }
     }
 
     @Override
