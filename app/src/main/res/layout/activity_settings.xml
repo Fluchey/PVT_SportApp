@@ -202,6 +202,7 @@
         android:layout_centerHorizontal="true"
         android:background="@color/colorDelete"
         android:layout_marginBottom="78dp"
+        android:onClick="logOutButtonClick"
         android:text="@string/log_out" />
 
 

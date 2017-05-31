@@ -5,7 +5,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.facebook.FacebookSdk;
+import com.facebook.login.LoginManager;
 import com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOneActivity;
+import com.sportify.mainPage.activity.MainPageActivity;
 import com.sportify.maps.activity.MapsActivity;
 import com.sportify.notifications.activity.NotificationActivity;
 import com.sportify.profile.activity.EditProfileActivity;
@@ -56,5 +59,13 @@ public class SettingsActivity extends AppCompatActivity implements SettingsView{
     public void goToEditProfileFromSett(View v){
         Intent goToEditProfileIntent = new Intent(SettingsActivity.this, EditProfileActivity.class);
         SettingsActivity.this.startActivity(goToEditProfileIntent);
+    }
+
+    public void logOutButtonClick(View v){
+        FacebookSdk.sdkInitialize(this.getApplicationContext());
+        LoginManager.getInstance().logOut();
+        Intent goToMainPageKillAllOther = new Intent(getApplicationContext(), MainPageActivity.class);
+        goToMainPageKillAllOther.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(goToMainPageKillAllOther);
     }
 }
