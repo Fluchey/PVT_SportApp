@@ -262,33 +262,35 @@ public class EditEventActivity extends AppCompatActivity implements EditEventVie
 
         //Set all information of the event in edit text fields
         Bundle bundle = getIntent().getExtras();
-        this.eventID = (bundle.getInt("eventId"));
-        eventName.setText(bundle.getString("eventName"));
-        Place p = (Place) getIntent().getSerializableExtra("place");
-        eventPlace.setText(p.getName());
-        userWroteSearch = false;
+        if(bundle != null) {
+            this.eventID = (bundle.getInt("eventId"));
+            eventName.setText(bundle.getString("eventName"));
+            Place p = (Place) getIntent().getSerializableExtra("place");
+            eventPlace.setText(p.getName());
+            userWroteSearch = false;
 
-        eventDate.setText(bundle.getString("eventDate"));
-        eventStartTime.setText(bundle.getString("startTime"));
-        eventEndTime.setText(bundle.getString("endTime"));
-        eventType.setText(bundle.getString("eventType"));
-        idOfPlace = p.getId();
+            eventDate.setText(bundle.getString("eventDate"));
+            eventStartTime.setText(bundle.getString("startTime"));
+            eventEndTime.setText(bundle.getString("endTime"));
+            eventType.setText(bundle.getString("eventType"));
+            idOfPlace = p.getId();
 
-        String maxAttendance = String.valueOf(bundle.getInt("maxAttendance"));
-        if(!maxAttendance.equals("0")){
-            eventMaxAttendance.setText(maxAttendance);
+            String maxAttendance = String.valueOf(bundle.getInt("maxAttendance"));
+            if(!maxAttendance.equals("0")){
+                eventMaxAttendance.setText(maxAttendance);
+            }
+            String price = String.valueOf(bundle.getInt("price"));
+            if(!price.equals("0")){
+                eventPrice.setText(price);
+            }
+
+            eventPrivate.setChecked(bundle.getBoolean("privateEvent"));
+
+            eventDescription.setText(bundle.getString("description"));
+
+            imageBase64 = bundle.getString("eventImage");
+            setEventImage(imageBase64);
         }
-        String price = String.valueOf(bundle.getInt("price"));
-        if(!price.equals("0")){
-            eventPrice.setText(price);
-        }
-
-        eventPrivate.setChecked(bundle.getBoolean("privateEvent"));
-
-        eventDescription.setText(bundle.getString("description"));
-
-        imageBase64 = bundle.getString("eventImage");
-        setEventImage(imageBase64);
     }
 
     @Override

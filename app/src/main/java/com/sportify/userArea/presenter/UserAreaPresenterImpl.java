@@ -21,12 +21,15 @@ public class UserAreaPresenterImpl implements UserAreaPresenter, UserAreaRequest
     private UserAreaRequest request;
     private SharedPreferences sharedPref;
     private String token = "";
+    private int userID;
 
 
     public UserAreaPresenterImpl(UserAreaView userAreaView, SharedPreferences sharedPref){
         this.userAreaView = userAreaView;
         this.sharedPref = sharedPref;
         this.token = sharedPref.getString("jwt", "");
+        this.userID = sharedPref.getInt("profileID", 0);
+        System.out.println("User: " + userID);
         request = new UserAreaRequestImpl(token, this);
         getEventsFromDb();
     }
@@ -34,7 +37,7 @@ public class UserAreaPresenterImpl implements UserAreaPresenter, UserAreaRequest
     private void getEventsFromDb() {
         JSONObject json = new JSONObject();
         try {
-            json.put("dummy", "dummy");
+            json.put("userID", "" + userID);
         } catch (JSONException e) {
             e.printStackTrace();
         }
