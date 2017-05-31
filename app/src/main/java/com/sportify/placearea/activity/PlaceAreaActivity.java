@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 
 import com.sportify.arrayAdapters.MyArrayAdapterShowFriends;
 import com.sportify.arrayAdapters.MyArrayAdapterShowPlaceReviews;
+import com.sportify.createEvent.createEventPageOne.activity.CreateEventPageOneActivity;
 import com.sportify.placeReview.activity.PlaceReviewActivity;
 import com.sportify.placearea.presenter.PlaceAreaPresenter;
 import com.sportify.placearea.presenter.PlaceAreaPresenterImpl;
@@ -109,5 +110,11 @@ public class PlaceAreaActivity extends AppCompatActivity implements PlaceAreaVie
     public void goToUserAreaFromRead(View v){
         Intent goToUserAreaIntent = new Intent(PlaceAreaActivity.this, UserAreaActivity.class);
         PlaceAreaActivity.this.startActivity(goToUserAreaIntent);
+    }
+
+    public void createEventHere(View view) {
+        Intent createEventIntent = new Intent(PlaceAreaActivity.this, CreateEventPageOneActivity.class);
+        createEventIntent.putExtra("placeId", placeId);
+        PlaceAreaActivity.this.startActivity(createEventIntent);
     }
 }

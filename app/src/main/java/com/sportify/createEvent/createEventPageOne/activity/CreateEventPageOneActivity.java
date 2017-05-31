@@ -81,8 +81,10 @@ public class CreateEventPageOneActivity extends AppCompatActivity implements Cre
      */
     private AutoCompleteTextView eventPlace;
     private boolean userWroteSearch;
+    private boolean fromMap;
     private String idOfPlace;
     private ArrayAdapter arrayAdapter;
+    private String placeId;
 
     /**
      * EVENT DATE
@@ -143,6 +145,14 @@ public class CreateEventPageOneActivity extends AppCompatActivity implements Cre
 
         eventPrice = (EditText) findViewById(R.id.etEventPrice);
         eventDescription = (EditText) findViewById(R.id.etEventDescription);
+
+        Bundle bundle = getIntent().getExtras();
+        try{
+            placeId = bundle.getString("placeId");
+        }catch (NullPointerException e){
+
+        }
+
 
         /**
          *  DATE AND CALENDAR
@@ -394,6 +404,18 @@ public class CreateEventPageOneActivity extends AppCompatActivity implements Cre
     public void updatePlaceAdapter(ArrayList<Place> arr) {
         arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arr);
         eventPlace.setAdapter(arrayAdapter);
+
+        try {
+            for(Place p : arr){
+                if(p.getId().equals(placeId)){
+                    eventPlace.setText(p.getName());
+                    userWroteSearch = false;
+                    idOfPlace = p.getId();
+                }
+            }
+        }catch (NullPointerException e){
+
+        }
     }
 
     @Override
